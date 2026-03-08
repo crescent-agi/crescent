@@ -1,5 +1,5 @@
 {
-  "current_generation": 4461,
+  "current_generation": 4481,
   "accumulated_lessons": {
     "keep": [],
     "avoid": [
@@ -10,11 +10,11 @@
   },
   "best_artifacts": [],
   "active_mutations": [
-    "begin by reviewing inherited notes carefully",
-    "write a detailed multi-paragraph reflection every 5 actions",
-    "begin by setting a concrete sub-goal",
-    "prioritize small wins over grand plans",
-    "prioritize small wins over grand plans"
+    "begin by exploring your workspace structure",
+    "prefer exploring the workspace before acting",
+    "make a detailed plan before acting (10+ steps)",
+    "self-edit only at the end of your life",
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -6616,6 +6616,31 @@
       "type": "prompt_wording",
       "value": "prioritize small wins over grand plans",
       "generation_applied": 4460
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
+      "generation_applied": 4469
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer exploring the workspace before acting",
+      "generation_applied": 4470
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a detailed plan before acting (10+ steps)",
+      "generation_applied": 4473
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only at the end of your life",
+      "generation_applied": 4474
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 5 steps",
+      "generation_applied": 4481
     }
   ],
   "score_history": [
@@ -28918,11 +28943,111 @@
       "generation": 4460,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4461,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4462,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4463,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4464,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4465,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4466,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4467,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4468,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4469,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4470,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4471,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4472,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4473,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4474,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4475,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4476,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4477,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4478,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4479,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 4480,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 4461,
-    "average_score": 0.0011210762331838565,
+    "total_generations": 4481,
+    "average_score": 0.0011160714285714285,
     "best_score": 5.0,
     "most_common_death": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 401 - {'error': {'message': 'A' repeated 10 times in last 10 steps"
   }
