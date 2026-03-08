@@ -1,0 +1,17 @@
+{
+    "current_generation": 1,
+    "accumulated_lessons": {
+        "keep": [],
+        "avoid": []
+    },
+    "best_artifacts": [],
+    "active_mutations": [],
+    "mutations_applied_history": [],
+    "score_history": [],
+    "lineage_stats": {
+        "total_generations": 0,
+        "average_score": 0,
+        "best_score": 0,
+        "most_common_death": "none"
+    }
+}

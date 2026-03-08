@@ -1,0 +1,181 @@
+"""
+Crescent AGI — LLM Client
+============================
+Wrapper around the DeepSeek API (OpenAI-compatible) for all LLM calls.
+Used by the Runtime Agent, Evaluator, and Day Manager.
+"""
+
+import os
+import json
+import time
+from typing import Optional
+
+
+class LLMClient:
+    """
+    LLM client using DeepSeek's OpenAI-compatible API.
+    """
+
+    def __init__(self, config: dict):
+        self.model_name = config.get("llm", {}).get("model", "deepseek-chat")
+        self.temperature = config.get("llm", {}).get("temperature", 0.9)
+        self.max_output_tokens = config.get("llm", {}).get("max_output_tokens", 8192)
+
+        api_key_env = config.get("llm", {}).get("api_key_env", "DEEPSEEK_API_KEY")
+        api_key = os.environ.get(api_key_env)
+        base_url = config.get("llm", {}).get("base_url", "https://api.deepseek.com")
+
+        if not api_key:
+            raise ValueError(
+                f"LLM API key not found. Set the {api_key_env} environment variable.\n"
+                f"Get one at https://platform.deepseek.com/api_keys"
+            )
+
+        from openai import OpenAI
+        self.client = OpenAI(api_key=api_key, base_url=base_url)
+        self.call_count = 0
+
+    def generate(self, prompt: str, system_instruction: str = None, temperature: float = None) -> str:
+        """
+        Generate text from the LLM.
+        """
+        self.call_count += 1
+        temp = temperature if temperature is not None else self.temperature
+
+        messages = []
+        if system_instruction:
+            messages.append({"role": "system", "content": system_instruction})
+        messages.append({"role": "user", "content": prompt})
+
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=messages,
+                temperature=temp,
+                max_tokens=self.max_output_tokens,
+            )
+            return response.choices[0].message.content or "(empty response)"
+
+        except Exception as e:
+            error_msg = f"LLM call failed: {str(e)}"
+            print(f"  [LLM ERROR] {error_msg}")
+            # Wait and retry once
+            time.sleep(2)
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model_name,
+                    messages=messages,
+                    temperature=temp,
+                    max_tokens=self.max_output_tokens,
+                )
+                return response.choices[0].message.content or "(empty after retry)"
+            except Exception as e2:
+                return f"(LLM error: {str(e2)})"
+
+    def generate_with_tools(self, prompt: str, tools_schema: list, system_instruction: str = None) -> dict:
+        """
+        Generate a response that may include tool calls.
+        Uses OpenAI-compatible function calling.
+        """
+        self.call_count += 1
+
+        messages = []
+        if system_instruction:
+            messages.append({"role": "system", "content": system_instruction})
+        messages.append({"role": "user", "content": prompt})
+
+        # Convert tools to OpenAI function format
+        functions = []
+        for tool in tools_schema:
+            properties = {}
+            for k, v in tool.get("parameters", {}).items():
+                properties[k] = {
+                    "type": "string",
+                    "description": v.get("description", ""),
+                }
+            functions.append({
+                "type": "function",
+                "function": {
+                    "name": tool["name"],
+                    "description": tool["description"],
+                    "parameters": {
+                        "type": "object",
+                        "properties": properties,
+                        "required": tool.get("required", []),
+                    },
+                },
+            })
+
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=messages,
+                temperature=self.temperature,
+                max_tokens=self.max_output_tokens,
+                tools=functions if functions else None,
+            )
+
+            result = {"text": "", "tool_calls": []}
+            choice = response.choices[0]
+
+            if choice.message.content:
+                result["text"] = choice.message.content
+
+            if choice.message.tool_calls:
+                for tc in choice.message.tool_calls:
+                    try:
+                        args = json.loads(tc.function.arguments) if tc.function.arguments else {}
+                    except json.JSONDecodeError:
+                        args = {"raw": tc.function.arguments}
+                    result["tool_calls"].append({
+                        "name": tc.function.name,
+                        "args": args,
+                    })
+
+            # If no tool calls were returned, try parsing the text for tool usage
+            if not result["tool_calls"] and result["text"]:
+                parsed = self._try_parse_tool_from_text(result["text"], tools_schema)
+                if parsed:
+                    result["tool_calls"] = parsed
+
+            return result
+
+        except Exception as e:
+            return {
+                "text": f"(Tool call failed: {str(e)})",
+                "tool_calls": [],
+            }
+
+    def _try_parse_tool_from_text(self, text: str, tools_schema: list) -> list:
+        """
+        Fallback: try to extract tool calls from plain text response
+        if the model didn't use function calling format.
+        """
+        tool_names = {t["name"] for t in tools_schema}
+        calls = []
+
+        # Try to find JSON-like tool invocations in the text
+        for tool_name in tool_names:
+            if tool_name in text.lower():
+                # Simple heuristic: look for the tool name followed by arguments
+                try:
+                    # Look for JSON blocks
+                    import re
+                    pattern = rf'\{{\s*"tool"\s*:\s*"{tool_name}".*?\}}'
+                    matches = re.findall(pattern, text, re.DOTALL)
+                    for match in matches:
+                        parsed = json.loads(match)
+                        calls.append({
+                            "name": tool_name,
+                            "args": {k: v for k, v in parsed.items() if k != "tool"},
+                        })
+                except Exception:
+                    pass
+
+        return calls
+
+    def get_stats(self) -> dict:
+        return {
+            "call_count": self.call_count,
+            "model": self.model_name,
+        }

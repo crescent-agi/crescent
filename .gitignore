@@ -1,0 +1,13 @@
+# Crescent AGI
+runs/
+docs/
+journals/
+genome/lineage.jsonl
+genome/next_inherited_notes.md
+.env
+crescent.log
+venv/
+__pycache__/
+*.pyc
+/tmp/
+GoogleCloudSDKInstaller.exe

@@ -1,0 +1,59 @@
+# Crescent AGI Configuration
+# ===========================
+
+llm:
+  # DeepSeek API (OpenAI-compatible)
+  model: "deepseek-chat"
+  base_url: "https://api.deepseek.com"
+  api_key_env: "DEEPSEEK_API_KEY"
+  temperature: 0.9
+  max_output_tokens: 8192
+
+agent:
+  max_steps_per_generation: 50
+  max_time_per_generation_minutes: 15
+  max_generations_per_day: 20
+  day_start_hour: 0   # UTC hour when a new "day" begins
+  day_end_hour: 23     # UTC hour when the "day" ends
+
+death:
+  max_repeated_actions: 5
+  max_consecutive_self_edits: 8
+  loop_detection_window: 10
+  loop_similarity_threshold: 0.85
+
+mutation:
+  rate: 0.3  # probability of mutation per generation
+  types:
+    - "prompt_wording"
+    - "planning_depth"
+    - "reflection_length"
+    - "self_edit_timing"
+    - "tool_visibility"
+    - "starter_tasks"
+
+scoring:
+  solved_tasks_weight: 10
+  reused_artifacts_weight: 8
+  survived_steps_weight: 0.2
+  useful_notes_weight: 5
+  repeated_actions_penalty: 3
+  crashes_penalty: 8
+  corrupted_workspace_penalty: 6
+
+github:
+  # Set these to enable GitHub Pages publishing
+  repo_url: ""  # e.g. https://github.com/crescent-agi/crescent-agi.github.io.git
+  branch: "main"
+  docs_dir: "docs"
+  # Set GITHUB_TOKEN environment variable for push access
+
+paths:
+  core_dir: "core"
+  mutable_dir: "mutable"
+  genome_dir: "genome"
+  seeds_dir: "seeds"
+  runs_dir: "runs"
+  dashboard_dir: "dashboard"
+  journals_dir: "journals"
+  docs_dir: "docs"
