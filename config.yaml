@@ -13,8 +13,7 @@ agent:
   max_steps_per_generation: 50
   max_time_per_generation_minutes: 15
   max_generations_per_day: 20
-  day_start_hour: 0   # UTC hour when a new "day" begins
-  day_end_hour: 23     # UTC hour when the "day" ends
+  day_cycle_hours: 7   # Each "day" lasts 7 hours, then journal + new day
 
 death:
   max_repeated_actions: 5
@@ -42,8 +41,7 @@ scoring:
   corrupted_workspace_penalty: 6
 
 github:
-  # Set these to enable GitHub Pages publishing
-  repo_url: ""  # e.g. https://github.com/crescent-agi/crescent-agi.github.io.git
+  repo_url: "https://github.com/devnull37/crescent-agi.git"
   branch: "main"
   docs_dir: "docs"
   # Set GITHUB_TOKEN environment variable for push access

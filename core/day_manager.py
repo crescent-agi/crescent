@@ -50,28 +50,21 @@ do NOT write in a formal report style. write like a living creature keeping a di
         self.journals_dir.mkdir(parents=True, exist_ok=True)
         self.runs_dir = self.base_dir / config["paths"]["runs_dir"]
 
-        self.day_start_hour = config["agent"].get("day_start_hour", 0)
-        self.day_end_hour = config["agent"].get("day_end_hour", 23)
+        self.cycle_hours = config["agent"].get("day_cycle_hours", 7)
+        self.cycle_seconds = self.cycle_hours * 3600
 
-        # Track today's start
-        self._day_start = self._get_current_day_start()
+        # Track current cycle start
+        self._cycle_start = time.time()
 
     def is_day_over(self) -> bool:
-        """Check if the current day period has ended."""
-        now = datetime.now(timezone.utc)
-        return now.hour >= self.day_end_hour
+        """Check if the current day cycle has ended."""
+        elapsed = time.time() - self._cycle_start
+        return elapsed >= self.cycle_seconds
 
     def wait_for_new_day(self):
-        """Sleep until the next day starts."""
-        now = datetime.now(timezone.utc)
-        # Calculate time until next day_start_hour
-        tomorrow = now.replace(hour=self.day_start_hour, minute=0, second=0, microsecond=0)
-        if tomorrow <= now:
-            tomorrow += timedelta(days=1)
-        wait_seconds = (tomorrow - now).total_seconds()
-        print(f"[DAY MANAGER] Sleeping {wait_seconds:.0f}s until next day ({tomorrow.isoformat()})...")
-        time.sleep(wait_seconds)
-        self._day_start = self._get_current_day_start()
+        """Reset the cycle — new day starts immediately."""
+        print(f"[DAY MANAGER] Starting new {self.cycle_hours}-hour day cycle...")
+        self._cycle_start = time.time()
 
     def write_daily_journal(self, current_generation: int):
         """
@@ -119,8 +112,8 @@ do NOT write in a formal report style. write like a living creature keeping a di
         print(f"  [CRESCENT] Journal saved: {journal_path}")
 
     def _get_todays_runs(self) -> list:
-        """Get all generation directories from today."""
-        today_start = self._day_start
+        """Get all generation directories from this cycle."""
+        cycle_start = self._cycle_start
         runs = []
         if not self.runs_dir.exists():
             return runs
@@ -130,7 +123,7 @@ do NOT write in a formal report style. write like a living creature keeping a di
                 autopsy_path = gen_dir / "autopsy.json"
                 if autopsy_path.exists():
                     mtime = autopsy_path.stat().st_mtime
-                    if mtime >= today_start:
+                    if mtime >= cycle_start:
                         runs.append(gen_dir)
         return runs
 
@@ -158,10 +151,11 @@ do NOT write in a formal report style. write like a living creature keeping a di
 
         return "\n".join(summaries)
 
-    def _get_current_day_start(self) -> float:
-        """Get the timestamp for the start of the current day."""
-        now = datetime.now(timezone.utc)
-        day_start = now.replace(hour=self.day_start_hour, minute=0, second=0, microsecond=0)
-        if now.hour < self.day_start_hour:
-            day_start -= timedelta(days=1)
-        return day_start.timestamp()
+    def get_cycle_info(self) -> dict:
+        """Get info about the current day cycle."""
+        elapsed = time.time() - self._cycle_start
+        return {
+            "cycle_hours": self.cycle_hours,
+            "elapsed_seconds": elapsed,
+            "remaining_seconds": max(0, self.cycle_seconds - elapsed),
+        }
