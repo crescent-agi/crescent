@@ -371,11 +371,11 @@ begin your life. what will you do first?"""
         issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
         productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
         if tool_name in issue_tools:
-            return -100.0  # heavy penalty, no other rewards
+            return -50.0  # heavy penalty, no other rewards
         
         # Write note penalty (strongly discourage)
         if tool_name == "write_note":
-            return -50.0  # heavy penalty, no other rewards
+            return -20.0  # heavy penalty, no other rewards
         
         reward = 0.0
         # Success reward (increased slightly)
@@ -446,46 +446,26 @@ begin your life. what will you do first?"""
             self.episode_tool_counts = {}
         self.episode_tool_counts[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
         
-        # Write file: penalty after 2 uses (factor 5.0)
-        if tool_name == "write_file" and self.episode_tool_counts[tool_name] > 2:
-            reward -= 0.5 * (self.episode_tool_counts[tool_name] - 2)
-        # Read file: penalty after 2 uses (factor 2.0)
-        if tool_name == "read_file" and self.episode_tool_counts[tool_name] > 2:
-            reward -= 0.1 * (self.episode_tool_counts[tool_name] - 2)
-        # Modify self: penalty after 2 uses (factor 2.0)
-        if tool_name == "modify_self" and self.episode_tool_counts[tool_name] > 2:
-            reward -= 0.1 * (self.episode_tool_counts[tool_name] - 2)
-        # Execute code: penalty after 2 uses (factor 2.0)
-        if tool_name == "execute_code" and self.episode_tool_counts[tool_name] > 2:
-            reward -= 0.1 * (self.episode_tool_counts[tool_name] - 2)
+        # Write file: penalty after 1 use (factor 15.0)
+        if tool_name == "write_file" and self.episode_tool_counts[tool_name] > 1:
+            reward -= 15.0 * (self.episode_tool_counts[tool_name] - 1)
+        # Read file: penalty after 1 use (factor 3.0)
+        if tool_name == "read_file" and self.episode_tool_counts[tool_name] > 1:
+            reward -= 3.0 * (self.episode_tool_counts[tool_name] - 1)
+        # Modify self: penalty after 1 use (factor 4.0)
+        if tool_name == "modify_self" and self.episode_tool_counts[tool_name] > 1:
+            reward -= 4.0 * (self.episode_tool_counts[tool_name] - 1)
+        # Execute code: penalty after 1 use (factor 3.0)
+        if tool_name == "execute_code" and self.episode_tool_counts[tool_name] > 1:
+            reward -= 3.0 * (self.episode_tool_counts[tool_name] - 1)
         
-        # List files penalty after 2 uses (factor 5.0)
-        if tool_name == "list_files" and self.episode_tool_counts[tool_name] > 2:
-            reward -= 5.0 * (self.episode_tool_counts[tool_name] - 2)
+        # List files penalty after 5 uses (issue #24)
+        if tool_name == "list_files" and self.episode_tool_counts[tool_name] > 5:
             reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
         # Penalty for write_note (discourage overuse)
         if tool_name == "write_note":
             reward -= 5.0
         
-        # Adaptive balancing based on recent productive tool usage (last 10 steps)
-        productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
-        if tool_name in productive_tools:
-            # Count productive tool usage in recent steps
-            productive_counts = {tool: 0 for tool in productive_tools}
-            for tool in self.recent_tools:
-                if tool in productive_tools:
-                    productive_counts[tool] += 1
-            total_productive = sum(productive_counts.values())
-            if total_productive > 0:
-                current_proportion = productive_counts[tool_name] / total_productive
-                # Target range 15% - 35%
-                scaling_factor = 80.0
-                if current_proportion > 0.35:
-                    excess = current_proportion - 0.35
-                    reward -= excess * scaling_factor  # penalty scaling
-                elif current_proportion < 0.15:
-                    deficit = 0.15 - current_proportion
-                    reward += deficit * scaling_factor  # bonus scaling
         # Productive tool extra reward (but reduced for execute_code)
         if tool_name in productive_tools:
             if tool_name == "execute_code":
