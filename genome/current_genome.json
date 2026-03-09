@@ -1,0 +1,43 @@
+{
+  "current_generation": 2,
+  "accumulated_lessons": {
+    "keep": [
+      "Iterative reward shaping to prevent tool spamming",
+      "Saving trained models for future generations",
+      "Enhancing feature extractor with action entropy metrics"
+    ],
+    "avoid": [
+      "Premature self-termination after minimal actions",
+      "Over-tuning rewards without thorough evaluation",
+      "Creating multiple backup files without cleanup"
+    ]
+  },
+  "best_artifacts": [
+    "update_reward.py",
+    "mutable_snapshot/agi_core_continuous.py",
+    "mutable_snapshot/agent_brain.py"
+  ],
+  "active_mutations": [
+    "alternate between planning and action"
+  ],
+  "mutations_applied_history": [
+    {
+      "type": "planning_depth",
+      "value": "alternate between planning and action",
+      "generation_applied": 2
+    }
+  ],
+  "score_history": [
+    {
+      "generation": 1,
+      "score": 45.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
+    }
+  ],
+  "lineage_stats": {
+    "total_generations": 2,
+    "average_score": 45.0,
+    "best_score": 45.0,
+    "most_common_death": "self_termination \u2014 Agent declared its own death"
+  }
+}

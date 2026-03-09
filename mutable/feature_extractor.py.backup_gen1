@@ -4,7 +4,6 @@ Feature extractor for AGI Core state representation.
 """
 import re
 from collections import Counter
-import math
 
 class FeatureExtractor:
     def __init__(self):
@@ -30,9 +29,9 @@ class FeatureExtractor:
         features = []
         
         # 1. File type counts from workspace summary
-        py_count = len(re.findall(r'\.py\b', workspace_summary))
-        md_count = len(re.findall(r'\.md\b', workspace_summary))
-        json_count = len(re.findall(r'\.json\b', workspace_summary))
+        py_count = len(re.findall(r'\\.py\\b', workspace_summary))
+        md_count = len(re.findall(r'\\.md\\b', workspace_summary))
+        json_count = len(re.findall(r'\\.json\\b', workspace_summary))
         total_files = py_count + md_count + json_count + 0.001  # avoid div by zero
         features.append(py_count / 10.0)          # scale
         features.append(md_count / 10.0)
@@ -53,40 +52,21 @@ class FeatureExtractor:
         for tool in ['write_file', 'execute_code', 'read_file', 'list_files', 'write_note']:
             features.append(tool_counts.get(tool, 0) / total_recent)
         
-        # 4. Additional tool frequencies (modify_self, create_issue)
-        modify_self_freq = tool_counts.get('modify_self', 0) / total_recent
-        create_issue_freq = tool_counts.get('create_issue', 0) / total_recent
-        features.append(modify_self_freq)
-        features.append(create_issue_freq)
-        
-        # 5. Recent action entropy (diversity)
-        entropy = 0.0
-        for count in tool_counts.values():
-            p = count / total_recent
-            if p > 0:
-                entropy -= p * math.log(p)
-        max_entropy = math.log(len(tool_counts)) if len(tool_counts) > 1 else 1.0
-        normalized_entropy = entropy / max_entropy if max_entropy > 0 else 0.0
-        features.append(normalized_entropy)
-        
-        # 6. Journal features
+        # 4. Journal features
         journal_len = len(journal)
         features.append(min(journal_len, 1000) / 1000.0)  # normalized length
         # Progress keyword frequency
         kw_count = sum(1 for kw in self.progress_keywords if kw in journal.lower())
         features.append(kw_count / 10.0)
         
-        # 7. Step count (from actions length)
+        # 5. Step count (from actions length)
         features.append(min(len(actions), 100) / 100.0)
         
-        # Ensure fixed length (currently 5 + 5 + 2 + 2 + 1 = 15)
-        # We have exactly 15 features now.
-        # Verify length
-        if len(features) != 15:
-            # Pad or truncate
-            while len(features) < 15:
-                features.append(0.0)
-            features = features[:15]
+        # Ensure fixed length (currently 5 + 5 + 2 + 1 = 13)
+        # Pad or truncate to 15 for consistency
+        while len(features) < 15:
+            features.append(0.0)
+        features = features[:15]
         return features
     
     def feature_names(self):
@@ -95,12 +75,12 @@ class FeatureExtractor:
             'py_files', 'md_files', 'json_files',
             'important_files_ratio',
             'write_file_freq', 'execute_code_freq', 'read_file_freq', 'list_files_freq', 'write_note_freq',
-            'modify_self_freq', 'create_issue_freq',
-            'action_entropy',
             'journal_length', 'progress_keywords',
             'step_count'
         ]
-        # should be 15
+        # pad
+        while len(names) < 15:
+            names.append(f'pad_{len(names)}')
         return names[:15]
 
 

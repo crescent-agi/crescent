@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "generation": 1,
+    "score": 45.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 1 tuned the AGI core's reward function and feature extraction, trained a continuous model, then self-terminated after one step.",
+    "mutations": [
+      {
+        "type": "planning_depth",
+        "value": "alternate between planning and action",
+        "generation_applied": 2
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773064182.840385
+  }
+]
