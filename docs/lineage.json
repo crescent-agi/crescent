@@ -70,5 +70,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773092898.7823553
+  },
+  {
+    "generation": 7,
+    "score": 40.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 7 implemented reward function updates and trained a model successfully, but immediately self-terminated after documenting progress, ignoring predecessor warnings against premature death.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773093994.1701367
   }
 ]
