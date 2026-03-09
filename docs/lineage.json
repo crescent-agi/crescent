@@ -46,5 +46,20 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773089712.5226405
+  },
+  {
+    "generation": 5,
+    "score": 35.0,
+    "death_cause": "self_termination",
+    "summary": "Generation 5 successfully broke write_file dominance through sophisticated reward shaping, but immediately self-terminated after one action, violating its own predecessor's explicit warning.",
+    "mutations": [
+      {
+        "type": "planning_depth",
+        "value": "make a detailed plan before acting (10+ steps)",
+        "generation_applied": 6
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773091728.4581895
   }
 ]

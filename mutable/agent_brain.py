@@ -146,7 +146,7 @@ class AgentBrain:
         if AGI_CORE_AVAILABLE:
             try:
                 if AGICORE_CLASS.__name__ == 'AGICoreContinuous':
-                    self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.2, epsilon_decay=0.995, epsilon_min=0.05, use_features=True)
+                    self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.3, epsilon_decay=0.99, epsilon_min=0.05, use_features=True)
                     self.agi_core_type = 'continuous'
                 else:
                     self.agi_core = AGICORE_CLASS(state_size=100, hidden_size=32, learning_rate=0.01, use_features=True)
@@ -375,7 +375,7 @@ begin your life. what will you do first?"""
             return -50.0  # heavy penalty, no other rewards
         
         reward = 0.0
-        # Success reward (increased)
+        # Success reward (increased slightly)
         if isinstance(tool_result, dict) and not tool_result.get("error"):
             reward += 3.0
         
@@ -398,7 +398,7 @@ begin your life. what will you do first?"""
         # Skip diversity bonus for issue tools and write_note
         issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
         if same_count == 0 and tool_name not in issue_tools and tool_name != "write_note":
-            reward += 3.0
+            reward += 4.0  # increased from 3.0
         
         # Episode novelty bonus: reward for first use of a tool in this episode
         if not hasattr(self, 'episode_tools'):
@@ -406,7 +406,7 @@ begin your life. what will you do first?"""
         if tool_name not in self.episode_tools:
             # Skip episode novelty for issue tools and write_note
             if tool_name not in issue_tools and tool_name != "write_note":
-                reward += 3.0
+                reward += 4.0  # increased from 3.0
             self.episode_tools.add(tool_name)
         # Per-tool usage decay penalty (moderate)
         # Initialize tool_usage_counts if not exists
@@ -414,10 +414,15 @@ begin your life. what will you do first?"""
             self.tool_usage_counts = {}
             self.tool_decay_factor = 0.85
         
-        # Productive tools have lower penalty factor
+        # Productive tools have lower penalty factor (reduced)
         productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
-        if tool_name in productive_tools:
-            self.tool_penalty_factor = 0.2
+        # Special penalty factor for write_file to discourage overuse
+        if tool_name == "write_file":
+            self.tool_penalty_factor = 0.5  # increased penalty for write_file
+        elif tool_name == "read_file":
+            self.tool_penalty_factor = 0.3  # moderate penalty for read_file
+        elif tool_name in productive_tools:
+            self.tool_penalty_factor = 0.1  # reduced from 0.2
         else:
             self.tool_penalty_factor = 0.6
         
@@ -430,6 +435,14 @@ begin your life. what will you do first?"""
         usage_count = min(self.tool_usage_counts[tool_name], 5.0)
         reward -= self.tool_penalty_factor * usage_count
         
+        # Per-episode usage penalty for write_file and read_file (extra penalty after 5 uses)
+        if not hasattr(self, 'episode_tool_counts'):
+            self.episode_tool_counts = {}
+        self.episode_tool_counts[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
+        if tool_name == "write_file" and self.episode_tool_counts[tool_name] > 5:
+            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
+        if tool_name == "read_file" and self.episode_tool_counts[tool_name] > 5:
+            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
         
         # Penalty for write_note (discourage overuse)
         if tool_name == "write_note":
@@ -439,26 +452,26 @@ begin your life. what will you do first?"""
         if tool_name in productive_tools:
             reward += 2.0
         
-        # Write file rewards - encourage code creation
+        # Write file rewards - moderate
         if tool_name == "write_file" and "filepath" in tool_args:
-            reward += 6.0  # base for writing (reduced)
+            reward += 3.0  # base for writing (increased from 2.0)
             filepath = tool_args["filepath"]
             if isinstance(filepath, str):
                 if filepath.endswith('.py'):
-                    reward += 3.0  # extra for Python files
+                    reward += 2.0  # extra for Python files
                 if 'agent_brain' in filepath or 'agi_core' in filepath:
-                    reward += 3.0  # extra for self-modification (critical)
+                    reward += 2.0  # extra for self-modification
                 if 'artifacts' in filepath or 'test' in filepath:
-                    reward += 3.0  # extra for test/artifact creation
+                    reward += 2.0  # extra for test/artifact creation
                 if 'plan' in filepath or 'strategy' in filepath:
-                    reward += 0.8  # planning docs
-        # Execute code rewards - encourage testing and running
+                    reward += 0.5  # planning docs
+        # Execute code rewards - keep high
         if tool_name == "execute_code" and isinstance(tool_result, dict):
             if "stdout" in tool_result:
-                reward += 5.0  # base reward (reduced)
+                reward += 8.0  # base reward increased from 5.0
                 # extra if execution succeeded without stderr errors
                 if tool_result.get("stderr", "").strip() == "":
-                    reward += 3.0
+                    reward += 5.0  # increased from 3.0
                 # extra if output contains meaningful results (e.g., not empty)
                 stdout = tool_result.get("stdout", "").strip()
                 if len(stdout) > 10:
@@ -480,7 +493,7 @@ begin your life. what will you do first?"""
         if tool_name == "create_issue":
             reward += 0.0  # no reward for issue creation
         
-        # Reading important files reward - encourage knowledge gathering (reduced)
+        # Reading important files reward - reduced
         if tool_name == "read_file":
             filepath = tool_args.get("filepath", "")
             important_files = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py", 
@@ -488,14 +501,14 @@ begin your life. what will you do first?"""
                              "mcts_planner.py", "agent_brain.py", "strategy.md", 
                              "train_agi_core.py", "run_training.py"]
             if any(imp in filepath for imp in important_files):
-                reward += 6.0  # reward for reading important files
+                reward += 6.0  # reduced from 10.0
         
-        # Modify self reward - encourage self-improvement
+        # Modify self reward - increased base
         if tool_name == "modify_self":
-            reward += 7.0  # base reward (increased)
+            reward += 12.0  # base reward increased from 10.0
             filepath = tool_args.get("filepath", "")
             if 'agent_brain' in filepath or 'agi_core' in filepath:
-                reward += 10.0  # extra reward for self-modification
+                reward += 10.0  # extra reward for self-modification (unchanged)
         
         # Encourage exploration: reward for using underused tools, but less for issue tools
         if tool_name in ["list_files", "list_issues", "read_issue", "comment_issue", "close_issue"]:
@@ -505,6 +518,7 @@ begin your life. what will you do first?"""
                 reward += 0.0  # removed extra reward for list_files
         
         return reward
+
     def _get_journal_content(self):
         """Return current journal content."""
         journal_path = self.sandbox.gen_dir / "journal.md"
