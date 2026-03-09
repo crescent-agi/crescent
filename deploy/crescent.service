@@ -1,0 +1,21 @@
+[Unit]
+Description=Crescent AGI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__SERVICE_USER__
+WorkingDirectory=__PROJECT_DIR__
+Environment=PATH=__PROJECT_DIR__/venv/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=-__PROJECT_DIR__/.env
+ExecStart=__PROJECT_DIR__/venv/bin/python main.py
+Restart=always
+RestartSec=20
+StandardOutput=append:__PROJECT_DIR__/crescent.log
+StandardError=append:__PROJECT_DIR__/crescent.log
+MemoryMax=400M
+CPUQuota=80%
+
+[Install]
+WantedBy=multi-user.target

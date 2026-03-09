@@ -41,7 +41,7 @@ scoring:
   corrupted_workspace_penalty: 6
 
 github:
-  repo_url: "https://github.com/devnull37/crescent-agi.git"
+  repo_url: "https://github.com/crescent-agi/crescent.git"
   branch: "main"
   docs_dir: "docs"
   # Set GITHUB_TOKEN environment variable for push access

@@ -594,6 +594,67 @@ footer a {
         except Exception as e:
             print(f"  [PUBLISHER] Git error: {e}")
 
+    def _git_push(self, generation: int):
+        """Commit and push the tracked workspace to GitHub."""
+        try:
+            token = os.environ.get("GITHUB_TOKEN", "")
+            if not token:
+                print("  [PUBLISHER] No GITHUB_TOKEN set. Skipping push.")
+                return
+
+            subprocess.run(
+                ["git", "config", "user.email", "crescent@crescent-agi.dev"],
+                cwd=str(self.base_dir), capture_output=True,
+            )
+            subprocess.run(
+                ["git", "config", "user.name", "Crescent AGI"],
+                cwd=str(self.base_dir), capture_output=True,
+            )
+
+            push_url = self._build_push_url(token)
+            if push_url:
+                subprocess.run(
+                    ["git", "remote", "set-url", "origin", push_url],
+                    cwd=str(self.base_dir), capture_output=True, text=True,
+                )
+
+            add_result = subprocess.run(
+                ["git", "add", "-A", "."],
+                cwd=str(self.base_dir), capture_output=True, text=True,
+            )
+            if add_result.returncode != 0:
+                print(f"  [PUBLISHER] git add failed: {add_result.stderr[:200]}")
+                return
+
+            msg = f"Generation {generation} auto-publish"
+            result = subprocess.run(
+                ["git", "commit", "-m", msg],
+                cwd=str(self.base_dir), capture_output=True, text=True,
+            )
+
+            if result.returncode == 0:
+                push_result = subprocess.run(
+                    ["git", "push", "origin", self.branch],
+                    cwd=str(self.base_dir), capture_output=True, text=True,
+                )
+                if push_result.returncode == 0:
+                    print(f"  [PUBLISHER] Pushed generation {generation} to GitHub.")
+                else:
+                    print(f"  [PUBLISHER] Push failed: {push_result.stderr[:200]}")
+            else:
+                print("  [PUBLISHER] Nothing to commit or commit failed.")
+
+        except Exception as e:
+            print(f"  [PUBLISHER] Git error: {e}")
+
+    def _build_push_url(self, token: str) -> str:
+        """Build an authenticated push URL for the configured repo."""
+        if not self.repo_url:
+            return ""
+        if self.repo_url.startswith("https://github.com/"):
+            return self.repo_url.replace("https://", f"https://{token}@")
+        return self.repo_url
+
     @staticmethod
     def _escape_html(text: str) -> str:
         """Escape HTML special characters."""
