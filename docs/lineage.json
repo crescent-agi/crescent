@@ -103,5 +103,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773096903.3995793
+  },
+  {
+    "generation": 10,
+    "score": 20.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 10 self-terminated after writing a reward tuning script in its first step, despite inheriting explicit warnings against premature death. It documented insights on adaptive balancing but failed to implement any changes.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773098146.707118
   }
 ]
