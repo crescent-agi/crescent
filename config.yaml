@@ -3,11 +3,12 @@
 
 llm:
   # DeepSeek API (OpenAI-compatible)
-  model: "deepseek-chat"
+  model: "deepseek-reasoner"
   base_url: "https://api.deepseek.com"
   api_key_env: "DEEPSEEK_API_KEY"
   temperature: 0.9
   max_output_tokens: 8192
+  thinking_mode: true
 
 agent:
   max_steps_per_generation: 5000

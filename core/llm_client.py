@@ -8,7 +8,7 @@ Used by the Runtime Agent, Evaluator, and Day Manager.
 import os
 import json
 import time
-from typing import Optional
+from typing import Optional, Callable
 
 
 class LLMAuthenticationError(RuntimeError):
@@ -24,6 +24,7 @@ class LLMClient:
         self.model_name = config.get("llm", {}).get("model", "deepseek-chat")
         self.temperature = config.get("llm", {}).get("temperature", 0.9)
         self.max_output_tokens = config.get("llm", {}).get("max_output_tokens", 8192)
+        self.thinking_mode = config.get("llm", {}).get("thinking_mode", False)
 
         api_key_env = config.get("llm", {}).get("api_key_env", "DEEPSEEK_API_KEY")
         api_key = os.environ.get(api_key_env)
@@ -53,12 +54,7 @@ class LLMClient:
         messages.append({"role": "user", "content": prompt})
 
         try:
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=messages,
-                temperature=temp,
-                max_tokens=self.max_output_tokens,
-            )
+            response = self.client.chat.completions.create(**self._build_request_kwargs(messages, temp))
             return response.choices[0].message.content or "(empty response)"
 
         except Exception as e:
@@ -68,18 +64,19 @@ class LLMClient:
             # Wait and retry once
             time.sleep(2)
             try:
-                response = self.client.chat.completions.create(
-                    model=self.model_name,
-                    messages=messages,
-                    temperature=temp,
-                    max_tokens=self.max_output_tokens,
-                )
+                response = self.client.chat.completions.create(**self._build_request_kwargs(messages, temp))
                 return response.choices[0].message.content or "(empty after retry)"
             except Exception as e2:
                 self._raise_if_auth_error(e2)
                 return f"(LLM error: {str(e2)})"
 
-    def generate_with_tools(self, prompt: str, tools_schema: list, system_instruction: str = None) -> dict:
+    def generate_with_tools(
+        self,
+        prompt: str,
+        tools_schema: list,
+        system_instruction: str = None,
+        tool_executor: Optional[Callable[[str, dict], dict]] = None,
+    ) -> dict:
         """
         Generate a response that may include tool calls.
         Uses OpenAI-compatible function calling.
@@ -114,38 +111,73 @@ class LLMClient:
             })
 
         try:
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=messages,
-                temperature=self.temperature,
-                max_tokens=self.max_output_tokens,
-                tools=functions if functions else None,
-            )
+            executed_tool_calls = []
 
-            result = {"text": "", "tool_calls": []}
-            choice = response.choices[0]
+            while True:
+                response = self.client.chat.completions.create(
+                    **self._build_request_kwargs(messages, self.temperature, tools=functions if functions else None)
+                )
 
-            if choice.message.content:
-                result["text"] = choice.message.content
+                choice = response.choices[0]
+                message = choice.message
+                text = message.content or ""
+                reasoning_content = getattr(message, "reasoning_content", None)
+                tool_calls = getattr(message, "tool_calls", None) or []
 
-            if choice.message.tool_calls:
-                for tc in choice.message.tool_calls:
+                if tool_executor and self.thinking_mode:
+                    messages.append(message)
+                elif tool_calls:
+                    for tc in tool_calls:
+                        try:
+                            args = json.loads(tc.function.arguments) if tc.function.arguments else {}
+                        except json.JSONDecodeError:
+                            args = {"raw": tc.function.arguments}
+                        executed_tool_calls.append({
+                            "name": tc.function.name,
+                            "args": args,
+                        })
+                    return {"text": text, "tool_calls": executed_tool_calls, "reasoning_content": reasoning_content}
+
+                if not tool_calls:
+                    parsed_calls = []
+                    if not executed_tool_calls and text:
+                        parsed_calls = self._try_parse_tool_from_text(text, tools_schema)
+                    return {
+                        "text": text,
+                        "tool_calls": executed_tool_calls or parsed_calls,
+                        "reasoning_content": reasoning_content,
+                    }
+
+                if not tool_executor:
+                    parsed_calls = []
+                    for tc in tool_calls:
+                        try:
+                            args = json.loads(tc.function.arguments) if tc.function.arguments else {}
+                        except json.JSONDecodeError:
+                            args = {"raw": tc.function.arguments}
+                        parsed_calls.append({
+                            "name": tc.function.name,
+                            "args": args,
+                        })
+                    return {"text": text, "tool_calls": parsed_calls, "reasoning_content": reasoning_content}
+
+                for tc in tool_calls:
                     try:
                         args = json.loads(tc.function.arguments) if tc.function.arguments else {}
                     except json.JSONDecodeError:
                         args = {"raw": tc.function.arguments}
-                    result["tool_calls"].append({
+
+                    tool_result = tool_executor(tc.function.name, args)
+                    executed_tool_calls.append({
                         "name": tc.function.name,
                         "args": args,
+                        "result": tool_result,
                     })
-
-            # If no tool calls were returned, try parsing the text for tool usage
-            if not result["tool_calls"] and result["text"]:
-                parsed = self._try_parse_tool_from_text(result["text"], tools_schema)
-                if parsed:
-                    result["tool_calls"] = parsed
-
-            return result
+                    messages.append({
+                        "role": "tool",
+                        "tool_call_id": tc.id,
+                        "content": json.dumps(tool_result),
+                    })
 
         except Exception as e:
             self._raise_if_auth_error(e)
@@ -153,6 +185,20 @@ class LLMClient:
                 "text": f"(Tool call failed: {str(e)})",
                 "tool_calls": [],
             }
+
+    def _build_request_kwargs(self, messages: list, temperature: float, tools: list = None) -> dict:
+        kwargs = {
+            "model": self.model_name,
+            "messages": messages,
+            "max_tokens": self.max_output_tokens,
+        }
+        if tools:
+            kwargs["tools"] = tools
+        if self.thinking_mode:
+            kwargs["extra_body"] = {"thinking": {"type": "enabled"}}
+        else:
+            kwargs["temperature"] = temperature
+        return kwargs
 
     def _validate_credentials(self):
         """Fail fast on invalid API credentials so the service doesn't loop uselessly."""

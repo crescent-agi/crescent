@@ -40,6 +40,7 @@ class Publisher:
         self._generate_generation_pages()
         self._generate_journal_page()
         self._generate_lineage_json()
+        self._generate_status_json(current_generation)
         self._copy_css()
         self._write_nojekyll()
 
@@ -151,18 +152,36 @@ class Publisher:
     def _load_latest_journal(self) -> str:
         """Load the newest journal entry for the landing page."""
         if not self.journals_dir.exists():
-            return "<p>No daily journal entry yet.</p>"
+            return self._load_latest_generation_journal()
 
         journal_files = sorted(
             [path for path in self.journals_dir.iterdir() if path.name.startswith("day-") and path.suffix == ".md"],
             reverse=True,
         )
         if not journal_files:
-            return "<p>No daily journal entry yet.</p>"
+            return self._load_latest_generation_journal()
 
         content = journal_files[0].read_text(encoding="utf-8")
         title = journal_files[0].stem.replace("day-", "")
         return f"<article class=\"journal-entry\"><h3>{title}</h3><pre>{self._escape_html(content[:12000])}</pre></article>"
+
+    def _load_latest_generation_journal(self) -> str:
+        """Fallback to the newest live generation journal before the first daily entry exists."""
+        if not self.runs_dir.exists():
+            return "<p>No daily journal entry yet.</p>"
+
+        run_dirs = sorted(
+            [path for path in self.runs_dir.iterdir() if path.is_dir() and path.name.startswith("gen-")],
+            reverse=True,
+        )
+        for run_dir in run_dirs:
+            journal_path = run_dir / "journal.md"
+            if journal_path.exists():
+                content = journal_path.read_text(encoding="utf-8")
+                title = f"Live Generation {run_dir.name.replace('gen-', '')}"
+                return f"<article class=\"journal-entry\"><h3>{title}</h3><pre>{self._escape_html(content[:12000])}</pre></article>"
+
+        return "<p>No daily journal entry yet.</p>"
 
     def _generate_generation_pages(self):
         """Generate individual pages for each generation."""
@@ -335,6 +354,20 @@ class Publisher:
         (self.docs_dir / "lineage.json").write_text(
             json.dumps(lineage_data, indent=2), encoding="utf-8"
         )
+
+    def _generate_status_json(self, current_generation: int):
+        """Emit a small live status file so Pages always has a fresh, visible heartbeat."""
+        lineage_data = self._load_lineage()
+        status = {
+            "current_generation": current_generation,
+            "published_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "lineage_entries": len(lineage_data),
+            "has_daily_journal": any(
+                path.name.startswith("day-") and path.suffix == ".md"
+                for path in self.journals_dir.iterdir()
+            ) if self.journals_dir.exists() else False,
+        }
+        (self.docs_dir / "status.json").write_text(json.dumps(status, indent=2), encoding="utf-8")
 
     def _copy_css(self):
         """Copy or generate the CSS file."""

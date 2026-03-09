@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Crescent AGI - Runtime Agent Brain (MUTABLE)
 ============================================
@@ -9,6 +10,26 @@ import json
 import time
 
 from core.llm_client import LLMAuthenticationError
+import hashlib
+from collections import deque
+from pathlib import Path
+
+# Try to import AGI Core Continuous
+try:
+    from agi_core_continuous import AGICoreContinuous
+    AGICORE_CLASS = AGICoreContinuous
+    AGI_CORE_AVAILABLE = True
+except ImportError as e1:
+    # Fallback to original AGI Core
+    try:
+        from agi_core import AGICore
+        AGICORE_CLASS = AGICore
+        AGI_CORE_AVAILABLE = True
+    except ImportError as e2:
+        print(f"  [AGI Core] Failed to import both continuous and discrete: {e1}, {e2}")
+        AGICORE_CLASS = None
+        AGI_CORE_AVAILABLE = False
+
 
 
 class AgentBrain:
@@ -119,6 +140,35 @@ class AgentBrain:
         self.day_manager = day_manager
         self.step = 0
         self.state_path = self.sandbox.gen_dir / "life_state.json"
+        # AGI Core integration
+        self.agi_core = None
+        self.agi_core_type = None
+        if AGI_CORE_AVAILABLE:
+            try:
+                if AGICORE_CLASS.__name__ == 'AGICoreContinuous':
+                    self.agi_core = AGICORE_CLASS(feature_dim=15, hidden_size=32, learning_rate=0.01, use_features=True)
+                    self.agi_core_type = 'continuous'
+                else:
+                    self.agi_core = AGICORE_CLASS(state_size=100, hidden_size=32, learning_rate=0.01, use_features=True)
+                    self.agi_core_type = 'discrete'
+                # Try to load previously saved model
+                core_dir_name = "agi_core_continuous" if self.agi_core_type == 'continuous' else "agi_core"
+                core_dir = self.sandbox.gen_dir / "artifacts" / core_dir_name
+                if core_dir.exists():
+                    self.agi_core.load(str(core_dir))
+                print(f"  [GEN-{self.generation:04d}] AGI Core ({self.agi_core_type}) initialized.")
+            except Exception as e:
+                print(f"  [GEN-{self.generation:04d}] Failed to initialize AGI Core: {e}")
+                self.agi_core = None
+        else:
+            print(f"  [GEN-{self.generation:04d}] AGI Core not available.")
+        
+        # State tracking for AGI Core
+        self.previous_workspace_summary = None
+        self.previous_journal = ""
+        self.previous_actions = []
+        self.last_tool = None
+        self.recent_tools = deque(maxlen=5)
 
     def run(self, goal: str, inherited_notes: str, genome: dict, prompt_text: str) -> dict:
         """Run the agent's life loop."""
@@ -176,12 +226,30 @@ begin your life. what will you do first?"""
                 print(f"  [GEN-{self.generation:04d}] {death}")
                 break
 
+            # Capture state before action for AGI Core learning
+            self._capture_pre_action_state()
+            
+            # Decide action: AGI Core suggestion or LLM
+            tool_suggestion = None
+            tool_args_suggestion = None
+            if self.agi_core:
+                workspace_summary = self.sandbox.get_workspace_summary()
+                journal = self._get_journal_content()
+                actions = self._get_recent_actions(20)
+                tool_name, tool_args, confidence = self.agi_core.decide_action(
+                    workspace_summary, journal, actions
+                )
+                if confidence > 0.7:  # Use AGI Core suggestion
+                    tool_suggestion = tool_name
+                    tool_args_suggestion = tool_args
+                    print(f"  [GEN-{self.generation:04d}] AGI Core suggests: {tool_name} with args {tool_args}")
             try:
-                full_prompt = self._build_step_prompt(conversation_history)
+                full_prompt = self._build_step_prompt(conversation_history, tool_suggestion, tool_args_suggestion)
                 response = self.llm.generate_with_tools(
                     full_prompt,
                     self.TOOLS_SCHEMA,
                     system_instruction=system_prompt,
+                    tool_executor=self._execute_tool,
                 )
             except LLMAuthenticationError:
                 raise
@@ -198,13 +266,12 @@ begin your life. what will you do first?"""
 
             tool_results = []
             for tool_call in tool_calls:
-                tool_result = self._execute_tool(tool_call["name"], tool_call.get("args", {}))
+                tool_result = tool_call.get("result", {})
                 tool_results.append({
                     "tool": tool_call["name"],
                     "args": tool_call.get("args", {}),
                     "result": tool_result,
                 })
-
                 action = {
                     "step": self.step,
                     "tool": tool_call["name"],
@@ -214,6 +281,9 @@ begin your life. what will you do first?"""
                 self.death_monitor.record_step(action)
                 self.sandbox.log_action(action)
 
+                # Learn from outcome (if AGI Core is active)
+                if self.agi_core:
+                    self._learn_from_tool_result(tool_call["name"], tool_call.get("args"), tool_result)
                 if tool_call["name"] == "declare_death":
                     self.death_monitor.record_self_termination()
                     break
@@ -254,6 +324,11 @@ begin your life. what will you do first?"""
         result["stats"] = self.death_monitor.get_stats()
         result["llm_stats"] = self.llm.get_stats()
 
+        # Save AGI Core models before dying
+        if self.agi_core:
+            core_dir_name = "agi_core_continuous" if self.agi_core_type == 'continuous' else "agi_core"
+            core_dir = self.sandbox.gen_dir / "artifacts" / core_dir_name
+            self.agi_core.save(str(core_dir))
         if self.state_path.exists():
             self.state_path.unlink()
 
@@ -263,6 +338,144 @@ begin your life. what will you do first?"""
 
         print(f"  [GEN-{self.generation:04d}] Died after {self.step} steps. Cause: {result['death_cause']}")
         return result
+
+
+    def _capture_pre_action_state(self):
+        """Store current workspace state for later learning."""
+        self.previous_workspace_summary = self.sandbox.get_workspace_summary()
+        self.previous_journal = self._get_journal_content()
+        self.previous_actions = self._get_recent_actions(20)
+    
+    def _learn_from_tool_result(self, tool_name, tool_args, tool_result):
+        """Compute reward and update AGI Core."""
+        if not self.agi_core:
+            return
+        # Compute reward based on tool result
+        reward = self._compute_reward(tool_name, tool_args, tool_result)
+        # Get new state
+        workspace_summary = self.sandbox.get_workspace_summary()
+        journal = self._get_journal_content()
+        actions = self._get_recent_actions(20)
+        # Update AGI Core
+        self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)
+    
+    def _compute_reward(self, tool_name, tool_args, tool_result):
+        """Improved reward shaping for AGI progress with recency penalty."""
+        # If error, penalize and skip positive rewards
+        if isinstance(tool_result, dict) and "error" in tool_result:
+            return -0.5
+        
+        # Declare death penalty (strongly discourage unless after many steps)
+        if tool_name == "declare_death":
+            return -2.0
+        
+        reward = 0.0
+        # Success reward
+        if isinstance(tool_result, dict) and not tool_result.get("error"):
+            reward += 0.1
+        
+        # Recency penalty: discourage using same tool consecutively
+        if hasattr(self, 'last_tool') and tool_name == self.last_tool:
+            reward -= 0.1
+        self.last_tool = tool_name
+        
+        # Diversity penalty: penalize if tool already used recently (last 5 actions)
+        if not hasattr(self, 'recent_tools'):
+            self.recent_tools = deque(maxlen=5)
+        # Count occurrences of same tool in recent history
+        same_count = list(self.recent_tools).count(tool_name)
+        if same_count > 0:
+            reward -= 0.05 * same_count  # penalty proportional to frequency
+        # Update recent tools (deque automatically maintains maxlen)
+        self.recent_tools.append(tool_name)
+        
+        # Write file rewards - encourage code creation but reduce spamming
+        if tool_name == "write_file" and "filepath" in tool_args:
+            reward += 0.1  # base for writing (reduced)
+            filepath = tool_args["filepath"]
+            if isinstance(filepath, str):
+                if filepath.endswith('.py'):
+                    reward += 0.5  # extra for Python files (more valuable)
+                if 'agent_brain' in filepath or 'agi_core' in filepath:
+                    reward += 0.8  # extra for self-modification (critical)
+                if 'artifacts' in filepath or 'test' in filepath:
+                    reward += 0.3  # extra for test/artifact creation
+                if 'plan' in filepath or 'strategy' in filepath:
+                    reward += 0.2  # planning docs
+        
+        # Execute code rewards - encourage testing and running, bonus for success indicators
+        if tool_name == "execute_code" and isinstance(tool_result, dict):
+            if "stdout" in tool_result:
+                reward += 0.4
+                # extra if execution succeeded without stderr errors
+                if tool_result.get("stderr", "").strip() == "":
+                    reward += 0.3
+                # extra if output contains meaningful results (e.g., not empty)
+                stdout = tool_result.get("stdout", "").strip()
+                if len(stdout) > 10:
+                    reward += 0.2
+                # bonus if output indicates success
+                if any(indicator in stdout.lower() for indicator in ["test passed", "ok", "success", "completed"]):
+                    reward += 0.3
+        
+        # Note writing rewards (journal) - reduce spamming
+        if tool_name == "write_note":
+            note = tool_args.get("note", "")
+            # Base reward lower
+            reward += 0.1
+            if len(note) > 100:  # longer notes more valuable
+                reward += 0.2
+            if any(keyword in note.lower() for keyword in ["progress", "improve", "agi", "plan", "next", "insight", "discover"]):
+                reward += 0.4  # higher for relevant keywords
+        
+        # Issue creation rewards (planning)
+        if tool_name == "create_issue":
+            reward += 0.5  # slightly higher
+        
+        # Reading important files reward
+        if tool_name == "read_file":
+            filepath = tool_args.get("filepath", "")
+            important_files = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py", 
+                             "world_model.py", "neural_q.py", "self_reflection.py", 
+                             "mcts_planner.py", "agent_brain.py", "strategy.md", 
+                             "train_agi_core.py", "run_training.py"]
+            if any(imp in filepath for imp in important_files):
+                reward += 0.3
+        
+        # Modify self reward - encourage self-improvement
+        if tool_name == "modify_self":
+            reward += 0.6
+            filepath = tool_args.get("filepath", "")
+            if 'agent_brain' in filepath or 'agi_core' in filepath:
+                reward += 0.5
+        
+        # Encourage exploration: reward for using underused tools (list_files, list_issues, read_issue, comment_issue, close_issue)
+        exploration_tools = ["list_files", "list_issues", "read_issue", "comment_issue", "close_issue"]
+        if tool_name in exploration_tools:
+            reward += 0.2
+        
+        return reward
+
+    def _get_journal_content(self):
+        """Return current journal content."""
+        journal_path = self.sandbox.gen_dir / "journal.md"
+        if journal_path.exists():
+            return journal_path.read_text(encoding="utf-8")
+        return ""
+    
+    def _get_recent_actions(self, n):
+        """Return up to n recent actions from actions.jsonl."""
+        actions = []
+        actions_path = self.sandbox.gen_dir / "actions.jsonl"
+        if actions_path.exists():
+            lines = actions_path.read_text(encoding="utf-8").strip().split('\n')
+            for line in lines[-n:]:
+                if line:
+                    try:
+                        actions.append(json.loads(line))
+                    except json.JSONDecodeError:
+                        pass
+        return actions
 
     def _execute_tool(self, tool_name: str, args: dict) -> dict:
         """Execute a tool call from the agent."""
@@ -306,8 +519,8 @@ begin your life. what will you do first?"""
         except Exception as e:
             return {"error": f"Tool execution failed: {str(e)}"}
 
-    def _build_step_prompt(self, history: list) -> str:
-        """Build the full prompt from conversation history."""
+    def _build_step_prompt(self, history: list, tool_suggestion=None, tool_args_suggestion=None) -> str:
+        """Build the full prompt from conversation history, optionally including AGI Core suggestion."""
         parts = []
         for msg in history:
             role = msg["role"]
@@ -316,8 +529,13 @@ begin your life. what will you do first?"""
                 parts.append(f"[CONTEXT]\n{content}")
             else:
                 parts.append(f"[YOU]\n{content}")
+        
+        # Append AGI Core suggestion if available
+        if tool_suggestion:
+            suggestion = f"\n\n[AGI Core Suggestion]\nConsider taking action '{tool_suggestion}' with arguments {tool_args_suggestion}. You may follow this suggestion or ignore it."
+            parts.append(suggestion)
+        
         return "\n\n".join(parts)
-
     def _load_or_create_history(self, initial_prompt: str) -> list:
         """Resume a saved life when present."""
         if self.state_path.exists():

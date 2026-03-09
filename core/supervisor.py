@@ -172,6 +172,8 @@ class Supervisor:
         print(f"  [GEN-{gen:04d}] Score: {score:.1f} | Death: {death_cause[:50]} | Mutations: {mutations_str}")
 
         self.current_generation = gen + 1
+        print(f"  [GEN-{gen:04d}] Publishing latest state to GitHub...")
+        self.publisher.publish(self.current_generation)
         return "completed"
 
     def _end_of_day(self):
