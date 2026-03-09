@@ -50,8 +50,9 @@ class Publisher:
             print("  [PUBLISHER] No GitHub repo configured. Skipping push.")
 
     def _generate_index(self, current_generation: int):
-        """Generate the main lineage viewer page."""
+        """Generate the main page with the daily journal first and lineage second."""
         lineage_data = self._load_lineage()
+        latest_journal = self._load_latest_journal()
 
         rows = ""
         for entry in lineage_data:
@@ -106,28 +107,35 @@ class Publisher:
         </header>
 
         <nav>
-            <a href="index.html" class="active">Lineage</a>
-            <a href="journal.html">Daily Journal</a>
+            <a href="index.html" class="active">Daily Journal</a>
+            <a href="journal.html">Journal Archive</a>
             <a href="lineage.json">Raw Data</a>
         </nav>
 
         <main>
-            <h2>Generation Lineage</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Gen</th>
-                        <th>Score</th>
-                        <th>Death Cause</th>
-                        <th>Progress</th>
-                        <th>Summary</th>
-                        <th>Mutations</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
+            <section>
+                <h2>Latest Daily Journal</h2>
+                {latest_journal}
+            </section>
+
+            <section>
+                <h2>Generation Lineage</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Gen</th>
+                            <th>Score</th>
+                            <th>Death Cause</th>
+                            <th>Progress</th>
+                            <th>Summary</th>
+                            <th>Mutations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </table>
+            </section>
         </main>
 
         <footer>
@@ -139,6 +147,22 @@ class Publisher:
 </html>"""
 
         (self.docs_dir / "index.html").write_text(html, encoding="utf-8")
+
+    def _load_latest_journal(self) -> str:
+        """Load the newest journal entry for the landing page."""
+        if not self.journals_dir.exists():
+            return "<p>No daily journal entry yet.</p>"
+
+        journal_files = sorted(
+            [path for path in self.journals_dir.iterdir() if path.name.startswith("day-") and path.suffix == ".md"],
+            reverse=True,
+        )
+        if not journal_files:
+            return "<p>No daily journal entry yet.</p>"
+
+        content = journal_files[0].read_text(encoding="utf-8")
+        title = journal_files[0].stem.replace("day-", "")
+        return f"<article class=\"journal-entry\"><h3>{title}</h3><pre>{self._escape_html(content[:12000])}</pre></article>"
 
     def _generate_generation_pages(self):
         """Generate individual pages for each generation."""

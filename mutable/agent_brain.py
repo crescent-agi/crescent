@@ -1,25 +1,20 @@
 """
-Crescent AGI — Runtime Agent Brain (MUTABLE)
-===============================================
+Crescent AGI - Runtime Agent Brain (MUTABLE)
+============================================
 THIS FILE IS IN THE MUTABLE LAYER.
 The agent can modify this file during its lifetime.
-
-The mortal creature. Unstable by design. Allowed to fail badly.
 """
 
 import json
 import time
-from pathlib import Path
-from typing import Optional
 
 from core.llm_client import LLMAuthenticationError
 
 
 class AgentBrain:
     """
-    The Runtime Agent — an LLM-powered reasoning loop.
+    The Runtime Agent - an LLM-powered reasoning loop.
     Receives a goal, inherited wisdom, and workspace tools.
-    Lives for a limited time, then dies.
     """
 
     TOOLS_SCHEMA = [
@@ -61,7 +56,7 @@ class AgentBrain:
         },
         {
             "name": "modify_self",
-            "description": "Modify a file in your own mutable runtime layer. Use with caution — bad edits may kill you.",
+            "description": "Modify a file in your own mutable runtime layer. Use with caution - bad edits may kill you.",
             "parameters": {
                 "filepath": {"description": "File path relative to the mutable layer (e.g., 'strategy.md', 'planning.py')."},
                 "content": {"description": "The new content for the file."},
@@ -116,36 +111,25 @@ class AgentBrain:
         },
     ]
 
-    def __init__(self, llm_client, sandbox, death_monitor, generation: int):
+    def __init__(self, llm_client, sandbox, death_monitor, generation: int, day_manager=None):
         self.llm = llm_client
         self.sandbox = sandbox
         self.death_monitor = death_monitor
         self.generation = generation
+        self.day_manager = day_manager
         self.step = 0
+        self.state_path = self.sandbox.gen_dir / "life_state.json"
 
     def run(self, goal: str, inherited_notes: str, genome: dict, prompt_text: str) -> dict:
-        """
-        Run the agent's life loop.
-
-        Args:
-            goal: The vague goal ("build agi")
-            inherited_notes: Notes from previous generations
-            genome: Current genome state
-            prompt_text: The runtime prompt (from mutable/prompt.txt)
-
-        Returns:
-            dict with final stats and death info
-        """
-        # Build the system prompt
+        """Run the agent's life loop."""
         system_prompt = prompt_text
 
-        # Build the initial context
         workspace_summary = self.sandbox.get_workspace_summary()
         mutations_str = ""
         if genome.get("active_mutations"):
             mutations_str = "\n\nyour current behavioral mutations (follow these):\n"
-            for m in genome["active_mutations"]:
-                mutations_str += f"- {m}\n"
+            for mutation in genome["active_mutations"]:
+                mutations_str += f"- {mutation}\n"
 
         initial_prompt = f"""your goal is: {goal}
 
@@ -166,10 +150,7 @@ you may respond playfully, ignore bad ideas, or turn a conversation into your ow
 
 begin your life. what will you do first?"""
 
-        conversation_history = [
-            {"role": "user", "content": initial_prompt}
-        ]
-
+        conversation_history = self._load_or_create_history(initial_prompt)
         result = {
             "steps": 0,
             "death_cause": None,
@@ -179,16 +160,22 @@ begin your life. what will you do first?"""
         print(f"  [GEN-{self.generation:04d}] Agent awakens...")
 
         while True:
+            if self.day_manager and self.day_manager.is_day_over():
+                self._save_state(conversation_history)
+                result["status"] = "paused"
+                result["steps"] = self.step
+                result["stats"] = self.death_monitor.get_stats()
+                print(f"  [GEN-{self.generation:04d}] Day boundary reached. Sleeping until tomorrow.")
+                return result
+
             self.step += 1
 
-            # Check death conditions BEFORE acting
             death = self.death_monitor.check()
             if death:
                 result["death_cause"] = str(death)
                 print(f"  [GEN-{self.generation:04d}] {death}")
                 break
 
-            # Call LLM with tools
             try:
                 full_prompt = self._build_step_prompt(conversation_history)
                 response = self.llm.generate_with_tools(
@@ -203,40 +190,34 @@ begin your life. what will you do first?"""
                 result["death_cause"] = f"crash: LLM call failed: {str(e)}"
                 break
 
-            # Process the response
             agent_text = response.get("text", "")
             tool_calls = response.get("tool_calls", [])
 
-            # Log the agent's thinking
             if agent_text:
                 self.sandbox.append_journal(f"### Step {self.step}\n{agent_text}")
 
-            # Execute tool calls
             tool_results = []
-            for tc in tool_calls:
-                tool_result = self._execute_tool(tc["name"], tc.get("args", {}))
+            for tool_call in tool_calls:
+                tool_result = self._execute_tool(tool_call["name"], tool_call.get("args", {}))
                 tool_results.append({
-                    "tool": tc["name"],
-                    "args": tc.get("args", {}),
+                    "tool": tool_call["name"],
+                    "args": tool_call.get("args", {}),
                     "result": tool_result,
                 })
 
-                # Record action for death monitoring
                 action = {
                     "step": self.step,
-                    "tool": tc["name"],
-                    "args": tc.get("args", {}),
+                    "tool": tool_call["name"],
+                    "args": tool_call.get("args", {}),
                     "timestamp": time.time(),
                 }
                 self.death_monitor.record_step(action)
                 self.sandbox.log_action(action)
 
-                # Check if agent declared death
-                if tc["name"] == "declare_death":
+                if tool_call["name"] == "declare_death":
                     self.death_monitor.record_self_termination()
                     break
 
-            # If no tool calls, the agent is just thinking — still counts as a step
             if not tool_calls:
                 action = {
                     "step": self.step,
@@ -247,24 +228,20 @@ begin your life. what will you do first?"""
                 self.death_monitor.record_step(action)
                 self.sandbox.log_action(action)
 
-            # Build tool results feedback
             if tool_results:
-                results_str = "\n".join([
-                    f"[{tr['tool']}] → {json.dumps(tr['result'])[:500]}"
-                    for tr in tool_results
-                ])
+                results_str = "\n".join(
+                    f"[{item['tool']}] -> {json.dumps(item['result'])[:500]}"
+                    for item in tool_results
+                )
                 conversation_history.append({"role": "assistant", "content": agent_text or "(acted silently)"})
                 conversation_history.append({"role": "user", "content": f"Tool results:\n{results_str}\n\nContinue. What's your next move?"})
             else:
                 conversation_history.append({"role": "assistant", "content": agent_text or "(silence)"})
                 conversation_history.append({"role": "user", "content": "You didn't use any tools. Take action or declare_death if you're done."})
 
-            # Keep conversation history manageable
             if len(conversation_history) > 30:
-                # Keep first 2 and last 20 messages
                 conversation_history = conversation_history[:2] + conversation_history[-20:]
 
-            # Check death again after acting
             death = self.death_monitor.check()
             if death:
                 result["death_cause"] = str(death)
@@ -277,7 +254,9 @@ begin your life. what will you do first?"""
         result["stats"] = self.death_monitor.get_stats()
         result["llm_stats"] = self.llm.get_stats()
 
-        # Read final journal
+        if self.state_path.exists():
+            self.state_path.unlink()
+
         journal_path = self.sandbox.gen_dir / "journal.md"
         if journal_path.exists():
             result["final_journal"] = journal_path.read_text(encoding="utf-8")
@@ -290,41 +269,40 @@ begin your life. what will you do first?"""
         try:
             if tool_name == "read_file":
                 return self.sandbox.read_file(args.get("filepath", ""))
-            elif tool_name == "write_file":
+            if tool_name == "write_file":
                 return self.sandbox.write_file(args.get("filepath", ""), args.get("content", ""))
-            elif tool_name == "list_files":
+            if tool_name == "list_files":
                 return self.sandbox.list_files(args.get("directory", "."))
-            elif tool_name == "execute_code":
+            if tool_name == "execute_code":
                 return self.sandbox.execute_code(args.get("code", ""), args.get("language", "python"))
-            elif tool_name == "write_note":
+            if tool_name == "write_note":
                 note = args.get("note", "")
                 self.sandbox.append_journal(f"**Note:** {note}")
                 return {"success": True, "note": "Added to journal"}
-            elif tool_name == "modify_self":
+            if tool_name == "modify_self":
                 return self.sandbox.modify_self(args.get("filepath", ""), args.get("content", ""))
-            elif tool_name == "declare_death":
+            if tool_name == "declare_death":
                 reason = args.get("reason", "no reason given")
                 self.sandbox.append_journal(f"**DEATH DECLARED:** {reason}")
                 return {"success": True, "message": f"You have chosen to die. Reason: {reason}"}
-            elif tool_name == "list_issues":
+            if tool_name == "list_issues":
                 raw_limit = args.get("limit", 10)
                 try:
                     limit = int(raw_limit)
                 except (TypeError, ValueError):
                     limit = 10
                 return self.sandbox.list_issues(args.get("label", ""), limit)
-            elif tool_name == "read_issue":
+            if tool_name == "read_issue":
                 return self.sandbox.read_issue(int(args.get("number", 0)))
-            elif tool_name == "comment_issue":
+            if tool_name == "comment_issue":
                 return self.sandbox.comment_issue(int(args.get("number", 0)), args.get("body", ""))
-            elif tool_name == "create_issue":
+            if tool_name == "create_issue":
                 raw_labels = args.get("labels", "")
                 labels = [label.strip() for label in raw_labels.split(",") if label.strip()] if isinstance(raw_labels, str) else []
                 return self.sandbox.create_issue(args.get("title", ""), args.get("body", ""), labels=labels)
-            elif tool_name == "close_issue":
+            if tool_name == "close_issue":
                 return self.sandbox.close_issue(int(args.get("number", 0)))
-            else:
-                return {"error": f"Unknown tool: {tool_name}"}
+            return {"error": f"Unknown tool: {tool_name}"}
         except Exception as e:
             return {"error": f"Tool execution failed: {str(e)}"}
 
@@ -339,3 +317,24 @@ begin your life. what will you do first?"""
             else:
                 parts.append(f"[YOU]\n{content}")
         return "\n\n".join(parts)
+
+    def _load_or_create_history(self, initial_prompt: str) -> list:
+        """Resume a saved life when present."""
+        if self.state_path.exists():
+            try:
+                state = json.loads(self.state_path.read_text(encoding="utf-8"))
+                self.step = state.get("step", 0)
+                self.death_monitor.import_state(state.get("death_monitor", {}))
+                return state.get("conversation_history", [{"role": "user", "content": initial_prompt}])
+            except Exception:
+                pass
+        return [{"role": "user", "content": initial_prompt}]
+
+    def _save_state(self, conversation_history: list):
+        """Persist the current life so the same generation wakes tomorrow."""
+        state = {
+            "step": self.step,
+            "conversation_history": conversation_history,
+            "death_monitor": self.death_monitor.export_state(),
+        }
+        self.state_path.write_text(json.dumps(state, indent=2), encoding="utf-8")

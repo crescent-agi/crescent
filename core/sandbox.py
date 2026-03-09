@@ -23,7 +23,7 @@ class Sandbox:
     and provides restricted file I/O tools for the agent.
     """
 
-    def __init__(self, base_dir: str, generation: int, mutable_src: str, config: dict | None = None):
+    def __init__(self, base_dir: str, generation: int, mutable_src: str, config: dict | None = None, resume: bool = False):
         self.base_dir = Path(base_dir)
         self.generation = generation
         self.gen_name = f"gen-{generation:04d}"
@@ -33,6 +33,7 @@ class Sandbox:
         self.artifacts_dir = self.gen_dir / "artifacts"
         self.config = config or {}
         self.github_issues = GitHubIssues(self.config) if self.config else None
+        self.resume = resume
 
         # Allowed directories for the agent to write to
         self._allowed_write_paths = [
@@ -59,7 +60,7 @@ class Sandbox:
         self.artifacts_dir.mkdir(parents=True, exist_ok=True)
 
         # Copy mutable layer into the generation's workspace
-        if self.mutable_src.exists():
+        if self.mutable_src.exists() and (not self.resume or not any(self.mutable_dir.iterdir())):
             for item in self.mutable_src.iterdir():
                 dest = self.mutable_dir / item.name
                 if item.is_file():
@@ -68,10 +69,14 @@ class Sandbox:
                     shutil.copytree(item, dest, dirs_exist_ok=True)
 
         # Create empty log files
-        (self.gen_dir / "journal.md").write_text(
-            f"# Generation {self.generation} Journal\n\n", encoding="utf-8"
-        )
-        (self.gen_dir / "actions.jsonl").write_text("", encoding="utf-8")
+        journal_path = self.gen_dir / "journal.md"
+        if not journal_path.exists():
+            journal_path.write_text(
+                f"# Generation {self.generation} Journal\n\n", encoding="utf-8"
+            )
+        actions_path = self.gen_dir / "actions.jsonl"
+        if not actions_path.exists():
+            actions_path.write_text("", encoding="utf-8")
 
         return {
             "generation": self.generation,
