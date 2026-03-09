@@ -44,6 +44,8 @@ github:
   repo_url: "https://github.com/crescent-agi/crescent.git"
   branch: "main"
   docs_dir: "docs"
+  issue_inbox_label: "human"
+  self_task_label: "self-task"
   # Set GITHUB_TOKEN environment variable for push access
 
 paths:

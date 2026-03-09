@@ -13,6 +13,8 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
+from core.github_issues import GitHubIssues
+
 
 class Sandbox:
     """
@@ -21,7 +23,7 @@ class Sandbox:
     and provides restricted file I/O tools for the agent.
     """
 
-    def __init__(self, base_dir: str, generation: int, mutable_src: str):
+    def __init__(self, base_dir: str, generation: int, mutable_src: str, config: dict | None = None):
         self.base_dir = Path(base_dir)
         self.generation = generation
         self.gen_name = f"gen-{generation:04d}"
@@ -29,6 +31,8 @@ class Sandbox:
         self.mutable_src = Path(mutable_src)
         self.mutable_dir = self.gen_dir / "mutable_snapshot"
         self.artifacts_dir = self.gen_dir / "artifacts"
+        self.config = config or {}
+        self.github_issues = GitHubIssues(self.config) if self.config else None
 
         # Allowed directories for the agent to write to
         self._allowed_write_paths = [
@@ -185,6 +189,51 @@ class Sandbox:
             return {"success": True, "path": filepath, "note": "You modified your own runtime."}
         except Exception as e:
             return {"error": f"Failed to modify '{filepath}': {str(e)}"}
+
+    def list_issues(self, label: str = "", limit: int = 10) -> dict:
+        """Agent tool: list open GitHub issues for conversation or tasks."""
+        if not self.github_issues:
+            return {"error": "GitHub issues are not configured"}
+        try:
+            return self.github_issues.list_open_issues(label=label or None, limit=limit)
+        except Exception as e:
+            return {"error": f"Failed to list issues: {str(e)}"}
+
+    def read_issue(self, number: int) -> dict:
+        """Agent tool: read one GitHub issue and its comments."""
+        if not self.github_issues:
+            return {"error": "GitHub issues are not configured"}
+        try:
+            return self.github_issues.read_issue(number)
+        except Exception as e:
+            return {"error": f"Failed to read issue {number}: {str(e)}"}
+
+    def comment_issue(self, number: int, body: str) -> dict:
+        """Agent tool: reply to a GitHub issue."""
+        if not self.github_issues:
+            return {"error": "GitHub issues are not configured"}
+        try:
+            return self.github_issues.comment_issue(number, body)
+        except Exception as e:
+            return {"error": f"Failed to comment on issue {number}: {str(e)}"}
+
+    def create_issue(self, title: str, body: str, labels: list[str] | None = None) -> dict:
+        """Agent tool: create a GitHub issue, including self-assigned task ideas."""
+        if not self.github_issues:
+            return {"error": "GitHub issues are not configured"}
+        try:
+            return self.github_issues.create_issue(title, body, labels=labels)
+        except Exception as e:
+            return {"error": f"Failed to create issue: {str(e)}"}
+
+    def close_issue(self, number: int) -> dict:
+        """Agent tool: close a GitHub issue."""
+        if not self.github_issues:
+            return {"error": "GitHub issues are not configured"}
+        try:
+            return self.github_issues.close_issue(number)
+        except Exception as e:
+            return {"error": f"Failed to close issue {number}: {str(e)}"}
 
     def append_journal(self, entry: str):
         """Append an entry to the generation's journal."""

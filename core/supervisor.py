@@ -116,6 +116,7 @@ class Supervisor:
             str(self.base_dir),
             gen,
             str(self.mutable_dir),
+            self.config,
         )
         workspace_info = sandbox.setup()
 
