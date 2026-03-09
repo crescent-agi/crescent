@@ -35,7 +35,9 @@ $copyItems = @(
     "main.py",
     "requirements.txt",
     "config.yaml",
-    ".env.example"
+    ".env.example",
+    ".gitignore",
+    ".gitattributes"
 )
 
 foreach ($item in $copyItems) {
