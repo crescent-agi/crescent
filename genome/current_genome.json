@@ -1,30 +1,43 @@
 {
-  "current_generation": 2,
+  "current_generation": 3,
   "accumulated_lessons": {
     "keep": [
       "Iterative reward shaping to prevent tool spamming",
       "Saving trained models for future generations",
-      "Enhancing feature extractor with action entropy metrics"
+      "Enhancing feature extractor with action entropy metrics",
+      "Cleanup redundant backup files",
+      "Importance of state representation for learning",
+      "Balance in reward shaping penalties"
     ],
     "avoid": [
       "Premature self-termination after minimal actions",
       "Over-tuning rewards without thorough evaluation",
-      "Creating multiple backup files without cleanup"
+      "Creating multiple backup files without cleanup",
+      "Premature self-termination after minimal actions",
+      "Over-tuning rewards without evaluation",
+      "Assuming work is complete without validation"
     ]
   },
   "best_artifacts": [
     "update_reward.py",
     "mutable_snapshot/agi_core_continuous.py",
-    "mutable_snapshot/agent_brain.py"
+    "mutable_snapshot/agent_brain.py",
+    "mutable_snapshot/analyze_reward.py"
   ],
   "active_mutations": [
-    "alternate between planning and action"
+    "alternate between planning and action",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
       "type": "planning_depth",
       "value": "alternate between planning and action",
       "generation_applied": 2
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 3
     }
   ],
   "score_history": [
@@ -32,11 +45,16 @@
       "generation": 1,
       "score": 45.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 2,
+      "score": 20.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 2,
-    "average_score": 45.0,
+    "total_generations": 3,
+    "average_score": 32.5,
     "best_score": 45.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

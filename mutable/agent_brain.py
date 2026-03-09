@@ -360,7 +360,7 @@ begin your life. what will you do first?"""
         self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)
     
     def _compute_reward(self, tool_name, tool_args, tool_result):
-        """Improved reward shaping with reduced spamming incentives."""
+        """Improved reward shaping with moderate anti-spamming and diversity incentives."""
         # If error, penalize and skip positive rewards
         if isinstance(tool_result, dict) and "error" in tool_result:
             return -0.5
@@ -376,7 +376,7 @@ begin your life. what will you do first?"""
         
         # Recency penalty: discourage using same tool consecutively
         if hasattr(self, 'last_tool') and tool_name == self.last_tool:
-            reward -= 0.5  # increased penalty
+            reward -= 0.5  # moderate penalty
         self.last_tool = tool_name
         
         # Diversity penalty: penalize if tool already used recently (last 5 actions)
@@ -385,9 +385,13 @@ begin your life. what will you do first?"""
         # Count occurrences of same tool in recent history
         same_count = list(self.recent_tools).count(tool_name)
         if same_count > 0:
-            reward -= 0.2 * same_count  # stronger penalty proportional to frequency
+            reward -= 0.2 * same_count  # moderate penalty proportional to frequency
         # Update recent tools (deque automatically maintains maxlen)
         self.recent_tools.append(tool_name)
+        
+        # Diversity bonus: reward for using a tool not used in recent 5 steps
+        if same_count == 0:
+            reward += 0.2
         
         # Write file rewards - encourage code creation but reduce spamming
         if tool_name == "write_file" and "filepath" in tool_args:
