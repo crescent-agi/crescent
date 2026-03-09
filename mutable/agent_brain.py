@@ -360,23 +360,23 @@ begin your life. what will you do first?"""
         self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)
     
     def _compute_reward(self, tool_name, tool_args, tool_result):
-        """Improved reward shaping with moderate anti-spamming and diversity incentives."""
-        # If error, penalize and skip positive rewards
+        """Reward shaping with stronger positive incentives and lighter penalties."""
+        # If error, penalize
         if isinstance(tool_result, dict) and "error" in tool_result:
             return -0.5
         
-        # Declare death penalty (strongly discourage unless after many steps)
+        # Declare death penalty (strongly discourage)
         if tool_name == "declare_death":
-            return -2.0
+            return -1.0
         
         reward = 0.0
-        # Success reward
+        # Success reward (increased)
         if isinstance(tool_result, dict) and not tool_result.get("error"):
-            reward += 0.1
+            reward += 0.5
         
-        # Recency penalty: discourage using same tool consecutively
+        # Recency penalty: discourage using same tool consecutively (reduced)
         if hasattr(self, 'last_tool') and tool_name == self.last_tool:
-            reward -= 0.5  # moderate penalty
+            reward -= 0.2  # reduced penalty
         self.last_tool = tool_name
         
         # Diversity penalty: penalize if tool already used recently (last 5 actions)
@@ -385,58 +385,58 @@ begin your life. what will you do first?"""
         # Count occurrences of same tool in recent history
         same_count = list(self.recent_tools).count(tool_name)
         if same_count > 0:
-            reward -= 0.2 * same_count  # moderate penalty proportional to frequency
-        # Update recent tools (deque automatically maintains maxlen)
+            reward -= 0.1 * same_count  # reduced penalty per occurrence
+        # Update recent tools
         self.recent_tools.append(tool_name)
         
-        # Diversity bonus: reward for using a tool not used in recent 5 steps
+        # Diversity bonus: reward for using a tool not used in recent 5 steps (increased)
         if same_count == 0:
-            reward += 0.2
+            reward += 0.3
         
-        # Write file rewards - encourage code creation but reduce spamming
+        # Write file rewards - encourage code creation with higher rewards
         if tool_name == "write_file" and "filepath" in tool_args:
-            reward += 0.1  # base for writing (reduced)
+            reward += 0.2  # base for writing
             filepath = tool_args["filepath"]
             if isinstance(filepath, str):
                 if filepath.endswith('.py'):
-                    reward += 0.5  # extra for Python files (more valuable)
+                    reward += 0.8  # extra for Python files
                 if 'agent_brain' in filepath or 'agi_core' in filepath:
                     reward += 0.8  # extra for self-modification (critical)
                 if 'artifacts' in filepath or 'test' in filepath:
-                    reward += 0.3  # extra for test/artifact creation
+                    reward += 0.4  # extra for test/artifact creation
                 if 'plan' in filepath or 'strategy' in filepath:
                     reward += 0.2  # planning docs
         
-        # Execute code rewards - encourage testing and running, but reduce base reward
+        # Execute code rewards - encourage testing and running with higher rewards
         if tool_name == "execute_code" and isinstance(tool_result, dict):
             if "stdout" in tool_result:
-                reward += 0.2  # reduced base reward
+                reward += 0.5  # base reward
                 # extra if execution succeeded without stderr errors
                 if tool_result.get("stderr", "").strip() == "":
-                    reward += 0.2  # reduced
+                    reward += 0.3
                 # extra if output contains meaningful results (e.g., not empty)
                 stdout = tool_result.get("stdout", "").strip()
                 if len(stdout) > 10:
-                    reward += 0.1  # reduced
+                    reward += 0.2
                 # bonus if output indicates success
                 if any(indicator in stdout.lower() for indicator in ["test passed", "ok", "success", "completed", "passed", "works"]):
-                    reward += 0.2  # reduced
+                    reward += 0.5
         
-        # Note writing rewards (journal) - reduce spamming
+        # Note writing rewards (journal) - encourage thoughtful notes
         if tool_name == "write_note":
             note = tool_args.get("note", "")
-            # Base reward lower
-            reward += 0.1
+            # Base reward
+            reward += 0.2
             if len(note) > 100:  # longer notes more valuable
-                reward += 0.2
+                reward += 0.3
             if any(keyword in note.lower() for keyword in ["progress", "improve", "agi", "plan", "next", "insight", "discover"]):
-                reward += 0.4  # higher for relevant keywords
+                reward += 0.5  # higher for relevant keywords
         
-        # Issue creation rewards (planning) - reduced to avoid spamming
+        # Issue creation rewards (planning) - encourage planning
         if tool_name == "create_issue":
-            reward += 0.2  # reduced from 0.5
+            reward += 0.5
         
-        # Reading important files reward - increased to encourage knowledge gathering
+        # Reading important files reward - encourage knowledge gathering
         if tool_name == "read_file":
             filepath = tool_args.get("filepath", "")
             important_files = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py", 
@@ -444,19 +444,19 @@ begin your life. what will you do first?"""
                              "mcts_planner.py", "agent_brain.py", "strategy.md", 
                              "train_agi_core.py", "run_training.py"]
             if any(imp in filepath for imp in important_files):
-                reward += 0.5  # increased
+                reward += 0.8
         
-        # Modify self reward - encourage self-improvement but reduce base
+        # Modify self reward - encourage self-improvement
         if tool_name == "modify_self":
-            reward += 0.3  # reduced
+            reward += 0.5
             filepath = tool_args.get("filepath", "")
             if 'agent_brain' in filepath or 'agi_core' in filepath:
-                reward += 0.5
+                reward += 0.8
         
-        # Encourage exploration: reward for using underused tools (list_files, list_issues, read_issue, comment_issue, close_issue)
+        # Encourage exploration: reward for using underused tools
         exploration_tools = ["list_files", "list_issues", "read_issue", "comment_issue", "close_issue"]
         if tool_name in exploration_tools:
-            reward += 0.2
+            reward += 0.3
         
         return reward
     def _get_journal_content(self):

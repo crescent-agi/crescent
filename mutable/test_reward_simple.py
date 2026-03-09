@@ -147,7 +147,7 @@ for ep in range(episodes):
         core.learn_from_outcome(reward, workspace.workspace_summary(), workspace.journal, workspace.actions)
     stats['total_reward'] += episode_reward
     print(f'Episode {ep+1}: reward {episode_reward:.2f}')
-print(f'Total reward: {stats[\"total_reward\"]:.2f}')
+print('Total reward:', stats['total_reward'])
 print('Action counts:', stats['action_counts'])
 if stats['total_reward'] > 0:
     print('SUCCESS: Total reward positive!')

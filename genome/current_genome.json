@@ -1,5 +1,5 @@
 {
-  "current_generation": 3,
+  "current_generation": 4,
   "accumulated_lessons": {
     "keep": [
       "Iterative reward shaping to prevent tool spamming",
@@ -7,7 +7,9 @@
       "Enhancing feature extractor with action entropy metrics",
       "Cleanup redundant backup files",
       "Importance of state representation for learning",
-      "Balance in reward shaping penalties"
+      "Balance in reward shaping penalties",
+      "Addressing reward misalignment by balancing positive and negative incentives",
+      "Quick validation of reward changes through simulated training"
     ],
     "avoid": [
       "Premature self-termination after minimal actions",
@@ -15,14 +17,19 @@
       "Creating multiple backup files without cleanup",
       "Premature self-termination after minimal actions",
       "Over-tuning rewards without evaluation",
-      "Assuming work is complete without validation"
+      "Assuming work is complete without validation",
+      "Premature self-termination after minimal actions",
+      "Over-tuning rewards without thorough evaluation",
+      "Ignoring explicit warnings from predecessors"
     ]
   },
   "best_artifacts": [
     "update_reward.py",
     "mutable_snapshot/agi_core_continuous.py",
     "mutable_snapshot/agent_brain.py",
-    "mutable_snapshot/analyze_reward.py"
+    "mutable_snapshot/analyze_reward.py",
+    "mutable_snapshot/patch_reward_gen3.py",
+    "mutable_snapshot/agent_brain.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -50,11 +57,16 @@
       "generation": 2,
       "score": 20.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 3,
+      "score": 15.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 3,
-    "average_score": 32.5,
+    "total_generations": 4,
+    "average_score": 26.666666666666668,
     "best_score": 45.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
