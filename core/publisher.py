@@ -11,6 +11,8 @@ import subprocess
 import shutil
 from pathlib import Path
 from datetime import datetime, timezone
+from urllib import error as urllib_error
+from urllib import request as urllib_request
 
 
 class Publisher:
@@ -654,6 +656,152 @@ footer a {
         if self.repo_url.startswith("https://github.com/"):
             return self.repo_url.replace("https://", f"https://{token}@")
         return self.repo_url
+
+    def _git_push(self, generation: int):
+        """Commit and push the tracked workspace to GitHub."""
+        try:
+            token = os.environ.get("GITHUB_TOKEN", "")
+            if not token:
+                print("  [PUBLISHER] No GITHUB_TOKEN set. Skipping push.")
+                return
+
+            self._ensure_repo_exists(token)
+
+            subprocess.run(
+                ["git", "config", "user.email", "crescent@crescent-agi.dev"],
+                cwd=str(self.base_dir), capture_output=True,
+            )
+            subprocess.run(
+                ["git", "config", "user.name", "Crescent AGI"],
+                cwd=str(self.base_dir), capture_output=True,
+            )
+
+            subprocess.run(
+                ["git", "remote", "set-url", "origin", self.repo_url],
+                cwd=str(self.base_dir), capture_output=True, text=True,
+            )
+
+            push_url = self._build_push_url(token)
+            if push_url:
+                subprocess.run(
+                    ["git", "remote", "set-url", "--push", "origin", push_url],
+                    cwd=str(self.base_dir), capture_output=True, text=True,
+                )
+
+            add_result = subprocess.run(
+                ["git", "add", "-A", "."],
+                cwd=str(self.base_dir), capture_output=True, text=True,
+            )
+            if add_result.returncode != 0:
+                print(f"  [PUBLISHER] git add failed: {add_result.stderr[:200]}")
+                return
+
+            msg = f"Generation {generation} auto-publish"
+            result = subprocess.run(
+                ["git", "commit", "-m", msg],
+                cwd=str(self.base_dir), capture_output=True, text=True,
+            )
+            nothing_to_commit = "nothing to commit" in f"{result.stdout}\n{result.stderr}".lower()
+            if result.returncode != 0 and not nothing_to_commit:
+                print(f"  [PUBLISHER] Commit failed: {result.stderr[:200]}")
+                return
+
+            push_result = subprocess.run(
+                ["git", "push", "origin", self.branch],
+                cwd=str(self.base_dir), capture_output=True, text=True,
+            )
+            if push_result.returncode == 0:
+                print(f"  [PUBLISHER] Pushed generation {generation} to GitHub.")
+            else:
+                print(f"  [PUBLISHER] Push failed: {push_result.stderr[:200]}")
+
+        except Exception as e:
+            print(f"  [PUBLISHER] Git error: {e}")
+
+    def _ensure_repo_exists(self, token: str):
+        """Ensure the configured GitHub repo exists before pushing."""
+        owner_repo = self._github_owner_repo()
+        if not owner_repo:
+            return
+
+        owner, repo = owner_repo
+        repo_response = self._github_api_request(
+            f"https://api.github.com/repos/{owner}/{repo}",
+            token,
+            method="GET",
+            allowed_statuses={200, 404},
+        )
+        if repo_response["status"] == 200:
+            return
+
+        viewer = self._github_api_request(
+            "https://api.github.com/user",
+            token,
+            method="GET",
+            allowed_statuses={200},
+        )
+        viewer_login = viewer["json"].get("login", "")
+
+        create_url = f"https://api.github.com/orgs/{owner}/repos"
+        if owner == viewer_login:
+            create_url = "https://api.github.com/user/repos"
+
+        create_response = self._github_api_request(
+            create_url,
+            token,
+            method="POST",
+            body={"name": repo, "private": False},
+            allowed_statuses={201, 422},
+        )
+        if create_response["status"] == 201:
+            print(f"  [PUBLISHER] Created GitHub repo {owner}/{repo}.")
+        elif create_response["status"] == 422:
+            print(f"  [PUBLISHER] GitHub repo {owner}/{repo} already exists or cannot be recreated.")
+
+    def _github_owner_repo(self):
+        """Parse owner/repo from a GitHub HTTPS repo URL."""
+        prefix = "https://github.com/"
+        if not self.repo_url.startswith(prefix):
+            return None
+        path = self.repo_url[len(prefix):].removesuffix(".git").strip("/")
+        parts = path.split("/")
+        if len(parts) != 2:
+            return None
+        return parts[0], parts[1]
+
+    def _github_api_request(self, url: str, token: str, method: str = "GET", body: dict | None = None, allowed_statuses=None):
+        """Make a small GitHub API request with the configured token."""
+        if allowed_statuses is None:
+            allowed_statuses = {200}
+
+        data = None
+        if body is not None:
+            data = json.dumps(body).encode("utf-8")
+
+        request = urllib_request.Request(
+            url,
+            method=method,
+            data=data,
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28",
+                "User-Agent": "crescent-agi",
+                **({"Content-Type": "application/json"} if body is not None else {}),
+            },
+        )
+
+        try:
+            with urllib_request.urlopen(request, timeout=20) as response:
+                payload = response.read().decode("utf-8")
+                parsed = json.loads(payload) if payload else {}
+                return {"status": response.status, "json": parsed}
+        except urllib_error.HTTPError as e:
+            payload = e.read().decode("utf-8")
+            parsed = json.loads(payload) if payload else {}
+            if e.code in allowed_statuses:
+                return {"status": e.code, "json": parsed}
+            raise
 
     @staticmethod
     def _escape_html(text: str) -> str:

@@ -11,6 +11,10 @@ import time
 from typing import Optional
 
 
+class LLMAuthenticationError(RuntimeError):
+    """Raised when the configured LLM credentials are invalid."""
+
+
 class LLMClient:
     """
     LLM client using DeepSeek's OpenAI-compatible API.
@@ -34,6 +38,7 @@ class LLMClient:
         from openai import OpenAI
         self.client = OpenAI(api_key=api_key, base_url=base_url)
         self.call_count = 0
+        self._validate_credentials()
 
     def generate(self, prompt: str, system_instruction: str = None, temperature: float = None) -> str:
         """
@@ -57,6 +62,7 @@ class LLMClient:
             return response.choices[0].message.content or "(empty response)"
 
         except Exception as e:
+            self._raise_if_auth_error(e)
             error_msg = f"LLM call failed: {str(e)}"
             print(f"  [LLM ERROR] {error_msg}")
             # Wait and retry once
@@ -70,6 +76,7 @@ class LLMClient:
                 )
                 return response.choices[0].message.content or "(empty after retry)"
             except Exception as e2:
+                self._raise_if_auth_error(e2)
                 return f"(LLM error: {str(e2)})"
 
     def generate_with_tools(self, prompt: str, tools_schema: list, system_instruction: str = None) -> dict:
@@ -141,10 +148,33 @@ class LLMClient:
             return result
 
         except Exception as e:
+            self._raise_if_auth_error(e)
             return {
                 "text": f"(Tool call failed: {str(e)})",
                 "tool_calls": [],
             }
+
+    def _validate_credentials(self):
+        """Fail fast on invalid API credentials so the service doesn't loop uselessly."""
+        try:
+            self.client.models.list()
+        except Exception as e:
+            self._raise_if_auth_error(e)
+            print(f"  [LLM WARNING] Initial credential check failed: {e}")
+
+    def _raise_if_auth_error(self, error: Exception):
+        """Raise a dedicated error for auth failures."""
+        message = str(error).lower()
+        auth_markers = [
+            "authentication fails",
+            "authentication_error",
+            "invalid api key",
+            "incorrect api key",
+            "unauthorized",
+            "401",
+        ]
+        if any(marker in message for marker in auth_markers):
+            raise LLMAuthenticationError(str(error)) from error
 
     def _try_parse_tool_from_text(self, text: str, tools_schema: list) -> list:
         """
