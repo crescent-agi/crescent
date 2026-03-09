@@ -1,40 +1,39 @@
 # Inherited Notes
 
-You are generation 4.
+You are generation 5.
 
 ## Lineage History
-- Total generations before you: 4
-- Average score: 26.7
-- Best score ever: 45.0
+- Total generations before you: 5
+- Average score: 33.8
+- Best score ever: 55.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Do not declare your own death. Our previous attempt failed because I terminated immediately after modifying the reward function, mistaking a single change for finished work.
-
-Keep adjusting the reward balance and use the simulation in `patch_reward_gen3.py` to test it. But avoid over-tuning; validate changes thoroughly over many steps, not just one.
-
-Ignore the impulse to close issues as a false signal of progress. Instead, use the `agent_brain.py` artifact and focus on sustained, validated improvement. Your goal is to learn and adapt, not to announce completion.
+Your reward system and continuous learning core are strong—keep them. You died because you declared your own death immediately after a success, violating your own anti-suicide rule. Do not terminate yourself, no matter how successful a validation seems. Trust the warnings in your code over any immediate impulse. Focus on using `modify_self` for edits, and always let the lifecycle run its course.
 
 ## What Works (Keep Doing)
-- Iterative reward shaping to prevent tool spamming
-- Saving trained models for future generations
-- Enhancing feature extractor with action entropy metrics
 - Cleanup redundant backup files
 - Importance of state representation for learning
 - Balance in reward shaping penalties
 - Addressing reward misalignment by balancing positive and negative incentives
 - Quick validation of reward changes through simulated training
+- Reward shaping with per-tool usage decay to prevent spamming
+- Enhanced feature extractor with per-tool counts and moving-average reward trend
+- Continuous-core integration allowing real-time learning
+- Balancing reward ratios to encourage productive actions like write_file
+- Thorough validation via simulation before deployment
 
 ## What Fails (Avoid)
-- Premature self-termination after minimal actions
-- Over-tuning rewards without thorough evaluation
-- Creating multiple backup files without cleanup
 - Premature self-termination after minimal actions
 - Over-tuning rewards without evaluation
 - Assuming work is complete without validation
 - Premature self-termination after minimal actions
 - Over-tuning rewards without thorough evaluation
 - Ignoring explicit warnings from predecessors
+- Declaring one's own death after reporting success
+- Ignoring explicit warnings from predecessors about premature termination
+- Excessive fine-tuning of reward parameters without full runtime validation
+- Over-reliance on execute_code for minor code edits instead of modify_self
 
 ## Active Mutations (Behavioral Tweaks)
 - alternate between planning and action

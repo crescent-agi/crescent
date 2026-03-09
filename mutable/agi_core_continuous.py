@@ -60,10 +60,13 @@ ACTION_SPACE_SIZE = len(TOOL_NAMES)
 class AGICoreContinuous:
     """Core AGI decision-making system with continuous state representation."""
     
-    def __init__(self, feature_dim=30, hidden_size=32, learning_rate=0.01, use_features=True):
+    def __init__(self, feature_dim, action_size=None, hidden_size=32, learning_rate=0.01, exploration_rate=0.02, epsilon_decay=0.998, epsilon_min=0.005, use_features=True):
         self.feature_dim = feature_dim
         self.action_size = ACTION_SPACE_SIZE
         self.use_features = use_features and FEATURE_EXTRACTOR_AVAILABLE
+        self.exploration_rate = exploration_rate
+        self.epsilon_decay = epsilon_decay
+        self.epsilon_min = epsilon_min
         if self.use_features:
             self.feature_extractor = FeatureExtractor()
             print(f"  [AGICoreContinuous] Using feature-based continuous state representation.")
@@ -73,7 +76,7 @@ class AGICoreContinuous:
                 print(f"  [AGICoreContinuous] Feature extractor not available, falling back to dummy feature vector.")
         # Continuous agents
         if CONTINUOUS_AGENTS_AVAILABLE:
-            self.q_agent = NeuralQLearningAgentContinuous(feature_dim, self.action_size, hidden_size=hidden_size, learning_rate=learning_rate)
+            self.q_agent = NeuralQLearningAgentContinuous(feature_dim, self.action_size, hidden_size=hidden_size, learning_rate=learning_rate, exploration_rate=exploration_rate, epsilon_decay=epsilon_decay, epsilon_min=epsilon_min)
             self.world_model = WorldModelContinuous(feature_dim, self.action_size, hidden_size=hidden_size, learning_rate=learning_rate)
         else:
             print(f"  [AGICoreContinuous] Continuous agents not available, falling back to discrete.")
@@ -147,13 +150,32 @@ class AGICoreContinuous:
             confidence = 0.6
         else:
             # Fallback: random
-            action_idx = random.randrange(self.action_size)
+            # Filter declare_death during random fallback
+            for _ in range(10):
+                action_idx = random.randrange(self.action_size)
+                if action_idx != 6:  # declare_death
+                    break
             confidence = 0.1
         
         # Map action index to tool name
-        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]
+        if self.step_count < 100 and action_idx == 6:
+            # Choose a different action
+            if self.q_agent:
+                q_vals = self.q_agent.nn.predict(state_vec)
+                sorted_indices = sorted(range(len(q_vals)), key=lambda i: q_vals[i], reverse=True)
+                for idx in sorted_indices:
+                    if idx != 6:
+                        action_idx = idx
+                        break
+            else:
+                # random fallback: pick any non-death action
+                for _ in range(10):
+                    candidate = random.randrange(self.action_size)
+                    if candidate != 6:
+                        action_idx = candidate
+                        break
         
-        # Generate tool arguments (simple defaults)
+        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]
         tool_args = self.generate_arguments(tool_name, workspace_summary, journal, actions)
         
         self.last_action = (tool_name, action_idx)

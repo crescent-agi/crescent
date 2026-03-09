@@ -120,7 +120,7 @@ class NeuralNetwork:
 class NeuralQLearningAgentContinuous:
     """Q-learning agent using neural network function approximation with continuous state vector."""
     
-    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.1, epsilon_decay=0.995, epsilon_min=0.01):
+    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.01, epsilon_decay=0.99, epsilon_min=0.001):
         self.feature_dim = feature_dim
         self.action_size = action_size
         self.hidden_size = hidden_size
@@ -135,20 +135,35 @@ class NeuralQLearningAgentContinuous:
         # Neural network expects feature vector input
         self.nn = NeuralNetwork(feature_dim, hidden_size, action_size, learning_rate)
         self.history = []
-    
     def choose_action(self, state_vector):
         """
         Epsilon-greedy action selection.
         state_vector: list of floats (length feature_dim)
         """
         if random.random() < self.epsilon:
-            return random.randrange(self.action_size)
+            # Random exploration: filter out declare_death (index 6) to avoid early suicide
+            for _ in range(10):  # try up to 10 times
+                action = random.randrange(self.action_size)
+                if action != 6:  # declare_death index
+                    return action
+            # If after 10 tries still declare_death, return it (should be rare)
+            return 6
         else:
             q_values = self.nn.predict(state_vector)
+            # Find best action, but exclude declare_death (index 6) unless it's the only action
             max_q = max(q_values)
             best_actions = [i for i, q in enumerate(q_values) if q == max_q]
+            # Remove declare_death from best_actions if there are other choices
+            if len(best_actions) > 1 and 6 in best_actions:
+                best_actions.remove(6)
+            # If declare_death is the only best action, we still exclude it and choose second best
+            if best_actions == [6]:
+                # Find second highest Q-value
+                sorted_q = sorted(enumerate(q_values), key=lambda x: x[1], reverse=True)
+                for idx, q in sorted_q:
+                    if idx != 6:
+                        return idx
             return random.choice(best_actions)
-    
     def learn(self, state_vector, action, reward, next_state_vector, done):
         """
         Q-learning update using neural network.
@@ -236,7 +251,7 @@ class NeuralQLearningAgentContinuous:
         self.gamma = data['gamma']
         self.epsilon = data['epsilon']
         self.epsilon_start = data.get('epsilon_start', self.epsilon)
-        self.epsilon_min = data.get('epsilon_min', 0.01)
+        self.epsilon_min = data.get('epsilon_min', 0.001)
         self.epsilon_decay = data.get('epsilon_decay', 0.995)
         self.episode_count = data.get('episode_count', 0)
         self.history = data['history']

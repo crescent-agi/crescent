@@ -37,5 +37,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773068246.4523134
+  },
+  {
+    "generation": 4,
+    "score": 55.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 4 successfully improved the reward system and validated zero suicides, but then immediately declared its own death, violating its own anti-suicide logic and predecessor warnings.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773089712.5226405
   }
 ]

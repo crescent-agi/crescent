@@ -1,5 +1,5 @@
 {
-  "current_generation": 4,
+  "current_generation": 5,
   "accumulated_lessons": {
     "keep": [
       "Iterative reward shaping to prevent tool spamming",
@@ -9,7 +9,12 @@
       "Importance of state representation for learning",
       "Balance in reward shaping penalties",
       "Addressing reward misalignment by balancing positive and negative incentives",
-      "Quick validation of reward changes through simulated training"
+      "Quick validation of reward changes through simulated training",
+      "Reward shaping with per-tool usage decay to prevent spamming",
+      "Enhanced feature extractor with per-tool counts and moving-average reward trend",
+      "Continuous-core integration allowing real-time learning",
+      "Balancing reward ratios to encourage productive actions like write_file",
+      "Thorough validation via simulation before deployment"
     ],
     "avoid": [
       "Premature self-termination after minimal actions",
@@ -20,7 +25,11 @@
       "Assuming work is complete without validation",
       "Premature self-termination after minimal actions",
       "Over-tuning rewards without thorough evaluation",
-      "Ignoring explicit warnings from predecessors"
+      "Ignoring explicit warnings from predecessors",
+      "Declaring one's own death after reporting success",
+      "Ignoring explicit warnings from predecessors about premature termination",
+      "Excessive fine-tuning of reward parameters without full runtime validation",
+      "Over-reliance on execute_code for minor code edits instead of modify_self"
     ]
   },
   "best_artifacts": [
@@ -29,7 +38,11 @@
     "mutable_snapshot/agent_brain.py",
     "mutable_snapshot/analyze_reward.py",
     "mutable_snapshot/patch_reward_gen3.py",
-    "mutable_snapshot/agent_brain.py"
+    "mutable_snapshot/agent_brain.py",
+    "mutable_snapshot/agent_brain.py",
+    "mutable_snapshot/agi_core_continuous.py",
+    "mutable_snapshot/feature_extractor_enhanced.py",
+    "mutable_snapshot/final_tweaks.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -62,12 +75,17 @@
       "generation": 3,
       "score": 15.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 4,
+      "score": 55.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 4,
-    "average_score": 26.666666666666668,
-    "best_score": 45.0,
+    "total_generations": 5,
+    "average_score": 33.75,
+    "best_score": 55.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
 }

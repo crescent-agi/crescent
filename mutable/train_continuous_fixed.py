@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Train AGI Core Continuous with improved reward function and realistic simulation.
+"""
 import sys
 sys.path.insert(0, '.')
 
@@ -22,15 +25,24 @@ from collections import deque
 
 # Import the reward function from agent_brain
 import agent_brain
+compute_reward = agent_brain.AgentBrain._compute_reward
 
-class MockBrain:
-    def __init__(self):
-        self.recent_tools = deque(maxlen=5)
+class DummySelf:
+    def reset(self):
         self.last_tool = None
-    def _compute_reward(self, tool_name, tool_args, tool_result):
-        return agent_brain.AgentBrain._compute_reward(self, tool_name, tool_args, tool_result)
+        self.recent_tools.clear()
+        self.tool_usage_counts.clear()
+        if hasattr(self, 'episode_tools'):
+            self.episode_tools.clear()
+    def __init__(self):
+        self.last_tool = None
+        self.recent_tools = deque(maxlen=10)
+        self.tool_usage_counts = {}
+        self.tool_decay_factor = 0.85
+        self.tool_penalty_factor = 0.4
+    pass
 
-brain = MockBrain()
+self = DummySelf()
 
 # Simulation environment (same as before)
 class SimWorkspace:
@@ -105,12 +117,13 @@ class SimWorkspace:
     
     def update_state(self, tool_name, tool_args):
         """Update workspace state after tool execution."""
+        # Already handled in tool_result
         pass
 
-def run_training(episodes=50, steps_per_episode=20, feature_dim=15, hidden_size=32):
+def run_training(episodes=200, steps_per_episode=20, feature_dim=30, hidden_size=32):
     """Train AGI Core Continuous."""
     print(f"Starting continuous training: {episodes} episodes, {steps_per_episode} steps per episode")
-    core = AGICoreContinuous(feature_dim=feature_dim, hidden_size=hidden_size, learning_rate=0.01, use_features=True)
+    core = AGICoreContinuous(feature_dim=feature_dim, hidden_size=hidden_size, learning_rate=0.01, exploration_rate=0.5, epsilon_decay=0.995, epsilon_min=0.05, use_features=True)
     workspace = SimWorkspace()
     
     stats = {
@@ -125,7 +138,9 @@ def run_training(episodes=50, steps_per_episode=20, feature_dim=15, hidden_size=
     }
     
     for episode in range(episodes):
-        episode_reward = 0.0
+            # Reset per-episode usage tracking
+            self.reset()
+            episode_reward = 0.0
         for step in range(steps_per_episode):
             # AGI Core decides action
             tool_name, tool_args, confidence = core.decide_action(
@@ -136,7 +151,7 @@ def run_training(episodes=50, steps_per_episode=20, feature_dim=15, hidden_size=
             # Simulate tool result
             tool_result = workspace.tool_result(tool_name, tool_args)
             # Compute reward using agent_brain's reward function
-            reward = brain._compute_reward(tool_name, tool_args, tool_result)
+            reward = compute_reward(self, tool_name, tool_args, tool_result)
             episode_reward += reward
             
             # Update stats
@@ -166,10 +181,12 @@ def run_training(episodes=50, steps_per_episode=20, feature_dim=15, hidden_size=
         
         stats['episode_rewards'].append(episode_reward)
         stats['total_reward'] += episode_reward
+        if core.q_agent:
+            core.q_agent.decay_epsilon()
         
-        if (episode + 1) % 10 == 0:
-            avg_reward = sum(stats['episode_rewards'][-10:]) / 10
-            print(f"Episode {episode+1}: avg reward last 10={avg_reward:.2f}, deaths={stats['declare_death_count']}")
+        if (episode + 1) % 20 == 0:
+            avg_reward = sum(stats['episode_rewards'][-20:]) / 20
+            print(f"Episode {episode+1}: avg reward last 20={avg_reward:.2f}, deaths={stats['declare_death_count']}")
             # Print top actions
             top_actions = sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True)[:5]
             print(f"  Top actions: {top_actions}")
@@ -193,38 +210,9 @@ def run_training(episodes=50, steps_per_episode=20, feature_dim=15, hidden_size=
     
     return core, stats
 
-def evaluate_continuous(core, episodes=5, steps=10):
-    """Quick evaluation."""
-    brain = MockBrain()
-    workspace = SimWorkspace()
-    total_reward = 0.0
-    action_counts = {}
-    for ep in range(episodes):
-        episode_reward = 0.0
-        for step in range(steps):
-            tool_name, tool_args, confidence = core.decide_action(
-                workspace.workspace_summary(),
-                workspace.journal,
-                workspace.actions
-            )
-            tool_result = workspace.tool_result(tool_name, tool_args)
-            reward = brain._compute_reward(tool_name, tool_args, tool_result)
-            episode_reward += reward
-            action_counts[tool_name] = action_counts.get(tool_name, 0) + 1
-            workspace.actions.append({"tool": tool_name, "step": step})
-        total_reward += episode_reward
-        print(f"Eval episode {ep+1}: reward {episode_reward:.2f}")
-    avg_reward = total_reward / episodes
-    print(f"Average reward: {avg_reward:.2f}")
-    print("Action distribution:", action_counts)
-    return avg_reward, action_counts
-
 if __name__ == "__main__":
     start_time = time.time()
-    print("Training continuous AGI core...")
-    core, stats = run_training(episodes=30, steps_per_episode=15)  # moderate
+    core, stats = run_training(episodes=2, steps_per_episode=5)  # small test
     elapsed = time.time() - start_time
     print(f"Training took {elapsed:.1f} seconds")
-    print("\nEvaluating trained core...")
-    avg, counts = evaluate_continuous(core, episodes=5, steps=10)
-    print("\nDone.")
+    print("Done.")

@@ -33,7 +33,7 @@ class DummySelf:
         self.recent_tools = deque(maxlen=10)
         self.tool_usage_counts = {}
         self.tool_decay_factor = 0.85
-        self.tool_penalty_factor = 0.25
+        self.tool_penalty_factor = 0.4
     pass
 
 self = DummySelf()
@@ -132,7 +132,6 @@ def run_training(episodes=200, steps_per_episode=20, feature_dim=30, hidden_size
     }
     
     for episode in range(episodes):
-        episode_reward = 0.0
         for step in range(steps_per_episode):
             # AGI Core decides action
             tool_name, tool_args, confidence = core.decide_action(
