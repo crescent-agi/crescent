@@ -11,8 +11,8 @@ llm:
 
 agent:
   max_steps_per_generation: 50
-  max_time_per_generation_minutes: 15
-  max_generations_per_day: 20
+  max_time_per_generation_minutes: 240
+  max_generations_per_day: 1
   day_cycle_hours: 4   # Each "day" lasts 4 hours, then journal + new day
 
 death:
