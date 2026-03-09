@@ -41,6 +41,7 @@ class Publisher:
         self._generate_journal_page()
         self._generate_lineage_json()
         self._copy_css()
+        self._write_nojekyll()
 
         # Git commit and push
         if self.repo_url:
@@ -535,6 +536,10 @@ footer a {
     table { font-size: 0.85rem; }
 }"""
         (self.docs_dir / "style.css").write_text(css, encoding="utf-8")
+
+    def _write_nojekyll(self):
+        """Tell GitHub Pages to serve the docs directory as plain static files."""
+        (self.docs_dir / ".nojekyll").write_text("", encoding="utf-8")
 
     def _load_lineage(self) -> list:
         """Load lineage data from lineage.jsonl."""
