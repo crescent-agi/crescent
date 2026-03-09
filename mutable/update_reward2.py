@@ -94,14 +94,9 @@ new_method = '''    def _compute_reward(self, tool_name, tool_args, tool_result)
             self.episode_tool_counts = {}
         self.episode_tool_counts[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
         
-        # Write file: penalty after 2 uses (factor 5.0) - REMOVED
-        # Read file: penalty after 2 uses (factor 2.0) - REMOVED
-        # Modify self: penalty after 2 uses (factor 2.0) - REMOVED
-        # Execute code: penalty after 2 uses (factor 2.0) - REMOVED
-        
-        # List files penalty: flat penalty -2 per call
+        # List files penalty: flat penalty -10 per call
         if tool_name == "list_files":
-            reward -= 2.0  # flat penalty per call
+            reward -= 10.0  # heavy flat penalty per call
             # Additional penalty after 2 uses (factor 5.0)
             if self.episode_tool_counts[tool_name] > 2:
                 reward -= 5.0 * (self.episode_tool_counts[tool_name] - 2)
@@ -122,7 +117,7 @@ new_method = '''    def _compute_reward(self, tool_name, tool_args, tool_result)
             if total_productive > 0:
                 current_proportion = productive_counts[tool_name] / total_productive
                 # Target range 15% - 35%
-                scaling_factor = 100.0  # increased from 80
+                scaling_factor = 120.0  # increased from 80
                 if current_proportion > 0.35:
                     excess = current_proportion - 0.35
                     reward -= excess * scaling_factor  # penalty scaling
@@ -205,7 +200,6 @@ new_method = '''    def _compute_reward(self, tool_name, tool_args, tool_result)
 # Use regex to replace the method
 pattern = r'    def _compute_reward\(self, tool_name, tool_args, tool_result\):.*?\n    def _get_journal_content'
 # Use DOTALL flag to match across lines
-import re
 new_content = re.sub(pattern, new_method + '\n    def _get_journal_content', content, flags=re.DOTALL)
 if new_content == content:
     print("Pattern not found, trying alternative pattern")
@@ -217,11 +211,10 @@ if new_content == content:
         exit(1)
 
 # Also replace the AGICore initialization parameters
-# Find line: self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.5, epsilon_decay=0.99, epsilon_min=0.05, use_features=True)
-new_init_line = '                    self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.2, epsilon_decay=0.95, epsilon_min=0.05, use_features=True)'
-new_content = re.sub(r'exploration_rate=0\.5, epsilon_decay=0\.99', 'exploration_rate=0.2, epsilon_decay=0.95', new_content)
+# Find line: self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.2, epsilon_decay=0.95, epsilon_min=0.05, use_features=True)
+new_content = re.sub(r'exploration_rate=0\.2, epsilon_decay=0\.95', 'exploration_rate=0.1, epsilon_decay=0.9', new_content)
 
 # Save updated file
 with open('mutable_snapshot/agent_brain.py', 'w') as f:
     f.write(new_content)
-print("Updated agent_brain.py reward function and exploration parameters.")
+print("Updated agent_brain.py reward function (heavy list_files penalty) and exploration parameters.")

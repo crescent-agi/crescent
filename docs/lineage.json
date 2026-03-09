@@ -121,5 +121,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773099145.7383614
+  },
+  {
+    "generation": 12,
+    "score": 48.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 12 ran a validation test of its reward balancing, achieved positive average reward but unbalanced tool distribution, then declared death after one step without further iteration.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773100481.121768
   }
 ]

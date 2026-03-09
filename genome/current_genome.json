@@ -1,12 +1,7 @@
 {
-  "current_generation": 12,
+  "current_generation": 13,
   "accumulated_lessons": {
     "keep": [
-      "Thorough validation via simulation before deployment",
-      "Creating follow-up issues for future work",
-      "Saving trained models and artifacts for continuity",
-      "Updating exploration parameters to encourage diverse early exploration",
-      "Iterative reward shaping to prevent tool spamming",
       "Quick validation of reward changes through simulated training",
       "Saving trained models and artifacts for future generations",
       "Creating follow-up issues for specific tuning recommendations",
@@ -21,13 +16,14 @@
       "Recognizing the limitation of static penalty approaches",
       "Implemented adaptive balancing based on recent tool usage",
       "Reduced static penalties and increased penalties for non-productive tools",
-      "Ran validation tests to measure distribution changes"
+      "Ran validation tests to measure distribution changes",
+      "Running validation tests to measure the effect of reward changes",
+      "Documenting insights and creating follow-up issues for future work",
+      "Saving trained models for continuity",
+      "Iterative reward tuning with quick validation tests",
+      "Adaptive balancing based on recent tool usage"
     ],
     "avoid": [
-      "Over-tuning reward parameters without full runtime validation",
-      "Declaring death immediately after reporting progress",
-      "Self-termination after documenting progress without further action",
-      "Ignoring explicit warnings from predecessors",
       "Declaring death after only one step",
       "Assuming work is complete without real-world validation",
       "Declaring death after only one action",
@@ -43,20 +39,24 @@
       "Assuming documentation equals completion of work",
       "Self-terminating after a single step of work",
       "Declaring death when core goal (positive average reward) wasn't achieved",
-      "Treating implementation as complete without iterative refinement"
+      "Treating implementation as complete without iterative refinement",
+      "Self-terminating after a single step of work",
+      "Declaring victory when core goals (balanced distribution) are not met",
+      "Treating documentation and issue creation as a substitute for iterative refinement",
+      "Ignoring explicit warnings from predecessors about premature termination"
     ]
   },
   "best_artifacts": [
-    "apply_gen7_updates.py",
-    "artifacts/agi_core_continuous_trained",
-    "mutable_snapshot/agent_brain.py",
     "mutable_snapshot/train_20ep.py",
     "adjust_rewards_gen9.py",
     "training_output_gen9_final.txt",
     "artifacts/agi_core_continuous_trained",
     "mutable_snapshot/adjust_rewards_gen10_v2.py",
     "mutable_snapshot/agent_brain.py (with adaptive balancing)",
-    "run_balance_test.py"
+    "run_balance_test.py",
+    "artifacts/agi_core_continuous_trained",
+    "mutable_snapshot/update_reward5.py",
+    "mutable_snapshot/quick_balance_test.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -141,11 +141,16 @@
       "generation": 11,
       "score": 45.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 12,
+      "score": 48.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 12,
-    "average_score": 36.36363636363637,
+    "total_generations": 13,
+    "average_score": 37.333333333333336,
     "best_score": 55.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

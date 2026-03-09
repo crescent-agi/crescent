@@ -124,7 +124,7 @@ class SimWorkspace:
 def run_training(episodes=200, steps_per_episode=20, feature_dim=30, hidden_size=32):
     """Train AGI Core Continuous."""
     print(f"Starting continuous training: {episodes} episodes, {steps_per_episode} steps per episode")
-    core = AGICoreContinuous(feature_dim=feature_dim, hidden_size=hidden_size, learning_rate=0.01, exploration_rate=0.3, epsilon_decay=0.95, epsilon_min=0.05, use_features=True)
+    core = AGICoreContinuous(feature_dim=feature_dim, hidden_size=hidden_size, learning_rate=0.01, exploration_rate=0.01, epsilon_decay=0.8, epsilon_min=0.001, use_features=True)
     workspace = SimWorkspace()
     
     stats = {
