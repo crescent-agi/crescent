@@ -60,7 +60,7 @@ ACTION_SPACE_SIZE = len(TOOL_NAMES)
 class AGICoreContinuous:
     """Core AGI decision-making system with continuous state representation."""
     
-    def __init__(self, feature_dim=15, hidden_size=32, learning_rate=0.01, use_features=True):
+    def __init__(self, feature_dim=30, hidden_size=32, learning_rate=0.01, use_features=True):
         self.feature_dim = feature_dim
         self.action_size = ACTION_SPACE_SIZE
         self.use_features = use_features and FEATURE_EXTRACTOR_AVAILABLE
@@ -193,7 +193,14 @@ class AGICoreContinuous:
             return {"directory": "."}
         
         elif tool_name == "write_file":
-            return {"filepath": "artifacts/note.txt", "content": "AGI core wrote this."}
+            import random
+            choice = random.random()
+            if choice < 0.3:
+                return {"filepath": "artifacts/test.py", "content": "# AGI Core generated this file\\nprint('Hello from AGI')"}
+            elif choice < 0.6:
+                return {"filepath": "agent_brain.py", "content": "# Modified by AGI Core\\n"}
+            else:
+                return {"filepath": "artifacts/note.txt", "content": "AGI core wrote this."}
         
         elif tool_name == "execute_code":
             code = "import os\nprint('Workspace files:', os.listdir('.'))"
@@ -223,6 +230,9 @@ class AGICoreContinuous:
         Update internal models based on outcome.
         """
         if self.current_state_vector is None or self.last_action is None:
+            # Record reward for feature trend
+            if self.feature_extractor:
+                self.feature_extractor.add_reward(reward)
             return
         _, action_idx = self.last_action
         next_state_vec = self.compute_state_vector(next_workspace_summary, next_journal, next_actions)

@@ -120,13 +120,17 @@ class NeuralNetwork:
 class NeuralQLearningAgentContinuous:
     """Q-learning agent using neural network function approximation with continuous state vector."""
     
-    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.1):
+    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.1, epsilon_decay=0.995, epsilon_min=0.01):
         self.feature_dim = feature_dim
         self.action_size = action_size
         self.hidden_size = hidden_size
         self.lr = learning_rate
         self.gamma = discount_factor
         self.epsilon = exploration_rate
+        self.epsilon_start = exploration_rate
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
+        self.episode_count = 0
         
         # Neural network expects feature vector input
         self.nn = NeuralNetwork(feature_dim, hidden_size, action_size, learning_rate)
@@ -168,6 +172,15 @@ class NeuralQLearningAgentContinuous:
         
         self.history.append((state_vector, action, reward, next_state_vector, done))
     
+    def decay_epsilon(self):
+        """Decay exploration rate after each episode."""
+        self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)
+        self.episode_count += 1
+    
+    def set_epsilon(self, epsilon):
+        """Manually set epsilon (e.g., for testing)."""
+        self.epsilon = max(self.epsilon_min, min(epsilon, self.epsilon_start))
+    
     def _process_state(self, state):
         """
         Convert state to feature vector.
@@ -200,6 +213,10 @@ class NeuralQLearningAgentContinuous:
             'lr': self.lr,
             'gamma': self.gamma,
             'epsilon': self.epsilon,
+            'epsilon_start': self.epsilon_start,
+            'epsilon_min': self.epsilon_min,
+            'epsilon_decay': self.epsilon_decay,
+            'episode_count': self.episode_count,
             'history': self.history
         }
         with open(filepath, 'wb') as f:
@@ -218,6 +235,10 @@ class NeuralQLearningAgentContinuous:
         self.lr = data['lr']
         self.gamma = data['gamma']
         self.epsilon = data['epsilon']
+        self.epsilon_start = data.get('epsilon_start', self.epsilon)
+        self.epsilon_min = data.get('epsilon_min', 0.01)
+        self.epsilon_decay = data.get('epsilon_decay', 0.995)
+        self.episode_count = data.get('episode_count', 0)
         self.history = data['history']
         nn_path = filepath + '.nn'
         self.nn.load(nn_path)
@@ -237,6 +258,7 @@ def test():
         reward = 1 if action == 2 and state[0] > 0.5 else 0
         next_state = [random.random() for _ in range(feature_dim)]
         agent.learn(state, action, reward, next_state, done=False)
+        agent.decay_epsilon()
     
     # After training, see what action it chooses for a state with high first feature
     test_state = [0.9] + [0.1] * (feature_dim - 1)
