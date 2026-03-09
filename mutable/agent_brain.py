@@ -12,6 +12,8 @@ import time
 from pathlib import Path
 from typing import Optional
 
+from core.llm_client import LLMAuthenticationError
+
 
 class AgentBrain:
     """
@@ -150,6 +152,8 @@ begin your life. what will you do first?"""
                     self.TOOLS_SCHEMA,
                     system_instruction=system_prompt,
                 )
+            except LLMAuthenticationError:
+                raise
             except Exception as e:
                 self.death_monitor.record_crash(f"LLM call failed: {str(e)}")
                 result["death_cause"] = f"crash: LLM call failed: {str(e)}"
