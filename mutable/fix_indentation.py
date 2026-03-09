@@ -1,31 +1,28 @@
 #!/usr/bin/env python3
-import sys
-
-with open('train_continuous.py', 'r') as f:
+with open('agent_brain.py', 'r') as f:
     lines = f.readlines()
 
-new_lines = []
-i = 0
-while i < len(lines):
-    line = lines[i]
-    if 'self.recent_tools.clear()' in line and 'Reset per-episode usage tracking' in lines[i-1]:
-        # Remove these three lines
-        i += 3  # skip them
-        continue
-    new_lines.append(line)
-    i += 1
+# line numbers are 0-indexed
+# line 398 (index 397) is issue_tools line
+# line 399 (index 398) is if line
+if lines[397].strip().startswith('issue_tools = ['):
+    # Ensure line 398 has 8 spaces
+    lines[397] = '        issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]\n'
+    # line 399 should have 8 spaces as well
+    lines[398] = '        if same_count == 0 and tool_name in productive_tools:\n'
 
-# Now insert properly indented lines after 'for episode in range(episodes):'
-for j, line in enumerate(new_lines):
-    if 'for episode in range(episodes):' in line:
-        indent = len(line) - len(line.lstrip())
-        # Insert after this line
-        new_lines.insert(j+1, ' ' * indent + '        # Reset per-episode usage tracking\\n')
-        new_lines.insert(j+2, ' ' * indent + '        self.recent_tools.clear()\\n')
-        new_lines.insert(j+3, ' ' * indent + '        self.tool_usage_counts.clear()\\n')
+# line 406 (index 405) is comment line, line 407 (index 406) is if line
+# Actually line 405 is "if tool_name not in self.episode_tools:"
+# line 406 is comment "Skip episode novelty for issue tools and write_note"
+# line 407 is if line.
+# Let's find line with "if tool_name in productive_tools:"
+for i, line in enumerate(lines):
+    if line.strip() == 'if tool_name in productive_tools:' and i > 400:
+        # Adjust indentation to 12 spaces (since inside block)
+        lines[i] = '            if tool_name in productive_tools:\n'
         break
 
-with open('train_continuous.py', 'w') as f:
-    f.writelines(new_lines)
+with open('agent_brain.py', 'w') as f:
+    f.writelines(lines)
 
-print('Fixed indentation.')
+print('Indentation fixed')

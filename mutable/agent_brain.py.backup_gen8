@@ -146,7 +146,7 @@ class AgentBrain:
         if AGI_CORE_AVAILABLE:
             try:
                 if AGICORE_CLASS.__name__ == 'AGICoreContinuous':
-                    self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.5, epsilon_decay=0.99, epsilon_min=0.05, use_features=True)
+                    self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.5, epsilon_decay=0.995, epsilon_min=0.1, use_features=True)
                     self.agi_core_type = 'continuous'
                 else:
                     self.agi_core = AGICORE_CLASS(state_size=100, hidden_size=32, learning_rate=0.01, use_features=True)
@@ -373,14 +373,10 @@ begin your life. what will you do first?"""
         if tool_name in issue_tools:
             return -50.0  # heavy penalty, no other rewards
         
-        # Write note penalty (strongly discourage)
-        if tool_name == "write_note":
-            return -20.0  # heavy penalty, no other rewards
-
         reward = 0.0
         # Success reward (increased slightly)
         if isinstance(tool_result, dict) and not tool_result.get("error"):
-            reward += 6.0  # increased from 3.0 (issue #24)
+            reward += 3.0
         
         # Recency penalty: discourage using same tool consecutively (reduced)
         if hasattr(self, 'last_tool') and tool_name == self.last_tool:
@@ -400,7 +396,7 @@ begin your life. what will you do first?"""
         # Diversity bonus: reward for using a tool not used in recent 10 steps (increased)
         # Skip diversity bonus for issue tools and write_note
         issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
-        if same_count == 0 and tool_name in productive_tools:
+        if same_count == 0 and tool_name not in issue_tools and tool_name != "write_note":
             reward += 4.0  # increased from 3.0
         
         # Episode novelty bonus: reward for first use of a tool in this episode
@@ -408,7 +404,7 @@ begin your life. what will you do first?"""
             self.episode_tools = set()
         if tool_name not in self.episode_tools:
             # Skip episode novelty for issue tools and write_note
-            if tool_name in productive_tools:
+            if tool_name not in issue_tools and tool_name != "write_note":
                 reward += 4.0  # increased from 3.0
             self.episode_tools.add(tool_name)
         # Per-tool usage decay penalty (moderate)
@@ -421,17 +417,17 @@ begin your life. what will you do first?"""
         productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
         # Special penalty factors for balanced usage
         if tool_name == "write_file":
-            self.tool_penalty_factor = 0.6  # increased from 0.5 (issue #24)
+            self.tool_penalty_factor = 0.5  # increased penalty for write_file
         elif tool_name == "read_file":
-            self.tool_penalty_factor = 0.4  # increased from 0.3 (issue #24)
+            self.tool_penalty_factor = 0.3  # moderate penalty for read_file
         elif tool_name == "modify_self":
-            self.tool_penalty_factor = 0.3  # reduced from 0.5 (issue #24)
+            self.tool_penalty_factor = 0.5  # increased from 0.4 (issue #23)
         elif tool_name == "execute_code":
-            self.tool_penalty_factor = 0.2  # reduced from 0.3 (issue #24)
+            self.tool_penalty_factor = 0.3  # increased from 0.1 (issue #23)
         elif tool_name in productive_tools:
             self.tool_penalty_factor = 0.1  # fallback
         else:
-            self.tool_penalty_factor = 1.0  # increased from 0.6 (issue #24)
+            self.tool_penalty_factor = 0.6
         
         # Decay all counts
         for tool in self.tool_usage_counts:
@@ -448,10 +444,10 @@ begin your life. what will you do first?"""
         self.episode_tool_counts[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
         
         # Write file: penalty after 10 uses (factor 1.0)
-        if tool_name == "write_file" and self.episode_tool_counts[tool_name] > 5:
+        if tool_name == "write_file" and self.episode_tool_counts[tool_name] > 10:
             reward -= 1.0 * (self.episode_tool_counts[tool_name] - 10)
         # Read file: penalty after 10 uses (factor 1.0)
-        if tool_name == "read_file" and self.episode_tool_counts[tool_name] > 5:
+        if tool_name == "read_file" and self.episode_tool_counts[tool_name] > 10:
             reward -= 1.0 * (self.episode_tool_counts[tool_name] - 10)
         # Modify self: penalty after 10 uses (factor 1.0)
         if tool_name == "modify_self" and self.episode_tool_counts[tool_name] > 10:
@@ -460,16 +456,13 @@ begin your life. what will you do first?"""
         if tool_name == "execute_code" and self.episode_tool_counts[tool_name] > 5:
             reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
         
-        # List files penalty after 5 uses (issue #24)
-        if tool_name == "list_files" and self.episode_tool_counts[tool_name] > 5:
-            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
         # Penalty for write_note (discourage overuse)
         if tool_name == "write_note":
-            reward -= 5.0  # increased from 3.0 (issue #24)
+            reward -= 3.0
         
         # Productive tool extra reward
         if tool_name in productive_tools:
-            reward += 4.0  # increased from 3.0 (issue #24)
+            reward += 2.0
         
         # Write file rewards - increased base reward
         if tool_name == "write_file" and "filepath" in tool_args:
@@ -490,7 +483,7 @@ begin your life. what will you do first?"""
                 reward += 5.0  # base reward reduced from 8.0 (issue #23)
                 # extra if execution succeeded without stderr errors (reduced)
                 if tool_result.get("stderr", "").strip() == "":
-                    reward += 3.0  # increased from 2.0 (issue #24)
+                    reward += 2.0  # reduced from 5.0 (issue #23)
                 # extra if output contains meaningful results (e.g., not empty)
                 stdout = tool_result.get("stdout", "").strip()
                 if len(stdout) > 10:
@@ -516,17 +509,17 @@ begin your life. what will you do first?"""
         if tool_name == "read_file":
             filepath = tool_args.get("filepath", "")
             # Small bonus for any successful read
-            reward += 0.5  # reduced from 1.0 (issue #24)
+            reward += 1.0  # added per issue #23
             important_files = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py", 
                              "world_model.py", "neural_q.py", "self_reflection.py", 
                              "mcts_planner.py", "agent_brain.py", "strategy.md", 
                              "train_agi_core.py", "run_training.py"]
             if any(imp in filepath for imp in important_files):
-                reward += 8.0  # reduced from 10.0 (issue #24)
+                reward += 10.0  # increased from 6.0 (issue #23)
         
         # Modify self reward - adjusted base reward
         if tool_name == "modify_self":
-            reward += 6.0  # increased from 5.0 (issue #24)
+            reward += 5.0  # base reward reduced from 12.0 (issue #23)
             filepath = tool_args.get("filepath", "")
             if 'agent_brain' in filepath or 'agi_core' in filepath:
                 reward += 10.0  # extra reward for self-modification (unchanged)

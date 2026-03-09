@@ -380,7 +380,7 @@ begin your life. what will you do first?"""
         reward = 0.0
         # Success reward (increased slightly)
         if isinstance(tool_result, dict) and not tool_result.get("error"):
-            reward += 6.0  # increased from 3.0 (issue #24)
+            reward += 3.0
         
         # Recency penalty: discourage using same tool consecutively (reduced)
         if hasattr(self, 'last_tool') and tool_name == self.last_tool:
@@ -469,7 +469,7 @@ begin your life. what will you do first?"""
         
         # Productive tool extra reward
         if tool_name in productive_tools:
-            reward += 4.0  # increased from 3.0 (issue #24)
+            reward += 3.0  # increased from 2.0 (issue #24)
         
         # Write file rewards - increased base reward
         if tool_name == "write_file" and "filepath" in tool_args:

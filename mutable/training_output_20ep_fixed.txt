@@ -1,0 +1,28 @@
+=== Longer training (20 episodes) ===
+Starting continuous training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Episode 20: avg reward last 20=-61.76, deaths=0
+  Top actions: [('write_file', 44), ('read_file', 42), ('modify_self', 38), ('execute_code', 37), ('list_files', 21)]
+
+Training finished.
+Total reward: -1235.13
+Average reward per step: -6.176
+Declare death count: 0
+
+Top actions:
+  write_file: 44
+  read_file: 42
+  modify_self: 38
+  execute_code: 37
+  list_files: 21
+  write_note: 6
+  list_issues: 3
+  read_issue: 3
+  comment_issue: 2
+  create_issue: 2
+Saved model to artifacts/agi_core_continuous_trained/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+Training took 0.3 seconds
+Done.

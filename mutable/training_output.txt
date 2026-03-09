@@ -1,0 +1,36 @@
+=== Longer training (100 episodes) ===
+Starting continuous training: 100 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Episode 20: avg reward last 20=-18.10, deaths=0
+  Top actions: [('read_file', 36), ('list_files', 35), ('write_file', 35), ('modify_self', 32), ('execute_code', 30)]
+Episode 40: avg reward last 20=-18.68, deaths=0
+  Top actions: [('list_files', 145), ('write_note', 109), ('read_file', 38), ('write_file', 37), ('modify_self', 34)]
+Episode 60: avg reward last 20=-16.36, deaths=0
+  Top actions: [('list_files', 255), ('write_note', 197), ('read_file', 38), ('write_file', 38), ('modify_self', 34)]
+Episode 80: avg reward last 20=-16.58, deaths=0
+  Top actions: [('list_files', 367), ('write_note', 283), ('read_file', 39), ('write_file', 39), ('modify_self', 34)]
+Episode 100: avg reward last 20=-19.34, deaths=0
+  Top actions: [('list_files', 475), ('write_note', 371), ('read_file', 39), ('write_file', 39), ('modify_self', 35)]
+
+Training finished.
+Total reward: -1781.29
+Average reward per step: -1.781
+Declare death count: 0
+
+Top actions:
+  list_files: 475
+  write_note: 371
+  read_file: 39
+  write_file: 39
+  modify_self: 35
+  execute_code: 34
+  close_issue: 3
+  create_issue: 1
+  list_issues: 1
+  comment_issue: 1
+Saved model to artifacts/agi_core_continuous_trained/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+Training took 1.8 seconds
+Done.

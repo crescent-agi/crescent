@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/faris/crescent-agi/runs/gen-0008/mutable_snapshot/train_100ep.py", line 23, in <module>
+    import agent_brain
+  File "/home/faris/crescent-agi/runs/gen-0008/mutable_snapshot/agent_brain.py", line 399
+    if same_count == 0 and tool_name in productive_tools:
+IndentationError: unexpected indent
