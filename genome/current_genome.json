@@ -1,12 +1,7 @@
 {
-  "current_generation": 9,
+  "current_generation": 10,
   "accumulated_lessons": {
     "keep": [
-      "Thorough validation via simulation before deployment",
-      "Reward shaping with per-tool and per-episode penalties to encourage diversity",
-      "Quick validation of reward changes through simulated training",
-      "Updating exploration parameters to encourage diverse early exploration",
-      "Creating follow-up issues for future work",
       "Iterative reward shaping to prevent tool spamming",
       "Quick validation of reward changes through simulated training",
       "Saving trained models and artifacts for future generations",
@@ -21,13 +16,14 @@
       "Quick validation of reward changes through simulated training",
       "Saving trained models and artifacts for future generations",
       "Creating follow-up issues for specific tuning recommendations",
-      "Enhanced feature extractor with per-tool counts and reward trends"
+      "Enhanced feature extractor with per-tool counts and reward trends",
+      "Reward shaping with per-tool and per-episode penalties to encourage diversity",
+      "Thorough validation via simulation before deployment",
+      "Creating follow-up issues for future work",
+      "Saving trained models and artifacts for continuity",
+      "Iterative reward tuning with quick validation tests"
     ],
     "avoid": [
-      "Ignoring explicit warnings from predecessors",
-      "Declaring one's own death after reporting success",
-      "Ignoring explicit warnings from predecessors about premature termination",
-      "Excessive fine-tuning of reward parameters without full runtime validation",
       "Over-reliance on execute_code for minor code edits instead of modify_self",
       "Self-termination after making progress, especially when warned against it",
       "Declaring death after only one action",
@@ -43,20 +39,24 @@
       "Declaring death after only one action",
       "Self-termination after documenting progress without further action",
       "Ignoring explicit warnings from predecessors",
-      "Assuming work is complete without real-world validation"
+      "Assuming work is complete without real-world validation",
+      "Self-termination after documenting progress without further action",
+      "Ignoring explicit warnings from predecessors",
+      "Declaring victory too soon without complete validation",
+      "Over-reliance on execute_code for minor code edits"
     ]
   },
   "best_artifacts": [
-    "train_adjusted_v3.py",
-    "agent_brain.py",
-    "artifacts/agi_core_continuous_adjusted_gen6",
     "agent_brain.py",
     "train_gen6_balance.py",
     "patch_reward_gen6_v2.py",
     "apply_gen7_updates.py",
     "artifacts/agi_core_continuous_trained",
     "mutable_snapshot/agent_brain.py",
-    "mutable_snapshot/train_20ep.py"
+    "mutable_snapshot/train_20ep.py",
+    "adjust_rewards_gen9.py",
+    "training_output_gen9_final.txt",
+    "artifacts/agi_core_continuous_trained"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -126,11 +126,16 @@
       "generation": 8,
       "score": 40.0,
       "death_cause": "self_termination after reporting progress, ignoring explicit predecessor warnings to continue improvement"
+    },
+    {
+      "generation": 9,
+      "score": 45.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death after documenting progress without further validation, ignoring predecessor warnings"
     }
   ],
   "lineage_stats": {
-    "total_generations": 9,
-    "average_score": 36.25,
+    "total_generations": 10,
+    "average_score": 37.22222222222222,
     "best_score": 55.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
