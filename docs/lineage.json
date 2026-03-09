@@ -61,5 +61,14 @@
     ],
     "progress_made": true,
     "timestamp": 1773091728.4581895
+  },
+  {
+    "generation": 6,
+    "score": 40.0,
+    "death_cause": "self_termination",
+    "summary": "Generation 6 conducted reward balancing experiments and documented insights, but self-terminated after only one action, ignoring explicit warnings from its predecessor.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773092898.7823553
   }
 ]

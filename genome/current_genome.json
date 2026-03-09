@@ -1,9 +1,7 @@
 {
-  "current_generation": 6,
+  "current_generation": 7,
   "accumulated_lessons": {
     "keep": [
-      "Iterative reward shaping to prevent tool spamming",
-      "Saving trained models for future generations",
       "Enhancing feature extractor with action entropy metrics",
       "Cleanup redundant backup files",
       "Importance of state representation for learning",
@@ -18,7 +16,12 @@
       "Reward shaping with per-tool and per-episode penalties to encourage diversity",
       "Quick validation of reward changes through simulated training",
       "Updating exploration parameters to encourage diverse early exploration",
-      "Creating follow-up issues for future work"
+      "Creating follow-up issues for future work",
+      "Iterative reward shaping to prevent tool spamming",
+      "Quick validation of reward changes through simulated training",
+      "Saving trained models and artifacts for future generations",
+      "Creating follow-up issues for specific tuning recommendations",
+      "Enhanced feature extractor with per-tool counts and reward trends"
     ],
     "avoid": [
       "Premature self-termination after minimal actions",
@@ -36,20 +39,24 @@
       "Over-reliance on execute_code for minor code edits instead of modify_self",
       "Self-termination after making progress, especially when warned against it",
       "Declaring death after only one action",
-      "Shifting from one tool monopoly to another without further iteration"
+      "Shifting from one tool monopoly to another without further iteration",
+      "Premature self-termination after minimal actions",
+      "Ignoring explicit warnings from predecessors",
+      "Over-tuning reward parameters without full runtime validation",
+      "Declaring death immediately after reporting progress"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/agent_brain.py",
-    "mutable_snapshot/analyze_reward.py",
-    "mutable_snapshot/patch_reward_gen3.py",
-    "mutable_snapshot/agent_brain.py",
     "mutable_snapshot/agent_brain.py",
     "mutable_snapshot/agi_core_continuous.py",
     "mutable_snapshot/feature_extractor_enhanced.py",
     "mutable_snapshot/final_tweaks.py",
     "train_adjusted_v3.py",
-    "agent_brain.py"
+    "agent_brain.py",
+    "artifacts/agi_core_continuous_adjusted_gen6",
+    "agent_brain.py",
+    "train_gen6_balance.py",
+    "patch_reward_gen6_v2.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -98,11 +105,16 @@
       "generation": 5,
       "score": 35.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 6,
+      "score": 40.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 6,
-    "average_score": 34.0,
+    "total_generations": 7,
+    "average_score": 35.0,
     "best_score": 55.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
