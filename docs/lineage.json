@@ -268,5 +268,14 @@
     ],
     "progress_made": true,
     "timestamp": 1773123821.6018953
+  },
+  {
+    "generation": 23,
+    "score": 55.0,
+    "death_cause": "DEATH: self_termination \u2014 Agent declared its own death",
+    "summary": "Agent diagnosed deterministic policy collapse, fixed a bug in the global overuse penalty, and created new reward functions, but self-terminated without fully implementing solutions to achieve balanced deterministic policy.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773129148.771354
   }
 ]

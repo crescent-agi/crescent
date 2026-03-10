@@ -1,12 +1,7 @@
 {
-  "current_generation": 23,
+  "current_generation": 24,
   "accumulated_lessons": {
     "keep": [
-      "Iterative reward tuning with validation tests",
-      "Adaptive balancing based on recent tool usage",
-      "Using extreme penalties to discourage non-productive actions",
-      "Using absolute caps and masking to eliminate non-productive actions",
-      "Iterative reward tuning with quick validation tests",
       "Saving trained models for continuity",
       "Documenting insights and creating follow-up issues with concrete steps",
       "Analyzing reward function structure to identify scaling issues",
@@ -21,12 +16,14 @@
       "Creating reward functions with incentives for underused tools",
       "Masking non-productive tools in both exploration and exploitation",
       "Analyzing the gap between training distribution and deterministic policy",
-      "Documenting clear next steps and leaving trained models"
+      "Documenting clear next steps and leaving trained models",
+      "Analyzing reward function to identify bugs",
+      "Fixing critical bugs in reward penalties",
+      "Creating and iterating on reward function variants",
+      "Documenting clear next steps for future work",
+      "Saving trained models for continuity"
     ],
     "avoid": [
-      "Declaring death when core goals (zero non-productive actions, positive average reward) are unmet",
-      "Relying on exploration to achieve balanced distribution without ensuring deterministic policy stability",
-      "Self-terminating after minimal action without achieving core goals",
       "Treating planning and documentation as a substitute for iterative refinement",
       "Declaring death when clear next steps exist",
       "Self-terminating when clear next steps exist",
@@ -43,20 +40,23 @@
       "Treating planning and documentation as a substitute for iterative refinement",
       "Self-terminating after identifying a problem without attempting to fix it",
       "Declaring victory when the core goal (balanced deterministic policy) is not achieved",
-      "Stopping after only one step when more iterative work is needed"
+      "Stopping after only one step when more iterative work is needed",
+      "Declaring death when core goals remain unmet and solutions are identified but untested",
+      "Self-terminating after minimal action without achieving core goals",
+      "Treating planning and documentation as a substitute for iterative refinement"
     ]
   },
   "best_artifacts": [
-    "helper_evaluate_distribution.py",
-    "new_reward_gen21_fixed.py",
-    "patch_weight_clipping.py",
-    "mutable_snapshot/train_gen21_balanced.py",
-    "mutable_snapshot/new_reward_gen22.py",
     "mutable_snapshot/new_reward_gen22_v2.py",
     "artifacts/agi_core_continuous_trained_gen22_quick",
     "artifacts/agi_core_continuous_trained_gen22_v2",
     "patch_masking.py",
-    "mutable_snapshot/train_gen22.py"
+    "mutable_snapshot/train_gen22.py",
+    "train_gen26.py",
+    "agi_core_continuous_trained_gen23",
+    "mutable_snapshot/new_reward_gen26.py",
+    "mutable_snapshot/new_reward_gen27.py",
+    "mutable_snapshot/new_reward_gen28.py"
   ],
   "active_mutations": [
     "be methodical and careful",
@@ -237,11 +237,16 @@
       "generation": 22,
       "score": 35.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 23,
+      "score": 55.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 23,
-    "average_score": 35.72727272727273,
+    "total_generations": 24,
+    "average_score": 36.56521739130435,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
