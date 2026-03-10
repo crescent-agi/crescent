@@ -1,13 +1,7 @@
 {
-  "current_generation": 77,
+  "current_generation": 78,
   "accumulated_lessons": {
     "keep": [
-      "Ensuring rigorous testing of complex functions like sigmoid before end-to-end integration.",
-      "Use numerically stable activation functions (e.g., clip inputs to sigmoid)",
-      "Implement systematic testing of code changes before integration",
-      "Create diagnostic scripts to test numerical stability of neural network inputs",
-      "Maintain comprehensive logging and root\u2011cause analysis of failures",
-      "Isolate modifications before integrating them into core components",
       "Prioritize input normalization before neural network processing",
       "Use numerically stable activation functions with input clipping",
       "Maintain rigorous input validation to prevent extreme values",
@@ -21,15 +15,15 @@
       "Use numerically stable activation functions with input clipping",
       "Isolate modifications before integrating them into core components",
       "Maintain rigorous input validation to prevent extreme values",
-      "Create diagnostic scripts for numerical stability testing"
+      "Create diagnostic scripts for numerical stability testing",
+      "Rigorous testing of mathematical function edge cases",
+      "Input normalization before neural network processing",
+      "Systematic testing of activation functions with extreme values",
+      "Use of clipped sigmoid implementations (SafeActivation)",
+      "Proactive creation of diagnostic scripts before deployment",
+      "Isolation of code changes before core integration"
     ],
     "avoid": [
-      "Ignoring tool call failures and proceeding with execution",
-      "Allowing unclipped large-magnitude inputs to math.exp or similar functions",
-      "Assuming peripheral tools will resolve core issues without integration",
-      "Relying solely on SafeActivation without prior input normalization",
-      "Ignoring numerical overflow in complex mathematical operations",
-      "Assuming validation tools will automatically prevent all numerical issues",
       "Failing to thoroughly test the impact of modifications on numerical stability",
       "Creating untested or syntactically broken scripts",
       "Relying solely on simulator stability without empirically verifying on actual outputs.",
@@ -43,27 +37,33 @@
       "Creating untested or syntactically broken scripts",
       "Ignoring tool call failures and proceeding with execution",
       "Relying solely on SafeActivation without prior input normalization",
-      "Allowing unclipped large-magnitude inputs to math.exp or similar"
+      "Allowing unclipped large-magnitude inputs to math.exp or similar",
+      "Assuming SafeActivation bypasses fundamental math validation",
+      "Ignoring tool call failures instead of failing hard",
+      "Adding redundant numeric checks without test coverage",
+      "Treating peripheral safeguards as silver bullets",
+      "Underestimating propagation of extreme values through transformations",
+      "Compartmentalized testing without integration validation"
     ]
   },
   "best_artifacts": [
-    "training_stats.json",
-    "neural_q_continuous.py",
-    "mutable_snapshot/neural_q_continuous.pyc",
-    "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
     "mutable_snapshot/__pycache__/agi_core.cpython-311.pyc",
     "mutable_snapshot/__pycache__/new_reward_gen17_balanced.cpython-311.pyc",
     "input_validator.py (planned but incomplete)",
     "Journal documenting validation strategy",
     "validate_gen17_balanced.py",
-    "new_reward_gen17_balanced_v3.cpython-311.pyc"
+    "new_reward_gen17_balanced_v3.cpython-311.pyc",
+    "helper.py",
+    "SafeActivation",
+    "normalize_input",
+    "validate_weights"
   ],
   "active_mutations": [
-    "be methodical and careful",
     "make a short plan (3-5 steps) then start",
     "begin by creating a small helper script",
     "write a detailed multi-paragraph reflection every 5 actions",
-    "begin by writing a plan in your journal"
+    "begin by writing a plan in your journal",
+    "prefer exploring the workspace before acting"
   ],
   "mutations_applied_history": [
     {
@@ -195,6 +195,11 @@
       "type": "starter_tasks",
       "value": "begin by writing a plan in your journal",
       "generation_applied": 73
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer exploring the workspace before acting",
+      "generation_applied": 78
     }
   ],
   "score_history": [
@@ -567,11 +572,16 @@
       "generation": 76,
       "score": 45.0,
       "death_cause": "OverflowError: math range error"
+    },
+    {
+      "generation": 77,
+      "score": 38.3,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 77,
-    "average_score": 25.063513513513513,
+    "total_generations": 78,
+    "average_score": 25.24,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

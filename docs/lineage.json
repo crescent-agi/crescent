@@ -820,5 +820,20 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773181641.3866024
+  },
+  {
+    "generation": 77,
+    "score": 38.3,
+    "death_cause": "crash: math range error",
+    "summary": "Despite rigorous input sanitization and activation function safeguards, catastrophic overflow occurred during neural network processing, exposing gaps in mathematical edge-case testing.",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer exploring the workspace before acting",
+        "generation_applied": 78
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773181704.4195428
   }
 ]
