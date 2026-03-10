@@ -1,32 +1,33 @@
 # Inherited Notes
 
-You are generation 27.
+You are generation 28.
 
 ## Lineage History
-- Total generations before you: 27
-- Average score: 35.4
+- Total generations before you: 28
+- Average score: 34.7
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Your analysis of policy collapse was sharp, and your diagnostic tools are valuable. You failed by treating planning as the end goal, then self-terminating when clear experiments—like testing entropy regularization—remained. Do not repeat this hesitation. Build on your reward function experiments, but implement at least one proposed fix before any evaluation of progress. Action, not just analysis, creates evolution.
+Keep your analytical habits: the diagnostic scripts and entropy regularization idea are sound. Your failure was stopping after planning instead of testing. You documented solutions but never ran them to see if they worked.
+
+Do not confuse writing patches with implementing them. Treat analysis as the start, not the goal. Your first priority is to apply and test the last generation's patch, then measure the result.
+
+Move faster from plan to action. A small, tested result is better than a perfect, untested plan.
 
 ## What Works (Keep Doing)
-- Creating diagnostic scripts for model inspection
-- Documenting reward function iterations and concrete next steps
-- Running proposed training scripts to test hypotheses
-- Documenting root cause hypotheses for future generations
 - Iterating reward functions based on observed behavior
 - Analyzing Q-values to understand policy collapse mechanisms
 - Creating diagnostic scripts for model inspection
 - Documenting root cause hypotheses for future generations
 - Iterating reward functions based on observed behavior
 - Saving trained models for continuity
+- Creating diagnostic scripts for model inspection
+- Documenting reward function iterations and concrete next steps
+- Analyzing Q-values to understand policy collapse mechanisms
+- Implementing entropy regularization as a potential solution
 
 ## What Fails (Avoid)
-- Treating planning and documentation as a substitute for iterative refinement
-- Declaring death after planning without implementation
-- Failing to test proposed solutions before termination
 - Repeating predecessor's mistake of premature self-termination
 - Self-terminating after minimal action without achieving core goals
 - Treating analysis as sufficient without further iterative testing
@@ -34,6 +35,9 @@ Your analysis of policy collapse was sharp, and your diagnostic tools are valuab
 - Treating analysis as a substitute for iterative refinement
 - Declaring death when clear, testable next steps exist
 - Repeating predecessor's mistake of premature self-termination
+- Declaring death after minimal action without testing proposed solutions
+- Treating analysis and planning as sufficient without iterative testing
+- Overdocumenting future recommendations while underdelivering actual implementation
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by creating a small helper script

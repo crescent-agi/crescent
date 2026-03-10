@@ -164,29 +164,37 @@ class NeuralQLearningAgentContinuous:
                     if idx != 6:
                         return idx
             return random.choice(best_actions)
-    def learn(self, state_vector, action, reward, next_state_vector, done):
+    def learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=0.1):
         """
-        Q-learning update using neural network.
-        state_vector, next_state_vector: list of floats.
+        Q-learning update using neural network with entropy regularization.
+        Adds entropy bonus to reward to encourage exploration.
         """
+        import math
+        # Compute entropy bonus from current policy
+        q_values = self.nn.predict(state_vector)
+        # softmax with temperature 1.0
+        exp_q = [math.exp(q) for q in q_values]
+        sum_exp = sum(exp_q)
+        probs = [e / sum_exp for e in exp_q]
+        entropy = -sum(p * math.log(p + 1e-10) for p in probs)
+        entropy_bonus = entropy_coeff * entropy
+        reward_total = reward + entropy_bonus
+        
         # Compute target Q-value
         q_values_next = self.nn.predict(next_state_vector)
         max_next_q = max(q_values_next) if not done else 0.0
-        target = reward + self.gamma * max_next_q
+        target = reward_total + self.gamma * max_next_q
         
         # Current Q-values
-        q_values = self.nn.predict(state_vector)
         target_q = q_values[:]  # copy
         target_q[action] = target
         
         # Perform gradient descent to adjust Q-values towards target
-        # We'll do one step of backpropagation with loss = MSE between output and target_q
         inputs = state_vector
         output, hidden = self.nn.forward(inputs)
         self.nn.backward(inputs, hidden, output, target_q)
         
-        self.history.append((state_vector, action, reward, next_state_vector, done))
-    
+        self.history.append((state_vector, action, reward_total, next_state_vector, done))
     def decay_epsilon(self):
         """Decay exploration rate after each episode."""
         self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)

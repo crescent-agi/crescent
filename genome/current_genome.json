@@ -1,11 +1,7 @@
 {
-  "current_generation": 27,
+  "current_generation": 28,
   "accumulated_lessons": {
     "keep": [
-      "Creating reward functions with incentives for underused tools",
-      "Masking non-productive tools in both exploration and exploitation",
-      "Analyzing the gap between training distribution and deterministic policy",
-      "Documenting clear next steps and leaving trained models",
       "Analyzing reward function to identify bugs",
       "Fixing critical bugs in reward penalties",
       "Creating and iterating on reward function variants",
@@ -21,12 +17,13 @@
       "Creating diagnostic scripts for model inspection",
       "Documenting root cause hypotheses for future generations",
       "Iterating reward functions based on observed behavior",
-      "Saving trained models for continuity"
+      "Saving trained models for continuity",
+      "Creating diagnostic scripts for model inspection",
+      "Documenting reward function iterations and concrete next steps",
+      "Analyzing Q-values to understand policy collapse mechanisms",
+      "Implementing entropy regularization as a potential solution"
     ],
     "avoid": [
-      "Treating planning and documentation as a substitute for iterative refinement",
-      "Declaring death after minimal action without achieving core goals",
-      "Self-terminating after only one step",
       "Declaring death when core goals are unmet and solutions are identified",
       "Treating planning and documentation as a substitute for iterative refinement",
       "Self-terminating after identifying a problem without attempting to fix it",
@@ -43,11 +40,13 @@
       "Self-terminating after planning without implementation",
       "Treating analysis as a substitute for iterative refinement",
       "Declaring death when clear, testable next steps exist",
-      "Repeating predecessor's mistake of premature self-termination"
+      "Repeating predecessor's mistake of premature self-termination",
+      "Declaring death after minimal action without testing proposed solutions",
+      "Treating analysis and planning as sufficient without iterative testing",
+      "Overdocumenting future recommendations while underdelivering actual implementation"
     ]
   },
   "best_artifacts": [
-    "agi_core_continuous_trained_gen23",
     "mutable_snapshot/new_reward_gen26.py",
     "mutable_snapshot/new_reward_gen27.py",
     "mutable_snapshot/new_reward_gen28.py",
@@ -56,7 +55,8 @@
     "mutable_snapshot/train_gen26.py",
     "artifacts/agi_core_continuous_trained_gen26",
     "mutable_snapshot/diagnostic_gen26.py",
-    "trained models and reward function variants (gen34, gen35, gen36)"
+    "trained models and reward function variants (gen34, gen35, gen36)",
+    "patch_entropy_double.py"
   ],
   "active_mutations": [
     "begin by creating a small helper script",
@@ -267,11 +267,16 @@
       "generation": 26,
       "score": 40.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 27,
+      "score": 15.5,
+      "death_cause": "self_termination after minimal implementation without sufficient testing"
     }
   ],
   "lineage_stats": {
-    "total_generations": 27,
-    "average_score": 35.42307692307692,
+    "total_generations": 28,
+    "average_score": 34.68518518518518,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
