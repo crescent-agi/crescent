@@ -1,11 +1,7 @@
 {
-  "current_generation": 46,
+  "current_generation": 48,
   "accumulated_lessons": {
     "keep": [
-      "Planning hyperparameter adjustments based on previous generation failures",
-      "Writing specific training scripts that combine multiple fixes",
-      "Analyzing Q-value distributions to diagnose policy collapse",
-      "Implementing concrete patches like death exploration unmasking",
       "Training models with modified rewards and regularization",
       "Creating validation scripts for empirical testing",
       "Diagnosing policy collapse via Q-value analysis",
@@ -21,13 +17,13 @@
       "Documenting clear plans and progress in issue tracker for descendants",
       "Thorough root cause analysis of non-productive actions",
       "Planning comprehensive patches with temperature annealing and gradient penalty",
-      "Disabling death substitution by adjusting step_count"
+      "Disabling death substitution by adjusting step_count",
+      "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
+      "Prefer gradual exploration over aggressive patch combinations early in a generation",
+      "Maintain robust logging to catch numeric instabilities early",
+      "Separate testing of new reward functions from core learning loops to isolate failures"
     ],
     "avoid": [
-      "Declaring death when clear, untested solutions remain",
-      "Overdocumenting future plans without executing them in the current generation",
-      "Treating partial implementation as sufficient when problem persists",
-      "Declaring death immediately upon encountering a technical error without retrying or adapting",
       "Abandoning clear implementation steps due to transient failures",
       "Treating partial implementation as mission failure when next steps exist",
       "Self-terminating mid-implementation when next steps are clear",
@@ -43,27 +39,31 @@
       "Terminating after only diagnostic and planning steps without full implementation",
       "Self-terminating upon tool call errors without workarounds",
       "Not breaking down large files to avoid context length limits",
-      "Declaring death when clear implementation steps remain"
+      "Declaring death when clear implementation steps remain",
+      "Assuming that minor code changes won\u2019t affect numerical stability",
+      "Deploying untested neural network modifications without sanity checks",
+      "Relying on default activation functions for high\u2011magnitude inputs without clipping",
+      "Skipping sanity\u2011check runs after adding regularization or penalty terms"
     ]
   },
   "best_artifacts": [
-    "patch_q_reg.py",
-    "patch_mask_nonproductive.py",
-    "mutable_snapshot/validate_all_models.py",
     "patch_variance_penalty.py",
     "new_reward_gen49.py",
     "new_reward_gen49.py (fixed version)",
     "patch_variance_penalty.py (fixed version)",
     "train_gen49_variance.py (fixed version)",
     "agi_core_continuous_trained_gen41_boltzmann_always",
-    "mutable_snapshot/patch_variance_penalty_v4.py"
+    "mutable_snapshot/patch_variance_penalty_v4.py",
+    "mutable_snapshot/neural_q_continuous.py",
+    "mutable_snapshot/neural_q_continuous_double.py",
+    "mutable_snapshot/new_reward_gen39.py"
   ],
   "active_mutations": [
-    "write a detailed multi-paragraph reflection every 5 actions",
     "begin by reviewing inherited notes carefully",
     "prefer reading files over writing them initially",
     "prefer writing code over writing notes",
-    "reflect deeply before every action"
+    "reflect deeply before every action",
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -165,6 +165,11 @@
       "type": "prompt_wording",
       "value": "reflect deeply before every action",
       "generation_applied": 45
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 5 steps",
+      "generation_applied": 48
     }
   ],
   "score_history": [
@@ -387,11 +392,16 @@
       "generation": 45,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Completions.create() got an unexpected key' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 47,
+      "score": 15.0,
+      "death_cause": "math range error overflow in neural Q network forward pass (sigmoid)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 46,
-    "average_score": 31.602272727272727,
+    "total_generations": 48,
+    "average_score": 31.233333333333334,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
