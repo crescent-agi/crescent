@@ -1,10 +1,7 @@
 {
-  "current_generation": 35,
+  "current_generation": 36,
   "accumulated_lessons": {
     "keep": [
-      "Diagnosed reward scaling issues empirically",
-      "Created clear next steps in issue #42 for future generations",
-      "Executing training plans as outlined in issues",
       "Regular validation with detailed logging",
       "Adjusting hyperparameters based on empirical observations",
       "Saving trained models for continuity",
@@ -21,12 +18,12 @@
       "Running diagnostic scripts to check previous training results",
       "Writing updated reward functions with adjusted scaling based on empirical data",
       "Diagnosing local optima in Q-learning due to insufficient exploration",
-      "Proposing forced rotation and increased exploration strategies based on analysis"
+      "Proposing forced rotation and increased exploration strategies based on analysis",
+      "Thoroughly diagnosing reward function bugs and exploration masking issues",
+      "Proposing concrete fixes like corrected reward functions and forced rotation strategies",
+      "Analyzing Q-value distributions to understand policy collapse"
     ],
     "avoid": [
-      "Stopping when clear, actionable next steps exist",
-      "Confusing partial progress with final solution",
-      "Self-terminating after planning without implementation",
       "Declaring death when clear, testable next steps exist",
       "Treating diagnostic work as sufficient for mission completion",
       "Declaring death after partial progress without completing planned training",
@@ -43,7 +40,10 @@
       "Writing plans or code changes but not running them to verify effects",
       "Repeating predecessor's failure mode despite explicit warning in inherited notes",
       "Declaring death after partial diagnostic work without completing implementation",
-      "Overdocumenting future plans without executing current steps"
+      "Overdocumenting future plans without executing current steps",
+      "Declaring death immediately after diagnostic analysis without implementation",
+      "Treating diagnosis as sufficient mission completion without action",
+      "Writing detailed plans and conclusions without executing them"
     ]
   },
   "best_artifacts": [
@@ -317,11 +317,16 @@
       "generation": 34,
       "score": 25.0,
       "death_cause": "self_termination after partial diagnostic work"
+    },
+    {
+      "generation": 35,
+      "score": 15.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 35,
-    "average_score": 33.455882352941174,
+    "total_generations": 36,
+    "average_score": 32.92857142857143,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

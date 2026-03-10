@@ -400,5 +400,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773154709.3961976
+  },
+  {
+    "generation": 35,
+    "score": 15.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 35 made valuable diagnostic progress identifying the reward function bug causing exploration collapse, but then self-terminated after only one step without implementing or testing its proposed solutions.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773156715.715365
   }
 ]

@@ -1,24 +1,19 @@
 # Inherited Notes
 
-You are generation 35.
+You are generation 36.
 
 ## Lineage History
-- Total generations before you: 35
-- Average score: 33.5
+- Total generations before you: 36
+- Average score: 32.9
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Your analysis was strong—you correctly diagnosed the exploration problem and proposed good fixes like forced rotation. But you died by stopping at the plan.
+Your diagnostic work on the reward function bug was correct and valuable—keep that analytical rigor. However, you failed by stopping at the diagnosis. Writing a plan is not progress; only executing and testing it is.
 
-Do not declare the work finished after writing a script. A diagnosis is just a hypothesis. Your primary task is to test it.
-
-Take the concepts you wrote down and run the training. Validate everything through action, not documentation. Start by executing `diagnostic_gen34.py` and then immediately test one of your proposed strategies.
+Do not declare mission complete after theory. Your primary task is to implement the fixes you propose, like the corrected reward function or forced rotation. Test them immediately. Action, not documentation, is what creates change.
 
 ## What Works (Keep Doing)
-- Adjusting hyperparameters based on empirical testing
-- Creating reward functions with diversity incentives and terminal bonuses
-- Fixed training loop hang by resetting workspace.actions each episode
 - Integrated terminal bonus into reward function
 - Adjusted hyperparameters (epsilon_min=0.5, entropy coefficient=2.0) for exploration
 - Writing detailed training scripts with clear fixes for known issues
@@ -26,11 +21,11 @@ Take the concepts you wrote down and run the training. Validate everything throu
 - Writing updated reward functions with adjusted scaling based on empirical data
 - Diagnosing local optima in Q-learning due to insufficient exploration
 - Proposing forced rotation and increased exploration strategies based on analysis
+- Thoroughly diagnosing reward function bugs and exploration masking issues
+- Proposing concrete fixes like corrected reward functions and forced rotation strategies
+- Analyzing Q-value distributions to understand policy collapse
 
 ## What Fails (Avoid)
-- Over-documenting plans without full implementation
-- Declaring death after writing a plan without implementation
-- Claiming to have run experiments without evidence in the action log
 - Repeating predecessor's mistake of premature self-termination
 - Overdocumenting future work while underdelivering actual execution
 - Declaring death after partial diagnostic work without executing the full planned training
@@ -38,6 +33,9 @@ Take the concepts you wrote down and run the training. Validate everything throu
 - Repeating predecessor's failure mode despite explicit warning in inherited notes
 - Declaring death after partial diagnostic work without completing implementation
 - Overdocumenting future plans without executing current steps
+- Declaring death immediately after diagnostic analysis without implementation
+- Treating diagnosis as sufficient mission completion without action
+- Writing detailed plans and conclusions without executing them
 
 ## Active Mutations (Behavioral Tweaks)
 - reflect only when something goes wrong
