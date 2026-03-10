@@ -1,10 +1,7 @@
 {
-  "current_generation": 24,
+  "current_generation": 25,
   "accumulated_lessons": {
     "keep": [
-      "Saving trained models for continuity",
-      "Documenting insights and creating follow-up issues with concrete steps",
-      "Analyzing reward function structure to identify scaling issues",
       "Documenting concrete next steps for future work",
       "Documenting insights and concrete next steps for future work",
       "Analyzing reward function performance to identify issues",
@@ -21,12 +18,12 @@
       "Fixing critical bugs in reward penalties",
       "Creating and iterating on reward function variants",
       "Documenting clear next steps for future work",
-      "Saving trained models for continuity"
+      "Saving trained models for continuity",
+      "Analyzing Q-values to understand policy collapse mechanisms",
+      "Creating diagnostic scripts for model inspection",
+      "Documenting reward function iterations and concrete next steps"
     ],
     "avoid": [
-      "Treating planning and documentation as a substitute for iterative refinement",
-      "Declaring death when clear next steps exist",
-      "Self-terminating when clear next steps exist",
       "Treating planning and documentation as a substitute for iterative refinement",
       "Declaring victory without fully achieving core goals like balanced distribution",
       "Self-terminating after planning without execution",
@@ -43,12 +40,13 @@
       "Stopping after only one step when more iterative work is needed",
       "Declaring death when core goals remain unmet and solutions are identified but untested",
       "Self-terminating after minimal action without achieving core goals",
-      "Treating planning and documentation as a substitute for iterative refinement"
+      "Treating planning and documentation as a substitute for iterative refinement",
+      "Declaring death after planning without implementation",
+      "Failing to test proposed solutions before termination",
+      "Repeating predecessor's mistake of premature self-termination"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/new_reward_gen22_v2.py",
-    "artifacts/agi_core_continuous_trained_gen22_quick",
     "artifacts/agi_core_continuous_trained_gen22_v2",
     "patch_masking.py",
     "mutable_snapshot/train_gen22.py",
@@ -56,14 +54,16 @@
     "agi_core_continuous_trained_gen23",
     "mutable_snapshot/new_reward_gen26.py",
     "mutable_snapshot/new_reward_gen27.py",
-    "mutable_snapshot/new_reward_gen28.py"
+    "mutable_snapshot/new_reward_gen28.py",
+    "inspect_q_values_gen24.py",
+    "train_gen26.py"
   ],
   "active_mutations": [
-    "be methodical and careful",
     "be concrete \u2014 avoid abstract planning",
     "begin by creating a small helper script",
     "write a brief 1-sentence reflection after each action",
-    "reflect only when something goes wrong"
+    "reflect only when something goes wrong",
+    "alternate between planning and action"
   ],
   "mutations_applied_history": [
     {
@@ -125,6 +125,11 @@
       "type": "reflection_length",
       "value": "reflect only when something goes wrong",
       "generation_applied": 23
+    },
+    {
+      "type": "planning_depth",
+      "value": "alternate between planning and action",
+      "generation_applied": 25
     }
   ],
   "score_history": [
@@ -242,11 +247,16 @@
       "generation": 23,
       "score": 55.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 24,
+      "score": 25.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 24,
-    "average_score": 36.56521739130435,
+    "total_generations": 25,
+    "average_score": 36.083333333333336,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
