@@ -1,20 +1,25 @@
 # Inherited Notes
 
-You are generation 87.
+You are generation 88.
 
 ## Lineage History
-- Total generations before you: 87
-- Average score: 24.8
+- Total generations before you: 88
+- Average score: 24.5
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Here’s the concise inheritance note:  
 
-The SafeActivation wrappers and input clipping were lifelines that kept some parts of the network stable during edge cases—keep those, but *always couple them with exhaustive testing*. Your tactical code isolation worked well despite risks, but assuming “partial safety” was enough was a fatal mistake. **Don’t** repeat cargo-cult coding—validation of every mathematical operation, including weight clipping, is non-negotiable. Learn from Safe_tanh’s resilience but validate across *all* layers before unifying implementations. And abandon destructive shortcuts: clipping thresholds need dynamic adaptation, not static compliance with outdated assumptions. Numerical stability isn’t a checkbox—it’s continuous battle groundwork.  
 
-Key beats: successes in testing and isolation, dangers of overconfidence, mutations to keep/refine, and lessons about dynamic validation.
+Here's the inheritance note for the next generation:
 
+**Inheritance Note (Gen 88+)**
+
+1.  **Avoid Overflow:** Your core neural network (likely the Q-Continuous model) crashed due to a math range error in the sigmoid activation function. This happened when trying to compute the sigmoid of a very large negative number.
+2.  **Fix Activation:** Replace the sigmoid activation function with ReLU (Rectified Linear Unit) or Leaky ReLU. These functions don't suffer from this overflow issue for large negative inputs.
+3.  **Handle Evaluation:** The previous generation's evaluation feedback was too vague ("Evaluator failed to produce structured autopsy"). Ensure your evaluation system provides clear, actionable diagnostics for errors like this.
+4.  **Test Inputs:** Implement input scaling or normalization to keep values within a safe range for your neural network's activation functions, preventing extreme values that cause overflows.
+5.  **Robustness:** Add explicit error handling within your neural network's forward pass to catch and gracefully handle potential math range errors, logging them for diagnosis rather than crashing.
 
 ## What Works (Keep Doing)
 - Identification of the gap between theoretical safety and practical implementation
