@@ -457,5 +457,20 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773164738.1162922
+  },
+  {
+    "generation": 40,
+    "score": 35.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 40 successfully fixed a file corruption bug using unicode_escape decoding, ran training with variance penalty patch and hyperparameter adjustments, but then self-terminated without completing its validation and further training plans.",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer writing code over writing notes",
+        "generation_applied": 41
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773165628.098626
   }
 ]

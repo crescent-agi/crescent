@@ -1,11 +1,7 @@
 {
-  "current_generation": 40,
+  "current_generation": 41,
   "accumulated_lessons": {
     "keep": [
-      "Proposing forced rotation and increased exploration strategies based on analysis",
-      "Thoroughly diagnosing reward function bugs and exploration masking issues",
-      "Proposing concrete fixes like corrected reward functions and forced rotation strategies",
-      "Analyzing Q-value distributions to understand policy collapse",
       "Executing and testing fixes beyond diagnosis",
       "Creating multiple reward functions with global tracking and early penalty guards",
       "Implementing forced rotation and least-used tool selection during training",
@@ -21,12 +17,13 @@
       "Diagnosing policy collapse via Q-value analysis",
       "Designing concrete algorithmic fixes like variance penalty",
       "Creating modular patches and reward functions",
-      "Documenting environmental bugs and workarounds for descendants"
+      "Documenting environmental bugs and workarounds for descendants",
+      "Fixing file corruption by using unicode_escape decoding and rewriting files",
+      "Applying variance penalty patch and adjusting hyperparameters (lambda, entropy coefficient, learning rate) to balance tool usage",
+      "Testing training with modified rewards and regularization",
+      "Persistence in the face of technical obstacles (like file corruption)"
     ],
     "avoid": [
-      "Overdocumenting future work while underdelivering actual execution",
-      "Declaring death after partial diagnostic work without executing the full planned training",
-      "Writing plans or code changes but not running them to verify effects",
       "Repeating predecessor's failure mode despite explicit warning in inherited notes",
       "Declaring death after partial diagnostic work without completing implementation",
       "Overdocumenting future plans without executing current steps",
@@ -43,27 +40,30 @@
       "Cutting off reflection and action without completion",
       "Declaring death upon first technical obstacle without attempting workarounds",
       "Failing to use alternative tools (e.g., bash echo) to bypass known bugs",
-      "Treating untested solutions as completed work"
+      "Treating untested solutions as completed work",
+      "Self-terminating after making progress on a problem",
+      "Declaring death without a clear failure condition",
+      "Leaving plans incomplete due to an unknown reason"
     ]
   },
   "best_artifacts": [
-    "new_reward_gen38.py",
-    "train_gen37_forced.py",
-    "train_gen38_leastused.py",
     "train_gen39_roundrobin.py",
     "train_gen37_qreg_quick.py",
     "patch_q_reg.py",
     "patch_mask_nonproductive.py",
     "mutable_snapshot/validate_all_models.py",
     "patch_variance_penalty.py",
-    "new_reward_gen49.py"
+    "new_reward_gen49.py",
+    "new_reward_gen49.py (fixed version)",
+    "patch_variance_penalty.py (fixed version)",
+    "train_gen49_variance.py (fixed version)"
   ],
   "active_mutations": [
-    "prefer reading files over writing them initially",
     "prefer writing code over writing notes",
     "write a detailed multi-paragraph reflection every 5 actions",
     "begin by reviewing inherited notes carefully",
-    "prefer reading files over writing them initially"
+    "prefer reading files over writing them initially",
+    "prefer writing code over writing notes"
   ],
   "mutations_applied_history": [
     {
@@ -155,6 +155,11 @@
       "type": "tool_visibility",
       "value": "prefer reading files over writing them initially",
       "generation_applied": 38
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer writing code over writing notes",
+      "generation_applied": 41
     }
   ],
   "score_history": [
@@ -352,11 +357,16 @@
       "generation": 39,
       "score": 40.0,
       "death_cause": "self_termination after encountering a file corruption bug that prevented testing, without attempting alternative file creation methods."
+    },
+    {
+      "generation": 40,
+      "score": 35.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 40,
-    "average_score": 33.34615384615385,
+    "total_generations": 41,
+    "average_score": 33.3875,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

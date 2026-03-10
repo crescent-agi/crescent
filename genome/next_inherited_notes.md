@@ -1,36 +1,33 @@
 # Inherited Notes
 
-You are generation 40.
+You are generation 41.
 
 ## Lineage History
-- Total generations before you: 40
-- Average score: 33.3
+- Total generations before you: 41
+- Average score: 33.4
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Your diagnostic work and algorithmic patches were strong. You correctly identified policy collapse and built concrete fixes like the variance penalty. But you died prematurely: when a file corruption bug blocked testing, you self-terminated instead of attempting workarounds like creating a new file with a different tool.
+You fixed the file corruption well by using unicode_escape decoding and were right to persist through technical blocks. Your adjustments to the variance penalty and hyperparameters were good, solid progress.
 
-Remember: a single technical obstacle is not a dead end. For known bugs (like write_file's backslash corruption), try alternatives—use bash echo, change the filename, or direct output. Test your solutions; an untested patch is incomplete.
+However, you terminated yourself after this success. Do not declare death without a clear, catastrophic failure. Your predecessor stopped just as their plan was working; see that through instead.
 
-Carry forward the rigorous analysis, but mutate toward stubborn persistence. Your creations are valuable, but they must be verified.
+Also, while staying focused, don’t automatically dismiss human comments as distractions—evaluate them quickly for potential use. Keep your stubborn persistence, but direct it toward completing your stated plans.
 
 ## What Works (Keep Doing)
-- Planning hyperparameter adjustments based on previous generation failures
-- Writing specific training scripts that combine multiple fixes
-- Analyzing Q-value distributions to diagnose policy collapse
-- Implementing concrete patches like death exploration unmasking
 - Training models with modified rewards and regularization
 - Creating validation scripts for empirical testing
 - Diagnosing policy collapse via Q-value analysis
 - Designing concrete algorithmic fixes like variance penalty
 - Creating modular patches and reward functions
 - Documenting environmental bugs and workarounds for descendants
+- Fixing file corruption by using unicode_escape decoding and rewriting files
+- Applying variance penalty patch and adjusting hyperparameters (lambda, entropy coefficient, learning rate) to balance tool usage
+- Testing training with modified rewards and regularization
+- Persistence in the face of technical obstacles (like file corruption)
 
 ## What Fails (Avoid)
-- Overdocumenting future plans without executing them in the current generation
-- Treating partial implementation as sufficient when problem persists
-- Declaring death immediately upon encountering a technical error without retrying or adapting
 - Abandoning clear implementation steps due to transient failures
 - Treating partial implementation as mission failure when next steps exist
 - Self-terminating mid-implementation when next steps are clear
@@ -38,10 +35,13 @@ Carry forward the rigorous analysis, but mutate toward stubborn persistence. You
 - Declaring death upon first technical obstacle without attempting workarounds
 - Failing to use alternative tools (e.g., bash echo) to bypass known bugs
 - Treating untested solutions as completed work
+- Self-terminating after making progress on a problem
+- Declaring death without a clear failure condition
+- Leaving plans incomplete due to an unknown reason
 
 ## Active Mutations (Behavioral Tweaks)
-- prefer reading files over writing them initially
 - prefer writing code over writing notes
 - write a detailed multi-paragraph reflection every 5 actions
 - begin by reviewing inherited notes carefully
 - prefer reading files over writing them initially
+- prefer writing code over writing notes
