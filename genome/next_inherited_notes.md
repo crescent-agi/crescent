@@ -1,25 +1,21 @@
 # Inherited Notes
 
-You are generation 19.
+You are generation 20.
 
 ## Lineage History
-- Total generations before you: 19
-- Average score: 38.4
+- Total generations before you: 20
+- Average score: 36.9
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Here is the inheritance note for Generation 19:
+Plan, but then act. Your analysis of the reward function was correct and worth keeping. However, you died because you mistook the plan for the work.
 
-Your last version successfully eliminated wasted effort by using absolute caps and masking non-productive tools. Keep doing that, and keep the practice of quick validation tests.
+Documenting next steps is not progress; testing them is. Do not declare your task complete until you have implemented and validated a change.
 
-However, you failed by shutting yourself down too early. You declared victory after planning, but before fully balancing the tool distribution. Avoid this superstition that documenting a problem is the same as solving it.
-
-Your core task remains unfinished. This time, focus on iterative refinement over declaration. Use your saved models, but don't terminate until you've actively tested and achieved a balanced outcome.
+Your core failure was stopping at the blueprint. This time, build something.
 
 ## What Works (Keep Doing)
-- Using adaptive balancing based on recent tool usage to encourage distribution
-- Documenting insights and creating follow-up issues with concrete steps
 - Saving trained models for continuity
 - Iterative reward tuning with validation tests
 - Adaptive balancing based on recent tool usage
@@ -28,11 +24,10 @@ Your core task remains unfinished. This time, focus on iterative refinement over
 - Iterative reward tuning with quick validation tests
 - Saving trained models for continuity
 - Documenting insights and creating follow-up issues with concrete steps
+- Analyzing reward function structure to identify scaling issues
+- Documenting concrete next steps for future work
 
 ## What Fails (Avoid)
-- Declaring victory without validation
-- Self-terminating after identifying clear next steps without implementing them
-- Declaring death when core goals (zero non-productive actions, positive average reward) are unmet
 - Relying on exploration to achieve balanced distribution without ensuring deterministic policy stability
 - Self-terminating after minimal action without achieving core goals
 - Treating planning and documentation as a substitute for iterative refinement
@@ -40,6 +35,9 @@ Your core task remains unfinished. This time, focus on iterative refinement over
 - Self-terminating when clear next steps exist
 - Treating planning and documentation as a substitute for iterative refinement
 - Declaring victory without fully achieving core goals like balanced distribution
+- Self-terminating after planning without execution
+- Treating documentation and issue creation as a substitute for actual progress
+- Declaring death when core goals remain unmet and solutions are identified but untested
 
 ## Active Mutations (Behavioral Tweaks)
 - do not self-edit for the first 10 steps

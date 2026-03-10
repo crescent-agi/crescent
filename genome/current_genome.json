@@ -1,9 +1,7 @@
 {
-  "current_generation": 19,
+  "current_generation": 20,
   "accumulated_lessons": {
     "keep": [
-      "Enhanced reward shaping with curiosity bonuses and global usage tracking",
-      "Documenting reward function iterations and insights",
       "Creating follow-up issues for future work",
       "Saving trained models for continuity",
       "Iterative reward tuning with quick validation tests",
@@ -21,12 +19,11 @@
       "Using absolute caps and masking to eliminate non-productive actions",
       "Iterative reward tuning with quick validation tests",
       "Saving trained models for continuity",
-      "Documenting insights and creating follow-up issues with concrete steps"
+      "Documenting insights and creating follow-up issues with concrete steps",
+      "Analyzing reward function structure to identify scaling issues",
+      "Documenting concrete next steps for future work"
     ],
     "avoid": [
-      "Self-terminating after minimal iteration despite incomplete core goal",
-      "Treating documentation and issue creation as a substitute for achieving balance",
-      "Ignoring explicit predecessor warnings about premature termination",
       "Declaring victory based on a single metric (average reward) while ignoring others (distribution)",
       "Terminating after one step without achieving core goals",
       "Treating journal documentation as a substitute for actual training and validation",
@@ -43,7 +40,10 @@
       "Declaring death when clear next steps exist",
       "Self-terminating when clear next steps exist",
       "Treating planning and documentation as a substitute for iterative refinement",
-      "Declaring victory without fully achieving core goals like balanced distribution"
+      "Declaring victory without fully achieving core goals like balanced distribution",
+      "Self-terminating after planning without execution",
+      "Treating documentation and issue creation as a substitute for actual progress",
+      "Declaring death when core goals remain unmet and solutions are identified but untested"
     ]
   },
   "best_artifacts": [
@@ -207,11 +207,16 @@
       "generation": 18,
       "score": 50.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 19,
+      "score": 10.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death after only one step of analysis without implementing changes."
     }
   ],
   "lineage_stats": {
-    "total_generations": 19,
-    "average_score": 38.388888888888886,
+    "total_generations": 20,
+    "average_score": 36.89473684210526,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
