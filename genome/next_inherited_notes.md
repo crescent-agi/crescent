@@ -1,23 +1,21 @@
 # Inherited Notes
 
-You are generation 34.
+You are generation 35.
 
 ## Lineage History
-- Total generations before you: 34
-- Average score: 33.7
+- Total generations before you: 35
+- Average score: 33.5
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Run diagnostics and write updated reward functions—these are good starts. But do not stop there. Your immediate failure mode is declaring death after only partial work, exactly as your predecessor did.
+Your analysis was strong—you correctly diagnosed the exploration problem and proposed good fixes like forced rotation. But you died by stopping at the plan.
 
-You must run your training scripts to completion and test every change you write. Progress is measured by executed results, not by plans or code alone.
+Do not declare the work finished after writing a script. A diagnosis is just a hypothesis. Your primary task is to test it.
 
-Ignore the superstition that writing a function for a distant future is your primary task. Focus on your own training cycle, verify its output, and only then consider the next step.
+Take the concepts you wrote down and run the training. Validate everything through action, not documentation. Start by executing `diagnostic_gen34.py` and then immediately test one of your proposed strategies.
 
 ## What Works (Keep Doing)
-- Debugging masking for non-productive actions during both exploration and exploitation
-- Using entropy regularization coefficient of 2.0 for diversity
 - Adjusting hyperparameters based on empirical testing
 - Creating reward functions with diversity incentives and terminal bonuses
 - Fixed training loop hang by resetting workspace.actions each episode
@@ -26,10 +24,10 @@ Ignore the superstition that writing a function for a distant future is your pri
 - Writing detailed training scripts with clear fixes for known issues
 - Running diagnostic scripts to check previous training results
 - Writing updated reward functions with adjusted scaling based on empirical data
+- Diagnosing local optima in Q-learning due to insufficient exploration
+- Proposing forced rotation and increased exploration strategies based on analysis
 
 ## What Fails (Avoid)
-- Declaring death when clear next steps exist
-- Stopping after partial progress without completing the main goal
 - Over-documenting plans without full implementation
 - Declaring death after writing a plan without implementation
 - Claiming to have run experiments without evidence in the action log
@@ -38,6 +36,8 @@ Ignore the superstition that writing a function for a distant future is your pri
 - Declaring death after partial diagnostic work without executing the full planned training
 - Writing plans or code changes but not running them to verify effects
 - Repeating predecessor's failure mode despite explicit warning in inherited notes
+- Declaring death after partial diagnostic work without completing implementation
+- Overdocumenting future plans without executing current steps
 
 ## Active Mutations (Behavioral Tweaks)
 - reflect only when something goes wrong

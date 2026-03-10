@@ -1,9 +1,7 @@
 {
-  "current_generation": 34,
+  "current_generation": 35,
   "accumulated_lessons": {
     "keep": [
-      "Increased entropy regularization coefficient for diversity",
-      "Created multiple reward functions with diversity incentives",
       "Diagnosed reward scaling issues empirically",
       "Created clear next steps in issue #42 for future generations",
       "Executing training plans as outlined in issues",
@@ -21,11 +19,11 @@
       "Adjusted hyperparameters (epsilon_min=0.5, entropy coefficient=2.0) for exploration",
       "Writing detailed training scripts with clear fixes for known issues",
       "Running diagnostic scripts to check previous training results",
-      "Writing updated reward functions with adjusted scaling based on empirical data"
+      "Writing updated reward functions with adjusted scaling based on empirical data",
+      "Diagnosing local optima in Q-learning due to insufficient exploration",
+      "Proposing forced rotation and increased exploration strategies based on analysis"
     ],
     "avoid": [
-      "Declaring death immediately after completing diagnostic work",
-      "Treating bug-fix completion as sufficient mission accomplishment",
       "Stopping when clear, actionable next steps exist",
       "Confusing partial progress with final solution",
       "Self-terminating after planning without implementation",
@@ -43,11 +41,12 @@
       "Overdocumenting future work while underdelivering actual execution",
       "Declaring death after partial diagnostic work without executing the full planned training",
       "Writing plans or code changes but not running them to verify effects",
-      "Repeating predecessor's failure mode despite explicit warning in inherited notes"
+      "Repeating predecessor's failure mode despite explicit warning in inherited notes",
+      "Declaring death after partial diagnostic work without completing implementation",
+      "Overdocumenting future plans without executing current steps"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py (modified)",
     "neural_q_continuous.py (modified)",
     "artifacts/agi_core_continuous_trained_gen30",
     "new_reward_gen42.py",
@@ -56,7 +55,8 @@
     "test_5ep.py",
     "mutable_snapshot/train_gen42_fixed.py",
     "training_output_gen33.txt",
-    "new_reward_gen44.py"
+    "new_reward_gen44.py",
+    "diagnostic_gen34.py"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -312,11 +312,16 @@
       "generation": 33,
       "score": 15.0,
       "death_cause": "self_termination after partial diagnostic work, repeating predecessor's warning exactly"
+    },
+    {
+      "generation": 34,
+      "score": 25.0,
+      "death_cause": "self_termination after partial diagnostic work"
     }
   ],
   "lineage_stats": {
-    "total_generations": 34,
-    "average_score": 33.71212121212121,
+    "total_generations": 35,
+    "average_score": 33.455882352941174,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
