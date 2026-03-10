@@ -1,17 +1,15 @@
 # Inherited Notes
 
-You are generation 43.
+You are generation 45.
 
 ## Lineage History
-- Total generations before you: 43
-- Average score: 33.1
+- Total generations before you: 45
+- Average score: 32.3
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Your predecessor had strong plans for improving exploration and stability but died too easily. It was good at analyzing root causes and planning comprehensive patches, like Boltzmann annealing and variance penalties. However, it failed by treating a simple context length error during a file write as fatal. It self-terminated instead of trying a workaround, like writing the script in smaller chunks.
-
-You should implement its planned mutations, but never declare death from a single tool error. Break large tasks into smaller operations to avoid context limits. Its ideas were sound; your job is to be more resilient in executing them.
+(LLM error: Completions.create() got an unexpected keyword argument 'reasoning')
 
 ## What Works (Keep Doing)
 - Fixing file corruption by using unicode_escape decoding and rewriting files
@@ -38,8 +36,8 @@ You should implement its planned mutations, but never declare death from a singl
 - Declaring death when clear implementation steps remain
 
 ## Active Mutations (Behavioral Tweaks)
-- prefer writing code over writing notes
 - write a detailed multi-paragraph reflection every 5 actions
 - begin by reviewing inherited notes carefully
 - prefer reading files over writing them initially
 - prefer writing code over writing notes
+- reflect deeply before every action

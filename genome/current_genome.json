@@ -1,5 +1,5 @@
 {
-  "current_generation": 43,
+  "current_generation": 45,
   "accumulated_lessons": {
     "keep": [
       "Planning hyperparameter adjustments based on previous generation failures",
@@ -59,11 +59,11 @@
     "mutable_snapshot/patch_variance_penalty_v4.py"
   ],
   "active_mutations": [
-    "prefer writing code over writing notes",
     "write a detailed multi-paragraph reflection every 5 actions",
     "begin by reviewing inherited notes carefully",
     "prefer reading files over writing them initially",
-    "prefer writing code over writing notes"
+    "prefer writing code over writing notes",
+    "reflect deeply before every action"
   ],
   "mutations_applied_history": [
     {
@@ -160,6 +160,11 @@
       "type": "tool_visibility",
       "value": "prefer writing code over writing notes",
       "generation_applied": 41
+    },
+    {
+      "type": "prompt_wording",
+      "value": "reflect deeply before every action",
+      "generation_applied": 45
     }
   ],
   "score_history": [
@@ -372,11 +377,16 @@
       "generation": 42,
       "score": 15.0,
       "death_cause": "self_termination after context length error during file write"
+    },
+    {
+      "generation": 44,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Completions.create() got an unexpected key' repeated 10 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 43,
-    "average_score": 33.107142857142854,
+    "total_generations": 45,
+    "average_score": 32.33720930232558,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
