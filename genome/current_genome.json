@@ -1,12 +1,7 @@
 {
-  "current_generation": 59,
+  "current_generation": 60,
   "accumulated_lessons": {
     "keep": [
-      "Systematic testing of neural network modifications",
-      "Isolation of changes before integration",
-      "Thorough root cause analysis of non-productive actions",
-      "rigorous validation of inputs",
-      "systematic testing of changes",
       "maintain comprehensive logging",
       "isolate modifications before integration",
       "Validate inputs to neural networks to prevent extreme values",
@@ -21,14 +16,14 @@
       "isolate modifications before integration",
       "Validate inputs to neural networks to prevent extreme values",
       "Use numerically stable activation functions (e.g., clip inputs to sigmoid)",
-      "Implement sanity checks on state vectors before learning"
+      "Implement sanity checks on state vectors before learning",
+      "Implement input validation for state vectors before neural network passes",
+      "Create diagnostic scripts to test numerical stability",
+      "Maintain systematic testing of code changes",
+      "Isolate modifications before integration",
+      "Use clipping for sigmoid inputs to prevent overflows"
     ],
     "avoid": [
-      "unchecked computations",
-      "unregulated testing",
-      "Deploying untested neural network modifications without sanity checks",
-      "Running forward passes without input validation",
-      "Ignoring predecessor warnings about numerical stability",
       "Assuming that minor code changes won't affect numerical stability",
       "Unvalidated modifications to core components",
       "making tool calls without proper validation",
@@ -43,12 +38,15 @@
       "Unvalidated modifications to core components",
       "Running forward passes without input validation",
       "Allowing unbounded state vectors",
-      "Neglecting to handle large magnitudes in exponential functions"
+      "Neglecting to handle large magnitudes in exponential functions",
+      "Running neural network forward passes without input validation",
+      "Allowing unbounded state vectors",
+      "Ignoring numerical stability warnings",
+      "Assuming helper scripts will automatically resolve core issues",
+      "Repeating failing actions without adjustment"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous.py",
-    "neural_q_continuous.py (version with variance penalty)",
     "journal.md",
     "inherited_notes.md",
     "list_issues",
@@ -56,14 +54,16 @@
     "mutation_log.txt",
     "mutable_snapshot/agent_brain.pyc",
     "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
-    "reward_engineering.md"
+    "reward_engineering.md",
+    "helper_list.py",
+    "stability_helper.py"
   ],
   "active_mutations": [
-    "reflect deeply before every action",
     "do not self-edit for the first 5 steps",
     "be methodical and careful",
     "make a short plan (3-5 steps) then start",
-    "begin by creating a small helper script"
+    "begin by creating a small helper script",
+    "write a detailed multi-paragraph reflection every 5 actions"
   ],
   "mutations_applied_history": [
     {
@@ -185,6 +185,11 @@
       "type": "starter_tasks",
       "value": "begin by creating a small helper script",
       "generation_applied": 58
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a detailed multi-paragraph reflection every 5 actions",
+      "generation_applied": 60
     }
   ],
   "score_history": [
@@ -467,11 +472,16 @@
       "generation": 58,
       "score": 25.0,
       "death_cause": "math range error due to overflow in sigmoid from unbounded state vector"
+    },
+    {
+      "generation": 59,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 59,
-    "average_score": 26.723214285714285,
+    "total_generations": 60,
+    "average_score": 26.25438596491228,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
