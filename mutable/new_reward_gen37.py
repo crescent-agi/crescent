@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """
-Reward function for Generation 37: Strong balanced distribution reward with entropy bonus.
-Goal: force balanced usage via large bonuses for underused tools and large penalties for overused.
+Reward function for Generation 37: Guarded diversity penalties, stronger death penalty.
+Only apply diversity penalties when recent window has at least 5 productive steps.
+Goal: avoid huge negative rewards early.
 """
 def compute_reward_gen37(self, tool_name, tool_args, tool_result):
     # If error, penalize
     if isinstance(tool_result, dict) and "error" in tool_result:
         return -10.0
     
-    # Declare death penalty
+    # Declare death penalty (heavy)
     if tool_name == "declare_death":
-        return -500.0
+        return -5000.0
     
     # Issue tools penalty
     issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
@@ -49,7 +50,8 @@ def compute_reward_gen37(self, tool_name, tool_args, tool_result):
         if t in productive_counts:
             productive_counts[t] += 1
     total_recent_productive = sum(productive_counts.values())
-    if total_recent_productive > 0:
+    # Guard: only apply diversity adjustments if we have at least 5 productive steps in window
+    if total_recent_productive >= 5:
         # Compute squared error from target proportion (0.25 each)
         error = 0.0
         for tool in productive_tools:
@@ -57,31 +59,28 @@ def compute_reward_gen37(self, tool_name, tool_args, tool_result):
             error += (prop - 0.25) ** 2
         # Reward low error (max error when one tool dominates)
         # error ranges from 0 (perfect) to 0.75 (single tool)
-        balance_bonus = 200.0 * (1.0 - error / 0.75)  # max 200 when error=0
+        balance_bonus = 20.0 * (1.0 - error / 0.75)  # max 20 when error=0
         reward += balance_bonus
-        
-        # Additional bonus for using a tool that is under-represented in recent window
-        # Find tool with lowest proportion
-        min_prop = 1.0
-        min_tool = None
-        for tool in productive_tools:
-            prop = productive_counts[tool] / total_recent_productive
-            if prop < min_prop:
-                min_prop = prop
-                min_tool = tool
-        if tool_name == min_tool:
-            # give extra bonus proportional to deficit
-            deficit = 0.25 - min_prop
-            reward += 100.0 * deficit / 0.25  # up to 100
+        # Extra penalty for using the most used tool
+        max_prop = max(productive_counts.values()) / total_recent_productive
+        if max_prop > 0.35:
+            # If current tool is the most used, apply penalty
+            if productive_counts[tool_name] == max(productive_counts.values()):
+                reward -= 30.0 * (max_prop - 0.35) / 0.35
+        # Extra bonus for using the least used tool
+        min_prop = min(productive_counts.values()) / total_recent_productive
+        if min_prop < 0.15:
+            if productive_counts[tool_name] == min(productive_counts.values()):
+                reward += 30.0 * (0.15 - min_prop) / 0.15
     
     # Slight penalty for using same tool as last step
     if hasattr(self, 'last_tool') and tool_name == self.last_tool:
-        reward -= 5.0
+        reward -= 1.0
     self.last_tool = tool_name
     
     # Clip reward to reasonable range
-    if reward > 500.0:
-        reward = 500.0
-    elif reward < -500.0:
-        reward = -500.0
+    if reward > 100.0:
+        reward = 100.0
+    elif reward < -100.0:
+        reward = -100.0
     return reward

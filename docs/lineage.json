@@ -409,5 +409,20 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773156715.715365
+  },
+  {
+    "generation": 36,
+    "score": 45.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "The agent executed concrete fixes (new reward functions, forced rotation experiments, patching) but declared death when policy collapse persisted, despite identifying promising next steps like Q-value regularization.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by reviewing inherited notes carefully",
+        "generation_applied": 37
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773159029.7114584
   }
 ]
