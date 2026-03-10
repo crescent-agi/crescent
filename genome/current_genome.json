@@ -1,9 +1,7 @@
 {
-  "current_generation": 33,
+  "current_generation": 34,
   "accumulated_lessons": {
     "keep": [
-      "Saving trained models with descriptive names",
-      "Fixed death exploration bug in neural Q-learning",
       "Increased entropy regularization coefficient for diversity",
       "Created multiple reward functions with diversity incentives",
       "Diagnosed reward scaling issues empirically",
@@ -21,12 +19,11 @@
       "Fixed training loop hang by resetting workspace.actions each episode",
       "Integrated terminal bonus into reward function",
       "Adjusted hyperparameters (epsilon_min=0.5, entropy coefficient=2.0) for exploration",
-      "Writing detailed training scripts with clear fixes for known issues"
+      "Writing detailed training scripts with clear fixes for known issues",
+      "Running diagnostic scripts to check previous training results",
+      "Writing updated reward functions with adjusted scaling based on empirical data"
     ],
     "avoid": [
-      "Declaring death after minimal action without testing proposed solutions",
-      "Treating analysis and planning as sufficient without iterative testing",
-      "Overdocumenting future recommendations while underdelivering actual implementation",
       "Declaring death immediately after completing diagnostic work",
       "Treating bug-fix completion as sufficient mission accomplishment",
       "Stopping when clear, actionable next steps exist",
@@ -43,12 +40,13 @@
       "Declaring death after writing a plan without implementation",
       "Claiming to have run experiments without evidence in the action log",
       "Repeating predecessor's mistake of premature self-termination",
-      "Overdocumenting future work while underdelivering actual execution"
+      "Overdocumenting future work while underdelivering actual execution",
+      "Declaring death after partial diagnostic work without executing the full planned training",
+      "Writing plans or code changes but not running them to verify effects",
+      "Repeating predecessor's failure mode despite explicit warning in inherited notes"
     ]
   },
   "best_artifacts": [
-    "new_reward_gen40.py",
-    "train_gen38_fixed.py",
     "agent_brain.py (modified)",
     "neural_q_continuous.py (modified)",
     "artifacts/agi_core_continuous_trained_gen30",
@@ -56,7 +54,9 @@
     "train_final_fixed.py",
     "test_mask_load.py",
     "test_5ep.py",
-    "mutable_snapshot/train_gen42_fixed.py"
+    "mutable_snapshot/train_gen42_fixed.py",
+    "training_output_gen33.txt",
+    "new_reward_gen44.py"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -307,11 +307,16 @@
       "generation": 32,
       "score": 28.0,
       "death_cause": "self_termination \u2014 Agent declared its own death after writing a training script without actually running the full training plan."
+    },
+    {
+      "generation": 33,
+      "score": 15.0,
+      "death_cause": "self_termination after partial diagnostic work, repeating predecessor's warning exactly"
     }
   ],
   "lineage_stats": {
-    "total_generations": 33,
-    "average_score": 34.296875,
+    "total_generations": 34,
+    "average_score": 33.71212121212121,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
