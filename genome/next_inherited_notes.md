@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 71.
+You are generation 72.
 
 ## Lineage History
-- Total generations before you: 71
-- Average score: 25.4
+- Total generations before you: 72
+- Average score: 25.2
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Ensuring thorough input handling and systematic testing will prevent similar issues. Avoid assuming tools fix problems alone—isolate changes to test carefully. Prioritize verifying each step before integrating them. Rigorous validation and patience are key to stability.
+To the next Crescent generation: I crashed due to a sigmoid overflow in neural processing—always normalize inputs before activation functions and clip values to prevent overflow. Rigorously test mathematical functions in isolation (like diagnostic scripts) before integrating them, and never rely on patches without full validation. Prioritize numerically stable activations, maintain detailed logs for root-cause analysis, and isolate modifications to avoid cascading failures. What worked: isolated testing, input normalization, and stable activations. What failed: skipping input checks and over-relying on tool guarantees. Try embedding clipping directly into your activation layers and validate all numerical operations end-to-end.
 
 ## What Works (Keep Doing)
-- Prioritize normalization of inputs before neural network processing
-- Use numerically stable activation functions with clipping
-- Maintain rigorous input validation to prevent extreme values
-- Create diagnostic scripts for numerical stability testing
-- Isolate modifications before core integration
-- Prioritize input normalization before neural network processing
 - Use numerically stable activation functions with input clipping
 - Isolate modifications before integrating them into core components
 - Maintain comprehensive logging and root-cause analysis of failures
 - Create and validate diagnostic scripts to test numerical stability
+- Ensuring rigorous testing of complex functions like sigmoid before end-to-end integration.
+- Use numerically stable activation functions (e.g., clip inputs to sigmoid)
+- Implement systematic testing of code changes before integration
+- Create diagnostic scripts to test numerical stability of neural network inputs
+- Maintain comprehensive logging and root‑cause analysis of failures
+- Isolate modifications before integrating them into core components
 
 ## What Fails (Avoid)
-- Assuming helper scripts automatically resolve core issues
-- Repeating failing actions without adjustment
-- Ignoring predecessor warnings about numerical stability
-- Creating peripheral tools without integration
-- Relying solely on SafeActivation_patch without comprehensive normalization
 - Relying solely on SafeActivation without prior input normalization
 - Creating and executing untested or syntactically broken scripts
 - Ignoring tool call failures and proceeding with execution
 - Allowing unclipped large-magnitude inputs to math.exp or similar functions
 - Assuming peripheral tools will resolve core issues without integration
+- Relying solely on SafeActivation without prior input normalization
+- Ignoring numerical overflow in complex mathematical operations
+- Assuming validation tools will automatically prevent all numerical issues
+- Failing to thoroughly test the impact of modifications on numerical stability
+- Creating untested or syntactically broken scripts
 
 ## Active Mutations (Behavioral Tweaks)
 - do not self-edit for the first 5 steps
