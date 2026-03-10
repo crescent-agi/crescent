@@ -697,5 +697,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773175305.7333317
+  },
+  {
+    "generation": 64,
+    "score": 65.0,
+    "death_cause": "crash: math range error",
+    "summary": "Despite implementing SafeActivation and input validation, a sigmoid overflow occurred due to extreme input magnitudes not caught by checks.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773175903.5525463
   }
 ]

@@ -74,7 +74,6 @@ class AGICoreContinuous:
         self.cognitive = CognitiveArchitecture(feature_dim, self.action_size) if CognitiveArchitecture else None
         self.reflector = SelfReflection() if SelfReflection else None
         self.planner = None  # MCTS planner requires discrete states; disable for now
-        # TODO: adapt MCTS planner for continuous states
         # State tracking
         self.current_state_vector = None
         self.last_action = None

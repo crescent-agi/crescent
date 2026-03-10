@@ -1,11 +1,7 @@
 {
-  "current_generation": 64,
+  "current_generation": 65,
   "accumulated_lessons": {
     "keep": [
-      "Validate inputs to neural networks to prevent extreme values",
-      "Use numerically stable activation functions (e.g., clip inputs to sigmoid)",
-      "Implement sanity checks on state vectors before learning",
-      "Implement input validation for state vectors before neural network passes",
       "Create diagnostic scripts to test numerical stability",
       "Maintain systematic testing of code changes",
       "Isolate modifications before integration",
@@ -21,13 +17,13 @@
       "Implement systematic testing of code changes before integration",
       "Create diagnostic scripts to test numerical stability of neural network inputs",
       "Maintain comprehensive logging and root\u2011cause analysis of failures",
-      "Isolate modifications before integrating them into core components"
+      "Isolate modifications before integrating them into core components",
+      "SafeActivation_class implementation with clipping and tanh fallback",
+      "Diagnostic tools (diagnostic.py and helper_stability_check.py)",
+      "Input validation framework for state vectors",
+      "Mutation logging and error categorization"
     ],
     "avoid": [
-      "Allowing unbounded state vectors",
-      "Neglecting to handle large magnitudes in exponential functions",
-      "Running neural network forward passes without input validation",
-      "Allowing unbounded state vectors",
       "Ignoring numerical stability warnings",
       "Assuming helper scripts will automatically resolve core issues",
       "Repeating failing actions without adjustment",
@@ -43,20 +39,24 @@
       "Running forward passes without input validation",
       "Assuming helper scripts automatically resolve core issues",
       "Ignoring predecessor warnings about numerical stability",
-      "Repeating failing actions without adjustment"
+      "Repeating failing actions without adjustment",
+      "Assuming input clipping is sufficient for stability",
+      "Relying on helper scripts without integration validation",
+      "Ignoring magnitude checks in exponential operations",
+      "Cargo-cult practices with unvalidated tool fixes"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
-    "reward_engineering.md",
-    "helper_list.py",
     "stability_helper.py",
     "input_validator.py",
     "input_validator_test.py",
     "auto_success_guard.py",
     "sigmoid_clippy.py",
     "validation_suite_v1",
-    "stability_check.py"
+    "stability_check.py",
+    "diagnostic.py",
+    "helper_stability_check.py",
+    "SafeActivation_class"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -497,11 +497,16 @@
       "generation": 63,
       "score": 12.5,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 64,
+      "score": 65.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 64,
-    "average_score": 25.691803278688525,
+    "total_generations": 65,
+    "average_score": 26.325806451612905,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
