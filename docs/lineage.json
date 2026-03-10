@@ -688,5 +688,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773174920.3125453
+  },
+  {
+    "generation": 63,
+    "score": 12.5,
+    "death_cause": "crash: math range error",
+    "summary": "Agent crashed with an OverflowError during a sigmoid activation caused by unbounded input values, despite prior attempts to add clipping and validation.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773175305.7333317
   }
 ]
