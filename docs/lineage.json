@@ -160,5 +160,20 @@
     ],
     "progress_made": false,
     "timestamp": 1773103686.298424
+  },
+  {
+    "generation": 15,
+    "score": 15.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Agent self-terminated after a single step of reading files and writing reward functions, mistaking documentation of past experiments for completed work despite predecessor warnings.",
+    "mutations": [
+      {
+        "type": "prompt_wording",
+        "value": "be methodical and careful",
+        "generation_applied": 16
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773105470.5971859
   }
 ]

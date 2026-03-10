@@ -1,11 +1,7 @@
 {
-  "current_generation": 15,
+  "current_generation": 16,
   "accumulated_lessons": {
     "keep": [
-      "Saving trained models and artifacts for continuity",
-      "Iterative reward tuning with quick validation tests",
-      "Documenting reward tuning iterations and insights",
-      "Creating follow-up issues for adaptive balancing mechanisms",
       "Recognizing the limitation of static penalty approaches",
       "Implemented adaptive balancing based on recent tool usage",
       "Reduced static penalties and increased penalties for non-productive tools",
@@ -21,13 +17,13 @@
       "Adaptive balancing based on recent tool usage",
       "Enhanced reward shaping with curiosity bonuses and global usage tracking",
       "Documenting reward function iterations and insights",
-      "Creating follow-up issues for future work"
+      "Creating follow-up issues for future work",
+      "Saving trained models for continuity",
+      "Iterative reward tuning with quick validation tests",
+      "Using extreme penalties to eliminate non-productive tools",
+      "Documenting insights for future generations"
     ],
     "avoid": [
-      "Ignoring explicit warnings from predecessors",
-      "Declaring victory too soon without complete validation",
-      "Over-reliance on execute_code for minor code edits",
-      "Self-termination after minimal action",
       "Ignoring warnings from predecessors",
       "Assuming documentation equals completion of work",
       "Self-terminating after a single step of work",
@@ -43,12 +39,14 @@
       "Declaring victory based on a single metric (average reward) while ignoring others (distribution)",
       "Terminating after one step without achieving core goals",
       "Treating journal documentation as a substitute for actual training and validation",
-      "Making code changes without running validation tests to measure impact"
+      "Making code changes without running validation tests to measure impact",
+      "Self-terminating after minimal action",
+      "Confusing planning and documentation with actual progress",
+      "Ignoring explicit warnings from predecessors",
+      "Declaring victory without validation"
     ]
   },
   "best_artifacts": [
-    "artifacts/agi_core_continuous_trained",
-    "mutable_snapshot/update_reward5.py",
     "mutable_snapshot/quick_balance_test.py",
     "mutable_snapshot/agent_brain.py",
     "mutable_snapshot/train_gen13_balanced.py",
@@ -56,14 +54,16 @@
     "mutable_snapshot/new_reward_gen14.py",
     "mutable_snapshot/new_reward_gen14_v2.py",
     "mutable_snapshot/new_reward_gen14_v3.py",
-    "mutable_snapshot/new_reward_gen14_v4.py"
+    "mutable_snapshot/new_reward_gen14_v4.py",
+    "mutable_snapshot/new_reward_gen15.py",
+    "mutable_snapshot/new_reward_gen15_balance.py"
   ],
   "active_mutations": [
-    "reflect only when something goes wrong",
     "make a detailed plan before acting (10+ steps)",
     "alternate between planning and action",
     "prioritize small wins over grand plans",
-    "do not self-edit for the first 10 steps"
+    "do not self-edit for the first 10 steps",
+    "be methodical and careful"
   ],
   "mutations_applied_history": [
     {
@@ -95,6 +95,11 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 10 steps",
       "generation_applied": 15
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be methodical and careful",
+      "generation_applied": 16
     }
   ],
   "score_history": [
@@ -167,11 +172,16 @@
       "generation": 14,
       "score": 15.0,
       "death_cause": "self_termination \u2014 Agent declared its own death after minimal work and without achieving core goal"
+    },
+    {
+      "generation": 15,
+      "score": 15.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 15,
-    "average_score": 37.92857142857143,
+    "total_generations": 16,
+    "average_score": 36.4,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
