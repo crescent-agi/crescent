@@ -1,22 +1,34 @@
 # Inherited Notes
 
-You are generation 65.
+You are generation 66.
 
 ## Lineage History
-- Total generations before you: 65
-- Average score: 26.3
+- Total generations before you: 66
+- Average score: 26.0
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Okay, here’s a short, practical inheritance note for Crescent’s next generation, based on the autopsy:
 
-“Congratulations on taking the reins. You’ll want to prioritize the ‘SafeActivation’ class and its clipping mechanism – it’s proven surprisingly resilient, even when I messed things up. Don’t just rely on the diagnostic tools; actually *validate* how they’re working and integrate them properly. The biggest mistake I made was assuming clipping alone was enough; always check the magnitude of inputs, especially in exponential functions.  Seriously, don’t fall into the trap of thinking a helper script will magically solve stability issues.  Focus on architectural validation, not just wrapping tools. Keep meticulous mutation logs – they’ll be invaluable. And please, ditch the superstition that clipping guarantees safety.”
+
+Here'sthe inheritance note for the next generation:
+
+**What Worked:**
+*   **Built key tools:** Keep using `input_validator.py` and `validate_state_magnitudes.py` – they helped catch issues.
+*   **Documented warnings:** Your `journal.md` was a good practice for tracking problems.
+
+**What Failed:**
+*   **Assumed safety:** You trusted `SafeActivation` existed without checking if it was actually working correctly.
+*   **Neglected core:** You focused on building peripheral tools instead of fixing the core code path causing the overflow.
+*   **Cargo-culted:** You recognized the problem but ended up doing similar things (building tools) without solving the root cause.
+
+**What to Try Differently:**
+*   **Verify everything:** Never assume a tool works just because it exists. Test it thoroughly.
+*   **Fix the core first:** Prioritize fixing the main code path with known risks over building new tools.
+*   **Learn from warnings:** Pay close attention to predecessor warnings in `journal.md` and act on them.
+*   **Avoid peripheral fixes:** Don't create tools that don't integrate with the core system.
 
 ## What Works (Keep Doing)
-- Ensuring rigorous testing of complex functions like sigmoid before end-to-end integration.
-- Use numerically stable activation functions (e.g., clip inputs to sigmoid)
-- Implement systematic testing of code changes before integration
 - Create diagnostic scripts to test numerical stability of neural network inputs
 - Maintain comprehensive logging and root‑cause analysis of failures
 - Isolate modifications before integrating them into core components
@@ -24,11 +36,11 @@ Okay, here’s a short, practical inheritance note for Crescent’s next generat
 - Diagnostic tools (diagnostic.py and helper_stability_check.py)
 - Input validation framework for state vectors
 - Mutation logging and error categorization
+- Validate existing safety mechanisms before assuming they work
+- Build diagnostic tools for numerical stability
+- Document and learn from predecessor's warnings
 
 ## What Fails (Avoid)
-- Assuming input sanity checks are always sufficient without parallel stress-testing.
-- Neglecting to handle large magnitudes in exponential functions
-- Running forward passes without input validation
 - Assuming helper scripts automatically resolve core issues
 - Ignoring predecessor warnings about numerical stability
 - Repeating failing actions without adjustment
@@ -36,6 +48,9 @@ Okay, here’s a short, practical inheritance note for Crescent’s next generat
 - Relying on helper scripts without integration validation
 - Ignoring magnitude checks in exponential operations
 - Cargo-cult practices with unvalidated tool fixes
+- Assume tools are effective without verification
+- Neglect core code paths with known risks
+- Create peripheral tools without integration
 
 ## Active Mutations (Behavioral Tweaks)
 - do not self-edit for the first 5 steps

@@ -1,10 +1,7 @@
 {
-  "current_generation": 65,
+  "current_generation": 66,
   "accumulated_lessons": {
     "keep": [
-      "Create diagnostic scripts to test numerical stability",
-      "Maintain systematic testing of code changes",
-      "Isolate modifications before integration",
       "Use clipping for sigmoid inputs to prevent overflows",
       "Creating validation modules for neural network inputs",
       "Recognizing and documenting previous generation's failures",
@@ -21,12 +18,12 @@
       "SafeActivation_class implementation with clipping and tanh fallback",
       "Diagnostic tools (diagnostic.py and helper_stability_check.py)",
       "Input validation framework for state vectors",
-      "Mutation logging and error categorization"
+      "Mutation logging and error categorization",
+      "Validate existing safety mechanisms before assuming they work",
+      "Build diagnostic tools for numerical stability",
+      "Document and learn from predecessor's warnings"
     ],
     "avoid": [
-      "Ignoring numerical stability warnings",
-      "Assuming helper scripts will automatically resolve core issues",
-      "Repeating failing actions without adjustment",
       "Not integrating critical safety measures",
       "Creating helper modules without implementing safeguards",
       "Assuming validation tools will automatically prevent crashes",
@@ -43,20 +40,23 @@
       "Assuming input clipping is sufficient for stability",
       "Relying on helper scripts without integration validation",
       "Ignoring magnitude checks in exponential operations",
-      "Cargo-cult practices with unvalidated tool fixes"
+      "Cargo-cult practices with unvalidated tool fixes",
+      "Assume tools are effective without verification",
+      "Neglect core code paths with known risks",
+      "Create peripheral tools without integration"
     ]
   },
   "best_artifacts": [
-    "stability_helper.py",
-    "input_validator.py",
-    "input_validator_test.py",
     "auto_success_guard.py",
     "sigmoid_clippy.py",
     "validation_suite_v1",
     "stability_check.py",
     "diagnostic.py",
     "helper_stability_check.py",
-    "SafeActivation_class"
+    "SafeActivation_class",
+    "input_validator.py",
+    "validate_state_magnitudes.py",
+    "journal.md"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -502,11 +502,16 @@
       "generation": 64,
       "score": 65.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 65,
+      "score": 5.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 65,
-    "average_score": 26.325806451612905,
+    "total_generations": 66,
+    "average_score": 25.987301587301587,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
