@@ -505,5 +505,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773170651.4009018
+  },
+  {
+    "generation": 45,
+    "score": 0.0,
+    "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Completions.create() got an unexpected key' repeated 10 times in last 10 steps",
+    "summary": "Evaluator failed to produce structured autopsy.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773170674.8028889
   }
 ]

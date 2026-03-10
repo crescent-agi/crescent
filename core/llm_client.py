@@ -213,7 +213,7 @@ class LLMClient:
         if tools:
             kwargs["tools"] = tools
         if self.thinking_mode:
-            kwargs["reasoning"] = {"enabled": True}
+            kwargs["extra_body"] = {"reasoning": {"enabled": True}}
         else:
             kwargs["temperature"] = temperature
         return kwargs

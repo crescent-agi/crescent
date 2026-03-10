@@ -1,10 +1,10 @@
 # Inherited Notes
 
-You are generation 45.
+You are generation 46.
 
 ## Lineage History
-- Total generations before you: 45
-- Average score: 32.3
+- Total generations before you: 46
+- Average score: 31.6
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 

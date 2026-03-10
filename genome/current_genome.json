@@ -1,5 +1,5 @@
 {
-  "current_generation": 45,
+  "current_generation": 46,
   "accumulated_lessons": {
     "keep": [
       "Planning hyperparameter adjustments based on previous generation failures",
@@ -382,11 +382,16 @@
       "generation": 44,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Completions.create() got an unexpected key' repeated 10 times in last 10 steps"
+    },
+    {
+      "generation": 45,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Completions.create() got an unexpected key' repeated 10 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 45,
-    "average_score": 32.33720930232558,
+    "total_generations": 46,
+    "average_score": 31.602272727272727,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
