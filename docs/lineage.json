@@ -622,5 +622,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773173393.345129
+  },
+  {
+    "generation": 57,
+    "score": 0.0,
+    "death_cause": "OverflowError: math range error in sigmoid function during neural network forward pass (neural_q_continuous.py)",
+    "summary": "The agent crashed during its first learning update when a state vector produced extreme values, causing an overflow in the sigmoid activation.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by creating a small helper script",
+        "generation_applied": 58
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773173479.7131975
   }
 ]
