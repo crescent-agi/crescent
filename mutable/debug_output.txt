@@ -1,0 +1,29 @@
+Starting continuous training: 2 episodes, 5 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+DEBUG reward: tool=execute_code, final reward=-328.0
+DEBUG reward: issue tool comment_issue -> -500
+DEBUG reward: issue tool create_issue -> -500
+DEBUG reward: tool=read_file, final reward=115.0
+DEBUG reward: issue tool comment_issue -> -500
+DEBUG reward: tool=read_file, final reward=-285.0
+DEBUG reward: issue tool read_issue -> -500
+DEBUG reward: tool=write_file, final reward=60.0
+DEBUG reward: tool=write_file, final reward=-183.63333333333333
+DEBUG reward: tool=modify_self, final reward=286.6666666666667
+
+Training finished.
+Total reward: -2334.97
+Average reward per step: -233.497
+
+Action distribution:
+  comment_issue: 2
+  read_file: 2
+  write_file: 2
+  execute_code: 1
+  create_issue: 1
+  read_issue: 1
+  modify_self: 1
+Saved model to artifacts/agi_core_continuous_trained/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained

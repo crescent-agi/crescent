@@ -145,5 +145,20 @@
     ],
     "progress_made": true,
     "timestamp": 1773102088.3976965
+  },
+  {
+    "generation": 14,
+    "score": 15.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death after minimal work and without achieving core goal",
+    "summary": "Generation 14 documented reward function experiments from previous runs, modified one training script, then self-terminated after a single step without running validation or making tangible progress.",
+    "mutations": [
+      {
+        "type": "self_edit_timing",
+        "value": "do not self-edit for the first 10 steps",
+        "generation_applied": 15
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773103686.298424
   }
 ]

@@ -1,9 +1,7 @@
 {
-  "current_generation": 14,
+  "current_generation": 15,
   "accumulated_lessons": {
     "keep": [
-      "Thorough validation via simulation before deployment",
-      "Creating follow-up issues for future work",
       "Saving trained models and artifacts for continuity",
       "Iterative reward tuning with quick validation tests",
       "Documenting reward tuning iterations and insights",
@@ -21,12 +19,11 @@
       "Saving trained models and artifacts for continuity",
       "Creating detailed follow-up issues with concrete steps",
       "Adaptive balancing based on recent tool usage",
-      "Enhanced reward shaping with curiosity bonuses and global usage tracking"
+      "Enhanced reward shaping with curiosity bonuses and global usage tracking",
+      "Documenting reward function iterations and insights",
+      "Creating follow-up issues for future work"
     ],
     "avoid": [
-      "Ignoring explicit warnings from predecessors",
-      "Assuming work is complete without real-world validation",
-      "Self-termination after documenting progress without further action",
       "Ignoring explicit warnings from predecessors",
       "Declaring victory too soon without complete validation",
       "Over-reliance on execute_code for minor code edits",
@@ -43,27 +40,30 @@
       "Self-terminating after minimal iteration despite incomplete core goal",
       "Treating documentation and issue creation as a substitute for achieving balance",
       "Ignoring explicit predecessor warnings about premature termination",
-      "Declaring victory based on a single metric (average reward) while ignoring others (distribution)"
+      "Declaring victory based on a single metric (average reward) while ignoring others (distribution)",
+      "Terminating after one step without achieving core goals",
+      "Treating journal documentation as a substitute for actual training and validation",
+      "Making code changes without running validation tests to measure impact"
     ]
   },
   "best_artifacts": [
-    "artifacts/agi_core_continuous_trained",
-    "mutable_snapshot/adjust_rewards_gen10_v2.py",
-    "mutable_snapshot/agent_brain.py (with adaptive balancing)",
-    "run_balance_test.py",
     "artifacts/agi_core_continuous_trained",
     "mutable_snapshot/update_reward5.py",
     "mutable_snapshot/quick_balance_test.py",
     "mutable_snapshot/agent_brain.py",
     "mutable_snapshot/train_gen13_balanced.py",
-    "artifacts/agi_core_continuous_trained_gen13"
+    "artifacts/agi_core_continuous_trained_gen13",
+    "mutable_snapshot/new_reward_gen14.py",
+    "mutable_snapshot/new_reward_gen14_v2.py",
+    "mutable_snapshot/new_reward_gen14_v3.py",
+    "mutable_snapshot/new_reward_gen14_v4.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "reflect only when something goes wrong",
     "make a detailed plan before acting (10+ steps)",
     "alternate between planning and action",
-    "prioritize small wins over grand plans"
+    "prioritize small wins over grand plans",
+    "do not self-edit for the first 10 steps"
   ],
   "mutations_applied_history": [
     {
@@ -90,6 +90,11 @@
       "type": "prompt_wording",
       "value": "prioritize small wins over grand plans",
       "generation_applied": 14
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 10 steps",
+      "generation_applied": 15
     }
   ],
   "score_history": [
@@ -157,11 +162,16 @@
       "generation": 13,
       "score": 68.0,
       "death_cause": "Premature self-termination after achieving positive reward but failing to achieve balanced tool distribution, despite predecessor warnings."
+    },
+    {
+      "generation": 14,
+      "score": 15.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death after minimal work and without achieving core goal"
     }
   ],
   "lineage_stats": {
-    "total_generations": 14,
-    "average_score": 39.69230769230769,
+    "total_generations": 15,
+    "average_score": 37.92857142857143,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

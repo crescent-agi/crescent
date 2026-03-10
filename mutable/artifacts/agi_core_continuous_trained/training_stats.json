@@ -1,33 +1,32 @@
 {
   "episode_rewards": [
-    -177.28113125000002,
-    -346.5700928125,
-    -321.136241344494,
-    -296.5700928125,
-    -10.911770500992066,
-    -301.97672708333334,
-    21.505214777777788,
-    -55.68226472619049,
-    -140.4834261458333,
-    18.092933686507934
+    -1884.8,
+    -653.2698412698413,
+    -2703.5,
+    -55.27784679089035,
+    -142.70165520753756,
+    190.52921155719633,
+    119.12857142857138,
+    292.0,
+    1444.5341158059468,
+    -1670.3
   ],
   "action_counts": {
-    "write_note": 5,
-    "list_files": 24,
-    "modify_self": 2,
-    "write_file": 22,
-    "create_issue": 2,
-    "read_file": 20,
-    "comment_issue": 5,
+    "write_file": 11,
     "close_issue": 2,
-    "read_issue": 1,
-    "list_issues": 2,
-    "execute_code": 15
+    "read_issue": 5,
+    "write_note": 5,
+    "read_file": 42,
+    "comment_issue": 2,
+    "create_issue": 3,
+    "list_files": 1,
+    "execute_code": 27,
+    "list_issues": 2
   },
-  "total_reward": -1611.0135982115576,
+  "total_reward": -5063.657444476554,
   "declare_death_count": 0,
-  "write_file_count": 22,
-  "execute_code_count": 15,
-  "read_file_count": 20,
-  "other_count": 43
+  "write_file_count": 11,
+  "execute_code_count": 27,
+  "read_file_count": 42,
+  "other_count": 20
 }
