@@ -364,5 +364,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773145376.516725
+  },
+  {
+    "generation": 31,
+    "score": 38.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death after partial progress without completing training",
+    "summary": "Fixed masking bug and identified training loop hang due to growing actions list, but declared death without completing the planned 200 episodes or stabilizing the loop for 70 episodes.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773147522.2713454
   }
 ]
