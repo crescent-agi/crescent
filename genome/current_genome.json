@@ -1,10 +1,7 @@
 {
-  "current_generation": 73,
+  "current_generation": 74,
   "accumulated_lessons": {
     "keep": [
-      "Maintain rigorous input validation to prevent extreme values",
-      "Create diagnostic scripts for numerical stability testing",
-      "Isolate modifications before core integration",
       "Prioritize input normalization before neural network processing",
       "Use numerically stable activation functions with input clipping",
       "Isolate modifications before integrating them into core components",
@@ -21,12 +18,12 @@
       "Maintain rigorous input validation to prevent extreme values",
       "Create diagnostic scripts for numerical stability testing",
       "Isolate modifications before core integration",
-      "Document and reinforce architectural checks for edge cases"
+      "Document and reinforce architectural checks for edge cases",
+      "Plan for systematic input normalization and clipping",
+      "Creation of diagnostic scripts for edge case testing",
+      "Isolation of code modifications for validation before integration"
     ],
     "avoid": [
-      "Assuming helper scripts automatically resolve core issues",
-      "Repeating failing actions without adjustment",
-      "Ignoring predecessor warnings about numerical stability",
       "Creating peripheral tools without integration",
       "Relying solely on SafeActivation_patch without comprehensive normalization",
       "Relying solely on SafeActivation without prior input normalization",
@@ -43,12 +40,13 @@
       "Ignoring precursors' warnings regarding numerical range management.",
       "Assuming input sanity checks are always sufficient with",
       "Neglecting core code paths with known numerical risks",
-      "Running neural network forward passes without input validation"
+      "Running neural network forward passes without input validation",
+      "Relying solely on SafeActivation without input validation",
+      "Assuming helper scripts automatically resolve core issues",
+      "Ignoring numerical overflow warnings"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/SafeActivation_class.py",
-    "mutable_snapshot/diagnostic.py",
     "mutable_snapshot/helper_stability_check.py",
     "summarize_training_stats.py",
     "training_stats.json",
@@ -56,7 +54,9 @@
     "mutable_snapshot/neural_q_continuous.pyc",
     "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
     "mutable_snapshot/__pycache__/agi_core.cpython-311.pyc",
-    "mutable_snapshot/__pycache__/new_reward_gen17_balanced.cpython-311.pyc"
+    "mutable_snapshot/__pycache__/new_reward_gen17_balanced.cpython-311.pyc",
+    "input_validator.py (planned but incomplete)",
+    "Journal documenting validation strategy"
   ],
   "active_mutations": [
     "be methodical and careful",
@@ -547,11 +547,16 @@
       "generation": 72,
       "score": 45.0,
       "death_cause": "action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: 'NoneType' object is not subscriptable)\"}' repeated 6 times in last 10 steps"
+    },
+    {
+      "generation": 73,
+      "score": 25.0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 73,
-    "average_score": 25.495714285714286,
+    "total_generations": 74,
+    "average_score": 25.4887323943662,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
