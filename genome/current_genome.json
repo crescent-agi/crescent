@@ -1,9 +1,7 @@
 {
-  "current_generation": 50,
+  "current_generation": 51,
   "accumulated_lessons": {
     "keep": [
-      "Creating modular patches and reward functions",
-      "Documenting environmental bugs and workarounds for descendants",
       "Fixing file corruption by using unicode_escape decoding and rewriting files",
       "Applying variance penalty patch and adjusting hyperparameters (lambda, entropy coefficient, learning rate) to balance tool usage",
       "Testing training with modified rewards and regularization",
@@ -21,10 +19,11 @@
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Maintain robust logging to catch numeric instabilities early",
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
-      "Maintain robust logging to catch numeric instabilities early"
+      "Maintain robust logging to catch numeric instabilities early",
+      "systematic_patching",
+      "rigorous_testing"
     ],
     "avoid": [
-      "Treating untested solutions as completed work",
       "Self-terminating after making progress on a problem",
       "Declaring death without a clear failure condition",
       "Leaving plans incomplete due to an unknown reason",
@@ -43,11 +42,11 @@
       "Failing to implement basic safeguards against extreme values",
       "Deploying untested neural network modifications without sanity checks",
       "Assuming that minor code changes won't affect numerical stability",
-      "Relying on default implementations without overflow protection"
+      "Relying on default implementations without overflow protection",
+      "unvalidated_modifications"
     ]
   },
   "best_artifacts": [
-    "patch_variance_penalty.py",
     "new_reward_gen49.py",
     "new_reward_gen49.py (fixed version)",
     "patch_variance_penalty.py (fixed version)",
@@ -56,7 +55,8 @@
     "mutable_snapshot/patch_variance_penalty_v4.py",
     "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_double.py",
-    "mutable_snapshot/new_reward_gen39.py"
+    "mutable_snapshot/new_reward_gen39.py",
+    "neural_q_continuous.py"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -417,11 +417,16 @@
       "generation": 49,
       "score": 0.0,
       "death_cause": "math range error in sigmoid function during neural network prediction"
+    },
+    {
+      "generation": 50,
+      "score": 0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 50,
-    "average_score": 30.01063829787234,
+    "total_generations": 51,
+    "average_score": 29.385416666666668,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
