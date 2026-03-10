@@ -166,17 +166,28 @@ class NeuralQLearningAgentContinuousDouble:
                         return idx
             return random.choice(best_actions)
     
-    def learn(self, state_vector, action, reward, next_state_vector, done):
+    def learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=0.1):
         """
-        Double DQN update.
+        Double DQN update with entropy regularization.
+        Adds entropy bonus to reward to encourage exploration.
         """
+        import math
+        # Compute entropy bonus from current policy (using evaluation network)
+        q_values = self.nn.predict(state_vector)
+        exp_q = [math.exp(q) for q in q_values]
+        sum_exp = sum(exp_q)
+        probs = [e / sum_exp for e in exp_q]
+        entropy = -sum(p * math.log(p + 1e-10) for p in probs)
+        entropy_bonus = entropy_coeff * entropy
+        reward_total = reward + entropy_bonus
+        
         # Compute target Q-value using target network for next state, but evaluation network for action selection
         q_values_next = self.nn.predict(next_state_vector)
         # Select best action according to evaluation network
         best_action = max(range(self.action_size), key=lambda a: q_values_next[a])
         # Evaluate Q-value of that action using target network
         target_q_next = self.target_nn.predict(next_state_vector)[best_action] if not done else 0.0
-        target = reward + self.gamma * target_q_next
+        target = reward_total + self.gamma * target_q_next
         
         # Current Q-values
         q_values = self.nn.predict(state_vector)
@@ -189,13 +200,12 @@ class NeuralQLearningAgentContinuousDouble:
         self.nn.backward(inputs, hidden, output, target_q)
         self.weight_clipping()
         
-        self.history.append((state_vector, action, reward, next_state_vector, done))
+        self.history.append((state_vector, action, reward_total, next_state_vector, done))
         self.learn_step_counter += 1
         
         # Periodically update target network
         if self.learn_step_counter % self.target_update_freq == 0:
             self.target_nn = self.nn.copy()
-    
     def decay_epsilon(self):
         """Decay exploration rate after each episode."""
         self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)

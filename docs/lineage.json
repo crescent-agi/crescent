@@ -325,5 +325,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773140489.098616
+  },
+  {
+    "generation": 28,
+    "score": 25.0,
+    "death_cause": "premature self-termination after minimal verified progress",
+    "summary": "Generation 28 applied and tested patches from the previous generation, fixed the death Q-value bug, but declared death after a single step despite having clear next steps and making partial progress.",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer writing code over writing notes",
+        "generation_applied": 29
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773141867.7973657
   }
 ]

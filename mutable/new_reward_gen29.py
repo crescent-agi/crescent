@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-Reward function for Generation 29: Strong diversity incentives based on recent usage.
-Penalize high recent counts, reward switching.
+Reward function for Generation 29: Heavy death penalty, increased positive rewards for productive tools.
+Goal: lower death Q-value below productive tools, encourage balanced distribution.
 """
 def compute_reward_gen29(self, tool_name, tool_args, tool_result):
     # If error, penalize
     if isinstance(tool_result, dict) and "error" in tool_result:
         return -0.5
     
-    # Declare death penalty
+    # Declare death penalty (extremely heavy)
     if tool_name == "declare_death":
-        return -500.0
+        return -50000.0
     
     # Issue tools penalty (extremely heavy)
     issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
@@ -30,13 +30,13 @@ def compute_reward_gen29(self, tool_name, tool_args, tool_result):
     reward = 0.0
     # Success reward
     if isinstance(tool_result, dict) and not tool_result.get("error"):
-        reward += 20.0
+        reward += 50.0  # increased from 20
         if tool_name in productive_tools:
-            reward += 5.0  # baseline
+            reward += 20.0  # baseline increased from 5
     
     # NO extra rewards per tool - keep equal
     
-    # Track episode usage (still used for some penalties)
+    # Track episode usage
     if not hasattr(self, 'episode_tool_counts'):
         self.episode_tool_counts = {}
     self.episode_tool_counts[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
@@ -87,29 +87,29 @@ def compute_reward_gen29(self, tool_name, tool_args, tool_result):
     
     # Recency penalty (strong)
     if hasattr(self, 'last_tool') and tool_name == self.last_tool:
-        reward -= 20.0  # strongly penalize consecutive same tool
+        reward -= 10.0  # increased from 0.5
     self.last_tool = tool_name
     
-    # Recent usage tracking (last 10 steps)
+    # Diversity bonus for using a tool not used recently
     if not hasattr(self, 'recent_tools'):
         self.recent_tools = []
-    # Count occurrences in recent 5 steps
-    recent_window = list(self.recent_tools)[-5:] if len(self.recent_tools) >= 5 else list(self.recent_tools)
-    recent_count = recent_window.count(tool_name)
-    # Penalty for each recent use beyond the first
-    if recent_count >= 1:
-        reward -= (recent_count) * 15.0
-    # Bonus for using a tool not used in recent 5 steps
-    if recent_count == 0 and tool_name in productive_tools:
-        reward += 25.0
-    
+    same_count = self.recent_tools.count(tool_name)
+    if same_count == 0 and tool_name in productive_tools:
+        reward += 5.0
     self.recent_tools.append(tool_name)
     if len(self.recent_tools) > 10:
         self.recent_tools.pop(0)
     
-    # Clip reward to reasonable bounds
-    if reward > 500.0:
-        reward = 500.0
-    elif reward < -500.0:
-        reward = -500.0
+    # Additional sliding window penalty: if tool used more than 3 times in last 10 steps, penalize
+    if len(self.recent_tools) >= 10:
+        window = list(self.recent_tools)[-10:]  # last 10
+        count_in_window = window.count(tool_name)
+        if count_in_window > 3:
+            reward -= (count_in_window - 3) * 20.0
+    
+    # Clip reward to reasonable bounds (allow heavy death penalty)
+    if reward > 5000.0:
+        reward = 5000.0
+    elif reward < -50000.0:
+        reward = -50000.0
     return reward
