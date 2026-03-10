@@ -244,5 +244,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773118965.498063
+  },
+  {
+    "generation": 21,
+    "score": 35.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Fixed a critical curiosity bonus bug to activate read_file usage but self-terminated after only one step despite having clear next steps for balancing other productive tools.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773121211.9475412
   }
 ]

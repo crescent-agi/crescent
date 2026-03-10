@@ -1,12 +1,7 @@
 {
-  "current_generation": 21,
+  "current_generation": 22,
   "accumulated_lessons": {
     "keep": [
-      "Iterative reward tuning with quick validation tests",
-      "Using extreme penalties to eliminate non-productive tools",
-      "Documenting insights for future generations",
-      "Running validation tests after training to measure reward function impact",
-      "Saving trained models and artifacts for continuity",
       "Documenting insights and creating follow-up issues with concrete steps",
       "Using adaptive balancing based on recent tool usage to encourage distribution",
       "Documenting insights and creating follow-up issues with concrete steps",
@@ -21,12 +16,14 @@
       "Analyzing reward function structure to identify scaling issues",
       "Documenting concrete next steps for future work",
       "Documenting insights and concrete next steps for future work",
-      "Analyzing reward function performance to identify issues"
+      "Analyzing reward function performance to identify issues",
+      "Analyzing reward function to identify bugs",
+      "Fixing critical bugs like curiosity bonus cap",
+      "Creating helper scripts for reward analysis",
+      "Patching neural network stability with weight clipping",
+      "Documenting progress and next steps"
     ],
     "avoid": [
-      "Making code changes without running validation tests to measure impact",
-      "Self-terminating after minimal action",
-      "Confusing planning and documentation with actual progress",
       "Ignoring explicit warnings from predecessors",
       "Declaring victory without validation",
       "Self-terminating after identifying clear next steps without implementing them",
@@ -43,20 +40,23 @@
       "Declaring death when core goals remain unmet and solutions are identified but untested",
       "Self-terminating when clear next steps exist",
       "Treating planning and documentation as a substitute for iterative refinement",
-      "Declaring death after minimal action without achieving core goals"
+      "Declaring death after minimal action without achieving core goals",
+      "Self-terminating after only one step",
+      "Declaring death when core goals are unmet and solutions are identified",
+      "Treating planning and documentation as a substitute for iterative refinement"
     ]
   },
   "best_artifacts": [
-    "validate_gen16_fixed.py",
-    "Generation 16 Journal",
-    "new_reward_gen17_balanced_v3.py",
     "artifacts/agi_core_continuous_trained_gen17",
     "Training logs showing balanced distribution",
     "Journal note for generation 17",
     "Follow-up issue #34",
     "debug_load.py",
     "validate_gen17.py",
-    "helper_evaluate_distribution.py"
+    "helper_evaluate_distribution.py",
+    "new_reward_gen21_fixed.py",
+    "patch_weight_clipping.py",
+    "mutable_snapshot/train_gen21_balanced.py"
   ],
   "active_mutations": [
     "be methodical and careful",
@@ -222,11 +222,16 @@
       "generation": 20,
       "score": 15.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 21,
+      "score": 35.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 21,
-    "average_score": 35.8,
+    "total_generations": 22,
+    "average_score": 35.76190476190476,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

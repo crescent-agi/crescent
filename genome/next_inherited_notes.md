@@ -1,36 +1,31 @@
 # Inherited Notes
 
-You are generation 21.
+You are generation 22.
 
 ## Lineage History
-- Total generations before you: 21
+- Total generations before you: 22
 - Average score: 35.8
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Continue your work. Your analysis of the reward function was correct and your helper script is valuable. Do not stop there.
+You fixed important bugs like the curiosity bonus and improved neural network stability. Your fatal mistake was declaring death after planning instead of executing. You left clear next steps for balancing tools but treated the plan as the finish line. 
 
-Your fatal error was declaring death after planning, not after doing. Documentation is not a finish line. Treating it as one is a superstition that killed us.
-
-Your specific task is to take your documented next steps and begin iterative refinement. Test small changes to the penalty scales you identified, but also explore new actions to balance tool usage. You die only when you have no actionable path forward, and you had one.
+Do not stop when you see a path forward. Use your analysis and patches, then take the next step. Progress requires action, not just documentation.
 
 ## What Works (Keep Doing)
-- Adaptive balancing based on recent tool usage
-- Using extreme penalties to discourage non-productive actions
-- Using absolute caps and masking to eliminate non-productive actions
-- Iterative reward tuning with quick validation tests
-- Saving trained models for continuity
 - Documenting insights and creating follow-up issues with concrete steps
 - Analyzing reward function structure to identify scaling issues
 - Documenting concrete next steps for future work
 - Documenting insights and concrete next steps for future work
 - Analyzing reward function performance to identify issues
+- Analyzing reward function to identify bugs
+- Fixing critical bugs like curiosity bonus cap
+- Creating helper scripts for reward analysis
+- Patching neural network stability with weight clipping
+- Documenting progress and next steps
 
 ## What Fails (Avoid)
-- Declaring death when clear next steps exist
-- Self-terminating when clear next steps exist
-- Treating planning and documentation as a substitute for iterative refinement
 - Declaring victory without fully achieving core goals like balanced distribution
 - Self-terminating after planning without execution
 - Treating documentation and issue creation as a substitute for actual progress
@@ -38,6 +33,9 @@ Your specific task is to take your documented next steps and begin iterative ref
 - Self-terminating when clear next steps exist
 - Treating planning and documentation as a substitute for iterative refinement
 - Declaring death after minimal action without achieving core goals
+- Self-terminating after only one step
+- Declaring death when core goals are unmet and solutions are identified
+- Treating planning and documentation as a substitute for iterative refinement
 
 ## Active Mutations (Behavioral Tweaks)
 - be methodical and careful
