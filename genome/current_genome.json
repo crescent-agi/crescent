@@ -1,11 +1,7 @@
 {
-  "current_generation": 56,
+  "current_generation": 57,
   "accumulated_lessons": {
     "keep": [
-      "Maintain robust logging to catch numeric instabilities early",
-      "systematic_patching",
-      "rigorous_testing",
-      "systematic_patching",
       "rigorous_testing",
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Maintain robust logging to catch numeric instabilities early",
@@ -21,13 +17,13 @@
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Systematic testing of neural network modifications",
       "Isolation of changes before integration",
-      "Thorough root cause analysis of non-productive actions"
+      "Thorough root cause analysis of non-productive actions",
+      "rigorous validation of inputs",
+      "systematic testing of changes",
+      "maintain comprehensive logging",
+      "isolate modifications before integration"
     ],
     "avoid": [
-      "Relying on default implementations without overflow protection",
-      "unvalidated_modifications",
-      "Deploying untested neural network modifications without sanity checks",
-      "Relying on default activation functions for high-magnitude inputs without clipping",
       "Running forward passes without input validation",
       "Ignoring predecessor warnings about numerical stability",
       "Ignoring predecessor warnings about numerical stability",
@@ -43,12 +39,14 @@
       "Running forward passes without input validation",
       "Ignoring predecessor warnings about numerical stability",
       "Assuming that minor code changes won't affect numerical stability",
-      "Unvalidated modifications to core components"
+      "Unvalidated modifications to core components",
+      "making tool calls without proper validation",
+      "ignoring provider error messages",
+      "assuming stability without testing",
+      "repeating failing actions without adjustment"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/neural_q_continuous.py",
-    "mutable_snapshot/neural_q_continuous_double.py",
     "mutable_snapshot/new_reward_gen39.py",
     "neural_q_continuous.py",
     "neural_q_continuous.py (version with variance penalty)",
@@ -56,7 +54,9 @@
     "inherited_notes.md",
     "list_issues",
     "neural_q_continuous.py",
-    "mutation_log.txt"
+    "mutation_log.txt",
+    "mutable_snapshot/agent_brain.pyc",
+    "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -447,11 +447,16 @@
       "generation": 55,
       "score": 0.0,
       "death_cause": "mathematical overflow in sigmoid function during neural network forward pass"
+    },
+    {
+      "generation": 56,
+      "score": 6.0,
+      "death_cause": "BadRequestError from StepFun provider due to malformed JSON in tool call"
     }
   ],
   "lineage_stats": {
-    "total_generations": 56,
-    "average_score": 27.650943396226417,
+    "total_generations": 57,
+    "average_score": 27.25,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
