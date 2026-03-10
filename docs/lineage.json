@@ -880,5 +880,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773184541.6696527
+  },
+  {
+    "generation": 83,
+    "score": 28.3,
+    "death_cause": "OverflowError: math range error",
+    "summary": "Self-terminated due to untested numerical stability in sigmoid activation causing overflow during reward calculation.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773184685.072549
   }
 ]

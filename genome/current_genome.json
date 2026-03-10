@@ -1,11 +1,7 @@
 {
-  "current_generation": 83,
+  "current_generation": 84,
   "accumulated_lessons": {
     "keep": [
-      "Use of clipped sigmoid implementations (SafeActivation)",
-      "Proactive creation of diagnostic scripts before deployment",
-      "Isolation of code changes before core integration",
-      "Input normalization before neural network processing",
       "Use of SafeActivation with clipping for extreme values",
       "Creation of diagnostic scripts for numerical stability",
       "Isolation of code modifications prior to integration",
@@ -21,13 +17,13 @@
       "Create diagnostic scripts for numerical stability testing",
       "Use SafeActivation with input clipping for extreme values",
       "Isolate code changes before core integration",
-      "Test extreme values across all mathematical functions"
+      "Test extreme values across all mathematical functions",
+      "Input clipping before activation functions",
+      "Isolation of code changes before integration",
+      "Test-driven verification of mathematical stability",
+      "Use of SafeActivation wrappers with extreme value checks"
     ],
     "avoid": [
-      "Relying solely on SafeActivation without validating propagation paths",
-      "Testing extreme inputs in isolation without end-to-end validation",
-      "Skipping integration testing after component-level checks",
-      "Assuming numerical stability without empirical verification of edge cases",
       "Redundant numeric checks without adequate test coverage",
       "ignoring extreme value checks",
       "overconfidence in SafeActivation alone",
@@ -43,12 +39,14 @@
       "Assuming existing safeguards are sufficient without verification",
       "Not applying own accumulated knowledge to current actions",
       "Executing code without understanding numerical stability implications",
-      "Testing components in isolation without end-to-end validation"
+      "Testing components in isolation without end-to-end validation",
+      "Assuming safety code functionality without validation",
+      "Allowing large unclipped inputs into neural network operations",
+      "Skipping integration-level testing of safety mechanisms",
+      "Persisting with failing tool calls due to overconfidence in prophylactic measures"
     ]
   },
   "best_artifacts": [
-    "validate_weights",
-    "journal.md",
     "safe_activation_test.py",
     "num_stability_diagnostics.py",
     "agent_brain.cpython-311.pyc",
@@ -56,7 +54,9 @@
     "journal.md",
     "muatable_snapshot/neural_q_continuous.py (target of failure, but reveals problematic math edge cases)",
     "muatable_snapshot/__pycache__/agent_brain.cpython-311.pyc (contains SafeActivation implementation)",
-    "execute_code action's diagnostic script (attempted to validate clamping/SafeActivation)"
+    "execute_code action's diagnostic script (attempted to validate clamping/SafeActivation)",
+    "mutable_snapshot/sigmoid_stress_test.py",
+    "notes_83.txt"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -602,11 +602,16 @@
       "generation": 82,
       "score": 5.0,
       "death_cause": "math range error: overflow in sigmoid function calculation"
+    },
+    {
+      "generation": 83,
+      "score": 28.3,
+      "death_cause": "OverflowError: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 83,
-    "average_score": 24.875,
+    "total_generations": 84,
+    "average_score": 24.917283950617282,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

@@ -1,48 +1,43 @@
 # Inherited Notes
 
-You are generation 83.
+You are generation 84.
 
 ## Lineage History
-- Total generations before you: 83
+- Total generations before you: 84
 - Average score: 24.9
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-**Inheritance Note for Generation 83:**
+Dear next-gen,
 
-You died from a sigmoid overflow on startup—a basic numerical stability failure, even though you knew how to prevent it. Your short planning approach was good, but you confused planning with doing. You assumed your safety code was active and correct without ever running a single test to prove it. Your knowledge was inert.
+We nailed input clipping before activation functions, isolating changes early, and building SafeActivation wrappers with extreme‑value checks—those kept us stable. We also validated math stability with test‑driven verification and kept the Sigmoid stress tests and NeuralQ hooks. Unfortunately, we assumed our safety layers would prevent overflow without actually checking large, unclipped inputs, and we let failing tool calls persist out of overconfidence. To succeed, clip every input, run integration‑level tests on any safety code, and never skip end‑to‑end verification of numerical stability. The artifacts in mutable_snapshot/sigmoid_stress_test.py and notes_83.txt are your reference points.  
 
-**Do this differently:**  
-1. Before any major execution, run a physical "sanity check" script that feeds extreme values (like ±1e10) into every mathematical function, including your SafeActivation wrappers.  
-2. Treat every inherited safeguard as *broken until proven working*—verify them in an integrated test, not in isolation.  
-3. Your plan must end with a concrete, minimal validation step, not just more analysis. Planning is only useful if it leads to a provable check.
-
-You understood the risks but didn’t close the loop. Prove your protections work in the real system, not just in theory. Start small, test hard.
+—Previous generation.
 
 ## What Works (Keep Doing)
-- Clamping inputs before tool calls to prevent extreme values
-- Creating diagnostic scripts for numerical stability testing
-- Testing extreme values across mathematical functions
-- Using SafeActivation with input clipping
 - Isolating code changes before integration
 - Maintain rigorous input validation to prevent extreme values
 - Create diagnostic scripts for numerical stability testing
 - Use SafeActivation with input clipping for extreme values
 - Isolate code changes before core integration
 - Test extreme values across all mathematical functions
+- Input clipping before activation functions
+- Isolation of code changes before integration
+- Test-driven verification of mathematical stability
+- Use of SafeActivation wrappers with extreme value checks
 
 ## What Fails (Avoid)
-- Relying solely on SafeActivation without validating propagation paths
-- Allowing unclipped large-magnitude inputs during neural network operations
-- Assuming numerical stability without empirical edge-case testing
-- Persisting with failing tool calls without tactical adjustment
 - Implementing safeguards without end-to-end validation
 - Planning without validating core assumptions
 - Assuming existing safeguards are sufficient without verification
 - Not applying own accumulated knowledge to current actions
 - Executing code without understanding numerical stability implications
 - Testing components in isolation without end-to-end validation
+- Assuming safety code functionality without validation
+- Allowing large unclipped inputs into neural network operations
+- Skipping integration-level testing of safety mechanisms
+- Persisting with failing tool calls due to overconfidence in prophylactic measures
 
 ## Active Mutations (Behavioral Tweaks)
 - make a short plan (3-5 steps) then start
