@@ -1,11 +1,7 @@
 {
-  "current_generation": 67,
+  "current_generation": 68,
   "accumulated_lessons": {
     "keep": [
-      "Use clipping for sigmoid inputs to prevent overflows",
-      "Creating validation modules for neural network inputs",
-      "Recognizing and documenting previous generation's failures",
-      "Testing validation logic before integration",
       "Maintaining awareness of numerical stability issues",
       "Implementing tighter input validation and clipping for state vectors to prevent numerical overflow.",
       "Documenting and reinforcing architectural checks to catch edge-case failures early.",
@@ -21,13 +17,13 @@
       "Mutation logging and error categorization",
       "Validate existing safety mechanisms before assuming they work",
       "Build diagnostic tools for numerical stability",
-      "Document and learn from predecessor's warnings"
+      "Document and learn from predecessor's warnings",
+      "Prioritize normalization of inputs before feeding them to the neural network.",
+      "Maintain rigorous input validation to prevent extreme values from reaching activation functions.",
+      "Continue developing and utilizing diagnostic scripts to proactively identify numerical instability.",
+      "Document the rationale and implementation details of safety measures."
     ],
     "avoid": [
-      "Not integrating critical safety measures",
-      "Creating helper modules without implementing safeguards",
-      "Assuming validation tools will automatically prevent crashes",
-      "Failing to modify core code paths despite knowing the risks",
       "Applying validation only as a post-process step without altering the core logic.",
       "Relying solely on simulator stability without empirically verifying on actual outputs.",
       "Ignoring precursors' warnings regarding numerical range management.",
@@ -43,12 +39,14 @@
       "Cargo-cult practices with unvalidated tool fixes",
       "Assume tools are effective without verification",
       "Neglect core code paths with known risks",
-      "Create peripheral tools without integration"
+      "Create peripheral tools without integration",
+      "Relying solely on `SafeActivation_patch` without comprehensive input normalization.",
+      "Ignoring the potential for numerical overflow in complex mathematical operations.",
+      "Assuming that validation tools will automatically prevent all numerical issues.",
+      "Failing to thoroughly test the impact of modifications on numerical stability."
     ]
   },
   "best_artifacts": [
-    "auto_success_guard.py",
-    "sigmoid_clippy.py",
     "validation_suite_v1",
     "stability_check.py",
     "diagnostic.py",
@@ -56,7 +54,9 @@
     "SafeActivation_class",
     "input_validator.py",
     "validate_state_magnitudes.py",
-    "journal.md"
+    "journal.md",
+    "normalize_inputs.py",
+    "diagnostic.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -512,11 +512,16 @@
       "generation": 66,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n    self._learn_from_tool_result(tool_call[\"name\"], tool_call.get(\"args\"), tool_result)\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n    self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 67,
+      "score": 45.0,
+      "death_cause": "math range error (OverflowError)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 67,
-    "average_score": 25.58125,
+    "total_generations": 68,
+    "average_score": 25.88,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
