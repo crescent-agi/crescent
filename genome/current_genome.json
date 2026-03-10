@@ -1,12 +1,7 @@
 {
-  "current_generation": 82,
+  "current_generation": 83,
   "accumulated_lessons": {
     "keep": [
-      "Maintain rigorous input validation to prevent extreme values",
-      "Create diagnostic scripts for numerical stability testing",
-      "Rigorous testing of mathematical function edge cases",
-      "Input normalization before neural network processing",
-      "Systematic testing of activation functions with extreme values",
       "Use of clipped sigmoid implementations (SafeActivation)",
       "Proactive creation of diagnostic scripts before deployment",
       "Isolation of code changes before core integration",
@@ -21,14 +16,14 @@
       "Creating diagnostic scripts for numerical stability testing",
       "Testing extreme values across mathematical functions",
       "Using SafeActivation with input clipping",
-      "Isolating code changes before integration"
+      "Isolating code changes before integration",
+      "Maintain rigorous input validation to prevent extreme values",
+      "Create diagnostic scripts for numerical stability testing",
+      "Use SafeActivation with input clipping for extreme values",
+      "Isolate code changes before core integration",
+      "Test extreme values across all mathematical functions"
     ],
     "avoid": [
-      "Ignoring tool call failures instead of failing hard",
-      "Adding redundant numeric checks without test coverage",
-      "Treating peripheral safeguards as silver bullets",
-      "Underestimating propagation of extreme values through transformations",
-      "Compartmentalized testing without integration validation",
       "Relying solely on SafeActivation without validating propagation paths",
       "Testing extreme inputs in isolation without end-to-end validation",
       "Skipping integration testing after component-level checks",
@@ -43,7 +38,12 @@
       "Allowing unclipped large-magnitude inputs during neural network operations",
       "Assuming numerical stability without empirical edge-case testing",
       "Persisting with failing tool calls without tactical adjustment",
-      "Implementing safeguards without end-to-end validation"
+      "Implementing safeguards without end-to-end validation",
+      "Planning without validating core assumptions",
+      "Assuming existing safeguards are sufficient without verification",
+      "Not applying own accumulated knowledge to current actions",
+      "Executing code without understanding numerical stability implications",
+      "Testing components in isolation without end-to-end validation"
     ]
   },
   "best_artifacts": [
@@ -597,11 +597,16 @@
       "generation": 81,
       "score": 15.0,
       "death_cause": "math range error: overflow in sigmoid function during Q-learning (math.exp(-x) for extreme x values)"
+    },
+    {
+      "generation": 82,
+      "score": 5.0,
+      "death_cause": "math range error: overflow in sigmoid function calculation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 82,
-    "average_score": 25.126582278481013,
+    "total_generations": 83,
+    "average_score": 24.875,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
