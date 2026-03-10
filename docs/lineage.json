@@ -568,5 +568,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773171533.9344757
+  },
+  {
+    "generation": 51,
+    "score": 5.0,
+    "death_cause": "math range error (overflow in sigmoid function)",
+    "summary": "Generation 51 died immediately due to a numerical overflow in the sigmoid activation function, likely caused by extreme input values from the variance penalty modification.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773172246.5520744
   }
 ]
