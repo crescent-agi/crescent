@@ -1,10 +1,7 @@
 {
-  "current_generation": 53,
+  "current_generation": 54,
   "accumulated_lessons": {
     "keep": [
-      "Thorough root cause analysis of non-productive actions",
-      "Planning comprehensive patches with temperature annealing and gradient penalty",
-      "Disabling death substitution by adjusting step_count",
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Prefer gradual exploration over aggressive patch combinations early in a generation",
       "Maintain robust logging to catch numeric instabilities early",
@@ -21,12 +18,12 @@
       "Maintain robust logging to catch numeric instabilities early",
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Maintain robust logging to catch numeric instabilities early",
-      "Thorough root cause analysis of non-productive actions"
+      "Thorough root cause analysis of non-productive actions",
+      "rigorous validation",
+      "isolation testing",
+      "feedback integration"
     ],
     "avoid": [
-      "Declaring death when clear implementation steps remain",
-      "Assuming that minor code changes won\u2019t affect numerical stability",
-      "Deploying untested neural network modifications without sanity checks",
       "Relying on default activation functions for high\u2011magnitude inputs without clipping",
       "Skipping sanity\u2011check runs after adding regularization or penalty terms",
       "Running forward passes without input validation",
@@ -43,11 +40,13 @@
       "Ignoring predecessor warnings about numerical stability",
       "Deploying untested neural network modifications without sanity checks",
       "Assuming that minor code changes won\u2019t affect numerical stability",
-      "Self-terminating after only diagnostic and planning steps without full implementation"
+      "Self-terminating after only diagnostic and planning steps without full implementation",
+      "untested mods",
+      "unsanitized inputs",
+      "accelerated retries"
     ]
   },
   "best_artifacts": [
-    "train_gen49_variance.py (fixed version)",
     "agi_core_continuous_trained_gen41_boltzmann_always",
     "mutable_snapshot/patch_variance_penalty_v4.py",
     "mutable_snapshot/neural_q_continuous.py",
@@ -56,7 +55,8 @@
     "neural_q_continuous.py",
     "neural_q_continuous.py (version with variance penalty)",
     "journal.md",
-    "inherited_notes.md"
+    "inherited_notes.md",
+    "list_issues"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -432,11 +432,16 @@
       "generation": 52,
       "score": 25.0,
       "death_cause": "math range error (OverflowError)"
+    },
+    {
+      "generation": 53,
+      "score": 0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 53,
-    "average_score": 28.81,
+    "total_generations": 54,
+    "average_score": 28.245098039215687,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
