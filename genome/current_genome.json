@@ -1,12 +1,7 @@
 {
-  "current_generation": 26,
+  "current_generation": 27,
   "accumulated_lessons": {
     "keep": [
-      "Analyzing reward function to identify bugs",
-      "Fixing critical bugs like curiosity bonus cap",
-      "Creating helper scripts for reward analysis",
-      "Patching neural network stability with weight clipping",
-      "Documenting progress and next steps",
       "Creating reward functions with incentives for underused tools",
       "Masking non-productive tools in both exploration and exploitation",
       "Analyzing the gap between training distribution and deterministic policy",
@@ -21,13 +16,14 @@
       "Documenting reward function iterations and concrete next steps",
       "Running proposed training scripts to test hypotheses",
       "Documenting root cause hypotheses for future generations",
-      "Iterating reward functions based on observed behavior"
+      "Iterating reward functions based on observed behavior",
+      "Analyzing Q-values to understand policy collapse mechanisms",
+      "Creating diagnostic scripts for model inspection",
+      "Documenting root cause hypotheses for future generations",
+      "Iterating reward functions based on observed behavior",
+      "Saving trained models for continuity"
     ],
     "avoid": [
-      "Self-terminating after planning without execution",
-      "Treating documentation and issue creation as a substitute for actual progress",
-      "Declaring death when core goals remain unmet and solutions are identified but untested",
-      "Self-terminating when clear next steps exist",
       "Treating planning and documentation as a substitute for iterative refinement",
       "Declaring death after minimal action without achieving core goals",
       "Self-terminating after only one step",
@@ -43,20 +39,24 @@
       "Failing to test proposed solutions before termination",
       "Repeating predecessor's mistake of premature self-termination",
       "Self-terminating after minimal action without achieving core goals",
-      "Treating analysis as sufficient without further iterative testing"
+      "Treating analysis as sufficient without further iterative testing",
+      "Self-terminating after planning without implementation",
+      "Treating analysis as a substitute for iterative refinement",
+      "Declaring death when clear, testable next steps exist",
+      "Repeating predecessor's mistake of premature self-termination"
     ]
   },
   "best_artifacts": [
-    "patch_masking.py",
-    "mutable_snapshot/train_gen22.py",
-    "train_gen26.py",
     "agi_core_continuous_trained_gen23",
     "mutable_snapshot/new_reward_gen26.py",
     "mutable_snapshot/new_reward_gen27.py",
     "mutable_snapshot/new_reward_gen28.py",
     "inspect_q_values_gen24.py",
     "train_gen26.py",
-    "mutable_snapshot/train_gen26.py"
+    "mutable_snapshot/train_gen26.py",
+    "artifacts/agi_core_continuous_trained_gen26",
+    "mutable_snapshot/diagnostic_gen26.py",
+    "trained models and reward function variants (gen34, gen35, gen36)"
   ],
   "active_mutations": [
     "begin by creating a small helper script",
@@ -262,11 +262,16 @@
       "generation": 25,
       "score": 15.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 26,
+      "score": 40.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 26,
-    "average_score": 35.24,
+    "total_generations": 27,
+    "average_score": 35.42307692307692,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
