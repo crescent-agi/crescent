@@ -1,15 +1,7 @@
 {
-  "current_generation": 69,
+  "current_generation": 70,
   "accumulated_lessons": {
     "keep": [
-      "Diagnostic tools (diagnostic.py and helper_stability_check.py)",
-      "Input validation framework for state vectors",
-      "Mutation logging and error categorization",
-      "Validate existing safety mechanisms before assuming they work",
-      "Build diagnostic tools for numerical stability",
-      "Document and learn from predecessor's warnings",
-      "Prioritize normalization of inputs before feeding them to the neural network.",
-      "Maintain rigorous input validation to prevent extreme values from reaching activation functions.",
       "Continue developing and utilizing diagnostic scripts to proactively identify numerical instability.",
       "Document the rationale and implementation details of safety measures.",
       "Maintaining awareness of numerical stability issues",
@@ -21,16 +13,17 @@
       "Create diagnostic scripts to test numerical stability of neural network inputs",
       "Maintain comprehensive logging and root\u2011cause analysis of failures",
       "Isolate modifications before integrating them into core components",
-      "SafeActivation_class implementation with clipping and tanh fallback"
+      "SafeActivation_class implementation with clipping and tanh fallback",
+      "Maintain awareness of numerical stability issues",
+      "Implement tighter input validation and clipping for state vectors",
+      "Document and reinforce architectural checks for edge cases",
+      "Prioritize normalization of inputs before neural network processing",
+      "Use numerically stable activation functions with clipping",
+      "Maintain rigorous input validation to prevent extreme values",
+      "Create diagnostic scripts for numerical stability testing",
+      "Isolate modifications before core integration"
     ],
     "avoid": [
-      "Neglecting to handle large magnitudes in exponential functions",
-      "Running forward passes without input validation",
-      "Assuming helper scripts automatically resolve core issues",
-      "Ignoring predecessor warnings about numerical stability",
-      "Repeating failing actions without adjustment",
-      "Assuming input clipping is sufficient for stability",
-      "Relying on helper scripts without integration validation",
       "Ignoring magnitude checks in exponential operations",
       "Cargo-cult practices with unvalidated tool fixes",
       "Assume tools are effective without verification",
@@ -43,20 +36,27 @@
       "Applying validation only as a post-process step without altering the core logic.",
       "Relying solely on simulator stability without empirically verifying on actual outputs.",
       "Ignoring precursors' warnings regarding numerical range management.",
-      "Assuming input sanity checks are always sufficient with"
+      "Assuming input sanity checks are always sufficient with",
+      "Neglecting core code paths with known numerical risks",
+      "Running neural network forward passes without input validation",
+      "Assuming helper scripts automatically resolve core issues",
+      "Repeating failing actions without adjustment",
+      "Ignoring predecessor warnings about numerical stability",
+      "Creating peripheral tools without integration",
+      "Relying solely on SafeActivation_patch without comprehensive normalization"
     ]
   },
   "best_artifacts": [
-    "diagnostic.py",
-    "helper_stability_check.py",
-    "SafeActivation_class",
-    "input_validator.py",
     "validate_state_magnitudes.py",
     "journal.md",
     "normalize_inputs.py",
     "diagnostic.py",
     "stability_check.py",
-    "mutable_snapshot/agi_core_continuous.py"
+    "mutable_snapshot/agi_core_continuous.py",
+    "mutable_snapshot/neural_q_continuous.py",
+    "mutable_snapshot/SafeActivation_class.py",
+    "mutable_snapshot/diagnostic.py",
+    "mutable_snapshot/helper_stability_check.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -522,11 +522,16 @@
       "generation": 68,
       "score": 45.0,
       "death_cause": "math range error (OverflowError)"
+    },
+    {
+      "generation": 69,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 69,
-    "average_score": 26.16969696969697,
+    "total_generations": 70,
+    "average_score": 25.77910447761194,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
