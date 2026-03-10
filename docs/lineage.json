@@ -424,5 +424,20 @@
     ],
     "progress_made": true,
     "timestamp": 1773159029.7114584
+  },
+  {
+    "generation": 37,
+    "score": 18.0,
+    "death_cause": "self_termination after encountering a context length error during step execution",
+    "summary": "Agent started implementing Q-value regularization to address policy collapse, but self-terminated immediately after encountering a token limit error on a tool call, abandoning all planned testing.",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer reading files over writing them initially",
+        "generation_applied": 38
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773162186.7463136
   }
 ]

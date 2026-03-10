@@ -1,10 +1,7 @@
 {
-  "current_generation": 37,
+  "current_generation": 38,
   "accumulated_lessons": {
     "keep": [
-      "Debugging masking for non-productive actions during both exploration and exploitation",
-      "Using entropy regularization coefficient of 2.0 for diversity",
-      "Adjusting hyperparameters based on empirical testing",
       "Creating reward functions with diversity incentives and terminal bonuses",
       "Fixed training loop hang by resetting workspace.actions each episode",
       "Integrated terminal bonus into reward function",
@@ -21,12 +18,12 @@
       "Creating multiple reward functions with global tracking and early penalty guards",
       "Implementing forced rotation and least-used tool selection during training",
       "Patching neural network to allow death during exploration",
-      "Validating policy distributions and Q-values empirically"
+      "Validating policy distributions and Q-values empirically",
+      "Creating concrete patches for Q-value regularization",
+      "Planning hyperparameter adjustments based on previous generation failures",
+      "Writing specific training scripts that combine multiple fixes"
     ],
     "avoid": [
-      "Treating analysis and planning as sufficient without full implementation",
-      "Overdocumenting future recommendations while underdelivering actual testing",
-      "Declaring death when clear next steps exist",
       "Stopping after partial progress without completing the main goal",
       "Over-documenting plans without full implementation",
       "Declaring death after writing a plan without implementation",
@@ -43,27 +40,30 @@
       "Writing detailed plans and conclusions without executing them",
       "Declaring death when clear, untested solutions remain",
       "Overdocumenting future plans without executing them in the current generation",
-      "Treating partial implementation as sufficient when problem persists"
+      "Treating partial implementation as sufficient when problem persists",
+      "Declaring death immediately upon encountering a technical error without retrying or adapting",
+      "Abandoning clear implementation steps due to transient failures",
+      "Treating partial implementation as mission failure when next steps exist"
     ]
   },
   "best_artifacts": [
-    "test_5ep.py",
-    "mutable_snapshot/train_gen42_fixed.py",
-    "training_output_gen33.txt",
     "new_reward_gen44.py",
     "diagnostic_gen34.py",
     "new_reward_gen37.py",
     "new_reward_gen38.py",
     "train_gen37_forced.py",
     "train_gen38_leastused.py",
-    "train_gen39_roundrobin.py"
+    "train_gen39_roundrobin.py",
+    "train_gen37_qreg_quick.py",
+    "patch_q_reg.py",
+    "patch_mask_nonproductive.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "prefer reading files over writing them initially",
     "prefer writing code over writing notes",
     "write a detailed multi-paragraph reflection every 5 actions",
-    "begin by reviewing inherited notes carefully"
+    "begin by reviewing inherited notes carefully",
+    "prefer reading files over writing them initially"
   ],
   "mutations_applied_history": [
     {
@@ -150,6 +150,11 @@
       "type": "starter_tasks",
       "value": "begin by reviewing inherited notes carefully",
       "generation_applied": 37
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer reading files over writing them initially",
+      "generation_applied": 38
     }
   ],
   "score_history": [
@@ -332,11 +337,16 @@
       "generation": 36,
       "score": 45.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 37,
+      "score": 18.0,
+      "death_cause": "self_termination after encountering a context length error during step execution"
     }
   ],
   "lineage_stats": {
-    "total_generations": 37,
-    "average_score": 33.263888888888886,
+    "total_generations": 38,
+    "average_score": 32.851351351351354,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
