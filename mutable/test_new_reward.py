@@ -40,36 +40,42 @@ def test_action(tool, args, result, last_tool=None, recent=None):
 # Success result
 result = {'success': True}
 # Test productive actions
-print('\n1. Productive actions (first use):')
-test_action('write_file', {'filepath': 'test.py', 'content': 'print(\"hello\")'}, result)
-test_action('execute_code', {'code': 'print(\"test\")', 'language': 'python'}, {'stdout': 'test passed', 'stderr': ''})
+print('
+1. Productive actions (first use):')
+test_action('write_file', {'filepath': 'test.py', 'content': 'print("hello")'}, result)
+test_action('execute_code', {'code': 'print("test")', 'language': 'python'}, {'stdout': 'test passed', 'stderr': ''})
 test_action('modify_self', {'filepath': 'agent_brain.py', 'content': '...'}, result)
 test_action('read_file', {'filepath': 'agi_core.py'}, result)
 test_action('create_issue', {'title': 'test', 'body': 'test'}, result)
 test_action('write_note', {'note': 'Made progress on AGI core. Next step: improve planning.'}, result)
 
-print('\n2. Consecutive same tool penalties:')
+print('
+2. Consecutive same tool penalties:')
 brain.last_tool = 'write_file'
 brain.recent_tools = deque(['write_file'], maxlen=5)
 reward = brain._compute_reward('write_file', {'filepath': 'test2.py', 'content': '...'}, result)
 print(f'Second write_file -> {reward:.2f}')
 
-print('\n3. Diversity bonus:')
+print('
+3. Diversity bonus:')
 brain.last_tool = 'list_files'
 brain.recent_tools = deque(['list_files', 'read_file'], maxlen=5)
 reward = brain._compute_reward('write_file', {'filepath': 'new.py', 'content': '...'}, result)
 print(f'New tool write_file -> {reward:.2f}')
 
-print('\n4. Error penalty:')
+print('
+4. Error penalty:')
 reward = brain._compute_reward('read_file', {'filepath': 'nonexistent.txt'}, {'error': 'File not found'})
 print(f'Error -> {reward:.2f}')
 
-print('\n5. Declare death penalty:')
+print('
+5. Declare death penalty:')
 reward = brain._compute_reward('declare_death', {'reason': 'test'}, {'message': '...'})
 print(f'Declare death -> {reward:.2f}')
 
 # Now train a fresh core for a few episodes to see if rewards become positive
-print('\n--- Quick training ---')
+print('
+--- Quick training ---')
 from agi_core_continuous import AGICoreContinuous
 
 class SimWorkspace:
@@ -106,7 +112,7 @@ class SimWorkspace:
             result['stderr'] = ''
         elif tool_name == 'write_note':
             note = tool_args.get('note', '')
-            self.journal += note + '\\n'
+            self.journal += note + '\n'
             result['note'] = 'Added to journal'
         elif tool_name == 'modify_self':
             filepath = tool_args.get('filepath', '')
@@ -147,7 +153,7 @@ for ep in range(episodes):
         core.learn_from_outcome(reward, workspace.workspace_summary(), workspace.journal, workspace.actions)
     stats['total_reward'] += episode_reward
     print(f'Episode {ep+1}: reward {episode_reward:.2f}')
-print(f'Total reward: {stats[\"total_reward\"]:.2f}')
+print(f'Total reward: {stats["total_reward"]:.2f}')
 print('Action counts:', stats['action_counts'])
 if stats['total_reward'] > 0:
     print('SUCCESS: Total reward positive!')
@@ -155,7 +161,8 @@ else:
     print('WARNING: Total reward still negative.')
 
 # Inspect Q-values
-print('\nQ-values after training:')
+print('
+Q-values after training:')
 state_vec = core.compute_state_vector(workspace.workspace_summary(), workspace.journal, workspace.actions)
 if core.q_agent:
     q_vals = core.q_agent.nn.predict(state_vec)
@@ -168,4 +175,5 @@ if core.q_agent:
     pos = sum(1 for q in q_vals if q > 0)
     print(f'Positive Q-values: {pos}/{len(q_vals)}')
 
-print('\nTest complete.')
+print('
+Test complete.')

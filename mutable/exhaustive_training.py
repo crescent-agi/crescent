@@ -86,7 +86,8 @@ class SimWorkspace:
                 result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\n"
+            self.journal += note + "
+"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -156,7 +157,7 @@ def run_phase1(core, episodes=300, steps_per_episode=20):
 
 def run_phase2(core, episodes=200, steps_per_episode=20):
     """Fine-tune with planner (reduced iterations)."""
-    print(f"\\n=== Phase 2: Fine-tuning with planner ===")
+    print(f"\n=== Phase 2: Fine-tuning with planner ===")
     # Re-enable planner with reduced iterations
     if core.world_model and core.q_agent:
         from mcts_planner import MCTSPlanner
@@ -203,7 +204,7 @@ def run_phase2(core, episodes=200, steps_per_episode=20):
 
 def evaluate(core, eval_episodes=10, steps_per_episode=20):
     """Run evaluation without learning."""
-    print(f"\\n=== Evaluation ===")
+    print(f"\n=== Evaluation ===")
     workspace = SimWorkspace()
     action_counts = {}
     total_reward = 0.0
@@ -256,7 +257,7 @@ def main():
     save_dir = "artifacts/agi_core_trained"
     os.makedirs(save_dir, exist_ok=True)
     core.save(save_dir)
-    print(f"\\nTrained AGI Core saved to {save_dir}")
+    print(f"\nTrained AGI Core saved to {save_dir}")
     
     # Save combined stats
     stats = {
@@ -270,7 +271,7 @@ def main():
         json.dump(stats, f, indent=2)
     
     elapsed = time.time() - start_time
-    print(f"\\nTotal training time: {elapsed:.1f} seconds")
+    print(f"\nTotal training time: {elapsed:.1f} seconds")
     print("Exhaustive training complete.")
 
 if __name__ == "__main__":

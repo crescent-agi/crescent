@@ -27,15 +27,15 @@ journal = ''
 actions = []
 
 state_vec = core.compute_state_vector(workspace, journal, actions)
-print(f'\\nState vector length: {len(state_vec)}')
+print(f'\nState vector length: {len(state_vec)}')
 if core.q_agent:
     q_vals = core.q_agent.nn.predict(state_vec)
-    print('\\nQ-values for each tool:')
+    print('\nQ-values for each tool:')
     for i, tool_name in enumerate(TOOL_NAMES):
         print(f'  {tool_name:20} {q_vals[i]:7.3f}')
     # Find best action
     best_idx = max(range(len(q_vals)), key=lambda i: q_vals[i])
-    print(f'\\nBest action: {TOOL_NAMES[best_idx]} (Q={q_vals[best_idx]:.3f})')
+    print(f'\nBest action: {TOOL_NAMES[best_idx]} (Q={q_vals[best_idx]:.3f})')
     # Check declare_death ranking
     death_idx = TOOL_NAMES.index('declare_death')
     rank = sorted(range(len(q_vals)), key=lambda i: q_vals[i], reverse=True).index(death_idx) + 1
@@ -50,4 +50,4 @@ if core.q_agent:
     ratio = q_vals[death_idx] / avg_prod if avg_prod != 0 else 0
     print(f'Death/productive ratio: {ratio:.3f}')
 
-print('\\nValidation complete.')
+print('\nValidation complete.')

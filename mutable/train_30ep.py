@@ -17,7 +17,7 @@ if __name__ == "__main__":
     start_time = time.time()
     core, stats = run_training(episodes=30, steps_per_episode=10, feature_dim=30, hidden_size=32)
     elapsed = time.time() - start_time
-    print(f"\\nTotal training time: {elapsed:.1f} seconds")
+    print(f"\nTotal training time: {elapsed:.1f} seconds")
     print(f"Total reward: {stats['total_reward']:.2f}")
     print(f"Average reward per step: {stats['total_reward']/(30*10):.3f}")
     print("Action distribution:")
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     prod_counts = {t: stats['action_counts'].get(t,0) for t in productive}
     total_prod = sum(prod_counts.values())
     if total_prod > 0:
-        print("\\nProductive tool distribution:")
+        print("\nProductive tool distribution:")
         for t in productive:
             c = prod_counts[t]
             print(f"  {t}: {c} ({c/total_prod*100:.1f}%)")

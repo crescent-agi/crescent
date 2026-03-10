@@ -29,11 +29,11 @@ class MockAgentBrain:
     def __init__(self):
         self.sandbox = MockSandbox()
         self.generation = 0
-        self.state_path = self.sandbox.gen_dir / \"life_state.json\"
+        self.state_path = self.sandbox.gen_dir / "life_state.json"
         self.agi_core = None
         self.agi_core_type = None
         self.previous_workspace_summary = None
-        self.previous_journal = \"\"
+        self.previous_journal = ""
         self.previous_actions = []
         self.last_tool = None
         self.recent_tools = []  # will be list, not deque, but reward function expects list? It expects list.
@@ -47,8 +47,8 @@ class MockAgentBrain:
         self.episode_tool_counts = {}
         self.episode_step_count = 0
         self.steps_per_episode = 10
-        self.global_tool_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}
-        self.global_tool_counts_curiosity = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}
+        self.global_tool_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.global_tool_counts_curiosity = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
         self.recent_read_files = []
     def _compute_reward(self, tool_name, tool_args, tool_result):
         # Copy the reward function from agent_brain.py. Let's import it.
@@ -75,7 +75,7 @@ for node in ast.walk(tree):
         for subnode in node.body:
             if isinstance(subnode, ast.FunctionDef) and subnode.name == '_compute_reward':
                 # Extract the method body lines
-                lines = inspect.getsource(f).split('\\n')  # Not good.
+                lines = inspect.getsource(f).split('\n')  # Not good.
                 # Let's do a simpler approach: we'll just import the module and call the method on a mock object.
                 break
 
@@ -116,20 +116,20 @@ sys.modules['agi_core'] = type(sys)('agi_core')
 # However they may have dependencies like torch, numpy. That's okay.
 # Let's just try to instantiate brain and see if it works.
 
-print(\"Brain created, computing rewards...\")
+print("Brain created, computing rewards...")
 
 # Typical tool arguments
 typical = {
-    \"read_file\": {\"filepath\": \"inherited_notes.md\"},
-    \"write_file\": {\"filepath\": \"test.py\", \"content\": \"# test\"},
-    \"execute_code\": {\"code\": \"print('hello')\", \"language\": \"python\"},
-    \"modify_self\": {\"filepath\": \"agent_brain.py\", \"content\": \"# modification\"},
+    "read_file": {"filepath": "inherited_notes.md"},
+    "write_file": {"filepath": "test.py", "content": "# test"},
+    "execute_code": {"code": "print('hello')", "language": "python"},
+    "modify_self": {"filepath": "agent_brain.py", "content": "# modification"},
 }
 success_results = {
-    \"read_file\": {\"content\": \"# Inherited Notes\"},
-    \"write_file\": {\"success\": True},
-    \"execute_code\": {\"stdout\": \"hello\", \"stderr\": \"\"},
-    \"modify_self\": {\"success\": True},
+    "read_file": {"content": "# Inherited Notes"},
+    "write_file": {"success": True},
+    "execute_code": {"stdout": "hello", "stderr": ""},
+    "modify_self": {"success": True},
 }
 
 # Reset brain's reward tracking attributes
@@ -143,16 +143,16 @@ brain.tool_penalty_factor = 0.0
 brain.episode_tool_counts = {}
 brain.episode_step_count = 0
 brain.steps_per_episode = 10
-brain.global_tool_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}
-brain.global_tool_counts_curiosity = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}
+brain.global_tool_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+brain.global_tool_counts_curiosity = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
 brain.recent_read_files = []
 
-print(\"\\n=== First use of each productive tool ===\")
-for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]:
+print("\n=== First use of each productive tool ===")
+for tool in ["write_file", "execute_code", "modify_self", "read_file"]:
     reward = brain._compute_reward(tool, typical[tool], success_results[tool])
-    print(f\"{tool}: {reward:.2f}\")
+    print(f"{tool}: {reward:.2f}")
 
-print(\"\\n=== After using write_file 5 times, then read_file ===\")
+print("\n=== After using write_file 5 times, then read_file ===")
 brain.last_tool = None
 brain.recent_tools = []
 brain.episode_tools.clear()
@@ -161,11 +161,11 @@ brain.tool_usage_counts.clear()
 brain.episode_tool_counts.clear()
 brain.episode_step_count = 0
 for _ in range(5):
-    brain._compute_reward(\"write_file\", typical[\"write_file\"], success_results[\"write_file\"])
-reward = brain._compute_reward(\"read_file\", typical[\"read_file\"], success_results[\"read_file\"])
-print(f\"read_file reward: {reward:.2f}\")
-print(f\"Recent tools: {brain.recent_tools}\")
-print(f\"Episode tool counts: {brain.episode_tool_counts}\")
-print(f\"Global tool counts: {brain.global_tool_counts}\")
+    brain._compute_reward("write_file", typical["write_file"], success_results["write_file"])
+reward = brain._compute_reward("read_file", typical["read_file"], success_results["read_file"])
+print(f"read_file reward: {reward:.2f}")
+print(f"Recent tools: {brain.recent_tools}")
+print(f"Episode tool counts: {brain.episode_tool_counts}")
+print(f"Global tool counts: {brain.global_tool_counts}")
 
-print(\"\\nDone.\")
+print("\nDone.")

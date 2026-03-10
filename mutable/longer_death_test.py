@@ -20,7 +20,7 @@ import time
 if __name__ == "__main__":
     start_time = time.time()
     core, stats = run_training(episodes=30, steps_per_episode=10)
-    print("\\n=== Longer death test results ===")
+    print("\n=== Longer death test results ===")
     total_steps = 30*10
     print(f"Total steps: {total_steps}")
     print(f"Total reward: {stats['total_reward']:.2f}")

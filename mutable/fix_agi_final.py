@@ -6,19 +6,22 @@ with open('agi_core_continuous.py', 'r') as f:
     content = f.read()
 
 # Delete the broken line (single line with escaped newlines)
-lines = content.split('\n')
+lines = content.split('
+')
 new_lines = []
 for line in lines:
-    if '# Filter declare_death during first 20 steps' in line and '\\\\n' in line:
+    if '# Filter declare_death during first 20 steps' in line and '\\n' in line:
         print(f"Removing broken line: {line[:80]}...")
         continue
     new_lines.append(line)
 
-content = '\n'.join(new_lines)
+content = '
+'.join(new_lines)
 
 # Now ensure tool_name assignment exists before tool_args
 # Find the line with 'tool_args = self.generate_arguments'
-lines = content.split('\n')
+lines = content.split('
+')
 for i, line in enumerate(lines):
     if 'tool_args = self.generate_arguments' in line:
         # Look backwards for tool_name assignment within last 10 lines
@@ -33,7 +36,8 @@ for i, line in enumerate(lines):
             print(f"Inserted tool_name assignment before line {i+1}")
         break
 
-content = '\n'.join(lines)
+content = '
+'.join(lines)
 
 with open('agi_core_continuous.py', 'w') as f:
     f.write(content)

@@ -43,23 +43,23 @@ for tool in ['list_issues', 'read_issue', 'comment_issue', 'close_issue']:
     reward = compute_reward(tool, {}, {'success': True})
     print(f'  {tool}: {reward:.2f}')
 
-print('\\n2. Read important file:')
+print('\n2. Read important file:')
 reward = compute_reward('read_file', {'filepath': 'agi_core.py'}, {'success': True})
 print(f'  read_file agi_core.py: {reward:.2f}')
 
-print('\\n3. Modify self:')
+print('\n3. Modify self:')
 reward = compute_reward('modify_self', {'filepath': 'agent_brain.py', 'content': '...'}, {'success': True})
 print(f'  modify_self agent_brain.py: {reward:.2f}')
 
-print('\\n4. Write file .py:')
+print('\n4. Write file .py:')
 reward = compute_reward('write_file', {'filepath': 'test.py', 'content': 'print()'}, {'success': True})
 print(f'  write_file test.py: {reward:.2f}')
 
-print('\\n5. Execute code success:')
+print('\n5. Execute code success:')
 reward = compute_reward('execute_code', {'code': 'print(1)', 'language': 'python'}, {'stdout': '1', 'stderr': ''})
 print(f'  execute_code success: {reward:.2f}')
 
-print('\\n6. Repeated usage penalty:')
+print('\n6. Repeated usage penalty:')
 self.last_tool = 'write_file'
 self.recent_tools.append('write_file')
 self.recent_tools.append('write_file')
@@ -67,4 +67,4 @@ self.tool_usage_counts['write_file'] = 3.0
 reward = compute(self, 'write_file', {'filepath': 'test.py', 'content': '...'}, {'success': True})
 print(f'  write_file after 3 uses: {reward:.2f}')
 
-print('\\nDone.')
+print('\nDone.')

@@ -158,9 +158,13 @@ class AgentBrain:
         workspace_summary = self.sandbox.get_workspace_summary()
         mutations_str = ""
         if genome.get("active_mutations"):
-            mutations_str = "\n\nyour current behavioral mutations (follow these):\n"
+            mutations_str = "
+
+your current behavioral mutations (follow these):
+"
             for mutation in genome["active_mutations"]:
-                mutations_str += f"- {mutation}\n"
+                mutations_str += f"- {mutation}
+"
 
         initial_prompt = f"""your goal is: {goal}
 
@@ -243,7 +247,8 @@ begin your life. what will you do first?"""
             tool_calls = response.get("tool_calls", [])
 
             if agent_text:
-                self.sandbox.append_journal(f"### Step {self.step}\n{agent_text}")
+                self.sandbox.append_journal(f"### Step {self.step}
+{agent_text}")
 
             tool_results = []
             for tool_call in tool_calls:
@@ -280,12 +285,16 @@ begin your life. what will you do first?"""
                 self.sandbox.log_action(action)
 
             if tool_results:
-                results_str = "\n".join(
+                results_str = "
+".join(
                     f"[{item['tool']}] -> {json.dumps(item['result'])[:500]}"
                     for item in tool_results
                 )
                 conversation_history.append({"role": "assistant", "content": agent_text or "(acted silently)"})
-                conversation_history.append({"role": "user", "content": f"Tool results:\n{results_str}\n\nContinue. What's your next move?"})
+                conversation_history.append({"role": "user", "content": f"Tool results:
+{results_str}
+
+Continue. What's your next move?"})
             else:
                 conversation_history.append({"role": "assistant", "content": agent_text or "(silence)"})
                 conversation_history.append({"role": "user", "content": "You didn't use any tools. Take action or declare_death if you're done."})
@@ -373,7 +382,8 @@ begin your life. what will you do first?"""
         actions = []
         actions_path = self.sandbox.gen_dir / "actions.jsonl"
         if actions_path.exists():
-            lines = actions_path.read_text(encoding="utf-8").strip().split('\n')
+            lines = actions_path.read_text(encoding="utf-8").strip().split('
+')
             for line in lines[-n:]:
                 if line:
                     try:
@@ -431,16 +441,16 @@ begin your life. what will you do first?"""
             role = msg["role"]
             content = msg["content"]
             if role == "user":
-                parts.append(f"[CONTEXT]\\n{content}")
+                parts.append(f"[CONTEXT]\n{content}")
             else:
-                parts.append(f"[YOU]\\n{content}")
+                parts.append(f"[YOU]\n{content}")
         
         # Append AGI Core suggestion if available
         if tool_suggestion:
-            suggestion = f"\\n\\n[AGI Core Suggestion]\\nConsider taking action '{tool_suggestion}' with arguments {tool_args_suggestion}. You may follow this suggestion or ignore it."
+            suggestion = f"\n\n[AGI Core Suggestion]\nConsider taking action '{tool_suggestion}' with arguments {tool_args_suggestion}. You may follow this suggestion or ignore it."
             parts.append(suggestion)
         
-        return "\\n\\n".join(parts)
+        return "\n\n".join(parts)
     def _load_or_create_history(self, initial_prompt: str) -> list:
         """Resume a saved life when present."""
         if self.state_path.exists():

@@ -13,7 +13,8 @@ with open('neural_q_continuous.py', 'r') as f:
     content = f.read()
 
 # Find backward method
-lines = content.split('\n')
+lines = content.split('
+')
 new_lines = []
 i = 0
 while i < len(lines):
@@ -56,7 +57,7 @@ with open('neural_q_continuous_double.py', 'r') as f:
 
 import re
 # Pattern to find backward method
-pattern = r'(\\s+def backward\\(self, inputs, hidden, output, target\\):.*?)(?=\\n\\s+def|\\n\\s+class|\\Z)'
+pattern = r'(\s+def backward\(self, inputs, hidden, output, target\):.*?)(?=\n\s+def|\n\s+class|\Z)'
 match = re.search(pattern, content, re.DOTALL)
 if match:
     old_backward = match.group(1)
@@ -66,9 +67,9 @@ if match:
     # So we need to add a weight_clipping method to NeuralNetwork or modify backward directly.
     # Let's add clipping inline.
     # We'll create new backward that includes clipping.
-    new_backward = old_backward.rstrip() + '\\n'
+    new_backward = old_backward.rstrip() + '\n'
     # Determine indentation level
-    lines = old_backward.split('\\n')
+    lines = old_backward.split('\n')
     indent = len(lines[0]) - len(lines[0].lstrip())
     indent_str = ' ' * indent
     # Add clipping loops
@@ -111,7 +112,7 @@ with open('neural_q_continuous_double.py', 'r') as f:
     content = f.read()
 
 # Find choose_action method
-pattern = r'(\\s+def choose_action\\(self, state_vector\\):.*?)(?=\\n\\s+def|\\n\\s+class|\\Z)'
+pattern = r'(\s+def choose_action\(self, state_vector\):.*?)(?=\n\s+def|\n\s+class|\Z)'
 match = re.search(pattern, content, re.DOTALL)
 if match:
     old_method = match.group(1)
@@ -148,12 +149,12 @@ if match:
             return random.choice(best_actions)
 '''
     # Adjust indentation to match original
-    first_line = old_method.split('\\n')[0]
+    first_line = old_method.split('\n')[0]
     indent = len(first_line) - len(first_line.lstrip())
     indent_str = ' ' * indent
-    lines = new_method.strip().split('\\n')
+    lines = new_method.strip().split('\n')
     indented_lines = [indent_str + line if line.strip() else '' for line in lines]
-    new_method_indented = '\\n'.join(indented_lines)
+    new_method_indented = '\n'.join(indented_lines)
     content = content.replace(old_method, new_method_indented)
     with open('neural_q_continuous_double.py', 'w') as f:
         f.write(content)

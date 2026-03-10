@@ -1,1 +1,118 @@
-#!/usr/bin/env python3\nimport sys, os, random\nsys.path.insert(0, '.')\n\nclass MockLLMAuthenticationError(Exception):\n    pass\nclass MockCoreModule:\n    class llm_client:\n        LLMAuthenticationError = MockLLMAuthenticationError\nsys.modules['core'] = MockCoreModule\nsys.modules['core.llm_client'] = MockCoreModule.llm_client\n\nimport neural_q_continuous_double\nsys.modules['neural_q_continuous'] = neural_q_continuous_double\n\nimport patch_weight_clipping\nimport patch_qreg_v3\n\nfrom agi_core_continuous import AGICoreContinuous\nfrom new_reward_gen42 import compute_reward_gen42 as compute_reward\n\nclass DummySelf:\n    def __init__(self):\n        self.last_tool = None\n        self.recent_tools = []\n        self.global_tool_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}\n        self.global_total = 0\n        self.episode_tool_counts = {}\n        self.episode_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}\n        self.episode_total = 0\n    def reset(self):\n        self.last_tool = None\n        self.recent_tools.clear()\n        self.episode_tool_counts.clear()\n        self.episode_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}\n        self.episode_total = 0\n\nself = DummySelf()\n\nclass SimWorkspace:\n    def __init__(self):\n        self.files = {\"test\": \"# test\"}\n        self.journal = \"\"\n        self.actions = []\n    def workspace_summary(self):\n        return \"Files: test\"\n    def tool_result(self, tool_name, tool_args):\n        return {\"success\": True}\n\ndef validate():\n    core = AGICoreContinuous(feature_dim=30, hidden_size=32,\n                             learning_rate=0.001, exploration_rate=0.5,\n                             epsilon_decay=0.98, epsilon_min=0.1, use_features=True)\n    save_dir = \"artifacts/agi_core_continuous_trained_gen42_curiosity\"\n    if os.path.exists(save_dir):\n        core.load(save_dir)\n        print(f\"Loaded model from {save_dir}\")\n    else:\n        print(\"Model not found\")\n        return\n    original_epsilon = core.q_agent.epsilon\n    core.q_agent.epsilon = 0.0\n    workspace = SimWorkspace()\n    self.reset()\n    counts = {}\n    productive = [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]\n    total_reward = 0.0\n    for step in range(500):\n        tool_name, tool_args, _ = core.decide_action(\n            workspace.workspace_summary(),\n            workspace.journal,\n            workspace.actions\n        )\n        tool_result = workspace.tool_result(tool_name, tool_args)\n        reward = compute_reward(self, tool_name, tool_args, tool_result)\n        total_reward += reward\n        counts[tool_name] = counts.get(tool_name, 0) + 1\n        workspace.actions.append({\"tool\": tool_name})\n    core.q_agent.epsilon = original_epsilon\n    total = sum(counts.values())\n    avg_reward = total_reward / total if total > 0 else 0\n    print(\"Deterministic policy action counts:\")\n    for tool, count in sorted(counts.items(), key=lambda x: x[1], reverse=True):\n        pct = (count / total) * 100\n        print(f\"  {tool}: {count} ({pct:.1f}%)\")\n    prod_counts = {t: counts.get(t,0) for t in productive}\n    total_prod = sum(prod_counts.values())\n    if total_prod > 0:\n        print(\"\\nProductive distribution:\")\n        for tool in productive:\n            pct = (prod_counts[tool] / total_prod) * 100\n            print(f\"  {tool}: {prod_counts[tool]} ({pct:.1f}%)\")\n            if 15 <= pct <= 35:\n                print(\"    -> within target\")\n            else:\n                print(\"    -> OUT OF RANGE\")\n    print(f\"\\nAverage reward per step: {avg_reward:.3f}\")\n    # Q-values\n    state = core.compute_state_vector(\"Files: test\", \"\", [])\n    qvals = core.q_agent.nn.predict(state)\n    tool_names = [\"read_file\", \"write_file\", \"list_files\", \"execute_code\", \"write_note\",\n                  \"modify_self\", \"declare_death\", \"list_issues\", \"read_issue\",\n                  \"comment_issue\", \"create_issue\", \"close_issue\"]\n    print(\"\\nQ-values for sample state:\")\n    for i, name in enumerate(tool_names):\n        print(f\"  {name}: {qvals[i]:.3f}\")\n    best_idx = max(range(len(qvals)), key=lambda i: qvals[i])\n    print(f\"Best action (Q): {tool_names[best_idx]}\")\n    death_q = qvals[6]\n    productive_indices = [0,1,3,5]\n    prod_qs = [qvals[i] for i in productive_indices]\n    if death_q < min(prod_qs):\n        print(f\"Death Q-value ({death_q:.3f}) is lowest (good).\")\n    else:\n        print(f\"Death Q-value ({death_q:.3f}) is NOT lowest (bad).\")\n\nif __name__ == \"__main__\":\n    validate()
+#!/usr/bin/env python3
+import sys, os, random
+sys.path.insert(0, '.')
+
+class MockLLMAuthenticationError(Exception):
+    pass
+class MockCoreModule:
+    class llm_client:
+        LLMAuthenticationError = MockLLMAuthenticationError
+sys.modules['core'] = MockCoreModule
+sys.modules['core.llm_client'] = MockCoreModule.llm_client
+
+import neural_q_continuous_double
+sys.modules['neural_q_continuous'] = neural_q_continuous_double
+
+import patch_weight_clipping
+import patch_qreg_v3
+
+from agi_core_continuous import AGICoreContinuous
+from new_reward_gen42 import compute_reward_gen42 as compute_reward
+
+class DummySelf:
+    def __init__(self):
+        self.last_tool = None
+        self.recent_tools = []
+        self.global_tool_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.global_total = 0
+        self.episode_tool_counts = {}
+        self.episode_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.episode_total = 0
+    def reset(self):
+        self.last_tool = None
+        self.recent_tools.clear()
+        self.episode_tool_counts.clear()
+        self.episode_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.episode_total = 0
+
+self = DummySelf()
+
+class SimWorkspace:
+    def __init__(self):
+        self.files = {"test": "# test"}
+        self.journal = ""
+        self.actions = []
+    def workspace_summary(self):
+        return "Files: test"
+    def tool_result(self, tool_name, tool_args):
+        return {"success": True}
+
+def validate():
+    core = AGICoreContinuous(feature_dim=30, hidden_size=32,
+                             learning_rate=0.001, exploration_rate=0.5,
+                             epsilon_decay=0.98, epsilon_min=0.1, use_features=True)
+    save_dir = "artifacts/agi_core_continuous_trained_gen42_curiosity"
+    if os.path.exists(save_dir):
+        core.load(save_dir)
+        print(f"Loaded model from {save_dir}")
+    else:
+        print("Model not found")
+        return
+    original_epsilon = core.q_agent.epsilon
+    core.q_agent.epsilon = 0.0
+    workspace = SimWorkspace()
+    self.reset()
+    counts = {}
+    productive = ["write_file", "execute_code", "modify_self", "read_file"]
+    total_reward = 0.0
+    for step in range(500):
+        tool_name, tool_args, _ = core.decide_action(
+            workspace.workspace_summary(),
+            workspace.journal,
+            workspace.actions
+        )
+        tool_result = workspace.tool_result(tool_name, tool_args)
+        reward = compute_reward(self, tool_name, tool_args, tool_result)
+        total_reward += reward
+        counts[tool_name] = counts.get(tool_name, 0) + 1
+        workspace.actions.append({"tool": tool_name})
+    core.q_agent.epsilon = original_epsilon
+    total = sum(counts.values())
+    avg_reward = total_reward / total if total > 0 else 0
+    print("Deterministic policy action counts:")
+    for tool, count in sorted(counts.items(), key=lambda x: x[1], reverse=True):
+        pct = (count / total) * 100
+        print(f"  {tool}: {count} ({pct:.1f}%)")
+    prod_counts = {t: counts.get(t,0) for t in productive}
+    total_prod = sum(prod_counts.values())
+    if total_prod > 0:
+        print("\nProductive distribution:")
+        for tool in productive:
+            pct = (prod_counts[tool] / total_prod) * 100
+            print(f"  {tool}: {prod_counts[tool]} ({pct:.1f}%)")
+            if 15 <= pct <= 35:
+                print("    -> within target")
+            else:
+                print("    -> OUT OF RANGE")
+    print(f"\nAverage reward per step: {avg_reward:.3f}")
+    # Q-values
+    state = core.compute_state_vector("Files: test", "", [])
+    qvals = core.q_agent.nn.predict(state)
+    tool_names = ["read_file", "write_file", "list_files", "execute_code", "write_note",
+                  "modify_self", "declare_death", "list_issues", "read_issue",
+                  "comment_issue", "create_issue", "close_issue"]
+    print("\nQ-values for sample state:")
+    for i, name in enumerate(tool_names):
+        print(f"  {name}: {qvals[i]:.3f}")
+    best_idx = max(range(len(qvals)), key=lambda i: qvals[i])
+    print(f"Best action (Q): {tool_names[best_idx]}")
+    death_q = qvals[6]
+    productive_indices = [0,1,3,5]
+    prod_qs = [qvals[i] for i in productive_indices]
+    if death_q < min(prod_qs):
+        print(f"Death Q-value ({death_q:.3f}) is lowest (good).")
+    else:
+        print(f"Death Q-value ({death_q:.3f}) is NOT lowest (bad).")
+
+if __name__ == "__main__":
+    validate()

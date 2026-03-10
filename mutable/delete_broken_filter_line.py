@@ -9,7 +9,7 @@ with open('agi_core_continuous.py', 'r') as f:
 
 new_lines = []
 for line in lines:
-    if 'Filter declare_death' in line and '\\\\n' in line:
+    if 'Filter declare_death' in line and '\\n' in line:
         print("Skipping broken line:", line[:100])
         continue
     new_lines.append(line)

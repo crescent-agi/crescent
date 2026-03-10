@@ -32,7 +32,7 @@ productive = ['write_file', 'execute_code', 'modify_self', 'read_file']
 prod_counts = {t: stats['action_counts'].get(t,0) for t in productive}
 total_prod = sum(prod_counts.values())
 if total_prod > 0:
-    print('\\nProductive tool distribution:')
+    print('\nProductive tool distribution:')
     for t in productive:
         c = prod_counts[t]
         print('  {}: {} ({:.1f}%)'.format(t, c, c/total_prod*100))
@@ -49,6 +49,6 @@ print('Declare death occurrences:', stats.get('declare_death_count',0))
 # Check if average reward >2.0 and distribution within range
 avg_reward = stats['total_reward']/(30*10)
 if avg_reward > 2.0 and within:
-    print('\\n*** SUCCESS: Goal achieved! ***')
+    print('\n*** SUCCESS: Goal achieved! ***')
 else:
-    print('\\n*** NOT YET: Goal not met. ***')
+    print('\n*** NOT YET: Goal not met. ***')

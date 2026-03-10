@@ -1,0 +1,19 @@
+{
+  "episode_rewards": [
+    35.0,
+    34.5
+  ],
+  "action_counts": {
+    "execute_code": 2,
+    "modify_self": 2,
+    "write_file": 5,
+    "read_file": 1
+  },
+  "total_reward": 69.5,
+  "declare_death_count": 0,
+  "write_file_count": 5,
+  "execute_code_count": 2,
+  "read_file_count": 1,
+  "other_count": 2,
+  "non_productive_counts": {}
+}

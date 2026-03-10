@@ -54,7 +54,7 @@ class SimWorkspace:
             result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -129,7 +129,7 @@ def main():
     print(f"State size: {core.state_size}, Action size: {core.action_size}")
     
     # Baseline evaluation (random policy)
-    print("\\n--- Baseline evaluation (epsilon=1.0) ---")
+    print("\n--- Baseline evaluation (epsilon=1.0) ---")
     baseline_avg, baseline_actions = evaluate(core, episodes=10, steps=20, epsilon=1.0)
     print(f"Baseline average reward: {baseline_avg:.2f}")
     print("Baseline action distribution:")
@@ -137,7 +137,7 @@ def main():
         print(f"  {tool}: {count}")
     
     # Training
-    print("\\n--- Training (50 episodes, 20 steps each) ---")
+    print("\n--- Training (50 episodes, 20 steps each) ---")
     start_train = time.time()
     train_reward, train_actions = train(core, episodes=50, steps_per_episode=20)
     end_train = time.time()
@@ -145,7 +145,7 @@ def main():
     print(f"Total training reward: {train_reward:.2f}")
     
     # Trained evaluation (epsilon=0.0)
-    print("\\n--- Trained evaluation (epsilon=0.0) ---")
+    print("\n--- Trained evaluation (epsilon=0.0) ---")
     trained_avg, trained_actions = evaluate(core, episodes=10, steps=20, epsilon=0.0)
     print(f"Trained average reward: {trained_avg:.2f}")
     print("Trained action distribution:")
@@ -154,18 +154,18 @@ def main():
     
     # Improvement
     improvement = trained_avg - baseline_avg
-    print(f"\\nImprovement in average reward: {improvement:.2f}")
+    print(f"\nImprovement in average reward: {improvement:.2f}")
     if improvement > 0:
-        print("✅ Reward function improvement leads to better performance!")
+        print("â Reward function improvement leads to better performance!")
     else:
-        print("⚠️  No improvement observed.")
+        print("â ï¸  No improvement observed.")
     
     # Save trained model
     import os
     save_dir = "artifacts/trained_experiment"
     os.makedirs(save_dir, exist_ok=True)
     core.save(save_dir)
-    print(f"\\nModel saved to {save_dir}")
+    print(f"\nModel saved to {save_dir}")
     
     # Save experiment results
     results = {

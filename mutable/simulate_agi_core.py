@@ -17,7 +17,7 @@ def simulate():
     actions = []
     
     for episode in range(5):
-        print(f"\\nEpisode {episode+1}")
+        print(f"\nEpisode {episode+1}")
         # Decide action
         tool, args, confidence = core.decide_action(workspace, journal, actions)
         print(f"  AGI Core suggests: {tool} (confidence {confidence:.2f})")
@@ -26,7 +26,7 @@ def simulate():
         reward = random.uniform(-0.5, 1.5)  # random reward
         # Update workspace (mock change)
         workspace += f" updated{episode}"
-        journal += f"Step {episode}\\n"
+        journal += f"Step {episode}\n"
         actions.append({"tool": tool, "step": episode})
         # Learn from outcome
         core.learn_from_outcome(reward, workspace, journal, actions)
@@ -38,7 +38,7 @@ def simulate():
     
     # Show some internal state
     if core.q_agent:
-        print("\\nQ-agent Q-table sample (state 0):", core.q_agent.q_table[0] if hasattr(core.q_agent, 'q_table') else "No Q-table")
+        print("\nQ-agent Q-table sample (state 0):", core.q_agent.q_table[0] if hasattr(core.q_agent, 'q_table') else "No Q-table")
     if core.world_model:
         print("World model memory size:", len(core.world_model.memory))
     if core.cognitive:
@@ -48,7 +48,7 @@ def simulate():
     import os
     os.makedirs('artifacts/agi_core_sim', exist_ok=True)
     core.save('artifacts/agi_core_sim')
-    print("\\nAGI Core saved to artifacts/agi_core_sim")
+    print("\nAGI Core saved to artifacts/agi_core_sim")
     print("Simulation complete.")
 
 if __name__ == "__main__":

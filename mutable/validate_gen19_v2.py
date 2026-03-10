@@ -28,9 +28,9 @@ else:
     print('Model not found, exiting.')
     sys.exit(1)
 
-print('\\nRunning validation with epsilon=0 for 500 steps...')
+print('\nRunning validation with epsilon=0 for 500 steps...')
 stats = run_validation(core, steps=500)
-print(f'Non-productive actions: {stats[\"non_productive_total\"]}')
+print(f'Non-productive actions: {stats["non_productive_total"]}')
 print(f'Productive distribution:')
 for tool, perc in stats['productive_distribution'].items():
     print(f'  {tool}: {perc:.1f}%')
@@ -38,8 +38,8 @@ for tool, perc in stats['productive_distribution'].items():
         print(f'    -> within target range')
     else:
         print(f'    -> OUTSIDE target range')
-print('\\nAction counts (top 10):')
+print('\nAction counts (top 10):')
 for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True)[:10]:
     print(f'  {tool}: {count}')
 
-print('\\nDone.')
+print('\nDone.')

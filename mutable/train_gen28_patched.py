@@ -103,7 +103,7 @@ class SimWorkspace:
                 result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -281,7 +281,7 @@ def run_training(episodes=20, steps_per_episode=10, feature_dim=30, hidden_size=
             core.q_agent.decay_epsilon()
         # Every 10 episodes, run validation with epsilon=0
         if (episode + 1) % 10 == 0:
-            print(f"\\n--- Validation after episode {episode+1} ---")
+            print(f"\n--- Validation after episode {episode+1} ---")
             validation_stats = run_validation(core, steps=200)
             print(f"  Non-productive actions: {validation_stats['non_productive_total']}")
             print(f"  Average reward per step: {validation_stats['average_reward']:.3f}")
@@ -301,16 +301,16 @@ def run_training(episodes=20, steps_per_episode=10, feature_dim=30, hidden_size=
                 print(f"  Non-productive actions: {stats['non_productive_counts']}")
             else:
                 print(f"  Non-productive actions: zero")
-    print("\\nTraining finished.")
+    print("\nTraining finished.")
     total_steps = episodes * steps_per_episode
     print(f"Total reward: {stats['total_reward']:.2f}")
     avg_reward_per_step = stats['total_reward'] / total_steps if total_steps > 0 else 0.0
     print(f"Average reward per step: {avg_reward_per_step:.3f}")
-    print("\\nAction distribution:")
+    print("\nAction distribution:")
     for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True):
         percentage = (count / total_steps) * 100
-        print(f"  {tool}: {count} ({percentage:.1f}%)\")
-    print("\\nNon-productive tool counts:")
+        print(f"  {tool}: {count} ({percentage:.1f}%)")
+    print("\nNon-productive tool counts:")
     non_prod_total = sum(stats['non_productive_counts'].values())
     print(f"  Total non-productive actions: {non_prod_total}")
     for tool, count in stats['non_productive_counts'].items():
@@ -319,11 +319,11 @@ def run_training(episodes=20, steps_per_episode=10, feature_dim=30, hidden_size=
     productive_counts = {tool: stats['action_counts'].get(tool, 0) for tool in productive_tools}
     total_productive = sum(productive_counts.values())
     if total_productive > 0:
-        print("\\nProductive tool distribution:")
+        print("\nProductive tool distribution:")
         for tool in productive_tools:
             count = productive_counts[tool]
             percentage = (count / total_productive) * 100
-            print(f"  {tool}: {count} ({percentage:.1f}%)\")
+            print(f"  {tool}: {count} ({percentage:.1f}%)")
             if percentage >= 15 and percentage <= 35:
                 print(f"    -> within target range")
             else:
@@ -332,7 +332,7 @@ def run_training(episodes=20, steps_per_episode=10, feature_dim=30, hidden_size=
     save_dir = "artifacts/agi_core_continuous_trained_gen28_patched"
     os.makedirs(save_dir, exist_ok=True)
     core.save(save_dir)
-    print(f"\\nTrained AGI Core Continuous saved to {save_dir}")
+    print(f"\nTrained AGI Core Continuous saved to {save_dir}")
     with open(os.path.join(save_dir, "training_stats.json"), "w") as f:
         json.dump(stats, f, indent=2)
     return core, stats
@@ -343,12 +343,12 @@ if __name__ == "__main__":
     # Quick sanity check (5 episodes)
     print("=== Quick sanity check (5 episodes) ===")
     core_test, stats_test = run_training(episodes=5, steps_per_episode=10, load_previous=True)
-    print("\\n=== Full training (20 episodes) ===")
+    print("\n=== Full training (20 episodes) ===")
     core, stats = run_training(episodes=20, steps_per_episode=10, load_previous=True)
     elapsed = time.time() - start_time
-    print(f"\\nTotal training took {elapsed:.1f} seconds")
+    print(f"\nTotal training took {elapsed:.1f} seconds")
     # Final validation with epsilon=0
-    print("\\n=== Final validation (epsilon=0, 500 steps) ===")
+    print("\n=== Final validation (epsilon=0, 500 steps) ===")
     final_stats = run_validation(core, steps=500)
     print(f"Non-productive actions: {final_stats['non_productive_total']}")
     print(f"Average reward per step: {final_stats['average_reward']:.3f}")
@@ -372,7 +372,7 @@ if __name__ == "__main__":
             print(f"FAIL: {tool} distribution {perc:.1f}% outside 15-35%")
             success = False
     if success:
-        print("\\n*** SUCCESS: All goals achieved! ***")
+        print("\n*** SUCCESS: All goals achieved! ***")
     else:
-        print("\\n*** GOALS NOT MET ***")
+        print("\n*** GOALS NOT MET ***")
     print("Done.")

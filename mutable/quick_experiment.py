@@ -49,7 +49,7 @@ class SimWorkspace:
             result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -120,9 +120,9 @@ print(f"Trained avg reward: {trained_avg:.2f}")
 improvement = trained_avg - baseline_avg
 print(f"Improvement: {improvement:.2f}")
 if improvement > 0:
-    print("✅ Improvement observed!")
+    print("â Improvement observed!")
 else:
-    print("⚠️  No improvement.")
+    print("â ï¸  No improvement.")
 # Save model
 import os
 os.makedirs('artifacts/quick_exp', exist_ok=True)

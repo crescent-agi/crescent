@@ -20,13 +20,13 @@ if __name__ == "__main__":
     start_time = time.time()
     core, stats = run_training(episodes=50, steps_per_episode=10, feature_dim=30, hidden_size=32)
     elapsed = time.time() - start_time
-    print(f"\\nTotal training time: {elapsed:.1f} seconds")
+    print(f"\nTotal training time: {elapsed:.1f} seconds")
     print(f"Declare death count: {stats['declare_death_count']}")
     print(f"Write file count: {stats['write_file_count']}")
     print(f"Execute code count: {stats['execute_code_count']}")
     # Inspect Q-values
     if core.q_agent:
-        print(f"\\nEpsilon after training: {core.q_agent.epsilon:.4f}")
+        print(f"\nEpsilon after training: {core.q_agent.epsilon:.4f}")
         # Sample state
         from feature_extractor import FeatureExtractor
         extractor = FeatureExtractor(history_size=10)

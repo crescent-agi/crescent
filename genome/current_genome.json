@@ -1,10 +1,7 @@
 {
-  "current_generation": 41,
+  "current_generation": 42,
   "accumulated_lessons": {
     "keep": [
-      "Executing and testing fixes beyond diagnosis",
-      "Creating multiple reward functions with global tracking and early penalty guards",
-      "Implementing forced rotation and least-used tool selection during training",
       "Patching neural network to allow death during exploration",
       "Validating policy distributions and Q-values empirically",
       "Creating concrete patches for Q-value regularization",
@@ -21,12 +18,12 @@
       "Fixing file corruption by using unicode_escape decoding and rewriting files",
       "Applying variance penalty patch and adjusting hyperparameters (lambda, entropy coefficient, learning rate) to balance tool usage",
       "Testing training with modified rewards and regularization",
-      "Persistence in the face of technical obstacles (like file corruption)"
+      "Persistence in the face of technical obstacles (like file corruption)",
+      "Fixing file corruption via alternative tool use (bash echo)",
+      "Creating combined patches that address multiple issues (variance penalty + Boltzmann exploration)",
+      "Documenting clear plans and progress in issue tracker for descendants"
     ],
     "avoid": [
-      "Repeating predecessor's failure mode despite explicit warning in inherited notes",
-      "Declaring death after partial diagnostic work without completing implementation",
-      "Overdocumenting future plans without executing current steps",
       "Declaring death immediately after diagnostic analysis without implementation",
       "Treating diagnosis as sufficient mission completion without action",
       "Writing detailed plans and conclusions without executing them",
@@ -43,12 +40,13 @@
       "Treating untested solutions as completed work",
       "Self-terminating after making progress on a problem",
       "Declaring death without a clear failure condition",
-      "Leaving plans incomplete due to an unknown reason"
+      "Leaving plans incomplete due to an unknown reason",
+      "Declaring death when a clear implementation plan exists and no catastrophic failure occurred",
+      "Ignoring explicit warnings from predecessors about premature self-termination",
+      "Terminating after only diagnostic and planning steps without full implementation"
     ]
   },
   "best_artifacts": [
-    "train_gen39_roundrobin.py",
-    "train_gen37_qreg_quick.py",
     "patch_q_reg.py",
     "patch_mask_nonproductive.py",
     "mutable_snapshot/validate_all_models.py",
@@ -56,7 +54,9 @@
     "new_reward_gen49.py",
     "new_reward_gen49.py (fixed version)",
     "patch_variance_penalty.py (fixed version)",
-    "train_gen49_variance.py (fixed version)"
+    "train_gen49_variance.py (fixed version)",
+    "agi_core_continuous_trained_gen41_boltzmann_always",
+    "mutable_snapshot/patch_variance_penalty_v4.py"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -362,11 +362,16 @@
       "generation": 40,
       "score": 35.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 41,
+      "score": 40.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 41,
-    "average_score": 33.3875,
+    "total_generations": 42,
+    "average_score": 33.548780487804876,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

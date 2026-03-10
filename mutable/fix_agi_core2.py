@@ -10,7 +10,7 @@ to_delete = []
 for i, line in enumerate(lines):
     if i == 163:  # line 164 (0-indexed) - the misplaced tool_name assignment
         to_delete.append(i)
-    if '# Filter declare_death during first 20 steps' in line and '\\\\n' in line:
+    if '# Filter declare_death during first 20 steps' in line and '\\n' in line:
         to_delete.append(i)
 
 # Delete in reverse order
@@ -29,7 +29,8 @@ for i, line in enumerate(lines):
             j += 1
         # Now j is line after filter block (maybe blank line)
         # Insert tool_name assignment before that line
-        lines.insert(j, '        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]\n')
+        lines.insert(j, '        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]
+')
         print(f"Inserted tool_name assignment at line {j+1}")
         break
 

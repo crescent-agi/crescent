@@ -63,7 +63,7 @@ def simulate_workspace_change(workspace, tool_name, tool_args):
 def simulate_journal_change(journal, tool_name, tool_args):
     if tool_name == "write_note":
         note = tool_args.get("note", "")
-        journal += f"{note}\\n"
+        journal += f"{note}\n"
     return journal
 
 def run_simulation(episodes=100, steps_per_episode=10):
@@ -116,13 +116,13 @@ def run_simulation(episodes=100, steps_per_episode=10):
         if (episode + 1) % 20 == 0:
             print(f"Episode {episode+1}: total reward {episode_reward:.2f}, deaths {stats['declare_death_count']}")
     
-    print("\\nSimulation finished.")
+    print("\nSimulation finished.")
     print("Action counts:", stats)
     print(f"Average reward per step: {stats['total_reward']/(episodes*steps_per_episode):.3f}")
     
     # Show Q-values for a few states (if Q-agent exists)
     if core.q_agent:
-        print("\\nSample Q-values for state 0:")
+        print("\nSample Q-values for state 0:")
         q_vals = core.q_agent.nn.predict(core.q_agent._one_hot(0))
         print(q_vals)
         best_action = max(range(len(q_vals)), key=lambda i: q_vals[i])

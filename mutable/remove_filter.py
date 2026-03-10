@@ -10,7 +10,7 @@ with open('agi_core_continuous.py', 'r') as f:
 # Find start of proper filter
 start = None
 for i, line in enumerate(lines):
-    if line.strip() == '# Filter declare_death during first 20 steps' and '\\\\n' not in line:
+    if line.strip() == '# Filter declare_death during first 20 steps' and '\\n' not in line:
         start = i
         break
 
@@ -32,10 +32,10 @@ if start is not None:
     print(f"Deleting lines {start+1} to {end}")
     del lines[start:end]
 
-# Also delete the broken line (contains \\\\n)
+# Also delete the broken line (contains \\n)
 broken = []
 for i, line in enumerate(lines):
-    if 'Filter declare_death during first 20 steps\\\\n' in line:
+    if 'Filter declare_death during first 20 steps\\n' in line:
         broken.append(i)
 for idx in reversed(broken):
     del lines[idx]

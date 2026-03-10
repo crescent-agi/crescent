@@ -7,7 +7,7 @@ import sys
 with open('agi_core_continuous.py', 'r') as f:
     lines = f.readlines()
 
-# Find line with '# Filter declare_death during first 20 steps\\n'
+# Find line with '# Filter declare_death during first 20 steps\n'
 for i, line in enumerate(lines):
     if 'Filter declare_death during first 20 steps' in line:
         # Remove this line and the next lines up to the line containing 'tool_name = TOOL_NAMES'
@@ -25,23 +25,40 @@ for i, line in enumerate(lines):
     if 'tool_name = TOOL_NAMES' in line:
         indent = len(line) - len(line.lstrip())
         filter_lines = [
-            ' ' * indent + '# Filter declare_death during first 20 steps\n',
-            ' ' * indent + 'if self.step_count < 20 and action_idx == 6:\n',
-            ' ' * (indent+4) + '# Choose a different action\n',
-            ' ' * (indent+4) + 'if self.q_agent:\n',
-            ' ' * (indent+8) + 'q_vals = self.q_agent.nn.predict(state_vec)\n',
-            ' ' * (indent+8) + 'sorted_indices = sorted(range(len(q_vals)), key=lambda i: q_vals[i], reverse=True)\n',
-            ' ' * (indent+8) + 'for idx in sorted_indices:\n',
-            ' ' * (indent+12) + 'if idx != 6:\n',
-            ' ' * (indent+16) + 'action_idx = idx\n',
-            ' ' * (indent+16) + 'break\n',
-            ' ' * (indent+4) + 'else:\n',
-            ' ' * (indent+8) + '# random fallback: pick any non-death action\n',
-            ' ' * (indent+8) + 'for _ in range(10):\n',
-            ' ' * (indent+12) + 'candidate = random.randrange(self.action_size)\n',
-            ' ' * (indent+12) + 'if candidate != 6:\n',
-            ' ' * (indent+16) + 'action_idx = candidate\n',
-            ' ' * (indent+16) + 'break\n',
+            ' ' * indent + '# Filter declare_death during first 20 steps
+',
+            ' ' * indent + 'if self.step_count < 20 and action_idx == 6:
+',
+            ' ' * (indent+4) + '# Choose a different action
+',
+            ' ' * (indent+4) + 'if self.q_agent:
+',
+            ' ' * (indent+8) + 'q_vals = self.q_agent.nn.predict(state_vec)
+',
+            ' ' * (indent+8) + 'sorted_indices = sorted(range(len(q_vals)), key=lambda i: q_vals[i], reverse=True)
+',
+            ' ' * (indent+8) + 'for idx in sorted_indices:
+',
+            ' ' * (indent+12) + 'if idx != 6:
+',
+            ' ' * (indent+16) + 'action_idx = idx
+',
+            ' ' * (indent+16) + 'break
+',
+            ' ' * (indent+4) + 'else:
+',
+            ' ' * (indent+8) + '# random fallback: pick any non-death action
+',
+            ' ' * (indent+8) + 'for _ in range(10):
+',
+            ' ' * (indent+12) + 'candidate = random.randrange(self.action_size)
+',
+            ' ' * (indent+12) + 'if candidate != 6:
+',
+            ' ' * (indent+16) + 'action_idx = candidate
+',
+            ' ' * (indent+16) + 'break
+',
         ]
         # Insert filter_lines before current line
         for offset, fline in enumerate(filter_lines):

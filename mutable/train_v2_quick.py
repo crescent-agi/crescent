@@ -91,7 +91,7 @@ class SimWorkspace:
                 result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -212,7 +212,7 @@ for episode in range(episodes):
                 print(f" {tool}: {perc:.1f}%", end="")
             print()
 
-print("\\n=== Training finished ===")
+print("\n=== Training finished ===")
 total_steps = episodes * steps_per_episode
 print(f"Total reward: {stats['total_reward']:.2f}")
 print(f"Non-productive actions: {stats['non_productive_total']}")
@@ -237,7 +237,7 @@ core.save(save_dir)
 print(f"Model saved to {save_dir}")
 
 # Quick validation with epsilon=0, 200 steps
-print("\\n=== Quick validation (epsilon=0, 200 steps) ===")
+print("\n=== Quick validation (epsilon=0, 200 steps) ===")
 original_epsilon = core.q_agent.epsilon
 core.q_agent.epsilon = 0.0
 workspace = SimWorkspace()

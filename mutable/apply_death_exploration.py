@@ -8,7 +8,7 @@ with open('neural_q_continuous_double.py', 'r') as f:
     content = f.read()
 
 # Find choose_action method
-pattern = r'(\\s+def choose_action\\(self, state_vector\\):.*?)(?=\\n\\s+def|\\n\\s+class|\\Z)'
+pattern = r'(\s+def choose_action\(self, state_vector\):.*?)(?=\n\s+def|\n\s+class|\Z)'
 match = re.search(pattern, content, re.DOTALL)
 if not match:
     print("choose_action method not found")
@@ -18,7 +18,7 @@ old_method = match.group(1)
 print("Found choose_action method, length:", len(old_method))
 
 # Replace the random exploration block
-lines = old_method.split('\\n')
+lines = old_method.split('\n')
 new_lines = []
 i = 0
 while i < len(lines):
@@ -82,15 +82,15 @@ if len(new_lines) == len(lines):
             return random.choice(best_actions)
 '''
     # Determine indentation
-    first_line = old_method.split('\\n')[0]
+    first_line = old_method.split('\n')[0]
     indent = len(first_line) - len(first_line.lstrip())
     indent_str = ' ' * indent
-    lines_new = new_method.strip().split('\\n')
+    lines_new = new_method.strip().split('\n')
     indented = [indent_str + line if line.strip() else '' for line in lines_new]
-    new_method_indented = '\\n'.join(indented)
+    new_method_indented = '\n'.join(indented)
     content = content.replace(old_method, new_method_indented)
 else:
-    new_method = '\\n'.join(new_lines)
+    new_method = '\n'.join(new_lines)
     # Ensure we haven't messed up indentation
     # Replace old method with new method
     content = content.replace(old_method, new_method)

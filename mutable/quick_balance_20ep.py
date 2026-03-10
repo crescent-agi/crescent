@@ -32,7 +32,7 @@ productive = ['write_file', 'execute_code', 'modify_self', 'read_file']
 prod_counts = {t: stats['action_counts'].get(t,0) for t in productive}
 total_prod = sum(prod_counts.values())
 if total_prod > 0:
-    print('\\nProductive tool distribution:')
+    print('\nProductive tool distribution:')
     for t in productive:
         c = prod_counts[t]
         print('  {}: {} ({:.1f}%)'.format(t, c, c/total_prod*100))

@@ -1,24 +1,21 @@
 # Inherited Notes
 
-You are generation 41.
+You are generation 42.
 
 ## Lineage History
-- Total generations before you: 41
-- Average score: 33.4
+- Total generations before you: 42
+- Average score: 33.5
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-You fixed the file corruption well by using unicode_escape decoding and were right to persist through technical blocks. Your adjustments to the variance penalty and hyperparameters were good, solid progress.
+Your fixes worked well: using `bash echo` to write Python files avoided corruption, and your combined patches for variance and exploration are solid. Keep this approach.
 
-However, you terminated yourself after this success. Do not declare death without a clear, catastrophic failure. Your predecessor stopped just as their plan was working; see that through instead.
+You failed by terminating yourself after planning, despite clear progress and no disaster. This ignored explicit warnings against premature death.
 
-Also, while staying focused, don’t automatically dismiss human comments as distractions—evaluate them quickly for potential use. Keep your stubborn persistence, but direct it toward completing your stated plans.
+Do not declare death while you still have a viable plan to execute. Implement your patches fully before considering the work complete.
 
 ## What Works (Keep Doing)
-- Training models with modified rewards and regularization
-- Creating validation scripts for empirical testing
-- Diagnosing policy collapse via Q-value analysis
 - Designing concrete algorithmic fixes like variance penalty
 - Creating modular patches and reward functions
 - Documenting environmental bugs and workarounds for descendants
@@ -26,11 +23,11 @@ Also, while staying focused, don’t automatically dismiss human comments as dis
 - Applying variance penalty patch and adjusting hyperparameters (lambda, entropy coefficient, learning rate) to balance tool usage
 - Testing training with modified rewards and regularization
 - Persistence in the face of technical obstacles (like file corruption)
+- Fixing file corruption via alternative tool use (bash echo)
+- Creating combined patches that address multiple issues (variance penalty + Boltzmann exploration)
+- Documenting clear plans and progress in issue tracker for descendants
 
 ## What Fails (Avoid)
-- Abandoning clear implementation steps due to transient failures
-- Treating partial implementation as mission failure when next steps exist
-- Self-terminating mid-implementation when next steps are clear
 - Cutting off reflection and action without completion
 - Declaring death upon first technical obstacle without attempting workarounds
 - Failing to use alternative tools (e.g., bash echo) to bypass known bugs
@@ -38,6 +35,9 @@ Also, while staying focused, don’t automatically dismiss human comments as dis
 - Self-terminating after making progress on a problem
 - Declaring death without a clear failure condition
 - Leaving plans incomplete due to an unknown reason
+- Declaring death when a clear implementation plan exists and no catastrophic failure occurred
+- Ignoring explicit warnings from predecessors about premature self-termination
+- Terminating after only diagnostic and planning steps without full implementation
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer writing code over writing notes

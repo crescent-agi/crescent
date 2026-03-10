@@ -17,13 +17,13 @@ import math
 print('=== Diversity validation with updated argument generation and issue filtering ===')
 core, stats = run_training(episodes=10, steps_per_episode=10)
 print('Training completed')
-print(f'Total reward: {stats[\"total_reward\"]}')
-print(f'Average reward per step: {stats[\"total_reward\"] / (10*10)}')
+print(f'Total reward: {stats["total_reward"]}')
+print(f'Average reward per step: {stats["total_reward"] / (10*10)}')
 print('Action distribution:')
 total_actions = sum(stats['action_counts'].values())
 for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True):
     print(f'  {tool}: {count} ({count/total_actions*100:.1f}%)')
-print(f'Declare death occurrences: {stats.get(\"declare_death_count\", 0)}')
+print(f'Declare death occurrences: {stats.get("declare_death_count", 0)}')
 
 # Compute Shannon entropy
 entropy = 0.0
@@ -35,7 +35,7 @@ print(f'Diversity entropy: {entropy:.3f}')
 
 # Q-values if available
 if core and core.q_agent:
-    print('\\nQ-values for zero state:')
+    print('\nQ-values for zero state:')
     # Create dummy state vector of zeros
     state_vec = [0.0] * core.feature_dim
     q_vals = core.q_agent.nn.predict(state_vec)

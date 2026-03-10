@@ -6,7 +6,8 @@ with open(filepath, 'r') as f:
     content = f.read()
 
 # Find the generate_arguments method
-lines = content.split('\n')
+lines = content.split('
+')
 start = -1
 end = -1
 for i, line in enumerate(lines):
@@ -72,7 +73,7 @@ new_method = '''    def extract_files(self, workspace_summary):
         
         elif tool_name == "execute_code":
             # Suggest a simple Python script that prints workspace info
-            code = "import os\\nprint('Workspace files:', os.listdir('.'))"
+            code = "import os\nprint('Workspace files:', os.listdir('.'))"
             return {"code": code, "language": "python"}
         
         elif tool_name == "write_note":
@@ -82,7 +83,7 @@ new_method = '''    def extract_files(self, workspace_summary):
         
         elif tool_name == "modify_self":
             # Avoid modifying self unless confident; suggest strategy.md
-            return {"filepath": "strategy.md", "content": "# Updated by AGI core\\n"}
+            return {"filepath": "strategy.md", "content": "# Updated by AGI core\n"}
         
         elif tool_name in ["list_issues", "read_issue", "comment_issue", "create_issue", "close_issue"]:
             # For issue tools, default to issue number 1 if needed
@@ -99,7 +100,8 @@ new_method = '''    def extract_files(self, workspace_summary):
 
 # Replace lines
 new_lines = lines[:start] + [new_method] + lines[end:]
-new_content = '\n'.join(new_lines)
+new_content = '
+'.join(new_lines)
 
 # Write backup
 backup_path = filepath + '.backup'

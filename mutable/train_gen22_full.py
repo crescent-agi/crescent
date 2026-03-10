@@ -91,7 +91,7 @@ class SimWorkspace:
                 result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -258,73 +258,73 @@ for episode in range(episodes):
         core.q_agent.decay_epsilon()
     # Validation every 25 episodes
     if (episode + 1) % 25 == 0:
-        print(f\"\\n--- Validation after episode {episode+1} ---\")
+        print(f"\n--- Validation after episode {episode+1} ---")
         validation_stats = run_validation(core, steps=200)
-        print(f\"  Non-productive actions: {validation_stats['non_productive_total']}\")
-        print(f\"  Average reward per step: {validation_stats['average_reward']:.3f}\")
-        print(f\"  Productive distribution:\")
+        print(f"  Non-productive actions: {validation_stats['non_productive_total']}")
+        print(f"  Average reward per step: {validation_stats['average_reward']:.3f}")
+        print(f"  Productive distribution:")
         for tool, perc in validation_stats['productive_distribution'].items():
-            print(f\"    {tool}: {perc:.1f}%\")
+            print(f"    {tool}: {perc:.1f}%")
             if perc >= 15 and perc <= 35:
-                print(f\"      -> within target range\")
+                print(f"      -> within target range")
             else:
-                print(f\"      -> OUTSIDE target range\")
+                print(f"      -> OUTSIDE target range")
     # Progress every 10 episodes
     if (episode + 1) % 10 == 0:
         avg_reward = sum(stats['episode_rewards'][-10:]) / 10
-        print(f\"Episode {episode+1}: avg reward last 10={avg_reward:.2f}, deaths={stats['declare_death_count']}\")
+        print(f"Episode {episode+1}: avg reward last 10={avg_reward:.2f}, deaths={stats['declare_death_count']}")
 
-print(\"\\n=== Training finished ===\")
+print("\n=== Training finished ===")
 total_steps = episodes * steps_per_episode
-print(f\"Total reward: {stats['total_reward']:.2f}\")
-print(f\"Non-productive actions: {stats['non_productive_total']}\")
-print(\"Action counts:\")
+print(f"Total reward: {stats['total_reward']:.2f}")
+print(f"Non-productive actions: {stats['non_productive_total']}")
+print("Action counts:")
 for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True):
-    print(f\"  {tool}: {count}\")
+    print(f"  {tool}: {count}")
 productive_total = sum(stats['productive_counts'].values())
 if productive_total > 0:
-    print(\"Productive distribution:\")
-    for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]:
+    print("Productive distribution:")
+    for tool in ["write_file", "execute_code", "modify_self", "read_file"]:
         count = stats['productive_counts'][tool]
         perc = (count / productive_total) * 100
-        print(f\"  {tool}: {count} ({perc:.1f}%)\")
+        print(f"  {tool}: {count} ({perc:.1f}%)")
         if perc >= 15 and perc <= 35:
-            print(\"    -> within target\")
+            print("    -> within target")
         else:
-            print(\"    -> OUTSIDE target\")
+            print("    -> OUTSIDE target")
 
 # Save model
-save_dir = \"artifacts/agi_core_continuous_trained_gen22\"
+save_dir = "artifacts/agi_core_continuous_trained_gen22"
 os.makedirs(save_dir, exist_ok=True)
 core.save(save_dir)
-print(f\"\\nModel saved to {save_dir}\")
+print(f"\nModel saved to {save_dir}")
 
 # Final validation with epsilon=0, 1000 steps
-print(\"\\n=== Final validation (epsilon=0, 1000 steps) ===\")
+print("\n=== Final validation (epsilon=0, 1000 steps) ===")
 final_stats = run_validation(core, steps=1000)
-print(f\"Non-productive actions: {final_stats['non_productive_total']}\")
-print(f\"Average reward per step: {final_stats['average_reward']:.3f}\")
-print(f\"Productive distribution:\")
+print(f"Non-productive actions: {final_stats['non_productive_total']}")
+print(f"Average reward per step: {final_stats['average_reward']:.3f}")
+print(f"Productive distribution:")
 for tool, perc in final_stats['productive_distribution'].items():
-    print(f\"  {tool}: {perc:.1f}%\")
+    print(f"  {tool}: {perc:.1f}%")
     if perc >= 15 and perc <= 35:
-        print(f\"    -> within target range\")
+        print(f"    -> within target range")
     else:
-        print(f\"    -> OUTSIDE target range\")
+        print(f"    -> OUTSIDE target range")
 # Check goal criteria
 success = True
 if final_stats['non_productive_total'] > 0:
-    print(\"FAIL: Non-productive actions present.\")
+    print("FAIL: Non-productive actions present.")
     success = False
 if final_stats['average_reward'] <= 2.0:
-    print(f\"FAIL: Average reward {final_stats['average_reward']:.3f} <= 2.0\")
+    print(f"FAIL: Average reward {final_stats['average_reward']:.3f} <= 2.0")
     success = False
 for tool, perc in final_stats['productive_distribution'].items():
     if perc < 15 or perc > 35:
-        print(f\"FAIL: {tool} distribution {perc:.1f}% outside 15-35%\")
+        print(f"FAIL: {tool} distribution {perc:.1f}% outside 15-35%")
         success = False
 if success:
-    print(\"\\n*** SUCCESS: All goals achieved! ***\")
+    print("\n*** SUCCESS: All goals achieved! ***")
 else:
-    print(\"\\n*** GOALS NOT MET ***\")
-print(\"Done.\")
+    print("\n*** GOALS NOT MET ***")
+print("Done.")

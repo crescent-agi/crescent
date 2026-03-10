@@ -22,7 +22,8 @@ except ImportError:
     AGI_CORE_AVAILABLE = False
 '''
     # Find last import line
-    lines = content.split('\n')
+    lines = content.split('
+')
     insert_idx = None
     for i, line in enumerate(lines):
         if line.startswith('from core.llm_client import LLMAuthenticationError'):
@@ -31,7 +32,8 @@ except ImportError:
     if insert_idx is None:
         insert_idx = len(lines)
     lines.insert(insert_idx, import_insert)
-    content = '\n'.join(lines)
+    content = '
+'.join(lines)
     
     # Add AGI Core initialization in __init__
     # Find __init__ method
@@ -44,7 +46,8 @@ except ImportError:
     # Find the end of __init__ (next method)
     # We'll insert after self.state_path = ... line
     # Let's find the line after that
-    lines = content.split('\n')
+    lines = content.split('
+')
     init_line = None
     for i, line in enumerate(lines):
         if line.strip().startswith('def __init__'):
@@ -70,26 +73,28 @@ except ImportError:
             try:
                 self.agi_core = AGICore(state_size=100, hidden_size=32, learning_rate=0.01)
                 # Try to load previously saved model
-                core_dir = self.sandbox.gen_dir / \"artifacts\" / \"agi_core\"
+                core_dir = self.sandbox.gen_dir / "artifacts" / "agi_core"
                 if core_dir.exists():
                     self.agi_core.load(str(core_dir))
-                print(f\"  [GEN-{self.generation:04d}] AGI Core initialized.\")
+                print(f"  [GEN-{self.generation:04d}] AGI Core initialized.")
             except Exception as e:
-                print(f\"  [GEN-{self.generation:04d}] Failed to initialize AGI Core: {e}\")
+                print(f"  [GEN-{self.generation:04d}] Failed to initialize AGI Core: {e}")
                 self.agi_core = None
         else:
-            print(f\"  [GEN-{self.generation:04d}] AGI Core not available.\")
+            print(f"  [GEN-{self.generation:04d}] AGI Core not available.")
         
         # State tracking for AGI Core
         self.previous_workspace_summary = None
-        self.previous_journal = \"\"
+        self.previous_journal = ""
         self.previous_actions = []'''
     lines.insert(insert_line, agi_init)
-    content = '\n'.join(lines)
+    content = '
+'.join(lines)
     
     # Add helper methods before _execute_tool maybe
     # Find the line with 'def _execute_tool'
-    lines = content.split('\n')
+    lines = content.split('
+')
     execute_tool_line = None
     for i, line in enumerate(lines):
         if line.strip().startswith('def _execute_tool'):
@@ -101,13 +106,13 @@ except ImportError:
     # Insert before that line
     helper_methods = '''
     def _capture_pre_action_state(self):
-        \"\"\"Store current workspace state for later learning.\"\"\"
+        """Store current workspace state for later learning."""
         self.previous_workspace_summary = self.sandbox.get_workspace_summary()
         self.previous_journal = self._get_journal_content()
         self.previous_actions = self._get_recent_actions(20)
     
     def _learn_from_tool_result(self, tool_name, tool_args, tool_result):
-        \"\"\"Compute reward and update AGI Core.\"\"\"
+        """Compute reward and update AGI Core."""
         if not self.agi_core:
             return
         # Compute reward based on tool result
@@ -120,40 +125,40 @@ except ImportError:
         self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)
     
     def _compute_reward(self, tool_name, tool_args, tool_result):
-        \"\"\"Simple reward shaping.\"\"\"
+        """Simple reward shaping."""
         # Default neutral
         reward = 0.0
         # Positive if tool succeeded (no error)
-        if isinstance(tool_result, dict) and not tool_result.get(\"error\"):
+        if isinstance(tool_result, dict) and not tool_result.get("error"):
             reward += 0.1
         # Extra reward for creating new files
-        if tool_name == \"write_file\" and \"filepath\" in tool_args:
+        if tool_name == "write_file" and "filepath" in tool_args:
             # Check if file was created (we can't know; assume success)
             reward += 0.5
         # Extra reward for executing code that runs successfully
-        if tool_name == \"execute_code\" and isinstance(tool_result, dict) and \"stdout\" in tool_result:
+        if tool_name == "execute_code" and isinstance(tool_result, dict) and "stdout" in tool_result:
             reward += 0.3
         # Negative reward for declare_death (discourage premature termination)
-        if tool_name == \"declare_death\":
+        if tool_name == "declare_death":
             reward -= 2.0
         # Negative reward for errors
-        if isinstance(tool_result, dict) and \"error\" in tool_result:
+        if isinstance(tool_result, dict) and "error" in tool_result:
             reward -= 0.5
         return reward
     
     def _get_journal_content(self):
-        \"\"\"Return current journal content.\"\"\"
-        journal_path = self.sandbox.gen_dir / \"journal.md\"
+        """Return current journal content."""
+        journal_path = self.sandbox.gen_dir / "journal.md"
         if journal_path.exists():
-            return journal_path.read_text(encoding=\"utf-8\")
-        return \"\"
+            return journal_path.read_text(encoding="utf-8")
+        return ""
     
     def _get_recent_actions(self, n):
-        \"\"\"Return up to n recent actions from actions.jsonl.\"\"\"
+        """Return up to n recent actions from actions.jsonl."""
         actions = []
-        actions_path = self.sandbox.gen_dir / \"actions.jsonl\"
+        actions_path = self.sandbox.gen_dir / "actions.jsonl"
         if actions_path.exists():
-            lines = actions_path.read_text(encoding=\"utf-8\").strip().split('\\n')
+            lines = actions_path.read_text(encoding="utf-8").strip().split('\n')
             for line in lines[-n:]:
                 if line:
                     try:
@@ -163,11 +168,13 @@ except ImportError:
         return actions
 '''
     lines.insert(execute_tool_line, helper_methods)
-    content = '\n'.join(lines)
+    content = '
+'.join(lines)
     
     # Modify _build_step_prompt to accept suggestion
     # Find its definition
-    lines = content.split('\n')
+    lines = content.split('
+')
     build_prompt_line = None
     for i, line in enumerate(lines):
         if line.strip().startswith('def _build_step_prompt'):
@@ -186,29 +193,31 @@ except ImportError:
         end += 1
     # New method
     new_method = '''    def _build_step_prompt(self, history: list, tool_suggestion=None, tool_args_suggestion=None) -> str:
-        \"\"\"Build the full prompt from conversation history, optionally including AGI Core suggestion.\"\"\"
+        """Build the full prompt from conversation history, optionally including AGI Core suggestion."""
         parts = []
         for msg in history:
-            role = msg[\"role\"]
-            content = msg[\"content\"]
-            if role == \"user\":
-                parts.append(f\"[CONTEXT]\\\\n{content}\")
+            role = msg["role"]
+            content = msg["content"]
+            if role == "user":
+                parts.append(f"[CONTEXT]\\n{content}")
             else:
-                parts.append(f\"[YOU]\\\\n{content}\")
+                parts.append(f"[YOU]\\n{content}")
         
         # Append AGI Core suggestion if available
         if tool_suggestion:
-            suggestion = f\"\\\\n\\\\n[AGI Core Suggestion]\\\\nConsider taking action '{tool_suggestion}' with arguments {tool_args_suggestion}. You may follow this suggestion or ignore it.\"
+            suggestion = f"\\n\\n[AGI Core Suggestion]\\nConsider taking action '{tool_suggestion}' with arguments {tool_args_suggestion}. You may follow this suggestion or ignore it."
             parts.append(suggestion)
         
-        return \"\\\\n\\\\n\".join(parts)'''
+        return "\\n\\n".join(parts)'''
     # Replace lines[start:end] with new_method
     lines = lines[:start] + [new_method] + lines[end:]
-    content = '\n'.join(lines)
+    content = '
+'.join(lines)
     
     # Modify run method to incorporate AGI Core
     # Find the run method
-    lines = content.split('\n')
+    lines = content.split('
+')
     run_start = None
     for i, line in enumerate(lines):
         if line.strip().startswith('def run'):
@@ -262,13 +271,15 @@ except ImportError:
                 if confidence > 0.7:  # Use AGI Core suggestion
                     tool_suggestion = tool_name
                     tool_args_suggestion = tool_args
-                    print(f\"  [GEN-{self.generation:04d}] AGI Core suggests: {tool_name} with args {tool_args}\")'''
+                    print(f"  [GEN-{self.generation:04d}] AGI Core suggests: {tool_name} with args {tool_args}")'''
     lines.insert(try_line, insertion)
-    content = '\n'.join(lines)
+    content = '
+'.join(lines)
     
     # Also need to modify the call to _build_step_prompt to pass suggestions
     # Find the line with 'full_prompt = self._build_step_prompt(conversation_history)'
-    lines = content.split('\n')
+    lines = content.split('
+')
     for i, line in enumerate(lines):
         if 'full_prompt = self._build_step_prompt(conversation_history)' in line:
             # Replace with new line
@@ -278,17 +289,18 @@ except ImportError:
     # Need to add learning after each tool call
     # Find the loop where tool_calls are processed
     # Look for 'for tool_call in tool_calls:'
-    lines = content.split('\n')
+    lines = content.split('
+')
     for i, line in enumerate(lines):
         if 'for tool_call in tool_calls:' in line:
-            # Insert after the block that logs action and before the if tool_call[\"name\"] == \"declare_death\"
-            # We'll find the line with 'if tool_call[\"name\"] == \"declare_death\":'
+            # Insert after the block that logs action and before the if tool_call["name"] == "declare_death"
+            # We'll find the line with 'if tool_call["name"] == "declare_death":'
             for j in range(i, len(lines)):
                 if 'if tool_call["name"] == "declare_death":' in lines[j]:
                     # Insert before that line
                     learn_insert = '''                # Learn from outcome (if AGI Core is active)
                 if self.agi_core:
-                    self._learn_from_tool_result(tool_call[\"name\"], tool_call.get(\"args\"), tool_result)'''
+                    self._learn_from_tool_result(tool_call["name"], tool_call.get("args"), tool_result)'''
                     lines.insert(j, learn_insert)
                     break
             break
@@ -303,14 +315,15 @@ except ImportError:
             # Insert before that line
             save_insert = '''        # Save AGI Core models before dying
         if self.agi_core:
-            core_dir = self.sandbox.gen_dir / \"artifacts\" / \"agi_core\"
+            core_dir = self.sandbox.gen_dir / "artifacts" / "agi_core"
             self.agi_core.save(str(core_dir))'''
             lines.insert(i, save_insert)
             break
     
     # Write the modified content back
     with open('agent_brain_new.py', 'w') as f:
-        f.write('\n'.join(lines))
+        f.write('
+'.join(lines))
     print("Modified agent brain written to agent_brain_new.py")
 
 if __name__ == '__main__':

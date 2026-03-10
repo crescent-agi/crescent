@@ -24,59 +24,59 @@ self = DummySelf()
 class SimWorkspace:
     def __init__(self):
         self.files = {
-            \"inherited_notes.md\": \"# Inherited Notes\",
-            \"agi_core.py\": \"# AGI Core\",
-            \"cognitive_architecture.py\": \"# Cognitive Architecture\",
-            \"strategy.md\": \"# Strategy\",
-            \"agent_brain.py\": \"# Agent Brain\",
-            \"world_model.py\": \"# World Model\",
-            \"neural_q.py\": \"# Neural Q\",
+            "inherited_notes.md": "# Inherited Notes",
+            "agi_core.py": "# AGI Core",
+            "cognitive_architecture.py": "# Cognitive Architecture",
+            "strategy.md": "# Strategy",
+            "agent_brain.py": "# Agent Brain",
+            "world_model.py": "# World Model",
+            "neural_q.py": "# Neural Q",
         }
-        self.journal = \"\"
+        self.journal = ""
         self.actions = []
     def workspace_summary(self):
-        file_list = \", \".join(sorted(self.files.keys()))
-        return f\"Files: {file_list}\"
+        file_list = ", ".join(sorted(self.files.keys()))
+        return f"Files: {file_list}"
     def tool_result(self, tool_name, tool_args):
         # Simple success
-        result = {\"success\": True}
-        if tool_name == \"read_file\":
-            filepath = tool_args.get(\"filepath\", \"\")
+        result = {"success": True}
+        if tool_name == "read_file":
+            filepath = tool_args.get("filepath", "")
             if filepath in self.files:
-                result[\"content\"] = self.files[filepath]
+                result["content"] = self.files[filepath]
             else:
-                result[\"error\"] = f\"File not found: {filepath}\"
-                result[\"success\"] = False
-        elif tool_name == \"write_file\":
-            filepath = tool_args.get(\"filepath\", \"\")
-            content = tool_args.get(\"content\", \"\")
+                result["error"] = f"File not found: {filepath}"
+                result["success"] = False
+        elif tool_name == "write_file":
+            filepath = tool_args.get("filepath", "")
+            content = tool_args.get("content", "")
             self.files[filepath] = content
-            result[\"message\"] = f\"File {filepath} written\"
-        elif tool_name == \"list_files\":
-            result[\"entries\"] = [{\"name\": name, \"type\": \"file\", \"size\": len(content)} for name, content in self.files.items()]
-        elif tool_name == \"execute_code\":
-            result[\"stdout\"] = \"Simulated output\"
-            result[\"stderr\"] = \"\"
-        elif tool_name == \"write_note\":
-            note = tool_args.get(\"note\", \"\")
-            self.journal += note + \"\\n\"
-            result[\"note\"] = \"Added to journal\"
-        elif tool_name == \"modify_self\":
-            filepath = tool_args.get(\"filepath\", \"\")
-            content = tool_args.get(\"content\", \"\")
+            result["message"] = f"File {filepath} written"
+        elif tool_name == "list_files":
+            result["entries"] = [{"name": name, "type": "file", "size": len(content)} for name, content in self.files.items()]
+        elif tool_name == "execute_code":
+            result["stdout"] = "Simulated output"
+            result["stderr"] = ""
+        elif tool_name == "write_note":
+            note = tool_args.get("note", "")
+            self.journal += note + "\n"
+            result["note"] = "Added to journal"
+        elif tool_name == "modify_self":
+            filepath = tool_args.get("filepath", "")
+            content = tool_args.get("content", "")
             if filepath in self.files:
                 self.files[filepath] = content
-                result[\"message\"] = f\"Modified {filepath}\"
+                result["message"] = f"Modified {filepath}"
             else:
-                result[\"error\"] = f\"Cannot modify non-existent file: {filepath}\"
-                result[\"success\"] = False
-        elif tool_name == \"declare_death\":
-            result[\"message\"] = \"You have chosen to die.\"
-        elif tool_name in [\"list_issues\", \"read_issue\", \"comment_issue\", \"create_issue\", \"close_issue\"]:
-            result[\"issues\"] = []
+                result["error"] = f"Cannot modify non-existent file: {filepath}"
+                result["success"] = False
+        elif tool_name == "declare_death":
+            result["message"] = "You have chosen to die."
+        elif tool_name in ["list_issues", "read_issue", "comment_issue", "create_issue", "close_issue"]:
+            result["issues"] = []
         else:
-            result[\"error\"] = f\"Unknown tool: {tool_name}\"
-            result[\"success\"] = False
+            result["error"] = f"Unknown tool: {tool_name}"
+            result["success"] = False
         return result
 
 def run_training(core, total_episodes=5, steps_per_episode=10):
@@ -99,7 +99,7 @@ def run_training(core, total_episodes=5, steps_per_episode=10):
             stats['total_reward'] += reward
             stats['action_counts'][tool_name] = stats['action_counts'].get(tool_name, 0) + 1
             core.learn_from_outcome(reward, workspace.workspace_summary(), workspace.journal, workspace.actions)
-            workspace.actions.append({\"tool\": tool_name, \"step\": step})
+            workspace.actions.append({"tool": tool_name, "step": step})
     return stats
 
 core = AGICore(state_size=100, hidden_size=32, learning_rate=0.01)

@@ -49,7 +49,7 @@ class SimWorkspace:
             result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -121,9 +121,9 @@ start = time.time()
 core = AGICore(state_size=50, hidden_size=16, learning_rate=0.01)
 print("Starting quick training (30 episodes without planner)...")
 train_phase(core, episodes=30, steps=15, use_planner=False)
-print("\\nContinuing training with planner (20 episodes)...")
+print("\nContinuing training with planner (20 episodes)...")
 train_phase(core, episodes=20, steps=15, use_planner=True)
-print("\\nEvaluating...")
+print("\nEvaluating...")
 eval_avg, eval_counts = evaluate(core, episodes=5, steps=15)
 # Save model
 import os, json

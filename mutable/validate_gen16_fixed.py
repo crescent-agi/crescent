@@ -86,7 +86,7 @@ class SimWorkspace:
                 result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -148,11 +148,11 @@ def validate(steps=1000):
     print(f"Validation finished.")
     print(f"Total reward: {stats['total_reward']:.2f}")
     print(f"Average reward per step: {stats['total_reward']/steps:.3f}")
-    print("\\nAction distribution:")
+    print("\nAction distribution:")
     for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True):
         percentage = (count / steps) * 100
         print(f"  {tool}: {count} ({percentage:.1f}%)")
-    print("\\nNon-productive tool counts:")
+    print("\nNon-productive tool counts:")
     non_prod_total = sum(stats['non_productive_counts'].values())
     print(f"  Total non-productive actions: {non_prod_total}")
     for tool, count in stats['non_productive_counts'].items():
@@ -162,7 +162,7 @@ def validate(steps=1000):
     productive_counts = {tool: stats['action_counts'].get(tool, 0) for tool in productive_tools}
     total_productive = sum(productive_counts.values())
     if total_productive > 0:
-        print("\\nProductive tool distribution:")
+        print("\nProductive tool distribution:")
         for tool in productive_tools:
             count = productive_counts[tool]
             percentage = (count / total_productive) * 100
@@ -179,9 +179,9 @@ def validate(steps=1000):
 if __name__ == "__main__":
     non_prod_zero, all_within = validate(steps=1000)
     if non_prod_zero:
-        print("\\nSUCCESS: Zero non-productive actions!")
+        print("\nSUCCESS: Zero non-productive actions!")
     else:
-        print("\\nFAILURE: Non-productive actions present.")
+        print("\nFAILURE: Non-productive actions present.")
     if all_within:
         print("SUCCESS: All productive tools within 15-35% range!")
     else:

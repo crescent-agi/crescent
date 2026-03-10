@@ -75,7 +75,7 @@ if core:
                 result['stderr'] = ''
             elif tool_name == 'write_note':
                 note = tool_args.get('note', '')
-                self.journal += note + '\\n'
+                self.journal += note + '\n'
                 result['note'] = 'Added to journal'
             elif tool_name == 'modify_self':
                 filepath = tool_args.get('filepath', '')
@@ -125,4 +125,4 @@ if core:
 else:
     print('Skipping evaluation.')
 
-print('\\nDone.')
+print('\nDone.')

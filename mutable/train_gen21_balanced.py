@@ -38,8 +38,8 @@ class DummySelf:
         self.recent_read_files = []
         self.episode_step_count = 0
         self.steps_per_episode = 10  # default, will be updated
-        self.global_tool_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}
-        self.global_tool_counts_curiosity = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}
+        self.global_tool_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.global_tool_counts_curiosity = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
     def reset(self):
         self.last_tool = None
         self.recent_tools.clear()
@@ -55,75 +55,80 @@ self = DummySelf()
 
 # Simulation environment (same as before)
 class SimWorkspace:
-    """Simulates a simple workspace with files and journal."""\n    def __init__(self):
+    """Simulates a simple workspace with files and journal."""
+    def __init__(self):
         self.files = {
-            \"inherited_notes.md\": \"# Inherited Notes\",
-            \"agi_core.py\": \"# AGI Core\",
-            \"cognitive_architecture.py\": \"# Cognitive Architecture\",
-            \"strategy.md\": \"# Strategy\",
+            "inherited_notes.md": "# Inherited Notes",
+            "agi_core.py": "# AGI Core",
+            "cognitive_architecture.py": "# Cognitive Architecture",
+            "strategy.md": "# Strategy",
         }
-        self.journal = \"\"
+        self.journal = ""
         self.actions = []
     def workspace_summary(self):
-        """Generate a summary string of workspace."""\n        file_list = \", \".join(self.files.keys())
-        return f\"Files: {file_list}\"
+        """Generate a summary string of workspace."""
+        file_list = ", ".join(self.files.keys())
+        return f"Files: {file_list}"
     def tool_result(self, tool_name, tool_args):
-        """Simulate tool execution with realistic outcomes."""\n        # Default success
-        result = {\"success\": True}
-        if tool_name == \"read_file\":
-            filepath = tool_args.get(\"filepath\", \"\")
+        """Simulate tool execution with realistic outcomes."""
+        # Default success
+        result = {"success": True}
+        if tool_name == "read_file":
+            filepath = tool_args.get("filepath", "")
             if filepath in self.files:
-                result[\"content\"] = self.files[filepath]
+                result["content"] = self.files[filepath]
             else:
-                result[\"error\"] = f\"File not found: {filepath}\"
-                result[\"success\"] = False
-        elif tool_name == \"write_file\":
-            filepath = tool_args.get(\"filepath\", \"\")
-            content = tool_args.get(\"content\", \"\")
+                result["error"] = f"File not found: {filepath}"
+                result["success"] = False
+        elif tool_name == "write_file":
+            filepath = tool_args.get("filepath", "")
+            content = tool_args.get("content", "")
             self.files[filepath] = content
-            result[\"message\"] = f\"File {filepath} written\"
-        elif tool_name == \"list_files\":
-            directory = tool_args.get(\"directory\", \".\")
-            result[\"entries\"] = [{\"name\": name, \"type\": \"file\", \"size\": len(content)} for name, content in self.files.items()]
-        elif tool_name == \"execute_code\":
-            code = tool_args.get(\"code\", \"\")
-            # Simulate execution: if code contains \"error\", produce stderr
-            if \"error\" in code:
-                result[\"stdout\"] = \"\"
-                result[\"stderr\"] = \"Simulated error\"
-                result[\"success\"] = False
+            result["message"] = f"File {filepath} written"
+        elif tool_name == "list_files":
+            directory = tool_args.get("directory", ".")
+            result["entries"] = [{"name": name, "type": "file", "size": len(content)} for name, content in self.files.items()]
+        elif tool_name == "execute_code":
+            code = tool_args.get("code", "")
+            # Simulate execution: if code contains "error", produce stderr
+            if "error" in code:
+                result["stdout"] = ""
+                result["stderr"] = "Simulated error"
+                result["success"] = False
             else:
-                result[\"stdout\"] = \"Simulated output\"
-                result[\"stderr\"] = \"\"
-        elif tool_name == \"write_note\":
-            note = tool_args.get(\"note\", \"\")
-            self.journal += note + \"\\\\n\"
-            result[\"note\"] = \"Added to journal\"
-        elif tool_name == \"modify_self\":
-            filepath = tool_args.get(\"filepath\", \"\")
-            content = tool_args.get(\"content\", \"\")
+                result["stdout"] = "Simulated output"
+                result["stderr"] = ""
+        elif tool_name == "write_note":
+            note = tool_args.get("note", "")
+            self.journal += note + "\\n"
+            result["note"] = "Added to journal"
+        elif tool_name == "modify_self":
+            filepath = tool_args.get("filepath", "")
+            content = tool_args.get("content", "")
             # Only allow modifying existing files
             if filepath in self.files:
                 self.files[filepath] = content
-                result[\"message\"] = f\"Modified {filepath}\"
+                result["message"] = f"Modified {filepath}"
             else:
-                result[\"error\"] = f\"Cannot modify non-existent file: {filepath}\"
-                result[\"success\"] = False
-        elif tool_name == \"declare_death\":
-            result[\"message\"] = \"You have chosen to die.\"
-        elif tool_name in [\"list_issues\", \"read_issue\", \"comment_issue\", \"create_issue\", \"close_issue\"]:
+                result["error"] = f"Cannot modify non-existent file: {filepath}"
+                result["success"] = False
+        elif tool_name == "declare_death":
+            result["message"] = "You have chosen to die."
+        elif tool_name in ["list_issues", "read_issue", "comment_issue", "create_issue", "close_issue"]:
             # Simulate GitHub issue operations
-            result[\"issues\"] = []
+            result["issues"] = []
         else:
-            result[\"error\"] = f\"Unknown tool: {tool_name}\"
-            result[\"success\"] = False
+            result["error"] = f"Unknown tool: {tool_name}"
+            result["success"] = False
         return result
     def update_state(self, tool_name, tool_args):
-        """Update workspace state after tool execution."""\n        # Already handled in tool_result
+        """Update workspace state after tool execution."""
+        # Already handled in tool_result
         pass
 
 def run_validation(core, steps=1000):
-    """Run validation with epsilon=0 to check deterministic policy."""\n    original_epsilon = core.q_agent.epsilon
+    """Run validation with epsilon=0 to check deterministic policy."""
+    original_epsilon = core.q_agent.epsilon
     core.q_agent.epsilon = 0.0
     workspace = SimWorkspace()
     self.reset()
@@ -134,7 +139,7 @@ def run_validation(core, steps=1000):
         'total_reward': 0.0,
         'declare_death_count': 0,
     }
-    productive_tools = [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]
+    productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
     for step in range(steps):
         tool_name, tool_args, confidence = core.decide_action(
             workspace.workspace_summary(),
@@ -145,12 +150,12 @@ def run_validation(core, steps=1000):
         reward = compute_reward(self, tool_name, tool_args, tool_result)
         stats['total_reward'] += reward
         stats['action_counts'][tool_name] = stats['action_counts'].get(tool_name, 0) + 1
-        if tool_name == \"declare_death\":
+        if tool_name == "declare_death":
             stats['declare_death_count'] += 1
-        if tool_name not in productive_tools and tool_name != \"declare_death\":
+        if tool_name not in productive_tools and tool_name != "declare_death":
             stats['non_productive_counts'][tool_name] = stats['non_productive_counts'].get(tool_name, 0) + 1
         workspace.update_state(tool_name, tool_args)
-        workspace.actions.append({\"tool\": tool_name, \"step\": step})
+        workspace.actions.append({"tool": tool_name, "step": step})
         # No learning during validation
     core.q_agent.epsilon = original_epsilon
     # Compute productive distribution
@@ -173,13 +178,14 @@ try:
     from neural_q_continuous import NeuralQLearningAgentContinuous
     original_choose_action = NeuralQLearningAgentContinuous.choose_action
     def masked_choose_action(self, state_vector):
-        """Epsilon-greedy with masking of non-productive tools during exploration."""\n        # Define non-productive tool indices (excluding declare_death which is already filtered)
-        tool_names = [\"read_file\", \"write_file\", \"list_files\", \"execute_code\", \"write_note\",
-                      \"modify_self\", \"declare_death\", \"list_issues\", \"read_issue\",
-                      \"comment_issue\", \"create_issue\", \"close_issue\"]
+        """Epsilon-greedy with masking of non-productive tools during exploration."""
+        # Define non-productive tool indices (excluding declare_death which is already filtered)
+        tool_names = ["read_file", "write_file", "list_files", "execute_code", "write_note",
+                      "modify_self", "declare_death", "list_issues", "read_issue",
+                      "comment_issue", "create_issue", "close_issue"]
         non_productive_indices = [i for i, name in enumerate(tool_names) 
-                                  if name in [\"list_files\", \"write_note\", \"list_issues\", \"read_issue\",
-                                              \"comment_issue\", \"create_issue\", \"close_issue\"]]
+                                  if name in ["list_files", "write_note", "list_issues", "read_issue",
+                                              "comment_issue", "create_issue", "close_issue"]]
         if random.random() < self.epsilon:
             # Random exploration: exclude non-productive indices and declare_death (index 6)
             allowed = [i for i in range(self.action_size) 
@@ -206,12 +212,13 @@ try:
                         return idx
             return random.choice(best_actions)
     NeuralQLearningAgentContinuous.choose_action = masked_choose_action
-    print(\"Patched NeuralQLearningAgentContinuous.choose_action to mask non-productive tools.\")
+    print("Patched NeuralQLearningAgentContinuous.choose_action to mask non-productive tools.")
 except ImportError as e:
-    print(f\"Could not patch neural_q_continuous: {e}\")
+    print(f"Could not patch neural_q_continuous: {e}")
 
 def run_training(episodes=200, steps_per_episode=10, feature_dim=30, hidden_size=32):
-    """Train AGI Core Continuous with balancing for generation 21."""\n    print(f\"Starting Generation 21 balanced training: {episodes} episodes, {steps_per_episode} steps per episode\")
+    """Train AGI Core Continuous with balancing for generation 21."""
+    print(f"Starting Generation 21 balanced training: {episodes} episodes, {steps_per_episode} steps per episode")
     # Start from scratch, no previous model
     core = AGICoreContinuous(feature_dim=feature_dim, hidden_size=hidden_size,
                              learning_rate=0.001, exploration_rate=0.3,  # reduced learning rate for stability
@@ -252,22 +259,22 @@ def run_training(episodes=200, steps_per_episode=10, feature_dim=30, hidden_size
             episode_reward += reward
             # Update stats
             stats['action_counts'][tool_name] = stats['action_counts'].get(tool_name, 0) + 1
-            if tool_name == \"declare_death\":
+            if tool_name == "declare_death":
                 stats['declare_death_count'] += 1
-            elif tool_name == \"write_file\":
+            elif tool_name == "write_file":
                 stats['write_file_count'] += 1
-            elif tool_name == \"execute_code\":
+            elif tool_name == "execute_code":
                 stats['execute_code_count'] += 1
-            elif tool_name == \"read_file\":
+            elif tool_name == "read_file":
                 stats['read_file_count'] += 1
             else:
                 stats['other_count'] += 1
                 # Track non-productive tools
-                if tool_name in [\"list_files\", \"write_note\", \"list_issues\", \"read_issue\", \"comment_issue\", \"create_issue\", \"close_issue\"]:
+                if tool_name in ["list_files", "write_note", "list_issues", "read_issue", "comment_issue", "create_issue", "close_issue"]:
                     stats['non_productive_counts'][tool_name] = stats['non_productive_counts'].get(tool_name, 0) + 1
             # Update workspace state (already done in tool_result)
             workspace.update_state(tool_name, tool_args)
-            workspace.actions.append({\"tool\": tool_name, \"step\": step})
+            workspace.actions.append({"tool": tool_name, "step": step})
             # Learn from outcome
             core.learn_from_outcome(
                 reward,
@@ -283,102 +290,102 @@ def run_training(episodes=200, steps_per_episode=10, feature_dim=30, hidden_size
             core.q_agent.decay_epsilon()
         # Every 25 episodes, run validation with epsilon=0
         if (episode + 1) % 25 == 0:
-            print(f\"\\n--- Validation after episode {episode+1} ---\")
+            print(f"\n--- Validation after episode {episode+1} ---")
             validation_stats = run_validation(core, steps=200)  # short validation
-            print(f\"  Non-productive actions: {validation_stats['non_productive_total']}\")
-            print(f\"  Average reward per step: {validation_stats['average_reward']:.3f}\")
-            print(f\"  Productive distribution:\")
+            print(f"  Non-productive actions: {validation_stats['non_productive_total']}")
+            print(f"  Average reward per step: {validation_stats['average_reward']:.3f}")
+            print(f"  Productive distribution:")
             for tool, perc in validation_stats['productive_distribution'].items():
-                print(f\"    {tool}: {perc:.1f}%\")
+                print(f"    {tool}: {perc:.1f}%")
                 if perc >= 15 and perc <= 35:
-                    print(f\"      -> within target range\")
+                    print(f"      -> within target range")
                 else:
-                    print(f\"      -> OUTSIDE target range\")
+                    print(f"      -> OUTSIDE target range")
         if (episode + 1) % 5 == 0:
             avg_reward = sum(stats['episode_rewards'][-5:]) / 5
-            print(f\"Episode {episode+1}: avg reward last 5={avg_reward:.2f}, deaths={stats['declare_death_count']}\")
+            print(f"Episode {episode+1}: avg reward last 5={avg_reward:.2f}, deaths={stats['declare_death_count']}")
             # Print top actions
             top_actions = sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True)[:5]
-            print(f\"  Top actions: {top_actions}\")
+            print(f"  Top actions: {top_actions}")
             # Print non-productive counts
             if stats['non_productive_counts']:
-                print(f\"  Non-productive actions: {stats['non_productive_counts']}\")
+                print(f"  Non-productive actions: {stats['non_productive_counts']}")
             else:
-                print(f\"  Non-productive actions: zero\")
-    print(\"\\nTraining finished.\")
+                print(f"  Non-productive actions: zero")
+    print("\nTraining finished.")
     total_steps = episodes * steps_per_episode
-    print(f\"Total reward: {stats['total_reward']:.2f}\")
+    print(f"Total reward: {stats['total_reward']:.2f}")
     avg_reward_per_step = stats['total_reward'] / total_steps if total_steps > 0 else 0.0
-    print(f\"Average reward per step: {avg_reward_per_step:.3f}\")
-    print(\"\\nAction distribution:\")
+    print(f"Average reward per step: {avg_reward_per_step:.3f}")
+    print("\nAction distribution:")
     for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True):
         percentage = (count / total_steps) * 100
-        print(f\"  {tool}: {count} ({percentage:.1f}%)\")
-    print(\"\\nNon-productive tool counts:\")
+        print(f"  {tool}: {count} ({percentage:.1f}%)")
+    print("\nNon-productive tool counts:")
     non_prod_total = sum(stats['non_productive_counts'].values())
-    print(f\"  Total non-productive actions: {non_prod_total}\")
+    print(f"  Total non-productive actions: {non_prod_total}")
     for tool, count in stats['non_productive_counts'].items():
-        print(f\"    {tool}: {count}\")
+        print(f"    {tool}: {count}")
     # Compute productive tool distribution (excluding non-productive and death)
-    productive_tools = [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]
+    productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
     productive_counts = {tool: stats['action_counts'].get(tool, 0) for tool in productive_tools}
     total_productive = sum(productive_counts.values())
     if total_productive > 0:
-        print(\"\\nProductive tool distribution:\")
+        print("\nProductive tool distribution:")
         for tool in productive_tools:
             count = productive_counts[tool]
             percentage = (count / total_productive) * 100
-            print(f\"  {tool}: {count} ({percentage:.1f}%)\")
+            print(f"  {tool}: {count} ({percentage:.1f}%)")
             # Check if within 15-35%
             if percentage >= 15 and percentage <= 35:
-                print(f\"    -> within target range\")
+                print(f"    -> within target range")
             else:
-                print(f\"    -> OUTSIDE target range\")
+                print(f"    -> OUTSIDE target range")
     # Save trained core
-    save_dir = \"artifacts/agi_core_continuous_trained_gen21\"
+    save_dir = "artifacts/agi_core_continuous_trained_gen21"
     os.makedirs(save_dir, exist_ok=True)
     core.save(save_dir)
-    print(f\"\\nTrained AGI Core Continuous saved to {save_dir}\")
+    print(f"\nTrained AGI Core Continuous saved to {save_dir}")
     # Save training stats
-    with open(os.path.join(save_dir, \"training_stats.json\"), \"w\") as f:
+    with open(os.path.join(save_dir, "training_stats.json"), "w") as f:
         json.dump(stats, f, indent=2)
     return core, stats
 
-if __name__ == \"__main__\":
+if __name__ == "__main__":
     start_time = time.time()
     # First run a quick test with a few episodes to ensure no errors
-    print(\"=== Quick sanity check (5 episodes) ===\")
+    print("=== Quick sanity check (5 episodes) ===")
     core_test, stats_test = run_training(episodes=5, steps_per_episode=10)
-    print(\"\\n=== Full training (50 episodes) ===\")
+    print("\n=== Full training (50 episodes) ===")
     core, stats = run_training(episodes=50, steps_per_episode=10)
     elapsed = time.time() - start_time
-    print(f\"\\nTotal training took {elapsed:.1f} seconds\")
+    print(f"\nTotal training took {elapsed:.1f} seconds")
     # Final validation with epsilon=0
-    print(\"\\n=== Final validation (epsilon=0, 500 steps) ===\")
+    print("\n=== Final validation (epsilon=0, 500 steps) ===")
     final_stats = run_validation(core, steps=500)
-    print(f\"Non-productive actions: {final_stats['non_productive_total']}\")
-    print(f\"Average reward per step: {final_stats['average_reward']:.3f}\")
-    print(f\"Productive distribution:\")
+    print(f"Non-productive actions: {final_stats['non_productive_total']}")
+    print(f"Average reward per step: {final_stats['average_reward']:.3f}")
+    print(f"Productive distribution:")
     for tool, perc in final_stats['productive_distribution'].items():
-        print(f\"  {tool}: {perc:.1f}%\")
+        print(f"  {tool}: {perc:.1f}%")
         if perc >= 15 and perc <= 35:
-            print(f\"    -> within target range\")
+            print(f"    -> within target range")
         else:
-            print(f\"    -> OUTSIDE target range\")
+            print(f"    -> OUTSIDE target range")
     # Check goal criteria
     success = True
     if final_stats['non_productive_total'] > 0:
-        print(\"FAIL: Non-productive actions present.\")
+        print("FAIL: Non-productive actions present.")
         success = False
     if final_stats['average_reward'] <= 2.0:
-        print(f\"FAIL: Average reward {final_stats['average_reward']:.3f} <= 2.0\")
+        print(f"FAIL: Average reward {final_stats['average_reward']:.3f} <= 2.0")
         success = False
     for tool, perc in final_stats['productive_distribution'].items():
         if perc < 15 or perc > 35:
-            print(f\"FAIL: {tool} distribution {perc:.1f}% outside 15-35%\")
+            print(f"FAIL: {tool} distribution {perc:.1f}% outside 15-35%")
             success = False
     if success:
-        print(\"\\n*** SUCCESS: All goals achieved! ***\")
+        print("\n*** SUCCESS: All goals achieved! ***")
     else:
-        print(\"\\n*** GOALS NOT MET ***\")
-    print(\"Done.\")
+        print("\n*** GOALS NOT MET ***")
+    print("Done.")

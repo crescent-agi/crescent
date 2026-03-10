@@ -82,7 +82,8 @@ class SimWorkspace:
                 result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\n"
+            self.journal += note + "
+"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -111,7 +112,7 @@ class SimWorkspace:
 
 def run_training(episodes=30, steps_per_episode=10):
     """Train AGI Core Continuous."""
-    print(f"=== Testing death penalty -50 ===\\n")
+    print(f"=== Testing death penalty -50 ===\n")
     core = AGICoreContinuous(feature_dim=30, hidden_size=32, learning_rate=0.01, use_features=True)
     workspace = SimWorkspace()
     
@@ -132,9 +133,9 @@ def run_training(episodes=30, steps_per_episode=10):
             reward = compute_reward(self, tool_name, tool_args, tool_result)
             stats['total_reward'] += reward
             stats['action_counts'][tool_name] = stats['action_counts'].get(tool_name, 0) + 1
-            if tool_name == \"declare_death\":
+            if tool_name == "declare_death":
                 stats['declare_death_count'] += 1
-            workspace.actions.append({\"tool\": tool_name, \"step\": step})
+            workspace.actions.append({"tool": tool_name, "step": step})
             core.learn_from_outcome(
                 reward,
                 workspace.workspace_summary(),
@@ -144,14 +145,14 @@ def run_training(episodes=30, steps_per_episode=10):
         if core.q_agent:
             core.q_agent.decay_epsilon()
     
-    print(f\"Total reward: {stats['total_reward']:.2f}\")
-    print(f\"Average reward per step: {stats['total_reward']/(episodes*steps_per_episode):.3f}\")
-    print(f\"Declare death count: {stats['declare_death_count']}\")
-    print(\"\\nAction distribution:\")
+    print(f"Total reward: {stats['total_reward']:.2f}")
+    print(f"Average reward per step: {stats['total_reward']/(episodes*steps_per_episode):.3f}")
+    print(f"Declare death count: {stats['declare_death_count']}")
+    print("\nAction distribution:")
     for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True)[:10]:
-        print(f\"  {tool}: {count}\")
+        print(f"  {tool}: {count}")
     
     return core, stats
 
-if __name__ == \"__main__\":
+if __name__ == "__main__":
     run_training()

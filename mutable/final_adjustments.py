@@ -31,13 +31,13 @@ content = re.sub(r'reward \+= 1\.5  # base reward \(reduced\)',
                  'reward += 1.0  # base reward (reduced)', content)
 # Replace success extra line (2.0) to 1.5
 # Need to find line with 'extra if execution succeeded without stderr errors'
-lines = content.split('\\n')
+lines = content.split('\n')
 new_lines = []
 for line in lines:
     if 'extra if execution succeeded without stderr errors' in line:
         line = line.replace('2.0', '1.5')
     new_lines.append(line)
-content = '\\n'.join(new_lines)
+content = '\n'.join(new_lines)
 
 with open('agent_brain.py', 'w') as f:
     f.write(content)

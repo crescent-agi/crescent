@@ -10,7 +10,7 @@ with open('agi_core_continuous.py', 'r') as f:
 # Find broken line
 broken_idx = None
 for i, line in enumerate(lines):
-    if 'Filter declare_death during first 20 steps\\\\n' in line and 'tool_name = TOOL_NAMES' in line:
+    if 'Filter declare_death during first 20 steps\\n' in line and 'tool_name = TOOL_NAMES' in line:
         broken_idx = i
         print(f"Found broken line at {i+1}")
         break
@@ -27,7 +27,7 @@ for i, line in enumerate(lines):
         # The line before should be tool_name assignment; if not, insert.
         if i > 0 and 'tool_name = TOOL_NAMES' not in lines[i-1]:
             indent = len(line) - len(line.lstrip())
-            lines.insert(i, ' ' * indent + 'tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]\\n')
+            lines.insert(i, ' ' * indent + 'tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]\n')
             print("Inserted tool_name assignment before generate arguments.")
         break
 

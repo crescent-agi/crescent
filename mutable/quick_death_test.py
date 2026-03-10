@@ -20,7 +20,7 @@ import time
 if __name__ == "__main__":
     start_time = time.time()
     result = run_training(episodes=10, steps_per_episode=10, save=True)
-    print("\\n=== Quick death test results ===")
+    print("\n=== Quick death test results ===")
     print(f"Total steps: {result['total_steps']}")
     print(f"Total reward: {result['total_reward']:.2f}")
     print(f"Average reward per step: {result['avg_reward_per_step']:.3f}")

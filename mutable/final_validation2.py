@@ -27,20 +27,20 @@ journal = ''
 actions = []
 
 tool, args, conf = core.decide_action(workspace, journal, actions)
-print(f'\\nSuggested action: {tool} with args {args} (confidence {conf})')
+print(f'\nSuggested action: {tool} with args {args} (confidence {conf})')
 
 # Compute Q-values for this state
 if core.q_agent:
     state_vec = core.compute_state_vector(workspace, journal, actions)
     q_vals = core.q_agent.get_q_values(state_vec)
-    print('\\nQ-values for each tool:')
+    print('\nQ-values for each tool:')
     for i, tool_name in enumerate(core.TOOL_NAMES):
         print(f'  {tool_name:20} {q_vals[i]:7.3f}')
     # Find best action
     best_idx = max(range(len(q_vals)), key=lambda i: q_vals[i])
-    print(f'\\nBest action: {core.TOOL_NAMES[best_idx]} (Q={q_vals[best_idx]:.3f})')
+    print(f'\nBest action: {core.TOOL_NAMES[best_idx]} (Q={q_vals[best_idx]:.3f})')
     # Check declare_death ranking
     death_idx = core.TOOL_NAMES.index('declare_death')
     print(f'Declare death rank: {sorted(range(len(q_vals)), key=lambda i: q_vals[i], reverse=True).index(death_idx)+1} of {len(q_vals)}')
 
-print('\\nValidation complete.')
+print('\nValidation complete.')

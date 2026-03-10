@@ -8,7 +8,7 @@ with open('agi_core_continuous.py', 'r') as f:
 # Find the broken line
 to_delete = []
 for i, line in enumerate(lines):
-    if '# Filter declare_death during first 20 steps\\\\n' in line:
+    if '# Filter declare_death during first 20 steps\\n' in line:
         print(f"Found broken line at {i+1}")
         to_delete.append(i)
 
@@ -28,7 +28,8 @@ for i, line in enumerate(lines):
             j += 1
         # j should be at line after filter block
         # Insert tool_name assignment
-        lines.insert(j, '        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]\n')
+        lines.insert(j, '        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]
+')
         print(f"Inserted tool_name assignment at line {j+1}")
         break
 

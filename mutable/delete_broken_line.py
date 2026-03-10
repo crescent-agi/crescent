@@ -9,7 +9,7 @@ with open('agi_core_continuous.py', 'r') as f:
 
 to_delete = []
 for i, line in enumerate(lines):
-    if 'tool_name = TOOL_NAMES' in line and '\\\\n        # Generate' in line:
+    if 'tool_name = TOOL_NAMES' in line and '\\n        # Generate' in line:
         to_delete.append(i)
         print(f"Found broken line at {i+1}")
 

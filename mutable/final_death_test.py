@@ -20,7 +20,7 @@ import time
 if __name__ == "__main__":
     start_time = time.time()
     core, stats = run_training(episodes=30, steps_per_episode=10)
-    print("\\n=== Final death test results ===")
+    print("\n=== Final death test results ===")
     total_steps = 30*10
     print(f"Total steps: {total_steps}")
     print(f"Core step_count: {core.step_count}")
@@ -32,6 +32,6 @@ if __name__ == "__main__":
         print(f"  {tool}: {count}")
     print(f"Time: {time.time() - start_time:.1f}s")
     if stats['declare_death_count'] == 0:
-        print("\\nSUCCESS: Zero suicides!")
+        print("\nSUCCESS: Zero suicides!")
     else:
-        print("\\nFAILURE: Still some suicides.")
+        print("\nFAILURE: Still some suicides.")

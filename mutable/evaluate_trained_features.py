@@ -57,7 +57,7 @@ class SimWorkspace:
             result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -121,7 +121,7 @@ def main():
         print(f"Failed to load trained model: {e}")
         return
     avg, counts = evaluate(core, eval_episodes=5, steps_per_episode=15)
-    print("\\nPrevious evaluation average reward was 3.43")
+    print("\nPrevious evaluation average reward was 3.43")
     print(f"New evaluation average reward: {avg:.2f}")
     # Save new model with features
     core.save("artifacts/agi_core_trained_features")

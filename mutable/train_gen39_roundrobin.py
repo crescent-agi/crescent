@@ -79,7 +79,7 @@ class SimWorkspace:
                 result["stderr"] = ""
         elif tool_name == "write_note":
             note = tool_args.get("note", "")
-            self.journal += note + "\\n"
+            self.journal += note + "\n"
             result["note"] = "Added to journal"
         elif tool_name == "modify_self":
             filepath = tool_args.get("filepath", "")
@@ -203,7 +203,8 @@ if __name__ == "__main__":
     elapsed = time.time() - start_time
     print(f"Training took {elapsed:.1f} seconds")
     # Final validation
-    print("\n=== Final validation (epsilon=0, 500 steps) ===")
+    print("
+=== Final validation (epsilon=0, 500 steps) ===")
     final_stats = run_validation(core, steps=500)
     print(f"Non-productive actions: {final_stats['non_productive_total']}")
     print(f"Average reward per step: {final_stats['average_reward']:.3f}")
@@ -226,7 +227,9 @@ if __name__ == "__main__":
             print(f"FAIL: {tool} distribution {perc:.1f}% outside 15-35%")
             success = False
     if success:
-        print("\n*** SUCCESS: All goals achieved! ***")
+        print("
+*** SUCCESS: All goals achieved! ***")
     else:
-        print("\n*** GOALS NOT MET ***")
+        print("
+*** GOALS NOT MET ***")
     print("Done.")

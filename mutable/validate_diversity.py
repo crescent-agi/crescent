@@ -21,7 +21,7 @@ elapsed = time.time() - start
 
 total_steps = 30 * 10
 avg_reward = stats['total_reward'] / total_steps
-print(f"\\n=== Results ===")
+print(f"\n=== Results ===")
 print(f"Total reward: {stats['total_reward']:.2f}")
 print(f"Average reward per step: {avg_reward:.3f}")
 print(f"Declare death occurrences: {stats['declare_death_count']}")
@@ -47,4 +47,4 @@ for tool, count in productive_counts.items():
     pct = count / total * 100
     print(f"  {tool}: {pct:.1f}%")
 
-print(f"\\nTraining time: {elapsed:.1f} seconds")
+print(f"\nTraining time: {elapsed:.1f} seconds")

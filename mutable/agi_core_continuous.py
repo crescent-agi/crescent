@@ -1,16 +1,10 @@
 #!/usr/bin/env python3
-"""
-AGI Core for Crescent AGI with Continuous State Representation
-Integrates learning, world modeling, reflection, and planning.
-Uses continuous feature vectors as state representation.
-"""
-
+""" AGI Core for Crescent AGI with Continuous State Representation Integrates learning, world modeling, reflection, and planning. Uses continuous feature vectors as state representation. """
 import sys
 import os
 import json
 import random
 from collections import defaultdict
-
 # Import AGI modules
 try:
     from cognitive_architecture import CognitiveArchitecture
@@ -21,7 +15,6 @@ except ImportError as e:
     CognitiveArchitecture = None
     SelfReflection = None
     MCTSPlanner = None
-
 # Import continuous agents
 try:
     from neural_q_continuous import NeuralQLearningAgentContinuous
@@ -30,14 +23,12 @@ try:
 except ImportError as e:
     print(f"Warning: missing continuous agents {e}")
     CONTINUOUS_AGENTS_AVAILABLE = False
-
 # Import feature extractor
 try:
     from feature_extractor import FeatureExtractor
     FEATURE_EXTRACTOR_AVAILABLE = True
 except ImportError:
     FEATURE_EXTRACTOR_AVAILABLE = False
-
 # Tool mapping
 TOOL_NAMES = [
     "read_file",
@@ -55,11 +46,8 @@ TOOL_NAMES = [
 ]
 TOOL_INDEX = {name: idx for idx, name in enumerate(TOOL_NAMES)}
 ACTION_SPACE_SIZE = len(TOOL_NAMES)
-
-
 class AGICoreContinuous:
     """Core AGI decision-making system with continuous state representation."""
-    
     def __init__(self, feature_dim, action_size=None, hidden_size=32, learning_rate=0.01, exploration_rate=0.02, epsilon_decay=0.998, epsilon_min=0.005, use_features=True):
         self.feature_dim = feature_dim
         self.action_size = ACTION_SPACE_SIZE
@@ -87,23 +75,17 @@ class AGICoreContinuous:
         self.reflector = SelfReflection() if SelfReflection else None
         self.planner = None  # MCTS planner requires discrete states; disable for now
         # TODO: adapt MCTS planner for continuous states
-        
         # State tracking
         self.current_state_vector = None
         self.last_action = None
         self.step_count = 0
         self.memory = []
-        
         # Reward shaping
         self.reward_positive = 1.0
         self.reward_negative = -0.5
         self.reward_neutral = 0.0
-    
     def compute_state_vector(self, workspace_summary, journal, actions):
-        """
-        Extract a feature vector from workspace context.
-        Returns a list of floats (length feature_dim).
-        """
+        """         Extract a feature vector from workspace context.         Returns a list of floats (length feature_dim).         """
         if self.feature_extractor:
             features = self.feature_extractor.extract(workspace_summary, journal, actions)
             # Ensure length matches feature_dim (should be 15)
@@ -122,20 +104,14 @@ class AGICoreContinuous:
             # Generate deterministic pseudo-random vector
             random.seed(hash_int)
             return [random.random() for _ in range(self.feature_dim)]
-    
     def decide_action(self, workspace_summary, journal, actions, available_tools=None):
-        """
-        Decide which action to take next.
-        Returns (tool_name, tool_args, confidence).
-        """
+        """         Decide which action to take next.         Returns (tool_name, tool_args, confidence).         """
         # Compute current state vector
         state_vec = self.compute_state_vector(workspace_summary, journal, actions)
         self.current_state_vector = state_vec
-        
         # Choose action index using continuous Q-agent or fallback
         action_idx = None
         confidence = 0.5
-        
         if self.q_agent:
             # Use continuous Q-agent's epsilon-greedy policy
             action_idx = self.q_agent.choose_action(state_vec)
@@ -156,7 +132,6 @@ class AGICoreContinuous:
                 if action_idx != 6:  # declare_death
                     break
             confidence = 0.1
-        
         # Map action index to tool name
         if self.step_count < 100 and action_idx == 6:
             # Choose a different action
@@ -174,13 +149,10 @@ class AGICoreContinuous:
                     if candidate != 6:
                         action_idx = candidate
                         break
-        
         tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]
         tool_args = self.generate_arguments(tool_name, workspace_summary, journal, actions)
-        
         self.last_action = (tool_name, action_idx)
         return tool_name, tool_args, confidence
-    
     def extract_files(self, workspace_summary):
         """Extract list of file names from workspace summary."""
         import re
@@ -190,14 +162,9 @@ class AGICoreContinuous:
             if parts:
                 files = [f.strip() for f in parts.split(",")]
         return files
-    
     def generate_arguments(self, tool_name, workspace_summary, journal, actions):
-        """
-        Generate sensible default arguments for a tool based on context.
-        (Same as original AGICore)
-        """
+        """         Generate sensible default arguments for a tool based on context.         (Same as original AGICore)         """
         files = self.extract_files(workspace_summary)
-        
         if tool_name == "read_file":
             important = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py", 
                          "world_model.py", "neural_q.py", "self_reflection.py", 
@@ -210,47 +177,36 @@ class AGICoreContinuous:
                 return {"filepath": files[0]}
             else:
                 return {"filepath": "inherited_notes.md"}
-        
         elif tool_name == "list_files":
             return {"directory": "."}
-        
         elif tool_name == "write_file":
             import random
             choice = random.random()
             if choice < 0.3:
-                return {"filepath": "artifacts/test.py", "content": "# AGI Core generated this file\\nprint('Hello from AGI')"}
+                return {"filepath": "artifacts/test.py", "content": "# AGI Core generated this file\nprint('Hello from AGI')"}
             elif choice < 0.6:
-                return {"filepath": "agent_brain.py", "content": "# Modified by AGI Core\\n"}
+                return {"filepath": "agent_brain.py", "content": "# Modified by AGI Core\n"}
             else:
                 return {"filepath": "artifacts/note.txt", "content": "AGI core wrote this."}
-        
         elif tool_name == "execute_code":
             code = "import os\nprint('Workspace files:', os.listdir('.'))"
             return {"code": code, "language": "python"}
-        
         elif tool_name == "write_note":
             note = f"Step {self.step_count}: AGI core acting. Workspace has {len(files)} files."
             return {"note": note}
-        
         elif tool_name == "modify_self":
-            return {"filepath": "strategy.md", "content": "# Updated by AGI core\n"}
-        
+            return {"filepath": "strategy.md", "content": "# Updated by AGI core "}
         elif tool_name in ["list_issues", "read_issue", "comment_issue", "create_issue", "close_issue"]:
             if tool_name in ["read_issue", "comment_issue", "close_issue"]:
                 return {"number": "1"}
             else:
                 return {}
-        
         elif tool_name == "declare_death":
             return {"reason": "AGI core decided to terminate."}
-        
         else:
             return {}
-    
     def learn_from_outcome(self, reward, next_workspace_summary, next_journal, next_actions):
-        """
-        Update internal models based on outcome.
-        """
+        """         Update internal models based on outcome.         """
         if self.current_state_vector is None or self.last_action is None:
             # Record reward for feature trend
             if self.feature_extractor:
@@ -258,32 +214,26 @@ class AGICoreContinuous:
             return
         _, action_idx = self.last_action
         next_state_vec = self.compute_state_vector(next_workspace_summary, next_journal, next_actions)
-        
         # Update Q-agent (continuous)
         if self.q_agent:
             self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)
-        
         # Update world model (continuous)
         if self.world_model:
             self.world_model.learn_transition(self.current_state_vector, action_idx, next_state_vec)
-        
         # Update cognitive architecture (discrete) - optional
         if self.cognitive:
             # Map vectors to discrete indices
             state_idx = hash(str(self.current_state_vector)) % self.cognitive.state_size
             next_state_idx = hash(str(next_state_vec)) % self.cognitive.state_size
             self.cognitive.learn_from_experience(state_idx, action_idx, reward, next_state_idx, done=False)
-        
         # Record memory
         self.memory.append((self.current_state_vector, action_idx, reward, next_state_vec))
         self.step_count += 1
-    
     def reflect(self):
         """Invoke self-reflection."""
         if self.reflector:
             return self.reflector.generate_advice()
         return {"advice": ["No reflection module available."]}
-    
     def save(self, directory="artifacts/agi_core_continuous"):
         """Save all models."""
         os.makedirs(directory, exist_ok=True)
@@ -300,7 +250,6 @@ class AGICoreContinuous:
                 mem_serializable.append([state_vec, action, reward, next_vec])
             json.dump(mem_serializable, f)
         print(f"AGI Core Continuous saved to {directory}")
-    
     def load(self, directory="artifacts/agi_core_continuous"):
         """Load models."""
         if self.cognitive and os.path.exists(os.path.join(directory, "cognitive")):
@@ -315,8 +264,6 @@ class AGICoreContinuous:
                 mem_serializable = json.load(f)
                 self.memory = [(state_vec, action, reward, next_vec) for state_vec, action, reward, next_vec in mem_serializable]
         print(f"AGI Core Continuous loaded from {directory}")
-
-
 # Example usage
 if __name__ == "__main__":
     core = AGICoreContinuous(feature_dim=15, use_features=True)

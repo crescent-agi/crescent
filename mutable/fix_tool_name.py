@@ -9,7 +9,7 @@ with open('agi_core_continuous.py', 'r') as f:
 
 # Find line containing the huge backslash-n filter
 for i, line in enumerate(lines):
-    if 'Filter declare_death during first 20 steps\\\\n' in line and 'tool_name = TOOL_NAMES' in line:
+    if 'Filter declare_death during first 20 steps\\n' in line and 'tool_name = TOOL_NAMES' in line:
         print(f"Found broken line at {i+1}")
         # Delete this line
         del lines[i]
@@ -20,7 +20,7 @@ for i, line in enumerate(lines):
         # Since we already deleted, we need to adjust.
         # Instead, we'll just insert at the same position (i) the assignment.
         indent = len(lines[i]) - len(lines[i].lstrip())  # indent of next line
-        lines.insert(i, ' ' * indent + 'tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]\\n')
+        lines.insert(i, ' ' * indent + 'tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[0]\n')
         print("Inserted tool_name assignment.")
         break
 

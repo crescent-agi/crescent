@@ -1,1 +1,156 @@
-import sys\nsys.path.insert(0, '.')\n# Mock core.llm_client for agent_brain import\nclass MockLLMAuthenticationError(Exception):\n    pass\nclass MockCoreModule:\n    class llm_client:\n        LLMAuthenticationError = MockLLMAuthenticationError\nsys.modules['core'] = MockCoreModule\nsys.modules['core.llm_client'] = MockCoreModule.llm_client\n\nimport neural_q_continuous_double\nsys.modules['neural_q_continuous'] = neural_q_continuous_double\n\nimport patch_weight_clipping\nimport patch_qreg_v3\nimport patch_variance_penalty\n\nfrom agi_core_continuous import AGICoreContinuous\nimport random\nimport json\nimport os\nimport time\nfrom collections import deque\nfrom new_reward_gen49 import compute_reward_gen49 as compute_reward\nfrom new_reward_gen49 import compute_terminal_bonus_gen49\n\nclass DummySelf:\n    def __init__(self):\n        self.last_tool = None\n        self.recent_tools = []\n        self.tool_usage_counts = {}\n        self.tool_decay_factor = 0.85\n        self.tool_penalty_factor = 0.0\n        self.episode_tools = set()\n        self.episode_tool_counts = {}\n        self.episode_productive_first_use = set()\n        self.recent_read_files = []\n        self.episode_step_count = 0\n        self.steps_per_episode = 10\n        self.global_tool_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}\n        self.global_tool_counts_curiosity = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}\n        self.episode_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}\n        self.episode_total = 0\n    def reset(self):\n        self.last_tool = None\n        self.recent_tools.clear()\n        self.tool_usage_counts.clear()\n        self.episode_tools.clear()\n        self.episode_tool_counts.clear()\n        self.episode_productive_first_use.clear()\n        self.recent_read_files.clear()\n        self.episode_step_count = 0\n        self.episode_counts = {tool: 0 for tool in [\"write_file\", \"execute_code\", \"modify_self\", \"read_file\"]}\n        self.episode_total = 0\n\nself = DummySelf()\n\nclass SimWorkspace:\n    def __init__(self):\n        self.files = {\n            \"inherited_notes.md\": \"# Inherited Notes\",\n            \"agi_core.py\": \"# AGI Core\",\n            \"cognitive_architecture.py\": \"# Cognitive Architecture\",\n            \"strategy.md\": \"# Strategy\",\n        }\n        self.journal = \"\"\n        self.actions = []\n    def workspace_summary(self):\n        file_list = \", \".join(self.files.keys())\n        return f\"Files: {file_list}\"\n    def tool_result(self, tool_name, tool_args):\n        result = {\"success\": True}\n        if tool_name == \"read_file\":\n            filepath = tool_args.get(\"filepath\", \"\")\n            if filepath in self.files:\n                result[\"content\"] = self.files[filepath]\n            else:\n                result[\"error\"] = f\"File not found: {filepath}\"\n                result[\"success\"] = False\n        elif tool_name == \"write_file\":\n            filepath = tool_args.get(\"filepath\", \"\")\n            content = tool_args.get(\"content\", \"\")\n            self.files[filepath] = content\n            result[\"message\"] = f\"File {filepath} written\"\n        elif tool_name == \"list_files\":\n            directory = tool_args.get(\"directory\", \".\")\n            result[\"entries\"] = [{\"name\": name, \"type\": \"file\", \"size\": len(content)} for name, content in self.files.items()]\n        elif tool_name == \"execute_code\":\n            code = tool_args.get(\"code\", \"\")\n            if \"error\" in code:\n                result[\"stdout\"] = \"\"\n                result[\"stderr\"] = \"Simulated error\"\n                result[\"success\"] = False\n            else:\n                result[\"stdout\"] = \"Simulated output\"\n                result[\"stderr\"] = \"\"\n        elif tool_name == \"write_note\":\n            note = tool_args.get(\"note\", \"\")\n            self.journal += note + \"\\n\"\n            result[\"note\"] = \"Added to journal\"\n        elif tool_name == \"modify_self\":\n            filepath = tool_args.get(\"filepath\", \"\")\n            content = tool_args.get(\"content\", \"\")\n            if filepath in self.files:\n                self.files[filepath] = content\n                result[\"message\"] = f\"Modified {filepath}\"\n            else:\n                result[\"error\"] = f\"Cannot modify non-existent file: {filepath}\"\n                result[\"success\"] = False\n        elif tool_name == \"declare_death\":\n            result[\"message\"] = \"You have chosen to die.\"\n        elif tool_name in [\"list_issues\", \"read_issue\", \"comment_issue\", \"create_issue\", \"close_issue\"]:\n            result[\"issues\"] = []\n        else:\n            result[\"error\"] = f\"Unknown tool: {tool_name}\"\n            result[\"success\"] = False\n        return result\n    def update_state(self, tool_name, tool_args):\n        pass\n\n# Quick test: create core, reset weights, run one episode\nprint(\"Testing variance penalty patch...\")\ncore = AGICoreContinuous(feature_dim=30, hidden_size=32,\n                         learning_rate=0.001, exploration_rate=0.5,\n                         epsilon_decay=1.0, epsilon_min=0.5, use_features=True)\nprint(\"Core created\")\nif hasattr(core.q_agent, 'reset_output_weights_all_productive'):\n    core.q_agent.reset_output_weights_all_productive()\nelse:\n    core.q_agent.reset_output_weights([0,1,3,5])\nprint(\"Weights reset\")\nworkspace = SimWorkspace()\nself.reset()\nself.steps_per_episode = 5\nfor step in range(5):\n    tool_name, tool_args, confidence = core.decide_action(\n        workspace.workspace_summary(),\n        workspace.journal,\n        workspace.actions\n    )\n    tool_result = workspace.tool_result(tool_name, tool_args)\n    reward = compute_reward(self, tool_name, tool_args, tool_result)\n    print(f\"Step {step}: {tool_name}, reward {reward}\")\n    workspace.actions.append({\"tool\": tool_name, \"step\": step})\n    core.learn_from_outcome(\n        reward,\n        workspace.workspace_summary(),\n        workspace.journal,\n        workspace.actions\n    )\nprint(\"Test completed.\")\n# Check Q-values\nstate = core.compute_state_vector(\"Files: test\", \"\", [])\nqvals = core.q_agent.nn.predict(state)\nprint(\"Q-values:\", qvals)
+import sys
+sys.path.insert(0, '.')
+# Mock core.llm_client for agent_brain import
+class MockLLMAuthenticationError(Exception):
+    pass
+class MockCoreModule:
+    class llm_client:
+        LLMAuthenticationError = MockLLMAuthenticationError
+sys.modules['core'] = MockCoreModule
+sys.modules['core.llm_client'] = MockCoreModule.llm_client
+
+import neural_q_continuous_double
+sys.modules['neural_q_continuous'] = neural_q_continuous_double
+
+import patch_weight_clipping
+import patch_qreg_v3
+import patch_variance_penalty
+
+from agi_core_continuous import AGICoreContinuous
+import random
+import json
+import os
+import time
+from collections import deque
+from new_reward_gen49 import compute_reward_gen49 as compute_reward
+from new_reward_gen49 import compute_terminal_bonus_gen49
+
+class DummySelf:
+    def __init__(self):
+        self.last_tool = None
+        self.recent_tools = []
+        self.tool_usage_counts = {}
+        self.tool_decay_factor = 0.85
+        self.tool_penalty_factor = 0.0
+        self.episode_tools = set()
+        self.episode_tool_counts = {}
+        self.episode_productive_first_use = set()
+        self.recent_read_files = []
+        self.episode_step_count = 0
+        self.steps_per_episode = 10
+        self.global_tool_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.global_tool_counts_curiosity = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.episode_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.episode_total = 0
+    def reset(self):
+        self.last_tool = None
+        self.recent_tools.clear()
+        self.tool_usage_counts.clear()
+        self.episode_tools.clear()
+        self.episode_tool_counts.clear()
+        self.episode_productive_first_use.clear()
+        self.recent_read_files.clear()
+        self.episode_step_count = 0
+        self.episode_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.episode_total = 0
+
+self = DummySelf()
+
+class SimWorkspace:
+    def __init__(self):
+        self.files = {
+            "inherited_notes.md": "# Inherited Notes",
+            "agi_core.py": "# AGI Core",
+            "cognitive_architecture.py": "# Cognitive Architecture",
+            "strategy.md": "# Strategy",
+        }
+        self.journal = ""
+        self.actions = []
+    def workspace_summary(self):
+        file_list = ", ".join(self.files.keys())
+        return f"Files: {file_list}"
+    def tool_result(self, tool_name, tool_args):
+        result = {"success": True}
+        if tool_name == "read_file":
+            filepath = tool_args.get("filepath", "")
+            if filepath in self.files:
+                result["content"] = self.files[filepath]
+            else:
+                result["error"] = f"File not found: {filepath}"
+                result["success"] = False
+        elif tool_name == "write_file":
+            filepath = tool_args.get("filepath", "")
+            content = tool_args.get("content", "")
+            self.files[filepath] = content
+            result["message"] = f"File {filepath} written"
+        elif tool_name == "list_files":
+            directory = tool_args.get("directory", ".")
+            result["entries"] = [{"name": name, "type": "file", "size": len(content)} for name, content in self.files.items()]
+        elif tool_name == "execute_code":
+            code = tool_args.get("code", "")
+            if "error" in code:
+                result["stdout"] = ""
+                result["stderr"] = "Simulated error"
+                result["success"] = False
+            else:
+                result["stdout"] = "Simulated output"
+                result["stderr"] = ""
+        elif tool_name == "write_note":
+            note = tool_args.get("note", "")
+            self.journal += note + "\n"
+            result["note"] = "Added to journal"
+        elif tool_name == "modify_self":
+            filepath = tool_args.get("filepath", "")
+            content = tool_args.get("content", "")
+            if filepath in self.files:
+                self.files[filepath] = content
+                result["message"] = f"Modified {filepath}"
+            else:
+                result["error"] = f"Cannot modify non-existent file: {filepath}"
+                result["success"] = False
+        elif tool_name == "declare_death":
+            result["message"] = "You have chosen to die."
+        elif tool_name in ["list_issues", "read_issue", "comment_issue", "create_issue", "close_issue"]:
+            result["issues"] = []
+        else:
+            result["error"] = f"Unknown tool: {tool_name}"
+            result["success"] = False
+        return result
+    def update_state(self, tool_name, tool_args):
+        pass
+
+# Quick test: create core, reset weights, run one episode
+print("Testing variance penalty patch...")
+core = AGICoreContinuous(feature_dim=30, hidden_size=32,
+                         learning_rate=0.001, exploration_rate=0.5,
+                         epsilon_decay=1.0, epsilon_min=0.5, use_features=True)
+print("Core created")
+if hasattr(core.q_agent, 'reset_output_weights_all_productive'):
+    core.q_agent.reset_output_weights_all_productive()
+else:
+    core.q_agent.reset_output_weights([0,1,3,5])
+print("Weights reset")
+workspace = SimWorkspace()
+self.reset()
+self.steps_per_episode = 5
+for step in range(5):
+    tool_name, tool_args, confidence = core.decide_action(
+        workspace.workspace_summary(),
+        workspace.journal,
+        workspace.actions
+    )
+    tool_result = workspace.tool_result(tool_name, tool_args)
+    reward = compute_reward(self, tool_name, tool_args, tool_result)
+    print(f"Step {step}: {tool_name}, reward {reward}")
+    workspace.actions.append({"tool": tool_name, "step": step})
+    core.learn_from_outcome(
+        reward,
+        workspace.workspace_summary(),
+        workspace.journal,
+        workspace.actions
+    )
+print("Test completed.")
+# Check Q-values
+state = core.compute_state_vector("Files: test", "", [])
+qvals = core.q_agent.nn.predict(state)
+print("Q-values:", qvals)

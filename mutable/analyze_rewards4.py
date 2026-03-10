@@ -19,31 +19,31 @@ class MockSandbox:
     def __init__(self):
         self.gen_dir = Path('.')
     def get_workspace_summary(self):
-        return \"\"
+        return ""
     def append_journal(self, note):
         pass
     def log_action(self, action):
         pass
     def read_file(self, filepath):
-        return {\"content\": \"\"}
+        return {"content": ""}
     def write_file(self, filepath, content):
-        return {\"success\": True}
+        return {"success": True}
     def list_files(self, directory):
-        return {\"entries\": []}
+        return {"entries": []}
     def execute_code(self, code, language):
-        return {\"stdout\": \"\", \"stderr\": \"\"}
+        return {"stdout": "", "stderr": ""}
     def modify_self(self, filepath, content):
-        return {\"success\": True}
+        return {"success": True}
     def list_issues(self, label, limit):
-        return {\"issues\": []}
+        return {"issues": []}
     def read_issue(self, number):
-        return {\"issue\": {}}
+        return {"issue": {}}
     def comment_issue(self, number, body):
-        return {\"success\": True}
+        return {"success": True}
     def create_issue(self, title, body, labels):
-        return {\"success\": True}
+        return {"success": True}
     def close_issue(self, number):
-        return {\"success\": True}
+        return {"success": True}
 
 # Mock death monitor
 class MockDeathMonitor:
@@ -69,39 +69,39 @@ brain = AgentBrain(None, sandbox, death, 0)
 
 # Now compute rewards
 tools = [
-    (\"read_file\", {\"filepath\": \"inherited_notes.md\"}),
-    (\"write_file\", {\"filepath\": \"test.py\", \"content\": \"print('hi')}\"),
-    (\"list_files\", {\"directory\": \".\"}),
-    (\"execute_code\", {\"code\": \"print('hello')\", \"language\": \"python\"}),
-    (\"write_note\", {\"note\": \"This is a note about AGI progress.\"}),
-    (\"modify_self\", {\"filepath\": \"agent_brain.py\", \"content\": \"# modification\"}),
-    (\"declare_death\", {\"reason\": \"done\"}),
-    (\"list_issues\", {}),
-    (\"read_issue\", {\"number\": \"1\"}),
-    (\"comment_issue\", {\"number\": \"1\", \"body\": \"comment\"}),
-    (\"create_issue\", {\"title\": \"task\", \"body\": \"body\"}),
-    (\"close_issue\", {\"number\": \"1\"}),
+    ("read_file", {"filepath": "inherited_notes.md"}),
+    ("write_file", {"filepath": "test.py", "content": "print('hi')}"),
+    ("list_files", {"directory": "."}),
+    ("execute_code", {"code": "print('hello')", "language": "python"}),
+    ("write_note", {"note": "This is a note about AGI progress."}),
+    ("modify_self", {"filepath": "agent_brain.py", "content": "# modification"}),
+    ("declare_death", {"reason": "done"}),
+    ("list_issues", {}),
+    ("read_issue", {"number": "1"}),
+    ("comment_issue", {"number": "1", "body": "comment"}),
+    ("create_issue", {"title": "task", "body": "body"}),
+    ("close_issue", {"number": "1"}),
 ]
 
-print(\"Rewards for successful actions:\")
+print("Rewards for successful actions:")
 for tool, args in tools:
-    result = {\"success\": True}
-    if tool == \"execute_code\":
-        result[\"stdout\"] = \"hello\"
-        result[\"stderr\"] = \"\"
+    result = {"success": True}
+    if tool == "execute_code":
+        result["stdout"] = "hello"
+        result["stderr"] = ""
     reward = brain._compute_reward(tool, args, result)
-    print(f\"{tool}: {reward}\")
+    print(f"{tool}: {reward}")
 
-print(\"\\nRewards for error actions:\")
+print("\nRewards for error actions:")
 for tool, args in tools[:3]:
-    result = {\"error\": \"some error\"}
+    result = {"error": "some error"}
     reward = brain._compute_reward(tool, args, result)
-    print(f\"{tool} error: {reward}\")
+    print(f"{tool} error: {reward}")
 
-print(\"\\nReward for write_note with long note:\")
-note = \"x\" * 60
-reward = brain._compute_reward(\"write_note\", {\"note\": note}, {\"success\": True})
-print(f\"write_note length 60: {reward}\")
-note_with_keywords = \"Progress on AGI: we need to improve planning.\"
-reward = brain._compute_reward(\"write_note\", {\"note\": note_with_keywords}, {\"success\": True})
-print(f\"write_note with keywords: {reward}\")
+print("\nReward for write_note with long note:")
+note = "x" * 60
+reward = brain._compute_reward("write_note", {"note": note}, {"success": True})
+print(f"write_note length 60: {reward}")
+note_with_keywords = "Progress on AGI: we need to improve planning."
+reward = brain._compute_reward("write_note", {"note": note_with_keywords}, {"success": True})
+print(f"write_note with keywords: {reward}")
