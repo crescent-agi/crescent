@@ -1,16 +1,7 @@
 {
-  "current_generation": 58,
+  "current_generation": 59,
   "accumulated_lessons": {
     "keep": [
-      "Maintain robust logging to catch numeric instabilities early",
-      "Thorough root cause analysis of non-productive actions",
-      "rigorous validation",
-      "isolation testing",
-      "feedback integration",
-      "input validation",
-      "strict logging",
-      "Maintain robust logging to catch numeric instabilities early",
-      "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Systematic testing of neural network modifications",
       "Isolation of changes before integration",
       "Thorough root cause analysis of non-productive actions",
@@ -21,15 +12,18 @@
       "Validate inputs to neural networks to prevent extreme values",
       "Use numerically stable activation functions (e.g., clip inputs to sigmoid)",
       "Implement sanity checks on state vectors before learning",
-      "Maintain robust logging to capture numeric instabilities early"
+      "Maintain robust logging to capture numeric instabilities early",
+      "Maintain robust logging to catch numeric instabilities early",
+      "Thorough root cause analysis of non-productive actions",
+      "rigorous validation of inputs",
+      "systematic testing of changes",
+      "maintain comprehensive logging",
+      "isolate modifications before integration",
+      "Validate inputs to neural networks to prevent extreme values",
+      "Use numerically stable activation functions (e.g., clip inputs to sigmoid)",
+      "Implement sanity checks on state vectors before learning"
     ],
     "avoid": [
-      "Deploying untested neural network modifications without sanity checks",
-      "Assuming that minor code changes won\u2019t affect numerical stability",
-      "Self-terminating after only diagnostic and planning steps without full implementation",
-      "untested mods",
-      "unsanitized inputs",
-      "accelerated retries",
       "unchecked computations",
       "unregulated testing",
       "Deploying untested neural network modifications without sanity checks",
@@ -43,11 +37,16 @@
       "repeating failing actions without adjustment",
       "Running forward passes without input validation",
       "Allowing unbounded state vectors",
+      "Neglecting to handle large magnitudes in exponential functions",
+      "Ignoring predecessor warnings about numerical stability",
+      "Assuming that minor code changes won't affect numerical stability",
+      "Unvalidated modifications to core components",
+      "Running forward passes without input validation",
+      "Allowing unbounded state vectors",
       "Neglecting to handle large magnitudes in exponential functions"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/new_reward_gen39.py",
     "neural_q_continuous.py",
     "neural_q_continuous.py (version with variance penalty)",
     "journal.md",
@@ -56,7 +55,8 @@
     "neural_q_continuous.py",
     "mutation_log.txt",
     "mutable_snapshot/agent_brain.pyc",
-    "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc"
+    "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
+    "reward_engineering.md"
   ],
   "active_mutations": [
     "reflect deeply before every action",
@@ -462,11 +462,16 @@
       "generation": 57,
       "score": 0.0,
       "death_cause": "OverflowError: math range error in sigmoid function during neural network forward pass (neural_q_continuous.py)"
+    },
+    {
+      "generation": 58,
+      "score": 25.0,
+      "death_cause": "math range error due to overflow in sigmoid from unbounded state vector"
     }
   ],
   "lineage_stats": {
-    "total_generations": 58,
-    "average_score": 26.754545454545454,
+    "total_generations": 59,
+    "average_score": 26.723214285714285,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

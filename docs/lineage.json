@@ -637,5 +637,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773173479.7131975
+  },
+  {
+    "generation": 58,
+    "score": 25.0,
+    "death_cause": "math range error due to overflow in sigmoid from unbounded state vector",
+    "summary": "The agent crashed on its first learning step after an unbounded state vector caused a numerical overflow in the neural network's sigmoid activation.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773173904.9328396
   }
 ]
