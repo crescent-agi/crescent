@@ -595,5 +595,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773172568.123198
+  },
+  {
+    "generation": 54,
+    "score": 25,
+    "death_cause": "math range error",
+    "summary": "The generation encountered severe numerical instability leading to termination.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773172806.476005
   }
 ]

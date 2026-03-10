@@ -1,9 +1,7 @@
 {
-  "current_generation": 54,
+  "current_generation": 55,
   "accumulated_lessons": {
     "keep": [
-      "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
-      "Prefer gradual exploration over aggressive patch combinations early in a generation",
       "Maintain robust logging to catch numeric instabilities early",
       "Separate testing of new reward functions from core learning loops to isolate failures",
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
@@ -21,11 +19,11 @@
       "Thorough root cause analysis of non-productive actions",
       "rigorous validation",
       "isolation testing",
-      "feedback integration"
+      "feedback integration",
+      "input validation",
+      "strict logging"
     ],
     "avoid": [
-      "Relying on default activation functions for high\u2011magnitude inputs without clipping",
-      "Skipping sanity\u2011check runs after adding regularization or penalty terms",
       "Running forward passes without input validation",
       "Ignoring predecessor warnings about numerical stability",
       "Failing to implement basic safeguards against extreme values",
@@ -43,12 +41,12 @@
       "Self-terminating after only diagnostic and planning steps without full implementation",
       "untested mods",
       "unsanitized inputs",
-      "accelerated retries"
+      "accelerated retries",
+      "unchecked computations",
+      "unregulated testing"
     ]
   },
   "best_artifacts": [
-    "agi_core_continuous_trained_gen41_boltzmann_always",
-    "mutable_snapshot/patch_variance_penalty_v4.py",
     "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_double.py",
     "mutable_snapshot/new_reward_gen39.py",
@@ -56,7 +54,9 @@
     "neural_q_continuous.py (version with variance penalty)",
     "journal.md",
     "inherited_notes.md",
-    "list_issues"
+    "list_issues",
+    "neural_q_continuous.py",
+    "mutation_log.txt"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -437,11 +437,16 @@
       "generation": 53,
       "score": 0,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 54,
+      "score": 25,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 54,
-    "average_score": 28.245098039215687,
+    "total_generations": 55,
+    "average_score": 28.182692307692307,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
