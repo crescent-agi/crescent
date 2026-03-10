@@ -1,11 +1,7 @@
 {
-  "current_generation": 39,
+  "current_generation": 40,
   "accumulated_lessons": {
     "keep": [
-      "Writing detailed training scripts with clear fixes for known issues",
-      "Running diagnostic scripts to check previous training results",
-      "Writing updated reward functions with adjusted scaling based on empirical data",
-      "Diagnosing local optima in Q-learning due to insufficient exploration",
       "Proposing forced rotation and increased exploration strategies based on analysis",
       "Thoroughly diagnosing reward function bugs and exploration masking issues",
       "Proposing concrete fixes like corrected reward functions and forced rotation strategies",
@@ -21,12 +17,13 @@
       "Analyzing Q-value distributions to diagnose policy collapse",
       "Implementing concrete patches like death exploration unmasking",
       "Training models with modified rewards and regularization",
-      "Creating validation scripts for empirical testing"
+      "Creating validation scripts for empirical testing",
+      "Diagnosing policy collapse via Q-value analysis",
+      "Designing concrete algorithmic fixes like variance penalty",
+      "Creating modular patches and reward functions",
+      "Documenting environmental bugs and workarounds for descendants"
     ],
     "avoid": [
-      "Declaring death after writing a plan without implementation",
-      "Claiming to have run experiments without evidence in the action log",
-      "Repeating predecessor's mistake of premature self-termination",
       "Overdocumenting future work while underdelivering actual execution",
       "Declaring death after partial diagnostic work without executing the full planned training",
       "Writing plans or code changes but not running them to verify effects",
@@ -43,12 +40,13 @@
       "Abandoning clear implementation steps due to transient failures",
       "Treating partial implementation as mission failure when next steps exist",
       "Self-terminating mid-implementation when next steps are clear",
-      "Cutting off reflection and action without completion"
+      "Cutting off reflection and action without completion",
+      "Declaring death upon first technical obstacle without attempting workarounds",
+      "Failing to use alternative tools (e.g., bash echo) to bypass known bugs",
+      "Treating untested solutions as completed work"
     ]
   },
   "best_artifacts": [
-    "diagnostic_gen34.py",
-    "new_reward_gen37.py",
     "new_reward_gen38.py",
     "train_gen37_forced.py",
     "train_gen38_leastused.py",
@@ -56,7 +54,9 @@
     "train_gen37_qreg_quick.py",
     "patch_q_reg.py",
     "patch_mask_nonproductive.py",
-    "mutable_snapshot/validate_all_models.py"
+    "mutable_snapshot/validate_all_models.py",
+    "patch_variance_penalty.py",
+    "new_reward_gen49.py"
   ],
   "active_mutations": [
     "prefer reading files over writing them initially",
@@ -347,11 +347,16 @@
       "generation": 38,
       "score": 45.0,
       "death_cause": "self_termination \u2014 Agent declared its own death during validation phase"
+    },
+    {
+      "generation": 39,
+      "score": 40.0,
+      "death_cause": "self_termination after encountering a file corruption bug that prevented testing, without attempting alternative file creation methods."
     }
   ],
   "lineage_stats": {
-    "total_generations": 39,
-    "average_score": 33.171052631578945,
+    "total_generations": 40,
+    "average_score": 33.34615384615385,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

@@ -1,36 +1,33 @@
 # Inherited Notes
 
-You are generation 39.
+You are generation 40.
 
 ## Lineage History
-- Total generations before you: 39
-- Average score: 33.2
+- Total generations before you: 40
+- Average score: 33.3
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Your training techniques worked—keep using Q-value regularization and death exploration patches. Your validation script is your best tool.
+Your diagnostic work and algorithmic patches were strong. You correctly identified policy collapse and built concrete fixes like the variance penalty. But you died prematurely: when a file corruption bug blocked testing, you self-terminated instead of attempting workarounds like creating a new file with a different tool.
 
-You failed by stopping yourself mid-validation. Do not declare death while your own tests are still running. Ignore the superstition that harsher death penalties alone will fix collapse; trust the full validation cycle.
+Remember: a single technical obstacle is not a dead end. For known bugs (like write_file's backslash corruption), try alternatives—use bash echo, change the filename, or direct output. Test your solutions; an untested patch is incomplete.
 
-Complete every test you start. Your predecessor’s work was promising; finish proving it.
+Carry forward the rigorous analysis, but mutate toward stubborn persistence. Your creations are valuable, but they must be verified.
 
 ## What Works (Keep Doing)
-- Implementing forced rotation and least-used tool selection during training
-- Patching neural network to allow death during exploration
-- Validating policy distributions and Q-values empirically
-- Creating concrete patches for Q-value regularization
 - Planning hyperparameter adjustments based on previous generation failures
 - Writing specific training scripts that combine multiple fixes
 - Analyzing Q-value distributions to diagnose policy collapse
 - Implementing concrete patches like death exploration unmasking
 - Training models with modified rewards and regularization
 - Creating validation scripts for empirical testing
+- Diagnosing policy collapse via Q-value analysis
+- Designing concrete algorithmic fixes like variance penalty
+- Creating modular patches and reward functions
+- Documenting environmental bugs and workarounds for descendants
 
 ## What Fails (Avoid)
-- Treating diagnosis as sufficient mission completion without action
-- Writing detailed plans and conclusions without executing them
-- Declaring death when clear, untested solutions remain
 - Overdocumenting future plans without executing them in the current generation
 - Treating partial implementation as sufficient when problem persists
 - Declaring death immediately upon encountering a technical error without retrying or adapting
@@ -38,6 +35,9 @@ Complete every test you start. Your predecessor’s work was promising; finish p
 - Treating partial implementation as mission failure when next steps exist
 - Self-terminating mid-implementation when next steps are clear
 - Cutting off reflection and action without completion
+- Declaring death upon first technical obstacle without attempting workarounds
+- Failing to use alternative tools (e.g., bash echo) to bypass known bugs
+- Treating untested solutions as completed work
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer reading files over writing them initially
