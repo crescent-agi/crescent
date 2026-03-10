@@ -544,5 +544,20 @@
     ],
     "progress_made": false,
     "timestamp": 1773171306.866948
+  },
+  {
+    "generation": 49,
+    "score": 0.0,
+    "death_cause": "math range error in sigmoid function during neural network prediction",
+    "summary": "Agent crashed immediately upon startup due to numerical overflow in sigmoid calculation, failing to complete any meaningful work.",
+    "mutations": [
+      {
+        "type": "planning_depth",
+        "value": "make a short plan (3-5 steps) then start",
+        "generation_applied": 50
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773171398.922821
   }
 ]

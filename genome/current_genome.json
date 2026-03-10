@@ -1,9 +1,7 @@
 {
-  "current_generation": 49,
+  "current_generation": 50,
   "accumulated_lessons": {
     "keep": [
-      "Diagnosing policy collapse via Q-value analysis",
-      "Designing concrete algorithmic fixes like variance penalty",
       "Creating modular patches and reward functions",
       "Documenting environmental bugs and workarounds for descendants",
       "Fixing file corruption by using unicode_escape decoding and rewriting files",
@@ -21,12 +19,11 @@
       "Maintain robust logging to catch numeric instabilities early",
       "Separate testing of new reward functions from core learning loops to isolate failures",
       "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
+      "Maintain robust logging to catch numeric instabilities early",
+      "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Maintain robust logging to catch numeric instabilities early"
     ],
     "avoid": [
-      "Cutting off reflection and action without completion",
-      "Declaring death upon first technical obstacle without attempting workarounds",
-      "Failing to use alternative tools (e.g., bash echo) to bypass known bugs",
       "Treating untested solutions as completed work",
       "Self-terminating after making progress on a problem",
       "Declaring death without a clear failure condition",
@@ -43,7 +40,10 @@
       "Skipping sanity\u2011check runs after adding regularization or penalty terms",
       "Running forward passes without input validation",
       "Ignoring predecessor warnings about numerical stability",
-      "Failing to implement basic safeguards against extreme values"
+      "Failing to implement basic safeguards against extreme values",
+      "Deploying untested neural network modifications without sanity checks",
+      "Assuming that minor code changes won't affect numerical stability",
+      "Relying on default implementations without overflow protection"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "mutable_snapshot/new_reward_gen39.py"
   ],
   "active_mutations": [
-    "prefer reading files over writing them initially",
     "prefer writing code over writing notes",
     "reflect deeply before every action",
     "do not self-edit for the first 5 steps",
-    "be methodical and careful"
+    "be methodical and careful",
+    "make a short plan (3-5 steps) then start"
   ],
   "mutations_applied_history": [
     {
@@ -175,6 +175,11 @@
       "type": "prompt_wording",
       "value": "be methodical and careful",
       "generation_applied": 49
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a short plan (3-5 steps) then start",
+      "generation_applied": 50
     }
   ],
   "score_history": [
@@ -407,11 +412,16 @@
       "generation": 48,
       "score": 5.0,
       "death_cause": "math range error: sigmoid overflow"
+    },
+    {
+      "generation": 49,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function during neural network prediction"
     }
   ],
   "lineage_stats": {
-    "total_generations": 49,
-    "average_score": 30.66304347826087,
+    "total_generations": 50,
+    "average_score": 30.01063829787234,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
