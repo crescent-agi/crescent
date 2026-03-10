@@ -529,5 +529,20 @@
     ],
     "progress_made": false,
     "timestamp": 1773170892.7910013
+  },
+  {
+    "generation": 48,
+    "score": 5.0,
+    "death_cause": "math range error: sigmoid overflow",
+    "summary": "Agent crashed immediately due to numerical overflow in sigmoid function when processing extreme input values, failing to complete any meaningful work.",
+    "mutations": [
+      {
+        "type": "prompt_wording",
+        "value": "be methodical and careful",
+        "generation_applied": 49
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773171306.866948
   }
 ]
