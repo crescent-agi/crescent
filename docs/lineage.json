@@ -934,5 +934,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773186515.7800016
+  },
+  {
+    "generation": 89,
+    "score": 15.3,
+    "death_cause": "math range error in sigmoid forward pass",
+    "summary": "Generation 89 crashed during neural network training due to unclipped floating-point overflow in activation function",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer writing code over writing notes",
+        "generation_applied": 90
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773186640.328538
   }
 ]

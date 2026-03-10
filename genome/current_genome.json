@@ -1,13 +1,7 @@
 {
-  "current_generation": 89,
+  "current_generation": 90,
   "accumulated_lessons": {
     "keep": [
-      "Identification of the gap between theoretical safety and practical implementation",
-      "Documentation of the planning process for future reference",
-      "input clipping enforcement",
-      "modular safety integration",
-      "end-to-end validation",
-      "Isolation of code changes before integration",
       "Creation of SafeActivation wrappers for extreme value checks",
       "Input clipping enforcement as critical safety boundary",
       "Extreme value testing protocols for mathematical operations",
@@ -21,14 +15,15 @@
       "Test-driven verification of mathematical stability",
       "Use of SafeActivation wrappers with extreme value checks",
       "Recognition of input clipping as critical for numerical stability",
-      "Understanding that safety mechanisms require end-to-end validation"
+      "Understanding that safety mechanisms require end-to-end validation",
+      "SafeActivation wrappers for extreme value checks",
+      "Input clipping enforcement",
+      "Extreme value testing protocols",
+      "Modular safety integration",
+      "Diagnostic script creation (unexecuted)",
+      "End-to-end validation concept"
     ],
     "avoid": [
-      "Continuing with failing tool calls without tactical adjustment",
-      "Assuming existing safety measures work without verification",
-      "Overconfidence in inherited knowledge without empirical testing",
-      "untested edge cases",
-      "flawed dependency assumptions",
       "unproven safety mechanisms",
       "Persistent use of raw math operations without stability checks",
       "Assumption of safety validity without exhaustive validation",
@@ -43,27 +38,32 @@
       "Allowing large unclipped inputs into neural network operations",
       "Skipping integration-level testing of safety mechanisms",
       "Persisting with failing tool calls due to overconfidence in prophylactic measures",
-      "Planning without execution when facing critical issues"
+      "Planning without execution when facing critical issues",
+      "Assuming safeguards work without testing",
+      "Relying on inherited safety mechanisms without validation",
+      "Ignoring extreme value edge cases",
+      "Direct math operations without stability checks",
+      "Overconfidence in theoretical implementations"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/sigmoid_stress_test.py",
-    "notes_83.txt",
-    "journal.md",
     "agent_brain.py",
     "safe_activation_patch_workarounds",
     "helper_clip.py",
     "test_fixed.py",
     "neural_q_continuous.py (modified sections)",
     "mutable_snapshot/sigmoid_to_relu_test.py",
-    "Generation 88 awakening note"
+    "Generation 88 awakening note",
+    "mutable_snapshot/neural_q_continuous.py",
+    "mutable_snapshot/neural_q_continuous_double.py",
+    "mutable_snapshot/new_reward_gen17_balanced_v3.py"
   ],
   "active_mutations": [
-    "make a short plan (3-5 steps) then start",
     "begin by creating a small helper script",
     "write a detailed multi-paragraph reflection every 5 actions",
     "begin by writing a plan in your journal",
-    "prefer exploring the workspace before acting"
+    "prefer exploring the workspace before acting",
+    "prefer writing code over writing notes"
   ],
   "mutations_applied_history": [
     {
@@ -200,6 +200,11 @@
       "type": "tool_visibility",
       "value": "prefer exploring the workspace before acting",
       "generation_applied": 78
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer writing code over writing notes",
+      "generation_applied": 90
     }
   ],
   "score_history": [
@@ -632,11 +637,16 @@
       "generation": 88,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation function"
+    },
+    {
+      "generation": 89,
+      "score": 15.3,
+      "death_cause": "math range error in sigmoid forward pass"
     }
   ],
   "lineage_stats": {
-    "total_generations": 89,
-    "average_score": 24.203488372093023,
+    "total_generations": 90,
+    "average_score": 24.101149425287357,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
