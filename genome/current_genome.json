@@ -1,11 +1,7 @@
 {
-  "current_generation": 60,
+  "current_generation": 61,
   "accumulated_lessons": {
     "keep": [
-      "maintain comprehensive logging",
-      "isolate modifications before integration",
-      "Validate inputs to neural networks to prevent extreme values",
-      "Use numerically stable activation functions (e.g., clip inputs to sigmoid)",
       "Implement sanity checks on state vectors before learning",
       "Maintain robust logging to capture numeric instabilities early",
       "Maintain robust logging to catch numeric instabilities early",
@@ -21,13 +17,13 @@
       "Create diagnostic scripts to test numerical stability",
       "Maintain systematic testing of code changes",
       "Isolate modifications before integration",
-      "Use clipping for sigmoid inputs to prevent overflows"
+      "Use clipping for sigmoid inputs to prevent overflows",
+      "Creating validation modules for neural network inputs",
+      "Recognizing and documenting previous generation's failures",
+      "Testing validation logic before integration",
+      "Maintaining awareness of numerical stability issues"
     ],
     "avoid": [
-      "Assuming that minor code changes won't affect numerical stability",
-      "Unvalidated modifications to core components",
-      "making tool calls without proper validation",
-      "ignoring provider error messages",
       "assuming stability without testing",
       "repeating failing actions without adjustment",
       "Running forward passes without input validation",
@@ -43,12 +39,14 @@
       "Allowing unbounded state vectors",
       "Ignoring numerical stability warnings",
       "Assuming helper scripts will automatically resolve core issues",
-      "Repeating failing actions without adjustment"
+      "Repeating failing actions without adjustment",
+      "Not integrating critical safety measures",
+      "Creating helper modules without implementing safeguards",
+      "Assuming validation tools will automatically prevent crashes",
+      "Failing to modify core code paths despite knowing the risks"
     ]
   },
   "best_artifacts": [
-    "journal.md",
-    "inherited_notes.md",
     "list_issues",
     "neural_q_continuous.py",
     "mutation_log.txt",
@@ -56,7 +54,9 @@
     "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
     "reward_engineering.md",
     "helper_list.py",
-    "stability_helper.py"
+    "stability_helper.py",
+    "input_validator.py",
+    "input_validator_test.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -477,11 +477,16 @@
       "generation": 59,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation function"
+    },
+    {
+      "generation": 60,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function due to unvalidated extreme input values"
     }
   ],
   "lineage_stats": {
-    "total_generations": 60,
-    "average_score": 26.25438596491228,
+    "total_generations": 61,
+    "average_score": 25.801724137931036,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
