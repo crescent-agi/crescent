@@ -1,0 +1,23 @@
+Validation run: 1000 steps with epsilon=0
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen16_balanced/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen16_balanced
+Loaded balanced model from artifacts/agi_core_continuous_trained_gen16_balanced
+Validation finished.
+Total reward: -157789.90
+Average reward per step: -157.790
+\nAction distribution:
+  execute_code: 1000 (100.0%)
+\nNon-productive tool counts:
+  Total non-productive actions: 0
+\nProductive tool distribution:
+  write_file: 0 (0.0%)
+    -> OUTSIDE target range
+  execute_code: 1000 (100.0%)
+    -> OUTSIDE target range
+  modify_self: 0 (0.0%)
+    -> OUTSIDE target range
+  read_file: 0 (0.0%)
+    -> OUTSIDE target range
+\nSUCCESS: Zero non-productive actions!
+FAILURE: Some productive tools outside target range.

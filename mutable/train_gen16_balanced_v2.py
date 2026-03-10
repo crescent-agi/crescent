@@ -20,7 +20,7 @@ import os
 import time
 from collections import deque
 # Import the balancing reward function v2
-from new_reward_gen16_balanced_simple import compute_reward_gen16_balanced as compute_reward
+from new_reward_gen16_balanced_v2 import compute_reward_gen16_balanced as compute_reward
 
 class DummySelf:
     def __init__(self):
@@ -230,7 +230,7 @@ def run_training(episodes=100, steps_per_episode=10, feature_dim=30, hidden_size
             else:
                 print(f"    -> OUTSIDE target range")
     # Save trained core
-    save_dir = "artifacts/agi_core_continuous_trained_gen16_balanced"
+    save_dir = "artifacts/agi_core_continuous_trained_gen16_balanced_v2"
     os.makedirs(save_dir, exist_ok=True)
     core.save(save_dir)
     print(f"\\nTrained AGI Core Continuous saved to {save_dir}")

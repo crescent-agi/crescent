@@ -1,0 +1,101 @@
+Starting balancing v2 training: 100 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+WARNING: No previously balanced model found, starting fresh
+Episode 5: avg reward last 5=-3458.19, deaths=0
+  Top actions: [('write_file', 18), ('read_file', 13), ('modify_self', 5), ('execute_code', 3), ('close_issue', 2)]
+  Non-productive actions: {'close_issue': 2, 'list_issues': 2, 'comment_issue': 2, 'read_issue': 1, 'list_files': 2, 'write_note': 1, 'create_issue': 1}
+Episode 10: avg reward last 5=-3764.83, deaths=0
+  Top actions: [('execute_code', 22), ('read_file', 19), ('modify_self', 19), ('write_file', 18), ('close_issue', 5)]
+  Non-productive actions: {'close_issue': 5, 'list_issues': 2, 'comment_issue': 5, 'read_issue': 3, 'list_files': 3, 'write_note': 2, 'create_issue': 2}
+Episode 15: avg reward last 5=-2893.00, deaths=0
+  Top actions: [('read_file', 38), ('execute_code', 34), ('modify_self', 31), ('write_file', 18), ('close_issue', 7)]
+  Non-productive actions: {'close_issue': 7, 'list_issues': 3, 'comment_issue': 7, 'read_issue': 3, 'list_files': 3, 'write_note': 2, 'create_issue': 4}
+Episode 20: avg reward last 5=-825.35, deaths=0
+  Top actions: [('modify_self', 52), ('read_file', 47), ('execute_code', 44), ('write_file', 25), ('comment_issue', 8)]
+  Non-productive actions: {'close_issue': 7, 'list_issues': 4, 'comment_issue': 8, 'read_issue': 3, 'list_files': 4, 'write_note': 2, 'create_issue': 4}
+Episode 25: avg reward last 5=-457.80, deaths=0
+  Top actions: [('modify_self', 73), ('read_file', 57), ('execute_code', 44), ('write_file', 42), ('comment_issue', 8)]
+  Non-productive actions: {'close_issue': 7, 'list_issues': 5, 'comment_issue': 8, 'read_issue': 3, 'list_files': 5, 'write_note': 2, 'create_issue': 4}
+Episode 30: avg reward last 5=-1232.22, deaths=0
+  Top actions: [('modify_self', 79), ('read_file', 75), ('write_file', 60), ('execute_code', 48), ('close_issue', 8)]
+  Non-productive actions: {'close_issue': 8, 'list_issues': 6, 'comment_issue': 8, 'read_issue': 3, 'list_files': 5, 'write_note': 3, 'create_issue': 5}
+Episode 35: avg reward last 5=-563.82, deaths=0
+  Top actions: [('read_file', 99), ('modify_self', 89), ('write_file', 63), ('execute_code', 59), ('comment_issue', 9)]
+  Non-productive actions: {'close_issue': 8, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 3, 'list_files': 6, 'write_note': 3, 'create_issue': 5}
+Episode 40: avg reward last 5=-122.58, deaths=0
+  Top actions: [('read_file', 108), ('modify_self', 99), ('write_file', 79), ('execute_code', 74), ('comment_issue', 9)]
+  Non-productive actions: {'close_issue': 8, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 3, 'list_files': 6, 'write_note': 3, 'create_issue': 5}
+Episode 45: avg reward last 5=-602.18, deaths=0
+  Top actions: [('modify_self', 119), ('read_file', 117), ('write_file', 98), ('execute_code', 74), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 3, 'list_files': 6, 'write_note': 4, 'create_issue': 5}
+Episode 50: avg reward last 5=-316.92, deaths=0
+  Top actions: [('modify_self', 131), ('read_file', 122), ('write_file', 118), ('execute_code', 86), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 3, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 55: avg reward last 5=-202.81, deaths=0
+  Top actions: [('modify_self', 158), ('read_file', 145), ('write_file', 118), ('execute_code', 86), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 3, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 60: avg reward last 5=-704.82, deaths=0
+  Top actions: [('modify_self', 172), ('read_file', 155), ('write_file', 121), ('execute_code', 108), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 65: avg reward last 5=-325.77, deaths=0
+  Top actions: [('modify_self', 187), ('read_file', 155), ('write_file', 134), ('execute_code', 130), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 70: avg reward last 5=-217.42, deaths=0
+  Top actions: [('modify_self', 212), ('write_file', 159), ('read_file', 155), ('execute_code', 130), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 75: avg reward last 5=-476.74, deaths=0
+  Top actions: [('modify_self', 223), ('write_file', 173), ('read_file', 165), ('execute_code', 145), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 80: avg reward last 5=-183.60, deaths=0
+  Top actions: [('modify_self', 246), ('write_file', 173), ('execute_code', 172), ('read_file', 165), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 85: avg reward last 5=-300.51, deaths=0
+  Top actions: [('modify_self', 272), ('execute_code', 196), ('write_file', 173), ('read_file', 165), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 90: avg reward last 5=-586.67, deaths=0
+  Top actions: [('modify_self', 293), ('execute_code', 203), ('write_file', 184), ('read_file', 176), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 6, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 95: avg reward last 5=-1014.08, deaths=0
+  Top actions: [('modify_self', 296), ('execute_code', 214), ('read_file', 201), ('write_file', 194), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 7, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+Episode 100: avg reward last 5=-795.06, deaths=0
+  Top actions: [('modify_self', 305), ('execute_code', 225), ('write_file', 214), ('read_file', 211), ('close_issue', 9)]
+  Non-productive actions: {'close_issue': 9, 'list_issues': 7, 'comment_issue': 9, 'read_issue': 4, 'list_files': 7, 'write_note': 4, 'create_issue': 5}
+\nTraining finished.
+Total reward: -95221.81
+Average reward per step: -95.222
+\nAction distribution:
+  modify_self: 305 (30.5%)
+  execute_code: 225 (22.5%)
+  write_file: 214 (21.4%)
+  read_file: 211 (21.1%)
+  close_issue: 9 (0.9%)
+  comment_issue: 9 (0.9%)
+  list_issues: 7 (0.7%)
+  list_files: 7 (0.7%)
+  create_issue: 5 (0.5%)
+  read_issue: 4 (0.4%)
+  write_note: 4 (0.4%)
+\nNon-productive tool counts:
+  Total non-productive actions: 45
+    close_issue: 9
+    list_issues: 7
+    comment_issue: 9
+    read_issue: 4
+    list_files: 7
+    write_note: 4
+    create_issue: 5
+\nProductive tool distribution:
+  write_file: 214 (22.4%)
+    -> within target range
+  execute_code: 225 (23.6%)
+    -> within target range
+  modify_self: 305 (31.9%)
+    -> within target range
+  read_file: 211 (22.1%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen16_balanced/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen16_balanced
+\nTrained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen16_balanced
+Training took 26.5 seconds
+Done.

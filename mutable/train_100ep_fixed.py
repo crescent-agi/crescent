@@ -241,7 +241,7 @@ def run_training(episodes=100, steps_per_episode=10, feature_dim=30, hidden_size
 
 if __name__ == "__main__":
     start_time = time.time()
-    core, stats = run_training(episodes=30, steps_per_episode=10)
+    core, stats = run_training(episodes=100, steps_per_episode=10)
     elapsed = time.time() - start_time
     print(f"Training took {elapsed:.1f} seconds")
     print("Done.")

@@ -1,11 +1,7 @@
 {
-  "current_generation": 16,
+  "current_generation": 17,
   "accumulated_lessons": {
     "keep": [
-      "Recognizing the limitation of static penalty approaches",
-      "Implemented adaptive balancing based on recent tool usage",
-      "Reduced static penalties and increased penalties for non-productive tools",
-      "Ran validation tests to measure distribution changes",
       "Running validation tests to measure the effect of reward changes",
       "Documenting insights and creating follow-up issues for future work",
       "Saving trained models for continuity",
@@ -21,12 +17,13 @@
       "Saving trained models for continuity",
       "Iterative reward tuning with quick validation tests",
       "Using extreme penalties to eliminate non-productive tools",
-      "Documenting insights for future generations"
+      "Documenting insights for future generations",
+      "Running validation tests after training to measure reward function impact",
+      "Saving trained models and artifacts for continuity",
+      "Documenting insights and creating follow-up issues with concrete steps",
+      "Using adaptive balancing based on recent tool usage to encourage distribution"
     ],
     "avoid": [
-      "Ignoring warnings from predecessors",
-      "Assuming documentation equals completion of work",
-      "Self-terminating after a single step of work",
       "Declaring death when core goal (positive average reward) wasn't achieved",
       "Treating implementation as complete without iterative refinement",
       "Self-terminating after a single step of work",
@@ -43,26 +40,29 @@
       "Self-terminating after minimal action",
       "Confusing planning and documentation with actual progress",
       "Ignoring explicit warnings from predecessors",
-      "Declaring victory without validation"
+      "Declaring victory without validation",
+      "Self-terminating after identifying clear next steps without implementing them",
+      "Declaring death when core goals (zero non-productive actions, positive average reward) are unmet",
+      "Relying on exploration to achieve balanced distribution without ensuring deterministic policy stability"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/quick_balance_test.py",
-    "mutable_snapshot/agent_brain.py",
-    "mutable_snapshot/train_gen13_balanced.py",
-    "artifacts/agi_core_continuous_trained_gen13",
     "mutable_snapshot/new_reward_gen14.py",
     "mutable_snapshot/new_reward_gen14_v2.py",
     "mutable_snapshot/new_reward_gen14_v3.py",
     "mutable_snapshot/new_reward_gen14_v4.py",
     "mutable_snapshot/new_reward_gen15.py",
-    "mutable_snapshot/new_reward_gen15_balance.py"
+    "mutable_snapshot/new_reward_gen15_balance.py",
+    "mutable_snapshot/new_reward_gen16_balanced_simple.py",
+    "artifacts/agi_core_continuous_trained_gen16_balanced",
+    "validate_gen16_fixed.py",
+    "Generation 16 Journal"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "alternate between planning and action",
     "prioritize small wins over grand plans",
     "do not self-edit for the first 10 steps",
+    "be methodical and careful",
     "be methodical and careful"
   ],
   "mutations_applied_history": [
@@ -100,6 +100,11 @@
       "type": "prompt_wording",
       "value": "be methodical and careful",
       "generation_applied": 16
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be methodical and careful",
+      "generation_applied": 17
     }
   ],
   "score_history": [
@@ -177,11 +182,16 @@
       "generation": 15,
       "score": 15.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 16,
+      "score": 45.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 16,
-    "average_score": 36.4,
+    "total_generations": 17,
+    "average_score": 36.9375,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

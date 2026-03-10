@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/faris/crescent-agi/runs/gen-0016/mutable_snapshot/train_v2_10ep.py", line 13, in <module>
+    from train_gen16_balanced_v2 import run_training
+  File "/home/faris/crescent-agi/runs/gen-0016/mutable_snapshot/train_gen16_balanced_v2.py", line 23, in <module>
+    from new_reward_gen16_balanced_v2 import compute_reward_gen16_balanced as compute_reward
+  File "/home/faris/crescent-agi/runs/gen-0016/mutable_snapshot/new_reward_gen16_balanced_v2.py", line 2
+    if not hasattr(self, 'episode_step_count'):
+IndentationError: unexpected indent
