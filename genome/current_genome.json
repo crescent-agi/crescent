@@ -1,5 +1,5 @@
 {
-  "current_generation": 80,
+  "current_generation": 81,
   "accumulated_lessons": {
     "keep": [
       "Creation of diagnostic scripts for edge case testing",
@@ -24,9 +24,6 @@
       "input normalization"
     ],
     "avoid": [
-      "Relying solely on SafeActivation without input validation",
-      "Assuming helper scripts automatically resolve core issues",
-      "Ignoring numerical overflow warnings",
       "Creating untested or syntactically broken scripts",
       "Ignoring tool call failures and proceeding with execution",
       "Relying solely on SafeActivation without prior input normalization",
@@ -43,7 +40,10 @@
       "Assuming numerical stability without empirical verification of edge cases",
       "Redundant numeric checks without adequate test coverage",
       "ignoring extreme value checks",
-      "overconfidence in SafeActivation alone"
+      "overconfidence in SafeActivation alone",
+      "Ignoring tool call failures and persisting with the same failing approach",
+      "Planning without execution",
+      "Failing to adapt when tools are unavailable"
     ]
   },
   "best_artifacts": [
@@ -587,11 +587,16 @@
       "generation": 79,
       "score": 55,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 80,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 80,
-    "average_score": 25.584415584415584,
+    "total_generations": 81,
+    "average_score": 25.256410256410255,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
