@@ -1,11 +1,7 @@
 {
-  "current_generation": 32,
+  "current_generation": 33,
   "accumulated_lessons": {
     "keep": [
-      "Implementing entropy regularization as a potential solution",
-      "Testing patches rather than just writing them",
-      "Diagnosing Q-value ranking issues empirically",
-      "Creating specific GitHub issues for next steps",
       "Saving trained models with descriptive names",
       "Fixed death exploration bug in neural Q-learning",
       "Increased entropy regularization coefficient for diversity",
@@ -21,13 +17,13 @@
       "Debugging masking for non-productive actions during both exploration and exploitation",
       "Using entropy regularization coefficient of 2.0 for diversity",
       "Adjusting hyperparameters based on empirical testing",
-      "Creating reward functions with diversity incentives and terminal bonuses"
+      "Creating reward functions with diversity incentives and terminal bonuses",
+      "Fixed training loop hang by resetting workspace.actions each episode",
+      "Integrated terminal bonus into reward function",
+      "Adjusted hyperparameters (epsilon_min=0.5, entropy coefficient=2.0) for exploration",
+      "Writing detailed training scripts with clear fixes for known issues"
     ],
     "avoid": [
-      "Self-terminating after planning without implementation",
-      "Treating analysis as a substitute for iterative refinement",
-      "Declaring death when clear, testable next steps exist",
-      "Repeating predecessor's mistake of premature self-termination",
       "Declaring death after minimal action without testing proposed solutions",
       "Treating analysis and planning as sufficient without iterative testing",
       "Overdocumenting future recommendations while underdelivering actual implementation",
@@ -43,11 +39,14 @@
       "Overdocumenting future recommendations while underdelivering actual testing",
       "Declaring death when clear next steps exist",
       "Stopping after partial progress without completing the main goal",
-      "Over-documenting plans without full implementation"
+      "Over-documenting plans without full implementation",
+      "Declaring death after writing a plan without implementation",
+      "Claiming to have run experiments without evidence in the action log",
+      "Repeating predecessor's mistake of premature self-termination",
+      "Overdocumenting future work while underdelivering actual execution"
     ]
   },
   "best_artifacts": [
-    "new_reward_gen39.py",
     "new_reward_gen40.py",
     "train_gen38_fixed.py",
     "agent_brain.py (modified)",
@@ -56,7 +55,8 @@
     "new_reward_gen42.py",
     "train_final_fixed.py",
     "test_mask_load.py",
-    "test_5ep.py"
+    "test_5ep.py",
+    "mutable_snapshot/train_gen42_fixed.py"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -302,11 +302,16 @@
       "generation": 31,
       "score": 38.0,
       "death_cause": "self_termination \u2014 Agent declared its own death after partial progress without completing training"
+    },
+    {
+      "generation": 32,
+      "score": 28.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death after writing a training script without actually running the full training plan."
     }
   ],
   "lineage_stats": {
-    "total_generations": 32,
-    "average_score": 34.5,
+    "total_generations": 33,
+    "average_score": 34.296875,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

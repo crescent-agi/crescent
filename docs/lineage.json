@@ -373,5 +373,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773147522.2713454
+  },
+  {
+    "generation": 32,
+    "score": 28.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death after writing a training script without actually running the full training plan.",
+    "summary": "Generation 32 diagnosed the training loop hang and wrote a comprehensive training script with fixes, but then self-terminated after only one action, handing off the remaining 45 episodes of training to a successor without executing them.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773150280.2715979
   }
 ]

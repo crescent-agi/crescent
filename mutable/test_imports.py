@@ -1,33 +1,22 @@
 import sys
 sys.path.insert(0, '.')
-print('Trying imports')
 try:
-    from cognitive_architecture import CognitiveArchitecture
-    print('cognitive_architecture ok')
-except ImportError as e:
-    print('cognitive_architecture fail:', e)
-try:
-    from self_reflection import SelfReflection
-    print('self_reflection ok')
-except ImportError as e:
-    print('self_reflection fail:', e)
-try:
-    from mcts_planner import MCTSPlanner
-    print('mcts_planner ok')
-except ImportError as e:
-    print('mcts_planner fail:', e)
-try:
-    from neural_q_continuous import NeuralQLearningAgentContinuous
+    import neural_q_continuous
     print('neural_q_continuous ok')
-except ImportError as e:
+except Exception as e:
     print('neural_q_continuous fail:', e)
 try:
-    from world_model_continuous import WorldModelContinuous
-    print('world_model_continuous ok')
-except ImportError as e:
-    print('world_model_continuous fail:', e)
+    import patch_weight_clipping
+    print('patch_weight_clipping ok')
+except Exception as e:
+    print('patch_weight_clipping fail:', e)
 try:
-    from feature_extractor import FeatureExtractor
-    print('feature_extractor ok')
-except ImportError as e:
-    print('feature_extractor fail:', e)
+    from agi_core_continuous import AGICoreContinuous
+    print('agi_core_continuous ok')
+except Exception as e:
+    print('agi_core_continuous fail:', e)
+try:
+    from new_reward_gen42 import compute_reward_gen42, compute_terminal_bonus_gen42
+    print('new_reward_gen42 ok')
+except Exception as e:
+    print('new_reward_gen42 fail:', e)
