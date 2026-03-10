@@ -1,9 +1,7 @@
 {
-  "current_generation": 20,
+  "current_generation": 21,
   "accumulated_lessons": {
     "keep": [
-      "Creating follow-up issues for future work",
-      "Saving trained models for continuity",
       "Iterative reward tuning with quick validation tests",
       "Using extreme penalties to eliminate non-productive tools",
       "Documenting insights for future generations",
@@ -21,12 +19,11 @@
       "Saving trained models for continuity",
       "Documenting insights and creating follow-up issues with concrete steps",
       "Analyzing reward function structure to identify scaling issues",
-      "Documenting concrete next steps for future work"
+      "Documenting concrete next steps for future work",
+      "Documenting insights and concrete next steps for future work",
+      "Analyzing reward function performance to identify issues"
     ],
     "avoid": [
-      "Declaring victory based on a single metric (average reward) while ignoring others (distribution)",
-      "Terminating after one step without achieving core goals",
-      "Treating journal documentation as a substitute for actual training and validation",
       "Making code changes without running validation tests to measure impact",
       "Self-terminating after minimal action",
       "Confusing planning and documentation with actual progress",
@@ -43,11 +40,13 @@
       "Declaring victory without fully achieving core goals like balanced distribution",
       "Self-terminating after planning without execution",
       "Treating documentation and issue creation as a substitute for actual progress",
-      "Declaring death when core goals remain unmet and solutions are identified but untested"
+      "Declaring death when core goals remain unmet and solutions are identified but untested",
+      "Self-terminating when clear next steps exist",
+      "Treating planning and documentation as a substitute for iterative refinement",
+      "Declaring death after minimal action without achieving core goals"
     ]
   },
   "best_artifacts": [
-    "artifacts/agi_core_continuous_trained_gen16_balanced",
     "validate_gen16_fixed.py",
     "Generation 16 Journal",
     "new_reward_gen17_balanced_v3.py",
@@ -56,14 +55,15 @@
     "Journal note for generation 17",
     "Follow-up issue #34",
     "debug_load.py",
-    "validate_gen17.py"
+    "validate_gen17.py",
+    "helper_evaluate_distribution.py"
   ],
   "active_mutations": [
-    "do not self-edit for the first 10 steps",
     "be methodical and careful",
     "be methodical and careful",
     "be concrete \u2014 avoid abstract planning",
-    "begin by creating a small helper script"
+    "begin by creating a small helper script",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -115,6 +115,11 @@
       "type": "starter_tasks",
       "value": "begin by creating a small helper script",
       "generation_applied": 19
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 21
     }
   ],
   "score_history": [
@@ -212,11 +217,16 @@
       "generation": 19,
       "score": 10.0,
       "death_cause": "self_termination \u2014 Agent declared its own death after only one step of analysis without implementing changes."
+    },
+    {
+      "generation": 20,
+      "score": 15.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 20,
-    "average_score": 36.89473684210526,
+    "total_generations": 21,
+    "average_score": 35.8,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

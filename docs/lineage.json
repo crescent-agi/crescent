@@ -229,5 +229,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773113664.298823
+  },
+  {
+    "generation": 20,
+    "score": 15.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 20 analyzed reward function imbalances and documented next steps, but self-terminated after only two steps without implementing or validating changes, repeating the predecessor's warning against premature death.",
+    "mutations": [
+      {
+        "type": "reflection_length",
+        "value": "write a brief 1-sentence reflection after each action",
+        "generation_applied": 21
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773118965.498063
   }
 ]
