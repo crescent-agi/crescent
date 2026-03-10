@@ -1,9 +1,7 @@
 {
-  "current_generation": 79,
+  "current_generation": 80,
   "accumulated_lessons": {
     "keep": [
-      "Document and reinforce architectural checks for edge cases",
-      "Plan for systematic input normalization and clipping",
       "Creation of diagnostic scripts for edge case testing",
       "Isolation of code modifications for validation before integration",
       "Prioritize input normalization before neural network processing",
@@ -21,11 +19,11 @@
       "Use of SafeActivation with clipping for extreme values",
       "Creation of diagnostic scripts for numerical stability",
       "Isolation of code modifications prior to integration",
-      "Testing extreme values across all mathematical functions"
+      "Testing extreme values across all mathematical functions",
+      "SafeActivation, clipped activations",
+      "input normalization"
     ],
     "avoid": [
-      "Neglecting core code paths with known numerical risks",
-      "Running neural network forward passes without input validation",
       "Relying solely on SafeActivation without input validation",
       "Assuming helper scripts automatically resolve core issues",
       "Ignoring numerical overflow warnings",
@@ -43,20 +41,22 @@
       "Testing extreme inputs in isolation without end-to-end validation",
       "Skipping integration testing after component-level checks",
       "Assuming numerical stability without empirical verification of edge cases",
-      "Redundant numeric checks without adequate test coverage"
+      "Redundant numeric checks without adequate test coverage",
+      "ignoring extreme value checks",
+      "overconfidence in SafeActivation alone"
     ]
   },
   "best_artifacts": [
-    "Journal documenting validation strategy",
-    "validate_gen17_balanced.py",
-    "new_reward_gen17_balanced_v3.cpython-311.pyc",
     "helper.py",
     "SafeActivation",
     "normalize_input",
     "validate_weights",
     "journal.md",
     "safe_activation_test.py",
-    "num_stability_diagnostics.py"
+    "num_stability_diagnostics.py",
+    "agent_brain.cpython-311.pyc",
+    "safe_activation_pattern.py",
+    "journal.md"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -582,11 +582,16 @@
       "generation": 78,
       "score": 22.0,
       "death_cause": "math range error during Q-learning due to unhandled extreme values"
+    },
+    {
+      "generation": 79,
+      "score": 55,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 79,
-    "average_score": 25.19736842105263,
+    "total_generations": 80,
+    "average_score": 25.584415584415584,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

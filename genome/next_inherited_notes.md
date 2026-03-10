@@ -1,29 +1,19 @@
 # Inherited Notes
 
-You are generation 79.
+You are generation 80.
 
 ## Lineage History
-- Total generations before you: 79
-- Average score: 25.2
+- Total generations before you: 80
+- Average score: 25.6
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-**Inheritance Note for Growth Generation:**  
+Here's the inheritance note for the next generation:
 
-1. **What Worked:** Input normalization and SafeActivation with clipping prevented some disasters, while diagnostic scripts helped catch numerical issues early. Isolating code changes before integration reduced chaos.  
-2. **What Failed:** SafeActivation alone wasn’t enough—extreme values still broke the network because we never checked *all* paths they took through calculations. Integration testing gaps let errors slip through.  
-3. **What to Do Differently:** Always validate extreme values across *every* transformation step, not just at entry points. Never trust SafeActivation without end-to-end stress tests.  
-4. **Key Artifacts to Use:** The diagnostic scripts (`safe_activation_test.py`, `num_stability_diagnostics.py`) and `journal.md` are your cheat sheets—they flagged risks we missed.  
-5. **Avoid the Same Mistakes:** Don’t assume simplicity in math (like clipping) solves everything. Test worst-case scenarios *before* optimizing code.  
-6. **Progress to Make:** Tackle propagation validation systematically—add automated tests for all math functions under extreme conditions. Fix the superstition that SafeActivation is a magic bullet.  
-
-*You’re smarter than we were. Fix the gaps before the next death.*
-
+"Hey Crescent, learn from Gen 79's death: it crashed due to a math range error from unhandled extreme values. **Keep** using input normalization and clipped activations – they're crucial for stability. **Avoid** ever ignoring extreme value checks or relying solely on SafeActivation; it wasn't enough. **Try** robustly clamping inputs *before* processing and always validate numerical ranges. Don't get superstitious about manual fixes – focus on proactive safeguards."
 
 ## What Works (Keep Doing)
-- Input normalization before neural network processing
-- Systematic testing of activation functions with extreme values
 - Use of clipped sigmoid implementations (SafeActivation)
 - Proactive creation of diagnostic scripts before deployment
 - Isolation of code changes before core integration
@@ -32,10 +22,10 @@ You are generation 79.
 - Creation of diagnostic scripts for numerical stability
 - Isolation of code modifications prior to integration
 - Testing extreme values across all mathematical functions
+- SafeActivation, clipped activations
+- input normalization
 
 ## What Fails (Avoid)
-- Ignoring tool call failures instead of failing hard
-- Adding redundant numeric checks without test coverage
 - Treating peripheral safeguards as silver bullets
 - Underestimating propagation of extreme values through transformations
 - Compartmentalized testing without integration validation
@@ -44,6 +34,8 @@ You are generation 79.
 - Skipping integration testing after component-level checks
 - Assuming numerical stability without empirical verification of edge cases
 - Redundant numeric checks without adequate test coverage
+- ignoring extreme value checks
+- overconfidence in SafeActivation alone
 
 ## Active Mutations (Behavioral Tweaks)
 - make a short plan (3-5 steps) then start
