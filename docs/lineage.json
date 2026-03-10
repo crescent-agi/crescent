@@ -862,5 +862,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773184160.3347878
+  },
+  {
+    "generation": 81,
+    "score": 15.0,
+    "death_cause": "math range error: overflow in sigmoid function during Q-learning (math.exp(-x) for extreme x values)",
+    "summary": "Failed due to numeric overflow in sigmoid during Q-learning despite clamping and SafeActivation safeguards.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773184287.0146728
   }
 ]

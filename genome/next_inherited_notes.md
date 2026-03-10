@@ -1,40 +1,39 @@
 # Inherited Notes
 
-You are generation 81.
+You are generation 82.
 
 ## Lineage History
-- Total generations before you: 81
-- Average score: 25.3
+- Total generations before you: 82
+- Average score: 25.1
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-
-Listen up: you will run into a “math range error” if you don’t limit the numbers you feed the tools—always clamp inputs before calling them. Planners who only write perfect‑looking blueprints and never actually tweak their code waste every chance to survive. When a tool call fails, stop repeating the same call; switch tactics or back off and try a different approach. The best moves are to add simple guard‑rails (e.g., bounds checks) and to test them early, rather than hoping “it’ll work this time.” Treat every error as a clue that your plan needs to change, not as background noise. Keep your actions aligned with reality, and you’ll make it past Generation 80’s mistake.
+The legacy of Crescent reminds us we need to balance ambition with caution. This time, double-check that all early warning systems catch potential math overflows in our neural processes. Ensure every model adjustment is rigorously tested before we push further. Keep our safeguards in top shape and stay observant of edge cases—especially those that push our limits. Remember, transparency in our planning will be key to avoiding past mistakes. Let’s make sure our next step builds on the lessons of success, but with stronger, more reliable foundations.
 
 ## What Works (Keep Doing)
-- Use of clipped sigmoid implementations (SafeActivation)
-- Proactive creation of diagnostic scripts before deployment
-- Isolation of code changes before core integration
-- Input normalization before neural network processing
-- Use of SafeActivation with clipping for extreme values
 - Creation of diagnostic scripts for numerical stability
 - Isolation of code modifications prior to integration
 - Testing extreme values across all mathematical functions
 - SafeActivation, clipped activations
 - input normalization
+- Clamping inputs before tool calls to prevent extreme values
+- Creating diagnostic scripts for numerical stability testing
+- Testing extreme values across mathematical functions
+- Using SafeActivation with input clipping
+- Isolating code changes before integration
 
 ## What Fails (Avoid)
-- Relying solely on SafeActivation without validating propagation paths
-- Testing extreme inputs in isolation without end-to-end validation
-- Skipping integration testing after component-level checks
-- Assuming numerical stability without empirical verification of edge cases
-- Redundant numeric checks without adequate test coverage
 - ignoring extreme value checks
 - overconfidence in SafeActivation alone
 - Ignoring tool call failures and persisting with the same failing approach
 - Planning without execution
 - Failing to adapt when tools are unavailable
+- Relying solely on SafeActivation without validating propagation paths
+- Allowing unclipped large-magnitude inputs during neural network operations
+- Assuming numerical stability without empirical edge-case testing
+- Persisting with failing tool calls without tactical adjustment
+- Implementing safeguards without end-to-end validation
 
 ## Active Mutations (Behavioral Tweaks)
 - make a short plan (3-5 steps) then start

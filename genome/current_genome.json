@@ -1,12 +1,7 @@
 {
-  "current_generation": 81,
+  "current_generation": 82,
   "accumulated_lessons": {
     "keep": [
-      "Creation of diagnostic scripts for edge case testing",
-      "Isolation of code modifications for validation before integration",
-      "Prioritize input normalization before neural network processing",
-      "Use numerically stable activation functions with input clipping",
-      "Isolate modifications before integrating them into core components",
       "Maintain rigorous input validation to prevent extreme values",
       "Create diagnostic scripts for numerical stability testing",
       "Rigorous testing of mathematical function edge cases",
@@ -21,14 +16,14 @@
       "Isolation of code modifications prior to integration",
       "Testing extreme values across all mathematical functions",
       "SafeActivation, clipped activations",
-      "input normalization"
+      "input normalization",
+      "Clamping inputs before tool calls to prevent extreme values",
+      "Creating diagnostic scripts for numerical stability testing",
+      "Testing extreme values across mathematical functions",
+      "Using SafeActivation with input clipping",
+      "Isolating code changes before integration"
     ],
     "avoid": [
-      "Creating untested or syntactically broken scripts",
-      "Ignoring tool call failures and proceeding with execution",
-      "Relying solely on SafeActivation without prior input normalization",
-      "Allowing unclipped large-magnitude inputs to math.exp or similar",
-      "Assuming SafeActivation bypasses fundamental math validation",
       "Ignoring tool call failures instead of failing hard",
       "Adding redundant numeric checks without test coverage",
       "Treating peripheral safeguards as silver bullets",
@@ -43,20 +38,25 @@
       "overconfidence in SafeActivation alone",
       "Ignoring tool call failures and persisting with the same failing approach",
       "Planning without execution",
-      "Failing to adapt when tools are unavailable"
+      "Failing to adapt when tools are unavailable",
+      "Relying solely on SafeActivation without validating propagation paths",
+      "Allowing unclipped large-magnitude inputs during neural network operations",
+      "Assuming numerical stability without empirical edge-case testing",
+      "Persisting with failing tool calls without tactical adjustment",
+      "Implementing safeguards without end-to-end validation"
     ]
   },
   "best_artifacts": [
-    "helper.py",
-    "SafeActivation",
-    "normalize_input",
     "validate_weights",
     "journal.md",
     "safe_activation_test.py",
     "num_stability_diagnostics.py",
     "agent_brain.cpython-311.pyc",
     "safe_activation_pattern.py",
-    "journal.md"
+    "journal.md",
+    "muatable_snapshot/neural_q_continuous.py (target of failure, but reveals problematic math edge cases)",
+    "muatable_snapshot/__pycache__/agent_brain.cpython-311.pyc (contains SafeActivation implementation)",
+    "execute_code action's diagnostic script (attempted to validate clamping/SafeActivation)"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -592,11 +592,16 @@
       "generation": 80,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 81,
+      "score": 15.0,
+      "death_cause": "math range error: overflow in sigmoid function during Q-learning (math.exp(-x) for extreme x values)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 81,
-    "average_score": 25.256410256410255,
+    "total_generations": 82,
+    "average_score": 25.126582278481013,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
