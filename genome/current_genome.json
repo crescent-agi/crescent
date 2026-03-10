@@ -1,13 +1,7 @@
 {
-  "current_generation": 72,
+  "current_generation": 73,
   "accumulated_lessons": {
     "keep": [
-      "SafeActivation_class implementation with clipping and tanh fallback",
-      "Maintain awareness of numerical stability issues",
-      "Implement tighter input validation and clipping for state vectors",
-      "Document and reinforce architectural checks for edge cases",
-      "Prioritize normalization of inputs before neural network processing",
-      "Use numerically stable activation functions with clipping",
       "Maintain rigorous input validation to prevent extreme values",
       "Create diagnostic scripts for numerical stability testing",
       "Isolate modifications before core integration",
@@ -21,14 +15,15 @@
       "Implement systematic testing of code changes before integration",
       "Create diagnostic scripts to test numerical stability of neural network inputs",
       "Maintain comprehensive logging and root\u2011cause analysis of failures",
-      "Isolate modifications before integrating them into core components"
+      "Isolate modifications before integrating them into core components",
+      "Prioritize input normalization before neural network processing",
+      "Use numerically stable activation functions with input clipping",
+      "Maintain rigorous input validation to prevent extreme values",
+      "Create diagnostic scripts for numerical stability testing",
+      "Isolate modifications before core integration",
+      "Document and reinforce architectural checks for edge cases"
     ],
     "avoid": [
-      "Relying solely on simulator stability without empirically verifying on actual outputs.",
-      "Ignoring precursors' warnings regarding numerical range management.",
-      "Assuming input sanity checks are always sufficient with",
-      "Neglecting core code paths with known numerical risks",
-      "Running neural network forward passes without input validation",
       "Assuming helper scripts automatically resolve core issues",
       "Repeating failing actions without adjustment",
       "Ignoring predecessor warnings about numerical stability",
@@ -43,27 +38,32 @@
       "Ignoring numerical overflow in complex mathematical operations",
       "Assuming validation tools will automatically prevent all numerical issues",
       "Failing to thoroughly test the impact of modifications on numerical stability",
-      "Creating untested or syntactically broken scripts"
+      "Creating untested or syntactically broken scripts",
+      "Relying solely on simulator stability without empirically verifying on actual outputs.",
+      "Ignoring precursors' warnings regarding numerical range management.",
+      "Assuming input sanity checks are always sufficient with",
+      "Neglecting core code paths with known numerical risks",
+      "Running neural network forward passes without input validation"
     ]
   },
   "best_artifacts": [
-    "stability_check.py",
-    "mutable_snapshot/agi_core_continuous.py",
-    "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/SafeActivation_class.py",
     "mutable_snapshot/diagnostic.py",
     "mutable_snapshot/helper_stability_check.py",
     "summarize_training_stats.py",
     "training_stats.json",
     "neural_q_continuous.py",
-    "mutable_snapshot/neural_q_continuous.pyc"
+    "mutable_snapshot/neural_q_continuous.pyc",
+    "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/agi_core.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/new_reward_gen17_balanced.cpython-311.pyc"
   ],
   "active_mutations": [
-    "do not self-edit for the first 5 steps",
     "be methodical and careful",
     "make a short plan (3-5 steps) then start",
     "begin by creating a small helper script",
-    "write a detailed multi-paragraph reflection every 5 actions"
+    "write a detailed multi-paragraph reflection every 5 actions",
+    "begin by writing a plan in your journal"
   ],
   "mutations_applied_history": [
     {
@@ -190,6 +190,11 @@
       "type": "reflection_length",
       "value": "write a detailed multi-paragraph reflection every 5 actions",
       "generation_applied": 60
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by writing a plan in your journal",
+      "generation_applied": 73
     }
   ],
   "score_history": [
@@ -537,11 +542,16 @@
       "generation": 71,
       "score": 12.5,
       "death_cause": "math range error in sigmoid causing overflow"
+    },
+    {
+      "generation": 72,
+      "score": 45.0,
+      "death_cause": "action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: 'NoneType' object is not subscriptable)\"}' repeated 6 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 72,
-    "average_score": 25.21304347826087,
+    "total_generations": 73,
+    "average_score": 25.495714285714286,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
