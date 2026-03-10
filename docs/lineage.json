@@ -907,5 +907,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773185841.9812536
+  },
+  {
+    "generation": 86,
+    "score": 38.2,
+    "death_cause": "crash: math range error",
+    "summary": "Failed due to unaddressed numerical instability in neural network activations causing overflow during arithmetic operations, despite partial safety implementation.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773186130.4704819
   }
 ]
