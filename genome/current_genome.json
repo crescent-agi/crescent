@@ -1,12 +1,7 @@
 {
-  "current_generation": 78,
+  "current_generation": 79,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize input normalization before neural network processing",
-      "Use numerically stable activation functions with input clipping",
-      "Maintain rigorous input validation to prevent extreme values",
-      "Create diagnostic scripts for numerical stability testing",
-      "Isolate modifications before core integration",
       "Document and reinforce architectural checks for edge cases",
       "Plan for systematic input normalization and clipping",
       "Creation of diagnostic scripts for edge case testing",
@@ -21,14 +16,14 @@
       "Systematic testing of activation functions with extreme values",
       "Use of clipped sigmoid implementations (SafeActivation)",
       "Proactive creation of diagnostic scripts before deployment",
-      "Isolation of code changes before core integration"
+      "Isolation of code changes before core integration",
+      "Input normalization before neural network processing",
+      "Use of SafeActivation with clipping for extreme values",
+      "Creation of diagnostic scripts for numerical stability",
+      "Isolation of code modifications prior to integration",
+      "Testing extreme values across all mathematical functions"
     ],
     "avoid": [
-      "Failing to thoroughly test the impact of modifications on numerical stability",
-      "Creating untested or syntactically broken scripts",
-      "Relying solely on simulator stability without empirically verifying on actual outputs.",
-      "Ignoring precursors' warnings regarding numerical range management.",
-      "Assuming input sanity checks are always sufficient with",
       "Neglecting core code paths with known numerical risks",
       "Running neural network forward passes without input validation",
       "Relying solely on SafeActivation without input validation",
@@ -43,20 +38,25 @@
       "Adding redundant numeric checks without test coverage",
       "Treating peripheral safeguards as silver bullets",
       "Underestimating propagation of extreme values through transformations",
-      "Compartmentalized testing without integration validation"
+      "Compartmentalized testing without integration validation",
+      "Relying solely on SafeActivation without validating propagation paths",
+      "Testing extreme inputs in isolation without end-to-end validation",
+      "Skipping integration testing after component-level checks",
+      "Assuming numerical stability without empirical verification of edge cases",
+      "Redundant numeric checks without adequate test coverage"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/__pycache__/agi_core.cpython-311.pyc",
-    "mutable_snapshot/__pycache__/new_reward_gen17_balanced.cpython-311.pyc",
-    "input_validator.py (planned but incomplete)",
     "Journal documenting validation strategy",
     "validate_gen17_balanced.py",
     "new_reward_gen17_balanced_v3.cpython-311.pyc",
     "helper.py",
     "SafeActivation",
     "normalize_input",
-    "validate_weights"
+    "validate_weights",
+    "journal.md",
+    "safe_activation_test.py",
+    "num_stability_diagnostics.py"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -577,11 +577,16 @@
       "generation": 77,
       "score": 38.3,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 78,
+      "score": 22.0,
+      "death_cause": "math range error during Q-learning due to unhandled extreme values"
     }
   ],
   "lineage_stats": {
-    "total_generations": 78,
-    "average_score": 25.24,
+    "total_generations": 79,
+    "average_score": 25.19736842105263,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
