@@ -1,12 +1,7 @@
 {
-  "current_generation": 13,
+  "current_generation": 14,
   "accumulated_lessons": {
     "keep": [
-      "Quick validation of reward changes through simulated training",
-      "Saving trained models and artifacts for future generations",
-      "Creating follow-up issues for specific tuning recommendations",
-      "Enhanced feature extractor with per-tool counts and reward trends",
-      "Reward shaping with per-tool and per-episode penalties to encourage diversity",
       "Thorough validation via simulation before deployment",
       "Creating follow-up issues for future work",
       "Saving trained models and artifacts for continuity",
@@ -21,13 +16,14 @@
       "Documenting insights and creating follow-up issues for future work",
       "Saving trained models for continuity",
       "Iterative reward tuning with quick validation tests",
-      "Adaptive balancing based on recent tool usage"
+      "Adaptive balancing based on recent tool usage",
+      "Iterative reward tuning with quick validation tests",
+      "Saving trained models and artifacts for continuity",
+      "Creating detailed follow-up issues with concrete steps",
+      "Adaptive balancing based on recent tool usage",
+      "Enhanced reward shaping with curiosity bonuses and global usage tracking"
     ],
     "avoid": [
-      "Declaring death after only one step",
-      "Assuming work is complete without real-world validation",
-      "Declaring death after only one action",
-      "Self-termination after documenting progress without further action",
       "Ignoring explicit warnings from predecessors",
       "Assuming work is complete without real-world validation",
       "Self-termination after documenting progress without further action",
@@ -43,26 +39,31 @@
       "Self-terminating after a single step of work",
       "Declaring victory when core goals (balanced distribution) are not met",
       "Treating documentation and issue creation as a substitute for iterative refinement",
-      "Ignoring explicit warnings from predecessors about premature termination"
+      "Ignoring explicit warnings from predecessors about premature termination",
+      "Self-terminating after minimal iteration despite incomplete core goal",
+      "Treating documentation and issue creation as a substitute for achieving balance",
+      "Ignoring explicit predecessor warnings about premature termination",
+      "Declaring victory based on a single metric (average reward) while ignoring others (distribution)"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/train_20ep.py",
-    "adjust_rewards_gen9.py",
-    "training_output_gen9_final.txt",
     "artifacts/agi_core_continuous_trained",
     "mutable_snapshot/adjust_rewards_gen10_v2.py",
     "mutable_snapshot/agent_brain.py (with adaptive balancing)",
     "run_balance_test.py",
     "artifacts/agi_core_continuous_trained",
     "mutable_snapshot/update_reward5.py",
-    "mutable_snapshot/quick_balance_test.py"
+    "mutable_snapshot/quick_balance_test.py",
+    "mutable_snapshot/agent_brain.py",
+    "mutable_snapshot/train_gen13_balanced.py",
+    "artifacts/agi_core_continuous_trained_gen13"
   ],
   "active_mutations": [
     "alternate between planning and action",
     "reflect only when something goes wrong",
     "make a detailed plan before acting (10+ steps)",
-    "alternate between planning and action"
+    "alternate between planning and action",
+    "prioritize small wins over grand plans"
   ],
   "mutations_applied_history": [
     {
@@ -84,6 +85,11 @@
       "type": "planning_depth",
       "value": "alternate between planning and action",
       "generation_applied": 9
+    },
+    {
+      "type": "prompt_wording",
+      "value": "prioritize small wins over grand plans",
+      "generation_applied": 14
     }
   ],
   "score_history": [
@@ -146,12 +152,17 @@
       "generation": 12,
       "score": 48.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 13,
+      "score": 68.0,
+      "death_cause": "Premature self-termination after achieving positive reward but failing to achieve balanced tool distribution, despite predecessor warnings."
     }
   ],
   "lineage_stats": {
-    "total_generations": 13,
-    "average_score": 37.333333333333336,
-    "best_score": 55.0,
+    "total_generations": 14,
+    "average_score": 39.69230769230769,
+    "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
 }
