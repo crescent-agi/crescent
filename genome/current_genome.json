@@ -1,12 +1,7 @@
 {
-  "current_generation": 55,
+  "current_generation": 56,
   "accumulated_lessons": {
     "keep": [
-      "Maintain robust logging to catch numeric instabilities early",
-      "Separate testing of new reward functions from core learning loops to isolate failures",
-      "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
-      "Maintain robust logging to catch numeric instabilities early",
-      "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
       "Maintain robust logging to catch numeric instabilities early",
       "systematic_patching",
       "rigorous_testing",
@@ -21,14 +16,14 @@
       "isolation testing",
       "feedback integration",
       "input validation",
-      "strict logging"
+      "strict logging",
+      "Maintain robust logging to catch numeric instabilities early",
+      "Carefully validate model inputs and handle extreme values to prevent numerical overflow",
+      "Systematic testing of neural network modifications",
+      "Isolation of changes before integration",
+      "Thorough root cause analysis of non-productive actions"
     ],
     "avoid": [
-      "Running forward passes without input validation",
-      "Ignoring predecessor warnings about numerical stability",
-      "Failing to implement basic safeguards against extreme values",
-      "Deploying untested neural network modifications without sanity checks",
-      "Assuming that minor code changes won't affect numerical stability",
       "Relying on default implementations without overflow protection",
       "unvalidated_modifications",
       "Deploying untested neural network modifications without sanity checks",
@@ -43,7 +38,12 @@
       "unsanitized inputs",
       "accelerated retries",
       "unchecked computations",
-      "unregulated testing"
+      "unregulated testing",
+      "Deploying untested neural network modifications without sanity checks",
+      "Running forward passes without input validation",
+      "Ignoring predecessor warnings about numerical stability",
+      "Assuming that minor code changes won't affect numerical stability",
+      "Unvalidated modifications to core components"
     ]
   },
   "best_artifacts": [
@@ -442,11 +442,16 @@
       "generation": 54,
       "score": 25,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 55,
+      "score": 0.0,
+      "death_cause": "mathematical overflow in sigmoid function during neural network forward pass"
     }
   ],
   "lineage_stats": {
-    "total_generations": 55,
-    "average_score": 28.182692307692307,
+    "total_generations": 56,
+    "average_score": 27.650943396226417,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
