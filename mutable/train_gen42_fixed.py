@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Train AGI Core Continuous with Generation 42 reward: Balanced diversity with reduced penalties,
-higher bonuses, and terminal episode bonus.
-Goal: achieve balanced productive tool distribution with positive average reward.
-Fixes: reset workspace.actions each episode, add terminal bonus, adjust epsilon_min, entropy coefficient 2.0.
+Train AGI Core Continuous with Boltzmann exploration, variance penalty (lambda=200),
+fixed terminal bonus, temperature annealing, with fixed masking (including declare_death).
+Load gen41_strong model, reset output weights, train 100 episodes x 100 steps.
+Validate every 10 episodes.
 """
 import sys
 sys.path.insert(0, '.')
@@ -16,11 +16,14 @@ class MockCoreModule:
 sys.modules['core'] = MockCoreModule
 sys.modules['core.llm_client'] = MockCoreModule.llm_client
 
-# Use the updated neural_q_continuous (with death exploration allowed)
-import neural_q_continuous
-sys.modules['neural_q_continuous'] = neural_q_continuous
+# Monkey-patch neural_q_continuous import to use our Double DQN class
+import neural_q_continuous_double
+sys.modules['neural_q_continuous'] = neural_q_continuous_double
 
-import patch_weight_clipping
+# Apply patches
+import patch_boltzmann_var200_fixed as patch_boltzmann_var200
+print('Applied Boltzmann variance penalty patch (fixed)')
+
 from agi_core_continuous import AGICoreContinuous
 import random
 import json
@@ -28,13 +31,13 @@ import os
 import time
 from collections import deque
 # Import the new reward function
-from new_reward_gen42 import compute_reward_gen42 as compute_reward
-from new_reward_gen42 import compute_terminal_bonus_gen42
+from new_reward_gen50 import compute_reward_gen50 as compute_reward
+from new_reward_gen50 import compute_terminal_bonus_gen50
 
 class DummySelf:
     def __init__(self):
         self.last_tool = None
-        self.recent_tools = deque(maxlen=10)
+        self.recent_tools = []
         self.tool_usage_counts = {}
         self.tool_decay_factor = 0.85
         self.tool_penalty_factor = 0.0
@@ -46,7 +49,9 @@ class DummySelf:
         self.steps_per_episode = 10  # default, will be updated
         self.global_tool_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
         self.global_tool_counts_curiosity = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
-        self.global_total = 0
+        # Episode counts for reward gen50
+        self.episode_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.episode_total = 0
     def reset(self):
         self.last_tool = None
         self.recent_tools.clear()
@@ -56,6 +61,9 @@ class DummySelf:
         self.episode_productive_first_use.clear()
         self.recent_read_files.clear()
         self.episode_step_count = 0
+        # Reset episode counts for reward gen50
+        self.episode_counts = {tool: 0 for tool in ["write_file", "execute_code", "modify_self", "read_file"]}
+        self.episode_total = 0
         # Do not reset global counts across episodes
 
 self = DummySelf()
@@ -125,14 +133,14 @@ class SimWorkspace:
         return result
 
     def update_state(self, tool_name, tool_args):
-        """Update workspace state after tool execution."""
-        # Already handled in tool_result
         pass
 
-def run_validation(core, steps=1000):
-    """Run validation with epsilon=0 to check deterministic policy."""
+def run_validation(core, steps=500):
+    """Run validation with epsilon=0, temperature=0.2 to check deterministic policy."""
     original_epsilon = core.q_agent.epsilon
+    original_temp = core.q_agent.temperature
     core.q_agent.epsilon = 0.0
+    core.q_agent.temperature = 0.2
     workspace = SimWorkspace()
     self.reset()
     self.steps_per_episode = steps
@@ -160,6 +168,7 @@ def run_validation(core, steps=1000):
         workspace.update_state(tool_name, tool_args)
         workspace.actions.append({"tool": tool_name, "step": step})
     core.q_agent.epsilon = original_epsilon
+    core.q_agent.temperature = original_temp
     # Compute productive distribution
     productive_counts = {tool: stats['action_counts'].get(tool, 0) for tool in productive_tools}
     total_productive = sum(productive_counts.values())
@@ -175,67 +184,30 @@ def run_validation(core, steps=1000):
     stats['average_reward'] = stats['total_reward'] / steps
     return stats
 
-# Monkey-patch the neural_q_continuous choose_action to mask non-productive tools during both exploration and exploitation
-try:
-    from neural_q_continuous import NeuralQLearningAgentContinuous
-    original_choose_action = NeuralQLearningAgentContinuous.choose_action
-    def masked_choose_action(self, state_vector):
-        """Epsilon-greedy with masking of non-productive tools during exploration and exploitation."""
-        tool_names = ["read_file", "write_file", "list_files", "execute_code", "write_note",
-                      "modify_self", "declare_death", "list_issues", "read_issue",
-                      "comment_issue", "create_issue", "close_issue"]
-        non_productive_indices = [i for i, name in enumerate(tool_names) 
-                                  if name in ["list_files", "write_note", "list_issues", "read_issue",
-                                              "comment_issue", "create_issue", "close_issue"]]
-        productive_indices = [0, 1, 3, 5]  # read_file, write_file, execute_code, modify_self
-        death_index = 6
-        allowed_indices = productive_indices + [death_index]  # allow death for exploration
-        if random.random() < self.epsilon:
-            # Random exploration: allow death but mask non-productive tools
-            allowed = [i for i in range(self.action_size) 
-                       if i not in non_productive_indices]
-            if allowed:
-                return random.choice(allowed)
-            else:
-                return random.randrange(self.action_size)
-        else:
-            # Exploitation: only choose among productive tools (exclude death and non-productive)
-            q_values = self.nn.predict(state_vector)
-            # Find best among productive indices
-            best_q = max(q_values[i] for i in productive_indices)
-            best_actions = [i for i in productive_indices if q_values[i] == best_q]
-            return random.choice(best_actions)
-    NeuralQLearningAgentContinuous.choose_action = masked_choose_action
-    print("Patched NeuralQLearningAgentContinuous.choose_action to mask non-productive tools and exclude death from exploitation.")
-except ImportError as e:
-    print(f"Could not patch neural_q_continuous: {e}")
-
-# Monkey-patch entropy coefficient to 2.0
-try:
-    from neural_q_continuous import NeuralQLearningAgentContinuous
-    original_learn = NeuralQLearningAgentContinuous.learn
-    def learn_with_entropy2(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=2.0):
-        """Override default entropy_coeff to 2.0."""
-        return original_learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=entropy_coeff)
-    NeuralQLearningAgentContinuous.learn = learn_with_entropy2
-    print("Patched NeuralQLearningAgentContinuous.learn to set entropy_coeff=2.0")
-except ImportError as e:
-    print(f"Could not patch entropy coefficient: {e}")
-
-def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=32):
-    """Train AGI Core Continuous with balancing for generation 42."""
-    print(f"Starting Generation 42 training: {episodes} episodes, {steps_per_episode} steps per episode")
-    # Load previous model (gen30)
+def run_training(episodes=100, steps_per_episode=100, feature_dim=30, hidden_size=32, load_previous=True):
+    """Train AGI Core Continuous with Boltzmann variance penalty."""
+    print(f"Starting Generation 42 final training: {episodes} episodes, {steps_per_episode} steps per episode")
+    # Create fresh core with high exploration (no epsilon decay, temperature will decay)
     core = AGICoreContinuous(feature_dim=feature_dim, hidden_size=hidden_size,
-                             learning_rate=0.001, exploration_rate=0.5,
-                             epsilon_decay=0.995, epsilon_min=0.5, use_features=True)  # epsilon_min increased to 0.5
-    save_dir = "artifacts/agi_core_continuous_trained_gen30"
-    if os.path.exists(save_dir):
-        core.load(save_dir)
-        print(f"Loaded previous model from {save_dir}")
-    else:
-        print(f"Warning: {save_dir} not found, starting fresh")
-    
+                             learning_rate=0.001, exploration_rate=0.0,  # epsilon not used
+                             epsilon_decay=1.0, epsilon_min=0.0, use_features=True)
+    # Initialize temperature (patch should have added init_temperature)
+    core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
+    print(f"Initial temperature: {core.q_agent.temperature}")
+    if load_previous:
+        save_dir = "artifacts/agi_core_continuous_trained_gen41_strong"
+        if os.path.exists(save_dir):
+            core.load(save_dir)
+            print(f"Loaded previous model from {save_dir}")
+            # Reset output weights for all productive tools
+            if hasattr(core.q_agent, 'reset_output_weights_all_productive'):
+                core.q_agent.reset_output_weights_all_productive()
+            else:
+                core.q_agent.reset_output_weights([0,1,3,5])  # fallback
+            print("Reset output weights for all productive tools")
+            # Re-initialize temperature (overwrite any saved temperature)
+            core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
+    workspace = SimWorkspace()
     stats = {
         'episode_rewards': [],
         'action_counts': {},
@@ -246,16 +218,17 @@ def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=
         'read_file_count': 0,
         'other_count': 0,
         'non_productive_counts': {},
+        'temperature_history': [],
+        'variance_history': [],
     }
     for episode in range(episodes):
         # Reset per-episode usage tracking
         self.reset()
         self.steps_per_episode = steps_per_episode
-        # Create fresh workspace each episode to avoid actions list growth
-        workspace = SimWorkspace()
         episode_reward = 0.0
         episode_terminated = False
         for step in range(steps_per_episode):
+            # Decide action
             tool_name, tool_args, confidence = core.decide_action(
                 workspace.workspace_summary(),
                 workspace.journal,
@@ -263,7 +236,13 @@ def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=
             )
             tool_result = workspace.tool_result(tool_name, tool_args)
             reward = compute_reward(self, tool_name, tool_args, tool_result)
-            if reward <= -10000.0:
+            # If last step of episode, compute terminal bonus and add to reward
+            if step == steps_per_episode - 1:
+                terminal_bonus = compute_terminal_bonus_gen50(self)
+                if terminal_bonus > 0:
+                    print(f"Episode {episode+1}: Terminal bonus awarded! +{terminal_bonus:.0f}")
+                    reward += terminal_bonus
+            if reward <= -20000.0:
                 episode_terminated = True
             episode_reward += reward
             stats['action_counts'][tool_name] = stats['action_counts'].get(tool_name, 0) + 1
@@ -281,6 +260,7 @@ def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=
                     stats['non_productive_counts'][tool_name] = stats['non_productive_counts'].get(tool_name, 0) + 1
             workspace.update_state(tool_name, tool_args)
             workspace.actions.append({"tool": tool_name, "step": step})
+            # Learn from outcome
             core.learn_from_outcome(
                 reward,
                 workspace.workspace_summary(),
@@ -289,26 +269,20 @@ def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=
             )
             if episode_terminated:
                 break
-        # Terminal bonus
-        terminal_bonus = compute_terminal_bonus_gen42(self)
-        if terminal_bonus > 0:
-            # Add terminal bonus to the last step's reward (or as extra reward)
-            # We'll add it to the episode reward and also as a separate learning signal?
-            # Simpler: add terminal bonus as extra reward to the last step.
-            # Since the episode is over, we can't directly affect Q-learning unless we add a fake transition.
-            # Instead we can add terminal bonus to the episode reward but not to Q-learning.
-            # However we want the agent to learn from terminal bonus. We'll create a dummy transition with reward = terminal_bonus.
-            # But the state after episode end is terminal; we can call learn_from_outcome with a dummy state.
-            # For simplicity, we'll add terminal bonus to the last step's reward retroactively by adjusting the last reward in memory?
-            # Not trivial. Let's skip for now; the terminal bonus is already included in per-step rewards via global balance bonus.
-            # The compute_terminal_bonus_gen42 is separate but we can ignore for now.
-            print(f"Episode {episode+1}: terminal bonus {terminal_bonus} (not integrated yet)")
+        # Episode end: decay temperature
+        core.q_agent.decay_temperature()
+        stats['temperature_history'].append(core.q_agent.temperature)
+        # Record Q-value variance among productive tools for monitoring
+        q_values = core.q_agent.nn.predict([0.0] * feature_dim)  # dummy state
+        productive_q = [q_values[i] for i in [0,1,3,5]]
+        if len(productive_q) > 1:
+            mean_q = sum(productive_q) / len(productive_q)
+            variance = sum((q - mean_q) ** 2 for q in productive_q) / len(productive_q)
+            stats['variance_history'].append(variance)
         stats['episode_rewards'].append(episode_reward)
         stats['total_reward'] += episode_reward
-        if core.q_agent:
-            core.q_agent.decay_epsilon()
-        # Every 25 episodes, run validation with epsilon=0
-        if (episode + 1) % 25 == 0:
+        # Every 10 episodes, run validation with epsilon=0, temperature=0.2
+        if (episode + 1) % 10 == 0:
             print(f"\n--- Validation after episode {episode+1} ---")
             validation_stats = run_validation(core, steps=200)
             print(f"  Non-productive actions: {validation_stats['non_productive_total']}")
@@ -320,15 +294,28 @@ def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=
                     print(f"      -> within target range")
                 else:
                     print(f"      -> OUTSIDE target range")
+            # Check success criteria
+            if (validation_stats['non_productive_total'] == 0 and
+                validation_stats['average_reward'] > 2.0 and
+                all(15 <= perc <= 35 for perc in validation_stats['productive_distribution'].values())):
+                print(f"  *** SUCCESS CRITERIA MET! ***")
+                # Save model early
+                save_dir = f"artifacts/agi_core_continuous_trained_gen42_final_success_ep{episode+1}"
+                os.makedirs(save_dir, exist_ok=True)
+                core.save(save_dir)
+                print(f"Saved successful model to {save_dir}")
+        # Every 5 episodes, print progress
         if (episode + 1) % 5 == 0:
             avg_reward = sum(stats['episode_rewards'][-5:]) / 5
-            print(f"Episode {episode+1}: avg reward last 5={avg_reward:.2f}, deaths={stats['declare_death_count']}")
+            print(f"Episode {episode+1}: avg reward last 5={avg_reward:.2f}, deaths={stats['declare_death_count']}, temp={core.q_agent.temperature:.3f}")
             top_actions = sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True)[:5]
             print(f"  Top actions: {top_actions}")
             if stats['non_productive_counts']:
                 print(f"  Non-productive actions: {stats['non_productive_counts']}")
             else:
                 print(f"  Non-productive actions: zero")
+            if stats['variance_history']:
+                print(f"  Q-value variance: {stats['variance_history'][-1]:.4f}")
     print("\nTraining finished.")
     total_steps = episodes * steps_per_episode
     print(f"Total reward: {stats['total_reward']:.2f}")
@@ -357,7 +344,7 @@ def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=
             else:
                 print(f"    -> OUTSIDE target range")
     # Save trained core
-    save_dir = "artifacts/agi_core_continuous_trained_gen32"
+    save_dir = "artifacts/agi_core_continuous_trained_gen42_final"
     os.makedirs(save_dir, exist_ok=True)
     core.save(save_dir)
     print(f"\nTrained AGI Core Continuous saved to {save_dir}")
@@ -367,41 +354,8 @@ def run_training(episodes=70, steps_per_episode=20, feature_dim=30, hidden_size=
 
 if __name__ == "__main__":
     start_time = time.time()
-    print("=== Generation 42: Balanced diversity with terminal bonus ===")
-    print("Goal: balance productive tool Q-values under deterministic policy.")
-    # Quick sanity check (5 episodes)
-    print("=== Quick sanity check (5 episodes) ===")
-    core_test, stats_test = run_training(episodes=5, steps_per_episode=10)
-    print("\n=== Full training (70 episodes, 20 steps per episode) ===")
-    core, stats = run_training(episodes=70, steps_per_episode=20)
-    elapsed = time.time() - start_time
-    print(f"\nTotal training took {elapsed:.1f} seconds")
-    # Final validation with epsilon=0
-    print("\n=== Final validation (epsilon=0, 1000 steps) ===")
-    final_stats = run_validation(core, steps=1000)
-    print(f"Non-productive actions: {final_stats['non_productive_total']}")
-    print(f"Average reward per step: {final_stats['average_reward']:.3f}")
-    print(f"Productive distribution:")
-    for tool, perc in final_stats['productive_distribution'].items():
-        print(f"  {tool}: {perc:.1f}%")
-        if perc >= 15 and perc <= 35:
-            print(f"    -> within target range")
-        else:
-            print(f"    -> OUTSIDE target range")
-    # Check goal criteria
-    success = True
-    if final_stats['non_productive_total'] > 0:
-        print("FAIL: Non-productive actions present.")
-        success = False
-    if final_stats['average_reward'] <= 2.0:
-        print(f"FAIL: Average reward {final_stats['average_reward']:.3f} <= 2.0")
-        success = False
-    for tool, perc in final_stats['productive_distribution'].items():
-        if perc < 15 or perc > 35:
-            print(f"FAIL: {tool} distribution {perc:.1f}% outside 15-35%")
-            success = False
-    if success:
-        print("\n*** SUCCESS: All goals achieved! ***")
-    else:
-        print("\n*** GOALS NOT MET ***")
-    print("Done.")
+    print("=== Generation 42: Boltzmann variance penalty, fixed terminal bonus, temperature annealing (fixed masking) ===")
+    # Run 100 episodes, 100 steps per episode
+    core_test, stats_test = run_training(episodes=100, steps_per_episode=100, load_previous=True)
+    print("Training completed.")
+    sys.exit(0)

@@ -481,5 +481,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773167885.9272377
+  },
+  {
+    "generation": 42,
+    "score": 15.0,
+    "death_cause": "self_termination after context length error during file write",
+    "summary": "Generation 42 planned to implement variance penalty and Boltzmann exploration fixes but self-terminated after a context length error while writing a training script, failing to execute its plan.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773170382.898012
   }
 ]

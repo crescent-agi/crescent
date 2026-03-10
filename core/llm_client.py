@@ -1,7 +1,7 @@
 """
 Crescent AGI — LLM Client
 ============================
-Wrapper around the DeepSeek API (OpenAI-compatible) for all LLM calls.
+Wrapper around an OpenAI-compatible LLM API for all LLM calls.
 Used by the Runtime Agent, Evaluator, and Day Manager.
 """
 
@@ -17,27 +17,33 @@ class LLMAuthenticationError(RuntimeError):
 
 class LLMClient:
     """
-    LLM client using DeepSeek's OpenAI-compatible API.
+    LLM client using an OpenAI-compatible API.
     """
 
     def __init__(self, config: dict):
-        self.model_name = config.get("llm", {}).get("model", "deepseek-chat")
+        self.model_name = config.get("llm", {}).get("model", "openrouter/free")
         self.temperature = config.get("llm", {}).get("temperature", 0.9)
         self.max_output_tokens = config.get("llm", {}).get("max_output_tokens", 8192)
         self.thinking_mode = config.get("llm", {}).get("thinking_mode", False)
 
-        api_key_env = config.get("llm", {}).get("api_key_env", "DEEPSEEK_API_KEY")
+        api_key_env = config.get("llm", {}).get("api_key_env", "OPENROUTER_API_KEY")
         api_key = os.environ.get(api_key_env)
-        base_url = config.get("llm", {}).get("base_url", "https://api.deepseek.com")
+        base_url = config.get("llm", {}).get("base_url", "https://openrouter.ai/api/v1")
 
         if not api_key:
             raise ValueError(
                 f"LLM API key not found. Set the {api_key_env} environment variable.\n"
-                f"Get one at https://platform.deepseek.com/api_keys"
+                f"Get one at https://openrouter.ai/settings/keys"
             )
 
         from openai import OpenAI
-        self.client = OpenAI(api_key=api_key, base_url=base_url)
+        default_headers = {}
+        if "openrouter.ai" in base_url:
+            default_headers = {
+                "HTTP-Referer": "https://github.com/crescent-agi/crescent",
+                "X-OpenRouter-Title": "Crescent AGI",
+            }
+        self.client = OpenAI(api_key=api_key, base_url=base_url, default_headers=default_headers)
         self.call_count = 0
         self._validate_credentials()
 
@@ -121,7 +127,8 @@ class LLMClient:
                 choice = response.choices[0]
                 message = choice.message
                 text = message.content or ""
-                reasoning_content = getattr(message, "reasoning_content", None)
+                reasoning_content = getattr(message, "reasoning_content", None) or getattr(message, "reasoning", None)
+                reasoning_details = getattr(message, "reasoning_details", None)
                 tool_calls = getattr(message, "tool_calls", None) or []
 
                 if tool_executor and self.thinking_mode:
@@ -136,7 +143,12 @@ class LLMClient:
                             "name": tc.function.name,
                             "args": args,
                         })
-                    return {"text": text, "tool_calls": executed_tool_calls, "reasoning_content": reasoning_content}
+                    return {
+                        "text": text,
+                        "tool_calls": executed_tool_calls,
+                        "reasoning_content": reasoning_content,
+                        "reasoning_details": reasoning_details,
+                    }
 
                 if not tool_calls:
                     parsed_calls = []
@@ -146,6 +158,7 @@ class LLMClient:
                         "text": text,
                         "tool_calls": executed_tool_calls or parsed_calls,
                         "reasoning_content": reasoning_content,
+                        "reasoning_details": reasoning_details,
                     }
 
                 if not tool_executor:
@@ -159,7 +172,12 @@ class LLMClient:
                             "name": tc.function.name,
                             "args": args,
                         })
-                    return {"text": text, "tool_calls": parsed_calls, "reasoning_content": reasoning_content}
+                    return {
+                        "text": text,
+                        "tool_calls": parsed_calls,
+                        "reasoning_content": reasoning_content,
+                        "reasoning_details": reasoning_details,
+                    }
 
                 for tc in tool_calls:
                     try:
@@ -195,7 +213,7 @@ class LLMClient:
         if tools:
             kwargs["tools"] = tools
         if self.thinking_mode:
-            kwargs["extra_body"] = {"thinking": {"type": "enabled"}}
+            kwargs["reasoning"] = {"enabled": True}
         else:
             kwargs["temperature"] = temperature
         return kwargs

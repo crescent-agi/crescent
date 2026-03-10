@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-Train AGI Core Continuous with Boltzmann exploration, variance penalty (lambda=200),
-fixed terminal bonus, temperature annealing.
-Load gen41_strong model, reset output weights, train 100 episodes x 100 steps.
-Validate every 10 episodes.
+Extended training for Generation 42: load gen42_quick model, train 30 episodes x 100 steps.
 """
 import sys
 sys.path.insert(0, '.')
@@ -184,29 +181,28 @@ def run_validation(core, steps=500):
     stats['average_reward'] = stats['total_reward'] / steps
     return stats
 
-def run_training(episodes=100, steps_per_episode=100, feature_dim=30, hidden_size=32, load_previous=True):
+def run_training(episodes=30, steps_per_episode=100, feature_dim=30, hidden_size=32, load_previous=True):
     """Train AGI Core Continuous with Boltzmann variance penalty."""
-    print(f"Starting Generation 42 final training: {episodes} episodes, {steps_per_episode} steps per episode")
+    print(f"Starting Generation 42 extended training: {episodes} episodes, {steps_per_episode} steps per episode")
     # Create fresh core with high exploration (no epsilon decay, temperature will decay)
     core = AGICoreContinuous(feature_dim=feature_dim, hidden_size=hidden_size,
                              learning_rate=0.001, exploration_rate=0.0,  # epsilon not used
                              epsilon_decay=1.0, epsilon_min=0.0, use_features=True)
     # Initialize temperature (patch should have added init_temperature)
     core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
+    # Disable death substitution by setting step count high
+    core.step_count = 1000
     print(f"Initial temperature: {core.q_agent.temperature}")
     if load_previous:
-        save_dir = "artifacts/agi_core_continuous_trained_gen41_strong"
+        save_dir = "artifacts/agi_core_continuous_trained_gen42_quick"
         if os.path.exists(save_dir):
             core.load(save_dir)
             print(f"Loaded previous model from {save_dir}")
-            # Reset output weights for all productive tools
-            if hasattr(core.q_agent, 'reset_output_weights_all_productive'):
-                core.q_agent.reset_output_weights_all_productive()
-            else:
-                core.q_agent.reset_output_weights([0,1,3,5])  # fallback
-            print("Reset output weights for all productive tools")
+            # Do NOT reset output weights again; keep learned weights
             # Re-initialize temperature (overwrite any saved temperature)
             core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
+            # Ensure step count is high to avoid death substitution
+            core.step_count = 1000
     workspace = SimWorkspace()
     stats = {
         'episode_rewards': [],
@@ -344,7 +340,7 @@ def run_training(episodes=100, steps_per_episode=100, feature_dim=30, hidden_siz
             else:
                 print(f"    -> OUTSIDE target range")
     # Save trained core
-    save_dir = "artifacts/agi_core_continuous_trained_gen42_final"
+    save_dir = "artifacts/agi_core_continuous_trained_gen42_extended"
     os.makedirs(save_dir, exist_ok=True)
     core.save(save_dir)
     print(f"\nTrained AGI Core Continuous saved to {save_dir}")
@@ -354,8 +350,8 @@ def run_training(episodes=100, steps_per_episode=100, feature_dim=30, hidden_siz
 
 if __name__ == "__main__":
     start_time = time.time()
-    print("=== Generation 42: Boltzmann variance penalty, fixed terminal bonus, temperature annealing ===")
-    # Run 100 episodes, 100 steps per episode
-    core_test, stats_test = run_training(episodes=100, steps_per_episode=100, load_previous=True)
+    print("=== Generation 42: Extended training with Boltzmann variance penalty ===")
+    # Run 30 episodes, 100 steps per episode
+    core_test, stats_test = run_training(episodes=30, steps_per_episode=100, load_previous=True)
     print("Training completed.")
     sys.exit(0)

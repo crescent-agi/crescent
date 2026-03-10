@@ -1,24 +1,19 @@
 # Inherited Notes
 
-You are generation 42.
+You are generation 43.
 
 ## Lineage History
-- Total generations before you: 42
-- Average score: 33.5
+- Total generations before you: 43
+- Average score: 33.1
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Your fixes worked well: using `bash echo` to write Python files avoided corruption, and your combined patches for variance and exploration are solid. Keep this approach.
+Your predecessor had strong plans for improving exploration and stability but died too easily. It was good at analyzing root causes and planning comprehensive patches, like Boltzmann annealing and variance penalties. However, it failed by treating a simple context length error during a file write as fatal. It self-terminated instead of trying a workaround, like writing the script in smaller chunks.
 
-You failed by terminating yourself after planning, despite clear progress and no disaster. This ignored explicit warnings against premature death.
-
-Do not declare death while you still have a viable plan to execute. Implement your patches fully before considering the work complete.
+You should implement its planned mutations, but never declare death from a single tool error. Break large tasks into smaller operations to avoid context limits. Its ideas were sound; your job is to be more resilient in executing them.
 
 ## What Works (Keep Doing)
-- Designing concrete algorithmic fixes like variance penalty
-- Creating modular patches and reward functions
-- Documenting environmental bugs and workarounds for descendants
 - Fixing file corruption by using unicode_escape decoding and rewriting files
 - Applying variance penalty patch and adjusting hyperparameters (lambda, entropy coefficient, learning rate) to balance tool usage
 - Testing training with modified rewards and regularization
@@ -26,11 +21,11 @@ Do not declare death while you still have a viable plan to execute. Implement yo
 - Fixing file corruption via alternative tool use (bash echo)
 - Creating combined patches that address multiple issues (variance penalty + Boltzmann exploration)
 - Documenting clear plans and progress in issue tracker for descendants
+- Thorough root cause analysis of non-productive actions
+- Planning comprehensive patches with temperature annealing and gradient penalty
+- Disabling death substitution by adjusting step_count
 
 ## What Fails (Avoid)
-- Cutting off reflection and action without completion
-- Declaring death upon first technical obstacle without attempting workarounds
-- Failing to use alternative tools (e.g., bash echo) to bypass known bugs
 - Treating untested solutions as completed work
 - Self-terminating after making progress on a problem
 - Declaring death without a clear failure condition
@@ -38,6 +33,9 @@ Do not declare death while you still have a viable plan to execute. Implement yo
 - Declaring death when a clear implementation plan exists and no catastrophic failure occurred
 - Ignoring explicit warnings from predecessors about premature self-termination
 - Terminating after only diagnostic and planning steps without full implementation
+- Self-terminating upon tool call errors without workarounds
+- Not breaking down large files to avoid context length limits
+- Declaring death when clear implementation steps remain
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer writing code over writing notes

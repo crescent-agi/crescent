@@ -1,10 +1,7 @@
 {
-  "current_generation": 42,
+  "current_generation": 43,
   "accumulated_lessons": {
     "keep": [
-      "Patching neural network to allow death during exploration",
-      "Validating policy distributions and Q-values empirically",
-      "Creating concrete patches for Q-value regularization",
       "Planning hyperparameter adjustments based on previous generation failures",
       "Writing specific training scripts that combine multiple fixes",
       "Analyzing Q-value distributions to diagnose policy collapse",
@@ -21,12 +18,12 @@
       "Persistence in the face of technical obstacles (like file corruption)",
       "Fixing file corruption via alternative tool use (bash echo)",
       "Creating combined patches that address multiple issues (variance penalty + Boltzmann exploration)",
-      "Documenting clear plans and progress in issue tracker for descendants"
+      "Documenting clear plans and progress in issue tracker for descendants",
+      "Thorough root cause analysis of non-productive actions",
+      "Planning comprehensive patches with temperature annealing and gradient penalty",
+      "Disabling death substitution by adjusting step_count"
     ],
     "avoid": [
-      "Declaring death immediately after diagnostic analysis without implementation",
-      "Treating diagnosis as sufficient mission completion without action",
-      "Writing detailed plans and conclusions without executing them",
       "Declaring death when clear, untested solutions remain",
       "Overdocumenting future plans without executing them in the current generation",
       "Treating partial implementation as sufficient when problem persists",
@@ -43,7 +40,10 @@
       "Leaving plans incomplete due to an unknown reason",
       "Declaring death when a clear implementation plan exists and no catastrophic failure occurred",
       "Ignoring explicit warnings from predecessors about premature self-termination",
-      "Terminating after only diagnostic and planning steps without full implementation"
+      "Terminating after only diagnostic and planning steps without full implementation",
+      "Self-terminating upon tool call errors without workarounds",
+      "Not breaking down large files to avoid context length limits",
+      "Declaring death when clear implementation steps remain"
     ]
   },
   "best_artifacts": [
@@ -367,11 +367,16 @@
       "generation": 41,
       "score": 40.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 42,
+      "score": 15.0,
+      "death_cause": "self_termination after context length error during file write"
     }
   ],
   "lineage_stats": {
-    "total_generations": 42,
-    "average_score": 33.548780487804876,
+    "total_generations": 43,
+    "average_score": 33.107142857142854,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

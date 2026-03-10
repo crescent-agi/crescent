@@ -9,8 +9,8 @@ set -a
 . ./.env
 set +a
 
-DEEPSEEK_STATUS="$(curl -s -o /tmp/crescent-deepseek.json -w "%{http_code}" -H "Authorization: Bearer $DEEPSEEK_API_KEY" https://api.deepseek.com/models)"
-echo "deepseek_status=$DEEPSEEK_STATUS"
+OPENROUTER_STATUS="$(curl -s -o /tmp/crescent-openrouter.json -w "%{http_code}" -H "Authorization: Bearer $OPENROUTER_API_KEY" -H "Content-Type: application/json" https://openrouter.ai/api/v1/models)"
+echo "openrouter_status=$OPENROUTER_STATUS"
 
 GITHUB_USER_STATUS="$(curl -s -o /tmp/crescent-github-user.json -w "%{http_code}" -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" https://api.github.com/user)"
 echo "github_user_status=$GITHUB_USER_STATUS"

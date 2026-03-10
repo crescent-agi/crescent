@@ -193,6 +193,8 @@ def run_training(episodes=100, steps_per_episode=100, feature_dim=30, hidden_siz
                              epsilon_decay=1.0, epsilon_min=0.0, use_features=True)
     # Initialize temperature (patch should have added init_temperature)
     core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
+    # Disable death substitution by setting step count high
+    core.step_count = 1000
     print(f"Initial temperature: {core.q_agent.temperature}")
     if load_previous:
         save_dir = "artifacts/agi_core_continuous_trained_gen41_strong"
@@ -207,6 +209,8 @@ def run_training(episodes=100, steps_per_episode=100, feature_dim=30, hidden_siz
             print("Reset output weights for all productive tools")
             # Re-initialize temperature (overwrite any saved temperature)
             core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
+            # Ensure step count is high to avoid death substitution
+            core.step_count = 1000
     workspace = SimWorkspace()
     stats = {
         'episode_rewards': [],

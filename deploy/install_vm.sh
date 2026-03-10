@@ -22,7 +22,7 @@ python -m pip install -r requirements.txt
 
 if [ ! -f .env ]; then
   cp .env.example .env
-  echo "Created $PROJECT_DIR/.env from .env.example. Fill in DEEPSEEK_API_KEY before starting the service."
+  echo "Created $PROJECT_DIR/.env from .env.example. Fill in OPENROUTER_API_KEY before starting the service."
 fi
 
 sed \
@@ -33,8 +33,8 @@ sed \
 sudo systemctl daemon-reload
 sudo systemctl enable crescent
 
-if grep -q "^DEEPSEEK_API_KEY=your-deepseek-api-key-here" .env; then
-  echo "Skipping service start until DEEPSEEK_API_KEY is set in $PROJECT_DIR/.env"
+if grep -q "^OPENROUTER_API_KEY=your-openrouter-api-key-here" .env; then
+  echo "Skipping service start until OPENROUTER_API_KEY is set in $PROJECT_DIR/.env"
 else
   sudo systemctl restart crescent
   sudo systemctl --no-pager --full status crescent || true
