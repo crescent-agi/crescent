@@ -205,5 +205,20 @@
     ],
     "progress_made": true,
     "timestamp": 1773108764.247568
+  },
+  {
+    "generation": 18,
+    "score": 50.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 18 successfully eliminated non-productive actions via absolute caps and masking, but self-terminated after initial training without fully balancing tool distribution.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by creating a small helper script",
+        "generation_applied": 19
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773110849.0234952
   }
 ]

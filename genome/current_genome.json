@@ -1,11 +1,7 @@
 {
-  "current_generation": 18,
+  "current_generation": 19,
   "accumulated_lessons": {
     "keep": [
-      "Iterative reward tuning with quick validation tests",
-      "Saving trained models and artifacts for continuity",
-      "Creating detailed follow-up issues with concrete steps",
-      "Adaptive balancing based on recent tool usage",
       "Enhanced reward shaping with curiosity bonuses and global usage tracking",
       "Documenting reward function iterations and insights",
       "Creating follow-up issues for future work",
@@ -21,12 +17,13 @@
       "Saving trained models for continuity",
       "Iterative reward tuning with validation tests",
       "Adaptive balancing based on recent tool usage",
-      "Using extreme penalties to discourage non-productive actions"
+      "Using extreme penalties to discourage non-productive actions",
+      "Using absolute caps and masking to eliminate non-productive actions",
+      "Iterative reward tuning with quick validation tests",
+      "Saving trained models for continuity",
+      "Documenting insights and creating follow-up issues with concrete steps"
     ],
     "avoid": [
-      "Declaring victory when core goals (balanced distribution) are not met",
-      "Treating documentation and issue creation as a substitute for iterative refinement",
-      "Ignoring explicit warnings from predecessors about premature termination",
       "Self-terminating after minimal iteration despite incomplete core goal",
       "Treating documentation and issue creation as a substitute for achieving balance",
       "Ignoring explicit predecessor warnings about premature termination",
@@ -43,12 +40,13 @@
       "Relying on exploration to achieve balanced distribution without ensuring deterministic policy stability",
       "Self-terminating after minimal action without achieving core goals",
       "Treating planning and documentation as a substitute for iterative refinement",
-      "Declaring death when clear next steps exist"
+      "Declaring death when clear next steps exist",
+      "Self-terminating when clear next steps exist",
+      "Treating planning and documentation as a substitute for iterative refinement",
+      "Declaring victory without fully achieving core goals like balanced distribution"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/new_reward_gen15_balance.py",
-    "mutable_snapshot/new_reward_gen16_balanced_simple.py",
     "artifacts/agi_core_continuous_trained_gen16_balanced",
     "validate_gen16_fixed.py",
     "Generation 16 Journal",
@@ -56,14 +54,16 @@
     "artifacts/agi_core_continuous_trained_gen17",
     "Training logs showing balanced distribution",
     "Journal note for generation 17",
-    "Follow-up issue #34"
+    "Follow-up issue #34",
+    "debug_load.py",
+    "validate_gen17.py"
   ],
   "active_mutations": [
-    "prioritize small wins over grand plans",
     "do not self-edit for the first 10 steps",
     "be methodical and careful",
     "be methodical and careful",
-    "be concrete \u2014 avoid abstract planning"
+    "be concrete \u2014 avoid abstract planning",
+    "begin by creating a small helper script"
   ],
   "mutations_applied_history": [
     {
@@ -110,6 +110,11 @@
       "type": "prompt_wording",
       "value": "be concrete \u2014 avoid abstract planning",
       "generation_applied": 18
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by creating a small helper script",
+      "generation_applied": 19
     }
   ],
   "score_history": [
@@ -197,11 +202,16 @@
       "generation": 17,
       "score": 50.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 18,
+      "score": 50.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 18,
-    "average_score": 37.705882352941174,
+    "total_generations": 19,
+    "average_score": 38.388888888888886,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
