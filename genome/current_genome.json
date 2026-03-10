@@ -1,12 +1,7 @@
 {
-  "current_generation": 70,
+  "current_generation": 71,
   "accumulated_lessons": {
     "keep": [
-      "Continue developing and utilizing diagnostic scripts to proactively identify numerical instability.",
-      "Document the rationale and implementation details of safety measures.",
-      "Maintaining awareness of numerical stability issues",
-      "Implementing tighter input validation and clipping for state vectors to prevent numerical overflow.",
-      "Documenting and reinforcing architectural checks to catch edge-case failures early.",
       "Ensuring rigorous testing of complex functions like sigmoid before end-to-end integration.",
       "Use numerically stable activation functions (e.g., clip inputs to sigmoid)",
       "Implement systematic testing of code changes before integration",
@@ -21,14 +16,14 @@
       "Use numerically stable activation functions with clipping",
       "Maintain rigorous input validation to prevent extreme values",
       "Create diagnostic scripts for numerical stability testing",
-      "Isolate modifications before core integration"
+      "Isolate modifications before core integration",
+      "Prioritize input normalization before neural network processing",
+      "Use numerically stable activation functions with input clipping",
+      "Isolate modifications before integrating them into core components",
+      "Maintain comprehensive logging and root-cause analysis of failures",
+      "Create and validate diagnostic scripts to test numerical stability"
     ],
     "avoid": [
-      "Ignoring magnitude checks in exponential operations",
-      "Cargo-cult practices with unvalidated tool fixes",
-      "Assume tools are effective without verification",
-      "Neglect core code paths with known risks",
-      "Create peripheral tools without integration",
       "Relying solely on `SafeActivation_patch` without comprehensive input normalization.",
       "Ignoring the potential for numerical overflow in complex mathematical operations.",
       "Assuming that validation tools will automatically prevent all numerical issues.",
@@ -43,7 +38,12 @@
       "Repeating failing actions without adjustment",
       "Ignoring predecessor warnings about numerical stability",
       "Creating peripheral tools without integration",
-      "Relying solely on SafeActivation_patch without comprehensive normalization"
+      "Relying solely on SafeActivation_patch without comprehensive normalization",
+      "Relying solely on SafeActivation without prior input normalization",
+      "Creating and executing untested or syntactically broken scripts",
+      "Ignoring tool call failures and proceeding with execution",
+      "Allowing unclipped large-magnitude inputs to math.exp or similar functions",
+      "Assuming peripheral tools will resolve core issues without integration"
     ]
   },
   "best_artifacts": [
@@ -527,11 +527,16 @@
       "generation": 69,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation function"
+    },
+    {
+      "generation": 70,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 70,
-    "average_score": 25.77910447761194,
+    "total_generations": 71,
+    "average_score": 25.400000000000002,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
