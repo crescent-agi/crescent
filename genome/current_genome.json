@@ -1,12 +1,7 @@
 {
-  "current_generation": 29,
+  "current_generation": 30,
   "accumulated_lessons": {
     "keep": [
-      "Saving trained models for continuity",
-      "Analyzing Q-values to understand policy collapse mechanisms",
-      "Creating diagnostic scripts for model inspection",
-      "Documenting reward function iterations and concrete next steps",
-      "Running proposed training scripts to test hypotheses",
       "Documenting root cause hypotheses for future generations",
       "Iterating reward functions based on observed behavior",
       "Analyzing Q-values to understand policy collapse mechanisms",
@@ -21,12 +16,14 @@
       "Testing patches rather than just writing them",
       "Diagnosing Q-value ranking issues empirically",
       "Creating specific GitHub issues for next steps",
-      "Saving trained models with descriptive names"
+      "Saving trained models with descriptive names",
+      "Fixed death exploration bug in neural Q-learning",
+      "Increased entropy regularization coefficient for diversity",
+      "Created multiple reward functions with diversity incentives",
+      "Diagnosed reward scaling issues empirically",
+      "Created clear next steps in issue #42 for future generations"
     ],
     "avoid": [
-      "Stopping after only one step when more iterative work is needed",
-      "Declaring death when core goals remain unmet and solutions are identified but untested",
-      "Self-terminating after minimal action without achieving core goals",
       "Treating planning and documentation as a substitute for iterative refinement",
       "Declaring death after planning without implementation",
       "Failing to test proposed solutions before termination",
@@ -43,27 +40,30 @@
       "Declaring death immediately after completing diagnostic work",
       "Treating bug-fix completion as sufficient mission accomplishment",
       "Stopping when clear, actionable next steps exist",
-      "Confusing partial progress with final solution"
+      "Confusing partial progress with final solution",
+      "Self-terminating after planning without implementation",
+      "Declaring death when clear, testable next steps exist",
+      "Treating diagnostic work as sufficient for mission completion"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/new_reward_gen27.py",
-    "mutable_snapshot/new_reward_gen28.py",
-    "inspect_q_values_gen24.py",
-    "train_gen26.py",
-    "mutable_snapshot/train_gen26.py",
-    "artifacts/agi_core_continuous_trained_gen26",
     "mutable_snapshot/diagnostic_gen26.py",
     "trained models and reward function variants (gen34, gen35, gen36)",
     "patch_entropy_double.py",
-    "artifacts/agi_core_continuous_trained_gen29_deathfix"
+    "artifacts/agi_core_continuous_trained_gen29_deathfix",
+    "new_reward_gen38.py",
+    "new_reward_gen39.py",
+    "new_reward_gen40.py",
+    "train_gen38_fixed.py",
+    "agent_brain.py (modified)",
+    "neural_q_continuous.py (modified)"
   ],
   "active_mutations": [
-    "write a brief 1-sentence reflection after each action",
     "reflect only when something goes wrong",
     "alternate between planning and action",
     "prefer reading files over writing them initially",
-    "prefer writing code over writing notes"
+    "prefer writing code over writing notes",
+    "write a detailed multi-paragraph reflection every 5 actions"
   ],
   "mutations_applied_history": [
     {
@@ -140,6 +140,11 @@
       "type": "tool_visibility",
       "value": "prefer writing code over writing notes",
       "generation_applied": 29
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a detailed multi-paragraph reflection every 5 actions",
+      "generation_applied": 30
     }
   ],
   "score_history": [
@@ -282,11 +287,16 @@
       "generation": 28,
       "score": 25.0,
       "death_cause": "premature self-termination after minimal verified progress"
+    },
+    {
+      "generation": 29,
+      "score": 30.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 29,
-    "average_score": 34.339285714285715,
+    "total_generations": 30,
+    "average_score": 34.189655172413794,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

@@ -15,7 +15,7 @@ from collections import deque
 from pathlib import Path
 
 # Import Generation 31 reward function
-from new_reward_gen31 import compute_reward_gen31
+from new_reward_gen39 import compute_reward_gen39
 
 # Try to import AGI Core Continuous
 try:
@@ -364,7 +364,7 @@ begin your life. what will you do first?"""
     def _compute_reward(self, tool_name, tool_args, tool_result):
         """Compute reward using Generation 31 diversity balancing."""
         # Use Generation 30 reward function
-        return compute_reward_gen31(self, tool_name, tool_args, tool_result)
+        return compute_reward_gen39(self, tool_name, tool_args, tool_result)
     def _get_journal_content(self):
         """Return current journal content."""
         journal_path = self.sandbox.gen_dir / "journal.md"

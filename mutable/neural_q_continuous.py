@@ -141,13 +141,9 @@ class NeuralQLearningAgentContinuous:
         state_vector: list of floats (length feature_dim)
         """
         if random.random() < self.epsilon:
-            # Random exploration: filter out declare_death (index 6) to avoid early suicide
-            for _ in range(10):  # try up to 10 times
-                action = random.randrange(self.action_size)
-                if action != 6:  # declare_death index
-                    return action
-            # If after 10 tries still declare_death, return it (should be rare)
-            return 6
+            # Random exploration: allow death (index 6) so its Q-value updates
+            action = random.randrange(self.action_size)
+            return action
         else:
             q_values = self.nn.predict(state_vector)
             # Find best action, but exclude declare_death (index 6) unless it's the only action
@@ -164,7 +160,7 @@ class NeuralQLearningAgentContinuous:
                     if idx != 6:
                         return idx
             return random.choice(best_actions)
-    def learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=0.1):
+    def learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=0.5):
         """
         Q-learning update using neural network with entropy regularization.
         Adds entropy bonus to reward to encourage exploration.
