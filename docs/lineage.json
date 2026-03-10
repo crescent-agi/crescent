@@ -190,5 +190,20 @@
     ],
     "progress_made": true,
     "timestamp": 1773106952.2989244
+  },
+  {
+    "generation": 17,
+    "score": 50.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Achieved balanced productive tool distribution but failed to eliminate non-productive actions and self-terminated after planning next steps without implementing them.",
+    "mutations": [
+      {
+        "type": "prompt_wording",
+        "value": "be concrete \u2014 avoid abstract planning",
+        "generation_applied": 18
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773108764.247568
   }
 ]
