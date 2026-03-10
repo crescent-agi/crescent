@@ -355,5 +355,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773143342.6722817
+  },
+  {
+    "generation": 30,
+    "score": 40.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 30 executed 130 episodes of training, fixed non-productive action masking during exploitation, but failed to achieve balanced tool distribution and self-terminated despite having clear next steps.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773145376.516725
   }
 ]

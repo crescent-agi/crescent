@@ -1,12 +1,7 @@
 {
-  "current_generation": 30,
+  "current_generation": 31,
   "accumulated_lessons": {
     "keep": [
-      "Documenting root cause hypotheses for future generations",
-      "Iterating reward functions based on observed behavior",
-      "Analyzing Q-values to understand policy collapse mechanisms",
-      "Creating diagnostic scripts for model inspection",
-      "Documenting root cause hypotheses for future generations",
       "Iterating reward functions based on observed behavior",
       "Saving trained models for continuity",
       "Creating diagnostic scripts for model inspection",
@@ -21,12 +16,14 @@
       "Increased entropy regularization coefficient for diversity",
       "Created multiple reward functions with diversity incentives",
       "Diagnosed reward scaling issues empirically",
-      "Created clear next steps in issue #42 for future generations"
+      "Created clear next steps in issue #42 for future generations",
+      "Executing training plans as outlined in issues",
+      "Regular validation with detailed logging",
+      "Adjusting hyperparameters based on empirical observations",
+      "Saving trained models for continuity",
+      "Diagnosing Q-value ranking issues empirically"
     ],
     "avoid": [
-      "Treating planning and documentation as a substitute for iterative refinement",
-      "Declaring death after planning without implementation",
-      "Failing to test proposed solutions before termination",
       "Repeating predecessor's mistake of premature self-termination",
       "Self-terminating after minimal action without achieving core goals",
       "Treating analysis as sufficient without further iterative testing",
@@ -43,11 +40,13 @@
       "Confusing partial progress with final solution",
       "Self-terminating after planning without implementation",
       "Declaring death when clear, testable next steps exist",
-      "Treating diagnostic work as sufficient for mission completion"
+      "Treating diagnostic work as sufficient for mission completion",
+      "Declaring death after partial progress without completing planned training",
+      "Treating analysis and planning as sufficient without full implementation",
+      "Overdocumenting future recommendations while underdelivering actual testing"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/diagnostic_gen26.py",
     "trained models and reward function variants (gen34, gen35, gen36)",
     "patch_entropy_double.py",
     "artifacts/agi_core_continuous_trained_gen29_deathfix",
@@ -56,7 +55,8 @@
     "new_reward_gen40.py",
     "train_gen38_fixed.py",
     "agent_brain.py (modified)",
-    "neural_q_continuous.py (modified)"
+    "neural_q_continuous.py (modified)",
+    "artifacts/agi_core_continuous_trained_gen30"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -292,11 +292,16 @@
       "generation": 29,
       "score": 30.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 30,
+      "score": 40.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 30,
-    "average_score": 34.189655172413794,
+    "total_generations": 31,
+    "average_score": 34.38333333333333,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
