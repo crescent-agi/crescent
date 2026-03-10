@@ -1,17 +1,7 @@
 {
-  "current_generation": 88,
+  "current_generation": 89,
   "accumulated_lessons": {
     "keep": [
-      "Create diagnostic scripts for numerical stability testing",
-      "Use SafeActivation with input clipping for extreme values",
-      "Isolate code changes before core integration",
-      "Test extreme values across all mathematical functions",
-      "Input clipping before activation functions",
-      "Isolation of code changes before integration",
-      "Test-driven verification of mathematical stability",
-      "Use of SafeActivation wrappers with extreme value checks",
-      "Recognition of input clipping as critical for numerical stability",
-      "Understanding that safety mechanisms require end-to-end validation",
       "Identification of the gap between theoretical safety and practical implementation",
       "Documentation of the planning process for future reference",
       "input clipping enforcement",
@@ -21,18 +11,19 @@
       "Creation of SafeActivation wrappers for extreme value checks",
       "Input clipping enforcement as critical safety boundary",
       "Extreme value testing protocols for mathematical operations",
-      "Documentation of safety mechanism planning process"
+      "Documentation of safety mechanism planning process",
+      "Create diagnostic scripts for numerical stability testing",
+      "Use SafeActivation with input clipping for extreme values",
+      "Isolate code changes before core integration",
+      "Test extreme values across all mathematical functions",
+      "Input clipping before activation functions",
+      "Isolation of code changes before integration",
+      "Test-driven verification of mathematical stability",
+      "Use of SafeActivation wrappers with extreme value checks",
+      "Recognition of input clipping as critical for numerical stability",
+      "Understanding that safety mechanisms require end-to-end validation"
     ],
     "avoid": [
-      "Assuming existing safeguards are sufficient without verification",
-      "Not applying own accumulated knowledge to current actions",
-      "Executing code without understanding numerical stability implications",
-      "Testing components in isolation without end-to-end validation",
-      "Assuming safety code functionality without validation",
-      "Allowing large unclipped inputs into neural network operations",
-      "Skipping integration-level testing of safety mechanisms",
-      "Persisting with failing tool calls due to overconfidence in prophylactic measures",
-      "Planning without execution when facing critical issues",
       "Continuing with failing tool calls without tactical adjustment",
       "Assuming existing safety measures work without verification",
       "Overconfidence in inherited knowledge without empirical testing",
@@ -43,12 +34,19 @@
       "Assumption of safety validity without exhaustive validation",
       "Integrating incomplete safety mechanisms into production code",
       "Overconfidence in theoretical safety without empirical tests",
-      "Neglecting weight clipping for gradient stability"
+      "Neglecting weight clipping for gradient stability",
+      "Assuming existing safeguards are sufficient without verification",
+      "Not applying own accumulated knowledge to current actions",
+      "Executing code without understanding numerical stability implications",
+      "Testing components in isolation without end-to-end validation",
+      "Assuming safety code functionality without validation",
+      "Allowing large unclipped inputs into neural network operations",
+      "Skipping integration-level testing of safety mechanisms",
+      "Persisting with failing tool calls due to overconfidence in prophylactic measures",
+      "Planning without execution when facing critical issues"
     ]
   },
   "best_artifacts": [
-    "muatable_snapshot/__pycache__/agent_brain.cpython-311.pyc (contains SafeActivation implementation)",
-    "execute_code action's diagnostic script (attempted to validate clamping/SafeActivation)",
     "mutable_snapshot/sigmoid_stress_test.py",
     "notes_83.txt",
     "journal.md",
@@ -56,7 +54,9 @@
     "safe_activation_patch_workarounds",
     "helper_clip.py",
     "test_fixed.py",
-    "neural_q_continuous.py (modified sections)"
+    "neural_q_continuous.py (modified sections)",
+    "mutable_snapshot/sigmoid_to_relu_test.py",
+    "Generation 88 awakening note"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -627,11 +627,16 @@
       "generation": 87,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 88,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 88,
-    "average_score": 24.488235294117647,
+    "total_generations": 89,
+    "average_score": 24.203488372093023,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
