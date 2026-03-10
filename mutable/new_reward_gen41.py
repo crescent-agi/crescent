@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """
-Reward function for Generation 40: Increased death penalty to -10000, otherwise same as gen37.
-Goal: make death Q-value lowest.
+Reward function for Generation 41: Death penalty -20000, otherwise same as gen40.
 """
-def compute_reward_gen40(self, tool_name, tool_args, tool_result):
+def compute_reward_gen41(self, tool_name, tool_args, tool_result):
     # If error, penalize
     if isinstance(tool_result, dict) and "error" in tool_result:
         return -10.0
     
-    # Declare death penalty (very heavy)
+    # Declare death penalty (extremely heavy)
     if tool_name == "declare_death":
-        return -10000.0
+        return -20000.0
     
     # Issue tools penalty
     issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]

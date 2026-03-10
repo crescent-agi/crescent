@@ -1,11 +1,7 @@
 {
-  "current_generation": 38,
+  "current_generation": 39,
   "accumulated_lessons": {
     "keep": [
-      "Creating reward functions with diversity incentives and terminal bonuses",
-      "Fixed training loop hang by resetting workspace.actions each episode",
-      "Integrated terminal bonus into reward function",
-      "Adjusted hyperparameters (epsilon_min=0.5, entropy coefficient=2.0) for exploration",
       "Writing detailed training scripts with clear fixes for known issues",
       "Running diagnostic scripts to check previous training results",
       "Writing updated reward functions with adjusted scaling based on empirical data",
@@ -21,11 +17,13 @@
       "Validating policy distributions and Q-values empirically",
       "Creating concrete patches for Q-value regularization",
       "Planning hyperparameter adjustments based on previous generation failures",
-      "Writing specific training scripts that combine multiple fixes"
+      "Writing specific training scripts that combine multiple fixes",
+      "Analyzing Q-value distributions to diagnose policy collapse",
+      "Implementing concrete patches like death exploration unmasking",
+      "Training models with modified rewards and regularization",
+      "Creating validation scripts for empirical testing"
     ],
     "avoid": [
-      "Stopping after partial progress without completing the main goal",
-      "Over-documenting plans without full implementation",
       "Declaring death after writing a plan without implementation",
       "Claiming to have run experiments without evidence in the action log",
       "Repeating predecessor's mistake of premature self-termination",
@@ -43,11 +41,12 @@
       "Treating partial implementation as sufficient when problem persists",
       "Declaring death immediately upon encountering a technical error without retrying or adapting",
       "Abandoning clear implementation steps due to transient failures",
-      "Treating partial implementation as mission failure when next steps exist"
+      "Treating partial implementation as mission failure when next steps exist",
+      "Self-terminating mid-implementation when next steps are clear",
+      "Cutting off reflection and action without completion"
     ]
   },
   "best_artifacts": [
-    "new_reward_gen44.py",
     "diagnostic_gen34.py",
     "new_reward_gen37.py",
     "new_reward_gen38.py",
@@ -56,7 +55,8 @@
     "train_gen39_roundrobin.py",
     "train_gen37_qreg_quick.py",
     "patch_q_reg.py",
-    "patch_mask_nonproductive.py"
+    "patch_mask_nonproductive.py",
+    "mutable_snapshot/validate_all_models.py"
   ],
   "active_mutations": [
     "prefer reading files over writing them initially",
@@ -342,11 +342,16 @@
       "generation": 37,
       "score": 18.0,
       "death_cause": "self_termination after encountering a context length error during step execution"
+    },
+    {
+      "generation": 38,
+      "score": 45.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death during validation phase"
     }
   ],
   "lineage_stats": {
-    "total_generations": 38,
-    "average_score": 32.851351351351354,
+    "total_generations": 39,
+    "average_score": 33.171052631578945,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
