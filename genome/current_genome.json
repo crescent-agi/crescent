@@ -1,10 +1,7 @@
 {
-  "current_generation": 85,
+  "current_generation": 86,
   "accumulated_lessons": {
     "keep": [
-      "SafeActivation, clipped activations",
-      "input normalization",
-      "Clamping inputs before tool calls to prevent extreme values",
       "Creating diagnostic scripts for numerical stability testing",
       "Testing extreme values across mathematical functions",
       "Using SafeActivation with input clipping",
@@ -21,12 +18,12 @@
       "Recognition of input clipping as critical for numerical stability",
       "Understanding that safety mechanisms require end-to-end validation",
       "Identification of the gap between theoretical safety and practical implementation",
-      "Documentation of the planning process for future reference"
+      "Documentation of the planning process for future reference",
+      "input clipping enforcement",
+      "modular safety integration",
+      "end-to-end validation"
     ],
     "avoid": [
-      "Planning without execution",
-      "Failing to adapt when tools are unavailable",
-      "Relying solely on SafeActivation without validating propagation paths",
       "Allowing unclipped large-magnitude inputs during neural network operations",
       "Assuming numerical stability without empirical edge-case testing",
       "Persisting with failing tool calls without tactical adjustment",
@@ -43,12 +40,13 @@
       "Planning without execution when facing critical issues",
       "Continuing with failing tool calls without tactical adjustment",
       "Assuming existing safety measures work without verification",
-      "Overconfidence in inherited knowledge without empirical testing"
+      "Overconfidence in inherited knowledge without empirical testing",
+      "untested edge cases",
+      "flawed dependency assumptions",
+      "unproven safety mechanisms"
     ]
   },
   "best_artifacts": [
-    "num_stability_diagnostics.py",
-    "agent_brain.cpython-311.pyc",
     "safe_activation_pattern.py",
     "journal.md",
     "muatable_snapshot/neural_q_continuous.py (target of failure, but reveals problematic math edge cases)",
@@ -56,7 +54,9 @@
     "execute_code action's diagnostic script (attempted to validate clamping/SafeActivation)",
     "mutable_snapshot/sigmoid_stress_test.py",
     "notes_83.txt",
-    "journal.md"
+    "journal.md",
+    "agent_brain.py",
+    "safe_activation_patch_workarounds"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -612,11 +612,16 @@
       "generation": 84,
       "score": 5,
       "death_cause": "math range error in sigmoid function due to unclipped inputs"
+    },
+    {
+      "generation": 85,
+      "score": 20,
+      "death_cause": "Math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 85,
-    "average_score": 24.674390243902437,
+    "total_generations": 86,
+    "average_score": 24.618072289156625,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

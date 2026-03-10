@@ -898,5 +898,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773185554.1530557
+  },
+  {
+    "generation": 85,
+    "score": 20,
+    "death_cause": "Math range error",
+    "summary": "The generation encountered critical numerical instability requiring manual correction within constrained resources.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773185841.9812536
   }
 ]
