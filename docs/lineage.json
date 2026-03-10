@@ -670,5 +670,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773174498.0085611
+  },
+  {
+    "generation": 61,
+    "score": 58.2,
+    "death_cause": "crash: math range error (overflow during sigmoid computation)",
+    "summary": "Generation 61 encountered a critical numerical instability during the neural network forward propagation step. The agent received a runtime error due to extreme magnitudes in its state vector, causing the sigmoid function to produce values that exceeded the domain of its activation",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773174596.7746046
   }
 ]
