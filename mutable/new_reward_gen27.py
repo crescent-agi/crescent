@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Reward function for Generation 27: Equalize extra rewards and stronger immediate penalty.
-Goal: make Q-values more balanced across productive tools.
+Reward function for Generation 27: Equal extra rewards across productive tools.
+Goal: make Q-values more balanced to prevent deterministic collapse.
 """
 def compute_reward_gen27(self, tool_name, tool_args, tool_result):
     # If error, penalize
@@ -36,13 +36,13 @@ def compute_reward_gen27(self, tool_name, tool_args, tool_result):
     
     # Extra rewards per tool - equalized
     if tool_name == "execute_code":
-        reward += 30.0  # reduced from 45
+        reward += 10.0  # reduced from 45
     elif tool_name == "modify_self":
-        reward += 30.0   # keep
+        reward += 10.0  # reduced from 30
     elif tool_name == "write_file":
-        reward += 20.0   # increased from 5
+        reward += 10.0  # increased from 5
     elif tool_name == "read_file":
-        reward += 20.0   # increased from 5
+        reward += 10.0  # increased from 5
     
     # Track episode usage
     if not hasattr(self, 'episode_tool_counts'):
@@ -52,30 +52,37 @@ def compute_reward_gen27(self, tool_name, tool_args, tool_result):
     # Immediate overuse penalty: quadratic penalty for using same tool multiple times in episode
     if tool_name in productive_tools:
         count = self.episode_tool_counts[tool_name]
-        # Penalty starts after first use, increases quadratically with stronger scaling
+        # Penalty starts after first use, increases quadratically
         if count > 1:
-            penalty = (count - 1) ** 2 * 20.0  # increased scaling factor 20
+            penalty = (count - 1) ** 2 * 10.0  # scaling factor 10
             reward -= penalty
+            # Cap penalty at -500 to avoid extreme
+            if penalty > 500:
+                reward += (penalty - 500)  # adjust
     
     # Global proportion penalty (heavy) - only after enough global steps
     if not hasattr(self, 'global_tool_counts'):
         self.global_tool_counts = {tool: 0 for tool in productive_tools}
+    # Compute proportion BEFORE increment for penalty
     total_global_before = sum(self.global_tool_counts.values())
+    # Increment after computing proportion for penalty (but deficit bonus uses after)
+    # We'll store previous count
     prev_count = self.global_tool_counts.get(tool_name, 0)
     self.global_tool_counts[tool_name] = prev_count + 1
     total_global_after = total_global_before + 1
     
     if tool_name in productive_tools:
-        # Apply overuse penalty only if total_global_before >= 10
-        if total_global_before >= 10:
+        # Apply overuse penalty only if total_global_before >= 20 (enough steps)
+        if total_global_before >= 20:
             if total_global_before > 0:
                 proportion_before = prev_count / total_global_before
                 if proportion_before > 0.35:
                     excess = proportion_before - 0.35
                     penalty = excess * 5000.0
                     reward -= penalty
-    
-        # Global deficit bonus (based on proportion before increment)
+        
+        # Global deficit bonus (based on proportion before increment? but we want to encourage using underused)
+        # Use proportion before increment to decide bonus
         if total_global_before > 0:
             proportion_before = prev_count / total_global_before
             target = 0.25
@@ -88,7 +95,7 @@ def compute_reward_gen27(self, tool_name, tool_args, tool_result):
     
     # Recency penalty (small)
     if hasattr(self, 'last_tool') and tool_name == self.last_tool:
-        reward -= 1.0  # increased
+        reward -= 0.5
     self.last_tool = tool_name
     
     # Diversity bonus for using a tool not used recently
@@ -96,7 +103,7 @@ def compute_reward_gen27(self, tool_name, tool_args, tool_result):
         self.recent_tools = []
     same_count = self.recent_tools.count(tool_name)
     if same_count == 0 and tool_name in productive_tools:
-        reward += 10.0  # increased bonus
+        reward += 5.0
     self.recent_tools.append(tool_name)
     if len(self.recent_tools) > 10:
         self.recent_tools.pop(0)

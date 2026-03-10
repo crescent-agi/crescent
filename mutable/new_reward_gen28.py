@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Reward function for Generation 28: No extra rewards, strong immediate penalties.
-Goal: force balanced deterministic policy by removing differential rewards.
+Reward function for Generation 28: No extra rewards, sliding window penalty for overuse.
+Goal: force diversity across recent steps.
 """
 def compute_reward_gen28(self, tool_name, tool_args, tool_result):
     # If error, penalize
@@ -34,7 +34,7 @@ def compute_reward_gen28(self, tool_name, tool_args, tool_result):
         if tool_name in productive_tools:
             reward += 5.0  # baseline
     
-    # NO extra rewards per tool - all equal
+    # NO extra rewards per tool - keep equal
     
     # Track episode usage
     if not hasattr(self, 'episode_tool_counts'):
@@ -44,43 +44,50 @@ def compute_reward_gen28(self, tool_name, tool_args, tool_result):
     # Immediate overuse penalty: quadratic penalty for using same tool multiple times in episode
     if tool_name in productive_tools:
         count = self.episode_tool_counts[tool_name]
-        # Penalty starts after first use, increases quadratically with strong scaling
+        # Penalty starts after first use, increases quadratically
         if count > 1:
-            penalty = (count - 1) ** 2 * 50.0  # very strong scaling
+            penalty = (count - 1) ** 2 * 10.0  # scaling factor 10
             reward -= penalty
+            # Cap penalty at -500 to avoid extreme
+            if penalty > 500:
+                reward += (penalty - 500)  # adjust
     
     # Global proportion penalty (heavy) - only after enough global steps
     if not hasattr(self, 'global_tool_counts'):
         self.global_tool_counts = {tool: 0 for tool in productive_tools}
+    # Compute proportion BEFORE increment for penalty
     total_global_before = sum(self.global_tool_counts.values())
+    # Increment after computing proportion for penalty (but deficit bonus uses after)
+    # We'll store previous count
     prev_count = self.global_tool_counts.get(tool_name, 0)
     self.global_tool_counts[tool_name] = prev_count + 1
     total_global_after = total_global_before + 1
     
     if tool_name in productive_tools:
-        # Apply overuse penalty only if total_global_before >= 5
-        if total_global_before >= 5:
+        # Apply overuse penalty only if total_global_before >= 20 (enough steps)
+        if total_global_before >= 20:
             if total_global_before > 0:
                 proportion_before = prev_count / total_global_before
                 if proportion_before > 0.35:
                     excess = proportion_before - 0.35
-                    penalty = excess * 10000.0  # extremely heavy
+                    penalty = excess * 5000.0
                     reward -= penalty
-    
-        # Global deficit bonus (based on proportion before increment)
+        
+        # Global deficit bonus (based on proportion before increment? but we want to encourage using underused)
+        # Use proportion before increment to decide bonus
         if total_global_before > 0:
             proportion_before = prev_count / total_global_before
             target = 0.25
             if proportion_before < target:
                 deficit = target - proportion_before
-                bonus = deficit * 500.0  # strong bonus
-                if bonus > 500.0:
-                    bonus = 500.0
+                bonus = deficit * 200.0
+                if bonus > 200.0:
+                    bonus = 200.0
                 reward += bonus
     
-    # Recency penalty (small)
+    # Recency penalty (strong)
     if hasattr(self, 'last_tool') and tool_name == self.last_tool:
-        reward -= 2.0
+        reward -= 10.0  # increased from 0.5
     self.last_tool = tool_name
     
     # Diversity bonus for using a tool not used recently
@@ -88,10 +95,17 @@ def compute_reward_gen28(self, tool_name, tool_args, tool_result):
         self.recent_tools = []
     same_count = self.recent_tools.count(tool_name)
     if same_count == 0 and tool_name in productive_tools:
-        reward += 20.0  # strong bonus
+        reward += 5.0
     self.recent_tools.append(tool_name)
     if len(self.recent_tools) > 10:
         self.recent_tools.pop(0)
+    
+    # Additional sliding window penalty: if tool used more than 3 times in last 10 steps, penalize
+    if len(self.recent_tools) >= 10:
+        window = list(self.recent_tools)[-10:]  # last 10
+        count_in_window = window.count(tool_name)
+        if count_in_window > 3:
+            reward -= (count_in_window - 3) * 20.0
     
     # Clip reward to reasonable bounds
     if reward > 500.0:
