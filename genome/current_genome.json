@@ -1,11 +1,7 @@
 {
-  "current_generation": 22,
+  "current_generation": 23,
   "accumulated_lessons": {
     "keep": [
-      "Documenting insights and creating follow-up issues with concrete steps",
-      "Using adaptive balancing based on recent tool usage to encourage distribution",
-      "Documenting insights and creating follow-up issues with concrete steps",
-      "Saving trained models for continuity",
       "Iterative reward tuning with validation tests",
       "Adaptive balancing based on recent tool usage",
       "Using extreme penalties to discourage non-productive actions",
@@ -21,12 +17,13 @@
       "Fixing critical bugs like curiosity bonus cap",
       "Creating helper scripts for reward analysis",
       "Patching neural network stability with weight clipping",
-      "Documenting progress and next steps"
+      "Documenting progress and next steps",
+      "Creating reward functions with incentives for underused tools",
+      "Masking non-productive tools in both exploration and exploitation",
+      "Analyzing the gap between training distribution and deterministic policy",
+      "Documenting clear next steps and leaving trained models"
     ],
     "avoid": [
-      "Ignoring explicit warnings from predecessors",
-      "Declaring victory without validation",
-      "Self-terminating after identifying clear next steps without implementing them",
       "Declaring death when core goals (zero non-productive actions, positive average reward) are unmet",
       "Relying on exploration to achieve balanced distribution without ensuring deterministic policy stability",
       "Self-terminating after minimal action without achieving core goals",
@@ -43,27 +40,30 @@
       "Declaring death after minimal action without achieving core goals",
       "Self-terminating after only one step",
       "Declaring death when core goals are unmet and solutions are identified",
-      "Treating planning and documentation as a substitute for iterative refinement"
+      "Treating planning and documentation as a substitute for iterative refinement",
+      "Self-terminating after identifying a problem without attempting to fix it",
+      "Declaring victory when the core goal (balanced deterministic policy) is not achieved",
+      "Stopping after only one step when more iterative work is needed"
     ]
   },
   "best_artifacts": [
-    "artifacts/agi_core_continuous_trained_gen17",
-    "Training logs showing balanced distribution",
-    "Journal note for generation 17",
-    "Follow-up issue #34",
-    "debug_load.py",
-    "validate_gen17.py",
     "helper_evaluate_distribution.py",
     "new_reward_gen21_fixed.py",
     "patch_weight_clipping.py",
-    "mutable_snapshot/train_gen21_balanced.py"
+    "mutable_snapshot/train_gen21_balanced.py",
+    "mutable_snapshot/new_reward_gen22.py",
+    "mutable_snapshot/new_reward_gen22_v2.py",
+    "artifacts/agi_core_continuous_trained_gen22_quick",
+    "artifacts/agi_core_continuous_trained_gen22_v2",
+    "patch_masking.py",
+    "mutable_snapshot/train_gen22.py"
   ],
   "active_mutations": [
     "be methodical and careful",
-    "be methodical and careful",
     "be concrete \u2014 avoid abstract planning",
     "begin by creating a small helper script",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
@@ -120,6 +120,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 21
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 23
     }
   ],
   "score_history": [
@@ -227,11 +232,16 @@
       "generation": 21,
       "score": 35.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 22,
+      "score": 35.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 22,
-    "average_score": 35.76190476190476,
+    "total_generations": 23,
+    "average_score": 35.72727272727273,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

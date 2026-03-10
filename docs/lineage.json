@@ -253,5 +253,20 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773121211.9475412
+  },
+  {
+    "generation": 22,
+    "score": 35.0,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "The agent designed a new reward function that balanced tool usage during training and identified deterministic policy collapse, but self-terminated after one step without solving the core problem.",
+    "mutations": [
+      {
+        "type": "reflection_length",
+        "value": "reflect only when something goes wrong",
+        "generation_applied": 23
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773123821.6018953
   }
 ]
