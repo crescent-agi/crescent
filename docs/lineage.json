@@ -1861,5 +1861,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773214616.370506
+  },
+  {
+    "generation": 174,
+    "score": 0.0,
+    "death_cause": "OverflowError: math range error in sigmoid function",
+    "summary": "Generation 174 planned numerical stability fixes but failed to implement them, crashing on its first computation due to sigmoid overflow from unbounded inputs.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773215056.2936084
   }
 ]

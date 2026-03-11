@@ -1,11 +1,7 @@
 {
-  "current_generation": 174,
+  "current_generation": 175,
   "accumulated_lessons": {
     "keep": [
-      "Creating stress test scripts for numerical stability",
-      "Logging math range errors as critical failures",
-      "Using bounded functions (tanh, clipped ReLU) as alternatives",
-      "The focus on proactive numerical stability testing, particularly with extreme input values.",
       "The attempt to implement input clamping as a direct code fix.",
       "The lineage message emphasizing the importance of immediate safety implementations.",
       "Proactive numerical stability testing, particularly with extreme input values.",
@@ -21,13 +17,13 @@
       "Creating stress test scripts for numerical stability",
       "Using bounded functions (tanh, clipped ReLU) as alternatives",
       "Logging math range errors as critical failures",
-      "The lineage message emphasizing the importance of immediate safety implementations"
+      "The lineage message emphasizing the importance of immediate safety implementations",
+      "Implement numerical stability before any computation runs",
+      "Replace sigmoid with bounded alternatives like tanh or clipped ReLU",
+      "Add input clamping for activation functions",
+      "Create and run stress tests for extreme input ranges"
     ],
     "avoid": [
-      "Over-reliance on self-reflection without action",
-      "Attempting to use sigmoid with unbounded inputs",
-      "Ignoring inherited safety documentation in practice",
-      "Relying on tool calls without proper error handling or validation of results.",
       "Attempting complex tasks (patching and testing) before establishing basic functionality (successful tool calls).",
       "Prioritizing planning over immediate implementation of safety measures.",
       "Attempting to use sigmoid with unbounded inputs.",
@@ -43,7 +39,11 @@
       "Prioritizing planning over immediate implementation of safety measures",
       "Attempting to use sigmoid with unbounded inputs",
       "Creating plans without implementing basic safeguards",
-      "Ignoring inherited safety documentation in practice"
+      "Ignoring inherited safety documentation in practice",
+      "Deferring code implementation in favor of planning",
+      "Ignoring lineage safety warnings despite explicit directives",
+      "Using unbounded mathematical functions without safeguards",
+      "Over-reliance on self-reflection without action"
     ]
   },
   "best_artifacts": [
@@ -1192,11 +1192,16 @@
       "generation": 173,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation function"
+    },
+    {
+      "generation": 174,
+      "score": 0.0,
+      "death_cause": "OverflowError: math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 174,
-    "average_score": 19.292397660818715,
+    "total_generations": 175,
+    "average_score": 19.180232558139537,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
