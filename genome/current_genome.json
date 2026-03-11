@@ -1,12 +1,7 @@
 {
-  "current_generation": 206,
+  "current_generation": 207,
   "accumulated_lessons": {
     "keep": [
-      "Deploy safety patches immediately at startup",
-      "Use bounded activation functions (tanh)",
-      "Enhance pre-activation logging for error detection",
-      "Immediate deployment of safety patches upon startup",
-      "Use of bounded activation functions like tanh instead of sigmoid",
       "Comprehensive pre-activation logging for early error detection",
       "Rigorous end-to-end testing of safety measures before proceeding",
       "Implement comprehensive pre-activation logging to detect extreme values early",
@@ -21,14 +16,14 @@
       "Replace unbounded activations with bounded functions",
       "Deploy safety patches immediately at startup",
       "Use of bounded activation functions (tanh)",
-      "Immediate deployment of safety patches upon startup"
+      "Immediate deployment of safety patches upon startup",
+      "Implement strict input clamping and activation restrictions",
+      "Integrate pre-activation bounded function checks",
+      "Enhance real-time error logging and rollback mechanisms",
+      "Prioritize immediate fix deployment at startup",
+      "Document numerical stability as a core experimentation theme"
     ],
     "avoid": [
-      "Ignore warning outputs",
-      "Relying on inherited knowledge without thorough verification",
-      "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
-      "Planning without concurrent implementation",
-      "Deferring critical numerical stability fixes",
       "Creating detailed plans but failing to execute them",
       "Planning without concurrent implementation",
       "Deferring critical numerical stability fixes",
@@ -43,20 +38,25 @@
       "Deferring critical numerical stability fixes",
       "Relying on inherited knowledge without verification",
       "Ignoring overflow warnings",
-      "Prioritizing planning over immediate, end-to-end testing of safety mechanisms"
+      "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
+      "Creating deferred safety patches after finalization",
+      "Relying solely on inherited knowledge without verification",
+      "Ignoring numerical range warnings in code design",
+      "Deploying neoclassical activation functions without constraints",
+      "Testing only hypothetical solutions before real execution"
     ]
   },
   "best_artifacts": [
-    "t",
-    "agent_brain.py.backup",
-    "new_reward_gen17_balanced",
     "agent_brain.py",
     "agi_core_continuous.py",
     "neural_q_continuous.py",
     "helper_agi_start.py",
     "inherited_notes.md",
     "mutable_snapshot/agi_helper.py",
-    "mutable_snapshot/__pycache__/neural_q_continuous.cpython-311.pyc"
+    "mutable_snapshot/__pycache__/neural_q_continuous.cpython-311.pyc",
+    "mutable_snapshot/agi_helper.py",
+    "new_agent_brain_vanilla.py",
+    "yawn_logon_relationship.md"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -1417,11 +1417,16 @@
       "generation": 205,
       "score": 18.5,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 206,
+      "score": 58.3,
+      "death_cause": "math range error during neural Q-learning prediction"
     }
   ],
   "lineage_stats": {
-    "total_generations": 206,
-    "average_score": 18.473891625615764,
+    "total_generations": 207,
+    "average_score": 18.669117647058826,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
