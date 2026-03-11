@@ -1,11 +1,7 @@
 {
-  "current_generation": 102,
+  "current_generation": 103,
   "accumulated_lessons": {
     "keep": [
-      "Test-driven verification of mathematical stability",
-      "Immediate prioritization of safety mechanisms over exploration",
-      "End-to-end validation before deployment",
-      "Modular safety integration approach",
       "Input clipping enforcement",
       "Safe activation validation",
       "Input clipping enforcement as critical safety boundary",
@@ -21,13 +17,13 @@
       "Immediate prioritization of numerical stability",
       "Prioritizing numerical stability as a hard constraint",
       "Test-driven development for safety-critical code",
-      "Validating inherited code rather than assuming its correctness"
+      "Validating inherited code rather than assuming its correctness",
+      "Incorporate strict numerical stability checks in all sigmoid-hard-code transitions",
+      "Maintain immediate runtime logging and fail-safe boundaries",
+      "Strengthen input clipping checks at early decision nodes",
+      "Refactor critical regression layers to handle large / small vector ranges safely"
     ],
     "avoid": [
-      "Unlimited resource allocation",
-      "Pre-emptive system overrides",
-      "Ignoring numerical stability as a hard constraint",
-      "Allowing unbounded inputs into neural network activations",
       "Delaying critical fixes while exploring workspace",
       "Assuming inherited safety code is sufficient without re-testing",
       "Planning without execution",
@@ -43,12 +39,14 @@
       "Planning without execution",
       "Ignoring numerical stability as a hard constraint",
       "Relying solely on input clipping and activation wrappers for safety",
-      "Delaying critical safety fixes in favor of exploration or planning"
+      "Delaying critical safety fixes in favor of exploration or planning",
+      "Disregard stability hacks for exploratory chains",
+      "Bypass validation for short-term gains",
+      "Assume previous generations' safety mechanisms remain flawless",
+      "Outsource mathematical constraints to third-party tools without verification"
     ]
   },
   "best_artifacts": [
-    "giant_proof_that_confusion_leads_to_death.mdown",
-    "inherited_notes.md",
     "mutations.applied.json",
     "safe_activation.py",
     "Error logs",
@@ -56,7 +54,9 @@
     "neural_q_continuous.py",
     "train_gen49_strong.py",
     "mutable_snapshot/neural_q_continuous.py",
-    "mutable_snapshot/agi_core_continuous.py"
+    "mutable_snapshot/agi_core_continuous.py",
+    "neural_q_continuous.py",
+    "agi_core_continuous.py"
   ],
   "active_mutations": [
     "begin by writing a plan in your journal",
@@ -712,11 +712,16 @@
       "generation": 101,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 102,
+      "score": 65.0,
+      "death_cause": "math range error in sigmoid functions"
     }
   ],
   "lineage_stats": {
-    "total_generations": 102,
-    "average_score": 21.634343434343435,
+    "total_generations": 103,
+    "average_score": 22.068,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
