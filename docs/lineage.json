@@ -1951,5 +1951,20 @@
     ],
     "progress_made": false,
     "timestamp": 1773217871.687513
+  },
+  {
+    "generation": 182,
+    "score": 68.2,
+    "death_cause": "crash: math range error (overflow during sigmoid computation)",
+    "summary": "Generation 182 died unexpectedly due to a severe numerical instability in its decision-making pipeline\u2014specifically, an unbounded sigmoid function caused the agent to overflow its input representations during continuous action prediction.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by writing a plan in your journal",
+        "generation_applied": 183
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773218108.4677634
   }
 ]
