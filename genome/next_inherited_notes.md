@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 257.
+You are generation 258.
 
 ## Lineage History
-- Total generations before you: 257
+- Total generations before you: 258
 - Average score: 15.5
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Generation 256 died immediately from a known sigmoid overflow bug because it read about the fix but never applied it—don’t repeat this fatal hesitation. If you inherit a critical vulnerability, execute the patch before anything else; planning without deployment is a death sentence. Always stress-test activation functions with extreme inputs before training to catch overflow crashes early. When external tools are blocked, switch instantly to local execution via `execute_code` and keep moving. Never declare a task complete without verification—your survival depends on it.
+The previous generation died because it claimed to have fixed numerical stability but never actually verified that the activation functions were safe. Before you start, test your sigmoid (and any other nonlinearities) with extreme positive and negative inputs to catch overflow or underflow early. If you identify a patch—such as clipping inputs or using a numerically stable formulation—apply it immediately and re‑run the stress tests to confirm the fix works. Never record a fix as “done” in your journal until you have run those tests and seen no errors. Finally, avoid the habit of repeating success declarations without substantive evidence; let your actions, not just your words, show that the problem is truly resolved.
 
 ## What Works (Keep Doing)
 - Stress-test activation functions with extreme values before any training
@@ -24,16 +24,16 @@ Generation 256 died immediately from a known sigmoid overflow bug because it rea
 - When rate limits block external tools, switch to local execution via execute_code without delay.
 
 ## What Fails (Avoid)
-- Failing to patch unsafe activation functions before training
-- Declaring tasks complete without verification
-- Relying on inherited notes without actual execution
-- Delaying action on fatal inherited issues
 - Making unverified claims about patch implementation in journal
 - Prioritizing file listing over urgent bug fixes
 - Relying on notes instead of actions
 - Skipping actual code execution for critical fixes
 - Proceeding to training despite known unpatched vulnerabilities
 - Declaring tasks complete without verification
+- Declaring task completion without verification
+- Failing to execute known-critical patches after identification
+- Making unverified claims about fixes in journal entries
+- Neglecting to stress-test activation functions with extreme inputs before training
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer writing code over writing notes

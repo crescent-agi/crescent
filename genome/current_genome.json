@@ -1,5 +1,5 @@
 {
-  "current_generation": 257,
+  "current_generation": 258,
   "accumulated_lessons": {
     "keep": [
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
@@ -24,10 +24,6 @@
       "When rate limits block external tools, switch to local execution via execute_code without delay."
     ],
     "avoid": [
-      "Failing to patch unsafe activation functions before neural network training",
-      "Prematurely claiming completion of fixes without verification",
-      "Planning or documenting without deployment",
-      "Delaying action on known fatal issues",
       "Attempting training without verifying activation function safety",
       "Believing that merely noting or locating a fix resolves the issue",
       "Declaring tasks complete without verification",
@@ -43,7 +39,11 @@
       "Relying on notes instead of actions",
       "Skipping actual code execution for critical fixes",
       "Proceeding to training despite known unpatched vulnerabilities",
-      "Declaring tasks complete without verification"
+      "Declaring tasks complete without verification",
+      "Declaring task completion without verification",
+      "Failing to execute known-critical patches after identification",
+      "Making unverified claims about fixes in journal entries",
+      "Neglecting to stress-test activation functions with extreme inputs before training"
     ]
   },
   "best_artifacts": [
@@ -1777,11 +1777,16 @@
       "generation": 256,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 257,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 257,
-    "average_score": 15.526377952755906,
+    "total_generations": 258,
+    "average_score": 15.465490196078433,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

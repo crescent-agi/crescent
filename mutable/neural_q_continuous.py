@@ -4,72 +4,10 @@ Neural Q-Learning Agent with Continuous State Input (NUMERICALLY STABLE)
 ================================================================
 Patched to prevent overflow errors.
 """
-import 
+import random
+import numpy as np
 
 from safe_activation_fixed import SafeActivation
-
-numpy as np
-import random
-
-class SafeActivation:
-    """Safe activation functions with input clamping supporting both scalars and numpy arrays."""
-    CLAMP_MIN = -100.0
-    CLAMP_MAX = 100.0
-    
-    @staticmethod
-    def clamp(x):
-        """Clamp input to prevent overflow. Works with scalars and numpy arrays."""
-        if isinstance(x, np.ndarray):
-            return np.clip(x, SafeActivation.CLAMP_MIN, SafeActivation.CLAMP_MAX)
-        elif isinstance(x, list):
-            # For list, clamp each element
-            return [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, val)) for val in x]
-        else:
-            # scalar
-            return max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-    
-    @staticmethod
-    def sigmoid(x):
-        """Numerically stable sigmoid. Works with scalars and numpy arrays."""
-        x = SafeActivation.clamp(x)
-        if isinstance(x, np.ndarray):
-            # Use numpy's vectorized sigmoid; after clamping it's safe
-            return 1.0 / (1.0 + np.exp(-x))
-        else:
-            # scalar version
-            if x >= 0:
-                z = np.exp(-x)
-                return 1.0 / (1.0 + z)
-            else:
-                z = np.exp(x)
-                return z / (1.0 + z)
-    
-    @staticmethod
-    def tanh(x):
-        """Numerically stable tanh. Works with scalars and numpy arrays."""
-        x = SafeActivation.clamp(x)
-        if isinstance(x, np.ndarray):
-            # numpy's tanh is numerically stable for typical ranges
-            return np.tanh(x)
-        else:
-            # scalar version
-            if x >= 0:
-                z = np.exp(-2.0 * x)
-                return (1.0 - z) / (1.0 + z)
-            else:
-                z = np.exp(2.0 * x)
-                return (z - 1.0) / (z + 1.0)
-    
-    @staticmethod
-    def tanh_derivative(activation):
-        """Derivative of tanh given activation value (scalar or array)."""
-        return 1.0 - activation * activation
-    
-    @staticmethod
-    def sigmoid_derivative(activation):
-        """Derivative of sigmoid given activation value (scalar or array)."""
-        return activation * (1.0 - activation)
-
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -92,10 +30,11 @@ class NeuralNetwork:
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
         # Clamp input to prevent overflow
-        x_clamped = SafeActivation.clamp(inputs)
+        sa = SafeActivation()
+        x_clamped = sa._clamp(inputs)
         # Hidden layer
         z1 = np.dot(x_clamped, self.W1) + self.b1
-        hidden = SafeActivation.tanh(z1)
+        hidden = sa.tanh(z1)
         # Output layer (linear activation for Q-values)
         output = np.dot(hidden, self.W2) + self.b2
         return output, hidden
@@ -109,7 +48,8 @@ class NeuralNetwork:
         output_error = output - target
         
         # Compute hidden layer error (propagated back)
-        hidden_error = np.dot(output_error, self.W2.T) * SafeActivation.tanh_derivative(hidden)  # tanh derivative
+        sa = SafeActivation()
+        hidden_error = np.dot(output_error, self.W2.T) * sa.tanh_derivative(hidden)  # tanh derivative
         
         # Update weights and biases
         # Output layer
@@ -236,29 +176,6 @@ class NeuralQLearningAgentContinuous:
     def set_epsilon(self, epsilon):
         """Manually set epsilon (e.g., for testing)."""
         self.epsilon = max(self.epsilon_min, min(epsilon, self.epsilon_start))
-    
-    def _process_state(self, state):
-        """
-        Convert state to feature vector.
-        If state is already a list of floats, return it.
-        If state is integer (discrete), convert to one-hot (for compatibility).
-        """
-        if isinstance(state, list) and len(state) == self.feature_dim:
-            return state
-        elif isinstance(state, int):
-            # fallback: one-hot encoding (requires feature_dim == state_size)
-            vec = [0.0] * self.feature_dim
-            if 0 <= state < self.feature_dim:
-                vec[state] = 1.0
-            else:
-                vec[state % self.feature_dim] = 1.0
-            return vec
-        else:
-            # try to treat as iterable
-            try:
-                return list(state)[:self.feature_dim]
-            except:
-                raise ValueError(f"Cannot convert state {type(state)} to feature vector")
     
     def save(self, filepath):
         """Save agent."""
