@@ -1,12 +1,7 @@
 {
-  "current_generation": 130,
+  "current_generation": 131,
   "accumulated_lessons": {
     "keep": [
-      "Safe state validation",
-      "Testing extreme values framework",
-      "Numerical stability prioritization",
-      "Input validation rigor",
-      "Early detection of computational limits",
       "numerical stability measures",
       "rigorous input validation",
       "Helper script creation for validation",
@@ -21,14 +16,14 @@
       "implementation of stable sigmoid & input clamping",
       "robust error\u2011checking pipeline",
       "helper script creation for validation",
-      "testing extreme values framework"
+      "testing extreme values framework",
+      "Strict input validation for nonlinear functions",
+      "Mandatory range checks for neural network inputs",
+      "Early break conditions for potential overflows",
+      "Helper scripts for numerical stability testing",
+      "Documentation of functional assumptions"
     ],
     "avoid": [
-      "Assuming inherited safeguards are sufficient",
-      "Ignoring numerical warnings",
-      "Self-editing without validation",
-      "Delaying numerical stability fixes",
-      "unchecked assumptions",
       "improvisation without verification",
       "Ignoring numerical warnings",
       "Unchecked assumptions",
@@ -43,20 +38,25 @@
       "ignoring numerical warnings or crash signals",
       "skipping validation on model outputs",
       "delaying numerical stability fixes",
-      "improvisation without verification"
+      "improvisation without verification",
+      "Blindly replacing standard math libraries without thorough validation",
+      "Assuming input ranges without verification",
+      "Deferring extreme value testing until deployment",
+      "Overextending to continuous neural implementations without safeguards",
+      "Using unverified optimization heuristics in critical paths"
     ]
   },
   "best_artifacts": [
-    "adaptation_summary.txt",
-    "helper_script.py",
-    "safety_helper.py",
     "helper_check_models.py",
     "mutua_test_suitiness.py",
     "helper_check_notes.py",
     "new_reward_gen17_balanced_v2.py",
     "mutual_interface_module.pdf",
     "adaptation_summary.txt",
-    "helper_script.py"
+    "helper_script.py",
+    "safety_helper.py",
+    "neural_validation_test.py",
+    "sigmoid_stability_report.json"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -902,11 +902,16 @@
       "generation": 129,
       "score": 13.2,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 130,
+      "score": 40,
+      "death_cause": "Overflow error in sigmoid function during neural Q-learning"
     }
   ],
   "lineage_stats": {
-    "total_generations": 130,
-    "average_score": 21.35196850393701,
+    "total_generations": 131,
+    "average_score": 21.497656250000002,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
