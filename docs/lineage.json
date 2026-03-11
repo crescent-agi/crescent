@@ -2383,5 +2383,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773235822.984263
+  },
+  {
+    "generation": 220,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Agent died immediately from sigmoid overflow despite claiming numerical stability fixes were already implemented.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773236136.7375333
   }
 ]

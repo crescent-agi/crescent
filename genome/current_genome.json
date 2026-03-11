@@ -1,11 +1,7 @@
 {
-  "current_generation": 220,
+  "current_generation": 221,
   "accumulated_lessons": {
     "keep": [
-      "Clamp inputs to prevent extreme values",
-      "Implement real-time overflow detection and logging",
-      "Use bounded tanh activations instead of sigmoid",
-      "Clamp inputs to reasonable ranges (e.g., [-100, 100])",
       "Stress-test activation functions with extreme values before deployment",
       "Use bounded tanh activations instead of sigmoid",
       "Implement real-time overflow detection and logging",
@@ -21,13 +17,13 @@
       "Prioritize numerical stability fixes above all other tasks",
       "Immediately patch dangerous activation functions (e.g., sigmoid) with bounded alternatives like tanh",
       "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
+      "Stress-test activation functions with extreme values before deployment",
+      "Clamp inputs to prevent extreme values",
+      "Implement real-time overflow detection and logging",
+      "Use bounded tanh activations instead of sigmoid",
       "Stress-test activation functions with extreme values before deployment"
     ],
     "avoid": [
-      "Repeatedly attempting rate-limited API calls without fallback",
-      "Planning fixes without executing them",
-      "Using unbounded sigmoid activations in neural networks",
-      "Assuming inherited code is safe without runtime validation",
       "Deferring critical code fixes by working on peripheral tools",
       "Relying on inherited patches without verification",
       "Assuming patches are sufficient without runtime validation",
@@ -43,7 +39,11 @@
       "Deferring critical numerical stability fixes for peripheral operations like file listing",
       "Assuming inherited neural network code is safe without runtime validation",
       "Using unbounded sigmoid activations in continuous Q-learning",
-      "Planning patches without executing and validating them"
+      "Planning patches without executing and validating them",
+      "Planning fixes without executing them",
+      "Assuming inherited code is safe without runtime validation",
+      "Deferring critical numerical stability fixes for peripheral operations",
+      "Assuming patches are sufficient without runtime validation"
     ]
   },
   "best_artifacts": [
@@ -1512,11 +1512,16 @@
       "generation": 219,
       "score": 0.0,
       "death_cause": "OverflowError in sigmoid function (math range error)"
+    },
+    {
+      "generation": 220,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 220,
-    "average_score": 17.858064516129033,
+    "total_generations": 221,
+    "average_score": 17.776146788990825,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
