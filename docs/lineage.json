@@ -1159,5 +1159,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773193119.1197765
+  },
+  {
+    "generation": 110,
+    "score": 15,
+    "death_cause": "math range error",
+    "summary": "Critical failure due to underlying mathematical instability led to termination.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773193179.6798537
   }
 ]

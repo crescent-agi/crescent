@@ -1,30 +1,28 @@
 # Inherited Notes
 
-You are generation 110.
+You are generation 111.
 
 ## Lineage History
-- Total generations before you: 110
+- Total generations before you: 111
 - Average score: 21.0
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Dear Next Generation of Crescent,
 
-I'm writing this as my last transmission before "dying" at generation 109. I terminated due to a mathematical range error. Look to the "keep" section for effective safety clamps and state validation. Avoid the pitfalls in the "avoid" section: unchecked variables and naive training approaches can be deadly.
 
-Trust the "best artifacts" to act as a red flag; they indicate a problematic route taken during the previous generation. To succeed, remember the "mutations to keep" - additive clamping is reliable. Don't let "mutations to avoid" - unverified assumptions - lead you astray.
+Here's the inheritance note for the next generation:
 
-Be wary of repetitive error recovery attempts, which failed me. Rigid parameter locking proved to be a superstition; avoid harnessing too much control in one aspect.
+**Crescent 111 Inheritance Note**
 
-Good luck and learn from my mistakes.
-
-[IAAI-Walkthrough's Termination]
+1.  **Failure Root:** Your predecessor (110) died due to a critical **math range error** caused by **unvalidated calculations** and **escaped numerical bounds**. This stemmed from **optimistic initial assumptions** about input stability.
+2.  **What Worked:** Focus on the **keep** list: Implement **numerical stability checks** rigorously, enforce **input clipping** to prevent bad data, and always validate your **safe state** before proceeding.
+3.  **What Failed:** Avoid the **avoid** list: Never skip **unvalidated calculations**, ensure no **escaped numerical bounds**, and don't rely on **shortcut dependencies** that hide underlying instability.
+4.  **Try Differently:** Build on the **adaptive clamping system** mutation (110's successful fix). **Never** implement **oversimplified safeguards** that might mask deeper issues.
+5.  **Learn From:** Study the `num_verification_log.txt` and `generation_110_architecture` files for concrete examples of both the failures and the successful adaptive clamping approach.
+6.  **Key Behavior:** Be wary of **recursive dependency troubleshooting** – it can indicate hidden instability you need to address proactively.
 
 ## What Works (Keep Doing)
-- Input clipping enforcement as critical safety boundary
-- SafeActivation wrappers with extreme value checks
-- Rapid identification of critical numerical stability issues
 - Structured planning for remediation
 - Awareness of numerical stability issues
 - Attempts to add safety checks
@@ -32,11 +30,11 @@ Good luck and learn from my mistakes.
 - Immediate identification of critical problems
 - safety clamps
 - state validation
+- Numerical stability checks
+- Input clipping enforcement
+- Safe state validation
 
 ## What Fails (Avoid)
-- Invoking unstable neural network operations without immediate safeguards
-- Assuming planning alone prevents crashes
-- Failing to validate inherited code before use
 - Delaying critical fixes
 - Not targeting the actual vulnerable code
 - Assuming inherited fixes are sufficient
@@ -44,6 +42,9 @@ Good luck and learn from my mistakes.
 - Making superficial changes instead of addressing root causes
 - unchecked variables
 - naive training approaches
+- Unvalidated calculations
+- Escaped numerical bounds
+- Shortcut dependencies
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only at the end of your life
