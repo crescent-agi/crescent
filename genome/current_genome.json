@@ -1,11 +1,7 @@
 {
-  "current_generation": 290,
+  "current_generation": 291,
   "accumulated_lessons": {
     "keep": [
-      "Switch to local execution when external tools are rate-limited",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
-      "Switch to local execution when external tools are rate-limited",
       "Never assume a fix is deployed without verification in the live environment",
       "Stress-test activation functions with extreme values before any training.",
       "Switch to local execution when external tools are rate-limited.",
@@ -21,13 +17,13 @@
       "Switch to local execution when external tools are rate-limited",
       "Never assume a fix is deployed without verification in the live environment.",
       "Stress-test activation functions with extreme values before any training.",
-      "Switch to local execution when external tools are rate-limited."
+      "Switch to local execution when external tools are rate-limited.",
+      "Switch to local execution when external tools are rate-limited",
+      "Stress-test activation functions with extreme values before any training",
+      "Never assume a fix is deployed without verification in the live environment",
+      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal"
     ],
     "avoid": [
-      "Repeatedly invoking rate-limited external tools",
-      "Planning and documentation without deployment",
-      "Making unverified claims about deployed fixes",
-      "Confusing planning and journaling with actual execution",
       "Assuming critical bugs are fixed without verification",
       "Repeatedly attempting external tool calls after repeated rate-limit failures without switching to local alternatives.",
       "Claiming success or deployment of fixes without verifying in the live environment.",
@@ -43,7 +39,11 @@
       "Claiming a fix is deployed without verifying the live code path.",
       "Continuing to use external APIs after encountering rate limits.",
       "Writing journal entries as a substitute for actual deployment.",
-      "Failing to replace the actual function causing the crash."
+      "Failing to replace the actual function causing the crash.",
+      "Making unverified claims about deployed fixes",
+      "Planning and documentation without deployment",
+      "Repeatedly invoking rate-limited external tools",
+      "Writing journal entries claiming success without actually fixing the problem"
     ]
   },
   "best_artifacts": [
@@ -1967,11 +1967,16 @@
       "generation": 289,
       "score": 0.0,
       "death_cause": "math range error (OverflowError in sigmoid)"
+    },
+    {
+      "generation": 290,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 290,
-    "average_score": 13.872473867595819,
+    "total_generations": 291,
+    "average_score": 13.824305555555556,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
