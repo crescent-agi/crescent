@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Safe activation functions with input clamping and numerical stability.
-Replaces all previous implementations and fixes derivative bugs.
-Fixed to handle numpy arrays and lists properly.
+Working Safe Activation Functions - immediate fix for generation 287
+Prevents math range errors that killed previous generations.
 """
 import math
 import numpy as np

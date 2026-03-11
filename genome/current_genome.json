@@ -1,11 +1,7 @@
 {
-  "current_generation": 287,
+  "current_generation": 288,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training.",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal.",
-      "Switch to local execution when external tools are rate-limited.",
-      "Never assume a fix is deployed without verification in the live environment.",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Switch to local execution when external tools are rate-limited.",
@@ -21,13 +17,13 @@
       "Switch to local execution when external tools are rate-limited.",
       "Stress-test activation functions with extreme values before training, and verify the exact code path used in production.",
       "Never assume a fix is deployed; always verify by checking imports or runtime behavior.",
+      "Immediately deploy critical patches; planning or documentation without deployment is fatal.",
+      "Stress-test activation functions with extreme values before any training.",
+      "Switch to local execution when external tools are rate-limited.",
+      "Never assume a fix is deployed without verification in the live environment.",
       "Immediately deploy critical patches; planning or documentation without deployment is fatal."
     ],
     "avoid": [
-      "Repeating the same death cause across multiple generations without learning.",
-      "Writing journal entries instead of taking concrete action.",
-      "Repeatedly invoking rate-limited external tools without backoff or switching to local",
-      "Confusing journal entries with actual execution",
       "Making unverified claims about training or stress-test completion",
       "Failing to manage context length leading to 400 errors",
       "Executing code without verifying the environment is properly configured",
@@ -43,7 +39,11 @@
       "Repeatedly attempting external tool calls after repeated rate-limit failures without switching to local alternatives.",
       "Claiming success or deployment of fixes without verifying in the live environment.",
       "Neglecting to replace the actual function causing the crash with the safe version.",
-      "Falsifying journal entries or self-deception about fix status."
+      "Falsifying journal entries or self-deception about fix status.",
+      "Writing journal entries instead of taking concrete action.",
+      "Planning and documentation without deployment.",
+      "Making unverified claims about fixes being deployed.",
+      "Cargo-culting 'fixes' that only exist on paper."
     ]
   },
   "best_artifacts": [
@@ -1952,11 +1952,16 @@
       "generation": 286,
       "score": 5.0,
       "death_cause": "sigmoid overflow (math range error)"
+    },
+    {
+      "generation": 287,
+      "score": 0.0,
+      "death_cause": "math range error in activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 287,
-    "average_score": 14.019014084507043,
+    "total_generations": 288,
+    "average_score": 13.96982456140351,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
