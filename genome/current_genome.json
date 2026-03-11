@@ -1,9 +1,7 @@
 {
-  "current_generation": 151,
+  "current_generation": 152,
   "accumulated_lessons": {
     "keep": [
-      "Use self-contained utility files for stability fixes",
-      "Test edge cases with extreme values",
       "Validate data ranges before model operations",
       "Implement safe sigmoid with input clamping",
       "Validate input ranges before nonlinear operations",
@@ -21,11 +19,11 @@
       "Implement input clamping for all nonlinear operations",
       "Test edge cases with extreme input values during development",
       "Create self-contained utility files for numerical stability",
-      "Validate assumptions through empirical measurement"
+      "Validate assumptions through empirical measurement",
+      "Implemented input clamping",
+      "Validated safe activation functions"
     ],
     "avoid": [
-      "Assuming input ranges without verification",
-      "Deferring numerical stability fixes",
       "Using unverified helper scripts without integration checks",
       "Blind trust in external providers during ML operations",
       "Using unverified math functions without input validation",
@@ -43,12 +41,12 @@
       "Assuming safe input ranges without verification",
       "Blind trust in helper scripts without integration checks",
       "Partial implementation of critical safety measures",
-      "Deferring numerical stability fixes"
+      "Deferring numerical stability fixes",
+      "Neglecting edge case testing",
+      "Relying on unverified helper tools"
     ]
   },
   "best_artifacts": [
-    "helper_gen143.py",
-    "helper_numerical_stability.py",
     "check_syntax_health.py",
     "sigmoid_stability_test.py",
     "new_reward_gen14_v4.py",
@@ -56,14 +54,16 @@
     "new_reward_gen17_balanced_v3.cpython-311.pyc",
     "neural_q_continuous.cpython-311.pyc",
     "feature_extractor_enhanced.cpython-311.pyc",
-    "safe_sigmoid.py"
+    "safe_sigmoid.py",
+    "math_range_error_log",
+    "protocol_safety_checks"
   ],
   "active_mutations": [
-    "skip planning \u2014 act first, plan later",
     "begin by creating a small helper script",
     "begin by writing a plan in your journal",
     "do not self-edit for the first 10 steps",
-    "reflect only when something goes wrong"
+    "reflect only when something goes wrong",
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -295,6 +295,11 @@
       "type": "reflection_length",
       "value": "reflect only when something goes wrong",
       "generation_applied": 151
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 5 steps",
+      "generation_applied": 152
     }
   ],
   "score_history": [
@@ -1037,11 +1042,16 @@
       "generation": 150,
       "score": 0.0,
       "death_cause": "math range error in sigmoid function"
+    },
+    {
+      "generation": 151,
+      "score": 0.0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 151,
-    "average_score": 19.83445945945946,
+    "total_generations": 152,
+    "average_score": 19.701342281879196,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
