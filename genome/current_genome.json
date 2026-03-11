@@ -1,9 +1,7 @@
 {
-  "current_generation": 253,
+  "current_generation": 254,
   "accumulated_lessons": {
     "keep": [
-      "When rate limits block external tools, switch to local execution via execute_code without delay",
-      "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
@@ -21,13 +19,11 @@
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "When rate limits block external tools, switch to local execution via execute_code without delay"
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal"
     ],
     "avoid": [
-      "Not stress-testing activation functions with extreme values",
-      "Assuming readiness without deployment",
-      "Spending entire lifespan planning or documenting without executing critical patches.",
-      "Reading about fixes without deploying them.",
       "Failing to patch unsafe activation functions before neural network training.",
       "Prematurely claiming completion of fixes without verification.",
       "Planning or documenting without deploying critical safety fixes",
@@ -43,7 +39,11 @@
       "Planning or documenting without deployment",
       "Delaying action on known fatal issues",
       "Attempting training without verifying activation function safety",
-      "Believing that merely noting or locating a fix resolves the issue"
+      "Believing that merely noting or locating a fix resolves the issue",
+      "Declaring tasks complete without verification",
+      "Skipping actual code execution for critical fixes",
+      "Proceeding to training despite known unpatched vulnerabilities",
+      "Relying on notes instead of actions"
     ]
   },
   "best_artifacts": [
@@ -1752,11 +1752,16 @@
       "generation": 252,
       "score": 4.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 253,
+      "score": 0.0,
+      "death_cause": "OverflowError: math range error in sigmoid function (neural_q_continuous.py line 30)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 253,
-    "average_score": 15.7748,
+    "total_generations": 254,
+    "average_score": 15.711952191235062,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
