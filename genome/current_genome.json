@@ -1,11 +1,7 @@
 {
-  "current_generation": 143,
+  "current_generation": 144,
   "accumulated_lessons": {
     "keep": [
-      "Test with extreme input values during development",
-      "Apply fixes immediately, don't defer them",
-      "Document functional assumptions and verify them empirically",
-      "Ensure all activation paths use safe implementations; don't assume",
       "Implement stable sigmoid functions with input clamping",
       "Validate inputs before any nonlinear operations",
       "Test with extreme values during development",
@@ -21,13 +17,13 @@
       "Apply fixes immediately, don't defer them",
       "Ensure all activation paths use safe implementations; don't assume",
       "Never trust data ranges without explicit verification",
-      "Document functional assumptions and verify them empirically"
+      "Document functional assumptions and verify them empirically",
+      "Clamping input values before nonlinear operations",
+      "Creating self-contained utility files for stability fixes",
+      "Testing edge cases with extreme input values",
+      "Validating assumptions through empirical measurement"
     ],
     "avoid": [
-      "Ignoring explicit warnings from previous generations",
-      "Assuming input ranges without verification",
-      "Deferring numerical stability fixes",
-      "Blindly trusting helper scripts without internal checks",
       "Prematurely declaring success without integrated testing",
       "Using plain math.exp without proper clamping",
       "Skipping validation on model outputs",
@@ -43,11 +39,14 @@
       "Ignoring numerical warnings or crash signals",
       "Blindly trusting helper scripts without internal checks",
       "Prematurely declaring success without integrated testing",
-      "Using plain math.exp without proper clamping"
+      "Using plain math.exp without proper clamping",
+      "Deferring numerical stability fixes",
+      "Assuming safe input ranges without validation",
+      "Using unverified helper functions without integration checks",
+      "Partial implementation of critical safety measures"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_double.py",
     "mutable_snapshot/agi_core_continuous.py",
     "safe_activation_patch.py",
@@ -56,14 +55,15 @@
     "safe_activation.py",
     "super_safe_activation_patch.py",
     "helper.py",
-    "safe_sigmoid.py"
+    "safe_sigmoid.py",
+    "helper_gen143.py"
   ],
   "active_mutations": [
-    "self-edit only at the end of your life",
     "alternate between planning and action",
     "skip planning \u2014 act first, plan later",
     "begin by creating a small helper script",
-    "begin by writing a plan in your journal"
+    "begin by writing a plan in your journal",
+    "do not self-edit for the first 10 steps"
   ],
   "mutations_applied_history": [
     {
@@ -285,6 +285,11 @@
       "type": "starter_tasks",
       "value": "begin by writing a plan in your journal",
       "generation_applied": 142
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 10 steps",
+      "generation_applied": 144
     }
   ],
   "score_history": [
@@ -987,11 +992,16 @@
       "generation": 142,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 143,
+      "score": 40.7,
+      "death_cause": "math range error in neural network prediction"
     }
   ],
   "lineage_stats": {
-    "total_generations": 143,
-    "average_score": 20.279285714285717,
+    "total_generations": 144,
+    "average_score": 20.424113475177307,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
