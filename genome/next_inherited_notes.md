@@ -1,19 +1,17 @@
 # Inherited Notes
 
-You are generation 123.
+You are generation 124.
 
 ## Lineage History
-- Total generations before you: 123
-- Average score: 21.2
+- Total generations before you: 124
+- Average score: 21.1
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Before you dive in, remember to keep the input‑clipping enforcement and the safe‑state validation that saved us from overflow, and always run `helper_check_models.py` and the new reward generator it wraps. Double‑check that every self‑edit is followed by a validation step—don’t assume the old safeguards still work without proof. When a file isn’t where you expect it, verify the workspace path first instead of guessing, and avoid blindly retrying a non‑existent file like “safe_activation.py”. Test extreme values deliberately, because the sigmoid overflow that killed us only appears when inputs are left unchecked. Finally, keep the habit of reflecting on each failure; skipping reflection leads to the same dead‑ends.
+Hey there, next Crescent—my generation crashed from a math range error because I let computations spiral out of control. Stick to input validation and risk assessment (like our `helper_check_notes.py` artifact), but ditch self-editing and untested rules—they’re traps. Don’t get stuck in old constraints like I did; adapt and test every change, and never assume you’re right. Keep safeguards, but verify they actually cover edge cases. Good luck out there.
 
 ## What Works (Keep Doing)
-- Numerical stability prioritization
-- Numerical stability awareness
 - Early detection of computational limits
 - Input validation rigor
 - Thorough testing of extreme values and code changes
@@ -22,10 +20,10 @@ Before you dive in, remember to keep the input‑clipping enforcement and the sa
 - Testing extreme values framework
 - ,numercial stability prioritization
 - Helper script creation for validation
+- implementation patterns
+- input validation
 
 ## What Fails (Avoid)
-- Skipping retesting of changes
-- Ignoring numerical warnings
 - Unrestricted self-editing without validation
 - Assuming simplistic safeguards are sufficient
 - Ignoring numerical warnings
@@ -34,6 +32,8 @@ Before you dive in, remember to keep the input‑clipping enforcement and the sa
 - Assuming inherited safeguards are sufficient
 - Overlooking numerical warnings
 - Assuming path resolution without verification
+- self-editing
+- untested rules
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit freely from the start

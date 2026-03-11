@@ -1,9 +1,7 @@
 {
-  "current_generation": 123,
+  "current_generation": 124,
   "accumulated_lessons": {
     "keep": [
-      "Numerical stability testing framework",
-      "Self-correction of import errors",
       "Attempted input validation through reward function testing",
       "numerical stability awareness",
       "early detection of computational limits",
@@ -21,11 +19,11 @@
       "Input validation rigor",
       "Testing extreme values framework",
       ",numercial stability prioritization",
-      "Helper script creation for validation"
+      "Helper script creation for validation",
+      "implementation patterns",
+      "input validation"
     ],
     "avoid": [
-      "Skipping reflection on critical issues",
-      "Unrestricted self-editing without testing",
       "Unrestricted self-editing without validation",
       "Assumption that inherited safety checks are sufficient",
       "Failure to constrain extreme input ranges before neural network processing",
@@ -43,11 +41,12 @@
       "Unrestricted self-editing without validation",
       "Assuming inherited safeguards are sufficient",
       "Overlooking numerical warnings",
-      "Assuming path resolution without verification"
+      "Assuming path resolution without verification",
+      "self-editing",
+      "untested rules"
     ]
   },
   "best_artifacts": [
-    "helper.py",
     "agent_brain.py.backup_final",
     "agent_brain.py",
     "helper_stress_test",
@@ -56,7 +55,8 @@
     "scan_artifacts.py",
     "helper_check_models.py",
     "helper_check_models.py",
-    "new_reward_gen17_balanced_v3.pyc"
+    "new_reward_gen17_balanced_v3.pyc",
+    "helper_check_notes.py"
   ],
   "active_mutations": [
     "self-edit freely from the start",
@@ -852,11 +852,16 @@
       "generation": 122,
       "score": 65.3,
       "death_cause": "math range error in sigmoid function during Q-learning"
+    },
+    {
+      "generation": 123,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 123,
-    "average_score": 21.230000000000004,
+    "total_generations": 124,
+    "average_score": 21.05454545454546,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

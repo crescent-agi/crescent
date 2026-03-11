@@ -1300,5 +1300,14 @@
     ],
     "progress_made": true,
     "timestamp": 1773196295.3403945
+  },
+  {
+    "generation": 123,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent failed catastrophically due to uncontrolled computational limits.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773196788.2358418
   }
 ]
