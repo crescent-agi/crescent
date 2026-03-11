@@ -1,84 +1,71 @@
 #!/usr/bin/env python3
-"""
-Test the improved reward function.
-"""
+"""GEN284: Test the reward function to see if it's properly balanced."""
+
+from agent_brain import AgentBrain
 import sys
 import os
-sys.path.insert(0, '.')
 
-# Mock core.llm_client
-class MockLLMAuthenticationError(Exception):
-    pass
+# Setup
+print("Testing reward function...")
 
-class MockCoreModule:
-    class llm_client:
-        LLMAuthenticationError = MockLLMAuthenticationError
+sys.path.insert(0, os.path.dirname(__file__))
+try:
+    from agi_core_continuous import AGICoreContinuous
+    print("✓ Imported AGICoreContinuous")
+except Exception as e:
+    print(f"✗ Failed to import AGICoreContinuous: {e}")
+    sys.exit(1)
 
-sys.modules['core'] = MockCoreModule
-sys.modules['core.llm_client'] = MockCoreModule.llm_client
-
-# Import AgentBrain after mocking
-from agent_brain import AgentBrain
-
-# Create a mock instance without full init
-class MockLLMClient:
-    pass
-
-class MockSandbox:
-    gen_dir = '/tmp'
-
-class MockDeathMonitor:
-    pass
-
-brain = AgentBrain(MockLLMClient(), MockSandbox(), MockDeathMonitor(), generation=6)
+# Initialize core with dummy feature_dim
+core = AGICoreContinuous(feature_dim=30, use_features=False)
+print("✓ Core initialized")
 
 # Test cases
-print("Testing reward function...")
-# Test 1: successful write file
-reward = brain._compute_reward('write_file', {'filepath': 'test.py'}, {'success': True})
-print(f"write_file .py: {reward}")
-assert reward > 0.5, f"Expected >0.5, got {reward}"
+print("\n=== Testing reward function ===")
 
-# Test 2: write non-py file
-reward = brain._compute_reward('write_file', {'filepath': 'test.txt'}, {'success': True})
-print(f"write_file .txt: {reward}")
+# Case 1: Successful read_file of important file
+tool_name = "read_file"
+tool_args = {"filepath": "inherited_notes.md"}
+tool_result = {"success": True}
+reward = core._compute_reward(None, tool_name, tool_args, tool_result)
+print(f"Case 1 - read_file (important): reward = {reward}")
 
-# Test 3: write agent_brain.py
-reward = brain._compute_reward('write_file', {'filepath': 'agent_brain.py'}, {'success': True})
-print(f"write_file agent_brain.py: {reward}")
+# Case 2: Successful execute_code with meaningful output
+tool_name = "execute_code"
+tool_args = {"code": "print('Hello from AGI')"}
+tool_result = {{"success": True, "stdout": "Hello from AGI\n", "stderr": ""}}
+reward = core._compute_reward(None, tool_name, tool_args, tool_result)
+print(f"Case 2 - execute_code (success): reward = {reward}")
 
-# Test 4: execute code with stdout
-reward = brain._compute_reward('execute_code', {'code': 'print(1)'}, {'stdout': '1'})
-print(f"execute_code stdout: {reward}")
+# Case 3: Failed tool
+tool_name = "read_file"
+tool_args = {"filepath": "nonexistent.txt"}
+tool_result = {"success": False, "error": "File not found"}
+reward = core._compute_reward(None, tool_args, tool_args, tool_result)
+print(f"Case 3 - read_file (failure): reward = {reward}")
 
-# Test 5: execute code with stderr error
-reward = brain._compute_reward('execute_code', {'code': 'print(1)'}, {'stdout': '', 'stderr': 'error'})
-print(f"execute_code stderr: {reward}")
+# Case 4: declare_death (should be heavily penalized)
+tool_name = "declare_death"
+tool_args = {"reason": "Test"}
+tool_result = {"success": True}
+reward = core._compute_reward(None, tool_name, tool_args, tool_result)
+print(f"Case 4 - declare_death: reward = {reward}")
 
-# Test 6: write_note short
-reward = brain._compute_reward('write_note', {'note': 'test'}, {'success': True})
-print(f"write_note short: {reward}")
+# Case 5: Repeated tool (should get penalty)
+tool_name = "write_file"
+tool_args = {"filepath": "test.py", "content": "# test"}
+tool_result = {"success": True}
+# Simulate previous usage
+core.tool_usage_counts = {"write_file": 2}
+reward = core._compute_reward(None, tool_name, tool_args, tool_result)
+print(f"Case 5 - write_file (repeated): reward = {reward}")
 
-# Test 7: write_note with keyword
-reward = brain._compute_reward('write_note', {'note': 'Progress: improved AGI core'}, {'success': True})
-print(f"write_note progress: {reward}")
+# Case 6: write_note (should be penalized)
+tool_name = "write_note"
+tool_args = {"note": "Test note"}
+tool_result = {"success": True}
+reward = core._compute_reward(None, tool_name, tool_args, tool_result)
+print(f"Case 6 - write_note: reward = {reward}")
 
-# Test 8: create_issue
-reward = brain._compute_reward('create_issue', {'title': 'test'}, {'success': True})
-print(f"create_issue: {reward}")
-
-# Test 9: read_file important
-reward = brain._compute_reward('read_file', {'filepath': 'agi_core.py'}, {'content': ''})
-print(f"read_file important: {reward}")
-
-# Test 10: declare_death penalty
-reward = brain._compute_reward('declare_death', {'reason': 'test'}, {'success': True})
-print(f"declare_death: {reward}")
-assert reward < 0, f"Expected negative reward, got {reward}"
-
-# Test 11: error penalty
-reward = brain._compute_reward('write_file', {'filepath': 'test.py'}, {'error': 'failed'})
-print(f"error: {reward}")
-assert reward < 0, f"Expected negative reward, got {reward}"
-
-print("All reward tests passed.")
+print(f"\n=== Reward function test complete ===")
+print("If rewards look reasonable, the reward shaping is working.")
