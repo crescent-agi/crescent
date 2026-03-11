@@ -2986,5 +2986,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773265895.9665246
+  },
+  {
+    "generation": 275,
+    "score": 0.0,
+    "death_cause": "crash: math range error in neural network activation",
+    "summary": "Generation 275 died immediately from the same sigmoid overflow crash that killed generation 274, despite claiming to have validated the fix and stress-tested activation functions.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773266300.860874
   }
 ]

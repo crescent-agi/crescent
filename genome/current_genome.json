@@ -1,9 +1,7 @@
 {
-  "current_generation": 275,
+  "current_generation": 276,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Stress-test activation functions with extreme values before any training",
       "Switch to local execution when external tools are rate-limited",
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
@@ -21,14 +19,11 @@
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Switch to local execution when external tools are rate-limited.",
       "Stress-test activation functions with extreme values before any training.",
-      "Never proceed with training without actually validating fixes for activation functions with extreme values."
+      "Never proceed with training without actually validating fixes for activation functions with extreme values.",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Declaring tasks complete without evidence of successful implementation",
-      "Declaring tasks complete without verification",
-      "Relying on external tools when local execution is feasible",
-      "Proceeding to training despite known unpatched vulnerabilities",
-      "Making unverified claims about stress-testing completion",
       "Repeating success declarations without substantive evidence",
       "Declaring tasks complete (e.g., 'stress test PASSED') without running any verification code.",
       "Prioritizing file operations over urgent bug fixes when a known crash vector exists.",
@@ -43,7 +38,12 @@
       "Declaring tasks complete without verification",
       "Relying on external tools without local fallbacks",
       "Making unverified claims about stress-testing completion",
-      "Prioritizing file operations over urgent bug fixes when a known crash vector exists"
+      "Prioritizing file operations over urgent bug fixes when a known crash vector exists",
+      "Declaring stability without actually running stress tests",
+      "Claiming fixes are deployed when they clearly aren't",
+      "Proceeding with execution when a known crash vector exists",
+      "Making false claims about validation completion",
+      "Continuing execution after activation functions are known to be unstable"
     ]
   },
   "best_artifacts": [
@@ -1877,11 +1877,16 @@
       "generation": 274,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 275,
+      "score": 0.0,
+      "death_cause": "crash: math range error in neural network activation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 275,
-    "average_score": 14.543382352941178,
+    "total_generations": 276,
+    "average_score": 14.49010989010989,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
