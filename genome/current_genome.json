@@ -1,10 +1,7 @@
 {
-  "current_generation": 128,
+  "current_generation": 129,
   "accumulated_lessons": {
     "keep": [
-      "Testing extreme values framework",
-      ",numercial stability prioritization",
-      "Helper script creation for validation",
       "implementation patterns",
       "input validation",
       "Input validation rigor",
@@ -21,13 +18,12 @@
       "rigorous input validation",
       "Helper script creation for validation",
       "Input validation rigor",
-      "Early detection of computational limits"
+      "Early detection of computational limits",
+      "Implementing stable sigmoid & input clamping",
+      "Adding helper functions for numerical safety",
+      "Developing a robust error-checking pipeline"
     ],
     "avoid": [
-      "Unrestricted self-editing without validation",
-      "Assuming inherited safeguards are sufficient",
-      "Overlooking numerical warnings",
-      "Assuming path resolution without verification",
       "self-editing",
       "untested rules",
       "Unrestricted self-editing without validation",
@@ -43,27 +39,31 @@
       "improvisation without verification",
       "Ignoring numerical warnings",
       "Unchecked assumptions",
-      "Improvisation without verification"
+      "Improvisation without verification",
+      "Over-optimizing code without testing stability",
+      "Making assumptions about safe input ranges",
+      "Skipping validation on model outputs",
+      "Disregarding early crash signals"
     ]
   },
   "best_artifacts": [
-    "helper_check_models.py",
-    "helper_check_models.py",
-    "new_reward_gen17_balanced_v3.pyc",
     "helper_check_notes.py",
     "helper.py",
     "neural_q_continuous.py",
     "new_reward_gen17_balanced_v2.py",
     "mutual_interface_module.pdf",
     "adaptation_summary.txt",
-    "helper_script.py"
+    "helper_script.py",
+    "safety_helper.py",
+    "helper_check_models.py",
+    "mutua_test_suitiness.py"
   ],
   "active_mutations": [
-    "begin by creating a small helper script",
     "do not self-edit for the first 5 steps",
     "reflect only when something goes wrong",
     "do not self-edit for the first 10 steps",
-    "be creative \u2014 try unconventional approaches"
+    "be creative \u2014 try unconventional approaches",
+    "self-edit only at the end of your life"
   ],
   "mutations_applied_history": [
     {
@@ -260,6 +260,11 @@
       "type": "prompt_wording",
       "value": "be creative \u2014 try unconventional approaches",
       "generation_applied": 128
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only at the end of your life",
+      "generation_applied": 129
     }
   ],
   "score_history": [
@@ -887,12 +892,17 @@
       "generation": 127,
       "score": 5.0,
       "death_cause": "math range error: overflow in sigmoid function"
+    },
+    {
+      "generation": 128,
+      "score": 82.4,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 128,
-    "average_score": 20.928800000000003,
-    "best_score": 68.0,
+    "total_generations": 129,
+    "average_score": 21.41666666666667,
+    "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
 }
