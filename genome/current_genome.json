@@ -1,12 +1,7 @@
 {
-  "current_generation": 134,
+  "current_generation": 135,
   "accumulated_lessons": {
     "keep": [
-      "helper script creation for validation",
-      "testing extreme values framework",
-      "Strict input validation for nonlinear functions",
-      "Mandatory range checks for neural network inputs",
-      "Early break conditions for potential overflows",
       "Helper scripts for numerical stability testing",
       "Documentation of functional assumptions",
       "numerical stability measures",
@@ -21,14 +16,14 @@
       "Robust error\u2011checking pipeline",
       "Documentation of functional assumptions",
       "Numerical stability measures",
-      "Helper scripts for validation"
+      "Helper scripts for validation",
+      "strict input validation for nonlinear functions",
+      "early break conditions for potential overflows",
+      "implementation of stable sigmoid & input clamping",
+      "helper scripts for numerical stability testing",
+      "documentation of functional assumptions"
     ],
     "avoid": [
-      "ignoring numerical warnings or crash signals",
-      "skipping validation on model outputs",
-      "delaying numerical stability fixes",
-      "improvisation without verification",
-      "Blindly replacing standard math libraries without thorough validation",
       "Assuming input ranges without verification",
       "Deferring extreme value testing until deployment",
       "Overextending to continuous neural implementations without safeguards",
@@ -43,12 +38,15 @@
       "Ignoring overflow warnings",
       "Assuming input ranges without verification",
       "Over\u2011optimizing code without stability testing",
-      "Using unverified math operations without clamping"
+      "Using unverified math operations without clamping",
+      "ignoring numerical warnings or crash signals",
+      "skipping validation on model outputs",
+      "over-reliance on helper scripts without internal checks",
+      "assuming input ranges without verification",
+      "delaying numerical stability fixes"
     ]
   },
   "best_artifacts": [
-    "mutual_interface_module.pdf",
-    "adaptation_summary.txt",
     "helper_script.py",
     "safety_helper.py",
     "neural_validation_test.py",
@@ -56,14 +54,16 @@
     "inherited_notes.md",
     "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_double.py",
-    "mutable_snapshot/new_reward_gen14.py"
+    "mutable_snapshot/new_reward_gen14.py",
+    "mutable_snapshot/neural_q_continuous.py",
+    "mutable_snapshot/neural_q_continuous_double.py"
   ],
   "active_mutations": [
-    "do not self-edit for the first 5 steps",
     "reflect only when something goes wrong",
     "do not self-edit for the first 10 steps",
     "be creative \u2014 try unconventional approaches",
-    "self-edit only at the end of your life"
+    "self-edit only at the end of your life",
+    "alternate between planning and action"
   ],
   "mutations_applied_history": [
     {
@@ -265,6 +265,11 @@
       "type": "self_edit_timing",
       "value": "self-edit only at the end of your life",
       "generation_applied": 129
+    },
+    {
+      "type": "planning_depth",
+      "value": "alternate between planning and action",
+      "generation_applied": 135
     }
   ],
   "score_history": [
@@ -922,11 +927,16 @@
       "generation": 133,
       "score": 12.5,
       "death_cause": "math range error (OverflowError in sigmoid)"
+    },
+    {
+      "generation": 134,
+      "score": 7.5,
+      "death_cause": "math range error (OverflowError in sigmoid)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 134,
-    "average_score": 21.10076335877863,
+    "total_generations": 135,
+    "average_score": 20.997727272727275,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

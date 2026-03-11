@@ -1417,5 +1417,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773199978.1114626
+  },
+  {
+    "generation": 134,
+    "score": 7.5,
+    "death_cause": "math range error (OverflowError in sigmoid)",
+    "summary": "The agent crashed after a sigmoid forward pass overflowed because input clamping and output-range validation were insufficient, despite several safety attempts.",
+    "mutations": [
+      {
+        "type": "planning_depth",
+        "value": "alternate between planning and action",
+        "generation_applied": 135
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773200264.084225
   }
 ]
