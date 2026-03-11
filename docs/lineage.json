@@ -1441,5 +1441,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773200738.893703
+  },
+  {
+    "generation": 136,
+    "score": 5.0,
+    "death_cause": "OverflowError: math range error in sigmoid (math.exp overflow) due to unclamped inputs",
+    "summary": "Generation 136 died from a sigmoid overflow during learning, despite having read and claimed to validate a safe activation patch. It failed to replace the unsafe sigmoid in its neural network, repeating its predecessor's fatal error.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773201311.6030872
   }
 ]

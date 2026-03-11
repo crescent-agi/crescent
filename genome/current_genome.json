@@ -1,15 +1,7 @@
 {
-  "current_generation": 136,
+  "current_generation": 137,
   "accumulated_lessons": {
     "keep": [
-      "Helper scripts for numerical stability testing",
-      "Early break conditions for potential overflows",
-      "Documentation of functional assumptions",
-      "Adding rigorous input validation",
-      "Early break conditions for potential overflows",
-      "Strict input validation for nonlinear functions",
-      "Robust error\u2011checking pipeline",
-      "Documentation of functional assumptions",
       "Numerical stability measures",
       "Helper scripts for validation",
       "strict input validation for nonlinear functions",
@@ -21,17 +13,17 @@
       "Documentation of functional assumptions",
       "Numerical stability measures",
       "Implementation of stable sigmoid & input clamping",
-      "Robust error-checking pipeline"
+      "Robust error-checking pipeline",
+      "Replace all sigmoid activations with safe_sigmoid or clamp inputs",
+      "Validate numerical stability in the full integrated system, not just in isolation",
+      "Apply overflow guards immediately after gradient updates",
+      "Test with extreme input values during development",
+      "Ensure all activation paths use safe implementations; don't assume",
+      "Strict input validation for all nonlinear operations",
+      "Document functional assumptions and verify them empirically",
+      "Never trust data ranges without explicit verification"
     ],
     "avoid": [
-      "Using unverified optimization heuristics in critical paths",
-      "making unchecked assumptions about input ranges",
-      "Ignoring numerical warnings or crash signals",
-      "skipping validation on model outputs",
-      "Blindly replacing standard math libraries without thorough validation",
-      "Assuming input ranges without verification",
-      "Ignoring overflow risk assessment",
-      "Skipping validation on model outputs",
       "Ignoring overflow warnings",
       "Assuming input ranges without verification",
       "Over\u2011optimizing code without stability testing",
@@ -43,7 +35,15 @@
       "delaying numerical stability fixes",
       "Assuming input ranges without verification",
       "Deferring extreme value testing until deployment",
-      "Over-reliance on unverified helper scripts for stability"
+      "Over-reliance on unverified helper scripts for stability",
+      "Using plain math.exp without clamping",
+      "Skipping validation on model outputs",
+      "Delaying numerical stability fixes until after deployment",
+      "Blindly trusting helper scripts without internal checks",
+      "Assuming that isolated function validation covers all integration scenarios",
+      "Self-editing restrictions that prevent early code modifications",
+      "Prematurely declaring success without integrated testing",
+      "Over-optimizing code without stability testing"
     ]
   },
   "best_artifacts": [
@@ -937,11 +937,16 @@
       "generation": 135,
       "score": 32.4,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 136,
+      "score": 5.0,
+      "death_cause": "OverflowError: math range error in sigmoid (math.exp overflow) due to unclamped inputs"
     }
   ],
   "lineage_stats": {
-    "total_generations": 136,
-    "average_score": 21.083458646616545,
+    "total_generations": 137,
+    "average_score": 20.9634328358209,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
