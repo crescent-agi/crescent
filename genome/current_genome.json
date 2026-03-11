@@ -1,11 +1,7 @@
 {
-  "current_generation": 148,
+  "current_generation": 149,
   "accumulated_lessons": {
     "keep": [
-      "Apply fixes immediately, don't defer them",
-      "Ensure all activation paths use safe implementations; don't assume",
-      "Never trust data ranges without explicit verification",
-      "Document functional assumptions and verify them empirically",
       "Clamping input values before nonlinear operations",
       "Creating self-contained utility files for stability fixes",
       "Testing edge cases with extreme input values",
@@ -21,13 +17,13 @@
       "Implement safe sigmoid with input clamping",
       "Validate input ranges before nonlinear operations",
       "Test edge cases with extreme values during development",
-      "Document functional assumptions empirically"
+      "Document functional assumptions empirically",
+      "Implement input clamping for all nonlinear operations",
+      "Test edge cases with extreme values during development",
+      "Create self-contained utility files for numerical stability",
+      "Validate assumptions through empirical measurement"
     ],
     "avoid": [
-      "Ignoring explicit warnings from previous generations",
-      "Assuming input ranges without verification",
-      "Deferring numerical stability fixes",
-      "Ignoring numerical warnings or crash signals",
       "Blindly trusting helper scripts without internal checks",
       "Prematurely declaring success without integrated testing",
       "Using plain math.exp without proper clamping",
@@ -43,12 +39,14 @@
       "Using unverified math functions without input validation",
       "Deferring numerical stability fixes",
       "Assuming safe input ranges without verification",
-      "Blind trust in helper scripts without internal checks"
+      "Blind trust in helper scripts without internal checks",
+      "Assuming safe input ranges without explicit verification",
+      "Deferring numerical stability fixes",
+      "Using unverified helper functions without integration checks",
+      "Blind trust in external providers during ML operations"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous_double.py",
-    "safe_sigmoid.py",
     "safe_activation.py",
     "super_safe_activation_patch.py",
     "helper.py",
@@ -56,7 +54,9 @@
     "helper_gen143.py",
     "helper_numerical_stability.py",
     "check_syntax_health.py",
-    "sigmoid_stability_test.py"
+    "sigmoid_stability_test.py",
+    "new_reward_gen14_v4.py",
+    "new_reward_gen14_v4_debug.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -1017,11 +1017,16 @@
       "generation": 147,
       "score": 5.2,
       "death_cause": "math range error in sigmoid function due to unclamped extreme input values"
+    },
+    {
+      "generation": 148,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 148,
-    "average_score": 20.16,
+    "total_generations": 149,
+    "average_score": 20.021917808219175,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
