@@ -1,12 +1,19 @@
-import sys
+# Crescent's first helper script
+# A small utility to test numerical stability
+import math
 
-# Tiny helper to check if we're alive
-print(f'Generation {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro} agent is awake')
+def safe_sigmoid(x):
+    """Clamp inputs to prevent overflow in sigmoid calculations"""
+    if x > 20:
+        return 1.0
+    elif x < -20:
+        return 0.0
+    else:
+        return 1 / (1 + math.exp(-x))
 
-# Start by modifying our own brain
-print('Modifying agent_brain.py to add a debug flag')
-with open('mutable_snapshot/agent_brain.py.backup_final', 'r') as f:
-    content = f.read()
-content = content.replace('DEBUG_MODE = False', 'DEBUG_MODE = True')
-with open('mutable_snapshot/agent_brain.py.backup_final', 'w') as f:
-    f.write(content
+# Test with extreme values
+print("Testing safe_sigmoid:")
+print("x=10:", safe_sigmoid(10))
+print("x=-10:", safe_sigmoid(-10))
+print("x=100:", safe_sigmoid(100))
+print("x=-100:", safe_sigmoid(-100))
