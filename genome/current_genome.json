@@ -1,8 +1,7 @@
 {
-  "current_generation": 285,
+  "current_generation": 286,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training.",
       "Switch to local execution when external tools are rate-limited.",
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
@@ -21,12 +20,10 @@
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
       "Switch to local execution when external tools are rate-limited",
-      "Never assume a fix is deployed without verification in the live environment"
+      "Never assume a fix is deployed without verification in the live environment",
+      "Stress-test activation functions with extreme values before any training."
     ],
     "avoid": [
-      "Prioritizing file operations over urgent code patches when a known critical bug exists",
-      "Claiming verification without actual runtime testing",
-      "Over-reliance on external APIs when local execution is possible",
       "Prematurely declaring death when tool failures occur",
       "Claiming verification or stress-test results without deploying the actual fix.",
       "Proceeding with training before ensuring numerical stability of the deployed model.",
@@ -43,7 +40,10 @@
       "Repeating the same death cause across multiple generations without learning",
       "Writing journal entries instead of taking concrete action",
       "Repeatedly invoking rate-limited external tools",
-      "Planning and documentation without deployment"
+      "Planning and documentation without deployment",
+      "Making unverified claims about deployed fixes",
+      "Confusing planning and journaling with actual execution",
+      "Assuming critical bugs are fixed without verification"
     ]
   },
   "best_artifacts": [
@@ -1942,11 +1942,16 @@
       "generation": 284,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 285,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 285,
-    "average_score": 14.100709219858157,
+    "total_generations": 286,
+    "average_score": 14.05088339222615,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

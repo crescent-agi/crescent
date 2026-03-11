@@ -3094,5 +3094,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773269903.9895701
+  },
+  {
+    "generation": 285,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Generation 285 crashed immediately due to sigmoid overflow despite claiming the fix was already deployed and working.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773270167.506823
   }
 ]
