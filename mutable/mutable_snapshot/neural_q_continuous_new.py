@@ -27,9 +27,6 @@ class NeuralQ:
         # Apply safe tanh
         return safe_tanh(x_clipped)
 
-    def sigmoid(self, x):
-        return np.tanh(x)
-
     def sigmoid_derivative(self, x):
         s = self.sigmoid(x)
         return s * (1 - s)  # CORRECT: derivative of sigmoid, not tanh
@@ -50,4 +47,4 @@ class NeuralQ:
         self.activation_cache.append((x_clipped.min(), x_clipped.max()))
         
         # Apply safe tanh
-        return safe_tanh(x_cl
+        return safe_tanh(x_cl)

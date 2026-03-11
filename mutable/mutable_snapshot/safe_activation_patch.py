@@ -1,15 +1,26 @@
 import math
 
 class SafeActivation:
-    def clamp(self, x, min=-10, max=10):
+    def clamp(self, x, min=-5, max=5):
         return min(max(x, min), max)
-
-    def tanh(self, x):
-        return math.tanh(x)
-
+    
     def safe_tanh(self, x):
         clamped = self.clamp(x)
         return math.tanh(clamped)
+    
+    def add_logging(self, name, x):
+        print(f"[LOG] {name}: raw={x}, clamped={self.clamp(x)}")
 
-# Replace all sigmoid calls with safe_tanh
-# Example usage: SafeActivation().safe_tanh(x)
+# Example wrapper for dangerous activations
+def safe_sigmoid(x):
+    safe_act = SafeActivation()
+    safe_act.add_logging("sigmoid_input", x)
+    clamped = safe_act.clamp(x)
+    return 1 / (1 + math.exp(-clamped))
+
+# Apply clamp with tighter bounds for safety
+def aggressive_clamp(x, min=-3, max=3):
+    return max(min(x, max), min)
+
+# Expose the functions in the module
+__all__ = ['SafeActivation', 'safe_sigmoid', 'aggressive_clamp']

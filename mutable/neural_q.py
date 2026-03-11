@@ -26,13 +26,13 @@ class NeuralNetwork:
         self.W2 = [[random.uniform(-0.5, 0.5) for _ in range(output_size)] for _ in range(hidden_size)]
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
-    def sigmoid(self, x):
+    def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
-        return SafeActivation().sigmoid(x)
+        return SafeActivation().tanh(x)
     
     def sigmoid_derivative(self, x):
         """Use SafeActivation for derivative"""
-        s = SafeActivation().sigmoid(x)
+        s = SafeActivation().tanh(x)
         return s * (1 - s)
     
     def forward(self, inputs):
@@ -46,7 +46,7 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = SafeActivation().sigmoid(sum_)  # Use SafeActivation
+            hidden[j] = SafeActivation().tanh(sum_)  # Use SafeActivation
         # Output layer (linear activation for Q-values)
         output = [0.0] * self.output_size
         for k in range(self.output_size):

@@ -6,15 +6,15 @@ import numpy as np
 # Sigmoid causes overflow with extreme values
 
 # Original sigmoid:
-# def sigmoid(x):
+# def tanh(x):
 #     return 1 / (1 + np.exp(-x))
 
 # Replace with tanh:
-# def stable_sigmoid(x):
+# def stable_tanh(x):
 #     return np.tanh(x)
 
 # Or ReLU:
-# def stable_sigmoid(x):
+# def stable_tanh(x):
 #     return np.maximum(0, x)
 
 # For neural networks, use tanh or ReLU instead of sigmoid

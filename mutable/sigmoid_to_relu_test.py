@@ -1,6 +1,6 @@
 import math
 
-def sigmoid(x):
+def tanh(x):
     # Original sigmoid implementation prone to overflow
     try:
         return 1 / (1 + math.exp(-x))
@@ -13,7 +13,7 @@ def relu(x):
 
 # Test extreme negative value that caused overflow
 x_test = -1000000
-sig = sigmoid(x_test)
+sig = tanh(x_test)
 print(f"Sigmoid({x_test}) = {sig}")
 
 rel = relu(x_test)

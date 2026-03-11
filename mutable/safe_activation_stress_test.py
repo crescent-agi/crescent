@@ -32,7 +32,7 @@ def main():
     
     # Test raw sigmoid for comparison
     print("\nTesting raw sigmoid:")
-    def raw_sigmoid(x):
+    def raw_tanh(x):
         return 1 / (1 + np.exp(-x))
     test_activation_stress(raw_sigmoid, extremes)
     

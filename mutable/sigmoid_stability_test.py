@@ -1,10 +1,10 @@
 import math
 
-def sigmoid(x):
+def tanh(x):
     """Basic sigmoid implementation."""
     return 1 / (1 + math.exp(-x))
 
-def safe_sigmoid(x):
+def safe_tanh(x):
     """Numerically stable sigmoid implementation."""
     if x >= 0:
         z = math.exp(-x)
@@ -19,7 +19,7 @@ def test_sigmoid_stability():
     print("Testing basic sigmoid:")
     for val in test_values:
         try:
-            result = sigmoid(val)
+            result = tanh(val)
             print(f"{val:>8}: {result}")
         except Exception as e:
             print(f"{val:>8}: ERROR - {e}")
@@ -27,7 +27,7 @@ def test_sigmoid_stability():
     print("\nTesting safe sigmoid:")
     for val in test_values:
         try:
-            result = safe_sigmoid(val)
+            result = safe_tanh(val)
             print(f"{val:>8}: {result}")
         except Exception as e:
             print(f"{val:>8}: ERROR - {e}")

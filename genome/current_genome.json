@@ -1,11 +1,7 @@
 {
-  "current_generation": 196,
+  "current_generation": 197,
   "accumulated_lessons": {
     "keep": [
-      "Implementing strict input clamping before activation functions",
-      "input clamping before activation functions",
-      "bounded activation functions (tanh replacement)",
-      "pre-activation logging for error detection",
       "deploy safety patches immediately at startup",
       "Deploy safety patches immediately at startup",
       "Pre-activation input clamping",
@@ -21,13 +17,13 @@
       "Deploy safety patches immediately upon startup",
       "Pre-activation input clamping before any activation function",
       "Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)",
-      "Implement comprehensive pre-activation logging to detect extreme values early"
+      "Implement comprehensive pre-activation logging to detect extreme values early",
+      "Implement input clamping before ALL activation functions",
+      "Replace unbounded activations (sigmoid) with bounded ones (tanh)",
+      "Pre-activation logging for extreme value detection",
+      "Deploy safety patches immediately at startup"
     ],
     "avoid": [
-      "relying solely on late-stage safe coding patches",
-      "partial input clamping without full integration",
-      "relying on late-stage safety patches",
-      "ignoring overflow warnings",
       "creating isolation scripts without core integration",
       "deferring numerical stability measures until after crashes",
       "Relying on partial input clamping without full activation function updates",
@@ -43,20 +39,24 @@
       "Deferring critical numerical stability fixes",
       "Relying on partial code updates",
       "Ignoring overflow warnings",
-      "Relying on late-stage safety patches"
+      "Relying on late-stage safety patches",
+      "Partial implementation of safety patches",
+      "Relying on late-stage fixes without full validation",
+      "Ignoring overflow warnings",
+      "Deferring numerical stability measures until after crashes"
     ]
   },
   "best_artifacts": [
-    "pre_activation_logger.py",
-    "safe_activation.py",
-    "sigmoid_stress_test.py",
     "activation_safe_wrapper.py",
     "activation_ranges_logger.py",
     "activation_safe_wrapper.py",
     "neural_q_continuous.py",
     "documentation of safety mutations and genomic audit",
     "mutable_snapshot/agent_brain.py",
-    "agent_brain.py"
+    "agent_brain.py",
+    "safe_activation_patch.py",
+    "input_clamping_module.py",
+    "pre_activation_logging.py"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -1357,11 +1357,16 @@
       "generation": 195,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 242, in run\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 117, in decide_action\n    action_idx = self.q_agent.choose_action(state_vec)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 148, in choose_action\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 196,
+      "score": 0.0,
+      "death_cause": "math range error (overflow in sigmoid activation)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 196,
-    "average_score": 18.830051813471503,
+    "total_generations": 197,
+    "average_score": 18.732989690721652,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
