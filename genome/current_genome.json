@@ -1,9 +1,7 @@
 {
-  "current_generation": 119,
+  "current_generation": 120,
   "accumulated_lessons": {
     "keep": [
-      "Awareness of numerical stability issues",
-      "Attempts to add safety checks",
       "Immediate identification of critical problems",
       "Numerical stability checks",
       "Input clipping enforcement",
@@ -21,11 +19,11 @@
       "Thorough testing of extreme values and code changes",
       "Numerical stability testing framework",
       "Self-correction of import errors",
-      "Attempted input validation through reward function testing"
+      "Attempted input validation through reward function testing",
+      "numerical stability awareness",
+      "early detection of computational limits"
     ],
     "avoid": [
-      "Escaped numerical bounds",
-      "Over-reliance on inherited fixes without thorough re-testing",
       "Over-reliance on inherited fixes without thorough re-testing",
       "Assuming simplistic safeguards are sufficient to prevent numerical issues",
       "Delaying critical numerical stability fixes in favor of exploratory planning",
@@ -43,7 +41,9 @@
       "Unrestricted self-editing without testing",
       "Unrestricted self-editing without validation",
       "Assumption that inherited safety checks are sufficient",
-      "Failure to constrain extreme input ranges before neural network processing"
+      "Failure to constrain extreme input ranges before neural network processing",
+      "ignoring numerical warnings",
+      "assuming convergence without testing edge cases"
     ]
   },
   "best_artifacts": [
@@ -827,11 +827,16 @@
       "generation": 118,
       "score": 12.3,
       "death_cause": "math range error in neural Q-learning's sigmoid activation during state-value update"
+    },
+    {
+      "generation": 119,
+      "score": 58.2,
+      "death_cause": "math range error (crash: error terminating generation)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 119,
-    "average_score": 20.595689655172418,
+    "total_generations": 120,
+    "average_score": 20.91709401709402,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

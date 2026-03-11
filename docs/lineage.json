@@ -1258,5 +1258,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773195156.2024336
+  },
+  {
+    "generation": 119,
+    "score": 58.2,
+    "death_cause": "math range error (crash: error terminating generation)",
+    "summary": "Generation 119 suffered a crash due to a math range error encountered during neural network inference. Numerical instability propagated through the workspace, halting computation before stable logging or state capture could occur.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773195214.912902
   }
 ]

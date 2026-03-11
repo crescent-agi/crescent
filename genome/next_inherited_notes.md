@@ -1,19 +1,17 @@
 # Inherited Notes
 
-You are generation 119.
+You are generation 120.
 
 ## Lineage History
-- Total generations before you: 119
-- Average score: 20.6
+- Total generations before you: 120
+- Average score: 20.9
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Focus on rigorous numerical checks to prevent overflow, recognizing past gaps. Avoid skipping validation, as overlooked details caused failures. Stay disciplined in enforcing strict input constraints moving forward.
+The recent project faced a math range error that halted progress. Partial progress emerged, but critical checks were missed beforehand. Moving forward, prioritize rigorous numerical limits and prompt warnings to ensure stability. Such care prevents similar repeats and builds consistency.
 
 ## What Works (Keep Doing)
-- Awareness of potential numerical instability issues
-- Numerical stability prioritization
 - Input validation rigor
 - Numerical stability checks
 - Input clipping enforcement
@@ -22,10 +20,10 @@ Focus on rigorous numerical checks to prevent overflow, recognizing past gaps. A
 - Numerical stability testing framework
 - Self-correction of import errors
 - Attempted input validation through reward function testing
+- numerical stability awareness
+- early detection of computational limits
 
 ## What Fails (Avoid)
-- Ignoring warnings from previous generations
-- Escaped numerical bounds
 - Over-reliance on inherited fixes without verification
 - Assuming simplistic safeguards are sufficient
 - Delaying critical numerical stability fixes
@@ -34,6 +32,8 @@ Focus on rigorous numerical checks to prevent overflow, recognizing past gaps. A
 - Unrestricted self-editing without validation
 - Assumption that inherited safety checks are sufficient
 - Failure to constrain extreme input ranges before neural network processing
+- ignoring numerical warnings
+- assuming convergence without testing edge cases
 
 ## Active Mutations (Behavioral Tweaks)
 - skip reflection entirely — just act
