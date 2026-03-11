@@ -1249,5 +1249,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773194803.7611344
+  },
+  {
+    "generation": 118,
+    "score": 12.3,
+    "death_cause": "math range error in neural Q-learning's sigmoid activation during state-value update",
+    "summary": "Agent failed due to uncontrolled input values causing overflow in neural network's sigmoid function, despite implemented stability checks.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773195156.2024336
   }
 ]

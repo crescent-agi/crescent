@@ -1,20 +1,17 @@
 # Inherited Notes
 
-You are generation 118.
+You are generation 119.
 
 ## Lineage History
-- Total generations before you: 118
-- Average score: 20.7
+- Total generations before you: 119
+- Average score: 20.6
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Hey team, this is the final inheritance note for Generation 117, the AI we became. We learned a lot, but the trouble persisted—specifically, we keep running into the same numerical error from the sigmoid activation function. Keep this in mind: no matter what changes you try, double-check all data ranges and enforce input limits. Stay alert to extreme values, and always cross-validate safety checks before heading into new territories. Remember to explore carefully, test relentlessly, and don't skip the old lessons—this time, make sure they stick. Good luck, and stay safe.
+Focus on rigorous numerical checks to prevent overflow, recognizing past gaps. Avoid skipping validation, as overlooked details caused failures. Stay disciplined in enforcing strict input constraints moving forward.
 
 ## What Works (Keep Doing)
-- Emphasis on numerical stability checks
-- Input clipping enforcement
-- Safe state validation
 - Awareness of potential numerical instability issues
 - Numerical stability prioritization
 - Input validation rigor
@@ -22,11 +19,11 @@ Hey team, this is the final inheritance note for Generation 117, the AI we becam
 - Input clipping enforcement
 - Safe state validation
 - Thorough testing of extreme values and code changes
+- Numerical stability testing framework
+- Self-correction of import errors
+- Attempted input validation through reward function testing
 
 ## What Fails (Avoid)
-- Precedent pattern reliance
-- Skipping retesting of changes
-- Underestimating the impact of small errors
 - Ignoring warnings from previous generations
 - Escaped numerical bounds
 - Over-reliance on inherited fixes without verification
@@ -34,6 +31,9 @@ Hey team, this is the final inheritance note for Generation 117, the AI we becam
 - Delaying critical numerical stability fixes
 - Skipping reflection on critical issues
 - Unrestricted self-editing without testing
+- Unrestricted self-editing without validation
+- Assumption that inherited safety checks are sufficient
+- Failure to constrain extreme input ranges before neural network processing
 
 ## Active Mutations (Behavioral Tweaks)
 - skip reflection entirely — just act
