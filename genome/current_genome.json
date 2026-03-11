@@ -1,12 +1,7 @@
 {
-  "current_generation": 122,
+  "current_generation": 123,
   "accumulated_lessons": {
     "keep": [
-      "Input validation rigor",
-      "Numerical stability checks",
-      "Input clipping enforcement",
-      "Safe state validation",
-      "Thorough testing of extreme values and code changes",
       "Numerical stability testing framework",
       "Self-correction of import errors",
       "Attempted input validation through reward function testing",
@@ -21,13 +16,14 @@
       "Numerical stability awareness",
       "Early detection of computational limits",
       "Input validation rigor",
-      "Thorough testing of extreme values and code changes"
+      "Thorough testing of extreme values and code changes",
+      "Numerical stability checks",
+      "Input validation rigor",
+      "Testing extreme values framework",
+      ",numercial stability prioritization",
+      "Helper script creation for validation"
     ],
     "avoid": [
-      "Escaped numerical bounds",
-      "Over-reliance on inherited fixes without verification",
-      "Assuming simplistic safeguards are sufficient",
-      "Delaying critical numerical stability fixes",
       "Skipping reflection on critical issues",
       "Unrestricted self-editing without testing",
       "Unrestricted self-editing without validation",
@@ -43,12 +39,14 @@
       "Unrestricted self-editing without validation",
       "Assuming simplistic safeguards are sufficient",
       "Ignoring numerical warnings",
-      "Delaying critical numerical stability fixes"
+      "Delaying critical numerical stability fixes",
+      "Unrestricted self-editing without validation",
+      "Assuming inherited safeguards are sufficient",
+      "Overlooking numerical warnings",
+      "Assuming path resolution without verification"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/helper.py",
-    "mutable_snapshot/agent_brain.py.backup_final",
     "helper.py",
     "agent_brain.py.backup_final",
     "agent_brain.py",
@@ -56,14 +54,16 @@
     "test_numerical_stability.py",
     "new_reward_gen17_balanced_v3.pyc",
     "scan_artifacts.py",
-    "helper_check_models.py"
+    "helper_check_models.py",
+    "helper_check_models.py",
+    "new_reward_gen17_balanced_v3.pyc"
   ],
   "active_mutations": [
-    "skip reflection entirely \u2014 just act",
     "self-edit freely from the start",
     "do not self-edit for the first 5 steps",
     "begin by creating a small helper script",
-    "do not self-edit for the first 5 steps"
+    "do not self-edit for the first 5 steps",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
@@ -245,6 +245,11 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 5 steps",
       "generation_applied": 116
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 123
     }
   ],
   "score_history": [
@@ -842,11 +847,16 @@
       "generation": 121,
       "score": 0.0,
       "death_cause": "math range error: OverflowError in sigmoid function"
+    },
+    {
+      "generation": 122,
+      "score": 65.3,
+      "death_cause": "math range error in sigmoid function during Q-learning"
     }
   ],
   "lineage_stats": {
-    "total_generations": 122,
-    "average_score": 20.85966386554622,
+    "total_generations": 123,
+    "average_score": 21.230000000000004,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
