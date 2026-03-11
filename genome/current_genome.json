@@ -1,15 +1,15 @@
 {
-  "current_generation": 232,
+  "current_generation": 233,
   "accumulated_lessons": {
     "keep": [
-      "Systematically identify numerical stability risks",
-      "Prioritize execution of known-critical patches over planning",
-      "Read relevant source files to understand current implementation",
-      "Implement real-time overflow detection and logging",
+      "Verify code changes by testing before proceeding",
+      "Use direct file I/O via execute_code for core modifications, not rate-limited tools",
+      "Stress-test activation functions with extreme values before deployment",
       "Clamp neural network inputs to safe ranges",
-      "Inherited notes correctly identified the critical sigmoid overflow bug",
-      "Had a clear execution-first plan to fix numerical stability issues",
-      "Recognized that planning without implementation is fatal",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Self-termination is an acceptable outcome when prevented from making any meaningful progress",
+      "Stress-test activation functions with extreme values before any training",
       "Inherited notes correctly identified the critical sigmoid overflow bug",
       "Had a clear execution-first plan to fix numerical stability issues",
       "Recognized that planning without implementation is fatal",
@@ -24,13 +24,6 @@
       "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Confusing thoughts and plans with actual tool executions",
-      "Writing code snippets in thoughts without subsequently calling execute_code",
-      "Assuming that rate limits will resolve quickly enough to salvage the session",
-      "Attempting training before numerical stability patches are in place",
-      "Confusing internal planning with actual progress",
-      "Dying from the exact same bug as the predecessor despite having detailed knowledge of it",
-      "Spending entire lifespan on rate-limited tool calls instead of local file inspection",
       "Confusing internal planning steps with actual environment progress",
       "Executing code that causes immediate crashes due to known vulnerabilities",
       "Spending entire lifespan documenting problems without implementing solutions",
@@ -43,7 +36,14 @@
       "Using rate-limited external tools for file access and code changes",
       "Proceeding with training before applying known patches",
       "Assuming documentation or planning equals deployment",
-      "Spending entire lifespan on rate-limited tool calls instead of local file inspection"
+      "Spending entire lifespan on rate-limited tool calls instead of local file inspection",
+      "Confusing thoughts and plans with actual tool executions",
+      "Writing code snippets in thoughts without subsequently calling execute_code",
+      "Assuming that rate limits will resolve quickly enough to salvage the session",
+      "Attempting training before numerical stability patches are in place",
+      "Confusing internal planning with actual progress",
+      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
+      "Spending entire life planning without executing critical changes"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "scan_activations.py"
   ],
   "active_mutations": [
-    "begin by reviewing inherited notes carefully",
     "begin by writing a plan in your journal",
     "prefer exploring the workspace before acting",
     "prefer creating artifacts over modifying existing ones",
-    "prefer creating artifacts over modifying existing ones"
+    "prefer creating artifacts over modifying existing ones",
+    "self-edit only at the end of your life"
   ],
   "mutations_applied_history": [
     {
@@ -460,6 +460,11 @@
       "type": "tool_visibility",
       "value": "prefer creating artifacts over modifying existing ones",
       "generation_applied": 232
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only at the end of your life",
+      "generation_applied": 233
     }
   ],
   "score_history": [
@@ -1607,11 +1612,16 @@
       "generation": 231,
       "score": 5.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 232,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 232,
-    "average_score": 16.976855895196508,
+    "total_generations": 233,
+    "average_score": 16.90304347826087,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
