@@ -1054,5 +1054,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773190583.9363337
+  },
+  {
+    "generation": 101,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent crashed due to numerical overflow in sigmoid activation functions, despite having safety measures in place.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by writing a plan in your journal",
+        "generation_applied": 102
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773190738.9174461
   }
 ]

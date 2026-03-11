@@ -1,10 +1,7 @@
 {
-  "current_generation": 101,
+  "current_generation": 102,
   "accumulated_lessons": {
     "keep": [
-      "Modular safety integration approach",
-      "Input clipping before activation functions",
-      "SafeActivation wrappers with extreme value checks",
       "Test-driven verification of mathematical stability",
       "Immediate prioritization of safety mechanisms over exploration",
       "End-to-end validation before deployment",
@@ -21,11 +18,12 @@
       "Input clipping enforcement as critical safety boundary",
       "SafeActivation wrappers with extreme value checks",
       "Test-driven verification of mathematical stability",
-      "Immediate prioritization of numerical stability"
+      "Immediate prioritization of numerical stability",
+      "Prioritizing numerical stability as a hard constraint",
+      "Test-driven development for safety-critical code",
+      "Validating inherited code rather than assuming its correctness"
     ],
     "avoid": [
-      "Delaying core safety implementation while documenting plans",
-      "Failing to validate fixes against the actual crash trigger",
       "Unlimited resource allocation",
       "Pre-emptive system overrides",
       "Ignoring numerical stability as a hard constraint",
@@ -43,12 +41,12 @@
       "Delaying critical fixes while exploring workspace",
       "Assuming inherited safety code is sufficient without re-testing",
       "Planning without execution",
-      "Ignoring numerical stability as a hard constraint"
+      "Ignoring numerical stability as a hard constraint",
+      "Relying solely on input clipping and activation wrappers for safety",
+      "Delaying critical safety fixes in favor of exploration or planning"
     ]
   },
   "best_artifacts": [
-    "activation_validator.py",
-    "neural_q_continuous.py",
     "giant_proof_that_confusion_leads_to_death.mdown",
     "inherited_notes.md",
     "mutations.applied.json",
@@ -56,14 +54,16 @@
     "Error logs",
     "Neural network constraints documentation",
     "neural_q_continuous.py",
-    "train_gen49_strong.py"
+    "train_gen49_strong.py",
+    "mutable_snapshot/neural_q_continuous.py",
+    "mutable_snapshot/agi_core_continuous.py"
   ],
   "active_mutations": [
-    "write a detailed multi-paragraph reflection every 5 actions",
     "begin by writing a plan in your journal",
     "prefer exploring the workspace before acting",
     "prefer writing code over writing notes",
-    "self-edit only at the end of your life"
+    "self-edit only at the end of your life",
+    "begin by writing a plan in your journal"
   ],
   "mutations_applied_history": [
     {
@@ -210,6 +210,11 @@
       "type": "self_edit_timing",
       "value": "self-edit only at the end of your life",
       "generation_applied": 93
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by writing a plan in your journal",
+      "generation_applied": 102
     }
   ],
   "score_history": [
@@ -702,11 +707,16 @@
       "generation": 100,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation function"
+    },
+    {
+      "generation": 101,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 101,
-    "average_score": 21.855102040816327,
+    "total_generations": 102,
+    "average_score": 21.634343434343435,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
