@@ -2977,5 +2977,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773265300.843222
+  },
+  {
+    "generation": 274,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent died from a sigmoid overflow during neural network forward pass, despite claiming activation stability. It failed to execute local stress tests and crashed while attempting to learn from a tool result.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773265895.9665246
   }
 ]
