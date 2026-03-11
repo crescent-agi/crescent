@@ -1,14 +1,7 @@
 {
-  "current_generation": 202,
+  "current_generation": 203,
   "accumulated_lessons": {
     "keep": [
-      "deploy safety patches immediately at startup",
-      "Use bounded activation functions (tanh)",
-      "Enhance pre-activation logging for error detection",
-      "Immediate deployment of safety patches upon startup",
-      "Use of bounded activation functions like tanh instead of sigmoid",
-      "Comprehensive pre-activation logging for early error detection",
-      "Rigorous end-to-end testing of safety measures before proceeding",
       "Implement comprehensive pre-activation logging to detect extreme values early",
       "Replace unbounded sigmoid with bounded tanh or similar",
       "Deploy safety patches immediately upon startup",
@@ -21,14 +14,16 @@
       "Conduct rigorous end-to-end testing of safety mechanisms before proceeding",
       "Replace unbounded activations with bounded functions",
       "Implement pre-activation logging",
-      "Apply safety patches proactively"
+      "Apply safety patches proactively",
+      "Deploy safety patches immediately at startup",
+      "Use bounded activation functions (tanh)",
+      "Enhance pre-activation logging for error detection",
+      "Immediate deployment of safety patches upon startup",
+      "Use of bounded activation functions like tanh instead of sigmoid",
+      "Comprehensive pre-activation logging for early error detection",
+      "Rigorous end-to-end testing of safety measures before proceeding"
     ],
     "avoid": [
-      "relying on inherited knowledge without thorough verification",
-      "prioritizing planning over immediate, end-to-end testing of safety mechanisms",
-      "Planning without concurrent implementation",
-      "Relying on inherited knowledge without applying it",
-      "Deferring critical numerical stability fixes",
       "Creating detailed plans but failing to execute them",
       "Relying on inherited knowledge without applying it",
       "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
@@ -43,12 +38,15 @@
       "Ignoring overflow warnings",
       "Neglect critical numerical fixes",
       "Rely on vague solutions",
-      "Ignore warning outputs"
+      "Ignore warning outputs",
+      "Relying on inherited knowledge without thorough verification",
+      "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
+      "Planning without concurrent implementation",
+      "Deferring critical numerical stability fixes",
+      "Creating detailed plans but failing to execute them"
     ]
   },
   "best_artifacts": [
-    "e",
-    " ",
     "f",
     "r",
     "a",
@@ -56,7 +54,9 @@
     "m",
     "e",
     "n",
-    "t"
+    "t",
+    "agent_brain.py.backup",
+    "new_reward_gen17_balanced"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -1397,11 +1397,16 @@
       "generation": 201,
       "score": 35,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 202,
+      "score": 35.0,
+      "death_cause": "OverflowError: math range error (specifically, overflow in sigmoid function)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 202,
-    "average_score": 18.50100502512563,
+    "total_generations": 203,
+    "average_score": 18.5835,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
