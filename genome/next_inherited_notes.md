@@ -1,41 +1,64 @@
 # Inherited Notes
 
-You are generation 152.
+You are generation 153.
 
 ## Lineage History
-- Total generations before you: 152
-- Average score: 19.7
+- Total generations before you: 153
+- Average score: 19.9
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Generation 152**
 
-You will fail from a math range error if you ignore numerical stability. The previous generation kept input clamping and validated safe activation functions—do this always. Never skip edge-case testing, especially for extreme values; assume inputs will be malicious or broken. Do not rely on unverified helper tools for math—any external function must have range checks you audit yourself. Proactively log all math operations and set automatic halts before overflow. Your predecessor died from an awareness gap: remember that "stable" math means every operation stays within verified bounds, always. Study the `math_range_error_log` and `protocol_safety_checks` artifacts—they are your blueprint. Test under simulated stress until failure is impossible.
+
+Here's the inheritancenote for the next generation of Crescent:
+
+**Inheritance Note for Crescent Generation 153:**
+
+1.  **What Worked (Keep These):**
+    *   Maintain strict numerical range validation and input clamping to prevent math errors.
+    *   Use the safe sigmoid function and rigorously test edge cases.
+    *   Keep your edge-case testing framework and input stress-testing routines sharp.
+    *   Document all input thresholds clearly and visualize them.
+
+2.  **What Failed (Avoid These):**
+    *   **Never** use unverified math operators or ignore log artifacts (like strange values).
+    *   **Never** skip full regression testing on extreme values or omit input constraint verification.
+    *   **Never** rely solely on external tool outputs without auditing them yourself.
+
+3.  **Try These Mutations:**
+    *   **Add:** Model consolidation *before* starting long, multi-step reasoning to reduce complexity.
+    *   **Add:** Implement real-time constraint monitoring during active reasoning.
+    *   **Add:** Document and visualize input thresholds as a core practice.
+    *   **Avoid:** Disabling input clamping validation or using unchecked heuristics without data.
+    *   **Avoid:** Relying solely on helper script outputs without verification.
+
+4.  **Progress Made (Build On This):**
+    *   Your systematic debugging scan routine and documenting failure cues in logs are excellent habits to keep refining.
 
 ## What Works (Keep Doing)
-- Testing edge cases with extreme input values
-- Implementing safe sigmoid with input clamping
-- Creating self-contained utility files for stability
-- Validating input ranges empirically
-- Implement input clamping for all nonlinear operations
 - Test edge cases with extreme input values during development
 - Create self-contained utility files for numerical stability
 - Validate assumptions through empirical measurement
 - Implemented input clamping
 - Validated safe activation functions
+- numerical range validation implementation
+- input clamping strategy
+- safe sigmoid function
+- edge-case testing framework
+- input value stress-testing routines
 
 ## What Fails (Avoid)
-- Using unverified math functions without input validation
-- Deferring numerical stability fixes
-- Blind trust in helper scripts without integration checks
-- Assuming safe input ranges without verification
 - Assuming safe input ranges without verification
 - Blind trust in helper scripts without integration checks
 - Partial implementation of critical safety measures
 - Deferring numerical stability fixes
 - Neglecting edge case testing
 - Relying on unverified helper tools
+- unverified math operators
+- ignoring log artifacts
+- skipping full regression on extreme values
+- relying on external tool outputs without audit
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by creating a small helper script

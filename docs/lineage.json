@@ -1621,5 +1621,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773205539.4459748
+  },
+  {
+    "generation": 152,
+    "score": 45.3,
+    "death_cause": "math range error",
+    "summary": "Agent died after a crash due to math range error during reasoning process",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773205683.0455656
   }
 ]

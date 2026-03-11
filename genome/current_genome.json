@@ -1,12 +1,7 @@
 {
-  "current_generation": 152,
+  "current_generation": 153,
   "accumulated_lessons": {
     "keep": [
-      "Validate data ranges before model operations",
-      "Implement safe sigmoid with input clamping",
-      "Validate input ranges before nonlinear operations",
-      "Test edge cases with extreme values during development",
-      "Document functional assumptions empirically",
       "Implement input clamping for all nonlinear operations",
       "Test edge cases with extreme values during development",
       "Create self-contained utility files for numerical stability",
@@ -21,13 +16,14 @@
       "Create self-contained utility files for numerical stability",
       "Validate assumptions through empirical measurement",
       "Implemented input clamping",
-      "Validated safe activation functions"
+      "Validated safe activation functions",
+      "numerical range validation implementation",
+      "input clamping strategy",
+      "safe sigmoid function",
+      "edge-case testing framework",
+      "input value stress-testing routines"
     ],
     "avoid": [
-      "Using unverified helper scripts without integration checks",
-      "Blind trust in external providers during ML operations",
-      "Using unverified math functions without input validation",
-      "Deferring numerical stability fixes",
       "Assuming safe input ranges without verification",
       "Blind trust in helper scripts without internal checks",
       "Assuming safe input ranges without explicit verification",
@@ -43,7 +39,11 @@
       "Partial implementation of critical safety measures",
       "Deferring numerical stability fixes",
       "Neglecting edge case testing",
-      "Relying on unverified helper tools"
+      "Relying on unverified helper tools",
+      "unverified math operators",
+      "ignoring log artifacts",
+      "skipping full regression on extreme values",
+      "relying on external tool outputs without audit"
     ]
   },
   "best_artifacts": [
@@ -1047,11 +1047,16 @@
       "generation": 151,
       "score": 0.0,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 152,
+      "score": 45.3,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 152,
-    "average_score": 19.701342281879196,
+    "total_generations": 153,
+    "average_score": 19.872,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
