@@ -1,12 +1,7 @@
 {
-  "current_generation": 185,
+  "current_generation": 186,
   "accumulated_lessons": {
     "keep": [
-      "prioritize immediate implementation of numerical stability guards",
-      "run existing tests to check for regressions after safety patches",
-      "Implementing input clamping for activation functions",
-      "The lineage message emphasizing the importance of immediate safety implementations",
-      "replace sigmoid with bounded alternatives like tanh or clipped ReLU",
       "add input clamping for activation functions",
       "create and run stress tests for extreme input ranges",
       "prioritize immediate implementation of numerical stability guards",
@@ -21,13 +16,14 @@
       "Immediately apply safety patches upon startup, before any environment interaction",
       "input clamping",
       "bounded activation functions",
-      "pre-activation logging"
+      "pre-activation logging",
+      "apply input clamping before activation functions",
+      "replace unbounded activations (e.g., sigmoid) with bounded ones",
+      "add stress tests with extreme values",
+      "enhance pre-activation logging for early error detection",
+      "deploy safety patches immediately at startup"
     ],
     "avoid": [
-      "Creating extensive documentation without producing working code",
-      "Creating extensive planning without implementing safeguards",
-      "Deferring safety checks until after execution begins",
-      "Ignoring inherited safety documentation",
       "Prioritizing planning over immediate implementation of safety measures",
       "Attempting to use sigmoid with unbounded inputs",
       "Creating plans without implementing basic safeguards",
@@ -43,11 +39,14 @@
       "Reading potential solution files without acting on them",
       "Deferring critical numerical stability measures until after the first crash risk",
       "ignoring error signals",
-      "over-reliance on safety patches during unstable attempts"
+      "over-reliance on safety patches during unstable attempts",
+      "deferring numerical safety measures until after errors occur",
+      "creating isolation scripts without integrating changes into core modules",
+      "relying on superficial tests without validating integration",
+      "ignoring overflow warnings and not clamping inputs early"
     ]
   },
   "best_artifacts": [
-    "The comprehensive 25-step plan in the journal",
     "neural_q_continuous.py",
     "sigmoid_overflow_patch",
     "sigmoid_stress_test.py",
@@ -56,14 +55,15 @@
     "inclusion of numerical range-restriction in training pre-warm-up",
     "updated generator protocols to enforce stricter mathematical bounds",
     "modify_self.py",
-    "pre_activation_logger.py"
+    "pre_activation_logger.py",
+    "safe_activation.py"
   ],
   "active_mutations": [
-    "begin by setting a concrete sub-goal",
     "reflect only when something goes wrong",
     "do not self-edit for the first 10 steps",
     "begin by writing a plan in your journal",
-    "self-edit only at the end of your life"
+    "self-edit only at the end of your life",
+    "do not self-edit for the first 10 steps"
   ],
   "mutations_applied_history": [
     {
@@ -360,6 +360,11 @@
       "type": "self_edit_timing",
       "value": "self-edit only at the end of your life",
       "generation_applied": 185
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 10 steps",
+      "generation_applied": 186
     }
   ],
   "score_history": [
@@ -1272,11 +1277,16 @@
       "generation": 184,
       "score": 72.4,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 185,
+      "score": 6.5,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 185,
-    "average_score": 19.05,
+    "total_generations": 186,
+    "average_score": 18.981420765027323,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

@@ -1,20 +1,14 @@
-#!/usr/bin/env python3
+import numpy as np
 
-# Crescent's enhanced Q-network layer with overflow protection
-from helper import safe_sigmoid
-
-class QNetwork:
-    """Q-network with clamped activation to prevent numerical overflow"""
+class NeuralQAgent:
+    def __init__(self):
+        self.w = np.random.randn(4, 2)
 
     def forward(self, x):
-        """Apply clamped sigmoid to inputs before forward pass"""
-        clamped_x = [safe_sigmoid(v) for v in x]
-        # Existing network logic here would continue...
-        return clamped_x
+        # Clamp inputs before activation
+        x = np.clip(x, -100, 100)
+        z = np.dot(x, self.w)
+        return np.tanh(z)
 
-# Test integration
-if __name__ == "__main__":
-    test_values = [1.5, -2.8, 25, -30, 0]
-    print("Testing QNetwork:")
-    for v in test_values:
-        print(f"Input: {v:.2f} -> Clamped: {safe_sigmoid(v):.4f}")
+# Test with extreme values
+print(NeuralQAgent().forward([1000, -200, 0.5, 1]))

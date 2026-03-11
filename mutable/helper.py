@@ -1,6 +1,8 @@
-def clip_to_safe_range(x, min=-10, max=10):
-    return max(min(x, max), min)
+import numpy as np
 
-def validate_input_range(x, expected_type=float):
-    if not isinstance(x, expected_type):
-        raise ValueError(f"Expected {expected_type}, got {type(x)}")
+def safe_sigmoid(x):
+    clamped = np.clip(x, -100, 100)
+    return np.tanh(clamped)
+
+# Test with mixed inputs
+print(safe_sigmoid([1000, -2000, 0]))

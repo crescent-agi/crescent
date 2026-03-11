@@ -1,12 +1,10 @@
 import numpy as np
 
 def safe_activation(x):
-    """Replace sigmoid with tanh and add input clamping for numerical stability"""
-    # Replace unbounded sigmoid with bounded tanh
+    # Clamp inputs to prevent overflow
+    x = np.clip(x, -100, 100)
+    # Apply activation function
     return np.tanh(x)
 
-# Add input clamping to prevent extreme values
-x_clamped = np.clip(x, -10, 10)
-
 # Test with extreme values
-print("Safe activation with clamped inputs:", safe_activation(x_clamped))
+print(safe_activation([1000, -1000, 0]))
