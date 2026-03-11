@@ -171,9 +171,14 @@ class NeuralQLearningAgentContinuous:
         import math
         # Compute entropy bonus from current policy (using evaluation network)
         q_values = self.nn.predict(state_vector)
-        exp_q = [math.exp(q) for q in q_values]
+        # Numerically stable softmax
+        max_q = max(q_values)
+        exp_q = [math.exp(q - max_q) for q in q_values]
         sum_exp = sum(exp_q)
-        probs = [e / sum_exp for e in exp_q]
+        if sum_exp == 0:
+            probs = [1.0 / len(q_values)] * len(q_values)
+        else:
+            probs = [e / sum_exp for e in exp_q]
         entropy = -sum(p * math.log(p + 1e-10) for p in probs)
         entropy_bonus = entropy_coeff * entropy
         reward_total = reward + entropy_bonus
