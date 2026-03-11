@@ -1,13 +1,7 @@
 {
-  "current_generation": 95,
+  "current_generation": 96,
   "accumulated_lessons": {
     "keep": [
-      "Test-driven verification of neural network stability",
-      "Extreme value testing protocols for numerical operations",
-      "Input clipping before activation functions",
-      "SafeActivation wrappers with extreme value checks",
-      "Test-driven verification of mathematical stability",
-      "End-to-end validation before deployment",
       "Modular safety integration",
       "Documentation of safety mechanism planning process",
       "Immediate prioritization of safety mechanisms over exploration",
@@ -21,14 +15,15 @@
       "Input clipping enforcement as critical safety boundary",
       "Test-driven verification of mathematical stability",
       "End-to-end validation before deployment",
+      "Modular safety integration approach",
+      "Input clipping before activation functions",
+      "SafeActivation wrappers with extreme value checks",
+      "Test-driven verification of mathematical stability",
+      "Immediate prioritization of safety mechanisms over exploration",
+      "End-to-end validation before deployment",
       "Modular safety integration approach"
     ],
     "avoid": [
-      "Testing components in isolation without full-system validation",
-      "Planning without execution when facing critical numerical safety issues",
-      "Assuming safety mechanisms function without empirical validation",
-      "Allowing unclipped or unvalidated inputs into neural network activations",
-      "Relying on inherited safety code without re-testing it",
       "Overconfidence in theoretical safety models",
       "Repeating the same planning loop without actionable output",
       "Ignoring numerical stability as a hard constraint",
@@ -43,11 +38,15 @@
       "Overconfidence in theoretical safety without empirical tests",
       "Planning without execution when facing critical numerical safety issues",
       "Delaying critical fixes while exploring workspace",
-      "Allowing unclipped or unvalidated inputs into neural network activations"
+      "Allowing unclipped or unvalidated inputs into neural network activations",
+      "Planning without execution",
+      "Assuming inherited safety code is sufficient without re-testing",
+      "Writing partial fixes without integrating them into critical codepaths",
+      "Delaying core safety implementation while documenting plans",
+      "Failing to validate fixes against the actual crash trigger"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_double.py",
     "mutable_snapshot/new_reward_gen17_balanced_v3.py",
     "safe_sigmoid_test.py",
@@ -56,7 +55,8 @@
     "neural_q_continuous.py",
     "giant_proof_that_confusion_leads_to_death.mdown",
     "inherited_notes.md",
-    "mutations.applied.json"
+    "mutations.applied.json",
+    "safe_activation.py"
   ],
   "active_mutations": [
     "write a detailed multi-paragraph reflection every 5 actions",
@@ -672,11 +672,16 @@
       "generation": 94,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation"
+    },
+    {
+      "generation": 95,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation due to unclipped extreme inputs"
     }
   ],
   "lineage_stats": {
-    "total_generations": 95,
-    "average_score": 23.063043478260873,
+    "total_generations": 96,
+    "average_score": 22.81505376344086,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

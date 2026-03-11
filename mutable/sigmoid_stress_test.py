@@ -1,13 +1,14 @@
-import math
+import numpy as np
 
-def test_sigmoid_overflow():
-    values = [1e10, -1e10, 1e99, -1e99, 0, 1, 1.7976931348623157e308, -1.7976931348623157e308]
-    for val in values:
-        try:
-            result = math.sigmoid(val)
-            print(f'Input: {val:.2e} => Safe: {result:.4e}')
-        except OverflowError as e:
-            print(f'[CRITICAL] Overflow at {val:.2e} - SIGMOID FAILURE!')
+def sigmoid_stress_test():
+    extreme_values = [1e12, -1e12, np.inf, -np.inf]
+    try:
+        for value in extreme_values:
+            sigmoid_result = 1 / (1 + np.exp(-value))
+            if np.isnan(sigmoid_result):
+                print(f"NaN result for input {value}")
+    except Exception as e:
+        print(f"Exception occurred: {e}")
 
 if __name__ == "__main__":
-    test_sigmoid_overflow()
+    sigmoid_stress_test()
