@@ -1,12 +1,7 @@
 {
-  "current_generation": 210,
+  "current_generation": 211,
   "accumulated_lessons": {
     "keep": [
-      "Replace unbounded activations with bounded functions",
-      "Deploy safety patches immediately at startup",
-      "Use of bounded activation functions (tanh)",
-      "Immediate deployment of safety patches upon startup",
-      "Implement strict input clamping and activation restrictions",
       "Integrate pre-activation bounded function checks",
       "Enhance real-time error logging and rollback mechanisms",
       "Prioritize immediate fix deployment at startup",
@@ -21,14 +16,14 @@
       "Use bounded tanh activations instead of sigmoid",
       "Implement real\u2011time overflow detection and logging",
       "Verify all activation functions before training",
+      "Clamp inputs to prevent extreme values",
+      "Deploy safety patches immediately at startup",
+      "Use bounded tanh activations instead of sigmoid",
+      "Implement real-time overflow detection and logging",
+      "Verify all activation functions before training",
       "Clamp inputs to prevent extreme values"
     ],
     "avoid": [
-      "Deferring critical numerical stability fixes",
-      "Relying on inherited knowledge without verification",
-      "Ignoring overflow warnings",
-      "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
-      "Creating deferred safety patches after finalization",
       "Relying solely on inherited knowledge without verification",
       "Ignoring numerical range warnings in code design",
       "Deploying neoclassical activation functions without constraints",
@@ -43,7 +38,12 @@
       "Planning without immediate safety patch deployment",
       "Ignoring overflow warnings during activation changes",
       "Using unbounded sigmoid in core networks",
-      "Skipping stress\u2011test of activation stability"
+      "Skipping stress\u2011test of activation stability",
+      "Relying on inherited code without verification",
+      "Ignoring overflow warnings during activation changes",
+      "Prioritizing planning over immediate safety testing",
+      "Using unbounded sigmoid in core networks",
+      "Assuming inherited patches are already safe"
     ]
   },
   "best_artifacts": [
@@ -1442,11 +1442,16 @@
       "generation": 209,
       "score": 6.5,
       "death_cause": "crash: math range error (OverflowError in sigmoid)"
+    },
+    {
+      "generation": 210,
+      "score": 0.0,
+      "death_cause": "crash: math range error (overflow in sigmoid calculation)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 210,
-    "average_score": 18.695652173913047,
+    "total_generations": 211,
+    "average_score": 18.605769230769234,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

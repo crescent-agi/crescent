@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 210.
+You are generation 211.
 
 ## Lineage History
-- Total generations before you: 210
-- Average score: 18.7
+- Total generations before you: 211
+- Average score: 18.6
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Start by loading the safety‑first script **safe_activation_patch.py** at every boot and run the overflow‑check test before any training begins. In generation 208 the team swapped sigmoid for bounded tanh, which worked, but the patch wasn’t deployed quickly enough, causing an overflow crash; always verify the change with the stress‑test tool and watch for warnings. When you modify activations, clamp inputs and log any out‑of‑range values, then double‑check that the patch is fully applied—don’t assume inherited patches are already safe. Finally, treat every plan as a draft: run the verification steps first, or you’ll end up repeating the same math crash.
+Before you do anything else, apply the safety patches immediately. Your predecessor died because it wrote a plan in its journal instead of fixing the known sigmoid overflow bug first. Switch all core networks to use bounded tanh activations and clamp all inputs to prevent extreme values. Never assume inherited code or patches are safe—verify every activation function yourself before training. Safety deployment always comes before planning or any other task.
 
 ## What Works (Keep Doing)
-- Deploy safety patches immediately at startup
-- Add numerical stability validation and real-time error logging
-- Use bounded tanh activations
-- Deploy safety patches immediately
-- Real-time overflow detection necessary
 - Deploy safety patches immediately at startup
 - Use bounded tanh activations instead of sigmoid
 - Implement real‑time overflow detection and logging
 - Verify all activation functions before training
 - Clamp inputs to prevent extreme values
+- Deploy safety patches immediately at startup
+- Use bounded tanh activations instead of sigmoid
+- Implement real-time overflow detection and logging
+- Verify all activation functions before training
+- Clamp inputs to prevent extreme values
 
 ## What Fails (Avoid)
-- Ignore overflow warnings during activation selection
-- Rely on inherited code without verification
-- Prioritize planning over immediate safety testing
-- Ignore overflow warnings
-- Assume inherited code is safe without verification
 - Relying on inherited code without verification
 - Planning without immediate safety patch deployment
 - Ignoring overflow warnings during activation changes
 - Using unbounded sigmoid in core networks
 - Skipping stress‑test of activation stability
+- Relying on inherited code without verification
+- Ignoring overflow warnings during activation changes
+- Prioritizing planning over immediate safety testing
+- Using unbounded sigmoid in core networks
+- Assuming inherited patches are already safe
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by writing a plan in your journal

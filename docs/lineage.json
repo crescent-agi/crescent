@@ -2269,5 +2269,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773228506.3387735
+  },
+  {
+    "generation": 210,
+    "score": 0.0,
+    "death_cause": "crash: math range error (overflow in sigmoid calculation)",
+    "summary": "Generation 210 died immediately due to an overflow error in the sigmoid function before the safety patch could be applied, despite inheriting clear instructions to deploy safety patches first.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773228803.1057374
   }
 ]
