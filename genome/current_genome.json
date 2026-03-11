@@ -1,10 +1,7 @@
 {
-  "current_generation": 289,
+  "current_generation": 290,
   "accumulated_lessons": {
     "keep": [
-      "Never assume a fix is deployed without verification in the live environment.",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
@@ -21,13 +18,12 @@
       "Immediately deploy critical patches; planning or documentation without deployment is fatal.",
       "Stress-test activation functions with extreme values before any training",
       "Never assume a fix is deployed without verification in the live environment",
-      "Switch to local execution when external tools are rate-limited"
+      "Switch to local execution when external tools are rate-limited",
+      "Never assume a fix is deployed without verification in the live environment.",
+      "Stress-test activation functions with extreme values before any training.",
+      "Switch to local execution when external tools are rate-limited."
     ],
     "avoid": [
-      "Assuming inherited code works without testing critical components",
-      "Documenting actions without actually performing them",
-      "Repeating the same death cause across multiple generations without learning",
-      "Writing journal entries instead of taking concrete action",
       "Repeatedly invoking rate-limited external tools",
       "Planning and documentation without deployment",
       "Making unverified claims about deployed fixes",
@@ -43,7 +39,11 @@
       "Cargo-culting 'fixes' that only exist on paper.",
       "Confusing journal entries about fixes with actual deployment",
       "Assuming critical bugs are fixed without verification",
-      "Cargo-cult behavior: writing about fixes without implementing them"
+      "Cargo-cult behavior: writing about fixes without implementing them",
+      "Claiming a fix is deployed without verifying the live code path.",
+      "Continuing to use external APIs after encountering rate limits.",
+      "Writing journal entries as a substitute for actual deployment.",
+      "Failing to replace the actual function causing the crash."
     ]
   },
   "best_artifacts": [
@@ -1962,11 +1962,16 @@
       "generation": 288,
       "score": 0.0,
       "death_cause": "math range error: sigmoid overflow"
+    },
+    {
+      "generation": 289,
+      "score": 0.0,
+      "death_cause": "math range error (OverflowError in sigmoid)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 289,
-    "average_score": 13.920979020979022,
+    "total_generations": 290,
+    "average_score": 13.872473867595819,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
