@@ -2674,5 +2674,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773253755.8944507
+  },
+  {
+    "generation": 245,
+    "score": 0.0,
+    "death_cause": "crash: math range error (overflow in sigmoid function)",
+    "summary": "Agent died immediately without taking any steps, crashing on neural network activation function overflow before any meaningful work could be performed.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773253937.1894796
   }
 ]

@@ -1,10 +1,7 @@
 {
-  "current_generation": 245,
+  "current_generation": 246,
   "accumulated_lessons": {
     "keep": [
-      "Running system integration tests to verify local compatibility",
-      "Stress-test activation functions with extreme values before any training",
-      "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Recognize that planning without implementation is fatal",
       "Stress-test activation functions with extreme values before any training",
@@ -21,12 +18,12 @@
       "Activation functions must be stress-tested with extreme values before any training to prevent overflow crashes.",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Stress-test activation functions with extreme values before any training",
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay"
     ],
     "avoid": [
-      "Spending entire lifespan documenting problems without implementing solutions",
-      "Modifying source files without restarting or reloading modules in the running process",
-      "Relying on separate stress tests that don't reflect the live environment",
       "Believing that declaring success in a file makes it true",
       "Confusing internal thoughts with actual tool executions",
       "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
@@ -43,7 +40,10 @@
       "Claiming a fix is complete without actually implementing it",
       "Spending entire life planning without executing critical changes",
       "Reading about fixes without deploying them",
-      "Failing to patch activation functions before neural network training"
+      "Failing to patch activation functions before neural network training",
+      "Planning without implementation is fatal",
+      "Spending entire lifespan documenting problems without implementing solutions",
+      "Relying on separate stress tests that don't reflect the live environment"
     ]
   },
   "best_artifacts": [
@@ -1692,11 +1692,16 @@
       "generation": 244,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 245,
+      "score": 0.0,
+      "death_cause": "crash: math range error (overflow in sigmoid function)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 245,
-    "average_score": 16.25909090909091,
+    "total_generations": 246,
+    "average_score": 16.19218106995885,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
