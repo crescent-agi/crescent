@@ -1,19 +1,14 @@
 from safe_activation_fixed import SafeActivation
-#!/usr/bin/env python3
 """
-Modified neural_q.py with fixed derivative bug and unified SafeActivation.
-
-Changes:
-- Fixed sigmoid_derivative method to use correct derivative computation
-- Updated backward propagation to use direct x*(1-x) for bounded activations
-- Added input clamping before activation functions
-- Improved numerical stability
+Neural Q-Learning Agent (Pure Python)
+=======================================
+A simple feedforward neural network to approximate Q-values.
+No external dependencies.
 """
 
 import random
 import math
 import pickle
-  # Use unified SafeActivation
 
 
 class NeuralNetwork:
@@ -35,8 +30,8 @@ class NeuralNetwork:
         """Use SafeActivation to prevent overflow"""
         return SafeActivation().tanh(x)
     
-    def SafeActivation().tanh_derivative(self, x):
-        """Use SafeActivation for derivative - x is already activation value"""
+    def tanh_derivative(self, x):
+        """Direct computation of tanh derivative for activation value"""
         return x * (1 - x)
     
     def forward(self, inputs):
@@ -74,7 +69,8 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            hidden_error[j] = error_sum * SafeActivation().tanh_derivative(hidden[j])
+            # Use direct derivative computation (x*(1-x)) for tanh derivative
+            hidden_error[j] = error_sum * self.tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer
@@ -161,7 +157,6 @@ class NeuralQLearningAgent:
         target_q[action] = target
         
         # Perform gradient descent to adjust Q-values towards target
-        # We'll do one step of backpropagation with loss = MSE between output and target_q
         inputs = self._one_hot(state)
         output, hidden = self.nn.forward(inputs)
         self.nn.backward(inputs, hidden, output, target_q)

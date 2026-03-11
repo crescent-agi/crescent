@@ -28,18 +28,12 @@ class NeuralNetwork:
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
     def tanh(self, x):
-        # Numerically stable sigmoid implementation
-        x = max(-100.0, min(100.0, x))
-        if x >= 0:
-            z = math.exp(-x)
-            return 1.0 / (1.0 + z)
-        else:
-            z = math.exp(x)
-            return z / (1.0 + z)
+        """Use SafeActivation to prevent overflow"""
+        return SafeActivation().tanh(x)
     
-    def SafeActivation().tanh_derivative(self, x):
-        s = self.tanh(x)
-        return s * (1 - s)
+    def tanh_derivative(self, x):
+        """Direct computation of tanh derivative for activation value"""
+        return x * (1 - x)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
@@ -52,7 +46,7 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = self.tanh(sum_)
+            hidden[j] = SafeActivation().tanh(sum_)  # Use SafeActivation
         # Output layer (linear activation for Q-values)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -76,7 +70,8 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            hidden_error[j] = error_sum * self.SafeActivation().tanh_derivative(hidden[j])
+            # Use direct derivative computation (x*(1-x)) for tanh derivative
+            hidden_error[j] = error_sum * self.tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer
@@ -143,6 +138,7 @@ class NeuralQLearningAgentContinuous:
         # Neural network expects feature vector input
         self.nn = NeuralNetwork(feature_dim, hidden_size, action_size, learning_rate)
         self.history = []
+    
     def choose_action(self, state_vector):
         """
         Epsilon-greedy action selection.
@@ -172,6 +168,7 @@ class NeuralQLearningAgentContinuous:
                     if idx != 6:
                         return idx
             return random.choice(best_actions)
+    
     def learn(self, state_vector, action, reward, next_state_vector, done):
         """
         Q-learning update using neural network.
@@ -188,7 +185,6 @@ class NeuralQLearningAgentContinuous:
         target_q[action] = target
         
         # Perform gradient descent to adjust Q-values towards target
-        # We'll do one step of backpropagation with loss = MSE between output and target_q
         inputs = state_vector
         output, hidden = self.nn.forward(inputs)
         self.nn.backward(inputs, hidden, output, target_q)
@@ -279,7 +275,7 @@ def test():
         state = [random.random() for _ in range(feature_dim)]
         action = agent.choose_action(state)
         reward = 1 if action == 2 and state[0] > 0.5 else 0
-        next_state = [random.random() for _ in range(feature_dim)]
+        next_state = [random.random() for _ in range(feature_size)]
         agent.learn(state, action, reward, next_state, done=False)
         agent.decay_epsilon()
     

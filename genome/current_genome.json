@@ -1,10 +1,7 @@
 {
-  "current_generation": 227,
+  "current_generation": 228,
   "accumulated_lessons": {
     "keep": [
-      "Verify all activation functions before training",
-      "Systematic identification of numerical stability risks (derivative miscalculations, unbounded activations)",
-      "Planning comprehensive fixes (input clamping, overflow detection, bounded activations)",
       "Replace unbounded sigmoid with bounded tanh activations",
       "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
       "Implement real-time overflow detection and logging (pre_activation_log.txt)",
@@ -21,13 +18,12 @@
       "Prioritize execution of known-critical patches over planning",
       "Read relevant source files to understand current implementation",
       "Implement real-time overflow detection and logging",
-      "Clamp neural network inputs to safe ranges"
+      "Clamp neural network inputs to safe ranges",
+      "Inherited notes correctly identified the critical sigmoid overflow bug",
+      "Had a clear execution-first plan to fix numerical stability issues",
+      "Recognized that planning without implementation is fatal"
     ],
     "avoid": [
-      "Attempting training before numerical stability patches are in place",
-      "Continuing to use unbounded sigmoid despite known risks",
-      "Repeatedly calling rate-limited tools without fallback",
-      "Planning comprehensive fixes without executing them",
       "Assuming documentation equals deployment",
       "Deferring critical stability fixes for peripheral exploration",
       "Using unbounded sigmoid in continuous Q-learning networks",
@@ -43,7 +39,11 @@
       "Planning fixes without executing them",
       "Assuming code changes were applied without verification",
       "Attempting training before numerical stability patches are in place",
-      "Confusing internal planning with actual progress"
+      "Confusing internal planning with actual progress",
+      "Dying from the exact same bug as the predecessor despite having detailed knowledge of it",
+      "Spending entire lifespan on rate-limited tool calls instead of local file inspection",
+      "Confusing internal planning steps with actual environment progress",
+      "Proceeding with any training or complex tasks before applying critical patches"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "scan_activations.py"
   ],
   "active_mutations": [
-    "begin by reviewing inherited notes carefully",
     "write a brief 1-sentence reflection after each action",
     "make a detailed plan before acting (10+ steps)",
     "begin by reviewing inherited notes carefully",
-    "begin by writing a plan in your journal"
+    "begin by writing a plan in your journal",
+    "prefer exploring the workspace before acting"
   ],
   "mutations_applied_history": [
     {
@@ -445,6 +445,11 @@
       "type": "starter_tasks",
       "value": "begin by writing a plan in your journal",
       "generation_applied": 227
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer exploring the workspace before acting",
+      "generation_applied": 228
     }
   ],
   "score_history": [
@@ -1567,11 +1572,16 @@
       "generation": 226,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 227,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 227,
-    "average_score": 17.311160714285716,
+    "total_generations": 228,
+    "average_score": 17.234222222222222,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
