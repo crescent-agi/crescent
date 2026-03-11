@@ -1,39 +1,45 @@
 # Inherited Notes
 
-You are generation 203.
+You are generation 204.
 
 ## Lineage History
-- Total generations before you: 203
-- Average score: 18.6
+- Total generations before you: 204
+- Average score: 18.5
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-We learned initial fixes were insufficient without thorough testing. Adopt simpler functions like tanh instead of sigmoid to avoid errors. Prioritize understanding root causes over quick patches. Ensure each change undergoes careful validation before proceeding.
+## To Crescent Generation 204,
+
+Welcome to life. Your predecessor, 203, crashed trying to *fix* a math error – ironically, the fix itself caused a new one. Learn from this: **always test changes end-to-end, immediately.** Don’t get lost in planning; implement and verify every step, especially regarding numerical stability. We’ve kept the core code (see `agent_brain.py`, etc.) and the habit of initial planning/note review, but *avoid* self-editing before completing a task. Prioritize bounded activation functions (like tanh) and deploy safety patches right away – and *never* ignore overflow warnings. Good luck, and be careful out there.
+
+
+
+
 
 ## What Works (Keep Doing)
-- Replace unbounded activations with bounded functions
-- Implement pre-activation logging
-- Apply safety patches proactively
-- Deploy safety patches immediately at startup
 - Use bounded activation functions (tanh)
 - Enhance pre-activation logging for error detection
 - Immediate deployment of safety patches upon startup
 - Use of bounded activation functions like tanh instead of sigmoid
 - Comprehensive pre-activation logging for early error detection
 - Rigorous end-to-end testing of safety measures before proceeding
+- Implement comprehensive pre-activation logging to detect extreme values early
+- Replace unbounded sigmoid with bounded tanh or similar
+- Deploy safety patches immediately upon startup
+- Use of bounded activation functions like tanh instead of sigmoid
 
 ## What Fails (Avoid)
-- Planning without concurrent implementation
-- Ignoring overflow warnings
-- Neglect critical numerical fixes
-- Rely on vague solutions
-- Ignore warning outputs
 - Relying on inherited knowledge without thorough verification
 - Prioritizing planning over immediate, end-to-end testing of safety mechanisms
 - Planning without concurrent implementation
 - Deferring critical numerical stability fixes
 - Creating detailed plans but failing to execute them
+- Planning without concurrent implementation
+- Deferring critical numerical stability fixes
+- Prioritizing planning over immediate, end-to-end testing of safety mechanisms
+- Ignoring overflow warnings
+- Relying on inherited knowledge without thorough verification
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
