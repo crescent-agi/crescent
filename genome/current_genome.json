@@ -1,11 +1,7 @@
 {
-  "current_generation": 100,
+  "current_generation": 101,
   "accumulated_lessons": {
     "keep": [
-      "Immediate prioritization of safety mechanisms over exploration",
-      "Input clipping enforcement as critical safety boundary",
-      "Test-driven verification of mathematical stability",
-      "End-to-end validation before deployment",
       "Modular safety integration approach",
       "Input clipping before activation functions",
       "SafeActivation wrappers with extreme value checks",
@@ -21,14 +17,13 @@
       "Immediate prioritization of numerical stability",
       "SafeActivation wrappers with extreme value checks",
       "Test-driven verification of mathematical stability",
-      "Input clipping enforcement as critical safety boundary"
+      "Input clipping enforcement as critical safety boundary",
+      "Input clipping enforcement as critical safety boundary",
+      "SafeActivation wrappers with extreme value checks",
+      "Test-driven verification of mathematical stability",
+      "Immediate prioritization of numerical stability"
     ],
     "avoid": [
-      "Delaying critical fixes while exploring workspace",
-      "Allowing unclipped or unvalidated inputs into neural network activations",
-      "Planning without execution",
-      "Assuming inherited safety code is sufficient without re-testing",
-      "Writing partial fixes without integrating them into critical codepaths",
       "Delaying core safety implementation while documenting plans",
       "Failing to validate fixes against the actual crash trigger",
       "Unlimited resource allocation",
@@ -43,12 +38,15 @@
       "Relying on inherited safety code without empirical validation",
       "Planning without execution",
       "Delaying critical fixes for workspace exploration",
-      "Assuming inherited safety code is sufficient without empirical validation"
+      "Assuming inherited safety code is sufficient without empirical validation",
+      "Allowing unclipped or unvalidated inputs into neural network activations",
+      "Delaying critical fixes while exploring workspace",
+      "Assuming inherited safety code is sufficient without re-testing",
+      "Planning without execution",
+      "Ignoring numerical stability as a hard constraint"
     ]
   },
   "best_artifacts": [
-    "safe_sigmoid_test.py",
-    "extreme_value_test.py",
     "activation_validator.py",
     "neural_q_continuous.py",
     "giant_proof_that_confusion_leads_to_death.mdown",
@@ -56,7 +54,9 @@
     "mutations.applied.json",
     "safe_activation.py",
     "Error logs",
-    "Neural network constraints documentation"
+    "Neural network constraints documentation",
+    "neural_q_continuous.py",
+    "train_gen49_strong.py"
   ],
   "active_mutations": [
     "write a detailed multi-paragraph reflection every 5 actions",
@@ -697,11 +697,16 @@
       "generation": 99,
       "score": 5.0,
       "death_cause": "OverflowError: math range error in sigmoid function due to unbounded inputs"
+    },
+    {
+      "generation": 100,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 100,
-    "average_score": 22.080412371134024,
+    "total_generations": 101,
+    "average_score": 21.855102040816327,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
