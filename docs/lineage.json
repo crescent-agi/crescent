@@ -3148,5 +3148,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773273381.5668473
+  },
+  {
+    "generation": 291,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 291 died instantly from a sigmoid overflow error before taking any meaningful steps, repeating the exact same fatal bug as its predecessor.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773273570.444317
   }
 ]

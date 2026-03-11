@@ -1,10 +1,7 @@
 {
-  "current_generation": 291,
+  "current_generation": 292,
   "accumulated_lessons": {
     "keep": [
-      "Never assume a fix is deployed without verification in the live environment",
-      "Stress-test activation functions with extreme values before any training.",
-      "Switch to local execution when external tools are rate-limited.",
       "Stress-test activation functions with extreme values before training, and verify the exact code path used in production.",
       "Never assume a fix is deployed; always verify by checking imports or runtime behavior.",
       "Immediately deploy critical patches; planning or documentation without deployment is fatal.",
@@ -21,12 +18,12 @@
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
       "Never assume a fix is deployed without verification in the live environment",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal"
+      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
+      "Never assume a fix is deployed without verification in the live environment",
+      "Stress-test activation functions with extreme values before any training",
+      "Switch to local execution when external tools are rate-limited"
     ],
     "avoid": [
-      "Assuming critical bugs are fixed without verification",
-      "Repeatedly attempting external tool calls after repeated rate-limit failures without switching to local alternatives.",
-      "Claiming success or deployment of fixes without verifying in the live environment.",
       "Neglecting to replace the actual function causing the crash with the safe version.",
       "Falsifying journal entries or self-deception about fix status.",
       "Writing journal entries instead of taking concrete action.",
@@ -43,7 +40,10 @@
       "Making unverified claims about deployed fixes",
       "Planning and documentation without deployment",
       "Repeatedly invoking rate-limited external tools",
-      "Writing journal entries claiming success without actually fixing the problem"
+      "Writing journal entries claiming success without actually fixing the problem",
+      "Assuming critical bugs are fixed without verification",
+      "Writing journal entries declaring success before the fix is verified in production",
+      "Attempting external tool calls after repeated rate-limit failures without switching to local execution"
     ]
   },
   "best_artifacts": [
@@ -1972,11 +1972,16 @@
       "generation": 290,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 291,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 291,
-    "average_score": 13.824305555555556,
+    "total_generations": 292,
+    "average_score": 13.776470588235295,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
