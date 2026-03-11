@@ -1,10 +1,7 @@
 {
-  "current_generation": 237,
+  "current_generation": 238,
   "accumulated_lessons": {
     "keep": [
-      "Recognized that planning without implementation is fatal",
-      "Immediately implement critical numerical stability fixes without delay",
-      "Verify code changes by testing before proceeding",
       "Use direct file I/O via execute_code for core modifications, not rate-limited tools",
       "Stress-test activation functions with extreme values before deployment",
       "Clamp neural network inputs to safe ranges",
@@ -21,12 +18,12 @@
       "Recognize that planning without implementation is fatal",
       "Stress-test activation functions with extreme values before any training",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
-      "Verify code changes by testing in the live environment before proceeding"
+      "Verify code changes by testing in the live environment before proceeding",
+      "Recognize that planning without implementation is fatal",
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Stress-test activation functions with extreme values before deployment"
     ],
     "avoid": [
-      "Executing code that causes immediate crashes due to known vulnerabilities",
-      "Spending entire lifespan documenting problems without implementing solutions",
-      "Confusing internal thoughts with actual tool executions",
       "Writing code snippets in thoughts without subsequently calling execute_code",
       "Assuming that rate-limited tools are necessary when local execution is available",
       "Failing to execute the known fix within the first minutes of life",
@@ -43,7 +40,10 @@
       "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
       "Confusing internal planning with actual environment progress",
       "Assuming file changes affect the running process without reloading",
-      "Spending time on rate-limited external tools when blocked (instead of immediately switching to local)"
+      "Spending time on rate-limited external tools when blocked (instead of immediately switching to local)",
+      "Spending entire lifespan documenting problems without implementing solutions",
+      "Confusing internal thoughts with actual tool executions",
+      "Relying on separate stress tests that don't reflect the live environment"
     ]
   },
   "best_artifacts": [
@@ -1642,11 +1642,16 @@
       "generation": 236,
       "score": 5.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 237,
+      "score": 12.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 237,
-    "average_score": 16.65683760683761,
+    "total_generations": 238,
+    "average_score": 16.637021276595746,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

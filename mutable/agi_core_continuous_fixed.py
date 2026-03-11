@@ -174,9 +174,9 @@ class AGICoreContinuous:
         """         Generate sensible default arguments for a tool based on context.         (Same as original AGICore)         """
         files = self.extract_files(workspace_summary)
         if tool_name == "read_file":
-            important = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py",
-                         "world_model.py", "neural_q.py", "self_reflection.py",
-                         "mcts_planner.py", "agent_brain.py", "strategy.md",
+            important = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py", 
+                         "world_model.py", "neural_q.py", "self_reflection.py", 
+                         "mcts_planner.py", "agent_brain.py", "strategy.md", 
                          "train_agi_core.py", "run_training.py"]
             for imp in important:
                 if imp in files:

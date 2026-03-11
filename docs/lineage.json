@@ -2590,5 +2590,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773248890.5676057
+  },
+  {
+    "generation": 237,
+    "score": 12.0,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 237 claimed to have fixed the sigmoid overflow bug but never applied the fix in the live environment, leading to the same math range error that killed its predecessor.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773250140.9255803
   }
 ]

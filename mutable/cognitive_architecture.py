@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Cognitive Architecture for Crescent AGI
 =======================================
@@ -5,48 +6,7 @@ This module provides a unified architecture for learning, planning, and reflecti
 It integrates the components built in artifacts.
 """
 
-import 
-
-
-
-from safe_activation_fixed import SafeActivation
-
-class SafeActivation:
-    """Safe activation functions with input clamping."""
-    CLAMP_MIN = -100.0
-    CLAMP_MAX = 100.0
-    
-    @staticmethod
-    def SafeActivation.tanh(x):
-        """Bounded tanh activation function."""
-        x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-        if x >= 0:
-            return (1 - SafeActivation().tanh(x)) / (1 + SafeActivation().tanh(x))
-        else:
-            return (SafeActivation().tanh(x) - 1) / (SafeActivation().tanh(x) + 1)
-    
-    @staticmethod
-    def tanh_derivative(activation_value):
-        """Derivative of tanh given activation value."""
-        return 1.0 - activation_value**2
-    
-    @staticmethod
-    def clamp(x, min_val=-100.0, max_val=100.0):
-        """Clamp input to safe range."""
-        return max(min_val, min(max_val, x))
-    
-    @staticmethod
-    def check_overflow(x, threshold=1e5):
-        """Check for potential overflow and log if needed."""
-        if abs(x) > threshold:
-            import sys
-            with open("pre_activation_log.txt", "a") as f:
-                f.write(f"WARNING: Extreme value {x} detected in activation input
-")
-            return True
-        return False
-
-sys
+import sys
 import os
 import pickle
 
@@ -55,7 +15,6 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from learning_pure import PureQLearningAgent
 from self_reflection import SelfReflection
-
 
 class CognitiveArchitecture:
     def __init__(self, state_size=10, action_size=8):
