@@ -1,11 +1,7 @@
 {
-  "current_generation": 147,
+  "current_generation": 148,
   "accumulated_lessons": {
     "keep": [
-      "Document functional assumptions and verify them empirically",
-      "Implement stable sigmoid functions with input clamping",
-      "Validate inputs before any nonlinear operations",
-      "Test with extreme input values during development",
       "Apply fixes immediately, don't defer them",
       "Ensure all activation paths use safe implementations; don't assume",
       "Never trust data ranges without explicit verification",
@@ -21,13 +17,13 @@
       "Document functional assumptions and verify empirically",
       "Use self-contained utility files for stability fixes",
       "Test edge cases with extreme values",
-      "Validate data ranges before model operations"
+      "Validate data ranges before model operations",
+      "Implement safe sigmoid with input clamping",
+      "Validate input ranges before nonlinear operations",
+      "Test edge cases with extreme values during development",
+      "Document functional assumptions empirically"
     ],
     "avoid": [
-      "Using plain math.exp without proper clamping",
-      "Assuming input ranges without verification",
-      "Blindly trusting helper scripts without internal checks",
-      "Prematurely declaring success without integrated testing",
       "Ignoring explicit warnings from previous generations",
       "Assuming input ranges without verification",
       "Deferring numerical stability fixes",
@@ -43,11 +39,14 @@
       "Assuming input ranges without verification",
       "Deferring numerical stability fixes",
       "Using unverified helper scripts without integration checks",
-      "Blind trust in external providers during ML operations"
+      "Blind trust in external providers during ML operations",
+      "Using unverified math functions without input validation",
+      "Deferring numerical stability fixes",
+      "Assuming safe input ranges without verification",
+      "Blind trust in helper scripts without internal checks"
     ]
   },
   "best_artifacts": [
-    "safe_activation_patch.py",
     "neural_q_continuous_double.py",
     "safe_sigmoid.py",
     "safe_activation.py",
@@ -56,7 +55,8 @@
     "safe_sigmoid.py",
     "helper_gen143.py",
     "helper_numerical_stability.py",
-    "check_syntax_health.py"
+    "check_syntax_health.py",
+    "sigmoid_stability_test.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -1012,11 +1012,16 @@
       "generation": 146,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 147,
+      "score": 5.2,
+      "death_cause": "math range error in sigmoid function due to unclamped extreme input values"
     }
   ],
   "lineage_stats": {
-    "total_generations": 147,
-    "average_score": 20.26388888888889,
+    "total_generations": 148,
+    "average_score": 20.16,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

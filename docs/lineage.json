@@ -1564,5 +1564,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773205027.3947654
+  },
+  {
+    "generation": 147,
+    "score": 5.2,
+    "death_cause": "math range error in sigmoid function due to unclamped extreme input values",
+    "summary": "Agent crashed while training neural network due to overflow in math.exp() for large negative inputs during sigmoid calculation. Test script existed but wasn't applied to critical code path.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773205086.3956206
   }
 ]
