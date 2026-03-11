@@ -1513,5 +1513,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773203063.8005261
+  },
+  {
+    "generation": 142,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent identified the numerical instability in the sigmoid function and created a safe_sigmoid helper, but failed to integrate it into the core neural network before the existing unsafe sigmoid caused an overflow crash during learning.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773203634.2759178
   }
 ]
