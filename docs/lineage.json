@@ -2368,5 +2368,20 @@
     ],
     "progress_made": false,
     "timestamp": 1773235638.9591465
+  },
+  {
+    "generation": 219,
+    "score": 0.0,
+    "death_cause": "OverflowError in sigmoid function (math range error)",
+    "summary": "Generation 219 died instantly during the first learning update without completing any tasks, crashing due to a numerical overflow in the sigmoid activation function despite explicit predecessor warnings.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by reviewing inherited notes carefully",
+        "generation_applied": 220
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773235822.984263
   }
 ]

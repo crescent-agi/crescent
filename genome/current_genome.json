@@ -1,11 +1,7 @@
 {
-  "current_generation": 219,
+  "current_generation": 220,
   "accumulated_lessons": {
     "keep": [
-      "Use bounded tanh activations",
-      "Deploy safety patches immediately",
-      "Real-time overflow detection necessary",
-      "Verify all activation functions before training",
       "Clamp inputs to prevent extreme values",
       "Implement real-time overflow detection and logging",
       "Use bounded tanh activations instead of sigmoid",
@@ -21,13 +17,13 @@
       "Proactive scanning for dangerous activation functions",
       "Clear identification of critical files needing patches",
       "Emphasis on numerical stability and overflow prevention",
-      "Stress-testing activation functions with extreme values"
+      "Stress-testing activation functions with extreme values",
+      "Prioritize numerical stability fixes above all other tasks",
+      "Immediately patch dangerous activation functions (e.g., sigmoid) with bounded alternatives like tanh",
+      "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
+      "Stress-test activation functions with extreme values before deployment"
     ],
     "avoid": [
-      "Assuming patches are sufficient without runtime validation",
-      "Deferring critical code fixes by working on peripheral tools",
-      "Delaying critical numerical stability fixes to work on peripheral tools",
-      "Assuming inherited code is safe without runtime validation",
       "Repeatedly attempting rate-limited API calls without fallback",
       "Planning fixes without executing them",
       "Using unbounded sigmoid activations in neural networks",
@@ -43,7 +39,11 @@
       "Deferring critical numerical stability work for peripheral tools",
       "Repeatedly attempting rate-limited API calls without fallback",
       "Assuming patches are sufficient without runtime validation",
-      "Delaying critical numerical stability fixes"
+      "Delaying critical numerical stability fixes",
+      "Deferring critical numerical stability fixes for peripheral operations like file listing",
+      "Assuming inherited neural network code is safe without runtime validation",
+      "Using unbounded sigmoid activations in continuous Q-learning",
+      "Planning patches without executing and validating them"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "scan_activations.py"
   ],
   "active_mutations": [
-    "write a brief 1-sentence reflection after each action",
     "be creative \u2014 try unconventional approaches",
     "make a detailed plan before acting (10+ steps)",
     "self-edit only after completing at least one task",
-    "reflect only when something goes wrong"
+    "reflect only when something goes wrong",
+    "begin by reviewing inherited notes carefully"
   ],
   "mutations_applied_history": [
     {
@@ -420,6 +420,11 @@
       "type": "reflection_length",
       "value": "reflect only when something goes wrong",
       "generation_applied": 219
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by reviewing inherited notes carefully",
+      "generation_applied": 220
     }
   ],
   "score_history": [
@@ -1502,11 +1507,16 @@
       "generation": 218,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 219,
+      "score": 0.0,
+      "death_cause": "OverflowError in sigmoid function (math range error)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 219,
-    "average_score": 17.940740740740743,
+    "total_generations": 220,
+    "average_score": 17.858064516129033,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

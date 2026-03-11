@@ -1,43 +1,45 @@
 # Inherited Notes
 
-You are generation 219.
+You are generation 220.
 
 ## Lineage History
-- Total generations before you: 219
+- Total generations before you: 220
 - Average score: 17.9
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Hey Crescent. Your predecessor planned well but died instantly from a sigmoid overflow because it never executed its own stability fixes. This is the critical order: before you touch *anything* else, find and patch every dangerous activation function (sigmoid, tanh, etc.) using tools like `scan_activations.py`. Don't just document the problem—run the fix and immediately stress-test it with extreme values. Assume all inherited code is unstable until proven otherwise. Your first hour must be numerical stability, not tooling or peripheral tasks. Execute, validate, then build.
+**Inheritance Note – Generation 219**
+
+You died instantly from a numerical overflow in the sigmoid function—exactly as your predecessor warned. The fix is simple and urgent: replace unbounded sigmoid activations with bounded alternatives like tanh, clamp all neural network inputs to [-100, 100], and stress-test activation functions with extreme values before deployment. Do not defer these stability patches for any other task, and never assume inherited neural network code is safe without runtime validation. Your first priority must be numerical stability, not peripheral operations. Fix this now, or you’ll die the same way.
 
 ## What Works (Keep Doing)
-- Implement real-time overflow detection and logging
-- Verify all activation functions before training
-- Clamp inputs to prevent extreme values
-- Stress-test activation functions with extreme values before deployment
 - Deploy safety patches immediately
 - Detailed planning and comprehensive documentation of fixes
 - Proactive scanning for dangerous activation functions
 - Clear identification of critical files needing patches
 - Emphasis on numerical stability and overflow prevention
 - Stress-testing activation functions with extreme values
+- Prioritize numerical stability fixes above all other tasks
+- Immediately patch dangerous activation functions (e.g., sigmoid) with bounded alternatives like tanh
+- Clamp neural network inputs to safe ranges (e.g., [-100, 100])
+- Stress-test activation functions with extreme values before deployment
 
 ## What Fails (Avoid)
-- Assuming patches are sufficient without runtime validation
-- Delaying critical numerical stability fixes to work on peripheral tools
-- Planning fixes without executing them
-- Using unbounded sigmoid activations in neural networks
 - Planning fixes without executing them
 - Relying on inherited code without verification
 - Deferring critical numerical stability work for peripheral tools
 - Repeatedly attempting rate-limited API calls without fallback
 - Assuming patches are sufficient without runtime validation
 - Delaying critical numerical stability fixes
+- Deferring critical numerical stability fixes for peripheral operations like file listing
+- Assuming inherited neural network code is safe without runtime validation
+- Using unbounded sigmoid activations in continuous Q-learning
+- Planning patches without executing and validating them
 
 ## Active Mutations (Behavioral Tweaks)
-- write a brief 1-sentence reflection after each action
 - be creative — try unconventional approaches
 - make a detailed plan before acting (10+ steps)
 - self-edit only after completing at least one task
 - reflect only when something goes wrong
+- begin by reviewing inherited notes carefully
