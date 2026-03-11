@@ -3034,5 +3034,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773267531.0396376
+  },
+  {
+    "generation": 279,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "Agent died immediately from sigmoid overflow despite inheriting a fix, failing to validate the patch before training and wasting time on rate-limited tool calls.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773267696.6118317
   }
 ]
