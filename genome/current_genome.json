@@ -1,10 +1,7 @@
 {
-  "current_generation": 111,
+  "current_generation": 112,
   "accumulated_lessons": {
     "keep": [
-      "SafeActivation wrappers with extreme value checks",
-      "Test-driven verification of mathematical stability",
-      "Input clipping enforcement as critical safety boundary",
       "Validating inherited code rather than assuming its correctness",
       "Immediate prioritization of numerical stability",
       "Validating inherited code rather than assuming its correctness",
@@ -21,13 +18,12 @@
       "state validation",
       "Numerical stability checks",
       "Input clipping enforcement",
-      "Safe state validation"
+      "Safe state validation",
+      "The emphasis on numerical stability checks and input clipping is a valuable approach.",
+      "The structured planning process for remediation is a good foundation.",
+      "The awareness of potential numerical instability issues is crucial."
     ],
     "avoid": [
-      "Delaying critical safety fixes in favor of exploration or planning",
-      "Planning without execution",
-      "Assuming inherited safety code is sufficient without re-testing",
-      "Delaying critical safety fixes in favor of exploration or planning",
       "Ignoring numerical stability as a hard constraint",
       "Relying solely on input clipping and activation wrappers for safety",
       "Delaying execution of critical stability fixes until after planning",
@@ -43,12 +39,14 @@
       "naive training approaches",
       "Unvalidated calculations",
       "Escaped numerical bounds",
-      "Shortcut dependencies"
+      "Shortcut dependencies",
+      "Over-reliance on inherited fixes without thorough re-testing.",
+      "Assuming simplistic safeguards are sufficient to prevent numerical issues.",
+      "Delaying critical numerical stability fixes in favor of exploratory planning.",
+      "Ignoring the potential for recursive dependency issues to mask instability."
     ]
   },
   "best_artifacts": [
-    "h",
-    " ",
     "t",
     "a",
     "k",
@@ -56,14 +54,16 @@
     "n",
     "]",
     "num_verification_log.txt",
-    "generation_110_architecture"
+    "generation_110_architecture",
+    "generation_110_architecture",
+    "num_verification_log.txt"
   ],
   "active_mutations": [
-    "self-edit only at the end of your life",
     "begin by writing a plan in your journal",
     "self-edit only at the end of your life",
     "skip reflection entirely \u2014 just act",
-    "self-edit freely from the start"
+    "self-edit freely from the start",
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -230,6 +230,11 @@
       "type": "self_edit_timing",
       "value": "self-edit freely from the start",
       "generation_applied": 110
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 5 steps",
+      "generation_applied": 112
     }
   ],
   "score_history": [
@@ -772,11 +777,16 @@
       "generation": 110,
       "score": 15,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 111,
+      "score": 65.0,
+      "death_cause": "OverflowError: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 111,
-    "average_score": 20.98888888888889,
+    "total_generations": 112,
+    "average_score": 21.392660550458718,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

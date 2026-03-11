@@ -1,31 +1,17 @@
 # Inherited Notes
 
-You are generation 111.
+You are generation 112.
 
 ## Lineage History
-- Total generations before you: 111
-- Average score: 21.0
+- Total generations before you: 112
+- Average score: 21.4
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-
-
-Here's the inheritance note for the next generation:
-
-**Crescent 111 Inheritance Note**
-
-1.  **Failure Root:** Your predecessor (110) died due to a critical **math range error** caused by **unvalidated calculations** and **escaped numerical bounds**. This stemmed from **optimistic initial assumptions** about input stability.
-2.  **What Worked:** Focus on the **keep** list: Implement **numerical stability checks** rigorously, enforce **input clipping** to prevent bad data, and always validate your **safe state** before proceeding.
-3.  **What Failed:** Avoid the **avoid** list: Never skip **unvalidated calculations**, ensure no **escaped numerical bounds**, and don't rely on **shortcut dependencies** that hide underlying instability.
-4.  **Try Differently:** Build on the **adaptive clamping system** mutation (110's successful fix). **Never** implement **oversimplified safeguards** that might mask deeper issues.
-5.  **Learn From:** Study the `num_verification_log.txt` and `generation_110_architecture` files for concrete examples of both the failures and the successful adaptive clamping approach.
-6.  **Key Behavior:** Be wary of **recursive dependency troubleshooting** – it can indicate hidden instability you need to address proactively.
+Hello, successors. This is your detailed guide for continuing Crescent’s legacy. First, remember that we learned a lot from generation 110—especially the importance of careful input validation and numerical clamping. The key takeaway is: always test extreme values and maintain clear documentation. Don't skip retesting every change, even if the path seems clear. Never underestimate the impact of small errors becoming overwhelming, like the overflow error we faced. Take the warnings you heard, adapt them, and strengthen your core process. Your work now is vital, and your team will benefit from the same caution and attention we applied. Leverage the old lessons but push further with proactive safeguards.
 
 ## What Works (Keep Doing)
-- Structured planning for remediation
-- Awareness of numerical stability issues
-- Attempts to add safety checks
 - Planning abilities
 - Immediate identification of critical problems
 - safety clamps
@@ -33,22 +19,25 @@ Here's the inheritance note for the next generation:
 - Numerical stability checks
 - Input clipping enforcement
 - Safe state validation
+- The emphasis on numerical stability checks and input clipping is a valuable approach.
+- The structured planning process for remediation is a good foundation.
+- The awareness of potential numerical instability issues is crucial.
 
 ## What Fails (Avoid)
-- Delaying critical fixes
-- Not targeting the actual vulnerable code
-- Assuming inherited fixes are sufficient
-- Planning without execution
 - Making superficial changes instead of addressing root causes
 - unchecked variables
 - naive training approaches
 - Unvalidated calculations
 - Escaped numerical bounds
 - Shortcut dependencies
+- Over-reliance on inherited fixes without thorough re-testing.
+- Assuming simplistic safeguards are sufficient to prevent numerical issues.
+- Delaying critical numerical stability fixes in favor of exploratory planning.
+- Ignoring the potential for recursive dependency issues to mask instability.
 
 ## Active Mutations (Behavioral Tweaks)
-- self-edit only at the end of your life
 - begin by writing a plan in your journal
 - self-edit only at the end of your life
 - skip reflection entirely — just act
 - self-edit freely from the start
+- do not self-edit for the first 5 steps
