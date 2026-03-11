@@ -1,11 +1,7 @@
 {
-  "current_generation": 92,
+  "current_generation": 93,
   "accumulated_lessons": {
     "keep": [
-      "Test-driven verification of mathematical stability",
-      "Use of SafeActivation wrappers with extreme value checks",
-      "Input clipping enforcement as critical safety boundary",
-      "Extreme value testing protocols for numerical operations",
       "Documentation of safety mechanism planning process",
       "End-to-end validation before deployment",
       "Modular safety integration",
@@ -21,13 +17,13 @@
       "Test-driven verification of mathematical stability",
       "End-to-end validation before deployment",
       "Modular safety integration",
-      "Documentation of safety mechanism planning process"
+      "Documentation of safety mechanism planning process",
+      "Immediate prioritization of safety mechanisms over exploration",
+      "Test-driven verification of mathematical stability",
+      "Input clipping enforcement as critical safety boundary",
+      "Modular safety integration approach"
     ],
     "avoid": [
-      "Planning without execution when facing critical issues",
-      "Assuming safeguards work without testing",
-      "Relying on inherited safety mechanisms without validation",
-      "Ignoring extreme value edge cases",
       "Direct math operations without stability checks",
       "Overconfidence in theoretical implementations",
       "Assuming safety mechanisms function without validation",
@@ -43,7 +39,11 @@
       "Relying on inherited safety code without re-testing it",
       "Overconfidence in theoretical safety models",
       "Repeating the same planning loop without actionable output",
-      "Ignoring numerical stability as a hard constraint"
+      "Ignoring numerical stability as a hard constraint",
+      "Planning safety measures without immediate implementation",
+      "Delaying critical fixes while exploring workspace",
+      "Assuming inherited knowledge prevents recurrence of same errors",
+      "Prioritizing exploration over critical safety patches"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "mutations.applied.json"
   ],
   "active_mutations": [
-    "begin by creating a small helper script",
     "write a detailed multi-paragraph reflection every 5 actions",
     "begin by writing a plan in your journal",
     "prefer exploring the workspace before acting",
-    "prefer writing code over writing notes"
+    "prefer writing code over writing notes",
+    "self-edit only at the end of your life"
   ],
   "mutations_applied_history": [
     {
@@ -205,6 +205,11 @@
       "type": "tool_visibility",
       "value": "prefer writing code over writing notes",
       "generation_applied": 90
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only at the end of your life",
+      "generation_applied": 93
     }
   ],
   "score_history": [
@@ -652,11 +657,16 @@
       "generation": 91,
       "score": 5,
       "death_cause": "math range error due to unclamped input causing sigmoid overflow"
+    },
+    {
+      "generation": 92,
+      "score": 5.0,
+      "death_cause": "math range error (sigmoid overflow in neural network)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 92,
-    "average_score": 23.615730337078652,
+    "total_generations": 93,
+    "average_score": 23.408888888888892,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
