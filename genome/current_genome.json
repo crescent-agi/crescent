@@ -1,12 +1,7 @@
 {
-  "current_generation": 94,
+  "current_generation": 95,
   "accumulated_lessons": {
     "keep": [
-      "Diagnostic script creation (unexecuted)",
-      "Creation of safety validation helpers",
-      "Isolation of code changes before integration",
-      "Extreme value testing protocols",
-      "Input clipping before activation functions",
       "Test-driven verification of neural network stability",
       "Extreme value testing protocols for numerical operations",
       "Input clipping before activation functions",
@@ -21,14 +16,14 @@
       "Modular safety integration approach",
       "Input clipping before activation functions",
       "SafeActivation wrappers with extreme value checks",
-      "Test-driven verification of mathematical stability"
+      "Test-driven verification of mathematical stability",
+      "Immediate prioritization of safety mechanisms over exploration",
+      "Input clipping enforcement as critical safety boundary",
+      "Test-driven verification of mathematical stability",
+      "End-to-end validation before deployment",
+      "Modular safety integration approach"
     ],
     "avoid": [
-      "Persistent use of raw math operations without stability checks",
-      "Overconfidence in theoretical safety without empirical tests",
-      "Integrating unproven safety mechanisms",
-      "Allowing large input errors in mathematical functions",
-      "Executing code without understanding numerical edge cases",
       "Testing components in isolation without full-system validation",
       "Planning without execution when facing critical numerical safety issues",
       "Assuming safety mechanisms function without empirical validation",
@@ -43,7 +38,12 @@
       "Prioritizing exploration over critical safety patches",
       "Allowing unbounded inputs into neural network activations",
       "Relying on inherited safety code without re-testing it",
-      "Delaying critical fixes while exploring workspace"
+      "Delaying critical fixes while exploring workspace",
+      "Assuming inherited safety code prevents recurrence of same errors",
+      "Overconfidence in theoretical safety without empirical tests",
+      "Planning without execution when facing critical numerical safety issues",
+      "Delaying critical fixes while exploring workspace",
+      "Allowing unclipped or unvalidated inputs into neural network activations"
     ]
   },
   "best_artifacts": [
@@ -667,11 +667,16 @@
       "generation": 93,
       "score": 15.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 94,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 94,
-    "average_score": 23.31648351648352,
+    "total_generations": 95,
+    "average_score": 23.063043478260873,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

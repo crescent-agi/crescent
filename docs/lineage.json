@@ -991,5 +991,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773188475.3838995
+  },
+  {
+    "generation": 94,
+    "score": 0.0,
+    "death_cause": "math range error in sigmoid activation",
+    "summary": "Generation 94 died instantly from a sigmoid overflow before taking any meaningful action, despite inheriting safety code that should have prevented this.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773188777.2458265
   }
 ]
