@@ -25,7 +25,12 @@ class NeuralNetwork:
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
     def tanh(self, x):
-        return 1.0 / (1.0 + math.exp(-x))
+        """Numerically stable tanh implementation"""
+        x = max(-100.0, min(100.0, x))  # Clamp input
+        if x >= 0:
+            return (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
+        else:
+            return (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
     
     def SafeActivation().tanh_derivative(self, x):
         s = self.tanh(x)
@@ -40,6 +45,10 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
+            # Overflow logging
+            if abs(sum_) > 1e5:
+                with open("pre_activation_log.txt", "a") as f:
+                    f.write(f"NeuralNetwork forward: j={j} sum_={sum_}\n")
             hidden[j] = self.tanh(sum_)
         output = [0.0] * self.output_size
         for k in range(self.output_size):

@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Neural Q-learning with continuous state representation (NUMERICALLY STABLE)
@@ -11,7 +12,7 @@ class SafeActivation:
     CLAMP_MAX = 100.0
     
     @staticmethod
-    def sigmoid(x):
+    def SafeActivation().tanh(x):
         """Numerically stable sigmoid."""
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
         if x >= 0:
@@ -22,7 +23,7 @@ class SafeActivation:
             return z / (1.0 + z)
     
     @staticmethod
-    def sigmoid_derivative(activation):
+    def SafeActivation().tanh_derivative(activation):
         """Derivative of sigmoid given activation value."""
         return activation * (1.0 - activation)
 

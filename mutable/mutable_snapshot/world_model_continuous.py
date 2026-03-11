@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 World Model with Continuous State Input/Output (NUMERICALLY STABLE)
@@ -13,7 +14,7 @@ class SafeActivation:
     CLAMP_MAX = 100.0
     
     @staticmethod
-    def sigmoid(x):
+    def SafeActivation().tanh(x):
         """Numerically stable sigmoid."""
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
         if x >= 0:
@@ -24,7 +25,7 @@ class SafeActivation:
             return z / (1.0 + z)
     
     @staticmethod
-    def sigmoid_derivative(activation):
+    def SafeActivation().tanh_derivative(activation):
         """Derivative of sigmoid given activation value."""
         return activation * (1.0 - activation)
 
@@ -57,7 +58,7 @@ class NeuralRegressor:
                 sum_ += clamped_inputs[i] * self.W1[i][j]
             # Clamp before activation to avoid overflow
             # Use safe sigmoid
-            hidden[j] = SafeActivation.sigmoid(sum_)
+            hidden[j] = SafeActivation.SafeActivation().tanh(sum_)
         # Output layer (linear activation for regression)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -82,7 +83,7 @@ class NeuralRegressor:
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
             # Use safe derivative
-            hidden_error[j] = error_sum * SafeActivation.sigmoid_derivative(hidden[j])
+            hidden_error[j] = error_sum * SafeActivation.SafeActivation().tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer

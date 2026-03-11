@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Stress Test for Activation Functions

@@ -1,6 +1,7 @@
+from safe_activation_fixed import SafeActivation
 # Sigmoid Stability Stress Test
 import numpy as np
-from safe_activation import safe_sigmoid
+
 
 # Add explicit np import at the top
 

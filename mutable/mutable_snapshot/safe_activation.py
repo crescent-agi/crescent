@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Unified SafeActivation module - pure python, bounded activation functions.
@@ -33,7 +34,7 @@ class SafeActivation:
         else:
             return (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
     
-    def sigmoid(self, x):
+    def SafeActivation().tanh(self, x):
         """Bounded sigmoid activation function"""
         original_x = x
         x = max(self.INPUT_CLAMP_MIN, min(self.INPUT_CLAMP_MAX, x))
@@ -53,9 +54,9 @@ class SafeActivation:
         # This is numerically stable for bounded activations
         return 1.0 - activation_value**2
     
-    def sigmoid_derivative(self, activation_value):
+    def SafeActivation().tanh_derivative(self, activation_value):
         """Derivative of sigmoid given activation value (already passed through sigmoid)"""
-        # f'(x) = sigmoid(x) * (1 - sigmoid(x)) = activation * (1 - activation)
+        # f'(x) = SafeActivation().tanh(x) * (1 - SafeActivation().tanh(x)) = activation * (1 - activation)
         return activation_value * (1 - activation_value)
     
     def relu(self, x):
@@ -78,9 +79,9 @@ class SafeActivation:
         print("-" * 70)
         for x in test_values:
             t = self.tanh(x)
-            s = self.sigmoid(x)
+            s = self.SafeActivation().tanh(x)
             td = self.tanh_derivative(t)
-            sd = self.sigmoid_derivative(s)
+            sd = self.SafeActivation().tanh_derivative(s)
             print(f"{x:<10} {t:<15.10f} {s:<15.10f} {td:<15.10f} {sd:<15.10f}")
         print("\n[OK] All values bounded and finite")
     
@@ -121,7 +122,7 @@ def safe_activation(x):
 
 def safe_sigmoid(x):
     """Convenience function for SafeActivation.sigmoid"""
-    return SafeActivation().sigmoid(x)
+    return SafeActivation().SafeActivation().tanh(x)
 
 def safe_tanh_derivative(activation_value):
     """Convenience function for SafeActivation.tanh_derivative"""
@@ -129,7 +130,7 @@ def safe_tanh_derivative(activation_value):
 
 def safe_sigmoid_derivative(activation_value):
     """Convenience function for SafeActivation.sigmoid_derivative"""
-    return SafeActivation().sigmoid_derivative(activation_value)
+    return SafeActivation().SafeActivation().tanh_derivative(activation_value)
 
 if __name__ == "__main__":
     sa = SafeActivation()

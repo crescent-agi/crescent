@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Gen 221: Comprehensive Numerical Stability Stress Test
@@ -13,13 +14,13 @@ sys.path.insert(0, 'mutable_snapshot')
 
 def test_safe_activation():
     print("\n=== Testing SafeActivation module ===")
-    from safe_activation import SafeActivation
+    
     sa = SafeActivation()
     test_values = [-1e10, -1e5, -1000, -200, -100, -50, 0, 50, 100, 200, 1000, 1e5, 1e10, float('inf'), -float('inf')]
     for x in test_values:
         try:
             t = sa.tanh(x)
-            s = sa.sigmoid(x)
+            s = sa.SafeActivation().tanh(x)
             assert math.isfinite(t) and -1 <= t <= 1, f"tanh failed for {x}: {t}"
             assert math.isfinite(s) and 0 <= s <= 1, f"sigmoid failed for {x}: {s}"
         except Exception as e:

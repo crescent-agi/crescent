@@ -1,6 +1,7 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 import numpy as np
-from safe_activation import SafeActivation
+
 
 def test_activation_stress(func, extreme_values):
     """Test SafeActivation with extreme inputs across multiple functions."""

@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Critical patch: Replace all sigmoid activations with bounded tanh and add clamping.

@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 stability_scout.py - Hunts down numerical instability in the codebase.
@@ -39,7 +40,7 @@ def scan_file(filepath):
 
     # Check for missing input clamping before activations
     for i, line in enumerate(lines, 1):
-        if any(act in line for act in ['sigmoid(', 'tanh(', 'relu(']):
+        if any(act in line for act in ['SafeActivation().tanh(', 'tanh(', 'relu(']):
             # Look for clamping in nearby lines
             has_clamp = any('clamp' in lines[max(0, j):min(len(lines), j+5)] or 'max(' in lines[max(0, j):min(len(lines), j+5)] for j in [i-3, i-2, i-1])
             if not has_clamp and 'safe' not in line.lower():

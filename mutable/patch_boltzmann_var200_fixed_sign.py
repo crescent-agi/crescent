@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Patch NeuralQLearningAgentContinuousDouble with:
@@ -108,7 +109,7 @@ def variance_penalty_backward(self, inputs, hidden, output, target):
         error_sum = 0.0
         for k in range(self.output_size):
             error_sum += output_error[k] * self.W2[j][k]
-        hidden_error[j] = error_sum * self.sigmoid_derivative(hidden[j])
+        hidden_error[j] = error_sum * self.SafeActivation().tanh_derivative(hidden[j])
     # Update weights and biases
     for k in range(self.output_size):
         for j in range(self.hidden_size):

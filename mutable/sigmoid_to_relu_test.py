@@ -1,4 +1,5 @@
 import math
+from safe_activation_fixed import SafeActivation
 
 def tanh(x):
     # Original sigmoid implementation prone to overflow

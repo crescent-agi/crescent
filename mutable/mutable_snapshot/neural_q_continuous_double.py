@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Neural Q-Learning Agent with Continuous State Input and Double DQN.
@@ -14,7 +15,7 @@ class SafeActivation:
     CLAMP_MAX = 100.0
     
     @staticmethod
-    def sigmoid(x):
+    def SafeActivation().tanh(x):
         """Numerically stable sigmoid."""
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
         if x >= 0:
@@ -25,7 +26,7 @@ class SafeActivation:
             return z / (1.0 + z)
     
     @staticmethod
-    def sigmoid_derivative(activation):
+    def SafeActivation().tanh_derivative(activation):
         """Derivative of sigmoid given activation value."""
         return activation * (1.0 - activation)
 
@@ -46,9 +47,9 @@ class NeuralNetwork:
     
     def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
-        return SafeActivation().sigmoid(x)
+        return SafeActivation().SafeActivation().tanh(x)
     
-    def sigmoid_derivative(self, activation_value):
+    def SafeActivation().tanh_derivative(self, activation_value):
         """Direct computation of sigmoid derivative for activation value"""
         return activation_value * (1 - activation_value)
     
@@ -81,7 +82,7 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            hidden_error[j] = error_sum * self.sigmoid_derivative(hidden[j])
+            hidden_error[j] = error_sum * self.SafeActivation().tanh_derivative(hidden[j])
         for k in range(self.output_size):
             for j in range(self.hidden_size):
                 self.W2[j][k] -= self.lr * output_error[k] * hidden[j]

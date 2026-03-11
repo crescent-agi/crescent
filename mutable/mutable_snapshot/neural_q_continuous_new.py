@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Safety-patched AGI Core.
@@ -27,8 +28,8 @@ class NeuralQ:
         # Apply safe tanh
         return safe_tanh(x_clipped)
 
-    def sigmoid_derivative(self, x):
-        s = self.sigmoid(x)
+    def SafeActivation().tanh_derivative(self, x):
+        s = self.SafeActivation().tanh(x)
         return s * (1 - s)  # CORRECT: derivative of sigmoid, not tanh
 
     # Replace all other sigmoid calls with safe_tanh

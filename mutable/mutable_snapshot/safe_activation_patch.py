@@ -1,4 +1,5 @@
 import math
+from safe_activation_fixed import SafeActivation
 
 class SafeActivation:
     def clamp(self, x, min=-1000, max=1000):  # Increased clamping range

@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Modified neural_q.py with fixed derivative bug and unified SafeActivation.
@@ -12,7 +13,7 @@ Changes:
 import random
 import math
 import pickle
-from safe_activation import SafeActivation  # Use unified SafeActivation
+  # Use unified SafeActivation
 
 
 class NeuralNetwork:
@@ -34,7 +35,7 @@ class NeuralNetwork:
         """Use SafeActivation to prevent overflow"""
         return SafeActivation().tanh(x)
     
-    def sigmoid_derivative(self, x):
+    def SafeActivation().tanh_derivative(self, x):
         """Use SafeActivation for derivative - x is already activation value"""
         return x * (1 - x)
     

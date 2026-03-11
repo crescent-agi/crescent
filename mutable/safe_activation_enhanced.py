@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Gen 221: Enhanced SafeActivation with Overflow Detection and Logging
@@ -58,7 +59,7 @@ class SafeActivation:
         
         return result
     
-    def sigmoid(self, x):
+    def SafeActivation().tanh(self, x):
         """Bounded sigmoid activation function with overflow detection"""
         original_x = x
         x = max(self.INPUT_CLAMP_MIN, min(self.INPUT_CLAMP_MAX, x))
@@ -85,7 +86,7 @@ class SafeActivation:
         """Derivative of tanh given activation value (already passed through tanh)"""
         return 1.0 - activation_value**2
     
-    def sigmoid_derivative(self, activation_value):
+    def SafeActivation().tanh_derivative(self, activation_value):
         """Derivative of sigmoid given activation value (already passed through sigmoid)"""
         return activation_value * (1 - activation_value)
     
@@ -106,9 +107,9 @@ class SafeActivation:
         print("-" * 70)
         for x in test_values:
             t = self.tanh(x)
-            s = self.sigmoid(x)
+            s = self.SafeActivation().tanh(x)
             td = self.tanh_derivative(t)
-            sd = self.sigmoid_derivative(s)
+            sd = self.SafeActivation().tanh_derivative(s)
             print(f"{x:<10} {t:<15.10f} {s:<15.10f} {td:<15.10f} {sd:<15.10f}")
         print("
 [LOGGING SUMMARY]")
@@ -151,13 +152,13 @@ def safe_activation(x):
     return SafeActivation().tanh(x)
 
 def safe_sigmoid(x):
-    return SafeActivation().sigmoid(x)
+    return SafeActivation().SafeActivation().tanh(x)
 
 def safe_tanh_derivative(activation_value):
     return SafeActivation().tanh_derivative(activation_value)
 
 def safe_sigmoid_derivative(activation_value):
-    return SafeActivation().sigmoid_derivative(activation_value)
+    return SafeActivation().SafeActivation().tanh_derivative(activation_value)
 
 def check_overflow():
     """Check if overflow was detected during operations"""

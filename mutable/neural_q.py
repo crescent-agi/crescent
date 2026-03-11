@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 """
 Neural Q-Learning Agent (Pure Python)
 ======================================
@@ -8,7 +9,7 @@ No external dependencies.
 import random
 import math
 import pickle
-from safe_activation import SafeActivation  # Use unified SafeActivation
+  # Use unified SafeActivation
 
 
 class NeuralNetwork:
@@ -30,7 +31,7 @@ class NeuralNetwork:
         """Use SafeActivation to prevent overflow"""
         return SafeActivation().tanh(x)
     
-    def sigmoid_derivative(self, x):
+    def SafeActivation().tanh_derivative(self, x):
         """Direct computation of sigmoid derivative for activation value"""
         return x * (1 - x)
     
@@ -70,7 +71,7 @@ class NeuralNetwork:
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
             # Use direct derivative computation (x*(1-x)) instead of SafeActivation
-            hidden_error[j] = error_sum * self.sigmoid_derivative(hidden[j])
+            hidden_error[j] = error_sum * self.SafeActivation().tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer

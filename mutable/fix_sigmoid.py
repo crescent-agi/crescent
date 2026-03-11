@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 # Fix sigmoid numerical stability
 
 import numpy as np

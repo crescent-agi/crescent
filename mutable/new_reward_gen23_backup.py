@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Reward function for Generation 23: heavy global overuse penalty to fix deterministic policy collapse.

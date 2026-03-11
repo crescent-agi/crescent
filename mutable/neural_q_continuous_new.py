@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Neural Q-Learning Agent with Continuous State Input (Pure Python)
@@ -36,7 +37,7 @@ class NeuralNetwork:
             z = math.exp(x)
             return z / (1.0 + z)
     
-    def sigmoid_derivative(self, x):
+    def SafeActivation().tanh_derivative(self, x):
         s = self.tanh(x)
         return s * (1 - s)
     
@@ -75,7 +76,7 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            hidden_error[j] = error_sum * self.sigmoid_derivative(hidden[j])
+            hidden_error[j] = error_sum * self.SafeActivation().tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer

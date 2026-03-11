@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Helper script to verify numerical stability of activation functions.
@@ -36,14 +37,14 @@ def main():
 
     # Test functions from SafeActivation module if available
     try:
-        from safe_activation import SafeActivation
+        
         sa = SafeActivation()
         test_activation(sa.tanh, "SafeActivation.tanh", extreme_vals)
         test_activation(sa.sigmoid, "SafeActivation.sigmoid", extreme_vals)
     except ImportError:
         print("SafeActivation not found; skipping.")
 
-    # Test numpy tanh and sigmoid (raw)
+    # Test numpy tanh and SafeActivation().tanh(raw)
     test_activation(np.tanh, "numpy.tanh", extreme_vals)
     test_activation(lambda x: 1/(1+math.exp(-x)), "math.sigmoid", extreme_vals)
 

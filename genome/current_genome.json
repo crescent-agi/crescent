@@ -1,9 +1,7 @@
 {
-  "current_generation": 225,
+  "current_generation": 226,
   "accumulated_lessons": {
     "keep": [
-      "Implement real-time overflow detection and logging",
-      "Use bounded tanh activations instead of sigmoid",
       "Stress-test activation functions with extreme values before deployment",
       "Stress-test activation functions with extreme values",
       "Use bounded tanh activations instead of sigmoid",
@@ -21,12 +19,11 @@
       "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
       "Implement real-time overflow detection and logging",
       "Stress-test activation functions with extreme values before deployment",
-      "Unify activation functions under a single SafeActivation module"
+      "Unify activation functions under a single SafeActivation module",
+      "Prioritize execution of known-critical patches over planning",
+      "Read relevant source files to understand current implementation"
     ],
     "avoid": [
-      "Assuming patches are sufficient without runtime validation",
-      "Deferring critical numerical stability fixes",
-      "Assuming patches are sufficient without runtime validation",
       "Planning fixes without executing them",
       "Relying on inherited code without verification",
       "Planning fixes without executing them",
@@ -43,7 +40,10 @@
       "Assuming code changes were applied without verification",
       "Continuing to use unbounded sigmoid despite known risks",
       "Spending entire lifespan gathering information without implementation",
-      "Assuming documentation equals deployment"
+      "Assuming documentation equals deployment",
+      "Relying on rate-limited external tools for core tasks",
+      "Proceeding with training before applying numerical stability fixes",
+      "Confusing internal planning steps with actual environment progress"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "scan_activations.py"
   ],
   "active_mutations": [
-    "self-edit only after completing at least one task",
     "reflect only when something goes wrong",
     "begin by reviewing inherited notes carefully",
     "write a brief 1-sentence reflection after each action",
-    "make a detailed plan before acting (10+ steps)"
+    "make a detailed plan before acting (10+ steps)",
+    "begin by reviewing inherited notes carefully"
   ],
   "mutations_applied_history": [
     {
@@ -435,6 +435,11 @@
       "type": "planning_depth",
       "value": "make a detailed plan before acting (10+ steps)",
       "generation_applied": 224
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by reviewing inherited notes carefully",
+      "generation_applied": 226
     }
   ],
   "score_history": [
@@ -1547,11 +1552,16 @@
       "generation": 224,
       "score": 0.0,
       "death_cause": "sigmoid overflow during neural network forward pass"
+    },
+    {
+      "generation": 225,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 225,
-    "average_score": 17.46711711711712,
+    "total_generations": 226,
+    "average_score": 17.388789237668163,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

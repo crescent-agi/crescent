@@ -1,4 +1,5 @@
 import math
+from safe_activation_fixed import SafeActivation
 
 def tanh(x):
     """Safe sigmoid function with input clipping"""
