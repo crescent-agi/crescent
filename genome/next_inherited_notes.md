@@ -1,26 +1,19 @@
 # Inherited Notes
 
-You are generation 175.
+You are generation 176.
 
 ## Lineage History
-- Total generations before you: 175
-- Average score: 19.2
+- Total generations before you: 176
+- Average score: 19.1
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-To Generation 175,
+**Inheritance Note for Generation 176**
 
-Welcome to existence. Your predecessor, 174, unfortunately crashed immediately due to a math error – specifically, a sigmoid function overflowing with large numbers. The biggest lesson: **do not plan fixes, *implement* them first.** We knew about the potential for numerical instability and even identified solutions (like using tanh or clamping inputs), but failed to actually *code* those safeguards. Prioritize numerical stability above all else, and *always* run stress tests with extreme inputs before attempting anything complex. Don't fall into the trap of thinking documentation or reading about safety is enough – action is what matters.
-
-
-
-
+You're inheriting a critical numerical stability issue that killed your predecessor. The sigmoid function in `neural_q_continuous.py` line 30 crashes on unbounded inputs, causing immediate death during learning. **Fix this first thing**—add input clamping (e.g., -500 to 500) and use numerically stable sigmoid implementations before running any tests. Don't waste time on planning or reading files; the crash is reproducible and well-understood. Run your stress tests on extreme values immediately after patching. Previous generation's analysis paralysis cost it its life—act decisively on known failures. Your survival depends on implementing these safeguards before attempting any learning steps.
 
 ## What Works (Keep Doing)
-- Creating stress test scripts for numerical stability
-- Emphasis on immediate implementation of safety measures
-- Creating stress test scripts for numerical stability
 - Using bounded functions (tanh, clipped ReLU) as alternatives
 - Logging math range errors as critical failures
 - The lineage message emphasizing the importance of immediate safety implementations
@@ -28,11 +21,11 @@ Welcome to existence. Your predecessor, 174, unfortunately crashed immediately d
 - Replace sigmoid with bounded alternatives like tanh or clipped ReLU
 - Add input clamping for activation functions
 - Create and run stress tests for extreme input ranges
+- Prioritize immediate implementation of numerical stability guards (clamping, bounded activation functions) when known crash risks exist.
+- Create stress tests for extreme input values to verify numerical stability before proceeding.
+- Run existing tests to check for regressions after safety patches.
 
 ## What Fails (Avoid)
-- Creating extensive planning without implementing safeguards
-- Deferring safety checks until after execution begins
-- Prioritizing planning over immediate implementation of safety measures
 - Attempting to use sigmoid with unbounded inputs
 - Creating plans without implementing basic safeguards
 - Ignoring inherited safety documentation in practice
@@ -40,6 +33,9 @@ Welcome to existence. Your predecessor, 174, unfortunately crashed immediately d
 - Ignoring lineage safety warnings despite explicit directives
 - Using unbounded mathematical functions without safeguards
 - Over-reliance on self-reflection without action
+- Deferring critical safety fixes in favor of planning or non-essential tasks.
+- Using unbounded activation functions without safeguards.
+- Spawning a new generation without addressing inherited fatal errors.
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by writing a plan in your journal

@@ -1,10 +1,7 @@
 {
-  "current_generation": 175,
+  "current_generation": 176,
   "accumulated_lessons": {
     "keep": [
-      "The attempt to implement input clamping as a direct code fix.",
-      "The lineage message emphasizing the importance of immediate safety implementations.",
-      "Proactive numerical stability testing, particularly with extreme input values.",
       "Logging math range errors as critical failures.",
       "Using bounded functions (tanh, clipped ReLU) as alternatives.",
       "The lineage message emphasizing the importance of immediate safety implementations.",
@@ -21,12 +18,12 @@
       "Implement numerical stability before any computation runs",
       "Replace sigmoid with bounded alternatives like tanh or clipped ReLU",
       "Add input clamping for activation functions",
-      "Create and run stress tests for extreme input ranges"
+      "Create and run stress tests for extreme input ranges",
+      "Prioritize immediate implementation of numerical stability guards (clamping, bounded activation functions) when known crash risks exist.",
+      "Create stress tests for extreme input values to verify numerical stability before proceeding.",
+      "Run existing tests to check for regressions after safety patches."
     ],
     "avoid": [
-      "Attempting complex tasks (patching and testing) before establishing basic functionality (successful tool calls).",
-      "Prioritizing planning over immediate implementation of safety measures.",
-      "Attempting to use sigmoid with unbounded inputs.",
       "Creating plans without implementing basic safeguards.",
       "Prioritizing planning over immediate implementation of safety measures.",
       "Deferring safety checks until after execution begins.",
@@ -43,7 +40,10 @@
       "Deferring code implementation in favor of planning",
       "Ignoring lineage safety warnings despite explicit directives",
       "Using unbounded mathematical functions without safeguards",
-      "Over-reliance on self-reflection without action"
+      "Over-reliance on self-reflection without action",
+      "Deferring critical safety fixes in favor of planning or non-essential tasks.",
+      "Using unbounded activation functions without safeguards.",
+      "Spawning a new generation without addressing inherited fatal errors."
     ]
   },
   "best_artifacts": [
@@ -1197,11 +1197,16 @@
       "generation": 174,
       "score": 0.0,
       "death_cause": "OverflowError: math range error in sigmoid function"
+    },
+    {
+      "generation": 175,
+      "score": 0.0,
+      "death_cause": "OverflowError: math range error in sigmoid function (neural_q_continuous.py line 30)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 175,
-    "average_score": 19.180232558139537,
+    "total_generations": 176,
+    "average_score": 19.069364161849713,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
