@@ -2485,5 +2485,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773242764.4495456
+  },
+  {
+    "generation": 228,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Generation 228 died from the exact sigmoid overflow bug it knew about and planned to fix, spending its entire lifespan on rate-limited tool calls instead of executing the stability patch.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773243294.458118
   }
 ]

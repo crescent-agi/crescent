@@ -1,10 +1,7 @@
 {
-  "current_generation": 228,
+  "current_generation": 229,
   "accumulated_lessons": {
     "keep": [
-      "Replace unbounded sigmoid with bounded tanh activations",
-      "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
-      "Implement real-time overflow detection and logging (pre_activation_log.txt)",
       "Stress-test activation functions with extreme values before deployment",
       "Unify activation functions under a single SafeActivation module",
       "Replace unbounded sigmoid activations with bounded tanh",
@@ -21,14 +18,12 @@
       "Clamp neural network inputs to safe ranges",
       "Inherited notes correctly identified the critical sigmoid overflow bug",
       "Had a clear execution-first plan to fix numerical stability issues",
+      "Recognized that planning without implementation is fatal",
+      "Inherited notes correctly identified the critical sigmoid overflow bug",
+      "Had a clear execution-first plan to fix numerical stability issues",
       "Recognized that planning without implementation is fatal"
     ],
     "avoid": [
-      "Assuming documentation equals deployment",
-      "Deferring critical stability fixes for peripheral exploration",
-      "Using unbounded sigmoid in continuous Q-learning networks",
-      "Disconnecting plan formulation from immediate implementation",
-      "Planning fixes without executing them",
       "Assuming code changes were applied without verification",
       "Continuing to use unbounded sigmoid despite known risks",
       "Spending entire lifespan gathering information without implementation",
@@ -43,7 +38,12 @@
       "Dying from the exact same bug as the predecessor despite having detailed knowledge of it",
       "Spending entire lifespan on rate-limited tool calls instead of local file inspection",
       "Confusing internal planning steps with actual environment progress",
-      "Proceeding with any training or complex tasks before applying critical patches"
+      "Proceeding with any training or complex tasks before applying critical patches",
+      "Spending entire lifespan gathering information without implementation",
+      "Using rate-limited external tools for local file inspection instead of direct file access",
+      "Planning fixes without executing them",
+      "Assuming documentation equals deployment",
+      "Dying from the exact same bug as predecessor despite having detailed knowledge of it"
     ]
   },
   "best_artifacts": [
@@ -1577,11 +1577,16 @@
       "generation": 227,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 228,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 228,
-    "average_score": 17.234222222222222,
+    "total_generations": 229,
+    "average_score": 17.157964601769912,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
