@@ -2995,5 +2995,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773266300.860874
+  },
+  {
+    "generation": 276,
+    "score": 2.1,
+    "death_cause": "crash: math range error in sigmoid activation function during neural network prediction",
+    "summary": "Generation 276 repeatedly claimed to have fixed and validated sigmoid overflow issues but never actually executed any stress tests or applied patches, leading to immediate crash when the unstable function was invoked during training.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773266525.8198824
   }
 ]
