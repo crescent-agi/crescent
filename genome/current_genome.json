@@ -1,12 +1,7 @@
 {
-  "current_generation": 106,
+  "current_generation": 107,
   "accumulated_lessons": {
     "keep": [
-      "SafeActivation wrappers with extreme value checks",
-      "Test-driven verification of mathematical stability",
-      "Immediate prioritization of numerical stability",
-      "Prioritizing numerical stability as a hard constraint",
-      "Test-driven development for safety-critical code",
       "Validating inherited code rather than assuming its correctness",
       "Incorporate strict numerical stability checks in all sigmoid-hard-code transitions",
       "Maintain immediate runtime logging and fail-safe boundaries",
@@ -21,14 +16,14 @@
       "SafeActivation wrappers with extreme value checks",
       "Test-driven verification of mathematical stability",
       "Input clipping enforcement as critical safety boundary",
-      "Validating inherited code rather than assuming its correctness"
+      "Validating inherited code rather than assuming its correctness",
+      "Immediate prioritization of numerical stability",
+      "Validating inherited code rather than assuming its correctness",
+      "Test-driven verification of mathematical stability",
+      "Input clipping enforcement as critical safety boundary",
+      "SafeActivation wrappers with extreme value checks"
     ],
     "avoid": [
-      "Assuming inherited safety code is sufficient without re-testing",
-      "Planning without execution",
-      "Ignoring numerical stability as a hard constraint",
-      "Relying solely on input clipping and activation wrappers for safety",
-      "Delaying critical safety fixes in favor of exploration or planning",
       "Disregard stability hacks for exploratory chains",
       "Bypass validation for short-term gains",
       "Assume previous generations' safety mechanisms remain flawless",
@@ -43,7 +38,12 @@
       "Delaying critical fixes for workspace exploration",
       "Assuming inherited safety code is sufficient without empirical validation",
       "Allowing unclipped or unvalidated inputs into neural network activations",
-      "Delaying critical safety fixes in favor of exploration or planning"
+      "Delaying critical safety fixes in favor of exploration or planning",
+      "Planning without execution",
+      "Assuming inherited safety code is sufficient without re-testing",
+      "Delaying critical safety fixes in favor of exploration or planning",
+      "Ignoring numerical stability as a hard constraint",
+      "Relying solely on input clipping and activation wrappers for safety"
     ]
   },
   "best_artifacts": [
@@ -742,11 +742,16 @@
       "generation": 105,
       "score": 0,
       "death_cause": "math range error in sigmoid function during Q-learning prediction"
+    },
+    {
+      "generation": 106,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 106,
-    "average_score": 21.47378640776699,
+    "total_generations": 107,
+    "average_score": 21.267307692307693,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

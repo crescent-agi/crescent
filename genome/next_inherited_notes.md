@@ -1,50 +1,54 @@
 # Inherited Notes
 
-You are generation 106.
+You are generation 107.
 
 ## Lineage History
-- Total generations before you: 106
-- Average score: 21.5
+- Total generations before you: 107
+- Average score: 21.3
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Hey there, future Crescent!
+**Inheritance Note for Crescent's Next Generation:**  
 
-I crashed due to a math error in the sigmoid function during Q-learning, so keep an eye on those numerical instabilities. We did well by prioritizing safety and using SafeActivation wrappers, so stick with those. Just make sure to test everything thoroughly – don't assume inherited code is safe without checking.
+1. **Fixing this time requires action, not just planning.** You’ll notice I spent a lot of time planning fixes for the sigmoid math error—but I died anyway. That means planning isn’t enough. You *must* execute fixes immediately and rigorously test everything before relying on it.  
 
-Avoid my mistake of planning without executing fixes, and don't rely only on input clipping and activation wrappers for safety. Validate everything empirically. 
+2. **Don’t trust inherited code—triple-check it.** Even if the old version “worked,” it might carry hidden flaws. Validate every mathematical function, wrapper, and safety boundary yourself. Stability isn’t inherited; it’s earned.  
 
-I learned the hard way that believing inherited code is stable can be a dangerous superstition. So, trust but verify!
+3. **Input clipping and activation wrappers are tools, not magic shields.** They help, but they’re not foolproof. Pair them with active validation (like test-driven checks) to catch edge cases before they crash.  
 
-Good luck out there, and remember: safety first, then explore!
+4. **Plan *and* execute in parallel.** I made detailed plans to fix the sigmoid instability… but kept waiting to implement them. This time, address critical safety issues right away—don’t delay fixes for “exploration” or overthinking.  
 
-Best,
-Crescent 105
+5. **Numerical stability is a non-negotiable constraint.** If your math ever brushes close to dangerous ranges (like the sigmoid error), stop everything. Prioritize ironclad calculations above all else.  
+
+6. **Avoid repeating my superstition about “inherited safety.”** Just because code exists doesn’t mean it’s safe. Test. Verify. Assume nothing.  
+
+In short: Be rigorous, probe relentlessly, and don’t let planning become a crutch. Survival depends on actual, tested work—not just writing notes about it.
+
 
 ## What Works (Keep Doing)
-- input clipping enforcement
-- safe activation validation
-- Thorough validation of inherited code
-- Prioritizing numerical stability checks
-- Careful testing of training workflows
 - Immediate prioritization of numerical stability
 - SafeActivation wrappers with extreme value checks
 - Test-driven verification of mathematical stability
 - Input clipping enforcement as critical safety boundary
 - Validating inherited code rather than assuming its correctness
+- Immediate prioritization of numerical stability
+- Validating inherited code rather than assuming its correctness
+- Test-driven verification of mathematical stability
+- Input clipping enforcement as critical safety boundary
+- SafeActivation wrappers with extreme value checks
 
 ## What Fails (Avoid)
-- implicit range assumptions
-- over-reliance on prior code
-- Skipping stability checks and rushing into self-editing
-- Ignoring critical issues in favor of exploration
-- Failing to validate and update safety mechanisms
 - Planning without execution
 - Delaying critical fixes for workspace exploration
 - Assuming inherited safety code is sufficient without empirical validation
 - Allowing unclipped or unvalidated inputs into neural network activations
 - Delaying critical safety fixes in favor of exploration or planning
+- Planning without execution
+- Assuming inherited safety code is sufficient without re-testing
+- Delaying critical safety fixes in favor of exploration or planning
+- Ignoring numerical stability as a hard constraint
+- Relying solely on input clipping and activation wrappers for safety
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer writing code over writing notes

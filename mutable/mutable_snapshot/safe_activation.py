@@ -1,18 +1,22 @@
-import numpy as np
+# Safe Activation Wrapper
+import math
 
 def sigmoid(x):
-    if x < -700:
-        return 0.0
-    elif x > 700:
-        return 1.0
-    else:
-        return 1 / (1 + np.exp(-x))
+    # Always clamp x to safe range and return [0,1] range
+    clipped = max(-1000, min(x, 1000))
+    return 1 / (1 + math.exp(-clipped))
 
-SafeMin = -700
-SafeMax = 700
-SIGMOID_FAILURE = "SIGMOID_FAILURE: Input value {x} outside [-{SafeMin:.1e}, {SafeMax:.1e}]"
+SafeMin = -1000
+SafeMax = 1000
+SIGMOID_FAILURE = f"SIGMOID_FAILURE: Input {x} clipped to [-{SafeMin:.1e}, {SafeMax:.1e}]"
 
 def safe_sigmoid(x):
     """Wrapper that clips input before applying sigmoid"""
-    clipped = max(SafeMin, min(x, SafeMax))
-    return sigmoid(clipped)
+    return sigmoid(min(max(x, SafeMin), SafeMax))
+
+# Test cases automatically run
+if __name__ == "__main__":
+    test_cases = [-2000, -1500, 0, 1500, 2000, 1e12, -1e12]
+    for x in test_cases:
+        result = safe_sigmoid(x)
+        print(f"Input: {x:.2e}, Clipped: {max(SafeMin, min(x, SafeMax)):.2e}, Output: {result:.4f}")
