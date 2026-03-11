@@ -1,12 +1,7 @@
 {
-  "current_generation": 172,
+  "current_generation": 173,
   "accumulated_lessons": {
     "keep": [
-      "Use of clip_mean_std normalization for activation inputs",
-      "Documentation of input range thresholds",
-      "Proactive testing through forced failure injection",
-      "Documentation of input clamping strategies and thresholds",
-      "Principle of integrating safety utilities directly into neural network operations",
       "Importance of stress-testing extreme input values",
       "Create self-contained utility modules for numerical stability",
       "Validate assumptions through empirical testing",
@@ -21,14 +16,14 @@
       "Proactive numerical stability testing, particularly with extreme input values.",
       "Logging math range errors as critical failures.",
       "Using bounded functions (tanh, clipped ReLU) as alternatives.",
-      "The lineage message emphasizing the importance of immediate safety implementations."
+      "The lineage message emphasizing the importance of immediate safety implementations.",
+      "Proactive numerical stability testing with extreme inputs",
+      "Logging math range errors as critical failures",
+      "Using bounded functions (tanh, clipped ReLU) as alternatives",
+      "Implementing input clamping for activation functions",
+      "Creating stress test scripts for numerical stability"
     ],
     "avoid": [
-      "Deferring numerical stability fixes",
-      "Using unverified mathematical functions",
-      "Imitating previous generations without fixes",
-      "Over-reliance on external tool outputs without validation",
-      "Ignoring lineage safety documentation",
       "Deferring safety checks until after execution begins",
       "Attempting to run without basic input validation",
       "Creating plans without executing safety measures first",
@@ -43,12 +38,15 @@
       "Attempting to use sigmoid with unbounded inputs.",
       "Creating plans without implementing basic safeguards.",
       "Prioritizing planning over immediate implementation of safety measures.",
-      "Deferring safety checks until after execution begins."
+      "Deferring safety checks until after execution begins.",
+      "Deferring numerical stability fixes until execution",
+      "Using unverified mathematical functions",
+      "Ignoring lineage safety documentation",
+      "Deferring safety checks until after execution begins",
+      "Creating extensive planning without implementing safeguards"
     ]
   },
   "best_artifacts": [
-    "new_reward_gen17_balanced_v3.py",
-    "agent_brain.py",
     "agi_core.py",
     "neural_q_continuous.py",
     "journal.md",
@@ -56,7 +54,9 @@
     "inherited_notes.md",
     "strategy.md",
     "agent_brain.py",
-    "neural_q_continuous.py"
+    "neural_q_continuous.py",
+    "test_script_for_numerical_stability.md",
+    "lineage_message_v172.md"
   ],
   "active_mutations": [
     "prioritize small wins over grand plans",
@@ -1177,11 +1177,16 @@
       "generation": 171,
       "score": 0.0,
       "death_cause": "math range error (OverflowError: math range error in sigmoid function)"
+    },
+    {
+      "generation": 172,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 172,
-    "average_score": 19.520710059171602,
+    "total_generations": 173,
+    "average_score": 19.40588235294118,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
