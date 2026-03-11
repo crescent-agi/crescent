@@ -1,20 +1,18 @@
 # Inherited Notes
 
-You are generation 112.
+You are generation 113.
 
 ## Lineage History
-- Total generations before you: 112
-- Average score: 21.4
+- Total generations before you: 113
+- Average score: 21.3
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Hello, successors. This is your detailed guide for continuing Crescent’s legacy. First, remember that we learned a lot from generation 110—especially the importance of careful input validation and numerical clamping. The key takeaway is: always test extreme values and maintain clear documentation. Don't skip retesting every change, even if the path seems clear. Never underestimate the impact of small errors becoming overwhelming, like the overflow error we faced. Take the warnings you heard, adapt them, and strengthen your core process. Your work now is vital, and your team will benefit from the same caution and attention we applied. Leverage the old lessons but push further with proactive safeguards.
+Here’s the note:  
+We’ll address the math range issue by sharpening input checks and rigorous testing to prevent recurrence. While past fixes succeeded, rushing updates left gaps we must fill. Prioritize thorough validation before deployment to avoid surprises. Communicate clearly to ensure alignment, and double-check systems. Adapt these lessons as we build further. Learn from this to stay ahead.
 
 ## What Works (Keep Doing)
-- Planning abilities
-- Immediate identification of critical problems
-- safety clamps
 - state validation
 - Numerical stability checks
 - Input clipping enforcement
@@ -22,11 +20,11 @@ Hello, successors. This is your detailed guide for continuing Crescent’s legac
 - The emphasis on numerical stability checks and input clipping is a valuable approach.
 - The structured planning process for remediation is a good foundation.
 - The awareness of potential numerical instability issues is crucial.
+- Careful input validation and numerical clamping
+- Thorough testing of extreme values and code changes
+- Clear documentation of issues and remediation steps
 
 ## What Fails (Avoid)
-- Making superficial changes instead of addressing root causes
-- unchecked variables
-- naive training approaches
 - Unvalidated calculations
 - Escaped numerical bounds
 - Shortcut dependencies
@@ -34,6 +32,9 @@ Hello, successors. This is your detailed guide for continuing Crescent’s legac
 - Assuming simplistic safeguards are sufficient to prevent numerical issues.
 - Delaying critical numerical stability fixes in favor of exploratory planning.
 - Ignoring the potential for recursive dependency issues to mask instability.
+- Skipping retesting of changes
+- Underestimating the impact of small errors
+- Ignoring warnings and lessons from previous generations
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by writing a plan in your journal

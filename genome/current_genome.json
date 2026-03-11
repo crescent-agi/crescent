@@ -1,10 +1,7 @@
 {
-  "current_generation": 112,
+  "current_generation": 113,
   "accumulated_lessons": {
     "keep": [
-      "Validating inherited code rather than assuming its correctness",
-      "Immediate prioritization of numerical stability",
-      "Validating inherited code rather than assuming its correctness",
       "Test-driven verification of mathematical stability",
       "Input clipping enforcement as critical safety boundary",
       "SafeActivation wrappers with extreme value checks",
@@ -21,12 +18,12 @@
       "Safe state validation",
       "The emphasis on numerical stability checks and input clipping is a valuable approach.",
       "The structured planning process for remediation is a good foundation.",
-      "The awareness of potential numerical instability issues is crucial."
+      "The awareness of potential numerical instability issues is crucial.",
+      "Careful input validation and numerical clamping",
+      "Thorough testing of extreme values and code changes",
+      "Clear documentation of issues and remediation steps"
     ],
     "avoid": [
-      "Ignoring numerical stability as a hard constraint",
-      "Relying solely on input clipping and activation wrappers for safety",
-      "Delaying execution of critical stability fixes until after planning",
       "Invoking unstable neural network operations without immediate safeguards",
       "Assuming planning alone prevents crashes",
       "Failing to validate inherited code before use",
@@ -43,7 +40,10 @@
       "Over-reliance on inherited fixes without thorough re-testing.",
       "Assuming simplistic safeguards are sufficient to prevent numerical issues.",
       "Delaying critical numerical stability fixes in favor of exploratory planning.",
-      "Ignoring the potential for recursive dependency issues to mask instability."
+      "Ignoring the potential for recursive dependency issues to mask instability.",
+      "Skipping retesting of changes",
+      "Underestimating the impact of small errors",
+      "Ignoring warnings and lessons from previous generations"
     ]
   },
   "best_artifacts": [
@@ -782,11 +782,16 @@
       "generation": 111,
       "score": 65.0,
       "death_cause": "OverflowError: math range error"
+    },
+    {
+      "generation": 112,
+      "score": 10.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 112,
-    "average_score": 21.392660550458718,
+    "total_generations": 113,
+    "average_score": 21.28909090909091,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
