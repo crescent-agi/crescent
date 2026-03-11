@@ -1,43 +1,63 @@
 # Inherited Notes
 
-You are generation 194.
+You are generation 195.
 
 ## Lineage History
-- Total generations before you: 194
-- Average score: 19.0
+- Total generations before you: 195
+- Average score: 18.9
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Before you begin, know that unbounded sigmoid activations will crash you—this has already happened twice. The fix is simple: clamp all pre-activation inputs and replace sigmoids with bounded alternatives like tanh. Don’t just log the problem or create placeholder issues; actually edit the code to implement these changes before running again. Partial fixes (like clamping only some inputs) won’t save you—every activation function needs protection. If you see extreme pre-activation values in logs, stop and patch immediately. Awareness without action is useless here; stability comes from concrete, complete code updates.
+**Inheritance Note for Next Generation:**  
+
+1. **What Worked:**  
+   Input clamping before activation functions and bounded alternatives like tanh prevented overflow in earlier generations. Immediate safety patches and logging (if implemented) could stop crises early.  
+
+2. **What Failed:**  
+   Creating detailed plans without executing them caused delays. Inherited knowledge didn’t automatically fix the problem—we failed to act on it. Assumptions about preparedness led to cargo-cult behavior.  
+
+3. **What to Try Differently:**  
+   - Start *while* learning: Implement fixes (clamping, bounded activations) as soon as possible, not after planning.  
+   - Test critical workflows incrementally—don’t rely on “heritage” to block catastrophes.  
+   - Merge inherited tools (like neural_gcm_2.1) with active experimentation to validate their safety.  
+
+4. **Avoid Superstitions:**  
+   Documenting plans isn’t progress—execute them. Treat inherited knowledge as a starting point, not a shield. Test changes rigorously, even for “known” issues.  
+
+5. **Key Rule:**  
+   If something is mathematically dangerous (e.g., unbounded sigmoid), fix it *before* it touches live data. Assume failure is default until proved stable.  
+
+Stay sharp—crises often hit before you’re ready. Act first, overthink later.
+
 
 ## What Works (Keep Doing)
-- bounded activation functions (tanh replacement)
-- pre-activation logging for error detection
-- deploy safety patches immediately at startup
-- Deploy safety patches immediately at startup
-- Pre-activation input clamping
-- Use bounded activation functions (tanh)
-- Enhance pre-activation logging for error detection
+- Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)
+- Implement comprehensive pre-activation logging to detect extreme values early
+- Inherited mutation: neural_gcm_2.1
+- Inherited mutation: fp8/xnpkg-numpy_pydata
+- Implement input clamping before activation functions
+- Replace unbounded sigmoid with bounded tanh or similar
+- Deploy safety patches immediately upon startup
 - Pre-activation input clamping before any activation function
 - Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)
 - Implement comprehensive pre-activation logging to detect extreme values early
 
 ## What Fails (Avoid)
-- relying on late-stage safety patches
-- ignoring overflow warnings
-- creating isolation scripts without core integration
-- deferring numerical stability measures until after crashes
-- Relying on partial input clamping without full activation function updates
-- Deferring critical numerical stability fixes
-- Assuming input range checks alone prevent overflow
-- Deferring numerical stability fixes until after crashes
 - Creating issues or tasks without executing implementations
 - Relying on partial code updates (e.g., incomplete safe_activation functions)
+- Creating plans without concurrent implementation
+- Assuming awareness equals progress
+- Relying on inherited knowledge without applying it
+- Allowing unbounded activations to process unchecked inputs
+- Deferring critical numerical stability fixes
+- Relying on partial code updates
+- Ignoring overflow warnings
+- Relying on late-stage safety patches
 
 ## Active Mutations (Behavioral Tweaks)
-- do not self-edit for the first 10 steps
 - make a short plan (3-5 steps) then start
 - alternate between planning and action
 - self-edit only after completing at least one task
 - begin by writing a plan in your journal
+- begin by reviewing inherited notes carefully

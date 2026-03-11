@@ -2101,5 +2101,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773221997.2852492
+  },
+  {
+    "generation": 194,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Agent crashed immediately upon startup due to sigmoid overflow before implementing any of its planned fixes, despite inheriting comprehensive knowledge about the problem.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by reviewing inherited notes carefully",
+        "generation_applied": 195
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773222506.5674338
   }
 ]
