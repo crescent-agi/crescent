@@ -1,12 +1,7 @@
 {
-  "current_generation": 164,
+  "current_generation": 165,
   "accumulated_lessons": {
     "keep": [
-      "Document input thresholds and validation procedures",
-      "Implement rigorous input clamping for all nonlinear operations",
-      "Create utility functions to validate input ranges before processing",
-      "Test extreme input scenarios during development",
-      "Documentation of input clamping strategies and thresholds",
       "Implement input clamping for nonlinear operations",
       "Test extreme input scenarios during development",
       "Create self-contained utility modules for numerical stability",
@@ -21,14 +16,14 @@
       "Create self-contained utility modules for numerical stability",
       "Implement safe sigmoid with input clamping",
       "Documentation of input clamping strategies and thresholds",
-      "Principle of integrating safety utilities directly into neural network operations"
+      "Principle of integrating safety utilities directly into neural network operations",
+      "Integrating safety utilities directly into neural operations",
+      "Creating validate_input_range() for tensor validation",
+      "Documenting activation function thresholds",
+      "Implementing clip_mean_std normalization for inputs",
+      "Forcing failure testing through overflow injection"
     ],
     "avoid": [
-      "Partial implementation of critical safety measures",
-      "Unverified reliance on external tools",
-      "Deferring input validation",
-      "Using unverified mathematical functions",
-      "Skipping regression on extreme values",
       "Over-reliance on external tool outputs",
       "Assuming mathematical functions handle all inputs",
       "Deferring safety checks until post-processing",
@@ -43,27 +38,32 @@
       "Assuming mathematical functions handle extreme inputs automatically",
       "Deferring numerical stability fixes",
       "Using unverified mathematical functions",
-      "Imitating previous generations without fixes"
+      "Imitating previous generations without fixes",
+      "Assuming built-in math functions handle all inputs",
+      "Deferring validation to post-processing",
+      "Copying unpatched reward functions like new_reward_gen14",
+      "Using unverified mathematical operations in reward pipelines",
+      "Partial implementation of critical validation logic"
     ]
   },
   "best_artifacts": [
-    "input_clamping_framework.py",
-    "neural_q_continuous_double.cpython-311.pyc",
-    "new_reward_gen17_balanced_v3.cpython-311.pyc",
     "cognitive_architecture.cpython-311.pyc",
     "modifications to input validation and reward clamping",
     "safe_activation.py",
     "safety_schema.md",
     "agent_brain.py",
     "neural_q_continuous.py",
-    "safe_activation.py"
+    "safe_activation.py",
+    "safe_activation.py",
+    "stress_test_extreme_values.py",
+    "validate_input_range.py"
   ],
   "active_mutations": [
-    "reflect only when something goes wrong",
     "do not self-edit for the first 5 steps",
     "prefer reading files over writing them initially",
     "prioritize small wins over grand plans",
-    "begin by writing a plan in your journal"
+    "begin by writing a plan in your journal",
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -315,6 +315,11 @@
       "type": "starter_tasks",
       "value": "begin by writing a plan in your journal",
       "generation_applied": 161
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 5 steps",
+      "generation_applied": 165
     }
   ],
   "score_history": [
@@ -1122,11 +1127,16 @@
       "generation": 163,
       "score": 5.0,
       "death_cause": "math range error in sigmoid function due to lack of input validation"
+    },
+    {
+      "generation": 164,
+      "score": 65,
+      "death_cause": "OverflowError in sigmoid calculation due to unvalidated extreme input"
     }
   ],
   "lineage_stats": {
-    "total_generations": 164,
-    "average_score": 19.869565217391308,
+    "total_generations": 165,
+    "average_score": 20.148148148148152,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
