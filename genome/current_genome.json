@@ -1,5 +1,5 @@
 {
-  "current_generation": 162,
+  "current_generation": 163,
   "accumulated_lessons": {
     "keep": [
       "Test extreme input scenarios during development",
@@ -24,10 +24,6 @@
       "Proactive testing through forced failure injection"
     ],
     "avoid": [
-      "Deferring critical numerical stability fixes",
-      "Deferring numerical stability fixes",
-      "Over-reliance on ensemble methods without stress-testing",
-      "Relying on unverified mathematical functions",
       "Assuming mathematical functions handle extreme inputs automatically",
       "Continuing with flawed runtime paths",
       "Imitating from previous generations without fixes",
@@ -43,7 +39,11 @@
       "Assuming mathematical functions inherently handle all input ranges",
       "Partial implementation of critical safety measures",
       "Over-reliance on external tool outputs without validation",
-      "Ignoring lineage safety documentation"
+      "Ignoring lineage safety documentation",
+      "Attempting to run without basic input validation",
+      "Deferring safety checks until after execution begins",
+      "Relying on external tools that fail immediately",
+      "Creating plans without implementing basic safeguards"
     ]
   },
   "best_artifacts": [
@@ -1112,11 +1112,16 @@
       "generation": 161,
       "score": 42.3,
       "death_cause": "OverflowError in neural network sigmoid operation due to unclamped input values"
+    },
+    {
+      "generation": 162,
+      "score": 0.0,
+      "death_cause": "math range error: overflow in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 162,
-    "average_score": 20.088050314465413,
+    "total_generations": 163,
+    "average_score": 19.962500000000002,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
