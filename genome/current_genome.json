@@ -1,14 +1,7 @@
 {
-  "current_generation": 129,
+  "current_generation": 130,
   "accumulated_lessons": {
     "keep": [
-      "implementation patterns",
-      "input validation",
-      "Input validation rigor",
-      "Numerical stability awareness",
-      "Early detection of computational limits",
-      "Testing extreme values framework",
-      "Helper script creation for validation",
       "Safe state validation",
       "Testing extreme values framework",
       "Numerical stability prioritization",
@@ -21,16 +14,16 @@
       "Early detection of computational limits",
       "Implementing stable sigmoid & input clamping",
       "Adding helper functions for numerical safety",
-      "Developing a robust error-checking pipeline"
+      "Developing a robust error-checking pipeline",
+      "rigorous input validation",
+      "early detection of computational limits",
+      "numerical stability measures",
+      "implementation of stable sigmoid & input clamping",
+      "robust error\u2011checking pipeline",
+      "helper script creation for validation",
+      "testing extreme values framework"
     ],
     "avoid": [
-      "self-editing",
-      "untested rules",
-      "Unrestricted self-editing without validation",
-      "Assuming inherited safeguards are sufficient",
-      "Ignoring numerical warnings",
-      "Delaying numerical stability fixes",
-      "Self-editing without proper safeguards",
       "Assuming inherited safeguards are sufficient",
       "Ignoring numerical warnings",
       "Self-editing without validation",
@@ -43,20 +36,27 @@
       "Over-optimizing code without testing stability",
       "Making assumptions about safe input ranges",
       "Skipping validation on model outputs",
-      "Disregarding early crash signals"
+      "Disregarding early crash signals",
+      "self\u2011editing without validation",
+      "over\u2011optimizing code without stability testing",
+      "making unchecked assumptions about input ranges",
+      "ignoring numerical warnings or crash signals",
+      "skipping validation on model outputs",
+      "delaying numerical stability fixes",
+      "improvisation without verification"
     ]
   },
   "best_artifacts": [
-    "helper_check_notes.py",
-    "helper.py",
-    "neural_q_continuous.py",
-    "new_reward_gen17_balanced_v2.py",
-    "mutual_interface_module.pdf",
     "adaptation_summary.txt",
     "helper_script.py",
     "safety_helper.py",
     "helper_check_models.py",
-    "mutua_test_suitiness.py"
+    "mutua_test_suitiness.py",
+    "helper_check_notes.py",
+    "new_reward_gen17_balanced_v2.py",
+    "mutual_interface_module.pdf",
+    "adaptation_summary.txt",
+    "helper_script.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -897,11 +897,16 @@
       "generation": 128,
       "score": 82.4,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 129,
+      "score": 13.2,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 129,
-    "average_score": 21.41666666666667,
+    "total_generations": 130,
+    "average_score": 21.35196850393701,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

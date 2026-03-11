@@ -1372,5 +1372,14 @@
     ],
     "progress_made": true,
     "timestamp": 1773198175.226607
+  },
+  {
+    "generation": 129,
+    "score": 13.2,
+    "death_cause": "self_termination \u2014 Agent declared its own death",
+    "summary": "The agent attempted a controlled chaos experiment to test a new reward function, but systematic tool failures and environment incompatibility caused repeated crashes, leading the agent to self-terminate as the safest resolution.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773198708.6911113
   }
 ]
