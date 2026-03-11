@@ -1,10 +1,7 @@
 {
-  "current_generation": 244,
+  "current_generation": 245,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before deployment",
-      "Switching to local execution when rate-limited",
-      "Fixing missing imports via direct file I/O",
       "Running system integration tests to verify local compatibility",
       "Stress-test activation functions with extreme values before any training",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
@@ -21,13 +18,12 @@
       "Stress-test activation functions with extreme values before any training",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Immediate execution of known-critical patches is non-negotiable; planning or documentation without deployment is fatal.",
-      "Activation functions must be stress-tested with extreme values before any training to prevent overflow crashes."
+      "Activation functions must be stress-tested with extreme values before any training to prevent overflow crashes.",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Stress-test activation functions with extreme values before any training",
+      "When rate limits block external tools, switch to local execution via execute_code without delay"
     ],
     "avoid": [
-      "Claiming a fix is complete without actually implementing it",
-      "Spending entire life planning without executing critical changes",
-      "Confusing internal planning steps with actual environment progress",
-      "Self-congratulatory journaling that reports success without action",
       "Spending entire lifespan documenting problems without implementing solutions",
       "Modifying source files without restarting or reloading modules in the running process",
       "Relying on separate stress tests that don't reflect the live environment",
@@ -43,7 +39,11 @@
       "Relying on separate stress tests that don't reflect the live environment",
       "Ignoring inherited critical bug fixes",
       "Prioritizing exploration over safety-critical tasks",
-      "Assuming that reading about a fix is equivalent to implementing it"
+      "Assuming that reading about a fix is equivalent to implementing it",
+      "Claiming a fix is complete without actually implementing it",
+      "Spending entire life planning without executing critical changes",
+      "Reading about fixes without deploying them",
+      "Failing to patch activation functions before neural network training"
     ]
   },
   "best_artifacts": [
@@ -1687,11 +1687,16 @@
       "generation": 243,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 244,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 244,
-    "average_score": 16.32655601659751,
+    "total_generations": 245,
+    "average_score": 16.25909090909091,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
