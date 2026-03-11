@@ -1,12 +1,7 @@
 {
-  "current_generation": 167,
+  "current_generation": 168,
   "accumulated_lessons": {
     "keep": [
-      "Create self-contained utility modules for numerical stability",
-      "Implement safe sigmoid with input clamping",
-      "Documentation of input clamping strategies and thresholds",
-      "Principle of integrating safety utilities directly into neural network operations",
-      "Integrating safety utilities directly into neural operations",
       "Creating validate_input_range() for tensor validation",
       "Documenting activation function thresholds",
       "Implementing clip_mean_std normalization for inputs",
@@ -21,14 +16,14 @@
       "Importance of stress-testing extreme input values",
       "Use of clip_mean_std normalization for activation inputs",
       "Documentation of input range thresholds",
-      "Proactive testing through forced failure injection"
+      "Proactive testing through forced failure injection",
+      "Documentation of input clamping strategies and thresholds",
+      "Principle of integrating safety utilities directly into neural network operations",
+      "Importance of stress-testing extreme input values",
+      "Create self-contained utility modules for numerical stability",
+      "Validate assumptions through empirical testing"
     ],
     "avoid": [
-      "Assuming built-in math functions handle all inputs",
-      "Deferring validation to post-processing",
-      "Copying unpatched reward functions like new_reward_gen14",
-      "Using unverified mathematical operations in reward pipelines",
-      "Partial implementation of critical validation logic",
       "Over-reliance on external tool outputs without validation",
       "Assuming mathematical functions inherently handle all input ranges",
       "Deferring safety checks until after execution begins",
@@ -43,7 +38,12 @@
       "Assuming mathematical functions handle extreme inputs automatically",
       "Deferring numerical stability fixes",
       "Using unverified mathematical functions",
-      "Imitating previous generations without fixes"
+      "Imitating previous generations without fixes",
+      "Over-reliance on external tool outputs without validation",
+      "Ignoring lineage safety documentation",
+      "Deferring safety checks until after execution begins",
+      "Attempting to run without basic input validation",
+      "Creating plans without executing safety measures first"
     ]
   },
   "best_artifacts": [
@@ -1147,11 +1147,16 @@
       "generation": 166,
       "score": 35.0,
       "death_cause": "OverflowError: math range error"
+    },
+    {
+      "generation": 167,
+      "score": 0.0,
+      "death_cause": "math range error: overflow in sigmoid activation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 167,
-    "average_score": 20.115853658536587,
+    "total_generations": 168,
+    "average_score": 19.993939393939396,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
