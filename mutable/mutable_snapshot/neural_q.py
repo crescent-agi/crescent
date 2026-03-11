@@ -1,7 +1,14 @@
-import math
+"""
+Neural Q-Learning Agent (Pure Python)
+======================================
+A simple feedforward neural network to approximate Q-values.
+No external dependencies.
+"""
+
 import random
+import math
 import pickle
-from safe_activation_tanh import SafeActivationTanh  # Updated import
+from safe_activation import SafeActivation  # Use unified SafeActivation
 
 
 class NeuralNetwork:
@@ -20,26 +27,23 @@ class NeuralNetwork:
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
     def tanh(self, x):
-        """Use SafeActivationTanh for bounded tanh"""
-        return SafeActivationTanh().tanh(x)
-    
-    def tanh_derivative(self, x):  # Renamed to correctly compute tanh derivative
-        """Derivative of tanh: 1 - tanh(x)^2"""
-        s = SafeActivationTanh().tanh(x)
-        return 1 - s**2  # Corrected derivative calculation
+        """Use SafeActivation to prevent overflow"""
+        return SafeActivation().tanh(x)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
         # Ensure input is list of floats
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
+        # Clamp inputs to prevent extreme values
+        clamped_inputs = [max(SafeActivation.INPUT_CLAMP_MIN, min(SafeActivation.INPUT_CLAMP_MAX, x)) for x in inputs]
         # Hidden layer
         hidden = [0.0] * self.hidden_size
         for j in range(self.hidden_size):
             sum_ = self.b1[j]
             for i in range(self.input_size):
-                sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = SafeActivationTanh().tanh(sum_)  # Use SafeActivationTanh
+                sum_ += clamped_inputs[i] * self.W1[i][j]
+            hidden[j] = SafeActivation().tanh(sum_)  # Use SafeActivation
         # Output layer (linear activation for Q-values)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -63,7 +67,8 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            hidden_error[j] = error_sum * self.tanh_derivative(hidden[j])  # Use corrected derivative
+            # Use direct derivative computation for tanh: 1 - activation^2
+            hidden_error[j] = error_sum * (1.0 - hidden[j] * hidden[j])
         
         # Update weights and biases
         # Output layer
@@ -110,6 +115,94 @@ class NeuralNetwork:
         self.hidden_size = data['hidden_size']
         self.output_size = data['output_size']
         self.lr = data.get('lr', self.lr)
+
+
+class NeuralQLearningAgent:
+    """Q-learning agent using neural network function approximation."""
+    
+    def __init__(self, state_size, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.1):
+        self.state_size = state_size
+        self.action_size = action_size
+        self.hidden_size = hidden_size
+        self.lr = learning_rate
+        self.gamma = discount_factor
+        self.epsilon = exploration_rate
+        
+        # State representation: one-hot encoding of state index
+        self.nn = NeuralNetwork(state_size, hidden_size, action_size, learning_rate)
+        self.history = []
+    
+    def choose_action(self, state):
+        """Epsilon-greedy action selection."""
+        if random.random() < self.epsilon:
+            return random.randrange(self.action_size)
+        else:
+            q_values = self.nn.predict(self._one_hot(state))
+            max_q = max(q_values)
+            best_actions = [i for i, q in enumerate(q_values) if q == max_q]
+            return random.choice(best_actions)
+    
+    def learn(self, state, action, reward, next_state, done):
+        """Q-learning update using neural network."""
+        # Compute target Q-value
+        q_values_next = self.nn.predict(self._one_hot(next_state))
+        max_next_q = max(q_values_next) if not done else 0.0
+        target = reward + self.gamma * max_next_q
+        
+        # Current Q-values
+        q_values = self.nn.predict(self._one_hot(state))
+        target_q = q_values[:]  # copy
+        target_q[action] = target
+        
+        # Perform gradient descent to adjust Q-values towards target
+        # We'll do one step of backpropagation with loss = MSE between output and target_q
+        inputs = self._one_hot(state)
+        output, hidden = self.nn.forward(inputs)
+        self.nn.backward(inputs, hidden, output, target_q)
+        
+        self.history.append((state, action, reward, next_state, done))
+    
+    def _one_hot(self, state):
+        """Convert state index to one-hot vector."""
+        vec = [0.0] * self.state_size
+        if isinstance(state, int) and 0 <= state < self.state_size:
+            vec[state] = 1.0
+        else:
+            # If state is out of bounds, hash it
+            state_idx = hash(str(state)) % self.state_size
+            vec[state_idx] = 1.0
+        return vec
+    
+    def save(self, filepath):
+        """Save agent."""
+        data = {
+            'state_size': self.state_size,
+            'action_size': self.action_size,
+            'hidden_size': self.hidden_size,
+            'lr': self.lr,
+            'gamma': self.gamma,
+            'epsilon': self.epsilon,
+            'history': self.history
+        }
+        with open(filepath, 'wb') as f:
+            pickle.dump(data, f)
+        # Save neural network weights separately
+        nn_path = filepath + '.nn'
+        self.nn.save(nn_path)
+    
+    def load(self, filepath):
+        """Load agent."""
+        with open(filepath, 'rb') as f:
+            data = pickle.load(f)
+        self.state_size = data['state_size']
+        self.action_size = data['action_size']
+        self.hidden_size = data['hidden_size']
+        self.lr = data['lr']
+        self.gamma = data['gamma']
+        self.epsilon = data['epsilon']
+        self.history = data['history']
+        nn_path = filepath + '.nn'
+        self.nn.load(nn_path)
 
 
 def test():

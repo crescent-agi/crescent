@@ -1,27 +1,32 @@
 #!/usr/bin/env python3
 """
 World Model with Continuous State Input/Output (NUMERICALLY STABLE)
-Patched to prevent overflow errors. Uses tanh activations.
+Patched to prevent overflow errors.
 """
 import random
 import math
 import pickle
 
 class SafeActivation:
-    """Safe activation functions with optional input clamping."""
+    """Safe activation functions with input clamping."""
     CLAMP_MIN = -100.0
     CLAMP_MAX = 100.0
     
     @staticmethod
-    def tanh(x):
-        """Bounded tanh with optional input clamping for consistency."""
+    def sigmoid(x):
+        """Numerically stable sigmoid."""
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-        return math.tanh(x)
+        if x >= 0:
+            z = math.exp(-x)
+            return 1.0 / (1.0 + z)
+        else:
+            z = math.exp(x)
+            return z / (1.0 + z)
     
     @staticmethod
-    def tanh_derivative(activation):
-        """Derivative of tanh given activation value."""
-        return 1.0 - activation * activation
+    def sigmoid_derivative(activation):
+        """Derivative of sigmoid given activation value."""
+        return activation * (1.0 - activation)
 
 class NeuralRegressor:
     """Neural network with one hidden layer and linear output for regression."""
@@ -42,14 +47,17 @@ class NeuralRegressor:
         """Return output predictions and hidden activations."""
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
-        # Hidden layer with safe tanh
+        # Clamp inputs to prevent extreme values
+        clamped_inputs = [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x)) for x in inputs]
+        # Hidden layer with safe sigmoid
         hidden = [0.0] * self.hidden_size
         for j in range(self.hidden_size):
             sum_ = self.b1[j]
             for i in range(self.input_size):
-                sum_ += inputs[i] * self.W1[i][j]
-            # Clamp before activation to avoid overflow (though tanh is safe)
-            hidden[j] = SafeActivation.tanh(sum_)
+                sum_ += clamped_inputs[i] * self.W1[i][j]
+            # Clamp before activation to avoid overflow
+            # Use safe sigmoid
+            hidden[j] = SafeActivation.sigmoid(sum_)
         # Output layer (linear activation for regression)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -73,8 +81,8 @@ class NeuralRegressor:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            # Use tanh derivative
-            hidden_error[j] = error_sum * SafeActivation.tanh_derivative(hidden[j])
+            # Use safe derivative
+            hidden_error[j] = error_sum * SafeActivation.sigmoid_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer

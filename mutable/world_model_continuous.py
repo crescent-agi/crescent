@@ -13,20 +13,15 @@ class SafeActivation:
     CLAMP_MAX = 100.0
     
     @staticmethod
-    def sigmoid(x):
-        """Numerically stable sigmoid."""
+    def tanh(x):
+        """Numerically stable tanh."""
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-        if x >= 0:
-            z = math.exp(-x)
-            return 1.0 / (1.0 + z)
-        else:
-            z = math.exp(x)
-            return z / (1.0 + z)
+        return math.tanh(x)
     
     @staticmethod
-    def sigmoid_derivative(activation):
-        """Derivative of sigmoid given activation value."""
-        return activation * (1.0 - activation)
+    def tanh_derivative(activation):
+        """Derivative of tanh given activation value."""
+        return 1.0 - activation ** 2
 
 class NeuralRegressor:
     """Neural network with one hidden layer and linear output for regression."""
@@ -47,15 +42,20 @@ class NeuralRegressor:
         """Return output predictions and hidden activations."""
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
+        # Clamp inputs to prevent extreme values
+        inputs = [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x)) for x in inputs]
         # Hidden layer with safe sigmoid
         hidden = [0.0] * self.hidden_size
         for j in range(self.hidden_size):
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            # Clamp before activation to avoid overflow
-            # Use safe sigmoid
-            hidden[j] = SafeActivation.sigmoid(sum_)
+            # Overflow logging
+            if abs(sum_) > 1e5:
+                with open("pre_activation_log.txt", "a") as f:
+                    f.write(f"WorldModelNeuralRegressor: j={j} sum_={sum_}\n")
+            # Apply tanh activation
+            hidden[j] = SafeActivation.tanh(sum_)
         # Output layer (linear activation for regression)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -80,7 +80,7 @@ class NeuralRegressor:
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
             # Use safe derivative
-            hidden_error[j] = error_sum * SafeActivation.sigmoid_derivative(hidden[j])
+            hidden_error[j] = error_sum * SafeActivation.tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer

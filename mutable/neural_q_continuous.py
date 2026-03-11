@@ -48,9 +48,9 @@ class NeuralNetwork:
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
         # Clamp input to prevent overflow
-        x_clamped = np.maximum(-100.0, np.minimum(100.0, inputs))
+        x_clamped = SafeActivation.clamp(inputs)
         # Hidden layer
-        hidden = np.tanh(np.dot(x_clamped, self.W1) + self.b1)
+        hidden = SafeActivation.SafeActivation.tanh(np.dot(x_clamped, self.W1) + self.b1)
         # Output layer (linear activation for Q-values)
         output = np.dot(hidden, self.W2) + self.b2
         return output, hidden
@@ -64,7 +64,7 @@ class NeuralNetwork:
         output_error = output - target
         
         # Compute hidden layer error (propagated back)
-        hidden_error = np.dot(output_error, self.W2.T) * (1 - hidden**2)  # tanh derivative
+        hidden_error = np.dot(output_error, self.W2.T) * (SafeActivation.tanh_derivative(hidden))  # tanh derivative
         
         # Update weights and biases
         # Output layer

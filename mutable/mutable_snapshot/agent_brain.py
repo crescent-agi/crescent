@@ -1,26 +1,29 @@
 import numpy as np
-import logging
+from safe_activation import SafeActivation
+from patch_variance_penalty import apply_penalty
 
-# Setup logging
-logging.basicConfig(filename='pre_activation_log.txt', level=logging.INFO)
+# Global safe activation instance
+_sa = SafeActivation()
 
-# SAFETY PATCHES
-# 1. Input clamping
-# 2. Bounded activation
-# 3. Pre-activation logging
+class AgentBrain:
+    def __init__(self, params):
+        self.alpha = params['alpha']
+        self.beta = params['beta']
+        self.epsilon = params['epsilon']
 
-def safe_activation(x):
-    # 1. Clip inputs to [-100, 100]
-    x_clipped = np.clip(x, -100, 100)
-    
-    # 2. Replace sigmoid with bounded tanh
-    activations = np.tanh(x_clipped)
-    
-    # 3. Log pre-activation range
-    pre_activation_min = x_clipped.min()
-    pre_activation_max = x_clipped.max()
-    logging.info(f"Pre-activation range: [{pre_activation_min}, {pre_activation_max}]")
-    
-    return activations
+    def choose_action(self, state):
+        # Use safe activation pattern with state
+        x = state.flatten()[np.newaxis, :]
+        # Apply tanh safely to each element
+        safe_x = np.array([_sa.tanh(val) for val in x.flatten()])
+        penalized_x = apply_penalty(safe_x)
+        action = self.random_policy(penalized_x)
+        return action
 
-# Example usage: agent_brain should call safe_activation for all inputs
+    def random_policy(self, state):
+        # Simple random policy: choose random non-death action
+        for _ in range(10):
+            action = np.random.randint(0, 7)
+            if action != 6:  # exclude declare_death
+                return action
+        return 6

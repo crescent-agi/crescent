@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
 Neural Q-Learning Agent with Continuous State Input (NUMERICALLY STABLE)
+================================================================
 Patched to prevent overflow errors.
 """
 import numpy as np
-import pickle
-import random
 
 class SafeActivation:
     """Safe activation functions with input clamping."""
@@ -13,10 +12,20 @@ class SafeActivation:
     CLAMP_MAX = 100.0
     
     @staticmethod
-    def tanh(x):
-        """Bounded tanh with input clamping."""
+    def sigmoid(x):
+        """Numerically stable sigmoid."""
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-        return np.tanh(x)
+        if x >= 0:
+            z = np.exp(-x)
+            return 1.0 / (1.0 + z)
+        else:
+            z = np.exp(x)
+            return z / (1.0 + z)
+    
+    @staticmethod
+    def sigmoid_derivative(activation):
+        """Derivative of sigmoid given activation value."""
+        return activation * (1.0 - activation)
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -39,8 +48,8 @@ class NeuralNetwork:
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
         # Clamp input to prevent overflow
-        x_clamped = np.maximum(SafeActivation.CLAMP_MIN, np.minimum(SafeActivation.CLAMP_MAX, inputs))
-        # Hidden layer with bounded tanh
+        x_clamped = np.maximum(-100.0, np.minimum(100.0, inputs))
+        # Hidden layer
         hidden = np.tanh(np.dot(x_clamped, self.W1) + self.b1)
         # Output layer (linear activation for Q-values)
         output = np.dot(hidden, self.W2) + self.b2
@@ -117,7 +126,6 @@ class NeuralQLearningAgentContinuous:
         # Neural network expects feature vector input
         self.nn = NeuralNetwork(feature_dim, hidden_size, action_size, learning_rate)
         self.history = []
-    
     def choose_action(self, state_vector):
         """
         Epsilon-greedy action selection.
@@ -125,11 +133,10 @@ class NeuralQLearningAgentContinuous:
         """
         if random.random() < self.epsilon:
             # Random exploration: filter out declare_death (index 6) to avoid early suicide
-            for _ in range(10):  # try up to 10 times
+            for _ in range(10):
                 action = random.randrange(self.action_size)
-                if action != 6:  # declare_death index
+                if action != 6:
                     return action
-            # If after 10 tries still declare_death, return it (should be rare)
             return 6
         else:
             q_values = self.nn.predict(state_vector)
@@ -147,7 +154,6 @@ class NeuralQLearningAgentContinuous:
                     if idx != 6:
                         return idx
             return random.choice(best_actions)
-    
     def learn(self, state_vector, action, reward, next_state_vector, done):
         """
         Q-learning update using neural network.
