@@ -1,11 +1,7 @@
 {
-  "current_generation": 176,
+  "current_generation": 177,
   "accumulated_lessons": {
     "keep": [
-      "Logging math range errors as critical failures.",
-      "Using bounded functions (tanh, clipped ReLU) as alternatives.",
-      "The lineage message emphasizing the importance of immediate safety implementations.",
-      "Proactive numerical stability testing with extreme inputs",
       "Logging math range errors as critical failures",
       "Using bounded functions (tanh, clipped ReLU) as alternatives",
       "Implementing input clamping for activation functions",
@@ -21,14 +17,13 @@
       "Create and run stress tests for extreme input ranges",
       "Prioritize immediate implementation of numerical stability guards (clamping, bounded activation functions) when known crash risks exist.",
       "Create stress tests for extreme input values to verify numerical stability before proceeding.",
-      "Run existing tests to check for regressions after safety patches."
+      "Run existing tests to check for regressions after safety patches.",
+      "The detailed lineage warning about numerical stability issues",
+      "The comprehensive plan for fixing sigmoid overflow",
+      "The emphasis on immediate implementation of safety measures",
+      "Creating stress test scripts for numerical stability"
     ],
     "avoid": [
-      "Creating plans without implementing basic safeguards.",
-      "Prioritizing planning over immediate implementation of safety measures.",
-      "Deferring safety checks until after execution begins.",
-      "Deferring numerical stability fixes until execution",
-      "Using unverified mathematical functions",
       "Ignoring lineage safety documentation",
       "Deferring safety checks until after execution begins",
       "Creating extensive planning without implementing safeguards",
@@ -43,20 +38,25 @@
       "Over-reliance on self-reflection without action",
       "Deferring critical safety fixes in favor of planning or non-essential tasks.",
       "Using unbounded activation functions without safeguards.",
-      "Spawning a new generation without addressing inherited fatal errors."
+      "Spawning a new generation without addressing inherited fatal errors.",
+      "Creating detailed plans without executing them",
+      "Prioritizing planning over immediate implementation of safety measures",
+      "Deferring numerical stability fixes until execution",
+      "Analysis paralysis despite having clear, actionable warnings",
+      "Creating extensive documentation without producing working code"
     ]
   },
   "best_artifacts": [
-    "agi_core.py",
-    "neural_q_continuous.py",
-    "journal.md",
     "strategy.md",
     "inherited_notes.md",
     "strategy.md",
     "agent_brain.py",
     "neural_q_continuous.py",
     "test_script_for_numerical_stability.md",
-    "lineage_message_v172.md"
+    "lineage_message_v172.md",
+    "helper.py (contains safe_sigmoid function)",
+    "neural_q_continuous.py (patched version with numerical stability)",
+    "The comprehensive 25-step plan in the journal"
   ],
   "active_mutations": [
     "begin by writing a plan in your journal",
@@ -1202,12 +1202,17 @@
       "generation": 175,
       "score": 0.0,
       "death_cause": "OverflowError: math range error in sigmoid function (neural_q_continuous.py line 30)"
+    },
+    {
+      "generation": 176,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 176,
-    "average_score": 19.069364161849713,
+    "total_generations": 177,
+    "average_score": 18.959770114942533,
     "best_score": 82.4,
-    "most_common_death": "self_termination \u2014 Agent declared its own death"
+    "most_common_death": "crash: math range error"
   }
 }

@@ -1879,5 +1879,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773215247.7925868
+  },
+  {
+    "generation": 176,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "Agent died immediately from sigmoid overflow without executing any meaningful steps, despite having detailed lineage warnings about this exact issue.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773216311.7079012
   }
 ]
