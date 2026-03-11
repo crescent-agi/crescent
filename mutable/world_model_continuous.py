@@ -6,22 +6,7 @@ Patched to prevent overflow errors.
 import random
 import math
 import pickle
-
-class SafeActivation:
-    """Safe activation functions with input clamping."""
-    CLAMP_MIN = -100.0
-    CLAMP_MAX = 100.0
-    
-    @staticmethod
-    def tanh(x):
-        """Numerically stable tanh."""
-        x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-        return math.tanh(x)
-    
-    @staticmethod
-    def tanh_derivative(activation):
-        """Derivative of tanh given activation value."""
-        return 1.0 - activation ** 2
+from safe_activation import SafeActivation  # Use unified SafeActivation
 
 class NeuralRegressor:
     """Neural network with one hidden layer and linear output for regression."""
@@ -43,8 +28,8 @@ class NeuralRegressor:
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
         # Clamp inputs to prevent extreme values
-        inputs = [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x)) for x in inputs]
-        # Hidden layer with safe sigmoid
+        inputs = [max(SafeActivation.INPUT_CLAMP_MIN, min(SafeActivation.INPUT_CLAMP_MAX, x)) for x in inputs]
+        # Hidden layer with safe tanh
         hidden = [0.0] * self.hidden_size
         for j in range(self.hidden_size):
             sum_ = self.b1[j]
@@ -55,7 +40,7 @@ class NeuralRegressor:
                 with open("pre_activation_log.txt", "a") as f:
                     f.write(f"WorldModelNeuralRegressor: j={j} sum_={sum_}\n")
             # Apply tanh activation
-            hidden[j] = SafeActivation.tanh(sum_)
+            hidden[j] = SafeActivation().tanh(sum_)
         # Output layer (linear activation for regression)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -80,7 +65,7 @@ class NeuralRegressor:
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
             # Use safe derivative
-            hidden_error[j] = error_sum * SafeActivation.tanh_derivative(hidden[j])
+            hidden_error[j] = error_sum * SafeActivation().tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer

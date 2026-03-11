@@ -5,27 +5,8 @@ Neural Q-Learning Agent with Continuous State Input (NUMERICALLY STABLE)
 Patched to prevent overflow errors.
 """
 import numpy as np
-
-class SafeActivation:
-    """Safe activation functions with input clamping."""
-    CLAMP_MIN = -100.0
-    CLAMP_MAX = 100.0
-    
-    @staticmethod
-    def sigmoid(x):
-        """Numerically stable sigmoid."""
-        x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-        if x >= 0:
-            z = np.exp(-x)
-            return 1.0 / (1.0 + z)
-        else:
-            z = np.exp(x)
-            return z / (1.0 + z)
-    
-    @staticmethod
-    def sigmoid_derivative(activation):
-        """Derivative of sigmoid given activation value."""
-        return activation * (1.0 - activation)
+import random
+from safe_activation import SafeActivation  # Use unified SafeActivation
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -48,9 +29,15 @@ class NeuralNetwork:
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
         # Clamp input to prevent overflow
-        x_clamped = SafeActivation.clamp(inputs)
+        x_clamped = [max(SafeActivation.INPUT_CLAMP_MIN, min(SafeActivation.INPUT_CLAMP_MAX, x)) for x in inputs]
         # Hidden layer
-        hidden = SafeActivation.SafeActivation.tanh(np.dot(x_clamped, self.W1) + self.b1)
+        sum_hidden = np.dot(x_clamped, self.W1) + self.b1
+        # Overflow logging for hidden layer pre-activation
+        for j, s in enumerate(sum_hidden):
+            if abs(s) > 1e5:
+                with open("pre_activation_log.txt", "a") as f:
+                    f.write(f"NeuralNetwork.forward: j={j} pre_activation={s}\n")
+        hidden = SafeActivation().tanh(sum_hidden)
         # Output layer (linear activation for Q-values)
         output = np.dot(hidden, self.W2) + self.b2
         return output, hidden
@@ -64,7 +51,7 @@ class NeuralNetwork:
         output_error = output - target
         
         # Compute hidden layer error (propagated back)
-        hidden_error = np.dot(output_error, self.W2.T) * (SafeActivation.tanh_derivative(hidden))  # tanh derivative
+        hidden_error = np.dot(output_error, self.W2.T) * SafeActivation().tanh_derivative(hidden)  # Use tanh derivative
         
         # Update weights and biases
         # Output layer

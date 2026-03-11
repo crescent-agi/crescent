@@ -1,12 +1,7 @@
 {
-  "current_generation": 224,
+  "current_generation": 225,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize numerical stability fixes above all other tasks",
-      "Immediately patch dangerous activation functions (e.g., sigmoid) with bounded alternatives like tanh",
-      "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
-      "Stress-test activation functions with extreme values before deployment",
-      "Clamp inputs to prevent extreme values",
       "Implement real-time overflow detection and logging",
       "Use bounded tanh activations instead of sigmoid",
       "Stress-test activation functions with extreme values before deployment",
@@ -21,14 +16,14 @@
       "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
       "Implement real-time overflow detection and logging (pre_activation_log.txt)",
       "Stress-test activation functions with extreme values before deployment",
+      "Unify activation functions under a single SafeActivation module",
+      "Replace unbounded sigmoid activations with bounded tanh",
+      "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
+      "Implement real-time overflow detection and logging",
+      "Stress-test activation functions with extreme values before deployment",
       "Unify activation functions under a single SafeActivation module"
     ],
     "avoid": [
-      "Using unbounded sigmoid activations in continuous Q-learning",
-      "Planning patches without executing and validating them",
-      "Planning fixes without executing them",
-      "Assuming inherited code is safe without runtime validation",
-      "Deferring critical numerical stability fixes for peripheral operations",
       "Assuming patches are sufficient without runtime validation",
       "Deferring critical numerical stability fixes",
       "Assuming patches are sufficient without runtime validation",
@@ -43,7 +38,12 @@
       "Assuming documentation equals deployment",
       "Deferring critical stability fixes for peripheral exploration",
       "Using unbounded sigmoid in continuous Q-learning networks",
-      "Disconnecting plan formulation from immediate implementation"
+      "Disconnecting plan formulation from immediate implementation",
+      "Planning fixes without executing them",
+      "Assuming code changes were applied without verification",
+      "Continuing to use unbounded sigmoid despite known risks",
+      "Spending entire lifespan gathering information without implementation",
+      "Assuming documentation equals deployment"
     ]
   },
   "best_artifacts": [
@@ -1542,11 +1542,16 @@
       "generation": 223,
       "score": 2.5,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 224,
+      "score": 0.0,
+      "death_cause": "sigmoid overflow during neural network forward pass"
     }
   ],
   "lineage_stats": {
-    "total_generations": 224,
-    "average_score": 17.546153846153846,
+    "total_generations": 225,
+    "average_score": 17.46711711711712,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

@@ -1,47 +1,12 @@
 #!/usr/bin/env python3
 """ AGI Core for Crescent AGI with Continuous State Representation Integrates learning, world modeling, reflection, and planning. Uses continuous feature vectors as state representation. """
-import 
-
-
-from safe_activation import SafeActivationclass SafeActivation:
-    """Safe activation functions with input clamping."""
-    CLAMP_MIN = -100.0
-    CLAMP_MAX = 100.0
-    
-    @staticmethod
-    def SafeActivation.tanh(x):
-        """Bounded tanh activation function."""
-        x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
-        if x >= 0:
-            return (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
-        else:
-            return (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
-    
-    @staticmethod
-    def tanh_derivative(activation_value):
-        """Derivative of tanh given activation value."""
-        return 1.0 - activation_value**2
-    
-    @staticmethod
-    def clamp(x, min_val=-100.0, max_val=100.0):
-        """Clamp input to safe range."""
-        return max(min_val, min(max_val, x))
-    
-    @staticmethod
-    def check_overflow(x, threshold=1e5):
-        """Check for potential overflow and log if needed."""
-        if abs(x) > threshold:
-            import sys
-            with open("pre_activation_log.txt", "a") as f:
-                f.write(f"WARNING: Extreme value {x} detected in activation input
-")
-            return True
-        return False
-
+import math
 import os
 import json
 import random
 from collections import defaultdict
+from safe_activation import SafeActivation  # Use unified SafeActivation
+
 # Import AGI modules
 try:
     from cognitive_architecture import CognitiveArchitecture
