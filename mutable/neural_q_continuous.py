@@ -1,13 +1,60 @@
 #!/usr/bin/env python3
 """
-Neural Q-Learning Agent with Continuous State Input.
-FIXED: Uses SafeActivation with bounded tanh, input clamping, and overflow logging.
+Neural Q-Learning Agent with Continuous State Input (NUMERICALLY STABLE)
+================================================================
+Patched to prevent overflow errors.
 """
-import random
-import math
-import pickle
-import copy
-from safe_activation_fixed import SafeActivation
+import numpy as np
+
+class SafeActivation:
+    """Safe activation functions with input clamping."""
+    CLAMP_MIN = -100.0
+    CLAMP_MAX = 100.0
+    
+    @staticmethod
+    def clamp(x):
+        """Clamp input to prevent overflow"""
+        if isinstance(x, list):
+            return [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, val)) for val in x]
+        elif isinstance(x, np.ndarray):
+            return np.clip(x, SafeActivation.CLAMP_MIN, SafeActivation.CLAMP_MAX)
+        else:
+            return max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
+    
+    @staticmethod
+    def sigmoid(x):
+        """Numerically stable sigmoid."""
+        x = SafeActivation.clamp(x)
+        if x >= 0:
+            z = np.exp(-x)
+            return 1.0 / (1.0 + z)
+        else:
+            z = np.exp(x)
+            return z / (1.0 + z)
+    
+    @staticmethod
+    def tanh(x):
+        """Numerically stable tanh."""
+        x = SafeActivation.clamp(x)
+        # tanh(x) = (e^x - e^-x) / (e^x + e^-x)
+        # For numerical stability:
+        if x >= 0:
+            z = np.exp(-2.0 * x)
+            return (1.0 - z) / (1.0 + z)
+        else:
+            z = np.exp(2.0 * x)
+            return (z - 1.0) / (z + 1.0)
+    
+    @staticmethod
+    def tanh_derivative(activation):
+        """Derivative of tanh given activation value."""
+        return 1.0 - activation * activation
+    
+    @staticmethod
+    def sigmoid_derivative(activation):
+        """Derivative of sigmoid given activation value."""
+        return activation * (1.0 - activation)
+
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -19,32 +66,23 @@ class NeuralNetwork:
         self.lr = learning_rate
         
         # Initialize weights with small random values
-        self.W1 = [[random.uniform(-0.5, 0.5) for _ in range(hidden_size)] for _ in range(input_size)]
-        self.b1 = [random.uniform(-0.5, 0.5) for _ in range(hidden_size)]
-        self.W2 = [[random.uniform(-0.5, 0.5) for _ in range(output_size)] for _ in range(hidden_size)]
-        self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
+        self.W1 = np.random.randn(input_size, hidden_size) * 0.01
+        self.b1 = np.zeros(hidden_size)
+        self.W2 = np.random.randn(hidden_size, output_size) * 0.01
+        self.b2 = np.zeros(output_size)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
+        # Ensure input is list of floats
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
-        hidden = [0.0] * self.hidden_size
-        for j in range(self.hidden_size):
-            sum_ = self.b1[j]
-            for i in range(self.input_size):
-                sum_ += inputs[i] * self.W1[i][j]
-            # Overflow logging
-            if abs(sum_) > 1e5:
-                with open("pre_activation_log.txt", "a") as f:
-                    f.write(f"NeuralNetwork forward: j={j} sum_={sum_}\n")
-            # Use SafeActivation (clamps automatically)
-            hidden[j] = SafeActivation().tanh(sum_)
-        output = [0.0] * self.output_size
-        for k in range(self.output_size):
-            sum_ = self.b2[k]
-            for j in range(self.hidden_size):
-                sum_ += hidden[j] * self.W2[j][k]
-            output[k] = sum_
+        # Clamp input to prevent overflow
+        x_clamped = SafeActivation.clamp(inputs)
+        # Hidden layer
+        z1 = np.dot(x_clamped, self.W1) + self.b1
+        hidden = SafeActivation.tanh(z1)
+        # Output layer (linear activation for Q-values)
+        output = np.dot(hidden, self.W2) + self.b2
         return output, hidden
     
     def backward(self, inputs, hidden, output, target):
@@ -52,39 +90,25 @@ class NeuralNetwork:
         Perform backpropagation given input, hidden activation, output, and target.
         Updates weights using gradient descent.
         """
-        output_error = [output[i] - target[i] for i in range(self.output_size)]
-        hidden_error = [0.0] * self.hidden_size
-        for j in range(self.hidden_size):
-            error_sum = 0.0
-            for k in range(self.output_size):
-                error_sum += output_error[k] * self.W2[j][k]
-            # Use tanh derivative (1 - tanh^2)
-            activation = hidden[j]
-            grad = 1.0 - activation * activation
-            hidden_error[j] = error_sum * grad
+        # Compute output error (dLoss/dOutput)
+        output_error = output - target
+        
+        # Compute hidden layer error (propagated back)
+        hidden_error = np.dot(output_error, self.W2.T) * SafeActivation.tanh_derivative(hidden)  # tanh derivative
+        
         # Update weights and biases
-        for k in range(self.output_size):
-            for j in range(self.hidden_size):
-                self.W2[j][k] -= self.lr * output_error[k] * hidden[j]
-            self.b2[k] -= self.lr * output_error[k]
-        for j in range(self.hidden_size):
-            for i in range(self.input_size):
-                self.W1[i][j] -= self.lr * hidden_error[j] * inputs[i]
-            self.b1[j] -= self.lr * hidden_error[j]
+        # Output layer
+        self.W2 -= self.lr * np.outer(hidden, output_error)
+        self.b2 -= self.lr * output_error
+        
+        # Hidden layer
+        self.W1 -= self.lr * np.outer(inputs, hidden_error)
+        self.b1 -= self.lr * hidden_error
     
     def predict(self, inputs):
         """Forward pass without returning hidden."""
         output, _ = self.forward(inputs)
         return output
-    
-    def copy(self):
-        """Create a deep copy of this network."""
-        new_nn = NeuralNetwork(self.input_size, self.hidden_size, self.output_size, self.lr)
-        new_nn.W1 = [row[:] for row in self.W1]
-        new_nn.b1 = self.b1[:]
-        new_nn.W2 = [row[:] for row in self.W2]
-        new_nn.b2 = self.b2[:]
-        return new_nn
     
     def save(self, filepath):
         """Save weights to file."""
@@ -98,11 +122,13 @@ class NeuralNetwork:
             'output_size': self.output_size,
             'lr': self.lr
         }
+        import pickle
         with open(filepath, 'wb') as f:
             pickle.dump(data, f)
     
     def load(self, filepath):
         """Load weights from file."""
+        import pickle
         with open(filepath, 'rb') as f:
             data = pickle.load(f)
         self.W1 = data['W1']
@@ -116,13 +142,9 @@ class NeuralNetwork:
 
 
 class NeuralQLearningAgentContinuous:
-    """
-    Simple Q-learning agent with continuous state input.
-    """
+    """Q-learning agent using neural network function approximation with continuous state vector."""
     
-    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=0.01,
-                 discount_factor=0.9, exploration_rate=0.01, epsilon_decay=0.99,
-                 epsilon_min=0.001):
+    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.01, epsilon_decay=0.99, epsilon_min=0.001):
         self.feature_dim = feature_dim
         self.action_size = action_size
         self.hidden_size = hidden_size
@@ -133,9 +155,8 @@ class NeuralQLearningAgentContinuous:
         self.epsilon_min = epsilon_min
         self.epsilon_decay = epsilon_decay
         self.episode_count = 0
-        self.learn_step_counter = 0
         
-        # Main Q-network
+        # Neural network expects feature vector input
         self.nn = NeuralNetwork(feature_dim, hidden_size, action_size, learning_rate)
         self.history = []
     
@@ -146,61 +167,51 @@ class NeuralQLearningAgentContinuous:
         """
         if random.random() < self.epsilon:
             # Random exploration: filter out declare_death (index 6) to avoid early suicide
-            for _ in range(10):
+            for _ in range(10):  # try up to 10 times
                 action = random.randrange(self.action_size)
-                if action != 6:
+                if action != 6:  # declare_death index
                     return action
+            # If after 10 tries still declare_death, return it (should be rare)
             return 6
         else:
             q_values = self.nn.predict(state_vector)
+            # Find best action, but exclude declare_death (index 6) unless it's the only action
             max_q = max(q_values)
             best_actions = [i for i, q in enumerate(q_values) if q == max_q]
+            # Remove declare_death from best_actions if there are other choices
             if len(best_actions) > 1 and 6 in best_actions:
                 best_actions.remove(6)
+            # If declare_death is the only best action, we still exclude it and choose second best
             if best_actions == [6]:
+                # Find second highest Q-value
                 sorted_q = sorted(enumerate(q_values), key=lambda x: x[1], reverse=True)
                 for idx, q in sorted_q:
                     if idx != 6:
                         return idx
             return random.choice(best_actions)
     
-    def learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=0.1):
+    def learn(self, state_vector, action, reward, next_state_vector, done):
         """
-        Q-learning update with entropy regularization.
+        Q-learning update using neural network.
+        state_vector, next_state_vector: list of floats.
         """
-        import math
-        # Compute entropy bonus from current policy (using evaluation network)
-        q_values = self.nn.predict(state_vector)
-        # Numerically stable softmax
-        max_q = max(q_values)
-        exp_q = [math.exp(q - max_q) for q in q_values]
-        sum_exp = sum(exp_q)
-        if sum_exp == 0:
-            probs = [1.0 / len(q_values)] * len(q_values)
-        else:
-            probs = [e / sum_exp for e in exp_q]
-        entropy = -sum(p * math.log(p + 1e-10) for p in probs)
-        entropy_bonus = entropy_coeff * entropy
-        reward_total = reward + entropy_bonus
-        
         # Compute target Q-value
         q_values_next = self.nn.predict(next_state_vector)
-        target_q_next = max(q_values_next) if not done else 0.0
-        target = reward_total + self.gamma * target_q_next
+        max_next_q = max(q_values_next) if not done else 0.0
+        target = reward + self.gamma * max_next_q
         
         # Current Q-values
         q_values = self.nn.predict(state_vector)
-        target_q = q_values[:]
+        target_q = q_values.copy()  # copy
         target_q[action] = target
         
-        # Perform gradient descent to adjust evaluation network
+        # Perform gradient descent to adjust Q-values towards target
+        # We'll do one step of backpropagation with loss = MSE between output and target_q
         inputs = state_vector
         output, hidden = self.nn.forward(inputs)
         self.nn.backward(inputs, hidden, output, target_q)
-        self.weight_clipping()
         
-        self.history.append((state_vector, action, reward_total, next_state_vector, done))
-        self.learn_step_counter += 1
+        self.history.append((state_vector, action, reward, next_state_vector, done))
     
     def decay_epsilon(self):
         """Decay exploration rate after each episode."""
@@ -214,10 +225,13 @@ class NeuralQLearningAgentContinuous:
     def _process_state(self, state):
         """
         Convert state to feature vector.
+        If state is already a list of floats, return it.
+        If state is integer (discrete), convert to one-hot (for compatibility).
         """
         if isinstance(state, list) and len(state) == self.feature_dim:
             return state
         elif isinstance(state, int):
+            # fallback: one-hot encoding (requires feature_dim == state_size)
             vec = [0.0] * self.feature_dim
             if 0 <= state < self.feature_dim:
                 vec[state] = 1.0
@@ -225,6 +239,7 @@ class NeuralQLearningAgentContinuous:
                 vec[state % self.feature_dim] = 1.0
             return vec
         else:
+            # try to treat as iterable
             try:
                 return list(state)[:self.feature_dim]
             except:
@@ -243,16 +258,18 @@ class NeuralQLearningAgentContinuous:
             'epsilon_min': self.epsilon_min,
             'epsilon_decay': self.epsilon_decay,
             'episode_count': self.episode_count,
-            'learn_step_counter': self.learn_step_counter,
             'history': self.history
         }
+        import pickle
         with open(filepath, 'wb') as f:
             pickle.dump(data, f)
+        # Save neural network weights separately
         nn_path = filepath + '.nn'
         self.nn.save(nn_path)
     
     def load(self, filepath):
         """Load agent."""
+        import pickle
         with open(filepath, 'rb') as f:
             data = pickle.load(f)
         self.feature_dim = data['feature_dim']
@@ -265,67 +282,51 @@ class NeuralQLearningAgentContinuous:
         self.epsilon_min = data.get('epsilon_min', 0.001)
         self.epsilon_decay = data.get('epsilon_decay', 0.995)
         self.episode_count = data.get('episode_count', 0)
-        self.learn_step_counter = data.get('learn_step_counter', 0)
         self.history = data['history']
         nn_path = filepath + '.nn'
         self.nn.load(nn_path)
-    
-    def weight_clipping(self, clip_value=5.0):
-        """Clip weights to prevent explosion."""
-        for i in range(self.nn.input_size):
-            for j in range(self.nn.hidden_size):
-                if self.nn.W1[i][j] > clip_value:
-                    self.nn.W1[i][j] = clip_value
-                elif self.nn.W1[i][j] < -clip_value:
-                    self.nn.W1[i][j] = -clip_value
-        for j in range(self.nn.hidden_size):
-            if self.nn.b1[j] > clip_value:
-                self.nn.b1[j] = clip_value
-            elif self.nn.b1[j] < -clip_value:
-                self.nn.b1[j] = -clip_value
-        for j in range(self.nn.hidden_size):
-            for k in range(self.nn.output_size):
-                if self.nn.W2[j][k] > clip_value:
-                    self.nn.W2[j][k] = clip_value
-                elif self.nn.W2[j][k] < -clip_value:
-                    self.nn.W2[j][k] = -clip_value
-        for k in range(self.nn.output_size):
-            if self.nn.b2[k] > clip_value:
-                self.nn.b2[k] = clip_value
-            elif self.nn.b2[k] < -clip_value:
-                self.nn.b2[k] = -clip_value
 
-import os
 
 def test():
-    """Simple test."""
+    """Simple test to verify continuous neural Q-learning works."""
+    import random
     feature_dim = 5
     action_size = 3
     agent = NeuralQLearningAgentContinuous(feature_dim, action_size, hidden_size=10, exploration_rate=0.5)
-    print("Testing Q-learning agent...")
-    for episode in range(100):
+    print("Testing continuous neural Q-learning agent...")
+    # Train agent to prefer action 2 when feature[0] > 0.5
+    for episode in range(200):
+        # Simple state: random feature vector
         state = [random.random() for _ in range(feature_dim)]
         action = agent.choose_action(state)
         reward = 1 if action == 2 and state[0] > 0.5 else 0
         next_state = [random.random() for _ in range(feature_dim)]
         agent.learn(state, action, reward, next_state, done=False)
         agent.decay_epsilon()
+    
+    # After training, see what action it chooses for a state with high first feature
     test_state = [0.9] + [0.1] * (feature_dim - 1)
     q_vals = agent.nn.predict(test_state)
     print("Q-values for test state:", q_vals)
     best_action = max(range(len(q_vals)), key=lambda i: q_vals[i])
     print(f"Best action: {best_action}")
-    # Save and load
-    agent.save('test_agent.pkl')
+    # Expect action 2 to have highest Q-value
+    if best_action == 2:
+        print("Test passed: Agent learned correct association!")
+    else:
+        print("Test failed: Agent didn't learn.")
+    
+    # Save and load test
+    agent.save('test_agent_cont.pkl')
     agent2 = NeuralQLearningAgentContinuous(feature_dim, action_size)
-    agent2.load('test_agent.pkl')
+    agent2.load('test_agent_cont.pkl')
     q_vals2 = agent2.nn.predict(test_state)
     print("Loaded agent Q-values:", q_vals2)
-    os.remove('test_agent.pkl')
-    os.remove('test_agent.pkl.nn')
+    import os
+    os.remove('test_agent_cont.pkl')
+    os.remove('test_agent_cont.pkl.nn')
     print("Test files cleaned.")
+
 
 if __name__ == "__main__":
     test()
-# Alias for compatibility with AGICoreContinuous
-NeuralQLearningAgentContinuous = NeuralQLearningAgentContinuous

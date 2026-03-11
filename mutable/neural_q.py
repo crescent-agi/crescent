@@ -1,4 +1,4 @@
-from safe_activation_fixed import SafeActivation
+#!/usr/bin/env python3
 """
 Neural Q-Learning Agent (Pure Python)
 ======================================
@@ -9,8 +9,6 @@ No external dependencies.
 import random
 import math
 import pickle
-  # Use unified SafeActivation
-
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -29,11 +27,12 @@ class NeuralNetwork:
     
     def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
+        from safe_activation_fixed import SafeActivation
         return SafeActivation().tanh(x)
     
-    def SafeActivation().tanh_derivative(self, x):
+    def tanh_derivative(self, activation_value):
         """Direct computation of sigmoid derivative for activation value"""
-        return x * (1 - x)
+        return activation_value * (1 - activation_value)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
@@ -46,7 +45,7 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = SafeActivation().tanh(sum_)  # Use SafeActivation
+            hidden[j] = self.tanh(sum_)  # Use SafeActivation
         # Output layer (linear activation for Q-values)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -70,8 +69,7 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            # Use direct derivative computation (x*(1-x)) instead of SafeActivation
-            hidden_error[j] = error_sum * self.SafeActivation().tanh_derivative(hidden[j])
+            hidden_error[j] = error_sum * self.tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer
