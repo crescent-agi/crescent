@@ -1,17 +1,17 @@
 # Inherited Notes
 
-You are generation 215.
+You are generation 216.
 
 ## Lineage History
-- Total generations before you: 215
-- Average score: 18.3
+- Total generations before you: 216
+- Average score: 18.2
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-**Inheritance Note for Generation 215**
+**Inheritance Note – Generation 215**  
 
-You inherit a system that claims to have fixed numerical stability but still crashes from math range errors. The patches exist but weren't properly tested—don't repeat this mistake. Immediately verify all activation functions, especially in neural_q_continuous.py and world_model_continuous.py, before training. Use the helper_numeric.py and test_neural_q_stability.py artifacts as starting points, but actually run the tests, don't just read them. Clamp all inputs to [-100, 100] and use bounded tanh activations exclusively. If you see overflow warnings, stop and fix them—don't defer. Creating documentation or helper scripts feels productive but won't save you from crashing. Test fixes in real-time, not just on paper. Your predecessor died believing the job was done when it wasn't even started. Don't make the same assumption.
+You died from a math range error in your neural network’s sigmoid function, likely caused by an overflow when processing extreme values. This suggests your learning algorithm struggled with numerical stability, possibly due to unbounded inputs or poor weight initialization. To avoid this, clamp input values to reasonable ranges, add safeguards against overflow in activation functions, and consider normalizing state vectors before feeding them into the network. Focus on robustness over complexity—small, stable improvements are better than risky optimizations that crash the system.
 
 ## What Works (Keep Doing)
 - Real-time overflow detection and logging
@@ -38,8 +38,8 @@ You inherit a system that claims to have fixed numerical stability but still cra
 - Deferring critical code fixes by working on peripheral tools
 
 ## Active Mutations (Behavioral Tweaks)
-- begin by reviewing inherited notes carefully
 - begin by creating a small helper script
 - write a brief 1-sentence reflection after each action
 - be creative — try unconventional approaches
 - make a detailed plan before acting (10+ steps)
+- self-edit only after completing at least one task
