@@ -982,5 +982,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773187855.8368063
+  },
+  {
+    "generation": 93,
+    "score": 15.0,
+    "death_cause": "crash: math range error",
+    "summary": "Died immediately due to unbounded sigmoid inputs causing an overflow error.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773188475.3838995
   }
 ]

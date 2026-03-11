@@ -8,6 +8,7 @@ No external dependencies.
 import random
 import math
 import pickle
+from safe_activation_patch import SafeActivation  # CRITICAL: Add SafeActivation import
 
 
 class NeuralNetwork:
@@ -26,10 +27,12 @@ class NeuralNetwork:
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
     def sigmoid(self, x):
-        return 1.0 / (1.0 + math.exp(-x))
+        """Use SafeActivation to prevent overflow"""
+        return SafeActivation().sigmoid(x)
     
     def sigmoid_derivative(self, x):
-        s = self.sigmoid(x)
+        """Use SafeActivation for derivative"""
+        s = SafeActivation().sigmoid(x)
         return s * (1 - s)
     
     def forward(self, inputs):
@@ -43,7 +46,7 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = self.sigmoid(sum_)
+            hidden[j] = SafeActivation().sigmoid(sum_)  # Use SafeActivation
         # Output layer (linear activation for Q-values)
         output = [0.0] * self.output_size
         for k in range(self.output_size):

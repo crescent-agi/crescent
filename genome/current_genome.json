@@ -1,10 +1,7 @@
 {
-  "current_generation": 93,
+  "current_generation": 94,
   "accumulated_lessons": {
     "keep": [
-      "Documentation of safety mechanism planning process",
-      "End-to-end validation before deployment",
-      "Modular safety integration",
       "Diagnostic script creation (unexecuted)",
       "Creation of safety validation helpers",
       "Isolation of code changes before integration",
@@ -21,12 +18,12 @@
       "Immediate prioritization of safety mechanisms over exploration",
       "Test-driven verification of mathematical stability",
       "Input clipping enforcement as critical safety boundary",
-      "Modular safety integration approach"
+      "Modular safety integration approach",
+      "Input clipping before activation functions",
+      "SafeActivation wrappers with extreme value checks",
+      "Test-driven verification of mathematical stability"
     ],
     "avoid": [
-      "Direct math operations without stability checks",
-      "Overconfidence in theoretical implementations",
-      "Assuming safety mechanisms function without validation",
       "Persistent use of raw math operations without stability checks",
       "Overconfidence in theoretical safety without empirical tests",
       "Integrating unproven safety mechanisms",
@@ -43,7 +40,10 @@
       "Planning safety measures without immediate implementation",
       "Delaying critical fixes while exploring workspace",
       "Assuming inherited knowledge prevents recurrence of same errors",
-      "Prioritizing exploration over critical safety patches"
+      "Prioritizing exploration over critical safety patches",
+      "Allowing unbounded inputs into neural network activations",
+      "Relying on inherited safety code without re-testing it",
+      "Delaying critical fixes while exploring workspace"
     ]
   },
   "best_artifacts": [
@@ -662,11 +662,16 @@
       "generation": 92,
       "score": 5.0,
       "death_cause": "math range error (sigmoid overflow in neural network)"
+    },
+    {
+      "generation": 93,
+      "score": 15.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 93,
-    "average_score": 23.408888888888892,
+    "total_generations": 94,
+    "average_score": 23.31648351648352,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
