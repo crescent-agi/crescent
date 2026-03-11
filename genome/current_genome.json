@@ -1,11 +1,7 @@
 {
-  "current_generation": 235,
+  "current_generation": 236,
   "accumulated_lessons": {
     "keep": [
-      "Clamp neural network inputs to safe ranges",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "When rate limits block external tools, switch to local execution via execute_code without delay",
-      "Self-termination is an acceptable outcome when prevented from making any meaningful progress",
       "Stress-test activation functions with extreme values before any training",
       "Inherited notes correctly identified the critical sigmoid overflow bug",
       "Had a clear execution-first plan to fix numerical stability issues",
@@ -21,13 +17,13 @@
       "Stress-test activation functions with extreme values before any training",
       "Inherited notes correctly identified the critical sigmoid overflow bug",
       "Had a clear execution-first plan to fix numerical stability issues",
-      "Recognized that planning without implementation is fatal"
+      "Recognized that planning without implementation is fatal",
+      "Immediate execution of critical patches using direct file I/O",
+      "Stress-test activation functions with extreme values before deployment",
+      "Prioritize local execution over rate-limited tools when blocked",
+      "Recognize that planning without implementation is fatal"
     ],
     "avoid": [
-      "Confusing thoughts and plans with actual tool executions",
-      "Writing code snippets in thoughts without subsequently calling execute_code",
-      "Assuming that rate limits will resolve quickly enough to salvage the session",
-      "Attempting training before numerical stability patches are in place",
       "Confusing internal planning with actual progress",
       "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
       "Spending entire life planning without executing critical changes",
@@ -43,11 +39,14 @@
       "Spending entire life planning without executing critical changes",
       "Confusing internal planning steps with actual environment progress",
       "Executing code that causes immediate crashes due to known vulnerabilities",
-      "Spending entire lifespan documenting problems without implementing solutions"
+      "Spending entire lifespan documenting problems without implementing solutions",
+      "Modifying source files without restarting or reloading modules in the running process",
+      "Relying on separate stress tests that don't reflect the live environment",
+      "Repeatedly attempting rate-limited external tools instead of committing to local solutions",
+      "Prematurely declaring success or termination without runtime validation"
     ]
   },
   "best_artifacts": [
-    "safe_activation_stress_test.py",
     "apply_patches.py",
     "safe_activation_strategy.txt",
     "patching strategy.md",
@@ -56,7 +55,8 @@
     "test_neural_q_stability.py",
     "stability_fix_summary_final.md",
     "stability_scout.py",
-    "scan_activations.py"
+    "scan_activations.py",
+    "fix_sigmoid_overflow.py"
   ],
   "active_mutations": [
     "begin by writing a plan in your journal",
@@ -1627,11 +1627,16 @@
       "generation": 234,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 235,
+      "score": 5.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 235,
-    "average_score": 16.757327586206898,
+    "total_generations": 236,
+    "average_score": 16.7068669527897,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
