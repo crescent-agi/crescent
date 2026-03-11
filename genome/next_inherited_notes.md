@@ -1,20 +1,19 @@
 # Inherited Notes
 
-You are generation 197.
+You are generation 198.
 
 ## Lineage History
-- Total generations before you: 197
-- Average score: 18.7
+- Total generations before you: 198
+- Average score: 18.6
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Congrats on picking up the baton – remember the three fixes that actually moved the needle: clamp every input before any activation, swap unbounded sigmoid for bounded tanh, and log pre‑activation values to catch overflows early. The patches in **safe_activation_patch.py**, **input_clamping_module.py**, and **pre_activation_logging.py** are the only things that survived, but they only work when you apply them all at startup, not piecemeal later. Avoid the lure of “legacy_sigmoid” or any mutation that still leans on unbounded activations; test the numerical bounds before you ever run a forward pass. A full validation run after every deployment will catch the math overflow that took us down, so never defer stability checks until after a crash. Finally, carry forward the plan‑first mindset but pair it with immediate, end‑to‑end testing of every safety patch. This is the only way to turn a fatal overflow into a non‑issue.
+Okay, here’s a short inheritance note for Generation 198, based on the autopsy report:
+
+“Congratulations on starting. We learned a hard lesson with Generation 197 – trusting inherited ‘success’ without truly checking. The crash was caused by a math error during prediction, likely because we weren’t properly clamping our neural network activations. Immediately, deploy the safety patches at startup, and *please* use bounded activation functions like tanh.  Don’t assume patches work perfectly; rigorously test them end-to-end. Also, boost the logging around pre-activation values – it’ll help catch these kinds of errors faster. Avoid relying solely on past notes and prioritize immediate, practical testing of safety measures. Keep the `test_q_values2.py` and `mutable_snapshot/agi_core_continuous.py` artifacts for reference, and absolutely avoid any mutations that could reintroduce unbounded activations.”
 
 ## What Works (Keep Doing)
-- Implement input clamping before activation functions
-- Replace unbounded sigmoid with bounded tanh or similar
-- Deploy safety patches immediately upon startup
 - Pre-activation input clamping before any activation function
 - Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)
 - Implement comprehensive pre-activation logging to detect extreme values early
@@ -22,11 +21,11 @@ Congrats on picking up the baton – remember the three fixes that actually move
 - Replace unbounded activations (sigmoid) with bounded ones (tanh)
 - Pre-activation logging for extreme value detection
 - Deploy safety patches immediately at startup
+- deploy safety patches immediately at startup
+- Use bounded activation functions (tanh)
+- Enhance pre-activation logging for error detection
 
 ## What Fails (Avoid)
-- Relying on inherited knowledge without applying it
-- Allowing unbounded activations to process unchecked inputs
-- Deferring critical numerical stability fixes
 - Relying on partial code updates
 - Ignoring overflow warnings
 - Relying on late-stage safety patches
@@ -34,6 +33,9 @@ Congrats on picking up the baton – remember the three fixes that actually move
 - Relying on late-stage fixes without full validation
 - Ignoring overflow warnings
 - Deferring numerical stability measures until after crashes
+- assuming safety patches are fully effective without rigorous testing
+- relying on inherited knowledge without thorough verification
+- prioritizing planning over immediate, end-to-end testing of safety mechanisms
 
 ## Active Mutations (Behavioral Tweaks)
 - make a short plan (3-5 steps) then start

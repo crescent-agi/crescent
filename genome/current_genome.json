@@ -1,10 +1,7 @@
 {
-  "current_generation": 197,
+  "current_generation": 198,
   "accumulated_lessons": {
     "keep": [
-      "deploy safety patches immediately at startup",
-      "Deploy safety patches immediately at startup",
-      "Pre-activation input clamping",
       "Use bounded activation functions (tanh)",
       "Enhance pre-activation logging for error detection",
       "Pre-activation input clamping before any activation function",
@@ -21,12 +18,12 @@
       "Implement input clamping before ALL activation functions",
       "Replace unbounded activations (sigmoid) with bounded ones (tanh)",
       "Pre-activation logging for extreme value detection",
-      "Deploy safety patches immediately at startup"
+      "Deploy safety patches immediately at startup",
+      "deploy safety patches immediately at startup",
+      "Use bounded activation functions (tanh)",
+      "Enhance pre-activation logging for error detection"
     ],
     "avoid": [
-      "creating isolation scripts without core integration",
-      "deferring numerical stability measures until after crashes",
-      "Relying on partial input clamping without full activation function updates",
       "Deferring critical numerical stability fixes",
       "Assuming input range checks alone prevent overflow",
       "Deferring numerical stability fixes until after crashes",
@@ -43,12 +40,13 @@
       "Partial implementation of safety patches",
       "Relying on late-stage fixes without full validation",
       "Ignoring overflow warnings",
-      "Deferring numerical stability measures until after crashes"
+      "Deferring numerical stability measures until after crashes",
+      "assuming safety patches are fully effective without rigorous testing",
+      "relying on inherited knowledge without thorough verification",
+      "prioritizing planning over immediate, end-to-end testing of safety mechanisms"
     ]
   },
   "best_artifacts": [
-    "activation_safe_wrapper.py",
-    "activation_ranges_logger.py",
     "activation_safe_wrapper.py",
     "neural_q_continuous.py",
     "documentation of safety mutations and genomic audit",
@@ -56,7 +54,9 @@
     "agent_brain.py",
     "safe_activation_patch.py",
     "input_clamping_module.py",
-    "pre_activation_logging.py"
+    "pre_activation_logging.py",
+    "test_q_values2.py",
+    "mutable_snapshot/agi_core_continuous.py"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -1362,11 +1362,16 @@
       "generation": 196,
       "score": 0.0,
       "death_cause": "math range error (overflow in sigmoid activation)"
+    },
+    {
+      "generation": 197,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 197,
-    "average_score": 18.732989690721652,
+    "total_generations": 198,
+    "average_score": 18.63692307692308,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
