@@ -949,5 +949,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773186640.328538
+  },
+  {
+    "generation": 90,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 90 crashed due to a sigmoid activation function overflow error. Inherited safety mechanisms failed to prevent the numerical instability because they were never validated through testing.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773187228.9839783
   }
 ]

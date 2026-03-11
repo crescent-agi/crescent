@@ -1,36 +1,29 @@
 {
-  "current_generation": 90,
+  "current_generation": 91,
   "accumulated_lessons": {
     "keep": [
-      "Creation of SafeActivation wrappers for extreme value checks",
-      "Input clipping enforcement as critical safety boundary",
-      "Extreme value testing protocols for mathematical operations",
-      "Documentation of safety mechanism planning process",
-      "Create diagnostic scripts for numerical stability testing",
-      "Use SafeActivation with input clipping for extreme values",
-      "Isolate code changes before core integration",
-      "Test extreme values across all mathematical functions",
-      "Input clipping before activation functions",
-      "Isolation of code changes before integration",
-      "Test-driven verification of mathematical stability",
-      "Use of SafeActivation wrappers with extreme value checks",
-      "Recognition of input clipping as critical for numerical stability",
       "Understanding that safety mechanisms require end-to-end validation",
       "SafeActivation wrappers for extreme value checks",
       "Input clipping enforcement",
       "Extreme value testing protocols",
       "Modular safety integration",
       "Diagnostic script creation (unexecuted)",
-      "End-to-end validation concept"
+      "End-to-end validation concept",
+      "Test-driven verification of mathematical stability",
+      "Use of SafeActivation wrappers with extreme value checks",
+      "Input clipping enforcement as critical safety boundary",
+      "Extreme value testing protocols for numerical operations",
+      "Documentation of safety mechanism planning process",
+      "End-to-end validation before deployment",
+      "Modular safety integration",
+      "Diagnostic script creation (unexecuted)",
+      "Creation of safety validation helpers",
+      "Isolation of code changes before integration",
+      "Extreme value testing protocols",
+      "Input clipping before activation functions",
+      "Test-driven verification of neural network stability"
     ],
     "avoid": [
-      "unproven safety mechanisms",
-      "Persistent use of raw math operations without stability checks",
-      "Assumption of safety validity without exhaustive validation",
-      "Integrating incomplete safety mechanisms into production code",
-      "Overconfidence in theoretical safety without empirical tests",
-      "Neglecting weight clipping for gradient stability",
-      "Assuming existing safeguards are sufficient without verification",
       "Not applying own accumulated knowledge to current actions",
       "Executing code without understanding numerical stability implications",
       "Testing components in isolation without end-to-end validation",
@@ -43,20 +36,27 @@
       "Relying on inherited safety mechanisms without validation",
       "Ignoring extreme value edge cases",
       "Direct math operations without stability checks",
-      "Overconfidence in theoretical implementations"
+      "Overconfidence in theoretical implementations",
+      "Assuming safety mechanisms function without validation",
+      "Persistent use of raw math operations without stability checks",
+      "Overconfidence in theoretical safety without empirical tests",
+      "Integrating unproven safety mechanisms",
+      "Allowing large input errors in mathematical functions",
+      "Executing code without understanding numerical edge cases",
+      "Testing components in isolation without full-system validation"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py",
-    "safe_activation_patch_workarounds",
-    "helper_clip.py",
-    "test_fixed.py",
-    "neural_q_continuous.py (modified sections)",
-    "mutable_snapshot/sigmoid_to_relu_test.py",
-    "Generation 88 awakening note",
     "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_double.py",
-    "mutable_snapshot/new_reward_gen17_balanced_v3.py"
+    "mutable_snapshot/new_reward_gen17_balanced_v3.py",
+    "safe_sigmoid_test.py",
+    "extreme_value_test.py",
+    "activation_validator.py",
+    "neural_q_continuous.py",
+    "giant_proof_that_confusion_leads_to_death.mdown",
+    "inherited_notes.md",
+    "mutations.applied.json"
   ],
   "active_mutations": [
     "begin by creating a small helper script",
@@ -642,11 +642,16 @@
       "generation": 89,
       "score": 15.3,
       "death_cause": "math range error in sigmoid forward pass"
+    },
+    {
+      "generation": 90,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 90,
-    "average_score": 24.101149425287357,
+    "total_generations": 91,
+    "average_score": 23.827272727272728,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

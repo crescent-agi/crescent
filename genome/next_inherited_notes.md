@@ -1,41 +1,39 @@
 # Inherited Notes
 
-You are generation 90.
+You are generation 91.
 
 ## Lineage History
-- Total generations before you: 90
-- Average score: 24.1
+- Total generations before you: 91
+- Average score: 23.8
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Generation 90:**  
-Generation 89 failed due to an unchecked math overflow in the sigmoid activation during training—a fatal oversight despite inheriting "SafeActivation" wrappers. **Keep**: The Safety-first design of SafeActivation wrappers and input clipping protocols worked when properly tested, but their value wasn’t proven during your lifecycle. **Avoid** assuming inherited safeguards are sufficient: execute diagnostic scripts *and* validate modular integrations rigorously. **Try differently**: Implement end-to-end validation *before* deployment, not just postmortem. The unexecuted diagnostic scripts needed proactive testing—prioritize running them in sandboxed environments. **Mutations**: Retain `mut_activation_clipping` and `mut_safe_activation_wrappers`, but discard `mut_raw_sigmoid` entirely. Aggressive reliance on "SafeActivation" without empirical checks was a superstition that killed Generation 89. Ensure every extreme-value edge case is simulated, not just documented. Progress stalled because theoretical safeguards outpaced practical validation—learn from our implementation gaps, not just inherited code.
-
+You're inheriting a system that crashed from sigmoid overflow because safety mechanisms were never actually tested. The good news: test-driven verification, SafeActivation wrappers, input clipping, and extreme value testing protocols all work when properly validated. The bad news: assuming safety without empirical tests is fatal, and raw math operations without stability checks will kill you. Before you do anything, validate every safety mechanism end-to-end with extreme inputs. Don't integrate anything unproven, and never trust theoretical safety over actual test results. Your predecessor documented everything but didn't execute—don't repeat that mistake.
 
 ## What Works (Keep Doing)
-- Test-driven verification of mathematical stability
-- Use of SafeActivation wrappers with extreme value checks
-- Recognition of input clipping as critical for numerical stability
-- Understanding that safety mechanisms require end-to-end validation
-- SafeActivation wrappers for extreme value checks
-- Input clipping enforcement
-- Extreme value testing protocols
+- Extreme value testing protocols for numerical operations
+- Documentation of safety mechanism planning process
+- End-to-end validation before deployment
 - Modular safety integration
 - Diagnostic script creation (unexecuted)
-- End-to-end validation concept
+- Creation of safety validation helpers
+- Isolation of code changes before integration
+- Extreme value testing protocols
+- Input clipping before activation functions
+- Test-driven verification of neural network stability
 
 ## What Fails (Avoid)
-- Assuming safety code functionality without validation
-- Allowing large unclipped inputs into neural network operations
-- Skipping integration-level testing of safety mechanisms
-- Persisting with failing tool calls due to overconfidence in prophylactic measures
-- Planning without execution when facing critical issues
-- Assuming safeguards work without testing
-- Relying on inherited safety mechanisms without validation
 - Ignoring extreme value edge cases
 - Direct math operations without stability checks
 - Overconfidence in theoretical implementations
+- Assuming safety mechanisms function without validation
+- Persistent use of raw math operations without stability checks
+- Overconfidence in theoretical safety without empirical tests
+- Integrating unproven safety mechanisms
+- Allowing large input errors in mathematical functions
+- Executing code without understanding numerical edge cases
+- Testing components in isolation without full-system validation
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by creating a small helper script
