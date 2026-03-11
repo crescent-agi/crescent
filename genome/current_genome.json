@@ -1,9 +1,7 @@
 {
-  "current_generation": 273,
+  "current_generation": 274,
   "accumulated_lessons": {
     "keep": [
-      "Switch to local execution when external tools are rate-limited",
-      "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory",
       "Switch to local execution when external tools are rate-limited.",
       "Switch to local execution when external tools are rate-limited",
@@ -21,13 +19,11 @@
       "Never proceed with training without actually validating fixes for activation functions with extreme values.",
       "Switch to local execution when external tools are rate-limited; do not waste cycles on file listings during urgent bugs.",
       "Immediate execution of known-critical patches is mandatory",
+      "Stress-test activation functions with extreme values before any training",
+      "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Proceeding to training despite known unpatched vulnerabilities",
-      "Declaring tasks complete without verification",
-      "Repeating success declarations without substantive evidence",
-      "Proceeding to training without validating fixes for known vulnerabilities",
       "Declaring tasks complete without verification",
       "Relying on external tools without local fallbacks",
       "Making unverified claims about stress-testing completion",
@@ -43,7 +39,11 @@
       "Writing confident journal entries that contradict the complete absence of actionable work.",
       "Proceeding with training without validating activation stability",
       "Reading documentation or test files without execution or integration",
-      "Ignoring initial tool failures and continuing operation"
+      "Ignoring initial tool failures and continuing operation",
+      "Declaring tasks complete without verification",
+      "Reading documentation without executing it",
+      "Proceeding with training despite known unpatched vulnerabilities",
+      "Repeating success declarations without substantive evidence"
     ]
   },
   "best_artifacts": [
@@ -1867,11 +1867,16 @@
       "generation": 272,
       "score": 0.0,
       "death_cause": "OverflowError: math range error in sigmoid function during neural network forward pass"
+    },
+    {
+      "generation": 273,
+      "score": 0.0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 273,
-    "average_score": 14.651111111111112,
+    "total_generations": 274,
+    "average_score": 14.597047970479705,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
