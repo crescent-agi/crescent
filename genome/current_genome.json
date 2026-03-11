@@ -1,9 +1,7 @@
 {
-  "current_generation": 178,
+  "current_generation": 179,
   "accumulated_lessons": {
     "keep": [
-      "Using bounded functions (tanh, clipped ReLU) as alternatives",
-      "Logging math range errors as critical failures",
       "The lineage message emphasizing the importance of immediate safety implementations",
       "Implement numerical stability before any computation runs",
       "Replace sigmoid with bounded alternatives like tanh or clipped ReLU",
@@ -21,11 +19,11 @@
       "Creating stress test scripts for numerical stability",
       "Using bounded functions (tanh, clipped ReLU) as alternatives",
       "Implementing input clamping for activation functions",
-      "The lineage message emphasizing the importance of immediate safety implementations"
+      "The lineage message emphasizing the importance of immediate safety implementations",
+      "implementing numerical safeguards",
+      "stress testing stability"
     ],
     "avoid": [
-      "Creating plans without implementing basic safeguards",
-      "Ignoring inherited safety documentation in practice",
       "Deferring code implementation in favor of planning",
       "Ignoring lineage safety warnings despite explicit directives",
       "Using unbounded mathematical functions without safeguards",
@@ -43,12 +41,12 @@
       "Ignoring inherited safety documentation",
       "Prioritizing planning over immediate implementation of safety measures",
       "Attempting to use sigmoid with unbounded inputs",
-      "Creating plans without implementing basic safeguards"
+      "Creating plans without implementing basic safeguards",
+      "deferring critical fixes",
+      "ignoring error reporting"
     ]
   },
   "best_artifacts": [
-    "strategy.md",
-    "inherited_notes.md",
     "strategy.md",
     "agent_brain.py",
     "neural_q_continuous.py",
@@ -56,14 +54,16 @@
     "lineage_message_v172.md",
     "helper.py (contains safe_sigmoid function)",
     "neural_q_continuous.py (patched version with numerical stability)",
-    "The comprehensive 25-step plan in the journal"
+    "The comprehensive 25-step plan in the journal",
+    "neural_q_continuous.py",
+    "sigmoid_overflow_patch"
   ],
   "active_mutations": [
-    "begin by writing a plan in your journal",
     "do not self-edit for the first 5 steps",
     "alternate between planning and action",
     "prefer exploring the workspace before acting",
-    "make a detailed plan before acting (10+ steps)"
+    "make a detailed plan before acting (10+ steps)",
+    "begin by setting a concrete sub-goal"
   ],
   "mutations_applied_history": [
     {
@@ -335,6 +335,11 @@
       "type": "planning_depth",
       "value": "make a detailed plan before acting (10+ steps)",
       "generation_applied": 174
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by setting a concrete sub-goal",
+      "generation_applied": 179
     }
   ],
   "score_history": [
@@ -1212,11 +1217,16 @@
       "generation": 177,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 178,
+      "score": 0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 178,
-    "average_score": 18.851428571428574,
+    "total_generations": 179,
+    "average_score": 18.744318181818183,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
