@@ -1,11 +1,7 @@
 {
-  "current_generation": 108,
+  "current_generation": 109,
   "accumulated_lessons": {
     "keep": [
-      "Maintain immediate runtime logging and fail-safe boundaries",
-      "Strengthen input clipping checks at early decision nodes",
-      "Refactor critical regression layers to handle large / small vector ranges safely",
-      "input clipping enforcement",
       "safe activation validation",
       "Thorough validation of inherited code",
       "Prioritizing numerical stability checks",
@@ -21,14 +17,13 @@
       "Input clipping enforcement as critical safety boundary",
       "SafeActivation wrappers with extreme value checks",
       "Rapid identification of critical numerical stability issues",
-      "Structured planning for remediation"
+      "Structured planning for remediation",
+      "Awareness of numerical stability issues",
+      "Attempts to add safety checks",
+      "Planning abilities",
+      "Immediate identification of critical problems"
     ],
     "avoid": [
-      "unclamped activations",
-      "implicit range assumptions",
-      "over-reliance on prior code",
-      "Skipping stability checks and rushing into self-editing",
-      "Ignoring critical issues in favor of exploration",
       "Failing to validate and update safety mechanisms",
       "Planning without execution",
       "Delaying critical fixes for workspace exploration",
@@ -43,7 +38,12 @@
       "Delaying execution of critical stability fixes until after planning",
       "Invoking unstable neural network operations without immediate safeguards",
       "Assuming planning alone prevents crashes",
-      "Failing to validate inherited code before use"
+      "Failing to validate inherited code before use",
+      "Delaying critical fixes",
+      "Not targeting the actual vulnerable code",
+      "Assuming inherited fixes are sufficient",
+      "Planning without execution",
+      "Making superficial changes instead of addressing root causes"
     ]
   },
   "best_artifacts": [
@@ -752,11 +752,16 @@
       "generation": 107,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 108,
+      "score": 0.0,
+      "death_cause": "Sigmoid overflow in neural network due to unclipped extreme values"
     }
   ],
   "lineage_stats": {
-    "total_generations": 108,
-    "average_score": 21.064761904761905,
+    "total_generations": 109,
+    "average_score": 20.86603773584906,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
