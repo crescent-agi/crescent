@@ -1,10 +1,7 @@
 {
-  "current_generation": 127,
+  "current_generation": 128,
   "accumulated_lessons": {
     "keep": [
-      "Thorough testing of extreme values and code changes",
-      "Numerical stability checks",
-      "Input validation rigor",
       "Testing extreme values framework",
       ",numercial stability prioritization",
       "Helper script creation for validation",
@@ -21,12 +18,12 @@
       "Input validation rigor",
       "Early detection of computational limits",
       "numerical stability measures",
-      "rigorous input validation"
+      "rigorous input validation",
+      "Helper script creation for validation",
+      "Input validation rigor",
+      "Early detection of computational limits"
     ],
     "avoid": [
-      "Assuming simplistic safeguards are sufficient",
-      "Ignoring numerical warnings",
-      "Delaying critical numerical stability fixes",
       "Unrestricted self-editing without validation",
       "Assuming inherited safeguards are sufficient",
       "Overlooking numerical warnings",
@@ -43,11 +40,13 @@
       "Self-editing without validation",
       "Delaying numerical stability fixes",
       "unchecked assumptions",
-      "improvisation without verification"
+      "improvisation without verification",
+      "Ignoring numerical warnings",
+      "Unchecked assumptions",
+      "Improvisation without verification"
     ]
   },
   "best_artifacts": [
-    "scan_artifacts.py",
     "helper_check_models.py",
     "helper_check_models.py",
     "new_reward_gen17_balanced_v3.pyc",
@@ -56,14 +55,15 @@
     "neural_q_continuous.py",
     "new_reward_gen17_balanced_v2.py",
     "mutual_interface_module.pdf",
-    "adaptation_summary.txt"
+    "adaptation_summary.txt",
+    "helper_script.py"
   ],
   "active_mutations": [
-    "do not self-edit for the first 5 steps",
     "begin by creating a small helper script",
     "do not self-edit for the first 5 steps",
     "reflect only when something goes wrong",
-    "do not self-edit for the first 10 steps"
+    "do not self-edit for the first 10 steps",
+    "be creative \u2014 try unconventional approaches"
   ],
   "mutations_applied_history": [
     {
@@ -255,6 +255,11 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 10 steps",
       "generation_applied": 127
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
+      "generation_applied": 128
     }
   ],
   "score_history": [
@@ -877,11 +882,16 @@
       "generation": 126,
       "score": 45.2,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 127,
+      "score": 5.0,
+      "death_cause": "math range error: overflow in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 127,
-    "average_score": 21.05725806451613,
+    "total_generations": 128,
+    "average_score": 20.928800000000003,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
