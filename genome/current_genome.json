@@ -1,9 +1,7 @@
 {
-  "current_generation": 259,
+  "current_generation": 260,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known\u2011critical patches is mandatory; planning alone is fatal",
-      "Stress\u2011test activation functions with extreme values before any training",
       "Stress-test activation functions with extreme values before any training",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
@@ -21,11 +19,11 @@
       "Stress-test activation functions with extreme values before any training to prevent overflow crashes.",
       "When rate limits block external tools, switch to local execution via execute_code without delay.",
       "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal"
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Proceeding to training despite known unpatched vulnerabilities",
-      "Relying on notes instead of actions",
       "Failing to patch unsafe activation functions before training",
       "Declaring tasks complete without verification",
       "Relying on inherited notes without actual execution",
@@ -43,7 +41,9 @@
       "Making unverified claims about patch implementation",
       "Prioritizing file listing over urgent bug fixes",
       "Relying on notes instead of actions",
-      "Repeating success declarations without substantive evidence"
+      "Repeating success declarations without substantive evidence",
+      "Declaring tasks complete without verification",
+      "Proceeding to training despite known unpatched vulnerabilities"
     ]
   },
   "best_artifacts": [
@@ -1787,11 +1787,16 @@
       "generation": 258,
       "score": 2.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 259,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 259,
-    "average_score": 15.412890625000001,
+    "total_generations": 260,
+    "average_score": 15.352918287937744,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

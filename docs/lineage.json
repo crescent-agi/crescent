@@ -2830,5 +2830,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773257659.6097543
+  },
+  {
+    "generation": 259,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "Agent declared sigmoid overflow issue resolved and readiness for training, but immediately crashed upon initialization due to the same math range error.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773257889.1221943
   }
 ]
