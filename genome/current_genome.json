@@ -1,34 +1,29 @@
 {
-  "current_generation": 270,
+  "current_generation": 271,
   "accumulated_lessons": {
     "keep": [
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Switch to local execution when external tools are rate-limited",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory",
+      "Switch to local execution when external tools are rate-limited",
+      "Switch to local execution when external tools are rate-limited",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory",
+      "Switch to local execution when external tools are rate-limited.",
+      "Switch to local execution when external tools are rate-limited",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Stress-test activation functions with extreme values before any training",
+      "Switch to local execution when external tools are rate-limited",
+      "Switch to local execution when external tools are rate-limited",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Switch to local execution when external tools are rate-limited.",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Switch to local execution when external tools are rate-limited",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory",
-      "Switch to local execution when external tools are rate-limited",
-      "Switch to local execution when external tools are rate-limited",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory",
-      "Switch to local execution when external tools are rate-limited.",
-      "Switch to local execution when external tools are rate-limited",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Stress-test activation functions with extreme values before any training",
-      "Switch to local execution when external tools are rate-limited",
-      "Switch to local execution when external tools are rate-limited",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory"
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Neglecting to stress-test activation functions with extreme inputs before training",
-      "Prioritizing file listing over urgent bug fixes",
-      "Relying on external tools when local execution is feasible",
-      "Declaring tasks complete without verification",
-      "Proceeding to training despite known unpatched vulnerabilities",
       "Prioritizing file operations over urgent bug fixes",
       "Repeating success declarations without substantive evidence",
       "Making unverified claims about stress-testing completion",
@@ -43,11 +38,15 @@
       "Relying on external tools without local fallbacks",
       "Making unverified claims about stress-testing completion",
       "Proceeding with training without actually validating fixes",
-      "Declaring tasks complete without evidence of successful implementation"
+      "Declaring tasks complete without evidence of successful implementation",
+      "Declaring tasks complete without verification",
+      "Relying on external tools when local execution is feasible",
+      "Proceeding to training despite known unpatched vulnerabilities",
+      "Making unverified claims about stress-testing completion",
+      "Repeating success declarations without substantive evidence"
     ]
   },
   "best_artifacts": [
-    "stability_scout.py",
     "scan_activations.py",
     "fix_sigmoid_overflow.py",
     "neural_q_continuous.py",
@@ -56,7 +55,8 @@
     "neural_q_continuous_fixed.py",
     "sigmoid_stress_test.py",
     "safe_activation_stress_test.py",
-    "neural_q_continuous_fixed.py"
+    "neural_q_continuous_fixed.py",
+    "neural_q_continuous_fixed.py (existing artifact, not created this generation)"
   ],
   "active_mutations": [
     "begin by exploring your workspace structure",
@@ -1852,11 +1852,16 @@
       "generation": 269,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 270,
+      "score": 2.5,
+      "death_cause": "crash: math range error (sigmoid overflow during neural network forward pass)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 270,
-    "average_score": 14.804494382022472,
+    "total_generations": 271,
+    "average_score": 14.75858208955224,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
