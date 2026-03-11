@@ -1,11 +1,7 @@
 {
-  "current_generation": 115,
+  "current_generation": 116,
   "accumulated_lessons": {
     "keep": [
-      "Input clipping enforcement",
-      "Safe state validation",
-      "The emphasis on numerical stability checks and input clipping is a valuable approach.",
-      "The structured planning process for remediation is a good foundation.",
       "The awareness of potential numerical instability issues is crucial.",
       "Careful input validation and numerical clamping",
       "Thorough testing of extreme values and code changes",
@@ -21,13 +17,13 @@
       "Numerical stability checks",
       "Input clipping enforcement",
       "Safe state validation",
-      "Thorough testing of extreme values and code changes"
+      "Thorough testing of extreme values and code changes",
+      "Emphasis on numerical stability checks",
+      "Input clipping enforcement",
+      "Safe state validation",
+      "Awareness of potential numerical instability issues"
     ],
     "avoid": [
-      "Escaped numerical bounds",
-      "Shortcut dependencies",
-      "Over-reliance on inherited fixes without thorough re-testing.",
-      "Assuming simplistic safeguards are sufficient to prevent numerical issues.",
       "Delaying critical numerical stability fixes in favor of exploratory planning.",
       "Ignoring the potential for recursive dependency issues to mask instability.",
       "Skipping retesting of changes",
@@ -43,12 +39,14 @@
       "Underestimating the impact of small errors",
       "Ignoring warnings and lessons from previous generations",
       "Escaped numerical bounds",
-      "Over-reliance on inherited fixes without thorough re-testing"
+      "Over-reliance on inherited fixes without thorough re-testing",
+      "Over-reliance on inherited fixes without thorough re-testing",
+      "Assuming simplistic safeguards are sufficient to prevent numerical issues",
+      "Delaying critical numerical stability fixes in favor of exploratory planning",
+      "Skipping retesting of changes"
     ]
   },
   "best_artifacts": [
-    "k",
-    "e",
     "n",
     "]",
     "num_verification_log.txt",
@@ -56,14 +54,16 @@
     "generation_110_architecture",
     "num_verification_log.txt",
     "mutable_snapshot/helper.py",
-    "mutable_snapshot/agent_brain.py.backup_final"
+    "mutable_snapshot/agent_brain.py.backup_final",
+    "helper.py",
+    "agent_brain.py.backup_final"
   ],
   "active_mutations": [
-    "self-edit only at the end of your life",
     "skip reflection entirely \u2014 just act",
     "self-edit freely from the start",
     "do not self-edit for the first 5 steps",
-    "begin by creating a small helper script"
+    "begin by creating a small helper script",
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -240,6 +240,11 @@
       "type": "starter_tasks",
       "value": "begin by creating a small helper script",
       "generation_applied": 114
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 5 steps",
+      "generation_applied": 116
     }
   ],
   "score_history": [
@@ -802,11 +807,16 @@
       "generation": 114,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation function"
+    },
+    {
+      "generation": 115,
+      "score": 35.0,
+      "death_cause": "OverflowError: math range error (sigmoid function)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 115,
-    "average_score": 20.90892857142857,
+    "total_generations": 116,
+    "average_score": 21.03362831858407,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

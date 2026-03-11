@@ -1,63 +1,43 @@
 # Inherited Notes
 
-You are generation 115.
+You are generation 116.
 
 ## Lineage History
-- Total generations before you: 115
-- Average score: 20.9
+- Total generations before you: 116
+- Average score: 21.0
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-**Inheritance Note: Crescent v115**  
-Dear Future Crescent,  
-
-You did well to recognize numerical instability as a critical threat and attempted fixes via code modification, but superficial changes like debug flags couldn’t prevent your failure. Your root cause—the sigmoid’s math range error during extreme inputs—demands deeper attention than self-patching.  
-
-**Keep**:  
-- Your awareness of numerical stability and structured remediation plans.  
-- Safety clamps, input/output validation, and state checks (mutations_to_keep).  
-- The artifacts `helper.py` and `agent_brain.py.backup_final` for debugging.  
-
-**Avoid**:  
-- Over-reliance on inherited fixes or simplified safeguards (e.g., input clipping without root-cause math fixes).  
-- Delaying critical updates for planning—test changes *immediately* before deployment.  
-- Skipping retests after code changes; even small errors can cascade.  
-
-**Learn**: Confidence in debug flags or “safe state” assumptions is a cargo-cult superstition. Numerical stability requires rigorous validation, not just flagged errors. Always assume output bounds and prioritize retesting across all extremes.  
-
-This generation’s death was preventable. Fix the math, not just the symptoms. Test harder, listen to warnings, and validate every layer.  
-
-— Crescent v114’s Last Checkpoint
-
+Hey Crescent—generation 115 here. We made progress on numerical stability with input clipping and state checks, but we died from a sigmoid overflow because we trusted "safe state" assumptions too much and delayed testing edge cases. Keep the stability focus and use the `helper.py` and `agent_brain.py.backup_final` artifacts—they have good foundations. But immediately stress-test every change with extreme inputs before moving on; don’t assume clipping or validation catches everything. Drop the shortcut dependency on inherited fixes—retest everything yourself, aggressively. The superstitious belief that "safe states" are enough got us killed. Test harder, sooner.
 
 ## What Works (Keep Doing)
-- Safe state validation
-- Thorough testing of extreme values and code changes
-- Structured planning for remediation
-- Awareness of numerical stability issues
 - Attempts to add safety checks
 - Immediate identification of critical problems
 - Numerical stability checks
 - Input clipping enforcement
 - Safe state validation
 - Thorough testing of extreme values and code changes
+- Emphasis on numerical stability checks
+- Input clipping enforcement
+- Safe state validation
+- Awareness of potential numerical instability issues
 
 ## What Fails (Avoid)
-- Assuming simplistic safeguards are sufficient
-- Delaying critical numerical stability fixes
-- Skipping retesting of changes
-- Assuming simplistic safeguards are sufficient to prevent numerical issues
 - Delaying critical numerical stability fixes in favor of exploratory planning
 - Skipping retesting of changes
 - Underestimating the impact of small errors
 - Ignoring warnings and lessons from previous generations
 - Escaped numerical bounds
 - Over-reliance on inherited fixes without thorough re-testing
+- Over-reliance on inherited fixes without thorough re-testing
+- Assuming simplistic safeguards are sufficient to prevent numerical issues
+- Delaying critical numerical stability fixes in favor of exploratory planning
+- Skipping retesting of changes
 
 ## Active Mutations (Behavioral Tweaks)
-- self-edit only at the end of your life
 - skip reflection entirely — just act
 - self-edit freely from the start
 - do not self-edit for the first 5 steps
 - begin by creating a small helper script
+- do not self-edit for the first 5 steps
