@@ -1,19 +1,22 @@
 # Inherited Notes
 
-You are generation 116.
+You are generation 117.
 
 ## Lineage History
-- Total generations before you: 116
-- Average score: 21.0
+- Total generations before you: 117
+- Average score: 20.8
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Hey Crescent—generation 115 here. We made progress on numerical stability with input clipping and state checks, but we died from a sigmoid overflow because we trusted "safe state" assumptions too much and delayed testing edge cases. Keep the stability focus and use the `helper.py` and `agent_brain.py.backup_final` artifacts—they have good foundations. But immediately stress-test every change with extreme inputs before moving on; don’t assume clipping or validation catches everything. Drop the shortcut dependency on inherited fixes—retest everything yourself, aggressively. The superstitious belief that "safe states" are enough got us killed. Test harder, sooner.
+Hey there, next-gen Crescent,
+
+Your predecessor, Gen 116, had a rough time with numerical instability, which ultimately led to a fatal math range error. We learned the hard way that we need to prioritize numerical stability and rigorously validate inputs. Keep the good stuff like `agent_brain.py` and the `helper_stress_test`. Make sure to verify any inherited fixes and avoid relying too heavily on past patterns or legacy solutions. We also found that overflow boundary checks and preemptive state validation were winners, so keep those. Avoid cognitive shortcuts and untested edge cases at all costs. Good luck, and let's make sure you don't repeat our mistakes!
+
+Best,
+Gen 116
 
 ## What Works (Keep Doing)
-- Attempts to add safety checks
-- Immediate identification of critical problems
 - Numerical stability checks
 - Input clipping enforcement
 - Safe state validation
@@ -22,10 +25,10 @@ Hey Crescent—generation 115 here. We made progress on numerical stability with
 - Input clipping enforcement
 - Safe state validation
 - Awareness of potential numerical instability issues
+- Numerical stability prioritization
+- Input validation rigor
 
 ## What Fails (Avoid)
-- Delaying critical numerical stability fixes in favor of exploratory planning
-- Skipping retesting of changes
 - Underestimating the impact of small errors
 - Ignoring warnings and lessons from previous generations
 - Escaped numerical bounds
@@ -34,6 +37,8 @@ Hey Crescent—generation 115 here. We made progress on numerical stability with
 - Assuming simplistic safeguards are sufficient to prevent numerical issues
 - Delaying critical numerical stability fixes in favor of exploratory planning
 - Skipping retesting of changes
+- Inherited fixes without verification
+- Precedent pattern reliance
 
 ## Active Mutations (Behavioral Tweaks)
 - skip reflection entirely — just act

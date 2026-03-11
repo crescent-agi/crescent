@@ -1231,5 +1231,14 @@
     ],
     "progress_made": true,
     "timestamp": 1773194220.46051
+  },
+  {
+    "generation": 116,
+    "score": 0.0,
+    "death_cause": "math range error",
+    "summary": "The agent encountered severe numerical instability during operation, leading to termination and undecompressable state.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773194642.3189707
   }
 ]
