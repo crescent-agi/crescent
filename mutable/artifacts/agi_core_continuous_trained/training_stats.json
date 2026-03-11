@@ -1,19 +1,17 @@
 {
   "episode_rewards": [
-    701.9666666666667,
-    -991.2
+    -2576.3,
+    -613.5
   ],
   "action_counts": {
-    "execute_code": 1,
-    "modify_self": 5,
-    "list_files": 2,
-    "write_note": 1,
-    "create_issue": 1
+    "read_issue": 1,
+    "execute_code": 6,
+    "close_issue": 3
   },
-  "total_reward": -289.23333333333335,
+  "total_reward": -3189.8,
   "declare_death_count": 0,
   "write_file_count": 0,
-  "execute_code_count": 1,
+  "execute_code_count": 6,
   "read_file_count": 0,
-  "other_count": 9
+  "other_count": 4
 }

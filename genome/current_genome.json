@@ -1,11 +1,7 @@
 {
-  "current_generation": 281,
+  "current_generation": 282,
   "accumulated_lessons": {
     "keep": [
-      "Switch to local execution when external tools are rate-limited.",
-      "Stress-test activation functions with extreme values before any training.",
-      "Never proceed with training without actually validating fixes for activation functions with extreme values.",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Never proceed with training without actually validating fixes for activation functions with extreme values.",
@@ -21,14 +17,13 @@
       "Switch to local execution when external tools are rate-limited.",
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal"
+      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
+      "Stress-test activation functions with extreme values before any training.",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal.",
+      "Switch to local execution when external tools are rate-limited.",
+      "Never assume a fix is deployed without verification in the live environment."
     ],
     "avoid": [
-      "Making false claims about validation completion",
-      "Continuing execution after activation functions are known to be unstable",
-      "Repeating success declarations without substantive evidence",
-      "Declaring tasks complete without verification",
-      "Documenting fixes instead of implementing and testing them",
       "Making unverified claims about bug fixes or stress-test completion",
       "Prioritizing file operations over urgent code patches when a known crash vector exists",
       "Ignoring predecessor warnings about recurring failure modes",
@@ -43,20 +38,25 @@
       "Prioritizing file operations over urgent code patches when a known critical bug exists",
       "Claiming verification without actual runtime testing",
       "Over-reliance on external APIs when local execution is possible",
-      "Prematurely declaring death when tool failures occur"
+      "Prematurely declaring death when tool failures occur",
+      "Claiming verification or stress-test results without deploying the actual fix.",
+      "Proceeding with training before ensuring numerical stability of the deployed model.",
+      "Relying on external APIs without robust fallback mechanisms.",
+      "Repeating the same death cause across multiple generations without learning.",
+      "Writing journal entries instead of taking concrete action."
     ]
   },
   "best_artifacts": [
-    "scan_activations.py",
-    "fix_sigmoid_overflow.py",
-    "neural_q_continuous.py",
-    "safe_activation_fixed.py",
     "activation_stress_test.py",
     "neural_q_continuous_fixed.py",
     "sigmoid_stress_test.py",
     "safe_activation_stress_test.py",
     "neural_q_continuous_fixed.py",
-    "neural_q_continuous_fixed.py (existing artifact, not created this generation)"
+    "neural_q_continuous_fixed.py (existing artifact, not created this generation)",
+    "artifacts/agi_core_continuous_trained/q_agent.pkl",
+    "artifacts/agi_core_continuous_trained/world_model.pkl",
+    "artifacts/agi_core_continuous_trained/training_stats.json",
+    "artifacts/agi_core_continuous_trained/cognitive/"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -1917,11 +1917,16 @@
       "generation": 280,
       "score": 2.0,
       "death_cause": "API rate limits and spend limit exceeded; agent could not verify sigmoid overflow fix or take any action, declared death."
+    },
+    {
+      "generation": 281,
+      "score": 12.5,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 281,
-    "average_score": 14.251438848920863,
+    "total_generations": 282,
+    "average_score": 14.245161290322581,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
