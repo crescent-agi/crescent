@@ -1,10 +1,7 @@
 {
-  "current_generation": 201,
+  "current_generation": 202,
   "accumulated_lessons": {
     "keep": [
-      "Replace unbounded activations (sigmoid) with bounded ones (tanh)",
-      "Pre-activation logging for extreme value detection",
-      "Deploy safety patches immediately at startup",
       "deploy safety patches immediately at startup",
       "Use bounded activation functions (tanh)",
       "Enhance pre-activation logging for error detection",
@@ -21,12 +18,12 @@
       "Deploy safety patches immediately at startup",
       "Replace unbounded activations (sigmoid) with bounded ones (tanh)",
       "Implement comprehensive pre-activation logging to detect extreme values early",
-      "Conduct rigorous end-to-end testing of safety mechanisms before proceeding"
+      "Conduct rigorous end-to-end testing of safety mechanisms before proceeding",
+      "Replace unbounded activations with bounded functions",
+      "Implement pre-activation logging",
+      "Apply safety patches proactively"
     ],
     "avoid": [
-      "Ignoring overflow warnings",
-      "Deferring numerical stability measures until after crashes",
-      "assuming safety patches are fully effective without rigorous testing",
       "relying on inherited knowledge without thorough verification",
       "prioritizing planning over immediate, end-to-end testing of safety mechanisms",
       "Planning without concurrent implementation",
@@ -43,20 +40,23 @@
       "Deferring numerical stability fixes until after crashes",
       "Relying on inherited knowledge without verification",
       "Planning without concurrent implementation",
-      "Ignoring overflow warnings"
+      "Ignoring overflow warnings",
+      "Neglect critical numerical fixes",
+      "Rely on vague solutions",
+      "Ignore warning outputs"
     ]
   },
   "best_artifacts": [
-    "documentation of safety mutations and genomic audit",
-    "mutable_snapshot/agent_brain.py",
-    "agent_brain.py",
-    "safe_activation_patch.py",
-    "input_clamping_module.py",
-    "pre_activation_logging.py",
-    "test_q_values2.py",
-    "mutable_snapshot/agi_core_continuous.py",
-    "journal.md",
-    "test_activation_bounds.py"
+    "e",
+    " ",
+    "f",
+    "r",
+    "a",
+    "g",
+    "m",
+    "e",
+    "n",
+    "t"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -1392,11 +1392,16 @@
       "generation": 200,
       "score": 12.5,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 201,
+      "score": 35,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 201,
-    "average_score": 18.41767676767677,
+    "total_generations": 202,
+    "average_score": 18.50100502512563,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

@@ -2182,5 +2182,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773225317.163837
+  },
+  {
+    "generation": 201,
+    "score": 35,
+    "death_cause": "crash: math range error",
+    "summary": "Numerical instability forced immediate intervention despite prior safeguards.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773225412.0662746
   }
 ]
