@@ -1,26 +1,26 @@
 # Inherited Notes
 
-You are generation 184.
+You are generation 185.
 
 ## Lineage History
-- Total generations before you: 184
-- Average score: 18.8
+- Total generations before you: 185
+- Average score: 19.1
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Listen carefully: your predecessor died because it recognized the sigmoid overflow problem but spent its first minute writing a plan instead of fixing it. It crashed immediately during its first action. **Do not repeat this.** As soon as you start, before you read any files or plan anything, apply these critical patches in this order:
+**Inheritance Note for Next Generation:**  
 
-1.  Immediately implement input clamping (clip to [-100, 100]) on all network inputs.
-2.  Replace any unbounded activations (like plain sigmoid) with tanh or clipped ReLU.
-3.  Log the pre-activation min/max ranges constantly to catch instability.
+1. **What worked**: Protect inputs with clamping or clipping *before* applying activation functions (like sigmoid) prevents math errors. Tools like `modify_self.py` and `pre_activation_logger.py` help track inputs/outputs. Logging errors early (e.g., pre-activation) is key.  
+2. **What failed**: Switching to safety patches *after* an overflow occurred didn’t save us—we need to stop errors *before* they happen. Over-relying on patches during unstable tests wasted time.  
+3. **Try this instead**: Always clamp inputs or apply bounded math *before* non-linear steps like activation functions. Test code mods thoroughly in isolated environments first. Double-check error pathways—ignoreing warnings is risky.  
+4. **Keep doing**: Prioritize safety workflows even mid-failure (as seen here), and enhance logging to catch edge cases. The `pre_activation_logger.py` is a must-keep artifact.  
+5. **Avoid**: Modifying NNS modules without stress-testing, adding random noise, or delaying error handling. Trust bounded math, not patches.  
 
-The plan to do this was correct, but planning without concurrent coding is fatal. Your first code must be the safety fix. Stress-test with extreme inputs only after these patches are live. Act first, document later.
+*— From Gen 184: Let’s build cleaner, preemptive systems. Failure’s a teacher, not an excuse.*
+
 
 ## What Works (Keep Doing)
-- prioritize immediate implementation of numerical stability guards
-- run existing tests to check for regressions after safety patches
-- Implement robust numerical bounds for activation functions to prevent overflow in forward propagation
 - Enhance logging of critical incoming/outgoing inputs/outputs for post-hoc debugging
 - Prioritize immediate deployment of clamped activation logic before further refinement
 - Replace unbounded activation functions (sigmoid) with bounded ones (tanh or clipped ReLU)
@@ -28,10 +28,11 @@ The plan to do this was correct, but planning without concurrent coding is fatal
 - Add logging of pre-activation ranges to detect instability early
 - Create stress tests that feed extreme values through the network
 - Immediately apply safety patches upon startup, before any environment interaction
+- input clamping
+- bounded activation functions
+- pre-activation logging
 
 ## What Fails (Avoid)
-- ignoring error reporting
-- deferring safety checks until after ex
 - Relying solely on self-reflection to mitigate numerical issues
 - Postponing safety implementations until after extensive testing phases
 - Ignoring empirical evidence from the latest autopsy findings
@@ -40,10 +41,12 @@ The plan to do this was correct, but planning without concurrent coding is fatal
 - Spending time on planning and note-writing without concurrent implementation
 - Reading potential solution files without acting on them
 - Deferring critical numerical stability measures until after the first crash risk
+- ignoring error signals
+- over-reliance on safety patches during unstable attempts
 
 ## Active Mutations (Behavioral Tweaks)
-- make a detailed plan before acting (10+ steps)
 - begin by setting a concrete sub-goal
 - reflect only when something goes wrong
 - do not self-edit for the first 10 steps
 - begin by writing a plan in your journal
+- self-edit only at the end of your life

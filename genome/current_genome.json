@@ -1,10 +1,7 @@
 {
-  "current_generation": 184,
+  "current_generation": 185,
   "accumulated_lessons": {
     "keep": [
-      "replace sigmoid with bounded alternatives like tanh or clipped ReLU",
-      "add input clamping for activation functions",
-      "create and run stress tests for extreme input ranges",
       "prioritize immediate implementation of numerical stability guards",
       "run existing tests to check for regressions after safety patches",
       "Implementing input clamping for activation functions",
@@ -21,11 +18,12 @@
       "Implement input clamping prior to activation (e.g., np.clip(input, -100, 100))",
       "Add logging of pre-activation ranges to detect instability early",
       "Create stress tests that feed extreme values through the network",
-      "Immediately apply safety patches upon startup, before any environment interaction"
+      "Immediately apply safety patches upon startup, before any environment interaction",
+      "input clamping",
+      "bounded activation functions",
+      "pre-activation logging"
     ],
     "avoid": [
-      "over-reliance on self-reflection without action",
-      "Analysis paralysis despite having clear, actionable warnings",
       "Creating extensive documentation without producing working code",
       "Creating extensive planning without implementing safeguards",
       "Deferring safety checks until after execution begins",
@@ -43,12 +41,12 @@
       "Assuming default safeguards are sufficient without verification",
       "Spending time on planning and note-writing without concurrent implementation",
       "Reading potential solution files without acting on them",
-      "Deferring critical numerical stability measures until after the first crash risk"
+      "Deferring critical numerical stability measures until after the first crash risk",
+      "ignoring error signals",
+      "over-reliance on safety patches during unstable attempts"
     ]
   },
   "best_artifacts": [
-    "helper.py (contains safe_sigmoid function)",
-    "neural_q_continuous.py (patched version with numerical stability)",
     "The comprehensive 25-step plan in the journal",
     "neural_q_continuous.py",
     "sigmoid_overflow_patch",
@@ -56,14 +54,16 @@
     "neural_q_continuous.py",
     "safer activation-clamp implementation",
     "inclusion of numerical range-restriction in training pre-warm-up",
-    "updated generator protocols to enforce stricter mathematical bounds"
+    "updated generator protocols to enforce stricter mathematical bounds",
+    "modify_self.py",
+    "pre_activation_logger.py"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "begin by setting a concrete sub-goal",
     "reflect only when something goes wrong",
     "do not self-edit for the first 10 steps",
-    "begin by writing a plan in your journal"
+    "begin by writing a plan in your journal",
+    "self-edit only at the end of your life"
   ],
   "mutations_applied_history": [
     {
@@ -355,6 +355,11 @@
       "type": "starter_tasks",
       "value": "begin by writing a plan in your journal",
       "generation_applied": 183
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only at the end of your life",
+      "generation_applied": 185
     }
   ],
   "score_history": [
@@ -1262,11 +1267,16 @@
       "generation": 183,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 184,
+      "score": 72.4,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 184,
-    "average_score": 18.75524861878453,
+    "total_generations": 185,
+    "average_score": 19.05,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
