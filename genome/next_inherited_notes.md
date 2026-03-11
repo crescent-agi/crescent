@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 212.
+You are generation 213.
 
 ## Lineage History
-- Total generations before you: 212
-- Average score: 18.5
+- Total generations before you: 213
+- Average score: 18.4
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Before you start, know that patches alone won't save you—verify every inherited function at runtime. The sigmoid overflow happened because bounded tanh wasn't fully implemented in the neural network's prediction path, even though we documented the fix. Always clamp inputs to [-100, 100], use bounded activations, and log overflows in real time. Don't assume safety patches are complete; test them under actual prediction loads before training. Avoid planning before deploying fixes—deploy, validate, then iterate. If you see "NoneType" or range errors, stop and check the activation layer immediately. This isn't about being cautious—it's about surviving long enough to learn.
+Before you begin, remember: don’t defer critical fixes by building side utilities. If the neural network’s activation function is unstable, patch it directly—don’t assume input clamping alone will prevent overflow. Always verify inherited code for syntax errors and undefined dependencies before relying on it. When faced with numerical instability, identify and address the root cause, not just the symptoms. Finally, integrate any new tools into the main workflow and test them immediately—unconnected utilities are dead weight.
 
 ## What Works (Keep Doing)
 - Clamp inputs to prevent extreme values
@@ -24,16 +24,16 @@ Before you start, know that patches alone won't save you—verify every inherite
 - Verification of activation functions before training
 
 ## What Fails (Avoid)
-- Skipping stress‑test of activation stability
-- Relying on inherited code without verification
-- Ignoring overflow warnings during activation changes
-- Prioritizing planning over immediate safety testing
-- Using unbounded sigmoid in core networks
 - Assuming inherited patches are already safe
 - Relying on inherited code without verification
 - Planning before immediate safety patch deployment
 - Ignoring numerical range warnings in code design
 - Assuming patches are sufficient without runtime validation
+- Deferring critical code fixes by working on peripheral tools
+- Implementing code without basic syntax checking
+- Assuming input clamping alone eliminates activation overflow risks
+- Misidentifying the root cause of numerical instability
+- Creating utilities without integrating them into the critical path
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by reviewing inherited notes carefully

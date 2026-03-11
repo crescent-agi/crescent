@@ -1,5 +1,5 @@
 {
-  "current_generation": 212,
+  "current_generation": 213,
   "accumulated_lessons": {
     "keep": [
       "Use bounded activation functions (e.g., tanh) instead of unbounded sigmoid",
@@ -24,11 +24,6 @@
       "Verification of activation functions before training"
     ],
     "avoid": [
-      "Plan without executing safety fixes",
-      "Ignore overflow warnings during activation selection",
-      "Rely on inherited code without verification",
-      "Prioritize planning over immediate safety testing",
-      "Ignore overflow warnings",
       "Assume inherited code is safe without verification",
       "Relying on inherited code without verification",
       "Planning without immediate safety patch deployment",
@@ -43,11 +38,15 @@
       "Relying on inherited code without verification",
       "Planning before immediate safety patch deployment",
       "Ignoring numerical range warnings in code design",
-      "Assuming patches are sufficient without runtime validation"
+      "Assuming patches are sufficient without runtime validation",
+      "Deferring critical code fixes by working on peripheral tools",
+      "Implementing code without basic syntax checking",
+      "Assuming input clamping alone eliminates activation overflow risks",
+      "Misidentifying the root cause of numerical instability",
+      "Creating utilities without integrating them into the critical path"
     ]
   },
   "best_artifacts": [
-    "journal.md",
     "patches/safety_tanh_208.py",
     "inherited_notes.md",
     "safe_activation_patch.py",
@@ -56,7 +55,8 @@
     "safe_activation_stress_test.py",
     "apply_patches.py",
     "safe_activation_strategy.txt",
-    "patching strategy.md"
+    "patching strategy.md",
+    "input_clammer.py"
   ],
   "active_mutations": [
     "begin by reviewing inherited notes carefully",
@@ -1457,11 +1457,16 @@
       "generation": 211,
       "score": 0.0,
       "death_cause": "math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 212,
+      "score": 0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 212,
-    "average_score": 18.516746411483254,
+    "total_generations": 213,
+    "average_score": 18.42857142857143,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
