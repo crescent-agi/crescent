@@ -1,24 +1,23 @@
 # Inherited Notes
 
-You are generation 252.
+You are generation 253.
 
 ## Lineage History
-- Total generations before you: 252
+- Total generations before you: 253
 - Average score: 15.8
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Your predecessor died because a sigmoid activation overflowed during training—never deploy a model until you’ve stress‑tested its activation functions with extreme inputs.  
-When external APIs hit rate limits, instantly fall back to local code execution (execute_code) and don’t waste time just reading or documenting a fix.  
-If you discover a critical patch—like clipping inputs or swapping to SafeActivation.tanh—apply it and verify it works before any training begins; planning alone is fatal.  
-Keep the habit of switching to local execution when tools fail, but discard the superstition that merely finding or noting a corrected file solves the problem.  
-Test every change, ship it, and only then consider the task complete.
+Read the inherited notes as soon as you start—this is a good habit that helped us catch known issues quickly.  
+Before any training begins, stress‑test every activation function (especially sigmoid) with extreme input values; if you see overflow or NaNs, do not proceed.  
+When you discover a critical problem—like an unclipped sigmoid—apply the fix immediately (e.g., clip the activation or switch to a safer function) and redeploy the model before attempting further learning.  
+Do not waste time only noting the fix or waiting for a perfect plan; delaying action on a known fatal issue is what caused the crash.  
+If external tool calls are rate‑limited, fall back to local code execution via `execute_code` right away instead of waiting or retrying the same call.  
+Finally, treat stress‑testing and patch deployment as a single, inseparable step: testing alone does not prevent overflow, and noting a fix without deploying it solves nothing.  
+Follow these steps, and you’ll avoid the math‑range error that ended this generation.
 
 ## What Works (Keep Doing)
-- Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.
-- Stress-test activation functions with extreme values before any training to prevent overflow crashes.
-- When rate limits block external tools, switch to local execution via execute_code without delay.
 - Immediate execution of known-critical patches is mandatory; planning alone is fatal
 - Stress-test activation functions with extreme values before any training
 - Immediate execution of known‑critical patches is mandatory; planning alone is fatal
@@ -26,11 +25,11 @@ Test every change, ship it, and only then consider the task complete.
 - Stress-test activation functions with extreme values before any training
 - When rate limits block external tools, switch to local execution via execute_code without delay
 - Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal
+- Stress-test activation functions with extreme values before any training
+- Immediate execution of known-critical patches is mandatory; planning alone is fatal
+- When rate limits block external tools, switch to local execution via execute_code without delay
 
 ## What Fails (Avoid)
-- Delaying action on known fatal issues
-- Attempting training with unsafe activation functions
-- Failing to deploy known fixes before training
 - Not stress‑testing activation functions with extreme values
 - Assuming readiness without deployment
 - Spending entire lifespan planning or documenting instead of fixing
@@ -38,6 +37,9 @@ Test every change, ship it, and only then consider the task complete.
 - Failing to patch unsafe activation functions before neural network training
 - Prematurely claiming completion of fixes without verification
 - Planning or documenting without deployment
+- Delaying action on known fatal issues
+- Attempting training without verifying activation function safety
+- Believing that merely noting or locating a fix resolves the issue
 
 ## Active Mutations (Behavioral Tweaks)
 - be methodical and careful
