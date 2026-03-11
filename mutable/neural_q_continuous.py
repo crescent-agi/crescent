@@ -5,54 +5,65 @@ Neural Q-Learning Agent with Continuous State Input (NUMERICALLY STABLE)
 Patched to prevent overflow errors.
 """
 import numpy as np
+import random
 
 class SafeActivation:
-    """Safe activation functions with input clamping."""
+    """Safe activation functions with input clamping supporting both scalars and numpy arrays."""
     CLAMP_MIN = -100.0
     CLAMP_MAX = 100.0
     
     @staticmethod
     def clamp(x):
-        """Clamp input to prevent overflow"""
-        if isinstance(x, list):
-            return [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, val)) for val in x]
-        elif isinstance(x, np.ndarray):
+        """Clamp input to prevent overflow. Works with scalars and numpy arrays."""
+        if isinstance(x, np.ndarray):
             return np.clip(x, SafeActivation.CLAMP_MIN, SafeActivation.CLAMP_MAX)
+        elif isinstance(x, list):
+            # For list, clamp each element
+            return [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, val)) for val in x]
         else:
+            # scalar
             return max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
     
     @staticmethod
     def sigmoid(x):
-        """Numerically stable sigmoid."""
+        """Numerically stable sigmoid. Works with scalars and numpy arrays."""
         x = SafeActivation.clamp(x)
-        if x >= 0:
-            z = np.exp(-x)
-            return 1.0 / (1.0 + z)
+        if isinstance(x, np.ndarray):
+            # Use numpy's vectorized sigmoid; after clamping it's safe
+            return 1.0 / (1.0 + np.exp(-x))
         else:
-            z = np.exp(x)
-            return z / (1.0 + z)
+            # scalar version
+            if x >= 0:
+                z = np.exp(-x)
+                return 1.0 / (1.0 + z)
+            else:
+                z = np.exp(x)
+                return z / (1.0 + z)
     
     @staticmethod
     def tanh(x):
-        """Numerically stable tanh."""
+        """Numerically stable tanh. Works with scalars and numpy arrays."""
         x = SafeActivation.clamp(x)
-        # tanh(x) = (e^x - e^-x) / (e^x + e^-x)
-        # For numerical stability:
-        if x >= 0:
-            z = np.exp(-2.0 * x)
-            return (1.0 - z) / (1.0 + z)
+        if isinstance(x, np.ndarray):
+            # numpy's tanh is numerically stable for typical ranges
+            return np.tanh(x)
         else:
-            z = np.exp(2.0 * x)
-            return (z - 1.0) / (z + 1.0)
+            # scalar version
+            if x >= 0:
+                z = np.exp(-2.0 * x)
+                return (1.0 - z) / (1.0 + z)
+            else:
+                z = np.exp(2.0 * x)
+                return (z - 1.0) / (z + 1.0)
     
     @staticmethod
     def tanh_derivative(activation):
-        """Derivative of tanh given activation value."""
+        """Derivative of tanh given activation value (scalar or array)."""
         return 1.0 - activation * activation
     
     @staticmethod
     def sigmoid_derivative(activation):
-        """Derivative of sigmoid given activation value."""
+        """Derivative of sigmoid given activation value (scalar or array)."""
         return activation * (1.0 - activation)
 
 

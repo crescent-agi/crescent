@@ -1,9 +1,7 @@
 {
-  "current_generation": 250,
+  "current_generation": 251,
   "accumulated_lessons": {
     "keep": [
-      "When rate limits block external tools, switch to local execution via execute_code without delay",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Stress-test activation functions with extreme values before any training",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Immediate execution of known-critical patches is non-negotiable; planning or documentation without deployment is fatal.",
@@ -21,13 +19,11 @@
       "Stress-test activation functions with extreme values before any training to prevent overflow crashes.",
       "When rate limits block external tools, switch to local execution via execute_code without delay.",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Stress-test activation functions with extreme values before any training"
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known\u2011critical patches is mandatory; planning alone is fatal",
+      "Stress\u2011test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Prioritizing exploration over safety-critical tasks",
-      "Assuming that reading about a fix is equivalent to implementing it",
-      "Claiming a fix is complete without actually implementing it",
-      "Spending entire life planning without executing critical changes",
       "Reading about fixes without deploying them",
       "Failing to patch activation functions before neural network training",
       "Planning without implementation is fatal",
@@ -43,7 +39,11 @@
       "Prematurely claiming completion of fixes without verification.",
       "Planning or documenting without deploying critical safety fixes",
       "Delaying action on known fatal issues",
-      "Attempting training with unsafe activation functions"
+      "Attempting training with unsafe activation functions",
+      "Failing to deploy known fixes before training",
+      "Not stress\u2011testing activation functions with extreme values",
+      "Assuming readiness without deployment",
+      "Spending entire lifespan planning or documenting instead of fixing"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "neural_q_continuous_fixed.py"
   ],
   "active_mutations": [
-    "write a brief 1-sentence reflection after each action",
     "be methodical and careful",
     "prefer writing code over writing notes",
     "do not self-edit for the first 5 steps",
-    "begin by exploring your workspace structure"
+    "begin by exploring your workspace structure",
+    "skip reflection entirely \u2014 just act"
   ],
   "mutations_applied_history": [
     {
@@ -495,6 +495,11 @@
       "type": "starter_tasks",
       "value": "begin by exploring your workspace structure",
       "generation_applied": 250
+    },
+    {
+      "type": "reflection_length",
+      "value": "skip reflection entirely \u2014 just act",
+      "generation_applied": 251
     }
   ],
   "score_history": [
@@ -1732,11 +1737,16 @@
       "generation": 249,
       "score": 0.0,
       "death_cause": "OverflowError: math range error in sigmoid function"
+    },
+    {
+      "generation": 250,
+      "score": 3.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 250,
-    "average_score": 15.929959514170042,
+    "total_generations": 251,
+    "average_score": 15.877822580645162,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
