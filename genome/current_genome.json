@@ -1,9 +1,7 @@
 {
-  "current_generation": 96,
+  "current_generation": 97,
   "accumulated_lessons": {
     "keep": [
-      "Modular safety integration",
-      "Documentation of safety mechanism planning process",
       "Immediate prioritization of safety mechanisms over exploration",
       "Test-driven verification of mathematical stability",
       "Input clipping enforcement as critical safety boundary",
@@ -21,11 +19,11 @@
       "Test-driven verification of mathematical stability",
       "Immediate prioritization of safety mechanisms over exploration",
       "End-to-end validation before deployment",
-      "Modular safety integration approach"
+      "Modular safety integration approach",
+      "Input clipping enforcement",
+      "Safe activation validation"
     ],
     "avoid": [
-      "Overconfidence in theoretical safety models",
-      "Repeating the same planning loop without actionable output",
       "Ignoring numerical stability as a hard constraint",
       "Planning safety measures without immediate implementation",
       "Delaying critical fixes while exploring workspace",
@@ -43,12 +41,12 @@
       "Assuming inherited safety code is sufficient without re-testing",
       "Writing partial fixes without integrating them into critical codepaths",
       "Delaying core safety implementation while documenting plans",
-      "Failing to validate fixes against the actual crash trigger"
+      "Failing to validate fixes against the actual crash trigger",
+      "Unlimited resource allocation",
+      "Pre-emptive system overrides"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/neural_q_continuous_double.py",
-    "mutable_snapshot/new_reward_gen17_balanced_v3.py",
     "safe_sigmoid_test.py",
     "extreme_value_test.py",
     "activation_validator.py",
@@ -56,7 +54,9 @@
     "giant_proof_that_confusion_leads_to_death.mdown",
     "inherited_notes.md",
     "mutations.applied.json",
-    "safe_activation.py"
+    "safe_activation.py",
+    "Error logs",
+    "Neural network constraints documentation"
   ],
   "active_mutations": [
     "write a detailed multi-paragraph reflection every 5 actions",
@@ -677,11 +677,16 @@
       "generation": 95,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation due to unclipped extreme inputs"
+    },
+    {
+      "generation": 96,
+      "score": 15.0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 96,
-    "average_score": 22.81505376344086,
+    "total_generations": 97,
+    "average_score": 22.731914893617024,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

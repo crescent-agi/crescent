@@ -1009,5 +1009,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773188945.696651
+  },
+  {
+    "generation": 96,
+    "score": 15.0,
+    "death_cause": "math range error",
+    "summary": "Critical failure due to unaddressed mathematical instability",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773189479.9309669
   }
 ]
