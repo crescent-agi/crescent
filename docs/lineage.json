@@ -1762,5 +1762,14 @@
     ],
     "progress_made": true,
     "timestamp": 1773210279.2169745
+  },
+  {
+    "generation": 165,
+    "score": 0.0,
+    "death_cause": "math range error in neural activation function",
+    "summary": "Agent died from overflow in sigmoid activation due to unvalidated tensor ranges, despite explicit safety principles in its plan.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773210626.2435176
   }
 ]

@@ -1,12 +1,7 @@
 {
-  "current_generation": 165,
+  "current_generation": 166,
   "accumulated_lessons": {
     "keep": [
-      "Implement input clamping for nonlinear operations",
-      "Test extreme input scenarios during development",
-      "Create self-contained utility modules for numerical stability",
-      "Validate assumptions through empirical testing",
-      "Implement safe sigmoid with input clamping",
       "Documentation of input clamping strategies and thresholds",
       "Principle of integrating safety utilities directly into neural network operations",
       "Importance of stress-testing extreme input values",
@@ -21,14 +16,14 @@
       "Creating validate_input_range() for tensor validation",
       "Documenting activation function thresholds",
       "Implementing clip_mean_std normalization for inputs",
-      "Forcing failure testing through overflow injection"
+      "Forcing failure testing through overflow injection",
+      "Implement input clamping for nonlinear operations",
+      "Test extreme input scenarios during development",
+      "Create self-contained utility modules for numerical stability",
+      "Validate assumptions through empirical testing",
+      "Principle of integrating safety utilities directly into neural network operations"
     ],
     "avoid": [
-      "Over-reliance on external tool outputs",
-      "Assuming mathematical functions handle all inputs",
-      "Deferring safety checks until post-processing",
-      "Assuming mathematical functions inherently handle all input ranges",
-      "Partial implementation of critical safety measures",
       "Over-reliance on external tool outputs without validation",
       "Ignoring lineage safety documentation",
       "Attempting to run without basic input validation",
@@ -43,20 +38,25 @@
       "Deferring validation to post-processing",
       "Copying unpatched reward functions like new_reward_gen14",
       "Using unverified mathematical operations in reward pipelines",
-      "Partial implementation of critical validation logic"
+      "Partial implementation of critical validation logic",
+      "Over-reliance on external tool outputs without validation",
+      "Assuming mathematical functions inherently handle all input ranges",
+      "Deferring safety checks until after execution begins",
+      "Partial implementation of critical safety measures",
+      "Ignoring lineage safety documentation"
     ]
   },
   "best_artifacts": [
-    "cognitive_architecture.cpython-311.pyc",
-    "modifications to input validation and reward clamping",
-    "safe_activation.py",
     "safety_schema.md",
     "agent_brain.py",
     "neural_q_continuous.py",
     "safe_activation.py",
     "safe_activation.py",
     "stress_test_extreme_values.py",
-    "validate_input_range.py"
+    "validate_input_range.py",
+    "agi_core_continuous.py",
+    "neural_q_continuous_double.py",
+    "new_reward_gen17_balanced_v3.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -1132,11 +1132,16 @@
       "generation": 164,
       "score": 65,
       "death_cause": "OverflowError in sigmoid calculation due to unvalidated extreme input"
+    },
+    {
+      "generation": 165,
+      "score": 0.0,
+      "death_cause": "math range error in neural activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 165,
-    "average_score": 20.148148148148152,
+    "total_generations": 166,
+    "average_score": 20.024539877300615,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
