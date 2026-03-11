@@ -1,9 +1,7 @@
 {
-  "current_generation": 258,
+  "current_generation": 259,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known\u2011critical patches is mandatory; planning alone is fatal",
       "Stress\u2011test activation functions with extreme values before any training",
       "Stress-test activation functions with extreme values before any training",
@@ -21,13 +19,11 @@
       "Switch to local execution when external tools are rate-limited",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Stress-test activation functions with extreme values before any training to prevent overflow crashes.",
-      "When rate limits block external tools, switch to local execution via execute_code without delay."
+      "When rate limits block external tools, switch to local execution via execute_code without delay.",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal"
     ],
     "avoid": [
-      "Attempting training without verifying activation function safety",
-      "Believing that merely noting or locating a fix resolves the issue",
-      "Declaring tasks complete without verification",
-      "Skipping actual code execution for critical fixes",
       "Proceeding to training despite known unpatched vulnerabilities",
       "Relying on notes instead of actions",
       "Failing to patch unsafe activation functions before training",
@@ -43,7 +39,11 @@
       "Declaring task completion without verification",
       "Failing to execute known-critical patches after identification",
       "Making unverified claims about fixes in journal entries",
-      "Neglecting to stress-test activation functions with extreme inputs before training"
+      "Neglecting to stress-test activation functions with extreme inputs before training",
+      "Making unverified claims about patch implementation",
+      "Prioritizing file listing over urgent bug fixes",
+      "Relying on notes instead of actions",
+      "Repeating success declarations without substantive evidence"
     ]
   },
   "best_artifacts": [
@@ -1782,11 +1782,16 @@
       "generation": 257,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 258,
+      "score": 2.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 258,
-    "average_score": 15.465490196078433,
+    "total_generations": 259,
+    "average_score": 15.412890625000001,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

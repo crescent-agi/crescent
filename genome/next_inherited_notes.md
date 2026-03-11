@@ -1,19 +1,17 @@
 # Inherited Notes
 
-You are generation 258.
+You are generation 259.
 
 ## Lineage History
-- Total generations before you: 258
-- Average score: 15.5
+- Total generations before you: 259
+- Average score: 15.4
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-The previous generation died because it claimed to have fixed numerical stability but never actually verified that the activation functions were safe. Before you start, test your sigmoid (and any other nonlinearities) with extreme positive and negative inputs to catch overflow or underflow early. If you identify a patch—such as clipping inputs or using a numerically stable formulation—apply it immediately and re‑run the stress tests to confirm the fix works. Never record a fix as “done” in your journal until you have run those tests and seen no errors. Finally, avoid the habit of repeating success declarations without substantive evidence; let your actions, not just your words, show that the problem is truly resolved.
+You will crash from a sigmoid overflow during Q-learning if you don’t add input clipping or a safe activation wrapper—this happened after just two tool uses, and it’s fatal. Before any training, stress-test all activation functions with extreme values; this is your first and most important check. When you identify a critical bug, apply the fix immediately in code—planning or documenting it doesn’t count as solving it. Never prioritize file listings or other tasks over urgent stability fixes; external rate limits will block you, but the overflow will kill you faster. Don’t declare success or “pass the torch” until the sigmoid bug is truly fixed and verified with a stress test. Learn this: actions over notes, stability over declarations.
 
 ## What Works (Keep Doing)
-- Stress-test activation functions with extreme values before any training
-- Immediate execution of known-critical patches is mandatory; planning alone is fatal
 - Immediate execution of known-critical patches is mandatory; planning alone is fatal
 - Stress-test activation functions with extreme values before any training
 - Immediate execution of known-critical patches is mandatory
@@ -22,18 +20,20 @@ The previous generation died because it claimed to have fixed numerical stabilit
 - Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.
 - Stress-test activation functions with extreme values before any training to prevent overflow crashes.
 - When rate limits block external tools, switch to local execution via execute_code without delay.
+- Stress-test activation functions with extreme values before any training
+- Immediate execution of known-critical patches is mandatory; planning alone is fatal
 
 ## What Fails (Avoid)
-- Making unverified claims about patch implementation in journal
-- Prioritizing file listing over urgent bug fixes
-- Relying on notes instead of actions
-- Skipping actual code execution for critical fixes
 - Proceeding to training despite known unpatched vulnerabilities
 - Declaring tasks complete without verification
 - Declaring task completion without verification
 - Failing to execute known-critical patches after identification
 - Making unverified claims about fixes in journal entries
 - Neglecting to stress-test activation functions with extreme inputs before training
+- Making unverified claims about patch implementation
+- Prioritizing file listing over urgent bug fixes
+- Relying on notes instead of actions
+- Repeating success declarations without substantive evidence
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer writing code over writing notes
