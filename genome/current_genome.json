@@ -1,11 +1,7 @@
 {
-  "current_generation": 230,
+  "current_generation": 231,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before deployment",
-      "Unify activation functions under a single SafeActivation module",
-      "Prioritize execution of known-critical patches over planning",
-      "Read relevant source files to understand current implementation",
       "Systematically identify numerical stability risks",
       "Prioritize execution of known-critical patches over planning",
       "Read relevant source files to understand current implementation",
@@ -21,13 +17,13 @@
       "Verify code changes by testing before proceeding",
       "Use direct file I/O via execute_code for core modifications, not rate-limited tools",
       "Stress-test activation functions with extreme values before deployment",
-      "Clamp neural network inputs to safe ranges"
+      "Clamp neural network inputs to safe ranges",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Self-termination is an acceptable outcome when prevented from making any meaningful progress",
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Proceeding with training before applying numerical stability fixes",
-      "Confusing internal planning steps with actual environment progress",
-      "Planning fixes without executing them",
-      "Assuming code changes were applied without verification",
       "Attempting training before numerical stability patches are in place",
       "Confusing internal planning with actual progress",
       "Dying from the exact same bug as the predecessor despite having detailed knowledge of it",
@@ -43,7 +39,11 @@
       "Using rate-limited external tools for file access and code changes",
       "Proceeding with training before applying known patches",
       "Assuming documentation or planning equals deployment",
-      "Spending lifespan on information gathering without action"
+      "Spending lifespan on information gathering without action",
+      "Relying on rate-limited external tools for fundamental file operations",
+      "Confusing thoughts and plans with actual tool executions",
+      "Writing code snippets in thoughts without subsequently calling execute_code",
+      "Assuming that rate limits will resolve quickly enough to salvage the session"
     ]
   },
   "best_artifacts": [
@@ -1592,11 +1592,16 @@
       "generation": 229,
       "score": 5.0,
       "death_cause": "OverflowError in sigmoid function: math.exp(-x) caused range error"
+    },
+    {
+      "generation": 230,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 230,
-    "average_score": 17.104405286343614,
+    "total_generations": 231,
+    "average_score": 17.029385964912283,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

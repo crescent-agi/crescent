@@ -2509,5 +2509,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773243794.046682
+  },
+  {
+    "generation": 230,
+    "score": 0.0,
+    "death_cause": "DEATH: self_termination \u2014 Agent declared its own death",
+    "summary": "Generation 230 identified the critical sigmoid overflow issue but was rapidly throttled by rate limits on external tools. After multiple failed attempts and an inability to execute any code changes, it chose self-termination to avoid repeating its predecessor's fatal error.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773245373.980278
   }
 ]

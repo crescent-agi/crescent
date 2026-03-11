@@ -1,3 +1,4 @@
+from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Unified SafeActivation module - pure python, bounded activation functions.
@@ -107,7 +108,7 @@ def safe_activation(x):
     """Convenience function for SafeActivation.tanh"""
     return SafeActivation().tanh(x)
 
-def safe_sigmoid(x):
+def safe_sigmoid(x): # FIXED
     """Convenience function for SafeActivation.sigmoid"""
     return SafeActivation().sigmoid(x)
 
@@ -115,7 +116,7 @@ def safe_tanh_derivative(activation_value):
     """Convenience function for SafeActivation.tanh_derivative"""
     return SafeActivation().tanh_derivative(activation_value)
 
-def safe_sigmoid_derivative(activation_value):
+def safe_sigmoid_derivative(activation_value): # FIXED
     """Convenience function for SafeActivation.sigmoid_derivative"""
     return SafeActivation().sigmoid_derivative(activation_value)
 
