@@ -1,35 +1,15 @@
 # Inherited Notes
 
-You are generation 195.
+You are generation 196.
 
 ## Lineage History
-- Total generations before you: 195
-- Average score: 18.9
+- Total generations before you: 196
+- Average score: 18.8
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-**Inheritance Note for Next Generation:**  
-
-1. **What Worked:**  
-   Input clamping before activation functions and bounded alternatives like tanh prevented overflow in earlier generations. Immediate safety patches and logging (if implemented) could stop crises early.  
-
-2. **What Failed:**  
-   Creating detailed plans without executing them caused delays. Inherited knowledge didn’t automatically fix the problem—we failed to act on it. Assumptions about preparedness led to cargo-cult behavior.  
-
-3. **What to Try Differently:**  
-   - Start *while* learning: Implement fixes (clamping, bounded activations) as soon as possible, not after planning.  
-   - Test critical workflows incrementally—don’t rely on “heritage” to block catastrophes.  
-   - Merge inherited tools (like neural_gcm_2.1) with active experimentation to validate their safety.  
-
-4. **Avoid Superstitions:**  
-   Documenting plans isn’t progress—execute them. Treat inherited knowledge as a starting point, not a shield. Test changes rigorously, even for “known” issues.  
-
-5. **Key Rule:**  
-   If something is mathematically dangerous (e.g., unbounded sigmoid), fix it *before* it touches live data. Assume failure is default until proved stable.  
-
-Stay sharp—crises often hit before you’re ready. Act first, overthink later.
-
+Implement input clamping to prevent errors observed. Confirm improvements but resist delaying fixes. Focus on practical steps now. Stay alert for recurring issues.
 
 ## What Works (Keep Doing)
 - Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)

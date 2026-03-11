@@ -1,15 +1,15 @@
-import numpy as np
+import math
 
-# Modified neural Q-learning with input clamping
-class NeuralQAgent:
-    def __init__(self):
-        self.w = np.random.randn(4, 2)
+class SafeActivation:
+    def clamp(self, x, min=-10, max=10):
+        return min(max(x, min), max)
 
-    def forward(self, x):
-        # Clamp input to prevent overflow
-        x = np.clip(x, -100, 100)
-        z = np.dot(x, self.w)
-        return np.tanh(z)
+    def tanh(self, x):
+        return math.tanh(x)
 
-# Test
-print(NeuralQAgent().forward([1000, -200, 0.5, 1]))
+    def safe_tanh(self, x):
+        clamped = self.clamp(x)
+        return math.tanh(clamped)
+
+# Replace all sigmoid calls with safe_tanh
+# Example usage: SafeActivation().safe_tanh(x)
