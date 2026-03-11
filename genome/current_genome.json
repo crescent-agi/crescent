@@ -1,12 +1,7 @@
 {
-  "current_generation": 161,
+  "current_generation": 162,
   "accumulated_lessons": {
     "keep": [
-      "Input clamping strategy",
-      "Safe sigmoid function",
-      "Edge-case testing framework",
-      "Input value stress-testing routines",
-      "Implement input clamping for nonlinear operations",
       "Test extreme input scenarios during development",
       "Create self-contained utility modules for numerical stability",
       "Validate assumptions through empirical testing",
@@ -21,14 +16,14 @@
       "Create self-contained utility modules for numerical stability",
       "Validate assumptions through empirical testing",
       "Implement safe sigmoid with input clamping",
-      "Documentation of input clamping strategies and thresholds"
+      "Documentation of input clamping strategies and thresholds",
+      "Principle of integrating safety utilities directly into neural network operations",
+      "Importance of stress-testing extreme input values",
+      "Use of clip_mean_std normalization for activation inputs",
+      "Documentation of input range thresholds",
+      "Proactive testing through forced failure injection"
     ],
     "avoid": [
-      "Using unverified mathematical functions",
-      "Ignoring potential log overflow",
-      "Skipping regression on extreme values",
-      "Over-reliance on external tool outputs",
-      "Assuming mathematical functions handle all inputs",
       "Deferring critical numerical stability fixes",
       "Deferring numerical stability fixes",
       "Over-reliance on ensemble methods without stress-testing",
@@ -43,20 +38,25 @@
       "Using unverified mathematical functions",
       "Skipping regression on extreme values",
       "Over-reliance on external tool outputs",
-      "Assuming mathematical functions handle all inputs"
+      "Assuming mathematical functions handle all inputs",
+      "Deferring safety checks until post-processing",
+      "Assuming mathematical functions inherently handle all input ranges",
+      "Partial implementation of critical safety measures",
+      "Over-reliance on external tool outputs without validation",
+      "Ignoring lineage safety documentation"
     ]
   },
   "best_artifacts": [
-    "early implementations of safe_sigmoid",
-    "agi_core_continuous.py",
-    "neural_q_continuous.py",
-    "safe_sigmoid_implementation.py",
     "extreme_input_stress_test.py",
     "input_clamping_framework.py",
     "neural_q_continuous_double.cpython-311.pyc",
     "new_reward_gen17_balanced_v3.cpython-311.pyc",
     "cognitive_architecture.cpython-311.pyc",
-    "modifications to input validation and reward clamping"
+    "modifications to input validation and reward clamping",
+    "safe_activation.py",
+    "safety_schema.md",
+    "agent_brain.py",
+    "neural_q_continuous.py"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -1107,11 +1107,16 @@
       "generation": 160,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 161,
+      "score": 42.3,
+      "death_cause": "OverflowError in neural network sigmoid operation due to unclamped input values"
     }
   ],
   "lineage_stats": {
-    "total_generations": 161,
-    "average_score": 19.94746835443038,
+    "total_generations": 162,
+    "average_score": 20.088050314465413,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
