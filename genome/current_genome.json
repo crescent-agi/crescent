@@ -1,14 +1,7 @@
 {
-  "current_generation": 181,
+  "current_generation": 182,
   "accumulated_lessons": {
     "keep": [
-      "Implementing input clamping for activation functions",
-      "The lineage message emphasizing the importance of immediate safety implementations",
-      "implementing numerical safeguards",
-      "stress testing stability",
-      "implement numerical stability before any computation runs",
-      "replace sigmoid with bounded alternatives like tanh or clipped ReLU",
-      "add input clamping for activation functions",
       "create and run stress tests for extreme input ranges",
       "prioritize immediate implementation of numerical stability guards",
       "run existing tests to check for regressions after safety patches",
@@ -21,9 +14,25 @@
       "add input clamping for activation functions",
       "create and run stress tests for extreme input ranges",
       "prioritize immediate implementation of numerical stability guards",
+      "run existing tests to check for regressions after safety patches",
+      "Implementing input clamping for activation functions",
+      "The lineage message emphasizing the importance of immediate safety implementations",
+      "replace sigmoid with bounded alternatives like tanh or clipped ReLU",
+      "add input clamping for activation functions",
+      "create and run stress tests for extreme input ranges",
+      "prioritize immediate implementation of numerical stability guards",
       "run existing tests to check for regressions after safety patches"
     ],
     "avoid": [
+      "using unbounded activation functions without safeguards",
+      "over-reliance on self-reflection without action",
+      "ignoring lineage safety warnings",
+      "deferring critical safety fixes in favor of planning",
+      "prioritizing planning over immediate implementation of safety measures",
+      "using unbounded activation functions without safeguards",
+      "ignoring lineage safety warnings",
+      "deferring critical fixes until execution begins",
+      "over-reliance on self-reflection without action",
       "Analysis paralysis despite having clear, actionable warnings",
       "Creating extensive documentation without producing working code",
       "Creating extensive planning without implementing safeguards",
@@ -34,16 +43,7 @@
       "Creating plans without implementing basic safeguards",
       "deferring critical fixes",
       "ignoring error reporting",
-      "deferring safety checks until after execution begins",
-      "using unbounded activation functions without safeguards",
-      "over-reliance on self-reflection without action",
-      "ignoring lineage safety warnings",
-      "deferring critical safety fixes in favor of planning",
-      "prioritizing planning over immediate implementation of safety measures",
-      "using unbounded activation functions without safeguards",
-      "ignoring lineage safety warnings",
-      "deferring critical fixes until execution begins",
-      "over-reliance on self-reflection without action"
+      "deferring safety checks until after ex"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "neural_q_continuous.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "prefer exploring the workspace before acting",
     "make a detailed plan before acting (10+ steps)",
     "begin by setting a concrete sub-goal",
-    "reflect only when something goes wrong"
+    "reflect only when something goes wrong",
+    "do not self-edit for the first 10 steps"
   ],
   "mutations_applied_history": [
     {
@@ -345,6 +345,11 @@
       "type": "reflection_length",
       "value": "reflect only when something goes wrong",
       "generation_applied": 180
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 10 steps",
+      "generation_applied": 182
     }
   ],
   "score_history": [
@@ -1237,11 +1242,16 @@
       "generation": 180,
       "score": 12.5,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 181,
+      "score": 0.0,
+      "death_cause": "math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 181,
-    "average_score": 18.688202247191015,
+    "total_generations": 182,
+    "average_score": 18.583798882681567,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

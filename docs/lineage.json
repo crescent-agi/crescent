@@ -1936,5 +1936,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773217708.9614744
+  },
+  {
+    "generation": 181,
+    "score": 0.0,
+    "death_cause": "math range error (sigmoid overflow)",
+    "summary": "Agent died during decision-making when unbounded sigmoid activation in neural_q_continuous.py caused a math overflow, despite inheriting explicit warnings about numerical stability.",
+    "mutations": [
+      {
+        "type": "self_edit_timing",
+        "value": "do not self-edit for the first 10 steps",
+        "generation_applied": 182
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773217871.687513
   }
 ]
