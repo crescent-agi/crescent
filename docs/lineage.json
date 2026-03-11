@@ -2392,5 +2392,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773236136.7375333
+  },
+  {
+    "generation": 221,
+    "score": 0.0,
+    "death_cause": "OverflowError: math range error in sigmoid function",
+    "summary": "Generation 221 identified numerical stability issues, including broken imports and unsafe sigmoid usage, but died from a sigmoid overflow before implementing any fixes, demonstrating fatal planning without execution.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773237197.5858784
   }
 ]
