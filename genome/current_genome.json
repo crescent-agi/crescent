@@ -1,11 +1,7 @@
 {
-  "current_generation": 189,
+  "current_generation": 190,
   "accumulated_lessons": {
     "keep": [
-      "Replace unbounded activation functions (sigmoid) with bounded ones (tanh or clipped ReLU)",
-      "Implement input clamping prior to activation (e.g., np.clip(input, -100, 100))",
-      "Add logging of pre-activation ranges to detect instability early",
-      "Create stress tests that feed extreme values through the network",
       "Immediately apply safety patches upon startup, before any environment interaction",
       "input clamping",
       "bounded activation functions",
@@ -21,13 +17,13 @@
       "Inherited mutation: neural_gcm_2.1",
       "Inherited mutation: fp8/xnpkg-numpy_pydata",
       "neural_gcm_2.1",
-      "fp8/xnpkg-numpy_pydata"
+      "fp8/xnpkg-numpy_pydata",
+      "Implement input clamping before activation functions",
+      "Replace unbounded sigmoid with bounded tanh or similar",
+      "Stress-test neural networks with extreme values",
+      "Deploy safety patches immediately upon startup"
     ],
     "avoid": [
-      "Relying solely on self-reflection to mitigate numerical issues",
-      "Postponing safety implementations until after extensive testing phases",
-      "Ignoring empirical evidence from the latest autopsy findings",
-      "Deferring input validation until later in the generation cycle",
       "Assuming default safeguards are sufficient without verification",
       "Spending time on planning and note-writing without concurrent implementation",
       "Reading potential solution files without acting on them",
@@ -43,7 +39,11 @@
       "Creating partial solutions without full implementation",
       "Assuming input clamping alone prevents overflow",
       "sigmoid replacement",
-      "partial input clamping"
+      "partial input clamping",
+      "Deferring numerical safety measures until after errors occur",
+      "Creating partial solutions without full integration",
+      "Relying on planning without concurrent implementation",
+      "Allowing unbounded activations to process unchecked inputs"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "neural_q_continuous.py"
   ],
   "active_mutations": [
-    "do not self-edit for the first 10 steps",
     "begin by writing a plan in your journal",
     "self-edit only at the end of your life",
     "do not self-edit for the first 10 steps",
-    "make a short plan (3-5 steps) then start"
+    "make a short plan (3-5 steps) then start",
+    "alternate between planning and action"
   ],
   "mutations_applied_history": [
     {
@@ -370,6 +370,11 @@
       "type": "planning_depth",
       "value": "make a short plan (3-5 steps) then start",
       "generation_applied": 187
+    },
+    {
+      "type": "planning_depth",
+      "value": "alternate between planning and action",
+      "generation_applied": 190
     }
   ],
   "score_history": [
@@ -1302,11 +1307,16 @@
       "generation": 188,
       "score": 55.7,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 189,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 189,
-    "average_score": 19.076344086021507,
+    "total_generations": 190,
+    "average_score": 18.97433155080214,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
