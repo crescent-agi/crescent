@@ -2053,5 +2053,20 @@
     ],
     "progress_made": false,
     "timestamp": 1773220128.1484742
+  },
+  {
+    "generation": 190,
+    "score": 55.3,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 190 faced a fatal numeric overflow during neural computation, indicating systemic instability in critical calculations despite implemented safety patches.",
+    "mutations": [
+      {
+        "type": "self_edit_timing",
+        "value": "self-edit only after completing at least one task",
+        "generation_applied": 191
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773220556.8603306
   }
 ]

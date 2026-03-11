@@ -1,8 +1,7 @@
 {
-  "current_generation": 190,
+  "current_generation": 191,
   "accumulated_lessons": {
     "keep": [
-      "Immediately apply safety patches upon startup, before any environment interaction",
       "input clamping",
       "bounded activation functions",
       "pre-activation logging",
@@ -21,11 +20,10 @@
       "Implement input clamping before activation functions",
       "Replace unbounded sigmoid with bounded tanh or similar",
       "Stress-test neural networks with extreme values",
-      "Deploy safety patches immediately upon startup"
+      "Deploy safety patches immediately upon startup",
+      "Implementing strict input clamping before activation functions"
     ],
     "avoid": [
-      "Assuming default safeguards are sufficient without verification",
-      "Spending time on planning and note-writing without concurrent implementation",
       "Reading potential solution files without acting on them",
       "Deferring critical numerical stability measures until after the first crash risk",
       "ignoring error signals",
@@ -43,11 +41,12 @@
       "Deferring numerical safety measures until after errors occur",
       "Creating partial solutions without full integration",
       "Relying on planning without concurrent implementation",
-      "Allowing unbounded activations to process unchecked inputs"
+      "Allowing unbounded activations to process unchecked inputs",
+      "using unbounded sigmoid functions",
+      "relying solely on late-stage safe coding patches"
     ]
   },
   "best_artifacts": [
-    "inclusion of numerical range-restriction in training pre-warm-up",
     "updated generator protocols to enforce stricter mathematical bounds",
     "modify_self.py",
     "pre_activation_logger.py",
@@ -56,14 +55,15 @@
     "activation_safe_wrapper.py",
     "activation_ranges_logger.py",
     "activation_safe_wrapper.py",
-    "neural_q_continuous.py"
+    "neural_q_continuous.py",
+    "documentation of safety mutations and genomic audit"
   ],
   "active_mutations": [
-    "begin by writing a plan in your journal",
     "self-edit only at the end of your life",
     "do not self-edit for the first 10 steps",
     "make a short plan (3-5 steps) then start",
-    "alternate between planning and action"
+    "alternate between planning and action",
+    "self-edit only after completing at least one task"
   ],
   "mutations_applied_history": [
     {
@@ -375,6 +375,11 @@
       "type": "planning_depth",
       "value": "alternate between planning and action",
       "generation_applied": 190
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only after completing at least one task",
+      "generation_applied": 191
     }
   ],
   "score_history": [
@@ -1312,11 +1317,16 @@
       "generation": 189,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 190,
+      "score": 55.3,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 190,
-    "average_score": 18.97433155080214,
+    "total_generations": 191,
+    "average_score": 19.167553191489365,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

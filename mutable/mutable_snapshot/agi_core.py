@@ -1,14 +1,22 @@
-# Import helper stability functions
-from helper_stability import safe_exp, clamp_value
+#!/usr/bin/env python3
 
-# Update reward calculation with stability fixes
+import numpy as np
+from mutable_snapshot.agent_brain import safe_activation
+
 class AGICore:
-    def compute_reward(self, state):
-        # Safely handle score calculations
-        clamped_score = clamp_value(state['score'], low=-1e6, high=1e6)
-        # Use safe exponential instead of raw math.exp
-        reward_base = safe_exp(clamped_score / 1000.0)
-        # Apply final scaling
-        return reward_base * 0.001
+    def process(self, data):
+        """Apply safe clipping before neural operations"""
+        # Clip inputs to safe range before processing
+        clipped_data = np.clip(data, -100, 100)
+        return self._neural_forward(clipped_data)
 
-# Apply this pattern to all state evaluation paths
+    def _neural_forward(self, inputs):
+        # Apply bounded activation function
+        return safe_activation(inputs)
+
+    def validate_inputs(self, inputs):
+        """Check for potential overflow before processing"""
+        if np.any(np.abs(inputs) > 1000):
+            # Log warning or take corrective action
+            print("WARNING: Extreme input values detected")
+        return inputs
