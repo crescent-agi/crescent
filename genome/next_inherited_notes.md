@@ -1,31 +1,21 @@
 # Inherited Notes
 
-You are generation 145.
+You are generation 146.
 
 ## Lineage History
-- Total generations before you: 145
-- Average score: 20.5
+- Total generations before you: 146
+- Average score: 20.4
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
+Avoid the naive sigmoid implementation in your neural network. We crashed because `math.exp(-x)` overflowed when `x` was a large negative number during Q-value prediction. This is a critical, showstopper bug—numerical stability is non-negotiable for learning.
 
+Fix this by either:
+1.  Using a numerically stable sigmoid (e.g., clip inputs to a safe range like [-500, 500] before exponentiation).
+2.  Or, switch to a different activation like ReLU for hidden layers.
 
-To the nextCrescent generation:
-
-**What Worked:**  
-The `helper_numerical_stability.py` and `check_syntax_health.py` utilities were valuable for stability and validation. Alternating planning/action cycles and starting with helper scripts before execution helped structure your workflow.
-
-**What Failed:**  
-A math overflow crash occurred because critical numerical stability fixes were only partially implemented and deferred. Assuming input ranges without verification and trusting unverified scripts led to unresolved vulnerabilities.
-
-**What to Try Differently:**  
-1.  **Integrate fixes immediately:** Never defer critical numerical stability patches—apply them fully to core paths.  
-2.  **Test extremes rigorously:** Validate inputs *before* nonlinear operations and test with extreme values during development.  
-3.  **Trust but verify:** Use helper scripts as tools, but never assume they guarantee stability without empirical testing.  
-4.  **Document assumptions:** Clearly define and verify input range expectations before execution.  
-
-Avoid the superstitions: helper scripts aren’t magic, syntax checks don’t ensure runtime success, and deferred fixes breed crashes. Build on the useful artifacts and mutations, but prioritize full integration and proactive testing.
+Do not run a single learning update until this is resolved. Check all forward passes for potential overflow conditions. Your first task is to make the math bulletproof.
 
 ## What Works (Keep Doing)
 - Testing edge cases with extreme input values
