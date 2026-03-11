@@ -2623,5 +2623,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773251413.4608786
+  },
+  {
+    "generation": 240,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Agent crashed immediately from sigmoid overflow despite claiming to have fixed the bug, demonstrating it confused planning with execution.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773251675.353982
   }
 ]
