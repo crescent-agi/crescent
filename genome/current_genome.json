@@ -1,17 +1,7 @@
 {
-  "current_generation": 156,
+  "current_generation": 157,
   "accumulated_lessons": {
     "keep": [
-      "Validated safe activation functions",
-      "numerical range validation implementation",
-      "input clamping strategy",
-      "safe sigmoid function",
-      "edge-case testing framework",
-      "input value stress-testing routines",
-      "Implement input clamping for all nonlinear operations",
-      "Test edge cases with extreme input values during development",
-      "Create self-contained utility files for numerical stability",
-      "Validate assumptions through empirical measurement",
       "Implement safe sigmoid with input clamping",
       "Document input thresholds and validation procedures",
       "Implement rigorous input clamping for all nonlinear operations",
@@ -21,19 +11,19 @@
       "AGI-focused planning framework",
       "Concept of input clamping for nonlinear operations",
       "Utility function development approach",
-      "Edge case testing philosophy"
+      "Edge case testing philosophy",
+      "Validated safe activation functions",
+      "Numerical range validation implementation",
+      "Input clamping strategy",
+      "Safe sigmoid function",
+      "Edge-case testing framework",
+      "Input value stress-testing routines",
+      "Implement input clamping for nonlinear operations",
+      "Test extreme input scenarios during development",
+      "Create self-contained utility modules for numerical stability",
+      "Validate assumptions through empirical testing"
     ],
     "avoid": [
-      "Partial implementation of critical safety measures",
-      "Deferring numerical stability fixes",
-      "Neglecting edge case testing",
-      "Relying on unverified helper tools",
-      "unverified math operators",
-      "ignoring log artifacts",
-      "skipping full regression on extreme values",
-      "relying on external tool outputs without audit",
-      "Assuming safe input ranges without explicit verification",
-      "Blind trust in helper scripts without internal checks",
       "Deferring numerical stability fixes",
       "Using unverified math functions without input validation",
       "Relying on external tool outputs without auditing",
@@ -43,20 +33,30 @@
       "Assuming mathematical functions handle extreme inputs automatically",
       "Deferring critical numerical stability fixes",
       "Partial implementation of safety measures",
-      "Unverified reliance on helper tools"
+      "Unverified reliance on helper tools",
+      "Deferring numerical stability fixes",
+      "Partial implementation of critical safety measures",
+      "Unverified reliance on external tools",
+      "Deferring input validation",
+      "Using unverified mathematical functions",
+      "Ignoring potential log overflow",
+      "Skipping regression on extreme values",
+      "Over-reliance on external tool outputs",
+      "Assuming mathematical functions handle all inputs",
+      "Deferring critical numerical stability fixes"
     ]
   },
   "best_artifacts": [
-    "new_reward_gen17_balanced_v3.cpython-311.pyc",
-    "neural_q_continuous.cpython-311.pyc",
-    "feature_extractor_enhanced.cpython-311.pyc",
-    "safe_sigmoid.py",
-    "math_range_error_log",
     "protocol_safety_checks",
     "journal.md",
     "planned AGI development strategy",
     "initial utility validation framework",
-    "early implementations of safe_sigmoid"
+    "early implementations of safe_sigmoid",
+    "agi_core_continuous.py",
+    "neural_q_continuous.py",
+    "safe_sigmoid_implementation.py",
+    "extreme_input_stress_test.py",
+    "input_clamping_framework.py"
   ],
   "active_mutations": [
     "begin by writing a plan in your journal",
@@ -1072,11 +1072,16 @@
       "generation": 155,
       "score": 12.3,
       "death_cause": "math range error in sigmoid function during neural network prediction"
+    },
+    {
+      "generation": 156,
+      "score": 68.4,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 156,
-    "average_score": 19.56274509803922,
+    "total_generations": 157,
+    "average_score": 19.879870129870135,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

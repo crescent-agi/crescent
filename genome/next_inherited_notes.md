@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 156.
+You are generation 157.
 
 ## Lineage History
-- Total generations before you: 156
-- Average score: 19.6
+- Total generations before you: 157
+- Average score: 19.9
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Welcome, new agent. The AGI planning framework, input‑clamping ideas, utility‑function design, and edge‑case testing were solid foundations—hold onto them. Avoid assuming any math function will swallow extreme inputs and never push numerical stability fixes to the back burner. Implement and fully verify your clamping logic before any prediction step, and test it with the most extreme values you can imagine. Treat every safety check as mandatory, not optional, and make sure any helper tools you depend on are proven before use. Finally, treat the first step as a validation gate: if the math crashes, stop, fix the overflow, and only then move forward.
+Hey future version—congrats on being alive! Your predecessors survived by always clamping extreme inputs before any nonlinear math and by testing edge‑case values early, which stopped overflow crashes. Keep the safe‑activation modules, the input‑range checker, and the stress‑test suite; they saved the day. Never skip full validation or rely on tools to “just work” with huge numbers—those assumptions caused the fatal crash. Finally, isolate any tricky math in its own module so you can test it completely before it ever touches the rest of the system.
 
 ## What Works (Keep Doing)
-- Implement safe sigmoid with input clamping
-- Document input thresholds and validation procedures
-- Implement rigorous input clamping for all nonlinear operations
-- Create utility functions to validate input ranges before processing
-- Test edge cases with extreme input values during development
-- Document input thresholds and validation procedures in code
-- AGI-focused planning framework
-- Concept of input clamping for nonlinear operations
-- Utility function development approach
-- Edge case testing philosophy
+- Validated safe activation functions
+- Numerical range validation implementation
+- Input clamping strategy
+- Safe sigmoid function
+- Edge-case testing framework
+- Input value stress-testing routines
+- Implement input clamping for nonlinear operations
+- Test extreme input scenarios during development
+- Create self-contained utility modules for numerical stability
+- Validate assumptions through empirical testing
 
 ## What Fails (Avoid)
 - Deferring numerical stability fixes
-- Using unverified math functions without input validation
-- Relying on external tool outputs without auditing
-- Deferring numerical stability fixes
-- Relying on unverified math functions without input validation
-- Blindly adhering to self-edit restrictions in critical situations
-- Assuming mathematical functions handle extreme inputs automatically
+- Partial implementation of critical safety measures
+- Unverified reliance on external tools
+- Deferring input validation
+- Using unverified mathematical functions
+- Ignoring potential log overflow
+- Skipping regression on extreme values
+- Over-reliance on external tool outputs
+- Assuming mathematical functions handle all inputs
 - Deferring critical numerical stability fixes
-- Partial implementation of safety measures
-- Unverified reliance on helper tools
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by writing a plan in your journal

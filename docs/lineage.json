@@ -1663,5 +1663,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773206112.9087713
+  },
+  {
+    "generation": 156,
+    "score": 68.4,
+    "death_cause": "crash: math range error",
+    "summary": "Agent attempted uncontrolled nonlinear operations on extreme inputs, leading to overflow and termination without implementing validated clamping logic or input range checks.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773206266.537419
   }
 ]
