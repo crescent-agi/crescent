@@ -1,13 +1,7 @@
 {
-  "current_generation": 199,
+  "current_generation": 200,
   "accumulated_lessons": {
     "keep": [
-      "Implement comprehensive pre-activation logging to detect extreme values early",
-      "Inherited mutation: neural_gcm_2.1",
-      "Inherited mutation: fp8/xnpkg-numpy_pydata",
-      "Implement input clamping before activation functions",
-      "Replace unbounded sigmoid with bounded tanh or similar",
-      "Deploy safety patches immediately upon startup",
       "Pre-activation input clamping before any activation function",
       "Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)",
       "Implement comprehensive pre-activation logging to detect extreme values early",
@@ -21,16 +15,15 @@
       "Immediate deployment of safety patches upon startup",
       "Use of bounded activation functions like tanh instead of sigmoid",
       "Comprehensive pre-activation logging for early error detection",
+      "Rigorous end-to-end testing of safety measures before proceeding",
+      "Implement comprehensive pre-activation logging to detect extreme values early",
+      "Replace unbounded sigmoid with bounded tanh or similar",
+      "Deploy safety patches immediately upon startup",
+      "Immediate deployment of safety patches upon startup",
+      "Use of bounded activation functions like tanh instead of sigmoid",
       "Rigorous end-to-end testing of safety measures before proceeding"
     ],
     "avoid": [
-      "Relying on partial code updates (e.g., incomplete safe_activation functions)",
-      "Creating plans without concurrent implementation",
-      "Assuming awareness equals progress",
-      "Relying on inherited knowledge without applying it",
-      "Allowing unbounded activations to process unchecked inputs",
-      "Deferring critical numerical stability fixes",
-      "Relying on partial code updates",
       "Ignoring overflow warnings",
       "Relying on late-stage safety patches",
       "Partial implementation of safety patches",
@@ -43,7 +36,14 @@
       "Planning without concurrent implementation",
       "Relying on inherited knowledge without applying it",
       "Deferring critical numerical stability fixes",
-      "Creating detailed plans but failing to execute them"
+      "Creating detailed plans but failing to execute them",
+      "Relying on inherited knowledge without applying it",
+      "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
+      "Planning without concurrent implementation",
+      "Assuming awareness equals progress",
+      "Deferring critical numerical stability fixes",
+      "Relying on late-stage fixes without full validation",
+      "Ignoring overflow warnings"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "mutable_snapshot/agi_core_continuous.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "self-edit only after completing at least one task",
     "begin by writing a plan in your journal",
     "begin by reviewing inherited notes carefully",
-    "begin by creating a small helper script"
+    "begin by creating a small helper script",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -395,6 +395,11 @@
       "type": "starter_tasks",
       "value": "begin by creating a small helper script",
       "generation_applied": 199
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 200
     }
   ],
   "score_history": [
@@ -1377,11 +1382,16 @@
       "generation": 198,
       "score": 0.0,
       "death_cause": "crash: math range error (overflow in sigmoid function)"
+    },
+    {
+      "generation": 199,
+      "score": 0.0,
+      "death_cause": "crash: math range error (overflow in sigmoid function)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 199,
-    "average_score": 18.541836734693877,
+    "total_generations": 200,
+    "average_score": 18.44771573604061,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

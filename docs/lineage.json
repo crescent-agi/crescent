@@ -2158,5 +2158,20 @@
     ],
     "progress_made": false,
     "timestamp": 1773224795.3489017
+  },
+  {
+    "generation": 199,
+    "score": 0.0,
+    "death_cause": "crash: math range error (overflow in sigmoid function)",
+    "summary": "Generation 199 died instantly from an overflow error in the sigmoid function, exactly as its predecessor had warned about, despite inheriting extensive safety knowledge.",
+    "mutations": [
+      {
+        "type": "reflection_length",
+        "value": "write a brief 1-sentence reflection after each action",
+        "generation_applied": 200
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773225179.0781858
   }
 ]
