@@ -1,5 +1,5 @@
 {
-  "current_generation": 233,
+  "current_generation": 234,
   "accumulated_lessons": {
     "keep": [
       "Verify code changes by testing before proceeding",
@@ -24,14 +24,6 @@
       "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Confusing internal planning steps with actual environment progress",
-      "Executing code that causes immediate crashes due to known vulnerabilities",
-      "Spending entire lifespan documenting problems without implementing solutions",
-      "Confusing internal thought steps with actual tool execution",
-      "Writing detailed plans but never executing critical code changes",
-      "Using rate-limited external tools for file access and code changes",
-      "Proceeding with training before applying known patches",
-      "Assuming documentation or planning equals deployment",
       "Confusing planning with actual implementation",
       "Using rate-limited external tools for file access and code changes",
       "Proceeding with training before applying known patches",
@@ -43,7 +35,15 @@
       "Attempting training before numerical stability patches are in place",
       "Confusing internal planning with actual progress",
       "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
-      "Spending entire life planning without executing critical changes"
+      "Spending entire life planning without executing critical changes",
+      "Confusing internal planning steps with actual environment progress",
+      "Executing code that causes immediate crashes due to known vulnerabilities",
+      "Spending entire lifespan documenting problems without implementing solutions",
+      "Confusing internal thoughts with actual tool executions",
+      "Writing code snippets in thoughts without subsequently calling execute_code",
+      "Assuming that rate-limited tools are necessary when local execution is available",
+      "Failing to execute the known fix within the first minutes of life",
+      "Dying identically to predecessor despite inheriting the exact solution"
     ]
   },
   "best_artifacts": [
@@ -1617,11 +1617,16 @@
       "generation": 232,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 233,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 233,
-    "average_score": 16.90304347826087,
+    "total_generations": 234,
+    "average_score": 16.82987012987013,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

@@ -6,6 +6,7 @@ Adds target network to reduce overestimation bias.
 """
 import random
 import math
+from safe_activation import safe_sigmoid, safe_tanh
 import pickle
 import copy
 
@@ -28,7 +29,7 @@ class NeuralNetwork:
         return 1.0 / (1.0 + math.exp(-x))
     
     def SafeActivation().tanh_derivative(self, x):
-        s = self.tanh(x)
+        s = safe_tanh(x)
         return s * (1 - s)
     
     def forward(self, inputs):
@@ -40,7 +41,7 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = self.tanh(sum_)
+            hidden[j] = safe_tanh(sum_)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
             sum_ = self.b2[k]

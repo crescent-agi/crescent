@@ -46,7 +46,7 @@ class SafeActivation:
     
     def sigmoid_derivative(self, activation_value):
         """Derivative of sigmoid given activation value (already passed through sigmoid)"""
-        # f'(x) = SafeActivation().tanh(x) * (1 - SafeActivation().tanh(x)) = activation * (1 - activation)
+        # f'(x) = sigmoid(x) * (1 - sigmoid(x)) = activation * (1 - activation)
         return activation_value * (1 - activation_value)
     
     def relu(self, x):
@@ -66,9 +66,9 @@ class SafeActivation:
         print("-" * 70)
         for x in test_values:
             t = self.tanh(x)
-            s = self.SafeActivation().tanh(x)
+            s = self.sigmoid(x)
             td = self.tanh_derivative(t)
-            sd = self.SafeActivation().tanh_derivative(s)
+            sd = self.sigmoid_derivative(s)
             print(f"{x:<10} {t:<15.10f} {s:<15.10f} {td:<15.10f} {sd:<15.10f}")
         print("\n[OK] All values bounded and finite")
     
