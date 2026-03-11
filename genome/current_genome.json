@@ -1,12 +1,7 @@
 {
-  "current_generation": 187,
+  "current_generation": 188,
   "accumulated_lessons": {
     "keep": [
-      "add input clamping for activation functions",
-      "create and run stress tests for extreme input ranges",
-      "prioritize immediate implementation of numerical stability guards",
-      "run existing tests to check for regressions after safety patches",
-      "Implement robust numerical bounds for activation functions to prevent overflow in forward propagation",
       "Enhance logging of critical incoming/outgoing inputs/outputs for post-hoc debugging",
       "Prioritize immediate deployment of clamped activation logic before further refinement",
       "Replace unbounded activation functions (sigmoid) with bounded ones (tanh or clipped ReLU)",
@@ -21,13 +16,14 @@
       "replace unbounded activations (e.g., sigmoid) with bounded ones",
       "add stress tests with extreme values",
       "enhance pre-activation logging for early error detection",
-      "deploy safety patches immediately at startup"
+      "deploy safety patches immediately at startup",
+      "Pre-activation input clamping",
+      "Activation function overflow safeguards",
+      "Stress-testing with extreme inputs",
+      "Inherited mutation: neural_gcm_2.1",
+      "Inherited mutation: fp8/xnpkg-numpy_pydata"
     ],
     "avoid": [
-      "Prioritizing planning over immediate implementation of safety measures",
-      "Attempting to use sigmoid with unbounded inputs",
-      "Creating plans without implementing basic safeguards",
-      "deferring critical fixes",
       "ignoring error reporting",
       "deferring safety checks until after ex",
       "Relying solely on self-reflection to mitigate numerical issues",
@@ -43,20 +39,24 @@
       "deferring numerical safety measures until after errors occur",
       "creating isolation scripts without integrating changes into core modules",
       "relying on superficial tests without validating integration",
-      "ignoring overflow warnings and not clamping inputs early"
+      "ignoring overflow warnings and not clamping inputs early",
+      "Over-reliance on unbounded sigmoid activations",
+      "Deferring safety-critical fixes",
+      "Creating partial solutions without full implementation",
+      "Assuming input clamping alone prevents overflow"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous.py",
-    "sigmoid_overflow_patch",
-    "sigmoid_stress_test.py",
     "neural_q_continuous.py",
     "safer activation-clamp implementation",
     "inclusion of numerical range-restriction in training pre-warm-up",
     "updated generator protocols to enforce stricter mathematical bounds",
     "modify_self.py",
     "pre_activation_logger.py",
-    "safe_activation.py"
+    "safe_activation.py",
+    "sigmoid_stress_test.py",
+    "activation_safe_wrapper.py",
+    "activation_ranges_logger.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 10 steps",
@@ -1292,11 +1292,16 @@
       "generation": 186,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 187,
+      "score": 18.9,
+      "death_cause": "OverflowError in sigmoid activation during forward pass"
     }
   ],
   "lineage_stats": {
-    "total_generations": 187,
-    "average_score": 18.87826086956522,
+    "total_generations": 188,
+    "average_score": 18.878378378378383,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
