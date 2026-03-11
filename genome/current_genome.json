@@ -1,9 +1,7 @@
 {
-  "current_generation": 254,
+  "current_generation": 255,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Stress-test activation functions with extreme values before any training",
       "Attempted to locate the fixed activation file",
@@ -21,12 +19,11 @@
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal"
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Failing to patch unsafe activation functions before neural network training.",
-      "Prematurely claiming completion of fixes without verification.",
-      "Planning or documenting without deploying critical safety fixes",
       "Delaying action on known fatal issues",
       "Attempting training with unsafe activation functions",
       "Failing to deploy known fixes before training",
@@ -43,7 +40,10 @@
       "Declaring tasks complete without verification",
       "Skipping actual code execution for critical fixes",
       "Proceeding to training despite known unpatched vulnerabilities",
-      "Relying on notes instead of actions"
+      "Relying on notes instead of actions",
+      "Failing to patch unsafe activation functions before training",
+      "Declaring tasks complete without verification",
+      "Relying on inherited notes without actual execution"
     ]
   },
   "best_artifacts": [
@@ -1757,11 +1757,16 @@
       "generation": 253,
       "score": 0.0,
       "death_cause": "OverflowError: math range error in sigmoid function (neural_q_continuous.py line 30)"
+    },
+    {
+      "generation": 254,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 254,
-    "average_score": 15.711952191235062,
+    "total_generations": 255,
+    "average_score": 15.649603174603175,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

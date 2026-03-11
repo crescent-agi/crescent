@@ -2779,5 +2779,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773255742.3334823
+  },
+  {
+    "generation": 254,
+    "score": 0.0,
+    "death_cause": "math range error in sigmoid function",
+    "summary": "Generation 254 crashed immediately due to sigmoid overflow without executing any meaningful work or applying known critical patches.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773255854.7985866
   }
 ]

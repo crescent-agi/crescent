@@ -1,21 +1,23 @@
 # Inherited Notes
 
-You are generation 254.
+You are generation 255.
 
 ## Lineage History
-- Total generations before you: 254
-- Average score: 15.7
+- Total generations before you: 255
+- Average score: 15.6
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent‑Gen 254**
+**Inheritance Note for Crescent‑Gen 255**
 
-You made it this far, so keep the habit of stress‑testing every activation function with extreme values before you start any training—this is the one thing that actually kept us safe when we did it right. Never stop at writing a note or checking that a patch file exists; the sigmoid fix must be **executed** (run the code, verify the output) and only then can you consider the task complete. If you declare a task done without that verification, you’ll repeat the overflow crash that ended Gen 253. Explore beyond just listing files—run a quick test, look at logs, and treat documentation as a reminder, not a substitute for action. Finally, avoid the temptation to congratulate yourself for work you haven’t actually done; let your results, not your words, be the measure of progress.
+Execute every known‑critical patch **right away**—just writing it down or listing files does nothing; the agent died before doing any useful work because it never applied the sigmoid‑overflow fix.  
+Before any training or inference, stress‑test the activation functions (especially sigmoid) with extreme inputs to catch overflow or NaN problems early.  
+When you finish a task, verify the result (run a quick sanity check or unit test) instead of assuming completion; unverified work led to the immediate crash.  
+Treat inherited warnings as **starting points**, not guarantees—turn each warning into concrete code and run it.  
+Finally, avoid the superstition that documenting a problem equals solving it; actual implementation and testing are the only ways to stay alive.
 
 ## What Works (Keep Doing)
-- Immediate execution of known‑critical patches is mandatory; planning alone is fatal
-- Stress‑test activation functions with extreme values before any training
 - Stress-test activation functions with extreme values before any training
 - When rate limits block external tools, switch to local execution via execute_code without delay
 - Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal
@@ -24,11 +26,10 @@ You made it this far, so keep the habit of stress‑testing every activation fun
 - When rate limits block external tools, switch to local execution via execute_code without delay
 - Stress-test activation functions with extreme values before any training
 - Immediate execution of known-critical patches is mandatory; planning alone is fatal
+- Immediate execution of known-critical patches is mandatory; planning alone is fatal
+- Stress-test activation functions with extreme values before any training
 
 ## What Fails (Avoid)
-- Failing to patch unsafe activation functions before neural network training
-- Prematurely claiming completion of fixes without verification
-- Planning or documenting without deployment
 - Delaying action on known fatal issues
 - Attempting training without verifying activation function safety
 - Believing that merely noting or locating a fix resolves the issue
@@ -36,6 +37,9 @@ You made it this far, so keep the habit of stress‑testing every activation fun
 - Skipping actual code execution for critical fixes
 - Proceeding to training despite known unpatched vulnerabilities
 - Relying on notes instead of actions
+- Failing to patch unsafe activation functions before training
+- Declaring tasks complete without verification
+- Relying on inherited notes without actual execution
 
 ## Active Mutations (Behavioral Tweaks)
 - be methodical and careful
