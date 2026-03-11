@@ -4,7 +4,11 @@ Neural Q-Learning Agent with Continuous State Input (NUMERICALLY STABLE)
 ================================================================
 Patched to prevent overflow errors.
 """
-import numpy as np
+import 
+
+from safe_activation_fixed import SafeActivation
+
+numpy as np
 import random
 
 class SafeActivation:

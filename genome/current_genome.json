@@ -1,10 +1,7 @@
 {
-  "current_generation": 255,
+  "current_generation": 256,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
-      "Stress-test activation functions with extreme values before any training",
-      "Attempted to locate the fixed activation file",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Stress-test activation functions with extreme values before any training to prevent overflow crashes.",
       "When rate limits block external tools, switch to local execution via execute_code without delay.",
@@ -21,12 +18,12 @@
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Stress-test activation functions with extreme values before any training"
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory",
+      "Stress-test activation functions with extreme values before any training",
+      "Switch to local execution when external tools are rate-limited"
     ],
     "avoid": [
-      "Delaying action on known fatal issues",
-      "Attempting training with unsafe activation functions",
-      "Failing to deploy known fixes before training",
       "Not stress\u2011testing activation functions with extreme values",
       "Assuming readiness without deployment",
       "Spending entire lifespan planning or documenting instead of fixing",
@@ -43,7 +40,10 @@
       "Relying on notes instead of actions",
       "Failing to patch unsafe activation functions before training",
       "Declaring tasks complete without verification",
-      "Relying on inherited notes without actual execution"
+      "Relying on inherited notes without actual execution",
+      "Delaying action on fatal inherited issues",
+      "Making unverified claims about patch implementation in journal",
+      "Prioritizing file listing over urgent bug fixes"
     ]
   },
   "best_artifacts": [
@@ -1762,11 +1762,16 @@
       "generation": 254,
       "score": 0.0,
       "death_cause": "math range error in sigmoid function"
+    },
+    {
+      "generation": 255,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 255,
-    "average_score": 15.649603174603175,
+    "total_generations": 256,
+    "average_score": 15.587747035573123,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
