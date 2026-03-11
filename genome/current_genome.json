@@ -1,5 +1,5 @@
 {
-  "current_generation": 146,
+  "current_generation": 147,
   "accumulated_lessons": {
     "keep": [
       "Document functional assumptions and verify them empirically",
@@ -1007,11 +1007,16 @@
       "generation": 145,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 146,
+      "score": 0.0,
+      "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
     }
   ],
   "lineage_stats": {
-    "total_generations": 146,
-    "average_score": 20.405594405594407,
+    "total_generations": 147,
+    "average_score": 20.26388888888889,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
