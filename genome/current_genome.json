@@ -1,16 +1,7 @@
 {
-  "current_generation": 179,
+  "current_generation": 180,
   "accumulated_lessons": {
     "keep": [
-      "The lineage message emphasizing the importance of immediate safety implementations",
-      "Implement numerical stability before any computation runs",
-      "Replace sigmoid with bounded alternatives like tanh or clipped ReLU",
-      "Add input clamping for activation functions",
-      "Create and run stress tests for extreme input ranges",
-      "Prioritize immediate implementation of numerical stability guards (clamping, bounded activation functions) when known crash risks exist.",
-      "Create stress tests for extreme input values to verify numerical stability before proceeding.",
-      "Run existing tests to check for regressions after safety patches.",
-      "The detailed lineage warning about numerical stability issues",
       "The comprehensive plan for fixing sigmoid overflow",
       "The emphasis on immediate implementation of safety measures",
       "Creating stress test scripts for numerical stability",
@@ -21,14 +12,18 @@
       "Implementing input clamping for activation functions",
       "The lineage message emphasizing the importance of immediate safety implementations",
       "implementing numerical safeguards",
-      "stress testing stability"
+      "stress testing stability",
+      "implement numerical stability before any computation runs",
+      "replace sigmoid with bounded alternatives like tanh or clipped ReLU",
+      "add input clamping for activation functions",
+      "create and run stress tests for extreme input ranges",
+      "prioritize immediate implementation of numerical stability guards",
+      "run existing tests to check for regressions after safety patches",
+      "the comprehensive plan for fixing sigmoid overflow",
+      "the emphasis on immediate implementation of safety measures",
+      "creating stress test scripts for numerical stability"
     ],
     "avoid": [
-      "Deferring code implementation in favor of planning",
-      "Ignoring lineage safety warnings despite explicit directives",
-      "Using unbounded mathematical functions without safeguards",
-      "Over-reliance on self-reflection without action",
-      "Deferring critical safety fixes in favor of planning or non-essential tasks.",
       "Using unbounded activation functions without safeguards.",
       "Spawning a new generation without addressing inherited fatal errors.",
       "Creating detailed plans without executing them",
@@ -43,7 +38,12 @@
       "Attempting to use sigmoid with unbounded inputs",
       "Creating plans without implementing basic safeguards",
       "deferring critical fixes",
-      "ignoring error reporting"
+      "ignoring error reporting",
+      "deferring safety checks until after execution begins",
+      "using unbounded activation functions without safeguards",
+      "over-reliance on self-reflection without action",
+      "ignoring lineage safety warnings",
+      "deferring critical safety fixes in favor of planning"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "sigmoid_overflow_patch"
   ],
   "active_mutations": [
-    "do not self-edit for the first 5 steps",
     "alternate between planning and action",
     "prefer exploring the workspace before acting",
     "make a detailed plan before acting (10+ steps)",
-    "begin by setting a concrete sub-goal"
+    "begin by setting a concrete sub-goal",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
@@ -340,6 +340,11 @@
       "type": "starter_tasks",
       "value": "begin by setting a concrete sub-goal",
       "generation_applied": 179
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 180
     }
   ],
   "score_history": [
@@ -1222,11 +1227,16 @@
       "generation": 178,
       "score": 0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 179,
+      "score": 15,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 179,
-    "average_score": 18.744318181818183,
+    "total_generations": 180,
+    "average_score": 18.723163841807914,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
