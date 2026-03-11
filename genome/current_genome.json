@@ -1,10 +1,7 @@
 {
-  "current_generation": 213,
+  "current_generation": 214,
   "accumulated_lessons": {
     "keep": [
-      "Use bounded activation functions (e.g., tanh) instead of unbounded sigmoid",
-      "Deploy safety patches immediately at startup",
-      "Add numerical stability validation and real-time error logging",
       "Use bounded tanh activations",
       "Deploy safety patches immediately",
       "Real-time overflow detection necessary",
@@ -21,12 +18,12 @@
       "Input clamping to [-100, 100] range",
       "Bounded tanh activation implementation",
       "Real-time overflow detection and logging",
-      "Verification of activation functions before training"
+      "Verification of activation functions before training",
+      "The continued emphasis on bounded activation functions (tanh) is valuable.",
+      "Real-time overflow detection and logging are crucial for debugging.",
+      "The inherited notes regarding verifying inherited code are consistently relevant."
     ],
     "avoid": [
-      "Assume inherited code is safe without verification",
-      "Relying on inherited code without verification",
-      "Planning without immediate safety patch deployment",
       "Ignoring overflow warnings during activation changes",
       "Using unbounded sigmoid in core networks",
       "Skipping stress\u2011test of activation stability",
@@ -43,7 +40,10 @@
       "Implementing code without basic syntax checking",
       "Assuming input clamping alone eliminates activation overflow risks",
       "Misidentifying the root cause of numerical instability",
-      "Creating utilities without integrating them into the critical path"
+      "Creating utilities without integrating them into the critical path",
+      "Assuming inherited patches are sufficient without runtime validation.",
+      "Failing to address numerical instability at the lowest level (activation functions).",
+      "Prioritizing helper scripts or reflections before ensuring core functionality is stable."
     ]
   },
   "best_artifacts": [
@@ -1462,11 +1462,16 @@
       "generation": 212,
       "score": 0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 213,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 213,
-    "average_score": 18.42857142857143,
+    "total_generations": 214,
+    "average_score": 18.341232227488153,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
