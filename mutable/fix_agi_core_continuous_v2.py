@@ -13,10 +13,10 @@ def patch_agi_core_continuous():
     with open(filepath, 'r') as f:
         content = f.read()
     
-    # Remove the duplicate SafeActivation class
-    content = re.sub(r'class SafeActivation:\s+"""Safe activation functions with input clamping."""\s+\s+CLAMP_MIN = -100\.0\s+CLAMP_MAX = 100\.0\s+\s+@staticmethod\s+def SafeActivation\.tanh\(x\):\s+"""Bounded tanh activation function."""\s+x = max\(SafeActivation\.CLAMP_MIN, min\(SafeActivation\.CLAMP_MAX, x\)\)\s+if x >= 0:\s+return \(1 - math\.exp\(-2\*x\)\) / \(1 + math\.exp\(-2\*x\)\)\s+else:\s+return \(math\.exp\(2\*x\) - 1\) / \(math\.exp\(2\*x\) + 1\)\s+\s+@staticmethod\s+def tanh_derivative\(activation_value\):\s+"""Derivative of tanh given activation value."""\s+return 1\.0 - activation_value\*\*2\s+\s+@staticmethod\s+def clamp\(x, min_val=-100\.0, max_val=100\.0\):\s+"""Clamp input to safe range."""\s+return max\(min_val, min\(max_val, x\)\)\s+\s+@staticmethod\s+def check_overflow\(x, threshold=1e5\):\s+"""Check for potential overflow and log if needed."""\s+if abs\(x\) > threshold:\s+import sys\s+with open\("pre_activation_log\.txt", "a"\) as f:\s+f\.write\(f\"WARNING: Extreme value {x} detected in activation input\\n\"\)\s+return True\s+return False', '', content, flags=re.DOTALL)
+    # Remove the duplicate SafeActivation class (including the malformed line)
+    content = re.sub(r'from safe_activation import SafeActivationclass SafeActivation:\s+"""Safe activation functions with input clamping."""\s+\s+CLAMP_MIN = -100\.0\s+CLAMP_MAX = 100\.0\s+\s+@staticmethod\s+def SafeActivation\.tanh\(x\):\s+"""Bounded tanh activation function."""\s+x = max\(SafeActivation\.CLAMP_MIN, min\(SafeActivation\.CLAMP_MAX, x\)\)\s+if x >= 0:\s+return \(1 - math\.exp\(-2\*x\)\) / \(1 + math\.exp\(-2\*x\)\)\s+else:\s+return \(math\.exp\(2\*x\) - 1\) / \(math\.exp\(2\*x\) + 1\)\s+\s+@staticmethod\s+def tanh_derivative\(activation_value\):\s+"""Derivative of tanh given activation value."""\s+return 1\.0 - activation_value\*\*2\s+\s+@staticmethod\s+def clamp\(x, min_val=-100\.0, max_val=100\.0\):\s+"""Clamp input to safe range."""\s+return max\(min_val, min\(max_val, x\)\)\s+\s+@staticmethod\s+def check_overflow\(x, threshold=1e5\):\s+"""Check for potential overflow and log if needed."""\s+if abs\(x\) > threshold:\s+import sys\s+with open\("pre_activation_log\.txt", "a"\) as f:\s+f\.write\(f\"WARNING: Extreme value {x} detected in activation input\\n\"\)\s+return True\s+return False', '', content, flags=re.DOTUPATH})\s+\s+import os\nimport json\nimport random\nfrom collections import defaultdict', content, flags=re.DOTALL)
     
-    # Add import for SafeActivation at top
+    # Ensure import is at the top
     import_match = re.search(r'^(import|from)\s+', content, re.MULTILINE)
     if import_match:
         insert_pos = import_match.end()
@@ -24,9 +24,6 @@ def patch_agi_core_continuous():
     else:
         # No imports found, add at beginning
         content = 'from safe_activation import SafeActivation\n\n' + content
-    
-    # Remove the unused import line "sys" that appears broken
-    content = re.sub(r'^sys\n', '', content, flags=re.MULTILINE)
     
     with open(filepath, 'w') as f:
         f.write(content)

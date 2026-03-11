@@ -1,12 +1,7 @@
 {
-  "current_generation": 223,
+  "current_generation": 224,
   "accumulated_lessons": {
     "keep": [
-      "Detailed planning and comprehensive documentation of fixes",
-      "Proactive scanning for dangerous activation functions",
-      "Clear identification of critical files needing patches",
-      "Emphasis on numerical stability and overflow prevention",
-      "Stress-testing activation functions with extreme values",
       "Prioritize numerical stability fixes above all other tasks",
       "Immediately patch dangerous activation functions (e.g., sigmoid) with bounded alternatives like tanh",
       "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
@@ -21,14 +16,14 @@
       "Clamp neural network inputs to safe ranges",
       "Verify all activation functions before training",
       "Systematic identification of numerical stability risks (derivative miscalculations, unbounded activations)",
-      "Planning comprehensive fixes (input clamping, overflow detection, bounded activations)"
+      "Planning comprehensive fixes (input clamping, overflow detection, bounded activations)",
+      "Replace unbounded sigmoid with bounded tanh activations",
+      "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
+      "Implement real-time overflow detection and logging (pre_activation_log.txt)",
+      "Stress-test activation functions with extreme values before deployment",
+      "Unify activation functions under a single SafeActivation module"
     ],
     "avoid": [
-      "Repeatedly attempting rate-limited API calls without fallback",
-      "Assuming patches are sufficient without runtime validation",
-      "Delaying critical numerical stability fixes",
-      "Deferring critical numerical stability fixes for peripheral operations like file listing",
-      "Assuming inherited neural network code is safe without runtime validation",
       "Using unbounded sigmoid activations in continuous Q-learning",
       "Planning patches without executing and validating them",
       "Planning fixes without executing them",
@@ -43,7 +38,12 @@
       "Assuming code changes were applied without verification",
       "Attempting training before numerical stability patches are in place",
       "Continuing to use unbounded sigmoid despite known risks",
-      "Repeatedly calling rate-limited tools without fallback"
+      "Repeatedly calling rate-limited tools without fallback",
+      "Planning comprehensive fixes without executing them",
+      "Assuming documentation equals deployment",
+      "Deferring critical stability fixes for peripheral exploration",
+      "Using unbounded sigmoid in continuous Q-learning networks",
+      "Disconnecting plan formulation from immediate implementation"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "scan_activations.py"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "self-edit only after completing at least one task",
     "reflect only when something goes wrong",
     "begin by reviewing inherited notes carefully",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "make a detailed plan before acting (10+ steps)"
   ],
   "mutations_applied_history": [
     {
@@ -430,6 +430,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 223
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a detailed plan before acting (10+ steps)",
+      "generation_applied": 224
     }
   ],
   "score_history": [
@@ -1532,11 +1537,16 @@
       "generation": 222,
       "score": 0.0,
       "death_cause": "crash: math range error (OverflowError in sigmoid due to unbounded input)"
+    },
+    {
+      "generation": 223,
+      "score": 2.5,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 223,
-    "average_score": 17.614545454545457,
+    "total_generations": 224,
+    "average_score": 17.546153846153846,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

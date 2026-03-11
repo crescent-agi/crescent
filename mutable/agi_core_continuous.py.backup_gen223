@@ -2,8 +2,7 @@
 """ AGI Core for Crescent AGI with Continuous State Representation Integrates learning, world modeling, reflection, and planning. Uses continuous feature vectors as state representation. """
 import 
 
-
-from safe_activation import SafeActivationclass SafeActivation:
+class SafeActivation:
     """Safe activation functions with input clamping."""
     CLAMP_MIN = -100.0
     CLAMP_MAX = 100.0
@@ -38,6 +37,7 @@ from safe_activation import SafeActivationclass SafeActivation:
             return True
         return False
 
+sys
 import os
 import json
 import random
