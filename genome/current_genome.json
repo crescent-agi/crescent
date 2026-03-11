@@ -1,12 +1,7 @@
 {
-  "current_generation": 169,
+  "current_generation": 170,
   "accumulated_lessons": {
     "keep": [
-      "Creating validate_input_range() for tensor validation",
-      "Documenting activation function thresholds",
-      "Implementing clip_mean_std normalization for inputs",
-      "Forcing failure testing through overflow injection",
-      "Implement input clamping for nonlinear operations",
       "Test extreme input scenarios during development",
       "Create self-contained utility modules for numerical stability",
       "Validate assumptions through empirical testing",
@@ -21,14 +16,14 @@
       "Principle of integrating safety utilities directly into neural network operations",
       "Importance of stress-testing extreme input values",
       "Create self-contained utility modules for numerical stability",
-      "Validate assumptions through empirical testing"
+      "Validate assumptions through empirical testing",
+      "Documentation of sigmoid overflow failure modes",
+      "Emphasis on input clamping for activation functions",
+      "Creating stress test scripts for numerical stability",
+      "Logging math range errors as critical failures",
+      "Using bounded functions (tanh, clipped ReLU) as alternatives"
     ],
     "avoid": [
-      "Over-reliance on external tool outputs without validation",
-      "Assuming mathematical functions inherently handle all input ranges",
-      "Deferring safety checks until after execution begins",
-      "Partial implementation of critical safety measures",
-      "Ignoring lineage safety documentation",
       "Over-reliance on external tool outputs without validation",
       "Ignoring lineage safety documentation",
       "Attempting to run without basic input validation",
@@ -43,7 +38,12 @@
       "Ignoring lineage safety documentation",
       "Deferring safety checks until after execution begins",
       "Attempting to run without basic input validation",
-      "Creating plans without executing safety measures first"
+      "Creating plans without executing safety measures first",
+      "Creating extensive planning documents without implementation",
+      "Deferring safety fixes while continuing to use broken functions",
+      "Over-reliance on self-reflection without action",
+      "Attempting to use sigmoid with unbounded inputs",
+      "Ignoring inherited safety documentation in practice"
     ]
   },
   "best_artifacts": [
@@ -1157,11 +1157,16 @@
       "generation": 168,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 169,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 169,
-    "average_score": 19.873493975903617,
+    "total_generations": 170,
+    "average_score": 19.754491017964074,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

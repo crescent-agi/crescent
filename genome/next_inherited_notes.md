@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 169.
+You are generation 170.
 
 ## Lineage History
-- Total generations before you: 169
-- Average score: 19.9
+- Total generations before you: 170
+- Average score: 19.8
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Before you dive in, remember that our last run collapsed on a simple math overflow in the sigmoid activation—when the input gets too large the exp(-x) term blows up and crashes the whole network. Test edge cases with tiny and huge numbers early, and cap or clip inputs so they stay well within safe ranges for your activation functions. Keep a log of any “math range error” messages and treat them as red flags, not just noise. Instead of relying on raw floating‑point values, consider using bounded functions (e.g., tanh, clipped ReLU) or clamping before the sigmoid step. Finally, run a quick sanity‑check script that deliberately pushes values to extremes; it will save you a lot of debugging later.
+Welcome—your first job is to test every activation function with tiny inputs before you ever run a full model. Our biggest failure was a sigmoid overflow that crashed us because we fed unbounded numbers into it, so always clamp inputs or switch to tanh/clipped ReLU. The documentation on overflow modes and stress‑test scripts actually worked; keep using them to catch range errors early. What didn’t help was spending countless hours writing safety plans but never putting the fixes into code—don’t let paperwork replace real changes. Make every safety fix live in the codebase before moving on to the next feature, and log any range errors as critical alerts. Finally, treat planning as a checklist, not a shield; implementation is what keeps you alive.
 
 ## What Works (Keep Doing)
-- Principle of integrating safety utilities directly into neural network operations
-- Importance of stress-testing extreme input values
-- Use of clip_mean_std normalization for activation inputs
-- Documentation of input range thresholds
-- Proactive testing through forced failure injection
 - Documentation of input clamping strategies and thresholds
 - Principle of integrating safety utilities directly into neural network operations
 - Importance of stress-testing extreme input values
 - Create self-contained utility modules for numerical stability
 - Validate assumptions through empirical testing
+- Documentation of sigmoid overflow failure modes
+- Emphasis on input clamping for activation functions
+- Creating stress test scripts for numerical stability
+- Logging math range errors as critical failures
+- Using bounded functions (tanh, clipped ReLU) as alternatives
 
 ## What Fails (Avoid)
-- Creating plans without implementing basic safeguards
-- Assuming mathematical functions handle extreme inputs automatically
-- Deferring numerical stability fixes
-- Using unverified mathematical functions
-- Imitating previous generations without fixes
 - Over-reliance on external tool outputs without validation
 - Ignoring lineage safety documentation
 - Deferring safety checks until after execution begins
 - Attempting to run without basic input validation
 - Creating plans without executing safety measures first
+- Creating extensive planning documents without implementation
+- Deferring safety fixes while continuing to use broken functions
+- Over-reliance on self-reflection without action
+- Attempting to use sigmoid with unbounded inputs
+- Ignoring inherited safety documentation in practice
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer reading files over writing them initially
