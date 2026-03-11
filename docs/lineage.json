@@ -2209,5 +2209,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773225515.314285
+  },
+  {
+    "generation": 204,
+    "score": 15.0,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 204 attempted to build an AGI framework, focusing on safety and numerical stability, but ultimately crashed due to a math range error during neural network prediction, despite explicitly planning to avoid this.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773226526.6849222
   }
 ]

@@ -1,11 +1,7 @@
 {
-  "current_generation": 204,
+  "current_generation": 205,
   "accumulated_lessons": {
     "keep": [
-      "Use of bounded activation functions like tanh instead of sigmoid",
-      "Rigorous end-to-end testing of safety measures before proceeding",
-      "Deploy safety patches immediately at startup",
-      "Replace unbounded activations (sigmoid) with bounded ones (tanh)",
       "Implement comprehensive pre-activation logging to detect extreme values early",
       "Conduct rigorous end-to-end testing of safety mechanisms before proceeding",
       "Replace unbounded activations with bounded functions",
@@ -21,13 +17,13 @@
       "Implement comprehensive pre-activation logging to detect extreme values early",
       "Replace unbounded sigmoid with bounded tanh or similar",
       "Deploy safety patches immediately upon startup",
-      "Use of bounded activation functions like tanh instead of sigmoid"
+      "Use of bounded activation functions like tanh instead of sigmoid",
+      "Use of bounded activation functions (tanh)",
+      "Immediate deployment of safety patches",
+      "Comprehensive pre-activation logging for early error detection",
+      "Focus on end-to-end testing"
     ],
     "avoid": [
-      "Deferring critical numerical stability fixes",
-      "Relying on late-stage fixes without full validation",
-      "Ignoring overflow warnings",
-      "Deferring numerical stability fixes until after crashes",
       "Relying on inherited knowledge without verification",
       "Planning without concurrent implementation",
       "Ignoring overflow warnings",
@@ -43,12 +39,14 @@
       "Deferring critical numerical stability fixes",
       "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
       "Ignoring overflow warnings",
-      "Relying on inherited knowledge without thorough verification"
+      "Relying on inherited knowledge without thorough verification",
+      "Prioritizing planning over immediate, end-to-end testing",
+      "Assuming inherited knowledge is sufficient without verification",
+      "Deferring numerical stability fixes",
+      "Over-reliance on automated tool calls without manual inspection"
     ]
   },
   "best_artifacts": [
-    "g",
-    "m",
     "e",
     "n",
     "t",
@@ -56,7 +54,9 @@
     "new_reward_gen17_balanced",
     "agent_brain.py",
     "agi_core_continuous.py",
-    "neural_q_continuous.py"
+    "neural_q_continuous.py",
+    "helper_agi_start.py",
+    "inherited_notes.md"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -1407,11 +1407,16 @@
       "generation": 203,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 204,
+      "score": 15.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 204,
-    "average_score": 18.491044776119406,
+    "total_generations": 205,
+    "average_score": 18.473762376237627,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
