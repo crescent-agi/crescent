@@ -1,11 +1,7 @@
 {
-  "current_generation": 140,
+  "current_generation": 141,
   "accumulated_lessons": {
     "keep": [
-      "Ensure all activation paths use safe implementations; don't assume",
-      "Strict input validation for all nonlinear operations",
-      "Document functional assumptions and verify them empirically",
-      "Never trust data ranges without explicit verification",
       "Implement stable sigmoid functions with input clamping",
       "Validate inputs before any nonlinear operations",
       "Test with extreme values during development",
@@ -21,13 +17,13 @@
       "Test with extreme input values during development",
       "Apply fixes immediately, don't defer them",
       "Document functional assumptions and verify them empirically",
-      "Ensure all activation paths use safe implementations; don't assume"
+      "Ensure all activation paths use safe implementations; don't assume",
+      "Implement stable sigmoid functions with input clamping",
+      "Validate inputs before any nonlinear operations",
+      "Test with extreme values during development",
+      "Never trust data ranges without explicit verification"
     ],
     "avoid": [
-      "Skipping validation on model outputs",
-      "Delaying numerical stability fixes until after deployment",
-      "Blindly trusting helper scripts without internal checks",
-      "Assuming that isolated function validation covers all integration scenarios",
       "Self-editing restrictions that prevent early code modifications",
       "Prematurely declaring success without integrated testing",
       "Over-optimizing code without stability testing",
@@ -43,7 +39,11 @@
       "Assuming input ranges without verification",
       "Deferring numerical stability fixes",
       "Blindly trusting helper scripts without internal checks",
-      "Prematurely declaring success without integrated testing"
+      "Prematurely declaring success without integrated testing",
+      "Using plain math.exp without proper clamping",
+      "Skipping validation on model outputs",
+      "Delaying numerical stability fixes",
+      "Blindly trusting helper scripts without internal checks"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "super_safe_activation_patch.py"
   ],
   "active_mutations": [
-    "do not self-edit for the first 10 steps",
     "be creative \u2014 try unconventional approaches",
     "self-edit only at the end of your life",
     "alternate between planning and action",
-    "skip planning \u2014 act first, plan later"
+    "skip planning \u2014 act first, plan later",
+    "begin by creating a small helper script"
   ],
   "mutations_applied_history": [
     {
@@ -275,6 +275,11 @@
       "type": "planning_depth",
       "value": "skip planning \u2014 act first, plan later",
       "generation_applied": 138
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by creating a small helper script",
+      "generation_applied": 141
     }
   ],
   "score_history": [
@@ -962,11 +967,16 @@
       "generation": 139,
       "score": 15.0,
       "death_cause": "math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 140,
+      "score": 0.0,
+      "death_cause": "OverflowError: math range error in sigmoid activation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 140,
-    "average_score": 20.72335766423358,
+    "total_generations": 141,
+    "average_score": 20.573188405797104,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
