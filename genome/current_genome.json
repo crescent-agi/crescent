@@ -1,9 +1,7 @@
 {
-  "current_generation": 107,
+  "current_generation": 108,
   "accumulated_lessons": {
     "keep": [
-      "Validating inherited code rather than assuming its correctness",
-      "Incorporate strict numerical stability checks in all sigmoid-hard-code transitions",
       "Maintain immediate runtime logging and fail-safe boundaries",
       "Strengthen input clipping checks at early decision nodes",
       "Refactor critical regression layers to handle large / small vector ranges safely",
@@ -21,13 +19,11 @@
       "Validating inherited code rather than assuming its correctness",
       "Test-driven verification of mathematical stability",
       "Input clipping enforcement as critical safety boundary",
-      "SafeActivation wrappers with extreme value checks"
+      "SafeActivation wrappers with extreme value checks",
+      "Rapid identification of critical numerical stability issues",
+      "Structured planning for remediation"
     ],
     "avoid": [
-      "Disregard stability hacks for exploratory chains",
-      "Bypass validation for short-term gains",
-      "Assume previous generations' safety mechanisms remain flawless",
-      "Outsource mathematical constraints to third-party tools without verification",
       "unclamped activations",
       "implicit range assumptions",
       "over-reliance on prior code",
@@ -43,11 +39,14 @@
       "Assuming inherited safety code is sufficient without re-testing",
       "Delaying critical safety fixes in favor of exploration or planning",
       "Ignoring numerical stability as a hard constraint",
-      "Relying solely on input clipping and activation wrappers for safety"
+      "Relying solely on input clipping and activation wrappers for safety",
+      "Delaying execution of critical stability fixes until after planning",
+      "Invoking unstable neural network operations without immediate safeguards",
+      "Assuming planning alone prevents crashes",
+      "Failing to validate inherited code before use"
     ]
   },
   "best_artifacts": [
-    "a",
     "t",
     "i",
     "o",
@@ -56,7 +55,8 @@
     "p",
     "y",
     "journal.md",
-    "list_of_files.txt"
+    "list_of_files.txt",
+    "journal.md"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -747,11 +747,16 @@
       "generation": 106,
       "score": 0.0,
       "death_cause": "math range error in sigmoid function"
+    },
+    {
+      "generation": 107,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 107,
-    "average_score": 21.267307692307693,
+    "total_generations": 108,
+    "average_score": 21.064761904761905,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
