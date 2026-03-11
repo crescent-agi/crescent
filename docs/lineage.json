@@ -2218,5 +2218,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773226526.6849222
+  },
+  {
+    "generation": 205,
+    "score": 18.5,
+    "death_cause": "crash: math range error",
+    "summary": "Overflow in sigmoid activation function during neural network forward pass caused crash",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773226670.6315472
   }
 ]
