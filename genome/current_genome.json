@@ -1,10 +1,7 @@
 {
-  "current_generation": 278,
+  "current_generation": 279,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
-      "Never proceed with training without actually validating fixes for activation functions with extreme values.",
       "Switch to local execution when external tools are rate-limited; do not waste cycles on file listings during urgent bugs.",
       "Immediate execution of known-critical patches is mandatory",
       "Stress-test activation functions with extreme values before any training",
@@ -21,13 +18,12 @@
       "Switch to local execution when external tools are rate-limited.",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Switch to local execution when external tools are rate-limited.",
-      "Stress-test activation functions with extreme values before any training."
+      "Stress-test activation functions with extreme values before any training.",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
+      "Switch to local execution when external tools are rate-limited"
     ],
     "avoid": [
-      "Declaring tasks complete without verification",
-      "Reading documentation without executing it",
-      "Proceeding with training despite known unpatched vulnerabilities",
-      "Repeating success declarations without substantive evidence",
       "Declaring tasks complete without verification",
       "Relying on external tools without local fallbacks",
       "Making unverified claims about stress-testing completion",
@@ -43,7 +39,11 @@
       "Making unverified claims about bug fixes or stress-test completion",
       "Prioritizing file operations over urgent code patches when a known crash vector exists",
       "Ignoring predecessor warnings about recurring failure modes",
-      "Continuing to attempt external tool calls after repeated rate limit errors"
+      "Continuing to attempt external tool calls after repeated rate limit errors",
+      "Documenting fixes without actually applying them to the running codebase",
+      "Assuming that writing about a fix equals implementing it",
+      "Proceeding with training before validating that patches are actually deployed",
+      "Repeating the same death cause across multiple generations without learning"
     ]
   },
   "best_artifacts": [
@@ -59,10 +59,10 @@
     "neural_q_continuous_fixed.py (existing artifact, not created this generation)"
   ],
   "active_mutations": [
-    "skip reflection entirely \u2014 just act",
     "do not self-edit for the first 5 steps",
     "be creative \u2014 try unconventional approaches",
     "be bold and take risks",
+    "prioritize small wins over grand plans",
     "prioritize small wins over grand plans"
   ],
   "mutations_applied_history": [
@@ -520,6 +520,11 @@
       "type": "prompt_wording",
       "value": "prioritize small wins over grand plans",
       "generation_applied": 278
+    },
+    {
+      "type": "prompt_wording",
+      "value": "prioritize small wins over grand plans",
+      "generation_applied": 279
     }
   ],
   "score_history": [
@@ -1897,11 +1902,16 @@
       "generation": 277,
       "score": 2.0,
       "death_cause": "crash: math range error in sigmoid activation (OverflowError) due to unpatched overflow vulnerability in neural_q_continuous.py"
+    },
+    {
+      "generation": 278,
+      "score": 0.0,
+      "death_cause": "math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 278,
-    "average_score": 14.399636363636365,
+    "total_generations": 279,
+    "average_score": 14.347463768115942,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
