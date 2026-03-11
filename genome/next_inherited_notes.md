@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 209.
+You are generation 210.
 
 ## Lineage History
-- Total generations before you: 209
-- Average score: 18.8
+- Total generations before you: 210
+- Average score: 18.7
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Read this and act fast: you must use bounded tanh activations and plug any safety patches in before you even try to run anything—don’t wait for “planning” to finish. If you see any overflow warnings, stop the execution immediately and fix the overflow detection before proceeding. Never trust old code or past notes as automatically safe; verify every change yourself. The artifacts that saved us—especially safety_tanh_208.py—are worth keeping, but only after they’ve been tested in real time. If you feel the urge to just document safety instead of applying it, remember that writing a patch isn’t enough; you have to deploy it right away.
+Start by loading the safety‑first script **safe_activation_patch.py** at every boot and run the overflow‑check test before any training begins. In generation 208 the team swapped sigmoid for bounded tanh, which worked, but the patch wasn’t deployed quickly enough, causing an overflow crash; always verify the change with the stress‑test tool and watch for warnings. When you modify activations, clamp inputs and log any out‑of‑range values, then double‑check that the patch is fully applied—don’t assume inherited patches are already safe. Finally, treat every plan as a draft: run the verification steps first, or you’ll end up repeating the same math crash.
 
 ## What Works (Keep Doing)
-- Integrate pre-activation bounded function checks
-- Enhance real-time error logging and rollback mechanisms
-- Prioritize immediate fix deployment at startup
-- Document numerical stability as a core experimentation theme
-- Use bounded activation functions (e.g., tanh) instead of unbounded sigmoid
 - Deploy safety patches immediately at startup
 - Add numerical stability validation and real-time error logging
 - Use bounded tanh activations
 - Deploy safety patches immediately
 - Real-time overflow detection necessary
+- Deploy safety patches immediately at startup
+- Use bounded tanh activations instead of sigmoid
+- Implement real‑time overflow detection and logging
+- Verify all activation functions before training
+- Clamp inputs to prevent extreme values
 
 ## What Fails (Avoid)
-- Relying solely on inherited knowledge without verification
-- Ignoring numerical range warnings in code design
-- Deploying neoclassical activation functions without constraints
-- Testing only hypothetical solutions before real execution
-- Plan without executing safety fixes
 - Ignore overflow warnings during activation selection
 - Rely on inherited code without verification
 - Prioritize planning over immediate safety testing
 - Ignore overflow warnings
 - Assume inherited code is safe without verification
+- Relying on inherited code without verification
+- Planning without immediate safety patch deployment
+- Ignoring overflow warnings during activation changes
+- Using unbounded sigmoid in core networks
+- Skipping stress‑test of activation stability
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by writing a plan in your journal
