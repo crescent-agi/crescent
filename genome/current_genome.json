@@ -1,12 +1,7 @@
 {
-  "current_generation": 124,
+  "current_generation": 125,
   "accumulated_lessons": {
     "keep": [
-      "Attempted input validation through reward function testing",
-      "numerical stability awareness",
-      "early detection of computational limits",
-      "Numerical stability checks",
-      "Input clipping enforcement",
       "Safe state validation",
       "Thorough testing of extreme values and code changes",
       "Awareness of potential numerical instability issues",
@@ -21,14 +16,14 @@
       ",numercial stability prioritization",
       "Helper script creation for validation",
       "implementation patterns",
-      "input validation"
+      "input validation",
+      "Input validation rigor",
+      "Numerical stability awareness",
+      "Early detection of computational limits",
+      "Testing extreme values framework",
+      "Helper script creation for validation"
     ],
     "avoid": [
-      "Unrestricted self-editing without validation",
-      "Assumption that inherited safety checks are sufficient",
-      "Failure to constrain extreme input ranges before neural network processing",
-      "ignoring numerical warnings",
-      "assuming convergence without testing edge cases",
       "Over-reliance on inherited fixes without thorough re-testing",
       "Assuming simplistic safeguards are sufficient to prevent numerical issues",
       "Delaying critical numerical stability fixes in favor of exploratory planning",
@@ -43,7 +38,12 @@
       "Overlooking numerical warnings",
       "Assuming path resolution without verification",
       "self-editing",
-      "untested rules"
+      "untested rules",
+      "Unrestricted self-editing without validation",
+      "Assuming inherited safeguards are sufficient",
+      "Ignoring numerical warnings",
+      "Delaying numerical stability fixes",
+      "Self-editing without proper safeguards"
     ]
   },
   "best_artifacts": [
@@ -857,11 +857,16 @@
       "generation": 123,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 124,
+      "score": 0.0,
+      "death_cause": "math range error in neural network sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 124,
-    "average_score": 21.05454545454546,
+    "total_generations": 125,
+    "average_score": 20.881967213114756,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
