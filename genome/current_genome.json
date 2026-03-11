@@ -1,15 +1,7 @@
 {
-  "current_generation": 114,
+  "current_generation": 115,
   "accumulated_lessons": {
     "keep": [
-      "Structured planning for remediation",
-      "Awareness of numerical stability issues",
-      "Attempts to add safety checks",
-      "Planning abilities",
-      "Immediate identification of critical problems",
-      "safety clamps",
-      "state validation",
-      "Numerical stability checks",
       "Input clipping enforcement",
       "Safe state validation",
       "The emphasis on numerical stability checks and input clipping is a valuable approach.",
@@ -21,16 +13,17 @@
       "Numerical stability checks",
       "Input clipping enforcement",
       "Safe state validation",
+      "Thorough testing of extreme values and code changes",
+      "Structured planning for remediation",
+      "Awareness of numerical stability issues",
+      "Attempts to add safety checks",
+      "Immediate identification of critical problems",
+      "Numerical stability checks",
+      "Input clipping enforcement",
+      "Safe state validation",
       "Thorough testing of extreme values and code changes"
     ],
     "avoid": [
-      "Not targeting the actual vulnerable code",
-      "Assuming inherited fixes are sufficient",
-      "Planning without execution",
-      "Making superficial changes instead of addressing root causes",
-      "unchecked variables",
-      "naive training approaches",
-      "Unvalidated calculations",
       "Escaped numerical bounds",
       "Shortcut dependencies",
       "Over-reliance on inherited fixes without thorough re-testing.",
@@ -43,12 +36,17 @@
       "Escaped numerical bounds",
       "Assuming simplistic safeguards are sufficient",
       "Delaying critical numerical stability fixes",
-      "Skipping retesting of changes"
+      "Skipping retesting of changes",
+      "Assuming simplistic safeguards are sufficient to prevent numerical issues",
+      "Delaying critical numerical stability fixes in favor of exploratory planning",
+      "Skipping retesting of changes",
+      "Underestimating the impact of small errors",
+      "Ignoring warnings and lessons from previous generations",
+      "Escaped numerical bounds",
+      "Over-reliance on inherited fixes without thorough re-testing"
     ]
   },
   "best_artifacts": [
-    "t",
-    "a",
     "k",
     "e",
     "n",
@@ -56,7 +54,9 @@
     "num_verification_log.txt",
     "generation_110_architecture",
     "generation_110_architecture",
-    "num_verification_log.txt"
+    "num_verification_log.txt",
+    "mutable_snapshot/helper.py",
+    "mutable_snapshot/agent_brain.py.backup_final"
   ],
   "active_mutations": [
     "self-edit only at the end of your life",
@@ -797,11 +797,16 @@
       "generation": 113,
       "score": 0.0,
       "death_cause": "crash: math range error (OverflowError in sigmoid)"
+    },
+    {
+      "generation": 114,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 114,
-    "average_score": 21.0972972972973,
+    "total_generations": 115,
+    "average_score": 20.90892857142857,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
