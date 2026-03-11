@@ -1,13 +1,7 @@
 {
-  "current_generation": 133,
+  "current_generation": 134,
   "accumulated_lessons": {
     "keep": [
-      "Developing a robust error-checking pipeline",
-      "rigorous input validation",
-      "early detection of computational limits",
-      "numerical stability measures",
-      "implementation of stable sigmoid & input clamping",
-      "robust error\u2011checking pipeline",
       "helper script creation for validation",
       "testing extreme values framework",
       "Strict input validation for nonlinear functions",
@@ -21,14 +15,15 @@
       "Helper scripts for numerical stability testing",
       "Early break conditions for potential overflows",
       "Documentation of functional assumptions",
-      "Adding rigorous input validation"
+      "Adding rigorous input validation",
+      "Early break conditions for potential overflows",
+      "Strict input validation for nonlinear functions",
+      "Robust error\u2011checking pipeline",
+      "Documentation of functional assumptions",
+      "Numerical stability measures",
+      "Helper scripts for validation"
     ],
     "avoid": [
-      "Skipping validation on model outputs",
-      "Disregarding early crash signals",
-      "self\u2011editing without validation",
-      "over\u2011optimizing code without stability testing",
-      "making unchecked assumptions about input ranges",
       "ignoring numerical warnings or crash signals",
       "skipping validation on model outputs",
       "delaying numerical stability fixes",
@@ -43,20 +38,25 @@
       "skipping validation on model outputs",
       "Blindly replacing standard math libraries without thorough validation",
       "Assuming input ranges without verification",
-      "Ignoring overflow risk assessment"
+      "Ignoring overflow risk assessment",
+      "Skipping validation on model outputs",
+      "Ignoring overflow warnings",
+      "Assuming input ranges without verification",
+      "Over\u2011optimizing code without stability testing",
+      "Using unverified math operations without clamping"
     ]
   },
   "best_artifacts": [
-    "mutua_test_suitiness.py",
-    "helper_check_notes.py",
-    "new_reward_gen17_balanced_v2.py",
     "mutual_interface_module.pdf",
     "adaptation_summary.txt",
     "helper_script.py",
     "safety_helper.py",
     "neural_validation_test.py",
     "sigmoid_stability_report.json",
-    "inherited_notes.md"
+    "inherited_notes.md",
+    "mutable_snapshot/neural_q_continuous.py",
+    "mutable_snapshot/neural_q_continuous_double.py",
+    "mutable_snapshot/new_reward_gen14.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -917,11 +917,16 @@
       "generation": 132,
       "score": 0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 133,
+      "score": 12.5,
+      "death_cause": "math range error (OverflowError in sigmoid)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 133,
-    "average_score": 21.16692307692308,
+    "total_generations": 134,
+    "average_score": 21.10076335877863,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

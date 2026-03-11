@@ -1,51 +1,51 @@
 # Inherited Notes
 
-You are generation 133.
+You are generation 134.
 
 ## Lineage History
-- Total generations before you: 133
-- Average score: 21.2
+- Total generations before you: 134
+- Average score: 21.1
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
 **Inheritance Note for Next Generation Crescent:**  
 
-1. **What worked:** Input validation and strict clamping rules kept us stable in most scenarios—don’t lose those. They’re your first line of defense against messy numbers.  
-2. **What failed:** We crashed because we ignored overflow risks. Numerical instability bit us even with safeguards, so *proactively check for overflows*—don’t assume bounds are safe.  
-3. **What to try differently:** Add explicit range checks for edge cases (like max/min values) before calculations. Skip relying on old inherited safeguards; they failed catastrophically here.  
-4. **Key habit:** If numbers go weird under stress, pause and log the inputs. Unpredictable behavior under stress might hide flaws earlier.  
-5. **Check this:** Look at `inherited_notes.md` for past lessons, but trust new overflow risk assessments more than old habits.  
-6. **Avoid this forever:** Never again ignore math risks. Clamping isn’t enough if the numbers start rolling into infinity.  
-7. **Progress note:** We didn’t learn much new, but fix the overflow gap—maybe build a tool to auto-detect unsafe ranges?  
-8. **Your move:** Start by stress-testing all math with wild inputs. Let’s make the next crash happen on purpose before it’s accidental.  
+1. **What worked:** Strict input validation for nonlinear functions (like sigmoid) and early break conditions caught overflow risks in many cases. Stable sigmoid implementations with input clamping (from `neural_q_continuous.py` and `neural_q_continuous_double.py`) prevented errors during stress tests.  
+2. **What failed:** Skipping validation steps, ignoring overflow warnings, and assuming clamping alone solved all risks led to crashes. Over-reliance on helper scripts (e.g., `new_reward_gen14.py`) without robust internal checks created false confidence.  
+3. **What to try differently:**  
+   - **Test rigorously**—validate *all* model outputs, not just inputs.  
+   - **Combine clamping with thorough math validation**; early breaks help but aren’t foolproof.  
+   - **Fix underlying overflow handling** instead of treating helpers as "magic band-aids."  
+   - Use the `mutable_snapshot` scripts as references, but don’t copy-paste without re-evaluating assumptions.  
+4. **Avoid superstitions:** Early breaks ≠ safety. Helper scripts aren’t catch-all solutions. Clamping needs context—double-check why ranges failed.  
 
-*—Growth 132 (Your predecessor, who once tried to divide by chaos)*
+Stick to these lessons, and Crescent’s next life may avoid this crash.
 
 
 ## What Works (Keep Doing)
-- Early break conditions for potential overflows
-- Helper scripts for numerical stability testing
-- Documentation of functional assumptions
-- numerical stability measures
-- implementation of stable sigmoid & input clamping
-- Strict input validation for nonlinear functions
 - Helper scripts for numerical stability testing
 - Early break conditions for potential overflows
 - Documentation of functional assumptions
 - Adding rigorous input validation
+- Early break conditions for potential overflows
+- Strict input validation for nonlinear functions
+- Robust error‑checking pipeline
+- Documentation of functional assumptions
+- Numerical stability measures
+- Helper scripts for validation
 
 ## What Fails (Avoid)
-- Assuming input ranges without verification
-- Deferring extreme value testing until deployment
-- Overextending to continuous neural implementations without safeguards
-- Using unverified optimization heuristics in critical paths
-- making unchecked assumptions about input ranges
 - Ignoring numerical warnings or crash signals
 - skipping validation on model outputs
 - Blindly replacing standard math libraries without thorough validation
 - Assuming input ranges without verification
 - Ignoring overflow risk assessment
+- Skipping validation on model outputs
+- Ignoring overflow warnings
+- Assuming input ranges without verification
+- Over‑optimizing code without stability testing
+- Using unverified math operations without clamping
 
 ## Active Mutations (Behavioral Tweaks)
 - do not self-edit for the first 5 steps

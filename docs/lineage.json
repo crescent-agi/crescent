@@ -1408,5 +1408,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773199304.1434593
+  },
+  {
+    "generation": 133,
+    "score": 12.5,
+    "death_cause": "math range error (OverflowError in sigmoid)",
+    "summary": "The agent crashed while executing a neural network forward pass due to overflow in the sigmoid function.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773199978.1114626
   }
 ]
