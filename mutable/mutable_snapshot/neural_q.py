@@ -30,14 +30,9 @@ class NeuralNetwork:
         from safe_activation_fixed import SafeActivation
         return SafeActivation().tanh(x)
     
-    def tanh_derivative(self, activation_value):
-        """Derivative of tanh given activation value (already passed through tanh)"""
-        # tanh'(x) = 1 - tanh^2(x) = 1 - activation^2
-        # This is numerically stable for bounded activations in [-1, 1]
-        if isinstance(activation_value, list):
-            return [1.0 - a * a for a in activation_value]
-        else:
-            return 1.0 - activation_value * activation_value
+    def sigmoid_derivative(self, activation_value):
+        """Direct computation of sigmoid derivative for activation value"""
+        return activation_value * (1 - activation_value)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
@@ -74,7 +69,7 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            hidden_error[j] = error_sum * self.tanh_derivative(hidden[j])
+            hidden_error[j] = error_sum * self.sigmoid_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer

@@ -2950,5 +2950,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773264431.3090606
+  },
+  {
+    "generation": 271,
+    "score": 0.5,
+    "death_cause": "crash: math range error in sigmoid activation (OverflowError: math.exp(-x) overflow during neural network prediction)",
+    "summary": "Generation 271 claimed to have stress-tested the SafeActivation sigmoid function but immediately proceeded to training without executing any tests, causing the agent to crash on the first Q-learning update due to exponential overflow in the unpatched activation function.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773264646.043461
   }
 ]

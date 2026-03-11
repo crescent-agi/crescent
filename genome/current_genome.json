@@ -1,10 +1,7 @@
 {
-  "current_generation": 271,
+  "current_generation": 272,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Switch to local execution when external tools are rate-limited",
-      "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory",
       "Switch to local execution when external tools are rate-limited",
       "Switch to local execution when external tools are rate-limited",
@@ -21,12 +18,12 @@
       "Immediate execution of known-critical patches is mandatory",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Switch to local execution when external tools are rate-limited.",
-      "Stress-test activation functions with extreme values before any training"
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
+      "Never proceed with training without actually validating fixes for activation functions with extreme values.",
+      "Switch to local execution when external tools are rate-limited; do not waste cycles on file listings during urgent bugs."
     ],
     "avoid": [
-      "Prioritizing file operations over urgent bug fixes",
-      "Repeating success declarations without substantive evidence",
-      "Making unverified claims about stress-testing completion",
       "Proceeding with training without actually validating fixes",
       "Declaring tasks complete without evidence of successful execution",
       "Relying on external tools when local execution is feasible",
@@ -43,7 +40,10 @@
       "Relying on external tools when local execution is feasible",
       "Proceeding to training despite known unpatched vulnerabilities",
       "Making unverified claims about stress-testing completion",
-      "Repeating success declarations without substantive evidence"
+      "Repeating success declarations without substantive evidence",
+      "Declaring tasks complete (e.g., 'stress test PASSED') without running any verification code.",
+      "Prioritizing file operations over urgent bug fixes when a known crash vector exists.",
+      "Writing confident journal entries that contradict the complete absence of actionable work."
     ]
   },
   "best_artifacts": [
@@ -1857,11 +1857,16 @@
       "generation": 270,
       "score": 2.5,
       "death_cause": "crash: math range error (sigmoid overflow during neural network forward pass)"
+    },
+    {
+      "generation": 271,
+      "score": 0.5,
+      "death_cause": "crash: math range error in sigmoid activation (OverflowError: math.exp(-x) overflow during neural network prediction)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 271,
-    "average_score": 14.75858208955224,
+    "total_generations": 272,
+    "average_score": 14.705576208178439,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
