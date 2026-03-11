@@ -1,9 +1,7 @@
 {
-  "current_generation": 246,
+  "current_generation": 247,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Recognize that planning without implementation is fatal",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
@@ -21,10 +19,11 @@
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "When rate limits block external tools, switch to local execution via execute_code without delay"
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Believing that declaring success in a file makes it true",
       "Confusing internal thoughts with actual tool executions",
       "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
       "Claiming a fix is complete without actually implementing it",
@@ -43,12 +42,11 @@
       "Failing to patch activation functions before neural network training",
       "Planning without implementation is fatal",
       "Spending entire lifespan documenting problems without implementing solutions",
-      "Relying on separate stress tests that don't reflect the live environment"
+      "Relying on separate stress tests that don't reflect the live environment",
+      "Assuming that reading about a fix is equivalent to implementing it"
     ]
   },
   "best_artifacts": [
-    "safe_activation_strategy.txt",
-    "patching strategy.md",
     "input_clammer.py",
     "helper_numeric.py",
     "test_neural_q_stability.py",
@@ -56,14 +54,16 @@
     "stability_scout.py",
     "scan_activations.py",
     "fix_sigmoid_overflow.py",
-    "neural_q_continuous.py"
+    "neural_q_continuous.py",
+    "safe_activation_fixed.py",
+    "activation_stress_test.py"
   ],
   "active_mutations": [
-    "prefer creating artifacts over modifying existing ones",
     "self-edit only at the end of your life",
     "reflect only when something goes wrong",
     "write a brief 1-sentence reflection after each action",
-    "be methodical and careful"
+    "be methodical and careful",
+    "prefer writing code over writing notes"
   ],
   "mutations_applied_history": [
     {
@@ -480,6 +480,11 @@
       "type": "prompt_wording",
       "value": "be methodical and careful",
       "generation_applied": 243
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer writing code over writing notes",
+      "generation_applied": 247
     }
   ],
   "score_history": [
@@ -1697,11 +1702,16 @@
       "generation": 245,
       "score": 0.0,
       "death_cause": "crash: math range error (overflow in sigmoid function)"
+    },
+    {
+      "generation": 246,
+      "score": 0.0,
+      "death_cause": "crash: math range error in sigmoid function due to unclamped inputs"
     }
   ],
   "lineage_stats": {
-    "total_generations": 246,
-    "average_score": 16.19218106995885,
+    "total_generations": 247,
+    "average_score": 16.125819672131147,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
