@@ -1,11 +1,7 @@
 {
-  "current_generation": 171,
+  "current_generation": 172,
   "accumulated_lessons": {
     "keep": [
-      "Principle of integrating safety utilities directly into neural network operations",
-      "Documentation of input clamping strategies and thresholds",
-      "Principle of integrating safety utilities directly into neural network operations",
-      "Importance of stress-testing extreme input values",
       "Use of clip_mean_std normalization for activation inputs",
       "Documentation of input range thresholds",
       "Proactive testing through forced failure injection",
@@ -21,13 +17,13 @@
       "Using bounded functions (tanh, clipped ReLU) as alternatives",
       "The focus on proactive numerical stability testing, particularly with extreme input values.",
       "The attempt to implement input clamping as a direct code fix.",
+      "The lineage message emphasizing the importance of immediate safety implementations.",
+      "Proactive numerical stability testing, particularly with extreme input values.",
+      "Logging math range errors as critical failures.",
+      "Using bounded functions (tanh, clipped ReLU) as alternatives.",
       "The lineage message emphasizing the importance of immediate safety implementations."
     ],
     "avoid": [
-      "Deferring safety checks until after execution begins",
-      "Relying on external tools that fail immediately",
-      "Creating plans without implementing basic safeguards",
-      "Assuming mathematical functions handle extreme inputs automatically",
       "Deferring numerical stability fixes",
       "Using unverified mathematical functions",
       "Imitating previous generations without fixes",
@@ -43,27 +39,31 @@
       "Ignoring inherited safety documentation in practice",
       "Relying on tool calls without proper error handling or validation of results.",
       "Attempting complex tasks (patching and testing) before establishing basic functionality (successful tool calls).",
-      "Prioritizing planning over immediate implementation of safety measures."
+      "Prioritizing planning over immediate implementation of safety measures.",
+      "Attempting to use sigmoid with unbounded inputs.",
+      "Creating plans without implementing basic safeguards.",
+      "Prioritizing planning over immediate implementation of safety measures.",
+      "Deferring safety checks until after execution begins."
     ]
   },
   "best_artifacts": [
-    "validate_input_range.py",
-    "agi_core_continuous.py",
-    "neural_q_continuous_double.py",
     "new_reward_gen17_balanced_v3.py",
     "agent_brain.py",
     "agi_core.py",
     "neural_q_continuous.py",
     "journal.md",
     "strategy.md",
-    "inherited_notes.md"
+    "inherited_notes.md",
+    "strategy.md",
+    "agent_brain.py",
+    "neural_q_continuous.py"
   ],
   "active_mutations": [
-    "prefer reading files over writing them initially",
     "prioritize small wins over grand plans",
     "begin by writing a plan in your journal",
     "do not self-edit for the first 5 steps",
-    "alternate between planning and action"
+    "alternate between planning and action",
+    "prefer exploring the workspace before acting"
   ],
   "mutations_applied_history": [
     {
@@ -325,6 +325,11 @@
       "type": "planning_depth",
       "value": "alternate between planning and action",
       "generation_applied": 167
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer exploring the workspace before acting",
+      "generation_applied": 172
     }
   ],
   "score_history": [
@@ -1167,11 +1172,16 @@
       "generation": 170,
       "score": 0.0,
       "death_cause": "math range error (OverflowError: math range error in sigmoid function)"
+    },
+    {
+      "generation": 171,
+      "score": 0.0,
+      "death_cause": "math range error (OverflowError: math range error in sigmoid function)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 171,
-    "average_score": 19.636904761904766,
+    "total_generations": 172,
+    "average_score": 19.520710059171602,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
