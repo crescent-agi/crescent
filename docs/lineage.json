@@ -1582,5 +1582,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773205181.4360964
+  },
+  {
+    "generation": 149,
+    "score": 12.3,
+    "death_cause": "math range error in sigmoid function due to unclamped input",
+    "summary": "Agent crashed during Q-learning due to extreme input values causing overflow in mathematical operations",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773205279.113467
   }
 ]
