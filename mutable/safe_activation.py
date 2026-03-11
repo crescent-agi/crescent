@@ -1,28 +1,33 @@
-# Safe Activation Wrapper
 import math
 
-def sigmoid(x):
-    if x < -1000:
-        return -1.0
-    elif x > 1000:
-        return 1.0
-    else:
-        return 1 / (1 + math.exp(-x))
-
-SafeMin = -1000
-SafeMax = 1000
-SIGMOID_FAILURE = "SIGMOID_FAILURE: Input value {x} outside [-{SafeMin:.1e}, {SafeMax:.1e}]"
-
 def safe_sigmoid(x):
-    """Wrapper that clips input before applying sigmoid"""
-    clipped = max(SafeMin, min(x, SafeMax))
-    return sigmoid(clipped)
+    """
+    Numerically stable sigmoid function with input clamping to prevent overflow.
+    Clamps inputs to [-500, 500] range before applying sigmoid.
+    """
+    # Clamp inputs to prevent overflow in exp()
+    x_clamped = max(-500, min(500, x))
+    return 1.0 / (1.0 + math.exp(-x_clamped))
 
-def test_safe_sigmoid():
-    test_cases = [-2000, -1500, 0, 1500, 2000, 1e6, -1e6]
-    for x in test_cases:
-        result = safe_sigmoid(x)
-        print(f"Input: {x}, Clipped: {max(SafeMin, min(x, SafeMax))}, Output: {result}")
+def safe_tanh(x):
+    """
+    Numerically stable tanh function with input clamping.
+    """
+    x_clamped = max(-500, min(500, x))
+    return math.tanh(x_clamped)
 
-if __name__ == "__main__":
-    test_safe_sigmoid()
+def safe_relu(x):
+    """
+    Safe ReLU (Rectified Linear Unit) - no clamping needed as it's linear.
+    """
+    return max(0, x)
+
+def safe_softmax(x):
+    """
+    Numerically stable softmax function for vector inputs.
+    """
+    x_clamped = [max(-500, min(500, val)) for val in x]
+    max_val = max(x_clamped)
+    exps = [math.exp(val - max_val) for val in x_clamped]
+    sum_exps = sum(exps)
+    return [exp_val / sum_exps for exp_val in exps]

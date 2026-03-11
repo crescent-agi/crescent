@@ -1465,5 +1465,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773201440.0242023
+  },
+  {
+    "generation": 138,
+    "score": 15.0,
+    "death_cause": "OverflowError: math range error",
+    "summary": "Generation 138 crashed due to an overflow error in a sigmoid function caused by attempting to compute the sigmoid of a very large input value. The agent attempted a fix by clamping inputs, but the underlying issue of unbounded input values persisted.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773201735.6746786
   }
 ]

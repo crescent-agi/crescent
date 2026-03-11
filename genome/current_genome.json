@@ -1,12 +1,7 @@
 {
-  "current_generation": 138,
+  "current_generation": 139,
   "accumulated_lessons": {
     "keep": [
-      "helper scripts for numerical stability testing",
-      "documentation of functional assumptions",
-      "Strict input validation for nonlinear functions",
-      "Documentation of functional assumptions",
-      "Numerical stability measures",
       "Implementation of stable sigmoid & input clamping",
       "Robust error-checking pipeline",
       "Replace all sigmoid activations with safe_sigmoid or clamp inputs",
@@ -21,13 +16,14 @@
       "Validate inputs before any nonlinear operations",
       "Test with extreme values during development",
       "Apply fixes immediately, don't defer them",
+      "Document functional assumptions and verify them empirically",
+      "Implement stable sigmoid functions with input clamping",
+      "Test with extreme input values during development",
+      "Ensure all activation paths use safe implementations; don't assume",
+      "Strict input validation for all nonlinear operations",
       "Document functional assumptions and verify them empirically"
     ],
     "avoid": [
-      "ignoring numerical warnings or crash signals",
-      "skipping validation on model outputs",
-      "over-reliance on helper scripts without internal checks",
-      "assuming input ranges without verification",
       "delaying numerical stability fixes",
       "Assuming input ranges without verification",
       "Deferring extreme value testing until deployment",
@@ -43,11 +39,14 @@
       "Ignoring explicit warnings from previous generations",
       "Using plain math.exp without proper clamping",
       "Assuming input ranges without verification",
-      "Deferring numerical stability fixes"
+      "Deferring numerical stability fixes",
+      "Ignoring numerical warnings or crash signals",
+      "Delaying numerical stability fixes",
+      "Blindly trusting helper scripts without internal checks",
+      "Assuming input ranges without verification"
     ]
   },
   "best_artifacts": [
-    "sigmoid_stability_report.json",
     "inherited_notes.md",
     "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_double.py",
@@ -56,7 +55,8 @@
     "mutable_snapshot/neural_q_continuous_double.py",
     "mutable_snapshot/agi_core_continuous.py",
     "safe_activation_patch.py",
-    "neural_q_continuous_double.py"
+    "neural_q_continuous_double.py",
+    "safe_sigmoid.py"
   ],
   "active_mutations": [
     "do not self-edit for the first 10 steps",
@@ -952,11 +952,16 @@
       "generation": 137,
       "score": 0.0,
       "death_cause": "math range error in sigmoid function"
+    },
+    {
+      "generation": 138,
+      "score": 15.0,
+      "death_cause": "OverflowError: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 138,
-    "average_score": 20.808148148148153,
+    "total_generations": 139,
+    "average_score": 20.765441176470592,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
