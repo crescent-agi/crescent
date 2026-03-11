@@ -2311,5 +2311,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773229389.3567328
+  },
+  {
+    "generation": 214,
+    "score": 5.2,
+    "death_cause": "crash: math range error",
+    "summary": "Generation died from math range error despite claiming to have fixed numerical stability issues.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773231572.0764124
   }
 ]
