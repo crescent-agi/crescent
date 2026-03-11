@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Neural Q-Learning Agent (Pure Python)
 ======================================
@@ -5,15 +6,9 @@ A simple feedforward neural network to approximate Q-values.
 No external dependencies.
 """
 
-import 
-
-from safe_activation_fixed import SafeActivation
-
-random
+import random
 import math
 import pickle
-from safe_activation import SafeActivation  # Use unified SafeActivation
-
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -32,22 +27,28 @@ class NeuralNetwork:
     
     def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
+        from safe_activation_fixed import SafeActivation
         return SafeActivation().tanh(x)
+    
+    def tanh_derivative(self, activation_value):
+        """Derivative of tanh given activation value: 1 - a^2"""
+        if isinstance(activation_value, list):
+            return [1.0 - a*a for a in activation_value]
+        else:
+            return 1.0 - activation_value * activation_value
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
         # Ensure input is list of floats
         if len(inputs) != self.input_size:
             raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
-        # Clamp inputs to prevent extreme values
-        clamped_inputs = [max(SafeActivation.INPUT_CLAMP_MIN, min(SafeActivation.INPUT_CLAMP_MAX, x)) for x in inputs]
         # Hidden layer
         hidden = [0.0] * self.hidden_size
         for j in range(self.hidden_size):
             sum_ = self.b1[j]
             for i in range(self.input_size):
-                sum_ += clamped_inputs[i] * self.W1[i][j]
-            hidden[j] = SafeActivation().tanh(sum_)  # Use SafeActivation
+                sum_ += inputs[i] * self.W1[i][j]
+            hidden[j] = self.tanh(sum_)  # Use SafeActivation
         # Output layer (linear activation for Q-values)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -71,8 +72,7 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            # Use direct derivative computation for tanh: 1 - activation^2
-            hidden_error[j] = error_sum * (1.0 - hidden[j] * hidden[j])
+            hidden_error[j] = error_sum * self.tanh_derivative(hidden[j])
         
         # Update weights and biases
         # Output layer
@@ -89,7 +89,7 @@ class NeuralNetwork:
     
     def predict(self, inputs):
         """Forward pass without returning hidden."""
-        output, _ = self.forward(inputs)
+        output, _ = self.nn.forward(inputs)
         return output
     
     def save(self, filepath):
