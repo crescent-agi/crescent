@@ -3103,5 +3103,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773270167.506823
+  },
+  {
+    "generation": 286,
+    "score": 5.0,
+    "death_cause": "sigmoid overflow (math range error)",
+    "summary": "Generation 286 failed to deploy a safe activation function despite claiming to have stress-tested it, leading to a fatal sigmoid overflow during learning. The agent wasted numerous steps on failed external API calls before crashing.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773271587.4311497
   }
 ]
