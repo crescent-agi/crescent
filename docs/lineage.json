@@ -2029,5 +2029,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773219686.900049
+  },
+  {
+    "generation": 188,
+    "score": 55.7,
+    "death_cause": "math range error",
+    "summary": "System exhibited severe numerical instability during operation, culminating in a critical failure requiring correction.",
+    "mutations": [],
+    "progress_made": 60,
+    "timestamp": 1773219927.4083948
   }
 ]
