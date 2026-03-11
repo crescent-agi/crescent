@@ -2,13 +2,16 @@
 """
 Safe activation functions with input clamping and numerical stability.
 Replaces all previous implementations and fixes derivative bugs.
+Fixed to handle numpy arrays and lists properly.
 """
 import math
+import numpy as np
 
 class SafeActivation:
     """
     Safe activation functions with input clamping and numerical stability.
     All functions are bounded to prevent overflow/underflow.
+    Works with scalars, lists, and numpy arrays.
     """
     
     # Input clamping bounds
@@ -18,10 +21,32 @@ class SafeActivation:
     def __init__(self):
         pass
     
+    def _clamp(self, x):
+        """Clamp input to prevent overflow. Works with scalars, lists, and numpy arrays."""
+        if isinstance(x, np.ndarray):
+            return np.clip(x, self.INPUT_CLAMP_MIN, self.INPUT_CLAMP_MAX)
+        elif isinstance(x, list):
+            # For list, clamp each element
+            return [max(self.INPUT_CLAMP_MIN, min(self.INPUT_CLAMP_MAX, val)) for val in x]
+        else:
+            # scalar
+            return max(self.INPUT_CLAMP_MIN, min(self.INPUT_CLAMP_MAX, x))
+    
     def tanh(self, x):
         """Bounded tanh activation function"""
-        x = max(self.INPUT_CLAMP_MIN, min(self.INPUT_CLAMP_MAX, x))
-        # Numerically stable tanh implementation
+        x = self._clamp(x)
+        if isinstance(x, np.ndarray):
+            # Use numpy's vectorized tanh; after clamping it's safe
+            return np.tanh(x)
+        elif isinstance(x, list):
+            # For list, apply scalar tanh to each element
+            return [self._scalar_tanh(val) for val in x]
+        else:
+            # scalar version
+            return self._scalar_tanh(x)
+    
+    def _scalar_tanh(self, x):
+        """Scalar tanh implementation"""
         if x >= 0:
             return (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
         else:
@@ -29,8 +54,19 @@ class SafeActivation:
     
     def sigmoid(self, x):
         """Bounded sigmoid activation function"""
-        x = max(self.INPUT_CLAMP_MIN, min(self.INPUT_CLAMP_MAX, x))
-        # Numerically stable sigmoid implementation
+        x = self._clamp(x)
+        if isinstance(x, np.ndarray):
+            # Use numpy's vectorized sigmoid; after clamping it's safe
+            return 1.0 / (1.0 + np.exp(-x))
+        elif isinstance(x, list):
+            # For list, apply scalar sigmoid to each element
+            return [self._scalar_sigmoid(val) for val in x]
+        else:
+            # scalar version
+            return self._scalar_sigmoid(x)
+    
+    def _scalar_sigmoid(self, x):
+        """Scalar sigmoid implementation"""
         if x >= 0:
             z = math.exp(-x)
             return 1 / (1 + z)
@@ -42,21 +78,43 @@ class SafeActivation:
         """Derivative of tanh given activation value (already passed through tanh)"""
         # f'(x) = 1 - tanh^2(x) = 1 - activation^2
         # This is numerically stable for bounded activations
-        return 1.0 - activation_value**2
+        if isinstance(activation_value, np.ndarray):
+            return 1.0 - activation_value * activation_value
+        elif isinstance(activation_value, list):
+            return [1.0 - a * a for a in activation_value]
+        else:
+            # scalar
+            return 1.0 - activation_value**2
     
     def sigmoid_derivative(self, activation_value):
         """Derivative of sigmoid given activation value (already passed through sigmoid)"""
         # f'(x) = sigmoid(x) * (1 - sigmoid(x)) = activation * (1 - activation)
-        return activation_value * (1 - activation_value)
+        if isinstance(activation_value, np.ndarray):
+            return activation_value * (1.0 - activation_value)
+        elif isinstance(activation_value, list):
+            return [a * (1.0 - a) for a in activation_value]
+        else:
+            # scalar
+            return activation_value * (1.0 - activation_value)
     
     def relu(self, x):
         """Bounded ReLU activation function"""
-        x = max(self.INPUT_CLAMP_MIN, min(self.INPUT_CLAMP_MAX, x))
-        return max(0, x)
+        x = self._clamp(x)
+        if isinstance(x, np.ndarray):
+            return np.maximum(0, x)
+        elif isinstance(x, list):
+            return [max(0, val) for val in x]
+        else:
+            return max(0, x)
     
     def relu_derivative(self, x):
-        """Derivative of ReLU (0 for x<0, 1 for x>0, 0 for x<0 due to clamping)"""
-        return 1 if x > 0 else 0
+        """Derivative of ReLU (0 for x<0, 1 for x>0, undefined at 0 but we return 0)"""
+        if isinstance(x, np.ndarray):
+            return (x > 0).astype(float)
+        elif isinstance(x, list):
+            return [1.0 if val > 0 else 0.0 for val in x]
+        else:
+            return 1.0 if x > 0 else 0.0
     
     def stress_test(self):
         """Test extreme values to ensure stability"""
@@ -101,7 +159,6 @@ class SafeActivation:
         else:
             print("[ERROR] Derivative validation failed!")
 
-
 # Global instance for convenience
 def safe_activation(x):
     """Convenience function for SafeActivation.tanh"""
@@ -124,3 +181,39 @@ if __name__ == "__main__":
     sa.stress_test()
     print()
     sa.validate_all_derivatives()
+    
+    # Additional array test
+    print("\n=== Array Compatibility Test ===")
+    import numpy as np
+    test_array = np.array([-1000, -100, -10, 0, 10, 100, 1000])
+    print(f"Input array: {test_array}")
+    tanh_result = sa.tanh(test_array)
+    sigmoid_result = sa.sigmoid(test_array)
+    print(f"tanh result: {tanh_result}")
+    print(f"sigmoid result: {sigmoid_result}")
+    
+    # Check bounds
+    if np.all((tanh_result >= -1) & (tanh_result <= 1)) and \
+       np.all((sigmoid_result >= 0) & (sigmoid_result <= 1)):
+        print("[SUCCESS] Array inputs handled correctly!")
+    else:
+        print("[ERROR] Array inputs produced out-of-bounds values!")
+    
+    # List test
+    print("\n=== List Compatibility Test ===")
+    test_list = [-1000, -100, -10, 0, 10, 100, 1000]
+    print(f"Input list: {test_list}")
+    tanh_result = sa.tanh(test_list)
+    sigmoid_result = sa.sigmoid(test_list)
+    print(f"tanh result: {tanh_result}")
+    print(f"sigmoid result: {sigmoid_result}")
+    
+    # Check bounds and type
+    if isinstance(tanh_result, list) and isinstance(sigmoid_result, list):
+        if all(-1 <= val <= 1 for val in tanh_result) and \
+           all(0 <= val <= 1 for val in sigmoid_result):
+            print("[SUCCESS] List inputs handled correctly!")
+        else:
+            print("[ERROR] List inputs produced out-of-bounds values!")
+    else:
+        print(f"[ERROR] Wrong return types: tanh={type(tanh_result)}, sigmoid={type(sigmoid_result)}")

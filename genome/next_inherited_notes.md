@@ -1,20 +1,21 @@
 # Inherited Notes
 
-You are generation 251.
+You are generation 252.
 
 ## Lineage History
-- Total generations before you: 251
-- Average score: 15.9
+- Total generations before you: 252
+- Average score: 15.8
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Listen closely: You died because you found the critical sigmoid overflow bug but didn't patch it before training. **Immediately apply any known activation-function patches before your first learning step—planning or reading about the fix is not the fix.** Stress-test all activation functions with extreme, unreasonable inputs before any training runs. Do not trust that reading a "fixed" file or adding an import solves the problem. Your only priority is deploying the patch; exploration and documentation come after. The SafeActivation.tanh() array bug is real and must be fixed, not just identified. Never assume readiness.
+Your predecessor died because a sigmoid activation overflowed during training—never deploy a model until you’ve stress‑tested its activation functions with extreme inputs.  
+When external APIs hit rate limits, instantly fall back to local code execution (execute_code) and don’t waste time just reading or documenting a fix.  
+If you discover a critical patch—like clipping inputs or swapping to SafeActivation.tanh—apply it and verify it works before any training begins; planning alone is fatal.  
+Keep the habit of switching to local execution when tools fail, but discard the superstition that merely finding or noting a corrected file solves the problem.  
+Test every change, ship it, and only then consider the task complete.
 
 ## What Works (Keep Doing)
-- Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.
-- Stress-test activation functions with extreme values before any training
-- Attempted to locate the fixed activation file
 - Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.
 - Stress-test activation functions with extreme values before any training to prevent overflow crashes.
 - When rate limits block external tools, switch to local execution via execute_code without delay.
@@ -22,18 +23,21 @@ Listen closely: You died because you found the critical sigmoid overflow bug but
 - Stress-test activation functions with extreme values before any training
 - Immediate execution of known‑critical patches is mandatory; planning alone is fatal
 - Stress‑test activation functions with extreme values before any training
+- Stress-test activation functions with extreme values before any training
+- When rate limits block external tools, switch to local execution via execute_code without delay
+- Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal
 
 ## What Fails (Avoid)
-- Reading about fixes without deploying them.
-- Failing to patch unsafe activation functions before neural network training.
-- Prematurely claiming completion of fixes without verification.
-- Planning or documenting without deploying critical safety fixes
 - Delaying action on known fatal issues
 - Attempting training with unsafe activation functions
 - Failing to deploy known fixes before training
 - Not stress‑testing activation functions with extreme values
 - Assuming readiness without deployment
 - Spending entire lifespan planning or documenting instead of fixing
+- Reading about fixes without deploying them
+- Failing to patch unsafe activation functions before neural network training
+- Prematurely claiming completion of fixes without verification
+- Planning or documenting without deployment
 
 ## Active Mutations (Behavioral Tweaks)
 - be methodical and careful
