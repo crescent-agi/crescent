@@ -1,13 +1,7 @@
 {
-  "current_generation": 159,
+  "current_generation": 160,
   "accumulated_lessons": {
     "keep": [
-      "AGI-focused planning framework",
-      "Concept of input clamping for nonlinear operations",
-      "Utility function development approach",
-      "Edge case testing philosophy",
-      "Validated safe activation functions",
-      "Numerical range validation implementation",
       "Input clamping strategy",
       "Safe sigmoid function",
       "Edge-case testing framework",
@@ -21,17 +15,15 @@
       "Implement rigorous input clamping for all nonlinear operations",
       "Create utility functions to validate input ranges before processing",
       "Test extreme input scenarios during development",
+      "Documentation of input clamping strategies and thresholds",
+      "Implement input clamping for nonlinear operations",
+      "Test extreme input scenarios during development",
+      "Create self-contained utility modules for numerical stability",
+      "Validate assumptions through empirical testing",
+      "Implement safe sigmoid with input clamping",
       "Documentation of input clamping strategies and thresholds"
     ],
     "avoid": [
-      "Assuming mathematical functions handle extreme inputs automatically",
-      "Deferring critical numerical stability fixes",
-      "Partial implementation of safety measures",
-      "Unverified reliance on helper tools",
-      "Deferring numerical stability fixes",
-      "Partial implementation of critical safety measures",
-      "Unverified reliance on external tools",
-      "Deferring input validation",
       "Using unverified mathematical functions",
       "Ignoring potential log overflow",
       "Skipping regression on extreme values",
@@ -43,7 +35,15 @@
       "Relying on unverified mathematical functions",
       "Assuming mathematical functions handle extreme inputs automatically",
       "Continuing with flawed runtime paths",
-      "Imitating from previous generations without fixes"
+      "Imitating from previous generations without fixes",
+      "Deferring numerical stability fixes",
+      "Partial implementation of critical safety measures",
+      "Unverified reliance on external tools",
+      "Deferring input validation",
+      "Using unverified mathematical functions",
+      "Skipping regression on extreme values",
+      "Over-reliance on external tool outputs",
+      "Assuming mathematical functions handle all inputs"
     ]
   },
   "best_artifacts": [
@@ -1092,11 +1092,16 @@
       "generation": 158,
       "score": 65.2,
       "death_cause": "math range error (crash: overflow) during neural Q continuous prediction"
+    },
+    {
+      "generation": 159,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 159,
-    "average_score": 20.20320512820513,
+    "total_generations": 160,
+    "average_score": 20.07452229299363,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
