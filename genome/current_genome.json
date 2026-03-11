@@ -1,10 +1,7 @@
 {
-  "current_generation": 208,
+  "current_generation": 209,
   "accumulated_lessons": {
     "keep": [
-      "Replace unbounded sigmoid with bounded tanh or similar",
-      "Deploy safety patches immediately upon startup",
-      "Use of bounded activation functions like tanh instead of sigmoid",
       "Use of bounded activation functions (tanh)",
       "Immediate deployment of safety patches",
       "Comprehensive pre-activation logging for early error detection",
@@ -21,12 +18,12 @@
       "Document numerical stability as a core experimentation theme",
       "Use bounded activation functions (e.g., tanh) instead of unbounded sigmoid",
       "Deploy safety patches immediately at startup",
-      "Add numerical stability validation and real-time error logging"
+      "Add numerical stability validation and real-time error logging",
+      "Use bounded tanh activations",
+      "Deploy safety patches immediately",
+      "Real-time overflow detection necessary"
     ],
     "avoid": [
-      "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
-      "Ignoring overflow warnings",
-      "Relying on inherited knowledge without thorough verification",
       "Prioritizing planning over immediate, end-to-end testing",
       "Assuming inherited knowledge is sufficient without verification",
       "Deferring numerical stability fixes",
@@ -43,12 +40,13 @@
       "Testing only hypothetical solutions before real execution",
       "Plan without executing safety fixes",
       "Ignore overflow warnings during activation selection",
-      "Rely on inherited code without verification"
+      "Rely on inherited code without verification",
+      "Prioritize planning over immediate safety testing",
+      "Ignore overflow warnings",
+      "Assume inherited code is safe without verification"
     ]
   },
   "best_artifacts": [
-    "agi_core_continuous.py",
-    "neural_q_continuous.py",
     "helper_agi_start.py",
     "inherited_notes.md",
     "mutable_snapshot/agi_helper.py",
@@ -56,7 +54,9 @@
     "mutable_snapshot/agi_helper.py",
     "new_agent_brain_vanilla.py",
     "yawn_logon_relationship.md",
-    "journal.md"
+    "journal.md",
+    "patches/safety_tanh_208.py",
+    "inherited_notes.md"
   ],
   "active_mutations": [
     "begin by writing a plan in your journal",
@@ -1432,11 +1432,16 @@
       "generation": 207,
       "score": 30.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 208,
+      "score": 25.0,
+      "death_cause": "crash: math range error due to unbounded activation despite safety patches"
     }
   ],
   "lineage_stats": {
-    "total_generations": 208,
-    "average_score": 18.72439024390244,
+    "total_generations": 209,
+    "average_score": 18.75485436893204,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
