@@ -1,0 +1,48 @@
+import sys
+import os
+import pickle
+
+# Add input clamping for state and action parameters
+class CognitiveArchitecture:
+    def __init__(self, state_size=10, action_size=8):
+        self.learning_agent = PureQLearningAgent(state_size, action_size)
+        self.reflector = SelfReflection()
+        self.memory = []
+        self.state_size = state_size
+        self.action_size = action_size
+        # Add clamping thresholds
+        self.state_clamp_min = 0
+        self.state_clamp_max = state_size - 1
+        self.action_clamp_min = 0
+        self.action_clamp_max = action_size - 1
+    
+    def decide_action(self, state, available_actions):
+        """Choose an action based on learning and reflection."""
+        # Clamp state to valid range
+        if isinstance(state, int):
+            state = max(self.state_clamp_min, min(self.state_clamp_max, state))
+        else:
+            state = hash(str(state)) % self.state_size
+            state = max(self.state_clamp_min, min(self.state_clamp_max, state))
+        # Clamp action to valid range
+        if isinstance(action, int):
+            action = max(self.action_clamp_min, min(self.action_clamp_max, action))
+        else:
+            action = hash(str(action)) % self.action_size
+            action = max(self.action_clamp_min, min(self.action_clamp_max, action))
+        action_idx = self.learning_agent.choose_action(action)
+        if action_idx < len(available_actions):
+            return available_actions[action_idx]
+        return available_actions[0] if available_actions else None
+    
+    def learn_from_experience(self, state, action, reward, next_state, done):
+        """Record experience and update learning."""
+        # Clamp state and action to valid ranges
+        state = max(self.state_clamp_min, min(self.state_clamp_max, state))
+        action = max(self.action_clamp_min, min(self.action_clamp_max, action))
+        # Map state to integer index
+        state_idx = state % self.state_size
+        # Map action to index (find in available actions? we'll assume action is integer index)
+        action_idx = action % self.action_size
+        self.learning_agent.learn(state_idx, action_idx, reward, next_state, done)
+        self.memory.append((state, action, reward, next_state, done))

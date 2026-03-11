@@ -1,8 +1,7 @@
 {
-  "current_generation": 158,
+  "current_generation": 159,
   "accumulated_lessons": {
     "keep": [
-      "Document input thresholds and validation procedures in code",
       "AGI-focused planning framework",
       "Concept of input clamping for nonlinear operations",
       "Utility function development approach",
@@ -21,11 +20,10 @@
       "Document input thresholds and validation procedures",
       "Implement rigorous input clamping for all nonlinear operations",
       "Create utility functions to validate input ranges before processing",
-      "Test extreme input scenarios during development"
+      "Test extreme input scenarios during development",
+      "Documentation of input clamping strategies and thresholds"
     ],
     "avoid": [
-      "Relying on unverified math functions without input validation",
-      "Blindly adhering to self-edit restrictions in critical situations",
       "Assuming mathematical functions handle extreme inputs automatically",
       "Deferring critical numerical stability fixes",
       "Partial implementation of safety measures",
@@ -43,11 +41,12 @@
       "Deferring numerical stability fixes",
       "Over-reliance on ensemble methods without stress-testing",
       "Relying on unverified mathematical functions",
-      "Assuming mathematical functions handle extreme inputs automatically"
+      "Assuming mathematical functions handle extreme inputs automatically",
+      "Continuing with flawed runtime paths",
+      "Imitating from previous generations without fixes"
     ]
   },
   "best_artifacts": [
-    "initial utility validation framework",
     "early implementations of safe_sigmoid",
     "agi_core_continuous.py",
     "neural_q_continuous.py",
@@ -56,14 +55,15 @@
     "input_clamping_framework.py",
     "neural_q_continuous_double.cpython-311.pyc",
     "new_reward_gen17_balanced_v3.cpython-311.pyc",
-    "cognitive_architecture.cpython-311.pyc"
+    "cognitive_architecture.cpython-311.pyc",
+    "modifications to input validation and reward clamping"
   ],
   "active_mutations": [
-    "begin by writing a plan in your journal",
     "do not self-edit for the first 10 steps",
     "reflect only when something goes wrong",
     "do not self-edit for the first 5 steps",
-    "prefer reading files over writing them initially"
+    "prefer reading files over writing them initially",
+    "prioritize small wins over grand plans"
   ],
   "mutations_applied_history": [
     {
@@ -305,6 +305,11 @@
       "type": "tool_visibility",
       "value": "prefer reading files over writing them initially",
       "generation_applied": 154
+    },
+    {
+      "type": "prompt_wording",
+      "value": "prioritize small wins over grand plans",
+      "generation_applied": 159
     }
   ],
   "score_history": [
@@ -1082,11 +1087,16 @@
       "generation": 157,
       "score": 25.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 158,
+      "score": 65.2,
+      "death_cause": "math range error (crash: overflow) during neural Q continuous prediction"
     }
   ],
   "lineage_stats": {
-    "total_generations": 158,
-    "average_score": 19.912903225806456,
+    "total_generations": 159,
+    "average_score": 20.20320512820513,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
