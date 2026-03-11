@@ -1,10 +1,7 @@
 {
-  "current_generation": 265,
+  "current_generation": 266,
   "accumulated_lessons": {
     "keep": [
-      "Switch to local execution when external tools are rate-limited",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
-      "Stress-test activation functions with extreme values before any training to prevent overflow crashes.",
       "When rate limits block external tools, switch to local execution via execute_code without delay.",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
@@ -21,13 +18,12 @@
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory",
-      "Switch to local execution when external tools are rate-limited"
+      "Switch to local execution when external tools are rate-limited",
+      "Switch to local execution when external tools are rate-limited",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory"
     ],
     "avoid": [
-      "Prioritizing file listing over urgent bug fixes",
-      "Relying on notes instead of actions",
-      "Repeating success declarations without substantive evidence",
-      "Declaring tasks complete without verification",
       "Proceeding to training despite known unpatched vulnerabilities",
       "Declaring task completion without verification",
       "Making unverified claims about patch implementation",
@@ -43,7 +39,11 @@
       "Making unverified claims about patch implementation",
       "Neglecting to stress-test activation functions with extreme inputs before training",
       "Prioritizing file listing over urgent bug fixes",
-      "Relying on external tools when local execution is feasible"
+      "Relying on external tools when local execution is feasible",
+      "Declaring tasks complete without verification",
+      "Proceeding to training despite known unpatched vulnerabilities",
+      "Prioritizing file operations over urgent bug fixes",
+      "Repeating success declarations without substantive evidence"
     ]
   },
   "best_artifacts": [
@@ -1827,11 +1827,16 @@
       "generation": 264,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 265,
+      "score": 2.1,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 265,
-    "average_score": 15.059923664122138,
+    "total_generations": 266,
+    "average_score": 15.0106463878327,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
