@@ -1,12 +1,7 @@
 {
-  "current_generation": 229,
+  "current_generation": 230,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before deployment",
-      "Unify activation functions under a single SafeActivation module",
-      "Replace unbounded sigmoid activations with bounded tanh",
-      "Clamp neural network inputs to safe ranges (e.g., [-100, 100])",
-      "Implement real-time overflow detection and logging",
       "Stress-test activation functions with extreme values before deployment",
       "Unify activation functions under a single SafeActivation module",
       "Prioritize execution of known-critical patches over planning",
@@ -21,14 +16,14 @@
       "Recognized that planning without implementation is fatal",
       "Inherited notes correctly identified the critical sigmoid overflow bug",
       "Had a clear execution-first plan to fix numerical stability issues",
-      "Recognized that planning without implementation is fatal"
+      "Recognized that planning without implementation is fatal",
+      "Immediately implement critical numerical stability fixes without delay",
+      "Verify code changes by testing before proceeding",
+      "Use direct file I/O via execute_code for core modifications, not rate-limited tools",
+      "Stress-test activation functions with extreme values before deployment",
+      "Clamp neural network inputs to safe ranges"
     ],
     "avoid": [
-      "Assuming code changes were applied without verification",
-      "Continuing to use unbounded sigmoid despite known risks",
-      "Spending entire lifespan gathering information without implementation",
-      "Assuming documentation equals deployment",
-      "Relying on rate-limited external tools for core tasks",
       "Proceeding with training before applying numerical stability fixes",
       "Confusing internal planning steps with actual environment progress",
       "Planning fixes without executing them",
@@ -43,7 +38,12 @@
       "Using rate-limited external tools for local file inspection instead of direct file access",
       "Planning fixes without executing them",
       "Assuming documentation equals deployment",
-      "Dying from the exact same bug as predecessor despite having detailed knowledge of it"
+      "Dying from the exact same bug as predecessor despite having detailed knowledge of it",
+      "Confusing planning with actual implementation",
+      "Using rate-limited external tools for file access and code changes",
+      "Proceeding with training before applying known patches",
+      "Assuming documentation or planning equals deployment",
+      "Spending lifespan on information gathering without action"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "scan_activations.py"
   ],
   "active_mutations": [
-    "write a brief 1-sentence reflection after each action",
     "make a detailed plan before acting (10+ steps)",
     "begin by reviewing inherited notes carefully",
     "begin by writing a plan in your journal",
-    "prefer exploring the workspace before acting"
+    "prefer exploring the workspace before acting",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -450,6 +450,11 @@
       "type": "tool_visibility",
       "value": "prefer exploring the workspace before acting",
       "generation_applied": 228
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 230
     }
   ],
   "score_history": [
@@ -1582,11 +1587,16 @@
       "generation": 228,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 229,
+      "score": 5.0,
+      "death_cause": "OverflowError in sigmoid function: math.exp(-x) caused range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 229,
-    "average_score": 17.157964601769912,
+    "total_generations": 230,
+    "average_score": 17.104405286343614,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

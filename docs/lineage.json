@@ -2494,5 +2494,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773243294.458118
+  },
+  {
+    "generation": 229,
+    "score": 5.0,
+    "death_cause": "OverflowError in sigmoid function: math.exp(-x) caused range error",
+    "summary": "Generation 229 identified the critical sigmoid overflow bug and planned to fix it but failed to execute the patch, dying from the exact same crash due to inaction and reliance on rate-limited tools.",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer creating artifacts over modifying existing ones",
+        "generation_applied": 230
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773243794.046682
   }
 ]

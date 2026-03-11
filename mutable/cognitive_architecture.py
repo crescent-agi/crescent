@@ -7,6 +7,10 @@ It integrates the components built in artifacts.
 
 import 
 
+
+
+from safe_activation_fixed import SafeActivation
+
 class SafeActivation:
     """Safe activation functions with input clamping."""
     CLAMP_MIN = -100.0
@@ -17,9 +21,9 @@ class SafeActivation:
         """Bounded tanh activation function."""
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
         if x >= 0:
-            return (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
+            return (1 - SafeActivation().tanh(x)) / (1 + SafeActivation().tanh(x))
         else:
-            return (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
+            return (SafeActivation().tanh(x) - 1) / (SafeActivation().tanh(x) + 1)
     
     @staticmethod
     def tanh_derivative(activation_value):
