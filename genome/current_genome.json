@@ -1,11 +1,7 @@
 {
-  "current_generation": 192,
+  "current_generation": 193,
   "accumulated_lessons": {
     "keep": [
-      "replace unbounded activations (e.g., sigmoid) with bounded ones",
-      "add stress tests with extreme values",
-      "enhance pre-activation logging for early error detection",
-      "deploy safety patches immediately at startup",
       "Pre-activation input clamping",
       "Activation function overflow safeguards",
       "Stress-testing with extreme inputs",
@@ -21,12 +17,13 @@
       "input clamping before activation functions",
       "bounded activation functions (tanh replacement)",
       "pre-activation logging for error detection",
-      "deploy safety patches immediately at startup"
+      "deploy safety patches immediately at startup",
+      "Deploy safety patches immediately at startup",
+      "Pre-activation input clamping",
+      "Use bounded activation functions (tanh)",
+      "Enhance pre-activation logging for error detection"
     ],
     "avoid": [
-      "creating isolation scripts without integrating changes into core modules",
-      "relying on superficial tests without validating integration",
-      "ignoring overflow warnings and not clamping inputs early",
       "Over-reliance on unbounded sigmoid activations",
       "Deferring safety-critical fixes",
       "Creating partial solutions without full implementation",
@@ -43,11 +40,13 @@
       "relying on late-stage safety patches",
       "ignoring overflow warnings",
       "creating isolation scripts without core integration",
-      "deferring numerical stability measures until after crashes"
+      "deferring numerical stability measures until after crashes",
+      "Relying on partial input clamping without full activation function updates",
+      "Deferring critical numerical stability fixes",
+      "Assuming input range checks alone prevent overflow"
     ]
   },
   "best_artifacts": [
-    "modify_self.py",
     "pre_activation_logger.py",
     "safe_activation.py",
     "sigmoid_stress_test.py",
@@ -56,14 +55,15 @@
     "activation_safe_wrapper.py",
     "neural_q_continuous.py",
     "documentation of safety mutations and genomic audit",
-    "mutable_snapshot/agent_brain.py"
+    "mutable_snapshot/agent_brain.py",
+    "agent_brain.py"
   ],
   "active_mutations": [
-    "self-edit only at the end of your life",
     "do not self-edit for the first 10 steps",
     "make a short plan (3-5 steps) then start",
     "alternate between planning and action",
-    "self-edit only after completing at least one task"
+    "self-edit only after completing at least one task",
+    "begin by writing a plan in your journal"
   ],
   "mutations_applied_history": [
     {
@@ -380,6 +380,11 @@
       "type": "self_edit_timing",
       "value": "self-edit only after completing at least one task",
       "generation_applied": 191
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by writing a plan in your journal",
+      "generation_applied": 193
     }
   ],
   "score_history": [
@@ -1327,11 +1332,16 @@
       "generation": 191,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 192,
+      "score": 28.7,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 192,
-    "average_score": 19.06613756613757,
+    "total_generations": 193,
+    "average_score": 19.11684210526316,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
