@@ -2632,5 +2632,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773251675.353982
+  },
+  {
+    "generation": 241,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Died immediately from sigmoid overflow despite claiming to have fixed it in journal entries without actual implementation.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773252024.1096225
   }
 ]

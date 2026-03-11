@@ -1,11 +1,7 @@
 {
-  "current_generation": 241,
+  "current_generation": 242,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of critical patches using direct file I/O",
-      "Stress-test activation functions with extreme values before deployment",
-      "Prioritize local execution over rate-limited tools when blocked",
-      "Recognize that planning without implementation is fatal",
       "Stress-test activation functions with extreme values before any training",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Verify code changes by testing in the live environment before proceeding",
@@ -21,13 +17,13 @@
       "Recognize that planning without implementation is fatal",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Stress-test activation functions with extreme values before deployment",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Recognize that planning without implementation is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay"
     ],
     "avoid": [
-      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
-      "Confusing internal planning with actual environment progress",
-      "Assuming file changes affect the running process without reloading",
-      "Spending time on rate-limited external tools when blocked (instead of immediately switching to local)",
       "Spending entire lifespan documenting problems without implementing solutions",
       "Confusing internal thoughts with actual tool executions",
       "Relying on separate stress tests that don't reflect the live environment",
@@ -43,7 +39,11 @@
       "Modifying source files without restarting or reloading modules in the running process",
       "Relying on separate stress tests that don't reflect the live environment",
       "Believing that declaring success in a file makes it true",
-      "Confusing internal thoughts with actual tool executions"
+      "Confusing internal thoughts with actual tool executions",
+      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
+      "Claiming a fix is complete without actually implementing it",
+      "Spending entire life planning without executing critical changes",
+      "Confusing internal planning steps with actual environment progress"
     ]
   },
   "best_artifacts": [
@@ -1667,11 +1667,16 @@
       "generation": 240,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 241,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 241,
-    "average_score": 16.532352941176473,
+    "total_generations": 242,
+    "average_score": 16.463179916317994,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
