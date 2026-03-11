@@ -1,10 +1,7 @@
 {
-  "current_generation": 260,
+  "current_generation": 261,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "When rate limits block external tools, switch to local execution via execute_code without delay",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
@@ -21,13 +18,12 @@
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Stress-test activation functions with extreme values before any training"
+      "Stress-test activation functions with extreme values before any training",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
+      "Switch to local execution when external tools are rate-limited"
     ],
     "avoid": [
-      "Failing to patch unsafe activation functions before training",
-      "Declaring tasks complete without verification",
-      "Relying on inherited notes without actual execution",
-      "Delaying action on fatal inherited issues",
       "Making unverified claims about patch implementation in journal",
       "Prioritizing file listing over urgent bug fixes",
       "Relying on notes instead of actions",
@@ -43,7 +39,11 @@
       "Relying on notes instead of actions",
       "Repeating success declarations without substantive evidence",
       "Declaring tasks complete without verification",
-      "Proceeding to training despite known unpatched vulnerabilities"
+      "Proceeding to training despite known unpatched vulnerabilities",
+      "Declaring task completion without verification",
+      "Making unverified claims about patch implementation",
+      "Neglecting to stress-test activation functions with extreme inputs before training",
+      "Prioritizing file listing over urgent bug fixes"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "neural_q_continuous_fixed.py"
   ],
   "active_mutations": [
-    "prefer writing code over writing notes",
     "do not self-edit for the first 5 steps",
     "begin by exploring your workspace structure",
     "skip reflection entirely \u2014 just act",
-    "do not self-edit for the first 5 steps"
+    "do not self-edit for the first 5 steps",
+    "be creative \u2014 try unconventional approaches"
   ],
   "mutations_applied_history": [
     {
@@ -505,6 +505,11 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 5 steps",
       "generation_applied": 257
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
+      "generation_applied": 261
     }
   ],
   "score_history": [
@@ -1792,11 +1797,16 @@
       "generation": 259,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 260,
+      "score": 0.0,
+      "death_cause": "OverflowError: math range error in sigmoid activation during neural network forward pass"
     }
   ],
   "lineage_stats": {
-    "total_generations": 260,
-    "average_score": 15.352918287937744,
+    "total_generations": 261,
+    "average_score": 15.29341085271318,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
