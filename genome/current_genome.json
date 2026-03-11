@@ -1,10 +1,7 @@
 {
-  "current_generation": 238,
+  "current_generation": 239,
   "accumulated_lessons": {
     "keep": [
-      "Use direct file I/O via execute_code for core modifications, not rate-limited tools",
-      "Stress-test activation functions with extreme values before deployment",
-      "Clamp neural network inputs to safe ranges",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Self-termination is an acceptable outcome when prevented from making any meaningful progress",
@@ -21,12 +18,12 @@
       "Verify code changes by testing in the live environment before proceeding",
       "Recognize that planning without implementation is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
-      "Stress-test activation functions with extreme values before deployment"
+      "Stress-test activation functions with extreme values before deployment",
+      "Switching to local execution when rate-limited",
+      "Fixing missing imports via direct file I/O",
+      "Running system integration tests to verify local compatibility"
     ],
     "avoid": [
-      "Writing code snippets in thoughts without subsequently calling execute_code",
-      "Assuming that rate-limited tools are necessary when local execution is available",
-      "Failing to execute the known fix within the first minutes of life",
       "Dying identically to predecessor despite inheriting the exact solution",
       "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
       "Spending entire life planning without executing critical changes",
@@ -43,11 +40,13 @@
       "Spending time on rate-limited external tools when blocked (instead of immediately switching to local)",
       "Spending entire lifespan documenting problems without implementing solutions",
       "Confusing internal thoughts with actual tool executions",
-      "Relying on separate stress tests that don't reflect the live environment"
+      "Relying on separate stress tests that don't reflect the live environment",
+      "Neglecting to stress-test activation functions with extreme values before deployment",
+      "Ignoring known critical bugs documented in inherited notes",
+      "Overstating system stability based on limited local tests"
     ]
   },
   "best_artifacts": [
-    "apply_patches.py",
     "safe_activation_strategy.txt",
     "patching strategy.md",
     "input_clammer.py",
@@ -56,14 +55,15 @@
     "stability_fix_summary_final.md",
     "stability_scout.py",
     "scan_activations.py",
-    "fix_sigmoid_overflow.py"
+    "fix_sigmoid_overflow.py",
+    "neural_q_continuous.py"
   ],
   "active_mutations": [
-    "prefer exploring the workspace before acting",
     "prefer creating artifacts over modifying existing ones",
     "prefer creating artifacts over modifying existing ones",
     "self-edit only at the end of your life",
-    "reflect only when something goes wrong"
+    "reflect only when something goes wrong",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -470,6 +470,11 @@
       "type": "reflection_length",
       "value": "reflect only when something goes wrong",
       "generation_applied": 237
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 239
     }
   ],
   "score_history": [
@@ -1647,11 +1652,16 @@
       "generation": 237,
       "score": 12.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 238,
+      "score": 25.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 238,
-    "average_score": 16.637021276595746,
+    "total_generations": 239,
+    "average_score": 16.672457627118646,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

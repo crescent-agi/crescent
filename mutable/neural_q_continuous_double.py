@@ -1,14 +1,14 @@
-from safe_activation_fixed import SafeActivation
 #!/usr/bin/env python3
 """
 Neural Q-Learning Agent with Continuous State Input and Double DQN.
 Adds target network to reduce overestimation bias.
+Fixed: Proper use of SafeActivation, removed syntax errors, and corrected derivative calculation.
 """
 import random
 import math
-from safe_activation import safe_sigmoid, safe_tanh
 import pickle
 import copy
+from safe_activation_fixed import SafeActivation
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -25,13 +25,6 @@ class NeuralNetwork:
         self.W2 = [[random.uniform(-0.5, 0.5) for _ in range(output_size)] for _ in range(hidden_size)]
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
-    def tanh(self, x):
-        return 1.0 / (1.0 + math.exp(-x))
-    
-    def SafeActivation().tanh_derivative(self, x):
-        s = safe_tanh(x)
-        return s * (1 - s)
-    
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
         if len(inputs) != self.input_size:
@@ -41,7 +34,12 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = safe_tanh(sum_)
+            # Overflow logging
+            if abs(sum_) > 1e5:
+                with open("pre_activation_log.txt", "a") as f:
+                    f.write(f"NeuralNetwork forward: j={j} sum_={sum_}\n")
+            # Use SafeActivation (clamps automatically)
+            hidden[j] = SafeActivation().tanh(sum_)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
             sum_ = self.b2[k]
@@ -61,7 +59,11 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
-            hidden_error[j] = error_sum * self.SafeActivation().tanh_derivative(hidden[j])
+            # Derivative of tanh: 1 - activation^2
+            activation = hidden[j]
+            grad = 1.0 - activation * activation
+            hidden_error[j] = error_sum * grad
+        
         # Update weights and biases
         for k in range(self.output_size):
             for j in range(self.hidden_size):
@@ -176,9 +178,14 @@ class NeuralQLearningAgentContinuousDouble:
         import math
         # Compute entropy bonus from current policy (using evaluation network)
         q_values = self.nn.predict(state_vector)
-        exp_q = [math.exp(q) for q in q_values]
+        # Numerically stable softmax
+        max_q = max(q_values)
+        exp_q = [math.exp(q - max_q) for q in q_values]
         sum_exp = sum(exp_q)
-        probs = [e / sum_exp for e in exp_q]
+        if sum_exp == 0:
+            probs = [1.0 / len(q_values)] * len(q_values)
+        else:
+            probs = [e / sum_exp for e in exp_q]
         entropy = -sum(p * math.log(p + 1e-10) for p in probs)
         entropy_bonus = entropy_coeff * entropy
         reward_total = reward + entropy_bonus
@@ -208,6 +215,7 @@ class NeuralQLearningAgentContinuousDouble:
         # Periodically update target network
         if self.learn_step_counter % self.target_update_freq == 0:
             self.target_nn = self.nn.copy()
+    
     def decay_epsilon(self):
         """Decay exploration rate after each episode."""
         self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)
@@ -310,9 +318,29 @@ class NeuralQLearningAgentContinuousDouble:
                 self.nn.b2[k] = clip_value
             elif self.nn.b2[k] < -clip_value:
                 self.nn.b2[k] = -clip_value
-        # Also clip target network
-        # (optional, but for consistency)
-        pass
+        # Also clip target network for consistency
+        for i in range(self.target_nn.input_size):
+            for j in range(self.target_nn.hidden_size):
+                if self.target_nn.W1[i][j] > clip_value:
+                    self.target_nn.W1[i][j] = clip_value
+                elif self.target_nn.W1[i][j] < -clip_value:
+                    self.target_nn.W1[i][j] = -clip_value
+        for j in range(self.target_nn.hidden_size):
+            if self.target_nn.b1[j] > clip_value:
+                self.target_nn.b1[j] = clip_value
+            elif self.target_nn.b1[j] < -clip_value:
+                self.target_nn.b1[j] = -clip_value
+        for j in range(self.target_nn.hidden_size):
+            for k in range(self.target_nn.output_size):
+                if self.target_nn.W2[j][k] > clip_value:
+                    self.target_nn.W2[j][k] = clip_value
+                elif self.target_nn.W2[j][k] < -clip_value:
+                    self.target_nn.W2[j][k] = -clip_value
+        for k in range(self.target_nn.output_size):
+            if self.target_nn.b2[k] > clip_value:
+                self.target_nn.b2[k] = clip_value
+            elif self.target_nn.b2[k] < -clip_value:
+                self.target_nn.b2[k] = -clip_value
 
 import os
 
@@ -347,5 +375,6 @@ def test():
 
 if __name__ == "__main__":
     test()
+
 # Alias for compatibility with AGICoreContinuous
 NeuralQLearningAgentContinuous = NeuralQLearningAgentContinuousDouble
