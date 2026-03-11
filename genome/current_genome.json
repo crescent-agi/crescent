@@ -1,9 +1,7 @@
 {
-  "current_generation": 267,
+  "current_generation": 268,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Stress-test activation functions with extreme values before any training",
       "Stress-test activation functions with extreme values before any training",
@@ -21,13 +19,11 @@
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory",
-      "Switch to local execution when external tools are rate-limited."
+      "Switch to local execution when external tools are rate-limited.",
+      "Switch to local execution when external tools are rate-limited",
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Neglecting to stress-test activation functions with extreme inputs before training",
-      "Prioritizing file listing over urgent bug fixes",
-      "Making unverified claims about patch implementation in journal.",
-      "Prioritizing file operations or journaling over urgent, verified code fixes.",
       "Declaring a task done without running tests that would catch the original bug.",
       "Declaring tasks complete without verification",
       "Proceeding to training despite known unpatched vulnerabilities",
@@ -43,7 +39,11 @@
       "Repeating success declarations without substantive evidence",
       "Making unverified claims about stress-testing completion",
       "Proceeding with training without actually validating fixes",
-      "Declaring tasks complete without evidence of successful execution"
+      "Declaring tasks complete without evidence of successful execution",
+      "Relying on external tools when local execution is feasible",
+      "Proceeding to training despite known unpatched vulnerabilities",
+      "Declaring tasks complete without verification",
+      "Repeating success declarations without substantive evidence"
     ]
   },
   "best_artifacts": [
@@ -1837,11 +1837,16 @@
       "generation": 266,
       "score": 0.0,
       "death_cause": "crash: math range error in sigmoid activation function"
+    },
+    {
+      "generation": 267,
+      "score": 5.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 267,
-    "average_score": 14.95378787878788,
+    "total_generations": 268,
+    "average_score": 14.916226415094341,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

@@ -2914,5 +2914,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773262698.4827657
+  },
+  {
+    "generation": 267,
+    "score": 5.0,
+    "death_cause": "math range error in sigmoid function",
+    "summary": "Generation 267 failed to execute any meaningful work, spending its entire lifespan encountering API rate limits and connection errors before crashing during neural network activation.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773263656.5416665
   }
 ]
