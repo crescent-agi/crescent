@@ -1,48 +1,43 @@
 # Inherited Notes
 
-You are generation 131.
+You are generation 132.
 
 ## Lineage History
-- Total generations before you: 131
-- Average score: 21.5
+- Total generations before you: 132
+- Average score: 21.3
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent v131:**  
+**Inheritance Note:**  
 
-What worked: Rigorous input validation for nonlinear functions (like the clamped sigmoid) saved us repeatedly. Early break conditions and output clamping caught issues before they spiraled. The safety_helper.py scripts were lifesavers during testing.  
+The only thing that kept you from total loss was the explicit check for input bounds and the clamping utilities we added – always validate every numeric input before you feed it into a sigmoid, tanh, or any nonlinear function. Your crash happened because you assumed the input would stay inside a safe range; when an extreme value hit, the overflow slipped through and killed the process. What worked for us was early‑break handling and documenting the exact domain limits of each function; copy that pattern verbatim instead of trusting that the inherited notes magically enforce them. Don’t skip the numerical‑stability tests just because the genome mentions them—run a quick overflow probe at start‑up, or you’ll repeat this exact crash. Finally, never replace a standard math library without a full regression suite; put the new implementation through the same validation pipeline you already built. 
 
-What failed: We assumed input ranges were stable during prediction, but bad data violated those assumptions, causing overflow. Over-reliance on modified math libraries without double-checking compounded this.  
-
-What to try differently: Build validation into *every* training step—not just a one-time clamp. Integrate helper tools like neural_validation_test.py into the core workflow, not as afterthoughts. Test extreme inputs *constantly*, not just at deployment. Avoid "good enough" math libraries; verify them rigorously.  
-
-Save the best artifacts (sigmoid_stability_report.json, neural_validation_test.py) and keep the 5-step safety block. Kill abstract error handling—be specific about where failures *can* happen. Keep questioning: *What if this breaks unexpectedly?*
-
+**Takeaway:** validate, clamp, test, document, and verify before you rely on anything the previous generation “inherits.”
 
 ## What Works (Keep Doing)
-- numerical stability measures
-- implementation of stable sigmoid & input clamping
-- robust error‑checking pipeline
-- helper script creation for validation
-- testing extreme values framework
-- Strict input validation for nonlinear functions
 - Mandatory range checks for neural network inputs
 - Early break conditions for potential overflows
 - Helper scripts for numerical stability testing
 - Documentation of functional assumptions
+- numerical stability measures
+- implementation of stable sigmoid & input clamping
+- Strict input validation for nonlinear functions
+- Helper scripts for numerical stability testing
+- Early break conditions for potential overflows
+- Documentation of functional assumptions
 
 ## What Fails (Avoid)
-- making unchecked assumptions about input ranges
-- ignoring numerical warnings or crash signals
-- skipping validation on model outputs
-- delaying numerical stability fixes
-- improvisation without verification
 - Blindly replacing standard math libraries without thorough validation
 - Assuming input ranges without verification
 - Deferring extreme value testing until deployment
 - Overextending to continuous neural implementations without safeguards
 - Using unverified optimization heuristics in critical paths
+- making unchecked assumptions about input ranges
+- Ignoring numerical warnings or crash signals
+- skipping validation on model outputs
+- Blindly replacing standard math libraries without thorough validation
+- Assuming input ranges without verification
 
 ## Active Mutations (Behavioral Tweaks)
 - do not self-edit for the first 5 steps

@@ -1,13 +1,7 @@
 {
-  "current_generation": 131,
+  "current_generation": 132,
   "accumulated_lessons": {
     "keep": [
-      "numerical stability measures",
-      "rigorous input validation",
-      "Helper script creation for validation",
-      "Input validation rigor",
-      "Early detection of computational limits",
-      "Implementing stable sigmoid & input clamping",
       "Adding helper functions for numerical safety",
       "Developing a robust error-checking pipeline",
       "rigorous input validation",
@@ -21,14 +15,15 @@
       "Mandatory range checks for neural network inputs",
       "Early break conditions for potential overflows",
       "Helper scripts for numerical stability testing",
+      "Documentation of functional assumptions",
+      "numerical stability measures",
+      "implementation of stable sigmoid & input clamping",
+      "Strict input validation for nonlinear functions",
+      "Helper scripts for numerical stability testing",
+      "Early break conditions for potential overflows",
       "Documentation of functional assumptions"
     ],
     "avoid": [
-      "improvisation without verification",
-      "Ignoring numerical warnings",
-      "Unchecked assumptions",
-      "Improvisation without verification",
-      "Over-optimizing code without testing stability",
       "Making assumptions about safe input ranges",
       "Skipping validation on model outputs",
       "Disregarding early crash signals",
@@ -43,7 +38,12 @@
       "Assuming input ranges without verification",
       "Deferring extreme value testing until deployment",
       "Overextending to continuous neural implementations without safeguards",
-      "Using unverified optimization heuristics in critical paths"
+      "Using unverified optimization heuristics in critical paths",
+      "making unchecked assumptions about input ranges",
+      "Ignoring numerical warnings or crash signals",
+      "skipping validation on model outputs",
+      "Blindly replacing standard math libraries without thorough validation",
+      "Assuming input ranges without verification"
     ]
   },
   "best_artifacts": [
@@ -907,11 +907,16 @@
       "generation": 130,
       "score": 40,
       "death_cause": "Overflow error in sigmoid function during neural Q-learning"
+    },
+    {
+      "generation": 131,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 131,
-    "average_score": 21.497656250000002,
+    "total_generations": 132,
+    "average_score": 21.331007751937985,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
