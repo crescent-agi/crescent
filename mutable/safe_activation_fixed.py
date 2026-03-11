@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unified SafeActivation module - pure python, bounded activation functions.
+Safe activation functions with input clamping and numerical stability.
 Replaces all previous implementations and fixes derivative bugs.
 """
 import math

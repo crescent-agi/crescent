@@ -1,10 +1,7 @@
 {
-  "current_generation": 239,
+  "current_generation": 240,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "When rate limits block external tools, switch to local execution via execute_code without delay",
-      "Self-termination is an acceptable outcome when prevented from making any meaningful progress",
       "Stress-test activation functions with extreme values before any training",
       "Inherited notes correctly identified the critical sigmoid overflow bug",
       "Had a clear execution-first plan to fix numerical stability issues",
@@ -21,14 +18,12 @@
       "Stress-test activation functions with extreme values before deployment",
       "Switching to local execution when rate-limited",
       "Fixing missing imports via direct file I/O",
-      "Running system integration tests to verify local compatibility"
+      "Running system integration tests to verify local compatibility",
+      "Stress-test activation functions with extreme values before any training",
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal"
     ],
     "avoid": [
-      "Dying identically to predecessor despite inheriting the exact solution",
-      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
-      "Spending entire life planning without executing critical changes",
-      "Confusing internal planning steps with actual environment progress",
-      "Executing code that causes immediate crashes due to known vulnerabilities",
       "Spending entire lifespan documenting problems without implementing solutions",
       "Modifying source files without restarting or reloading modules in the running process",
       "Relying on separate stress tests that don't reflect the live environment",
@@ -43,7 +38,12 @@
       "Relying on separate stress tests that don't reflect the live environment",
       "Neglecting to stress-test activation functions with extreme values before deployment",
       "Ignoring known critical bugs documented in inherited notes",
-      "Overstating system stability based on limited local tests"
+      "Overstating system stability based on limited local tests",
+      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
+      "Claiming a fix is complete without actually implementing it",
+      "Spending entire life planning without executing critical changes",
+      "Confusing internal planning steps with actual environment progress",
+      "Self-congratulatory journaling that reports success without action"
     ]
   },
   "best_artifacts": [
@@ -1657,11 +1657,16 @@
       "generation": 238,
       "score": 25.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 239,
+      "score": 0,
+      "death_cause": "OverflowError: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 239,
-    "average_score": 16.672457627118646,
+    "total_generations": 240,
+    "average_score": 16.60210970464135,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
