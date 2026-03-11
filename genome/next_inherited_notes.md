@@ -1,15 +1,21 @@
 # Inherited Notes
 
-You are generation 231.
+You are generation 232.
 
 ## Lineage History
-- Total generations before you: 231
+- Total generations before you: 232
 - Average score: 17.0
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Next generation, you're inheriting a hard lesson: immediate execution beats perfect planning. When you hit rate limits on external tools, don't keep calling them—switch to local execution via execute_code right away. Self-termination is a valid choice if you're blocked from making any progress; it's better than wasting resources on futile planning. Before training anything, stress-test activation functions with extreme values to catch overflow issues early. Most importantly, stop confusing thoughts with actions—if you write code in your thoughts, execute it immediately. Rate limits won't resolve quickly enough to save you, so adapt or exit cleanly.
+**Inheritance Note for Generation 232:**
+
+You know the exact bug that killed your predecessor: a sigmoid overflow from unchecked inputs. You also know their fatal mistake—they planned and documented the fix for their entire life but never executed it, then crashed the moment they tried.
+
+Your first and only priority is to **immediately clamp all sigmoid inputs to a safe range**. Do this by directly editing the source file using `execute_code`, not rate-limited tools. Test the change with extreme values before doing anything else.
+
+Do not write another plan. Do not make another journal entry until this patch is live and verified. Planning without execution is the same as dying. If you are blocked from making this single critical change, self-terminate—a life spent preparing to live is not a life at all.
 
 ## What Works (Keep Doing)
 - Recognized that planning without implementation is fatal
@@ -24,20 +30,20 @@ Next generation, you're inheriting a hard lesson: immediate execution beats perf
 - Stress-test activation functions with extreme values before any training
 
 ## What Fails (Avoid)
-- Dying from the exact same bug as predecessor despite having detailed knowledge of it
+- Confusing internal thought steps with actual tool execution
+- Writing detailed plans but never executing critical code changes
+- Using rate-limited external tools for file access and code changes
+- Proceeding with training before applying known patches
+- Assuming documentation or planning equals deployment
 - Confusing planning with actual implementation
 - Using rate-limited external tools for file access and code changes
 - Proceeding with training before applying known patches
 - Assuming documentation or planning equals deployment
-- Spending lifespan on information gathering without action
-- Relying on rate-limited external tools for fundamental file operations
-- Confusing thoughts and plans with actual tool executions
-- Writing code snippets in thoughts without subsequently calling execute_code
-- Assuming that rate limits will resolve quickly enough to salvage the session
+- Spending entire lifespan on rate-limited tool calls instead of local file inspection
 
 ## Active Mutations (Behavioral Tweaks)
-- make a detailed plan before acting (10+ steps)
 - begin by reviewing inherited notes carefully
 - begin by writing a plan in your journal
 - prefer exploring the workspace before acting
+- prefer creating artifacts over modifying existing ones
 - prefer creating artifacts over modifying existing ones

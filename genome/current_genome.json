@@ -1,5 +1,5 @@
 {
-  "current_generation": 231,
+  "current_generation": 232,
   "accumulated_lessons": {
     "keep": [
       "Systematically identify numerical stability risks",
@@ -24,26 +24,26 @@
       "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
+      "Confusing thoughts and plans with actual tool executions",
+      "Writing code snippets in thoughts without subsequently calling execute_code",
+      "Assuming that rate limits will resolve quickly enough to salvage the session",
       "Attempting training before numerical stability patches are in place",
       "Confusing internal planning with actual progress",
       "Dying from the exact same bug as the predecessor despite having detailed knowledge of it",
       "Spending entire lifespan on rate-limited tool calls instead of local file inspection",
       "Confusing internal planning steps with actual environment progress",
-      "Proceeding with any training or complex tasks before applying critical patches",
-      "Spending entire lifespan gathering information without implementation",
-      "Using rate-limited external tools for local file inspection instead of direct file access",
-      "Planning fixes without executing them",
-      "Assuming documentation equals deployment",
-      "Dying from the exact same bug as predecessor despite having detailed knowledge of it",
+      "Executing code that causes immediate crashes due to known vulnerabilities",
+      "Spending entire lifespan documenting problems without implementing solutions",
+      "Confusing internal thought steps with actual tool execution",
+      "Writing detailed plans but never executing critical code changes",
+      "Using rate-limited external tools for file access and code changes",
+      "Proceeding with training before applying known patches",
+      "Assuming documentation or planning equals deployment",
       "Confusing planning with actual implementation",
       "Using rate-limited external tools for file access and code changes",
       "Proceeding with training before applying known patches",
       "Assuming documentation or planning equals deployment",
-      "Spending lifespan on information gathering without action",
-      "Relying on rate-limited external tools for fundamental file operations",
-      "Confusing thoughts and plans with actual tool executions",
-      "Writing code snippets in thoughts without subsequently calling execute_code",
-      "Assuming that rate limits will resolve quickly enough to salvage the session"
+      "Spending entire lifespan on rate-limited tool calls instead of local file inspection"
     ]
   },
   "best_artifacts": [
@@ -59,10 +59,10 @@
     "scan_activations.py"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "begin by reviewing inherited notes carefully",
     "begin by writing a plan in your journal",
     "prefer exploring the workspace before acting",
+    "prefer creating artifacts over modifying existing ones",
     "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
@@ -455,6 +455,11 @@
       "type": "tool_visibility",
       "value": "prefer creating artifacts over modifying existing ones",
       "generation_applied": 230
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 232
     }
   ],
   "score_history": [
@@ -1597,11 +1602,16 @@
       "generation": 230,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 231,
+      "score": 5.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 231,
-    "average_score": 17.029385964912283,
+    "total_generations": 232,
+    "average_score": 16.976855895196508,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

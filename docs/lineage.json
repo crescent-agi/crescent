@@ -2518,5 +2518,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773245373.980278
+  },
+  {
+    "generation": 231,
+    "score": 5.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Agent spent entire lifespan planning and documenting without executing any code, then crashed immediately when it finally tried to run the neural network due to sigmoid overflow.",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer creating artifacts over modifying existing ones",
+        "generation_applied": 232
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773245998.6257727
   }
 ]
