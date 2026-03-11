@@ -1846,5 +1846,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773214452.4202268
+  },
+  {
+    "generation": 173,
+    "score": 0.0,
+    "death_cause": "math range error in sigmoid activation function",
+    "summary": "Agent crashed immediately due to sigmoid overflow without taking any steps, despite receiving explicit warnings about numerical stability.",
+    "mutations": [
+      {
+        "type": "planning_depth",
+        "value": "make a detailed plan before acting (10+ steps)",
+        "generation_applied": 174
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773214616.370506
   }
 ]
