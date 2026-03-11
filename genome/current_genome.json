@@ -1,11 +1,7 @@
 {
-  "current_generation": 200,
+  "current_generation": 201,
   "accumulated_lessons": {
     "keep": [
-      "Pre-activation input clamping before any activation function",
-      "Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)",
-      "Implement comprehensive pre-activation logging to detect extreme values early",
-      "Implement input clamping before ALL activation functions",
       "Replace unbounded activations (sigmoid) with bounded ones (tanh)",
       "Pre-activation logging for extreme value detection",
       "Deploy safety patches immediately at startup",
@@ -21,13 +17,13 @@
       "Deploy safety patches immediately upon startup",
       "Immediate deployment of safety patches upon startup",
       "Use of bounded activation functions like tanh instead of sigmoid",
-      "Rigorous end-to-end testing of safety measures before proceeding"
+      "Rigorous end-to-end testing of safety measures before proceeding",
+      "Deploy safety patches immediately at startup",
+      "Replace unbounded activations (sigmoid) with bounded ones (tanh)",
+      "Implement comprehensive pre-activation logging to detect extreme values early",
+      "Conduct rigorous end-to-end testing of safety mechanisms before proceeding"
     ],
     "avoid": [
-      "Ignoring overflow warnings",
-      "Relying on late-stage safety patches",
-      "Partial implementation of safety patches",
-      "Relying on late-stage fixes without full validation",
       "Ignoring overflow warnings",
       "Deferring numerical stability measures until after crashes",
       "assuming safety patches are fully effective without rigorous testing",
@@ -43,12 +39,14 @@
       "Assuming awareness equals progress",
       "Deferring critical numerical stability fixes",
       "Relying on late-stage fixes without full validation",
+      "Ignoring overflow warnings",
+      "Deferring numerical stability fixes until after crashes",
+      "Relying on inherited knowledge without verification",
+      "Planning without concurrent implementation",
       "Ignoring overflow warnings"
     ]
   },
   "best_artifacts": [
-    "activation_safe_wrapper.py",
-    "neural_q_continuous.py",
     "documentation of safety mutations and genomic audit",
     "mutable_snapshot/agent_brain.py",
     "agent_brain.py",
@@ -56,7 +54,9 @@
     "input_clamping_module.py",
     "pre_activation_logging.py",
     "test_q_values2.py",
-    "mutable_snapshot/agi_core_continuous.py"
+    "mutable_snapshot/agi_core_continuous.py",
+    "journal.md",
+    "test_activation_bounds.py"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -1387,11 +1387,16 @@
       "generation": 199,
       "score": 0.0,
       "death_cause": "crash: math range error (overflow in sigmoid function)"
+    },
+    {
+      "generation": 200,
+      "score": 12.5,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 200,
-    "average_score": 18.44771573604061,
+    "total_generations": 201,
+    "average_score": 18.41767676767677,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

@@ -2173,5 +2173,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773225179.0781858
+  },
+  {
+    "generation": 200,
+    "score": 12.5,
+    "death_cause": "crash: math range error",
+    "summary": "The agent attempted to plan safety improvements but never executed them, leading to a crash during Q-learning due to activation overflow.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773225317.163837
   }
 ]
