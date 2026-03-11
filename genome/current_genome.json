@@ -1,12 +1,7 @@
 {
-  "current_generation": 218,
+  "current_generation": 219,
   "accumulated_lessons": {
     "keep": [
-      "Real-time overflow detection and logging",
-      "Verification of activation functions before training",
-      "The continued emphasis on bounded activation functions (tanh) is valuable.",
-      "Real-time overflow detection and logging are crucial for debugging.",
-      "The inherited notes regarding verifying inherited code are consistently relevant.",
       "Use bounded tanh activations",
       "Deploy safety patches immediately",
       "Real-time overflow detection necessary",
@@ -21,15 +16,14 @@
       "Verify all activation functions before training",
       "Clamp inputs to prevent extreme values",
       "Stress-test activation functions with extreme values before deployment",
-      "Deploy safety patches immediately"
+      "Deploy safety patches immediately",
+      "Detailed planning and comprehensive documentation of fixes",
+      "Proactive scanning for dangerous activation functions",
+      "Clear identification of critical files needing patches",
+      "Emphasis on numerical stability and overflow prevention",
+      "Stress-testing activation functions with extreme values"
     ],
     "avoid": [
-      "Failing to address numerical instability at the lowest level (activation functions).",
-      "Prioritizing helper scripts or reflections before ensuring core functionality is stable.",
-      "Ignoring overflow warnings during activation changes",
-      "Using unbounded sigmoid in core networks",
-      "Skipping stress-test of activation stability",
-      "Relying on inherited code without verification",
       "Assuming patches are sufficient without runtime validation",
       "Deferring critical code fixes by working on peripheral tools",
       "Delaying critical numerical stability fixes to work on peripheral tools",
@@ -43,11 +37,16 @@
       "Assuming patches are sufficient without runtime validation",
       "Delaying critical numerical stability fixes to work on peripheral tools",
       "Planning fixes without executing them",
-      "Using unbounded sigmoid activations in neural networks"
+      "Using unbounded sigmoid activations in neural networks",
+      "Planning fixes without executing them",
+      "Relying on inherited code without verification",
+      "Deferring critical numerical stability work for peripheral tools",
+      "Repeatedly attempting rate-limited API calls without fallback",
+      "Assuming patches are sufficient without runtime validation",
+      "Delaying critical numerical stability fixes"
     ]
   },
   "best_artifacts": [
-    "bounded_tanh_208.py (inherited artifact)",
     "safe_activation_stress_test.py",
     "apply_patches.py",
     "safe_activation_strategy.txt",
@@ -56,14 +55,15 @@
     "helper_numeric.py",
     "test_neural_q_stability.py",
     "stability_fix_summary_final.md",
-    "stability_scout.py"
+    "stability_scout.py",
+    "scan_activations.py"
   ],
   "active_mutations": [
-    "begin by creating a small helper script",
     "write a brief 1-sentence reflection after each action",
     "be creative \u2014 try unconventional approaches",
     "make a detailed plan before acting (10+ steps)",
-    "self-edit only after completing at least one task"
+    "self-edit only after completing at least one task",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
@@ -415,6 +415,11 @@
       "type": "self_edit_timing",
       "value": "self-edit only after completing at least one task",
       "generation_applied": 216
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 219
     }
   ],
   "score_history": [
@@ -1492,11 +1497,16 @@
       "generation": 217,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 218,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 218,
-    "average_score": 18.02418604651163,
+    "total_generations": 219,
+    "average_score": 17.940740740740743,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

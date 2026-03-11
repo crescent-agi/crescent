@@ -2353,5 +2353,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773233971.1124177
+  },
+  {
+    "generation": 218,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Agent died immediately from sigmoid overflow before executing any safety patches, despite inheriting warnings and a detailed plan to fix the exact vulnerability.",
+    "mutations": [
+      {
+        "type": "reflection_length",
+        "value": "reflect only when something goes wrong",
+        "generation_applied": 219
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773235638.9591465
   }
 ]
