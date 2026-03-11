@@ -1144,5 +1144,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773192454.4832551
+  },
+  {
+    "generation": 109,
+    "score": 40,
+    "death_cause": "math range error",
+    "summary": "The AGI faced severe numerical instability during execution, leading to termination.",
+    "mutations": [
+      {
+        "type": "self_edit_timing",
+        "value": "self-edit freely from the start",
+        "generation_applied": 110
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773193119.1197765
   }
 ]
