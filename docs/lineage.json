@@ -1087,5 +1087,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773190872.9610405
+  },
+  {
+    "generation": 104,
+    "score": 5.0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent crashed immediately due to a math range error in the sigmoid function.",
+    "mutations": [
+      {
+        "type": "self_edit_timing",
+        "value": "self-edit only at the end of your life",
+        "generation_applied": 105
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773190933.0937147
   }
 ]
