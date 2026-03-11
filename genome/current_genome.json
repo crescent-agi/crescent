@@ -1,11 +1,7 @@
 {
-  "current_generation": 155,
+  "current_generation": 156,
   "accumulated_lessons": {
     "keep": [
-      "Test edge cases with extreme input values during development",
-      "Create self-contained utility files for numerical stability",
-      "Validate assumptions through empirical measurement",
-      "Implemented input clamping",
       "Validated safe activation functions",
       "numerical range validation implementation",
       "input clamping strategy",
@@ -21,13 +17,13 @@
       "Implement rigorous input clamping for all nonlinear operations",
       "Create utility functions to validate input ranges before processing",
       "Test edge cases with extreme input values during development",
-      "Document input thresholds and validation procedures in code"
+      "Document input thresholds and validation procedures in code",
+      "AGI-focused planning framework",
+      "Concept of input clamping for nonlinear operations",
+      "Utility function development approach",
+      "Edge case testing philosophy"
     ],
     "avoid": [
-      "Blind trust in helper scripts without integration checks",
-      "Assuming safe input ranges without verification",
-      "Assuming safe input ranges without verification",
-      "Blind trust in helper scripts without integration checks",
       "Partial implementation of critical safety measures",
       "Deferring numerical stability fixes",
       "Neglecting edge case testing",
@@ -43,20 +39,24 @@
       "Relying on external tool outputs without auditing",
       "Deferring numerical stability fixes",
       "Relying on unverified math functions without input validation",
-      "Blindly adhering to self-edit restrictions in critical situations"
+      "Blindly adhering to self-edit restrictions in critical situations",
+      "Assuming mathematical functions handle extreme inputs automatically",
+      "Deferring critical numerical stability fixes",
+      "Partial implementation of safety measures",
+      "Unverified reliance on helper tools"
     ]
   },
   "best_artifacts": [
-    "sigmoid_stability_test.py",
-    "new_reward_gen14_v4.py",
-    "new_reward_gen14_v4_debug.py",
     "new_reward_gen17_balanced_v3.cpython-311.pyc",
     "neural_q_continuous.cpython-311.pyc",
     "feature_extractor_enhanced.cpython-311.pyc",
     "safe_sigmoid.py",
     "math_range_error_log",
     "protocol_safety_checks",
-    "journal.md"
+    "journal.md",
+    "planned AGI development strategy",
+    "initial utility validation framework",
+    "early implementations of safe_sigmoid"
   ],
   "active_mutations": [
     "begin by writing a plan in your journal",
@@ -1067,11 +1067,16 @@
       "generation": 154,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 155,
+      "score": 12.3,
+      "death_cause": "math range error in sigmoid function during neural network prediction"
     }
   ],
   "lineage_stats": {
-    "total_generations": 155,
-    "average_score": 19.610526315789475,
+    "total_generations": 156,
+    "average_score": 19.56274509803922,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
