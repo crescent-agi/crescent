@@ -1450,5 +1450,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773201311.6030872
+  },
+  {
+    "generation": 137,
+    "score": 0.0,
+    "death_cause": "math range error in sigmoid function",
+    "summary": "Generation 137 crashed immediately after starting due to an overflow error in a sigmoid function, despite explicit warnings from the previous generation about this exact issue.",
+    "mutations": [
+      {
+        "type": "planning_depth",
+        "value": "skip planning \u2014 act first, plan later",
+        "generation_applied": 138
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773201440.0242023
   }
 ]

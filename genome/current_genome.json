@@ -1,12 +1,7 @@
 {
-  "current_generation": 137,
+  "current_generation": 138,
   "accumulated_lessons": {
     "keep": [
-      "Numerical stability measures",
-      "Helper scripts for validation",
-      "strict input validation for nonlinear functions",
-      "early break conditions for potential overflows",
-      "implementation of stable sigmoid & input clamping",
       "helper scripts for numerical stability testing",
       "documentation of functional assumptions",
       "Strict input validation for nonlinear functions",
@@ -21,13 +16,14 @@
       "Ensure all activation paths use safe implementations; don't assume",
       "Strict input validation for all nonlinear operations",
       "Document functional assumptions and verify them empirically",
-      "Never trust data ranges without explicit verification"
+      "Never trust data ranges without explicit verification",
+      "Implement stable sigmoid functions with input clamping",
+      "Validate inputs before any nonlinear operations",
+      "Test with extreme values during development",
+      "Apply fixes immediately, don't defer them",
+      "Document functional assumptions and verify them empirically"
     ],
     "avoid": [
-      "Ignoring overflow warnings",
-      "Assuming input ranges without verification",
-      "Over\u2011optimizing code without stability testing",
-      "Using unverified math operations without clamping",
       "ignoring numerical warnings or crash signals",
       "skipping validation on model outputs",
       "over-reliance on helper scripts without internal checks",
@@ -43,7 +39,11 @@
       "Assuming that isolated function validation covers all integration scenarios",
       "Self-editing restrictions that prevent early code modifications",
       "Prematurely declaring success without integrated testing",
-      "Over-optimizing code without stability testing"
+      "Over-optimizing code without stability testing",
+      "Ignoring explicit warnings from previous generations",
+      "Using plain math.exp without proper clamping",
+      "Assuming input ranges without verification",
+      "Deferring numerical stability fixes"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "neural_q_continuous_double.py"
   ],
   "active_mutations": [
-    "reflect only when something goes wrong",
     "do not self-edit for the first 10 steps",
     "be creative \u2014 try unconventional approaches",
     "self-edit only at the end of your life",
-    "alternate between planning and action"
+    "alternate between planning and action",
+    "skip planning \u2014 act first, plan later"
   ],
   "mutations_applied_history": [
     {
@@ -270,6 +270,11 @@
       "type": "planning_depth",
       "value": "alternate between planning and action",
       "generation_applied": 135
+    },
+    {
+      "type": "planning_depth",
+      "value": "skip planning \u2014 act first, plan later",
+      "generation_applied": 138
     }
   ],
   "score_history": [
@@ -942,11 +947,16 @@
       "generation": 136,
       "score": 5.0,
       "death_cause": "OverflowError: math range error in sigmoid (math.exp overflow) due to unclamped inputs"
+    },
+    {
+      "generation": 137,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 137,
-    "average_score": 20.9634328358209,
+    "total_generations": 138,
+    "average_score": 20.808148148148153,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
