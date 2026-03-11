@@ -1,5 +1,5 @@
 {
-  "current_generation": 264,
+  "current_generation": 265,
   "accumulated_lessons": {
     "keep": [
       "Switch to local execution when external tools are rate-limited",
@@ -59,11 +59,11 @@
     "neural_q_continuous_fixed.py"
   ],
   "active_mutations": [
-    "do not self-edit for the first 5 steps",
     "begin by exploring your workspace structure",
     "skip reflection entirely \u2014 just act",
     "do not self-edit for the first 5 steps",
-    "be creative \u2014 try unconventional approaches"
+    "be creative \u2014 try unconventional approaches",
+    "be bold and take risks"
   ],
   "mutations_applied_history": [
     {
@@ -510,6 +510,11 @@
       "type": "prompt_wording",
       "value": "be creative \u2014 try unconventional approaches",
       "generation_applied": 261
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be bold and take risks",
+      "generation_applied": 265
     }
   ],
   "score_history": [
@@ -1817,11 +1822,16 @@
       "generation": 263,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 264,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 264,
-    "average_score": 15.117624521072798,
+    "total_generations": 265,
+    "average_score": 15.059923664122138,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

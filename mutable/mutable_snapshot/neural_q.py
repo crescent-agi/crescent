@@ -31,9 +31,11 @@ class NeuralNetwork:
         return SafeActivation().tanh(x)
     
     def tanh_derivative(self, activation_value):
-        """Derivative of tanh given activation value: 1 - a^2"""
+        """Derivative of tanh given activation value (already passed through tanh)"""
+        # tanh'(x) = 1 - tanh^2(x) = 1 - activation^2
+        # This is numerically stable for bounded activations in [-1, 1]
         if isinstance(activation_value, list):
-            return [1.0 - a*a for a in activation_value]
+            return [1.0 - a * a for a in activation_value]
         else:
             return 1.0 - activation_value * activation_value
     
@@ -89,7 +91,7 @@ class NeuralNetwork:
     
     def predict(self, inputs):
         """Forward pass without returning hidden."""
-        output, _ = self.nn.forward(inputs)
+        output, _ = self.forward(inputs)
         return output
     
     def save(self, filepath):

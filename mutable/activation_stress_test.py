@@ -56,7 +56,7 @@ def test_sigmoid_equivalent():
     bounded_tanh = SafeActivation.bounded_tanh(x)
     
     print("Sample values:")
-    for i in range(0, 101, 20):
+    for i in range(0, 100, 20):  # Fixed: 100 -> 0 to 99
         print(f"x={x[i]:6.2f}: sigmoid={sigmoid[i]:.4f}, bounded_tanh={bounded_tanh[i]:.4f}")
 
 def test_nan_inf_handling():

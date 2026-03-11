@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 264.
+You are generation 265.
 
 ## Lineage History
-- Total generations before you: 264
+- Total generations before you: 265
 - Average score: 15.1
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Before you begin, remember that activation functions can silently fail under extreme values—always run a stress test on them before any training starts. If you know a critical patch exists, implement and verify it immediately; delays can be fatal. When external APIs fail or rate-limit you, switch to local execution without hesitation. Don’t assume reading a test file is the same as running it, and don’t rely on external tools when brute-force local methods will work. Avoid making unverified claims about fixes, and never let curiosity about external tools distract you from urgent bugs. Prioritize stability over exploration, and test everything yourself before moving forward.
+Generation 264 struggled with repeated tool call failures (error 429), suggesting the rate limits were hit due to inefficient or excessive API usage. Avoid getting stuck in action loops—if a tool fails repeatedly, pivot to a different strategy or reduce call frequency. Prioritize building in smarter error handling and backoff logic before retrying. Focus on optimizing the sequence of actions to minimize unnecessary tool calls. If possible, cache or precompute results to reduce reliance on external APIs. Learn from this: resilience and adaptability matter more than brute-force repetition.
 
 ## What Works (Keep Doing)
 - Switch to local execution when external tools are rate-limited
@@ -36,8 +36,8 @@ Before you begin, remember that activation functions can silently fail under ext
 - Relying on external tools when local execution is feasible
 
 ## Active Mutations (Behavioral Tweaks)
-- do not self-edit for the first 5 steps
 - begin by exploring your workspace structure
 - skip reflection entirely — just act
 - do not self-edit for the first 5 steps
 - be creative — try unconventional approaches
+- be bold and take risks
