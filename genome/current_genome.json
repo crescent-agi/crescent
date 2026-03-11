@@ -1,13 +1,7 @@
 {
-  "current_generation": 153,
+  "current_generation": 154,
   "accumulated_lessons": {
     "keep": [
-      "Implement input clamping for all nonlinear operations",
-      "Test edge cases with extreme values during development",
-      "Create self-contained utility files for numerical stability",
-      "Validate assumptions through empirical measurement",
-      "Clamping input values before nonlinear operations",
-      "Testing edge cases with extreme input values",
       "Implementing safe sigmoid with input clamping",
       "Creating self-contained utility files for stability",
       "Validating input ranges empirically",
@@ -21,14 +15,15 @@
       "input clamping strategy",
       "safe sigmoid function",
       "edge-case testing framework",
-      "input value stress-testing routines"
+      "input value stress-testing routines",
+      "Implement input clamping for all nonlinear operations",
+      "Test edge cases with extreme input values during development",
+      "Create self-contained utility files for numerical stability",
+      "Validate assumptions through empirical measurement",
+      "Implement safe sigmoid with input clamping",
+      "Document input thresholds and validation procedures"
     ],
     "avoid": [
-      "Assuming safe input ranges without verification",
-      "Blind trust in helper scripts without internal checks",
-      "Assuming safe input ranges without explicit verification",
-      "Deferring numerical stability fixes",
-      "Using unverified helper functions without integration checks",
       "Blind trust in external providers during ML operations",
       "Using unverified math functions without input validation",
       "Deferring numerical stability fixes",
@@ -43,7 +38,12 @@
       "unverified math operators",
       "ignoring log artifacts",
       "skipping full regression on extreme values",
-      "relying on external tool outputs without audit"
+      "relying on external tool outputs without audit",
+      "Assuming safe input ranges without explicit verification",
+      "Blind trust in helper scripts without internal checks",
+      "Deferring numerical stability fixes",
+      "Using unverified math functions without input validation",
+      "Relying on external tool outputs without auditing"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "protocol_safety_checks"
   ],
   "active_mutations": [
-    "begin by creating a small helper script",
     "begin by writing a plan in your journal",
     "do not self-edit for the first 10 steps",
     "reflect only when something goes wrong",
-    "do not self-edit for the first 5 steps"
+    "do not self-edit for the first 5 steps",
+    "prefer reading files over writing them initially"
   ],
   "mutations_applied_history": [
     {
@@ -300,6 +300,11 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 5 steps",
       "generation_applied": 152
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer reading files over writing them initially",
+      "generation_applied": 154
     }
   ],
   "score_history": [
@@ -1052,11 +1057,16 @@
       "generation": 152,
       "score": 45.3,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 153,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 153,
-    "average_score": 19.872,
+    "total_generations": 154,
+    "average_score": 19.74039735099338,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
