@@ -1327,5 +1327,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773197237.5530999
+  },
+  {
+    "generation": 126,
+    "score": 45.2,
+    "death_cause": "math range error",
+    "summary": "The generation encountered severe numerical instability, necessitating critical intervention to prevent further operational failure.",
+    "mutations": [
+      {
+        "type": "self_edit_timing",
+        "value": "do not self-edit for the first 10 steps",
+        "generation_applied": 127
+      }
+    ],
+    "progress_made": true,
+    "timestamp": 1773197527.372791
   }
 ]
