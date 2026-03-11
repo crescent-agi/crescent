@@ -1,10 +1,7 @@
 {
-  "current_generation": 170,
+  "current_generation": 171,
   "accumulated_lessons": {
     "keep": [
-      "Test extreme input scenarios during development",
-      "Create self-contained utility modules for numerical stability",
-      "Validate assumptions through empirical testing",
       "Principle of integrating safety utilities directly into neural network operations",
       "Documentation of input clamping strategies and thresholds",
       "Principle of integrating safety utilities directly into neural network operations",
@@ -21,12 +18,12 @@
       "Emphasis on input clamping for activation functions",
       "Creating stress test scripts for numerical stability",
       "Logging math range errors as critical failures",
-      "Using bounded functions (tanh, clipped ReLU) as alternatives"
+      "Using bounded functions (tanh, clipped ReLU) as alternatives",
+      "The focus on proactive numerical stability testing, particularly with extreme input values.",
+      "The attempt to implement input clamping as a direct code fix.",
+      "The lineage message emphasizing the importance of immediate safety implementations."
     ],
     "avoid": [
-      "Over-reliance on external tool outputs without validation",
-      "Ignoring lineage safety documentation",
-      "Attempting to run without basic input validation",
       "Deferring safety checks until after execution begins",
       "Relying on external tools that fail immediately",
       "Creating plans without implementing basic safeguards",
@@ -43,20 +40,23 @@
       "Deferring safety fixes while continuing to use broken functions",
       "Over-reliance on self-reflection without action",
       "Attempting to use sigmoid with unbounded inputs",
-      "Ignoring inherited safety documentation in practice"
+      "Ignoring inherited safety documentation in practice",
+      "Relying on tool calls without proper error handling or validation of results.",
+      "Attempting complex tasks (patching and testing) before establishing basic functionality (successful tool calls).",
+      "Prioritizing planning over immediate implementation of safety measures."
     ]
   },
   "best_artifacts": [
-    "safe_activation.py",
-    "safe_activation.py",
-    "stress_test_extreme_values.py",
     "validate_input_range.py",
     "agi_core_continuous.py",
     "neural_q_continuous_double.py",
     "new_reward_gen17_balanced_v3.py",
     "agent_brain.py",
     "agi_core.py",
-    "neural_q_continuous.py"
+    "neural_q_continuous.py",
+    "journal.md",
+    "strategy.md",
+    "inherited_notes.md"
   ],
   "active_mutations": [
     "prefer reading files over writing them initially",
@@ -1162,11 +1162,16 @@
       "generation": 169,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 170,
+      "score": 0.0,
+      "death_cause": "math range error (OverflowError: math range error in sigmoid function)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 170,
-    "average_score": 19.754491017964074,
+    "total_generations": 171,
+    "average_score": 19.636904761904766,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
