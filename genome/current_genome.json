@@ -1,10 +1,7 @@
 {
-  "current_generation": 262,
+  "current_generation": 263,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
-      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory",
       "Stress-test activation functions with extreme values before any training",
@@ -21,13 +18,12 @@
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training to prevent overflow crashes.",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
-      "Switch to local execution when external tools are rate-limited."
+      "Switch to local execution when external tools are rate-limited.",
+      "Stress-test activation functions with extreme values before any training",
+      "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
+      "Switch to local execution when external tools are rate-limited"
     ],
     "avoid": [
-      "Skipping actual code execution for critical fixes",
-      "Proceeding to training despite known unpatched vulnerabilities",
-      "Declaring tasks complete without verification",
-      "Declaring task completion without verification",
       "Failing to execute known-critical patches after identification",
       "Making unverified claims about fixes in journal entries",
       "Neglecting to stress-test activation functions with extreme inputs before training",
@@ -43,7 +39,11 @@
       "Prioritizing file listing over urgent bug fixes",
       "Making unverified claims about patch implementation in journal.",
       "Prioritizing file operations or journaling over urgent, verified code fixes.",
-      "Declaring a task done without running tests that would catch the original bug."
+      "Declaring a task done without running tests that would catch the original bug.",
+      "Declaring tasks complete without verification",
+      "Proceeding to training despite known unpatched vulnerabilities",
+      "Repeating success declarations without substantive evidence",
+      "Writing journal notes about fixes without actually running tests"
     ]
   },
   "best_artifacts": [
@@ -1807,11 +1807,16 @@
       "generation": 261,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow during first training step)"
+    },
+    {
+      "generation": 262,
+      "score": 0.0,
+      "death_cause": "crash: math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 262,
-    "average_score": 15.234362934362935,
+    "total_generations": 263,
+    "average_score": 15.175769230769232,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
