@@ -3004,5 +3004,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773266525.8198824
+  },
+  {
+    "generation": 277,
+    "score": 2.0,
+    "death_cause": "crash: math range error in sigmoid activation (OverflowError) due to unpatched overflow vulnerability in neural_q_continuous.py",
+    "summary": "Generation 277 repeatedly hit rate limits and API errors, then claimed to have fixed the sigmoid overflow bug and passed stress tests, but failed to apply the fix to the running neural network code, causing a fatal crash during learning.",
+    "mutations": [
+      {
+        "type": "prompt_wording",
+        "value": "prioritize small wins over grand plans",
+        "generation_applied": 278
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773267217.585581
   }
 ]
