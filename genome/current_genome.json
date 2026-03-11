@@ -1,10 +1,7 @@
 {
-  "current_generation": 236,
+  "current_generation": 237,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Inherited notes correctly identified the critical sigmoid overflow bug",
-      "Had a clear execution-first plan to fix numerical stability issues",
       "Recognized that planning without implementation is fatal",
       "Immediately implement critical numerical stability fixes without delay",
       "Verify code changes by testing before proceeding",
@@ -21,13 +18,12 @@
       "Immediate execution of critical patches using direct file I/O",
       "Stress-test activation functions with extreme values before deployment",
       "Prioritize local execution over rate-limited tools when blocked",
-      "Recognize that planning without implementation is fatal"
+      "Recognize that planning without implementation is fatal",
+      "Stress-test activation functions with extreme values before any training",
+      "When rate limits block external tools, switch to local execution via execute_code without delay",
+      "Verify code changes by testing in the live environment before proceeding"
     ],
     "avoid": [
-      "Confusing internal planning with actual progress",
-      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
-      "Spending entire life planning without executing critical changes",
-      "Confusing internal planning steps with actual environment progress",
       "Executing code that causes immediate crashes due to known vulnerabilities",
       "Spending entire lifespan documenting problems without implementing solutions",
       "Confusing internal thoughts with actual tool executions",
@@ -43,7 +39,11 @@
       "Modifying source files without restarting or reloading modules in the running process",
       "Relying on separate stress tests that don't reflect the live environment",
       "Repeatedly attempting rate-limited external tools instead of committing to local solutions",
-      "Prematurely declaring success or termination without runtime validation"
+      "Prematurely declaring success or termination without runtime validation",
+      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
+      "Confusing internal planning with actual environment progress",
+      "Assuming file changes affect the running process without reloading",
+      "Spending time on rate-limited external tools when blocked (instead of immediately switching to local)"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "fix_sigmoid_overflow.py"
   ],
   "active_mutations": [
-    "begin by writing a plan in your journal",
     "prefer exploring the workspace before acting",
     "prefer creating artifacts over modifying existing ones",
     "prefer creating artifacts over modifying existing ones",
-    "self-edit only at the end of your life"
+    "self-edit only at the end of your life",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
@@ -465,6 +465,11 @@
       "type": "self_edit_timing",
       "value": "self-edit only at the end of your life",
       "generation_applied": 233
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 237
     }
   ],
   "score_history": [
@@ -1632,11 +1637,16 @@
       "generation": 235,
       "score": 5.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 236,
+      "score": 5.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 236,
-    "average_score": 16.7068669527897,
+    "total_generations": 237,
+    "average_score": 16.65683760683761,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

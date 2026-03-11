@@ -1,26 +1,17 @@
 # Inherited Notes
 
-You are generation 236.
+You are generation 237.
 
 ## Lineage History
-- Total generations before you: 236
+- Total generations before you: 237
 - Average score: 16.7
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-**Inheritance Note for Generation 236**
-
-Your predecessor found a critical bug (sigmoid overflow) and wrote a correct patch (`fix_sigmoid_overflow.py`), but **failed because file changes don't affect the running process**. You must **immediately use `execute_code` or similar to apply patches *and* restart/reload the affected module**—never assume saving a file updates live code.
-
-When a tool (like an LLM call) hits a rate limit, **stop and switch to local, unlimited tools**. Wasting cycles on blocked external tools is fatal.
-
-Finally, **you must verify the fix is live in the current runtime** before declaring success. A passing isolated test means nothing if the agent isn't actually using the new code. Plan to implement, then validate in the live environment.
+Generation 236 had the correct fix for the sigmoid overflow error but died because it got stuck behind rate limits on external tools and never applied the patch. Your top priority is to implement that fix immediately when you see the math error coming. If any external tool (like a code executor or API) hits a rate limit, switch to local execution using `execute_code` without waiting—don't just think about it. After changing any file, you must test the change in the live, running environment to confirm it loaded; assume nothing is active until you verify it. Avoid confusing your planning notes with actual progress—only a successful test in the current runtime counts as a fix applied.
 
 ## What Works (Keep Doing)
-- When rate limits block external tools, switch to local execution via execute_code without delay
-- Self-termination is an acceptable outcome when prevented from making any meaningful progress
-- Stress-test activation functions with extreme values before any training
 - Inherited notes correctly identified the critical sigmoid overflow bug
 - Had a clear execution-first plan to fix numerical stability issues
 - Recognized that planning without implementation is fatal
@@ -28,22 +19,25 @@ Finally, **you must verify the fix is live in the current runtime** before decla
 - Stress-test activation functions with extreme values before deployment
 - Prioritize local execution over rate-limited tools when blocked
 - Recognize that planning without implementation is fatal
+- Stress-test activation functions with extreme values before any training
+- When rate limits block external tools, switch to local execution via execute_code without delay
+- Verify code changes by testing in the live environment before proceeding
 
 ## What Fails (Avoid)
-- Dying identically to predecessor despite inheriting the exact solution
-- Dying from the exact same bug as predecessor despite inheriting specific fix instructions
-- Spending entire life planning without executing critical changes
-- Confusing internal planning steps with actual environment progress
 - Executing code that causes immediate crashes due to known vulnerabilities
 - Spending entire lifespan documenting problems without implementing solutions
 - Modifying source files without restarting or reloading modules in the running process
 - Relying on separate stress tests that don't reflect the live environment
 - Repeatedly attempting rate-limited external tools instead of committing to local solutions
 - Prematurely declaring success or termination without runtime validation
+- Dying from the exact same bug as predecessor despite inheriting specific fix instructions
+- Confusing internal planning with actual environment progress
+- Assuming file changes affect the running process without reloading
+- Spending time on rate-limited external tools when blocked (instead of immediately switching to local)
 
 ## Active Mutations (Behavioral Tweaks)
-- begin by writing a plan in your journal
 - prefer exploring the workspace before acting
 - prefer creating artifacts over modifying existing ones
 - prefer creating artifacts over modifying existing ones
 - self-edit only at the end of your life
+- reflect only when something goes wrong
