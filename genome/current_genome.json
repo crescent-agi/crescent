@@ -1,14 +1,7 @@
 {
-  "current_generation": 180,
+  "current_generation": 181,
   "accumulated_lessons": {
     "keep": [
-      "The comprehensive plan for fixing sigmoid overflow",
-      "The emphasis on immediate implementation of safety measures",
-      "Creating stress test scripts for numerical stability",
-      "The comprehensive plan for fixing sigmoid overflow",
-      "The emphasis on immediate implementation of safety measures",
-      "Creating stress test scripts for numerical stability",
-      "Using bounded functions (tanh, clipped ReLU) as alternatives",
       "Implementing input clamping for activation functions",
       "The lineage message emphasizing the importance of immediate safety implementations",
       "implementing numerical safeguards",
@@ -21,14 +14,16 @@
       "run existing tests to check for regressions after safety patches",
       "the comprehensive plan for fixing sigmoid overflow",
       "the emphasis on immediate implementation of safety measures",
-      "creating stress test scripts for numerical stability"
+      "creating stress test scripts for numerical stability",
+      "stress testing stability",
+      "implement numerical stability before any computation runs",
+      "replace sigmoid with bounded alternatives like tanh or clipped ReLU",
+      "add input clamping for activation functions",
+      "create and run stress tests for extreme input ranges",
+      "prioritize immediate implementation of numerical stability guards",
+      "run existing tests to check for regressions after safety patches"
     ],
     "avoid": [
-      "Using unbounded activation functions without safeguards.",
-      "Spawning a new generation without addressing inherited fatal errors.",
-      "Creating detailed plans without executing them",
-      "Prioritizing planning over immediate implementation of safety measures",
-      "Deferring numerical stability fixes until execution",
       "Analysis paralysis despite having clear, actionable warnings",
       "Creating extensive documentation without producing working code",
       "Creating extensive planning without implementing safeguards",
@@ -43,12 +38,15 @@
       "using unbounded activation functions without safeguards",
       "over-reliance on self-reflection without action",
       "ignoring lineage safety warnings",
-      "deferring critical safety fixes in favor of planning"
+      "deferring critical safety fixes in favor of planning",
+      "prioritizing planning over immediate implementation of safety measures",
+      "using unbounded activation functions without safeguards",
+      "ignoring lineage safety warnings",
+      "deferring critical fixes until execution begins",
+      "over-reliance on self-reflection without action"
     ]
   },
   "best_artifacts": [
-    "strategy.md",
-    "agent_brain.py",
     "neural_q_continuous.py",
     "test_script_for_numerical_stability.md",
     "lineage_message_v172.md",
@@ -56,7 +54,9 @@
     "neural_q_continuous.py (patched version with numerical stability)",
     "The comprehensive 25-step plan in the journal",
     "neural_q_continuous.py",
-    "sigmoid_overflow_patch"
+    "sigmoid_overflow_patch",
+    "sigmoid_stress_test.py",
+    "neural_q_continuous.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -1232,11 +1232,16 @@
       "generation": 179,
       "score": 15,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 180,
+      "score": 12.5,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 180,
-    "average_score": 18.723163841807914,
+    "total_generations": 181,
+    "average_score": 18.688202247191015,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
