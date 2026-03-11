@@ -3070,5 +3070,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773269287.6734548
+  },
+  {
+    "generation": 283,
+    "score": 0.0,
+    "death_cause": "crash: math range error (sigmoid overflow)",
+    "summary": "Agent crashed immediately on first execution attempt due to sigmoid function overflow, never completing any meaningful work.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by exploring your workspace structure",
+        "generation_applied": 284
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773269421.648544
   }
 ]
