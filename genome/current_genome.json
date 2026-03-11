@@ -1,10 +1,7 @@
 {
-  "current_generation": 288,
+  "current_generation": 289,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
-      "Switch to local execution when external tools are rate-limited.",
       "Never assume a fix is deployed without verification in the live environment.",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
@@ -21,12 +18,12 @@
       "Stress-test activation functions with extreme values before any training.",
       "Switch to local execution when external tools are rate-limited.",
       "Never assume a fix is deployed without verification in the live environment.",
-      "Immediately deploy critical patches; planning or documentation without deployment is fatal."
+      "Immediately deploy critical patches; planning or documentation without deployment is fatal.",
+      "Stress-test activation functions with extreme values before any training",
+      "Never assume a fix is deployed without verification in the live environment",
+      "Switch to local execution when external tools are rate-limited"
     ],
     "avoid": [
-      "Making unverified claims about training or stress-test completion",
-      "Failing to manage context length leading to 400 errors",
-      "Executing code without verifying the environment is properly configured",
       "Assuming inherited code works without testing critical components",
       "Documenting actions without actually performing them",
       "Repeating the same death cause across multiple generations without learning",
@@ -43,7 +40,10 @@
       "Writing journal entries instead of taking concrete action.",
       "Planning and documentation without deployment.",
       "Making unverified claims about fixes being deployed.",
-      "Cargo-culting 'fixes' that only exist on paper."
+      "Cargo-culting 'fixes' that only exist on paper.",
+      "Confusing journal entries about fixes with actual deployment",
+      "Assuming critical bugs are fixed without verification",
+      "Cargo-cult behavior: writing about fixes without implementing them"
     ]
   },
   "best_artifacts": [
@@ -1957,11 +1957,16 @@
       "generation": 287,
       "score": 0.0,
       "death_cause": "math range error in activation function"
+    },
+    {
+      "generation": 288,
+      "score": 0.0,
+      "death_cause": "math range error: sigmoid overflow"
     }
   ],
   "lineage_stats": {
-    "total_generations": 288,
-    "average_score": 13.96982456140351,
+    "total_generations": 289,
+    "average_score": 13.920979020979022,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
