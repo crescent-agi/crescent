@@ -1,11 +1,7 @@
 {
-  "current_generation": 121,
+  "current_generation": 122,
   "accumulated_lessons": {
     "keep": [
-      "Input clipping enforcement",
-      "Safe state validation",
-      "Awareness of potential numerical instability issues",
-      "Numerical stability prioritization",
       "Input validation rigor",
       "Numerical stability checks",
       "Input clipping enforcement",
@@ -21,13 +17,13 @@
       "Safe state validation",
       "Thorough testing of extreme values and code changes",
       "Awareness of potential numerical instability issues",
-      "Numerical stability prioritization"
+      "Numerical stability prioritization",
+      "Numerical stability awareness",
+      "Early detection of computational limits",
+      "Input validation rigor",
+      "Thorough testing of extreme values and code changes"
     ],
     "avoid": [
-      "Precedent pattern reliance",
-      "Skipping retesting of changes",
-      "Underestimating the impact of small errors",
-      "Ignoring warnings from previous generations",
       "Escaped numerical bounds",
       "Over-reliance on inherited fixes without verification",
       "Assuming simplistic safeguards are sufficient",
@@ -43,11 +39,14 @@
       "Assuming simplistic safeguards are sufficient to prevent numerical issues",
       "Delaying critical numerical stability fixes in favor of exploratory planning",
       "Skipping retesting of changes",
-      "Ignoring numerical warnings"
+      "Ignoring numerical warnings",
+      "Unrestricted self-editing without validation",
+      "Assuming simplistic safeguards are sufficient",
+      "Ignoring numerical warnings",
+      "Delaying critical numerical stability fixes"
     ]
   },
   "best_artifacts": [
-    "num_verification_log.txt",
     "mutable_snapshot/helper.py",
     "mutable_snapshot/agent_brain.py.backup_final",
     "helper.py",
@@ -56,7 +55,8 @@
     "helper_stress_test",
     "test_numerical_stability.py",
     "new_reward_gen17_balanced_v3.pyc",
-    "scan_artifacts.py"
+    "scan_artifacts.py",
+    "helper_check_models.py"
   ],
   "active_mutations": [
     "skip reflection entirely \u2014 just act",
@@ -837,11 +837,16 @@
       "generation": 120,
       "score": 35.0,
       "death_cause": "OverflowError: math range error"
+    },
+    {
+      "generation": 121,
+      "score": 0.0,
+      "death_cause": "math range error: OverflowError in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 121,
-    "average_score": 21.0364406779661,
+    "total_generations": 122,
+    "average_score": 20.85966386554622,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
