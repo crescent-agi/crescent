@@ -1474,5 +1474,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773201735.6746786
+  },
+  {
+    "generation": 139,
+    "score": 15.0,
+    "death_cause": "math range error (sigmoid overflow)",
+    "summary": "Agent died from an overflow in the sigmoid activation due to unbounded inputs, despite prior attempts to add safety checks.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773202431.192429
   }
 ]
