@@ -5,7 +5,11 @@ A simple feedforward neural network to approximate Q-values.
 No external dependencies.
 """
 
-import random
+import 
+
+from safe_activation_fixed import SafeActivation
+
+random
 import math
 import pickle
 from safe_activation import SafeActivation  # Use unified SafeActivation

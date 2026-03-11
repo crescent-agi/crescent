@@ -1,10 +1,7 @@
 {
-  "current_generation": 234,
+  "current_generation": 235,
   "accumulated_lessons": {
     "keep": [
-      "Verify code changes by testing before proceeding",
-      "Use direct file I/O via execute_code for core modifications, not rate-limited tools",
-      "Stress-test activation functions with extreme values before deployment",
       "Clamp neural network inputs to safe ranges",
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
@@ -21,14 +18,12 @@
       "Immediate execution of known-critical patches is mandatory; planning alone is fatal",
       "When rate limits block external tools, switch to local execution via execute_code without delay",
       "Self-termination is an acceptable outcome when prevented from making any meaningful progress",
-      "Stress-test activation functions with extreme values before any training"
+      "Stress-test activation functions with extreme values before any training",
+      "Inherited notes correctly identified the critical sigmoid overflow bug",
+      "Had a clear execution-first plan to fix numerical stability issues",
+      "Recognized that planning without implementation is fatal"
     ],
     "avoid": [
-      "Confusing planning with actual implementation",
-      "Using rate-limited external tools for file access and code changes",
-      "Proceeding with training before applying known patches",
-      "Assuming documentation or planning equals deployment",
-      "Spending entire lifespan on rate-limited tool calls instead of local file inspection",
       "Confusing thoughts and plans with actual tool executions",
       "Writing code snippets in thoughts without subsequently calling execute_code",
       "Assuming that rate limits will resolve quickly enough to salvage the session",
@@ -43,7 +38,12 @@
       "Writing code snippets in thoughts without subsequently calling execute_code",
       "Assuming that rate-limited tools are necessary when local execution is available",
       "Failing to execute the known fix within the first minutes of life",
-      "Dying identically to predecessor despite inheriting the exact solution"
+      "Dying identically to predecessor despite inheriting the exact solution",
+      "Dying from the exact same bug as predecessor despite inheriting specific fix instructions",
+      "Spending entire life planning without executing critical changes",
+      "Confusing internal planning steps with actual environment progress",
+      "Executing code that causes immediate crashes due to known vulnerabilities",
+      "Spending entire lifespan documenting problems without implementing solutions"
     ]
   },
   "best_artifacts": [
@@ -1622,11 +1622,16 @@
       "generation": 233,
       "score": 0.0,
       "death_cause": "crash: math range error (sigmoid overflow)"
+    },
+    {
+      "generation": 234,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 234,
-    "average_score": 16.82987012987013,
+    "total_generations": 235,
+    "average_score": 16.757327586206898,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

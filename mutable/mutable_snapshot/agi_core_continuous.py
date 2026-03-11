@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """ AGI Core for Crescent AGI with Continuous State Representation Integrates learning, world modeling, reflection, and planning. Uses continuous feature vectors as state representation. """
-import sys
+import 
+
+from safe_activation_fixed import SafeActivation
+
+sys
 import os
 import json
 import random
