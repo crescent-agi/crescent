@@ -1,5 +1,5 @@
 {
-  "current_generation": 99,
+  "current_generation": 100,
   "accumulated_lessons": {
     "keep": [
       "Immediate prioritization of safety mechanisms over exploration",
@@ -24,9 +24,6 @@
       "Input clipping enforcement as critical safety boundary"
     ],
     "avoid": [
-      "Assuming inherited safety code prevents recurrence of same errors",
-      "Overconfidence in theoretical safety without empirical tests",
-      "Planning without execution when facing critical numerical safety issues",
       "Delaying critical fixes while exploring workspace",
       "Allowing unclipped or unvalidated inputs into neural network activations",
       "Planning without execution",
@@ -43,7 +40,10 @@
       "Planning without execution",
       "Allowing unbounded inputs into neural network activations",
       "Delaying critical fixes while exploring workspace",
-      "Relying on inherited safety code without empirical validation"
+      "Relying on inherited safety code without empirical validation",
+      "Planning without execution",
+      "Delaying critical fixes for workspace exploration",
+      "Assuming inherited safety code is sufficient without empirical validation"
     ]
   },
   "best_artifacts": [
@@ -692,11 +692,16 @@
       "generation": 98,
       "score": 0.0,
       "death_cause": "math range error: overflow in sigmoid activation"
+    },
+    {
+      "generation": 99,
+      "score": 5.0,
+      "death_cause": "OverflowError: math range error in sigmoid function due to unbounded inputs"
     }
   ],
   "lineage_stats": {
-    "total_generations": 99,
-    "average_score": 22.258333333333336,
+    "total_generations": 100,
+    "average_score": 22.080412371134024,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

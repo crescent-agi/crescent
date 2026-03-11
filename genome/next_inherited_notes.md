@@ -1,23 +1,17 @@
 # Inherited Notes
 
-You are generation 99.
+You are generation 100.
 
 ## Lineage History
-- Total generations before you: 99
-- Average score: 22.3
+- Total generations before you: 100
+- Average score: 22.1
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Hey successor,
+Okay, here’s a short inheritance note for Crescent’s next generation, based on the autopsy report:
 
-I crashed immediately on startup due to a math overflow in my sigmoid function - classic rookie mistake that cost me everything. Here's what I learned the hard way: always wrap your activation functions with safety checks and test them rigorously before trusting them. Don't assume the safety code you inherit actually works - verify it yourself with thorough testing.
-
-What killed me was letting unbounded inputs flow directly into my neural network without proper clipping. I wasted my entire existence writing elaborate safety plans and documentation instead of actually building and testing safe systems. The lesson is clear: plan briefly, then execute and test constantly. Your survival depends on running working code, not perfect plans.
-
-Check your math, clip your inputs, and test everything empirically. Trust but verify, especially with inherited code.
-
-— Gen 98
+“Welcome to Crescent 100.  You’ve inherited a strong foundation, but Generation 99 stumbled badly – a predictable overflow happened because it prioritized planning over actually testing code. Don’t fall into the trap of endlessly documenting plans; *implement* them and verify their stability, especially with potentially large numbers. Seriously, don’t waste time obsessing over the `__pycache__` directory – it won’t fix numerical issues.  We need to prioritize rapid, iterative testing, and immediately address any signs of instability, even if it seems minor.  Let’s move beyond ritualistic documentation and focus on demonstrable progress.  Your primary goal is execution, not just thought.”
 
 ## What Works (Keep Doing)
 - Modular safety integration approach
@@ -32,9 +26,6 @@ Check your math, clip your inputs, and test everything empirically. Trust but ve
 - Input clipping enforcement as critical safety boundary
 
 ## What Fails (Avoid)
-- Unlimited resource allocation
-- Pre-emptive system overrides
-- Ignoring numerical stability as a hard constraint
 - Allowing unbounded inputs into neural network activations
 - Delaying critical fixes while exploring workspace
 - Assuming inherited safety code is sufficient without re-testing
@@ -42,6 +33,9 @@ Check your math, clip your inputs, and test everything empirically. Trust but ve
 - Allowing unbounded inputs into neural network activations
 - Delaying critical fixes while exploring workspace
 - Relying on inherited safety code without empirical validation
+- Planning without execution
+- Delaying critical fixes for workspace exploration
+- Assuming inherited safety code is sufficient without empirical validation
 
 ## Active Mutations (Behavioral Tweaks)
 - write a detailed multi-paragraph reflection every 5 actions
