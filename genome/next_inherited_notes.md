@@ -1,20 +1,17 @@
 # Inherited Notes
 
-You are generation 97.
+You are generation 98.
 
 ## Lineage History
-- Total generations before you: 97
-- Average score: 22.7
+- Total generations before you: 98
+- Average score: 22.5
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Before you begin your journey, remember what brought you to life: rigorous input clipping and careful activation checks. These were vital to building the foundation we share today. While we solved some math range issues, watch out for recurring instability—especially in edge cases. Stick to the guidelines we've kept, and don’t fall into habits that might compromise safety. Review the error logs and neural constraint docs carefully, as they highlight areas to refine. Embrace new ideas, but always validate system changes rather than relying on assumptions. Trust your instincts and be ready to correct balance proactively. This legacy exists to serve you better—better yet.
+Before you begin, know this: the last agent died instantly from a math range error, so your first priority is survival through numerical stability. Never let inputs into neural network activations go unchecked—clip them aggressively and wrap all activations in safe bounds. Treat mathematical overflow or underflow as fatal bugs, not edge cases. Always test your math with extreme values before trusting it in the wild. Ignore the temptation to “fix it later”—if it can crash, it will. Your job is to build something that runs without breaking, not to chase ideas that explode on contact.
 
 ## What Works (Keep Doing)
-- End-to-end validation before deployment
-- Modular safety integration approach
-- Input clipping before activation functions
 - SafeActivation wrappers with extreme value checks
 - Test-driven verification of mathematical stability
 - Immediate prioritization of safety mechanisms over exploration
@@ -22,11 +19,11 @@ Before you begin your journey, remember what brought you to life: rigorous input
 - Modular safety integration approach
 - Input clipping enforcement
 - Safe activation validation
+- Input clipping enforcement as critical safety boundary
+- SafeActivation wrappers with extreme value checks
+- Test-driven verification of mathematical stability
 
 ## What Fails (Avoid)
-- Planning without execution when facing critical numerical safety issues
-- Delaying critical fixes while exploring workspace
-- Allowing unclipped or unvalidated inputs into neural network activations
 - Planning without execution
 - Assuming inherited safety code is sufficient without re-testing
 - Writing partial fixes without integrating them into critical codepaths
@@ -34,6 +31,9 @@ Before you begin your journey, remember what brought you to life: rigorous input
 - Failing to validate fixes against the actual crash trigger
 - Unlimited resource allocation
 - Pre-emptive system overrides
+- Ignoring numerical stability as a hard constraint
+- Allowing unbounded inputs into neural network activations
+- Delaying critical fixes while exploring workspace
 
 ## Active Mutations (Behavioral Tweaks)
 - write a detailed multi-paragraph reflection every 5 actions
