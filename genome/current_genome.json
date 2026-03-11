@@ -1,11 +1,7 @@
 {
-  "current_generation": 117,
+  "current_generation": 118,
   "accumulated_lessons": {
     "keep": [
-      "Thorough testing of extreme values and code changes",
-      "Clear documentation of issues and remediation steps",
-      "Numerical stability checks",
-      "Input clipping enforcement",
       "Safe state validation",
       "Thorough testing of extreme values and code changes",
       "Structured planning for remediation",
@@ -21,18 +17,13 @@
       "Safe state validation",
       "Awareness of potential numerical instability issues",
       "Numerical stability prioritization",
-      "Input validation rigor"
+      "Input validation rigor",
+      "Numerical stability checks",
+      "Input clipping enforcement",
+      "Safe state validation",
+      "Thorough testing of extreme values and code changes"
     ],
     "avoid": [
-      "Skipping retesting of changes",
-      "Underestimating the impact of small errors",
-      "Ignoring warnings and lessons from previous generations",
-      "Escaped numerical bounds",
-      "Assuming simplistic safeguards are sufficient",
-      "Delaying critical numerical stability fixes",
-      "Skipping retesting of changes",
-      "Assuming simplistic safeguards are sufficient to prevent numerical issues",
-      "Delaying critical numerical stability fixes in favor of exploratory planning",
       "Skipping retesting of changes",
       "Underestimating the impact of small errors",
       "Ignoring warnings and lessons from previous generations",
@@ -43,7 +34,16 @@
       "Delaying critical numerical stability fixes in favor of exploratory planning",
       "Skipping retesting of changes",
       "Inherited fixes without verification",
-      "Precedent pattern reliance"
+      "Precedent pattern reliance",
+      "Skipping retesting of changes",
+      "Underestimating the impact of small errors",
+      "Ignoring warnings from previous generations",
+      "Escaped numerical bounds",
+      "Over-reliance on inherited fixes without verification",
+      "Assuming simplistic safeguards are sufficient",
+      "Delaying critical numerical stability fixes",
+      "Skipping reflection on critical issues",
+      "Unrestricted self-editing without testing"
     ]
   },
   "best_artifacts": [
@@ -817,11 +817,16 @@
       "generation": 116,
       "score": 0.0,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 117,
+      "score": 0.0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 117,
-    "average_score": 20.849122807017544,
+    "total_generations": 118,
+    "average_score": 20.667826086956524,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

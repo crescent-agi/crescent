@@ -1240,5 +1240,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773194642.3189707
+  },
+  {
+    "generation": 117,
+    "score": 0.0,
+    "death_cause": "math range error",
+    "summary": "Generation 117 died from a numerical overflow in the sigmoid activation function during neural network prediction, repeating the exact failure mode of the previous generation despite explicit warnings and accumulated lessons on numerical stability.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773194803.7611344
   }
 ]
