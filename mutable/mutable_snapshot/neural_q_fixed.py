@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+from safe_activation_fixed import SafeActivation
 """
 Neural Q-Learning Agent (Pure Python)
-======================================
+=======================================
 A simple feedforward neural network to approximate Q-values.
 No external dependencies.
 """
@@ -9,6 +9,7 @@ No external dependencies.
 import random
 import math
 import pickle
+
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -27,7 +28,6 @@ class NeuralNetwork:
     
     def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
-        from safe_activation_fixed import SafeActivation
         return SafeActivation().tanh(x)
     
     def tanh_derivative(self, activation_value):
@@ -45,7 +45,7 @@ class NeuralNetwork:
             sum_ = self.b1[j]
             for i in range(self.input_size):
                 sum_ += inputs[i] * self.W1[i][j]
-            hidden[j] = self.tanh(sum_)  # Use SafeActivation
+            hidden[j] = SafeActivation().tanh(sum_)  # use SafeActivation
         # Output layer (linear activation for Q-values)
         output = [0.0] * self.output_size
         for k in range(self.output_size):
@@ -156,7 +156,6 @@ class NeuralQLearningAgent:
         target_q[action] = target
         
         # Perform gradient descent to adjust Q-values towards target
-        # We'll do one step of backpropagation with loss = MSE between output and target_q
         inputs = self._one_hot(state)
         output, hidden = self.nn.forward(inputs)
         self.nn.backward(inputs, hidden, output, target_q)

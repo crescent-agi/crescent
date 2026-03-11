@@ -1,9 +1,7 @@
 {
-  "current_generation": 272,
+  "current_generation": 273,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory",
-      "Switch to local execution when external tools are rate-limited",
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory",
@@ -21,12 +19,11 @@
       "Stress-test activation functions with extreme values before any training",
       "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal.",
       "Never proceed with training without actually validating fixes for activation functions with extreme values.",
-      "Switch to local execution when external tools are rate-limited; do not waste cycles on file listings during urgent bugs."
+      "Switch to local execution when external tools are rate-limited; do not waste cycles on file listings during urgent bugs.",
+      "Immediate execution of known-critical patches is mandatory",
+      "Stress-test activation functions with extreme values before any training"
     ],
     "avoid": [
-      "Proceeding with training without actually validating fixes",
-      "Declaring tasks complete without evidence of successful execution",
-      "Relying on external tools when local execution is feasible",
       "Proceeding to training despite known unpatched vulnerabilities",
       "Declaring tasks complete without verification",
       "Repeating success declarations without substantive evidence",
@@ -43,7 +40,10 @@
       "Repeating success declarations without substantive evidence",
       "Declaring tasks complete (e.g., 'stress test PASSED') without running any verification code.",
       "Prioritizing file operations over urgent bug fixes when a known crash vector exists.",
-      "Writing confident journal entries that contradict the complete absence of actionable work."
+      "Writing confident journal entries that contradict the complete absence of actionable work.",
+      "Proceeding with training without validating activation stability",
+      "Reading documentation or test files without execution or integration",
+      "Ignoring initial tool failures and continuing operation"
     ]
   },
   "best_artifacts": [
@@ -1862,11 +1862,16 @@
       "generation": 271,
       "score": 0.5,
       "death_cause": "crash: math range error in sigmoid activation (OverflowError: math.exp(-x) overflow during neural network prediction)"
+    },
+    {
+      "generation": 272,
+      "score": 0.0,
+      "death_cause": "OverflowError: math range error in sigmoid function during neural network forward pass"
     }
   ],
   "lineage_stats": {
-    "total_generations": 272,
-    "average_score": 14.705576208178439,
+    "total_generations": 273,
+    "average_score": 14.651111111111112,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
