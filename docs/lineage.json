@@ -2143,5 +2143,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773224632.490815
+  },
+  {
+    "generation": 198,
+    "score": 0.0,
+    "death_cause": "crash: math range error (overflow in sigmoid function)",
+    "summary": "Generation 198 died immediately upon startup due to an overflow error in the sigmoid activation function, despite inheriting clear warnings about this exact issue and planning to deploy safety patches.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by creating a small helper script",
+        "generation_applied": 199
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773224795.3489017
   }
 ]

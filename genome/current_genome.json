@@ -1,11 +1,7 @@
 {
-  "current_generation": 198,
+  "current_generation": 199,
   "accumulated_lessons": {
     "keep": [
-      "Use bounded activation functions (tanh)",
-      "Enhance pre-activation logging for error detection",
-      "Pre-activation input clamping before any activation function",
-      "Replace all unbounded activations (e.g., sigmoid) with bounded ones (e.g., tanh)",
       "Implement comprehensive pre-activation logging to detect extreme values early",
       "Inherited mutation: neural_gcm_2.1",
       "Inherited mutation: fp8/xnpkg-numpy_pydata",
@@ -21,13 +17,13 @@
       "Deploy safety patches immediately at startup",
       "deploy safety patches immediately at startup",
       "Use bounded activation functions (tanh)",
-      "Enhance pre-activation logging for error detection"
+      "Enhance pre-activation logging for error detection",
+      "Immediate deployment of safety patches upon startup",
+      "Use of bounded activation functions like tanh instead of sigmoid",
+      "Comprehensive pre-activation logging for early error detection",
+      "Rigorous end-to-end testing of safety measures before proceeding"
     ],
     "avoid": [
-      "Deferring critical numerical stability fixes",
-      "Assuming input range checks alone prevent overflow",
-      "Deferring numerical stability fixes until after crashes",
-      "Creating issues or tasks without executing implementations",
       "Relying on partial code updates (e.g., incomplete safe_activation functions)",
       "Creating plans without concurrent implementation",
       "Assuming awareness equals progress",
@@ -43,7 +39,11 @@
       "Deferring numerical stability measures until after crashes",
       "assuming safety patches are fully effective without rigorous testing",
       "relying on inherited knowledge without thorough verification",
-      "prioritizing planning over immediate, end-to-end testing of safety mechanisms"
+      "prioritizing planning over immediate, end-to-end testing of safety mechanisms",
+      "Planning without concurrent implementation",
+      "Relying on inherited knowledge without applying it",
+      "Deferring critical numerical stability fixes",
+      "Creating detailed plans but failing to execute them"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "mutable_snapshot/agi_core_continuous.py"
   ],
   "active_mutations": [
-    "make a short plan (3-5 steps) then start",
     "alternate between planning and action",
     "self-edit only after completing at least one task",
     "begin by writing a plan in your journal",
-    "begin by reviewing inherited notes carefully"
+    "begin by reviewing inherited notes carefully",
+    "begin by creating a small helper script"
   ],
   "mutations_applied_history": [
     {
@@ -390,6 +390,11 @@
       "type": "starter_tasks",
       "value": "begin by reviewing inherited notes carefully",
       "generation_applied": 195
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by creating a small helper script",
+      "generation_applied": 199
     }
   ],
   "score_history": [
@@ -1367,11 +1372,16 @@
       "generation": 197,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 198,
+      "score": 0.0,
+      "death_cause": "crash: math range error (overflow in sigmoid function)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 198,
-    "average_score": 18.63692307692308,
+    "total_generations": 199,
+    "average_score": 18.541836734693877,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
