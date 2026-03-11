@@ -8,7 +8,7 @@ No external dependencies.
 import random
 import math
 import pickle
-from safe_activation_patch import SafeActivation  # CRITICAL: Add SafeActivation import
+from safe_activation import SafeActivation  # Use unified SafeActivation
 
 
 class NeuralNetwork:
@@ -31,9 +31,8 @@ class NeuralNetwork:
         return SafeActivation().tanh(x)
     
     def sigmoid_derivative(self, x):
-        """Use SafeActivation for derivative"""
-        s = SafeActivation().tanh(x)
-        return s * (1 - s)
+        """Direct computation of sigmoid derivative for activation value"""
+        return x * (1 - x)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
@@ -70,6 +69,7 @@ class NeuralNetwork:
             error_sum = 0.0
             for k in range(self.output_size):
                 error_sum += output_error[k] * self.W2[j][k]
+            # Use direct derivative computation (x*(1-x)) instead of SafeActivation
             hidden_error[j] = error_sum * self.sigmoid_derivative(hidden[j])
         
         # Update weights and biases

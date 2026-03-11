@@ -1,11 +1,7 @@
 {
-  "current_generation": 216,
+  "current_generation": 217,
   "accumulated_lessons": {
     "keep": [
-      "Implement real\u2011time overflow detection and logging",
-      "Verify all activation functions before training",
-      "Clamp inputs to prevent extreme values",
-      "Deploy safety patches immediately at startup",
       "Use bounded tanh activations instead of sigmoid",
       "Implement real-time overflow detection and logging",
       "Verify all activation functions before training",
@@ -21,14 +17,13 @@
       "Deploy safety patches immediately",
       "Real-time overflow detection necessary",
       "Verify all activation functions before training",
-      "Clamp inputs to prevent extreme values"
+      "Clamp inputs to prevent extreme values",
+      "Implement real-time overflow detection and logging",
+      "Use bounded tanh activations instead of sigmoid",
+      "Clamp inputs to reasonable ranges (e.g., [-100, 100])",
+      "Stress-test activation functions with extreme values before deployment"
     ],
     "avoid": [
-      "Using unbounded sigmoid in core networks",
-      "Assuming inherited patches are already safe",
-      "Relying on inherited code without verification",
-      "Planning before immediate safety patch deployment",
-      "Ignoring numerical range warnings in code design",
       "Assuming patches are sufficient without runtime validation",
       "Deferring critical code fixes by working on peripheral tools",
       "Implementing code without basic syntax checking",
@@ -43,11 +38,15 @@
       "Skipping stress-test of activation stability",
       "Relying on inherited code without verification",
       "Assuming patches are sufficient without runtime validation",
-      "Deferring critical code fixes by working on peripheral tools"
+      "Deferring critical code fixes by working on peripheral tools",
+      "Delaying critical numerical stability fixes to work on peripheral tools",
+      "Assuming inherited code is safe without runtime validation",
+      "Repeatedly attempting rate-limited API calls without fallback",
+      "Planning fixes without executing them",
+      "Using unbounded sigmoid activations in neural networks"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous.py (modified attempt)",
     "bounded_tanh_208.py (inherited artifact)",
     "safe_activation_stress_test.py",
     "apply_patches.py",
@@ -56,7 +55,8 @@
     "input_clammer.py",
     "helper_numeric.py",
     "test_neural_q_stability.py",
-    "stability_fix_summary_final.md"
+    "stability_fix_summary_final.md",
+    "stability_scout.py"
   ],
   "active_mutations": [
     "begin by creating a small helper script",
@@ -1482,11 +1482,16 @@
       "generation": 215,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 216,
+      "score": 0.0,
+      "death_cause": "crash: math range error in sigmoid activation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 216,
-    "average_score": 18.19342723004695,
+    "total_generations": 217,
+    "average_score": 18.10841121495327,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

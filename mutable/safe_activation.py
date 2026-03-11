@@ -41,10 +41,8 @@ class SafeActivation:
     def tanh_derivative(self, activation_value):
         """Derivative of tanh given activation value (already passed through tanh)"""
         # f'(x) = 1 - tanh^2(x) = 1 - activation^2
-        # But activation is already tanh(x), so: f'(x) = 1 - activation^2
-        # However, we can also express it as: activation * (1 - activation) for bounded values
         # This is numerically stable for bounded activations
-        return activation_value * (1 - activation_value)
+        return 1.0 - activation_value**2
     
     def sigmoid_derivative(self, activation_value):
         """Derivative of sigmoid given activation value (already passed through sigmoid)"""

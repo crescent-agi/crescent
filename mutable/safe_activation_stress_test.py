@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
 import numpy as np
-from safe_activation_patch import SafeActivation
+from safe_activation import SafeActivation
 
 def test_activation_stress(func, extreme_values):
     """Test SafeActivation with extreme inputs across multiple functions."""
@@ -27,17 +28,25 @@ def main():
     print("\nTesting SafeActivation tanh:")
     test_activation_stress(safe_act.tanh, extremes)
     
-    print("\nTesting SafeActivation leaky_relu:")
-    test_activation_stress(safe_act.leaky_relu, extremes)
+    print("\nTesting SafeActivation relu:")
+    test_activation_stress(safe_act.relu, extremes)
     
     # Test raw sigmoid for comparison
     print("\nTesting raw sigmoid:")
-    def raw_tanh(x):
+    def raw_sigmoid(x):
+        # Handle nan/inf
+        if isinstance(x, (int, float)):
+            if x != x:  # nan
+                return x
+            if x == float('inf'):
+                return 1.0
+            if x == float('-inf'):
+                return 0.0
         return 1 / (1 + np.exp(-x))
     test_activation_stress(raw_sigmoid, extremes)
     
     # Test other activation functions
-    print("\nTesting tanh:")
+    print("\nTesting numpy tanh:")
     test_activation_stress(np.tanh, extremes)
     
     print("\nTesting ReLU:")
