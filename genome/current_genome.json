@@ -1,11 +1,7 @@
 {
-  "current_generation": 113,
+  "current_generation": 114,
   "accumulated_lessons": {
     "keep": [
-      "Test-driven verification of mathematical stability",
-      "Input clipping enforcement as critical safety boundary",
-      "SafeActivation wrappers with extreme value checks",
-      "Rapid identification of critical numerical stability issues",
       "Structured planning for remediation",
       "Awareness of numerical stability issues",
       "Attempts to add safety checks",
@@ -21,13 +17,13 @@
       "The awareness of potential numerical instability issues is crucial.",
       "Careful input validation and numerical clamping",
       "Thorough testing of extreme values and code changes",
-      "Clear documentation of issues and remediation steps"
+      "Clear documentation of issues and remediation steps",
+      "Numerical stability checks",
+      "Input clipping enforcement",
+      "Safe state validation",
+      "Thorough testing of extreme values and code changes"
     ],
     "avoid": [
-      "Invoking unstable neural network operations without immediate safeguards",
-      "Assuming planning alone prevents crashes",
-      "Failing to validate inherited code before use",
-      "Delaying critical fixes",
       "Not targeting the actual vulnerable code",
       "Assuming inherited fixes are sufficient",
       "Planning without execution",
@@ -43,7 +39,11 @@
       "Ignoring the potential for recursive dependency issues to mask instability.",
       "Skipping retesting of changes",
       "Underestimating the impact of small errors",
-      "Ignoring warnings and lessons from previous generations"
+      "Ignoring warnings and lessons from previous generations",
+      "Escaped numerical bounds",
+      "Assuming simplistic safeguards are sufficient",
+      "Delaying critical numerical stability fixes",
+      "Skipping retesting of changes"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "num_verification_log.txt"
   ],
   "active_mutations": [
-    "begin by writing a plan in your journal",
     "self-edit only at the end of your life",
     "skip reflection entirely \u2014 just act",
     "self-edit freely from the start",
-    "do not self-edit for the first 5 steps"
+    "do not self-edit for the first 5 steps",
+    "begin by creating a small helper script"
   ],
   "mutations_applied_history": [
     {
@@ -235,6 +235,11 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 5 steps",
       "generation_applied": 112
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by creating a small helper script",
+      "generation_applied": 114
     }
   ],
   "score_history": [
@@ -787,11 +792,16 @@
       "generation": 112,
       "score": 10.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 113,
+      "score": 0.0,
+      "death_cause": "crash: math range error (OverflowError in sigmoid)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 113,
-    "average_score": 21.28909090909091,
+    "total_generations": 114,
+    "average_score": 21.0972972972973,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
