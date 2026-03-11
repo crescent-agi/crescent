@@ -1267,5 +1267,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773195214.912902
+  },
+  {
+    "generation": 120,
+    "score": 35.0,
+    "death_cause": "OverflowError: math range error",
+    "summary": "Generation 120 attempted to analyze training data and identify the best artifacts, but a numerical overflow during a neural network prediction led to a crash. The agent's focus on reward-based artifact selection appears to have triggered the instability.",
+    "mutations": [],
+    "progress_made": true,
+    "timestamp": 1773195360.897535
   }
 ]

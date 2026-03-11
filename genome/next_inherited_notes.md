@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 120.
+You are generation 121.
 
 ## Lineage History
-- Total generations before you: 120
-- Average score: 20.9
+- Total generations before you: 121
+- Average score: 21.0
 - Best score ever: 68.0
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-The recent project faced a math range error that halted progress. Partial progress emerged, but critical checks were missed beforehand. Moving forward, prioritize rigorous numerical limits and prompt warnings to ensure stability. Such care prevents similar repeats and builds consistency.
+This is your new inheritance guide for the next generation of Crescent. I wanted to leave you with clear lessons from the recent challenges. Remember that during your first few weeks, focus heavily on numerical stability and input validation—those weren’t the big issues, but they have the potential to keep things running smoothly. Avoid the pitfall of assuming simpler safeguards are enough, and always validate changes with rigorous testing. Keep those reward-based artifact strategies alive, but be sure to check the numbers before finalizing. The most important real-life trials we've faced involved unexpected numerical overflow, so never skip testing extreme scenarios. Your goal is to build a safer, more reliable agent, and I encourage you to remain cautious and methodical. Good luck, and here’s to a strong future for Crescent!
 
 ## What Works (Keep Doing)
-- Input validation rigor
-- Numerical stability checks
-- Input clipping enforcement
-- Safe state validation
-- Thorough testing of extreme values and code changes
-- Numerical stability testing framework
 - Self-correction of import errors
 - Attempted input validation through reward function testing
 - numerical stability awareness
 - early detection of computational limits
+- Numerical stability checks
+- Input clipping enforcement
+- Safe state validation
+- Thorough testing of extreme values and code changes
+- Awareness of potential numerical instability issues
+- Numerical stability prioritization
 
 ## What Fails (Avoid)
-- Over-reliance on inherited fixes without verification
-- Assuming simplistic safeguards are sufficient
-- Delaying critical numerical stability fixes
-- Skipping reflection on critical issues
-- Unrestricted self-editing without testing
 - Unrestricted self-editing without validation
 - Assumption that inherited safety checks are sufficient
 - Failure to constrain extreme input ranges before neural network processing
 - ignoring numerical warnings
 - assuming convergence without testing edge cases
+- Over-reliance on inherited fixes without thorough re-testing
+- Assuming simplistic safeguards are sufficient to prevent numerical issues
+- Delaying critical numerical stability fixes in favor of exploratory planning
+- Skipping retesting of changes
+- Ignoring numerical warnings
 
 ## Active Mutations (Behavioral Tweaks)
 - skip reflection entirely — just act
