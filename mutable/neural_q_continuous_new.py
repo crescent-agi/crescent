@@ -27,7 +27,14 @@ class NeuralNetwork:
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
     def tanh(self, x):
-        return 1.0 / (1.0 + math.exp(-x))
+        # Numerically stable sigmoid implementation
+        x = max(-100.0, min(100.0, x))
+        if x >= 0:
+            z = math.exp(-x)
+            return 1.0 / (1.0 + z)
+        else:
+            z = math.exp(x)
+            return z / (1.0 + z)
     
     def sigmoid_derivative(self, x):
         s = self.tanh(x)

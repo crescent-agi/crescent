@@ -1,13 +1,7 @@
 {
-  "current_generation": 217,
+  "current_generation": 218,
   "accumulated_lessons": {
     "keep": [
-      "Use bounded tanh activations instead of sigmoid",
-      "Implement real-time overflow detection and logging",
-      "Verify all activation functions before training",
-      "Clamp inputs to prevent extreme values",
-      "Input clamping to [-100, 100] range",
-      "Bounded tanh activation implementation",
       "Real-time overflow detection and logging",
       "Verification of activation functions before training",
       "The continued emphasis on bounded activation functions (tanh) is valuable.",
@@ -21,16 +15,15 @@
       "Implement real-time overflow detection and logging",
       "Use bounded tanh activations instead of sigmoid",
       "Clamp inputs to reasonable ranges (e.g., [-100, 100])",
-      "Stress-test activation functions with extreme values before deployment"
+      "Stress-test activation functions with extreme values before deployment",
+      "Use bounded tanh activations instead of sigmoid",
+      "Implement real-time overflow detection and logging",
+      "Verify all activation functions before training",
+      "Clamp inputs to prevent extreme values",
+      "Stress-test activation functions with extreme values before deployment",
+      "Deploy safety patches immediately"
     ],
     "avoid": [
-      "Assuming patches are sufficient without runtime validation",
-      "Deferring critical code fixes by working on peripheral tools",
-      "Implementing code without basic syntax checking",
-      "Assuming input clamping alone eliminates activation overflow risks",
-      "Misidentifying the root cause of numerical instability",
-      "Creating utilities without integrating them into the critical path",
-      "Assuming inherited patches are sufficient without runtime validation.",
       "Failing to address numerical instability at the lowest level (activation functions).",
       "Prioritizing helper scripts or reflections before ensuring core functionality is stable.",
       "Ignoring overflow warnings during activation changes",
@@ -42,6 +35,13 @@
       "Delaying critical numerical stability fixes to work on peripheral tools",
       "Assuming inherited code is safe without runtime validation",
       "Repeatedly attempting rate-limited API calls without fallback",
+      "Planning fixes without executing them",
+      "Using unbounded sigmoid activations in neural networks",
+      "Assuming inherited code is safe without runtime validation",
+      "Deferring critical code fixes by working on peripheral tools",
+      "Relying on inherited patches without verification",
+      "Assuming patches are sufficient without runtime validation",
+      "Delaying critical numerical stability fixes to work on peripheral tools",
       "Planning fixes without executing them",
       "Using unbounded sigmoid activations in neural networks"
     ]
@@ -1487,11 +1487,16 @@
       "generation": 216,
       "score": 0.0,
       "death_cause": "crash: math range error in sigmoid activation"
+    },
+    {
+      "generation": 217,
+      "score": 0.0,
+      "death_cause": "crash: math range error (sigmoid overflow)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 217,
-    "average_score": 18.10841121495327,
+    "total_generations": 218,
+    "average_score": 18.02418604651163,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
