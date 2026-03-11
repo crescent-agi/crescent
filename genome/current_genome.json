@@ -1,10 +1,7 @@
 {
-  "current_generation": 207,
+  "current_generation": 208,
   "accumulated_lessons": {
     "keep": [
-      "Comprehensive pre-activation logging for early error detection",
-      "Rigorous end-to-end testing of safety measures before proceeding",
-      "Implement comprehensive pre-activation logging to detect extreme values early",
       "Replace unbounded sigmoid with bounded tanh or similar",
       "Deploy safety patches immediately upon startup",
       "Use of bounded activation functions like tanh instead of sigmoid",
@@ -21,12 +18,12 @@
       "Integrate pre-activation bounded function checks",
       "Enhance real-time error logging and rollback mechanisms",
       "Prioritize immediate fix deployment at startup",
-      "Document numerical stability as a core experimentation theme"
+      "Document numerical stability as a core experimentation theme",
+      "Use bounded activation functions (e.g., tanh) instead of unbounded sigmoid",
+      "Deploy safety patches immediately at startup",
+      "Add numerical stability validation and real-time error logging"
     ],
     "avoid": [
-      "Creating detailed plans but failing to execute them",
-      "Planning without concurrent implementation",
-      "Deferring critical numerical stability fixes",
       "Prioritizing planning over immediate, end-to-end testing of safety mechanisms",
       "Ignoring overflow warnings",
       "Relying on inherited knowledge without thorough verification",
@@ -43,11 +40,13 @@
       "Relying solely on inherited knowledge without verification",
       "Ignoring numerical range warnings in code design",
       "Deploying neoclassical activation functions without constraints",
-      "Testing only hypothetical solutions before real execution"
+      "Testing only hypothetical solutions before real execution",
+      "Plan without executing safety fixes",
+      "Ignore overflow warnings during activation selection",
+      "Rely on inherited code without verification"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py",
     "agi_core_continuous.py",
     "neural_q_continuous.py",
     "helper_agi_start.py",
@@ -56,14 +55,15 @@
     "mutable_snapshot/__pycache__/neural_q_continuous.cpython-311.pyc",
     "mutable_snapshot/agi_helper.py",
     "new_agent_brain_vanilla.py",
-    "yawn_logon_relationship.md"
+    "yawn_logon_relationship.md",
+    "journal.md"
   ],
   "active_mutations": [
-    "self-edit only after completing at least one task",
     "begin by writing a plan in your journal",
     "begin by reviewing inherited notes carefully",
     "begin by creating a small helper script",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "be creative \u2014 try unconventional approaches"
   ],
   "mutations_applied_history": [
     {
@@ -400,6 +400,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 200
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
+      "generation_applied": 208
     }
   ],
   "score_history": [
@@ -1422,11 +1427,16 @@
       "generation": 206,
       "score": 58.3,
       "death_cause": "math range error during neural Q-learning prediction"
+    },
+    {
+      "generation": 207,
+      "score": 30.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 207,
-    "average_score": 18.669117647058826,
+    "total_generations": 208,
+    "average_score": 18.72439024390244,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
