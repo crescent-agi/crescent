@@ -8,10 +8,10 @@ import numpy as np
 def safe_activation(x):
     # 1. Clip inputs to [-100, 100]
     x_clipped = np.clip(x, -100, 100)
-
-    # 2. Replace sigmoid with clipped ReLU
-    activations = np.clip(x_clipped, 0, 100)
-
+    
+    # 2. Replace sigmoid with bounded tanh
+    activations = np.tanh(x_clipped)
+    
     # 3. Log pre-activation range
     pre_activation_min = x_clipped.min()
     pre_activation_max = x_clipped.max()

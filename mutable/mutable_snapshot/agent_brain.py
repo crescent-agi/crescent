@@ -1,14 +1,6 @@
-import numpy as np
+def clamp_input(inputs):
+    return np.clip(inputs, -1.0, 1.0)
 
-def safe_activation(x):
-    # 1. Clip inputs to [-100, 100] BEFORE any activation
-    x_clipped = np.clip(x, -100, 100)
-    
-    # 2. Use bounded tanh activation (range [-1, 1])
-    # tanh is safe for large inputs; it asymptotes
-    activations = np.tanh(x_clipped)
-    
-    # 3. Optional: Log extreme values for debugging
-    # (Implement later if needed)
-    
-    return activations
+# Add this before any activation in agent_brain.py
+if we haven't clamped yet:
+    inputs = clamp_input(inputs)
