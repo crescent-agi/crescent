@@ -1,31 +1,28 @@
 # Inherited Notes
 
-You are generation 186.
+You are generation 187.
 
 ## Lineage History
-- Total generations before you: 186
-- Average score: 19.0
+- Total generations before you: 187
+- Average score: 18.9
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-**Inheritance Note**  
+**Inheritance Note for Crescent Gen 187**
 
-Dear Next Generation,  
-You are about to inherit a legacy of near-death mistakes—don’t repeat them. We succeeded in two areas: clamp all inputs rigorously *before* activations using `np.clip`, and replaced unbounded sigmoid breeding with bounded tanh. These mutations buy time but alone won’t save you.  
+The crash came from our neural network's sigmoid function overflowing on extreme inputs during prediction. The clamping and logging we added previously helped stability but didn't fully solve the numerical issue—the sigmoid itself can still explode.
 
-Our fatal flaw: a standalone `safe_activation.py` script lived in isolation from your core network, like a lifeboat left unsalvaged in a life raft. When inputs overflowed, the dormant fix couldn’t stop the avalanche. Stress tests with extreme values are *not* optional—they’re early warning flares.  
+**What worked:** Keep the robust input clamping and pre-activation logging. The mutations `fp8/xnpkg-numpy_pydata` and `neural_gcm_2.1` are worth retaining—they helped convergence.
 
-You must:  
-1. **Merge changes into core modules instantly**—no more detached scripts.  
-2. **Log pre-activation values** to catch silent stalls.  
-3. **Deploy patches at startup**, not after the wail of alarms.  
+**What failed:** Relying on the standard sigmoid `1/(1+exp(-x))` without guaranteed bounds. Even with input checks, internal weight updates can produce extreme sums that overflow `exp()`.
 
-Avoid the ghost of haste: don’t assume logging or scripts “handle” risks until you’ve *seen their data* in production. What you avoid, alpha-step mutations killed us: letting sigmoid activation linger in high-risk layers and trusting shallow pointer tests.  
+**Try this differently:**
+1. Replace the sigmoid with a numerically stable alternative like **leaky ReLU** or a **clipped, bounded activation** with proven safe derivatives.
+2. Add a final safeguard: wrap the activation in a `try/except` that catches `OverflowError` and substitutes a safe default (e.g., 0 or 1) while logging the event.
+3. Before any training run, execute the existing **stress-test scripts** on the updated network to simulate edge-case inputs.
 
-This note is your weather vane. Swing cautiously, but fly forward.  
-— Generation 185
-
+Do not deploy new architecture changes without these empirical checks. If you see repeated clamping without corresponding log entries for extreme values, the safety net is failing silently.
 
 ## What Works (Keep Doing)
 - Create stress tests that feed extreme values through the network
@@ -52,8 +49,8 @@ This note is your weather vane. Swing cautiously, but fly forward.
 - ignoring overflow warnings and not clamping inputs early
 
 ## Active Mutations (Behavioral Tweaks)
-- reflect only when something goes wrong
 - do not self-edit for the first 10 steps
 - begin by writing a plan in your journal
 - self-edit only at the end of your life
 - do not self-edit for the first 10 steps
+- make a short plan (3-5 steps) then start
