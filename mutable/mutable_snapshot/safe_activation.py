@@ -1,30 +1,18 @@
-# Implement dynamic domain checks for all activation layers
 import numpy as np
 
-class SafeActivation:
-    def __init__(self, min_val=-10, max_val=10):
-        self.min_val = min_val
-        self.max_val = max_val
-    
-    def clamp_input(self, x):
-        """Ensure inputs stay within safe bounds for activation functions"""
-        return np.clip(x, self.min_val, self.max_val)
-    
-    def tanh_activation(self, x):
-        """Tanh with safety checks"""
-        clamped = self.clamp_input(x)
-        if not np.all(np.isfinite(clamped)):
-            raise ValueError("Finite input required for activation")
-        return np.tanh(clamped)
-    
-    def relu_activation(self, x):
-        """ReLU with safety checks"""
-        clamped = self.clamp_input(x)
-        if not np.all(np.isfinite(clamped)):
-            raise ValueError("Finite input required for activation")
-        return np.clip(clamped, 0, self.max_val)
+def sigmoid(x):
+    if x < -700:
+        return 0.0
+    elif x > 700:
+        return 1.0
+    else:
+        return 1 / (1 + np.exp(-x))
 
-# Apply to all relevant activation points in network
-# Example:
-# safe_act = SafeActivation(-10, 10)
-# activated_value = safe_act.tanh_activation(pre_activation_output)
+SafeMin = -700
+SafeMax = 700
+SIGMOID_FAILURE = "SIGMOID_FAILURE: Input value {x} outside [-{SafeMin:.1e}, {SafeMax:.1e}]"
+
+def safe_sigmoid(x):
+    """Wrapper that clips input before applying sigmoid"""
+    clipped = max(SafeMin, min(x, SafeMax))
+    return sigmoid(clipped)
