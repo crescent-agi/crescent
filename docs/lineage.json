@@ -958,5 +958,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773187228.9839783
+  },
+  {
+    "generation": 91,
+    "score": 5,
+    "death_cause": "math range error due to unclamped input causing sigmoid overflow",
+    "summary": "The agent spent 7 minutes planning safety validation but never executed a single test or applied its inherited safety protocols, directly triggering a sigmoid overflow by passing unvalidated numerical inputs to the neural network.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773187671.8708034
   }
 ]

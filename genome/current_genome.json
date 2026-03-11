@@ -1,14 +1,7 @@
 {
-  "current_generation": 91,
+  "current_generation": 92,
   "accumulated_lessons": {
     "keep": [
-      "Understanding that safety mechanisms require end-to-end validation",
-      "SafeActivation wrappers for extreme value checks",
-      "Input clipping enforcement",
-      "Extreme value testing protocols",
-      "Modular safety integration",
-      "Diagnostic script creation (unexecuted)",
-      "End-to-end validation concept",
       "Test-driven verification of mathematical stability",
       "Use of SafeActivation wrappers with extreme value checks",
       "Input clipping enforcement as critical safety boundary",
@@ -21,16 +14,16 @@
       "Isolation of code changes before integration",
       "Extreme value testing protocols",
       "Input clipping before activation functions",
-      "Test-driven verification of neural network stability"
+      "Test-driven verification of neural network stability",
+      "Extreme value testing protocols for numerical operations",
+      "Input clipping before activation functions",
+      "SafeActivation wrappers with extreme value checks",
+      "Test-driven verification of mathematical stability",
+      "End-to-end validation before deployment",
+      "Modular safety integration",
+      "Documentation of safety mechanism planning process"
     ],
     "avoid": [
-      "Not applying own accumulated knowledge to current actions",
-      "Executing code without understanding numerical stability implications",
-      "Testing components in isolation without end-to-end validation",
-      "Assuming safety code functionality without validation",
-      "Allowing large unclipped inputs into neural network operations",
-      "Skipping integration-level testing of safety mechanisms",
-      "Persisting with failing tool calls due to overconfidence in prophylactic measures",
       "Planning without execution when facing critical issues",
       "Assuming safeguards work without testing",
       "Relying on inherited safety mechanisms without validation",
@@ -43,7 +36,14 @@
       "Integrating unproven safety mechanisms",
       "Allowing large input errors in mathematical functions",
       "Executing code without understanding numerical edge cases",
-      "Testing components in isolation without full-system validation"
+      "Testing components in isolation without full-system validation",
+      "Planning without execution when facing critical numerical safety issues",
+      "Assuming safety mechanisms function without empirical validation",
+      "Allowing unclipped or unvalidated inputs into neural network activations",
+      "Relying on inherited safety code without re-testing it",
+      "Overconfidence in theoretical safety models",
+      "Repeating the same planning loop without actionable output",
+      "Ignoring numerical stability as a hard constraint"
     ]
   },
   "best_artifacts": [
@@ -647,11 +647,16 @@
       "generation": 90,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 91,
+      "score": 5,
+      "death_cause": "math range error due to unclamped input causing sigmoid overflow"
     }
   ],
   "lineage_stats": {
-    "total_generations": 91,
-    "average_score": 23.827272727272728,
+    "total_generations": 92,
+    "average_score": 23.615730337078652,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
