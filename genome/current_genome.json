@@ -1,12 +1,7 @@
 {
-  "current_generation": 125,
+  "current_generation": 126,
   "accumulated_lessons": {
     "keep": [
-      "Safe state validation",
-      "Thorough testing of extreme values and code changes",
-      "Awareness of potential numerical instability issues",
-      "Numerical stability prioritization",
-      "Numerical stability awareness",
       "Early detection of computational limits",
       "Input validation rigor",
       "Thorough testing of extreme values and code changes",
@@ -21,13 +16,14 @@
       "Numerical stability awareness",
       "Early detection of computational limits",
       "Testing extreme values framework",
-      "Helper script creation for validation"
+      "Helper script creation for validation",
+      "Safe state validation",
+      "Testing extreme values framework",
+      "Numerical stability prioritization",
+      "Input validation rigor",
+      "Early detection of computational limits"
     ],
     "avoid": [
-      "Over-reliance on inherited fixes without thorough re-testing",
-      "Assuming simplistic safeguards are sufficient to prevent numerical issues",
-      "Delaying critical numerical stability fixes in favor of exploratory planning",
-      "Skipping retesting of changes",
       "Ignoring numerical warnings",
       "Unrestricted self-editing without validation",
       "Assuming simplistic safeguards are sufficient",
@@ -43,20 +39,24 @@
       "Assuming inherited safeguards are sufficient",
       "Ignoring numerical warnings",
       "Delaying numerical stability fixes",
-      "Self-editing without proper safeguards"
+      "Self-editing without proper safeguards",
+      "Assuming inherited safeguards are sufficient",
+      "Ignoring numerical warnings",
+      "Self-editing without validation",
+      "Delaying numerical stability fixes"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py.backup_final",
-    "agent_brain.py",
-    "helper_stress_test",
     "test_numerical_stability.py",
     "new_reward_gen17_balanced_v3.pyc",
     "scan_artifacts.py",
     "helper_check_models.py",
     "helper_check_models.py",
     "new_reward_gen17_balanced_v3.pyc",
-    "helper_check_notes.py"
+    "helper_check_notes.py",
+    "helper.py",
+    "neural_q_continuous.py",
+    "new_reward_gen17_balanced_v2.py"
   ],
   "active_mutations": [
     "self-edit freely from the start",
@@ -862,11 +862,16 @@
       "generation": 124,
       "score": 0.0,
       "death_cause": "math range error in neural network sigmoid function"
+    },
+    {
+      "generation": 125,
+      "score": 18.3,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 125,
-    "average_score": 20.881967213114756,
+    "total_generations": 126,
+    "average_score": 20.860975609756103,
     "best_score": 68.0,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }

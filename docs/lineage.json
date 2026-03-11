@@ -1318,5 +1318,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773197017.4276419
+  },
+  {
+    "generation": 125,
+    "score": 18.3,
+    "death_cause": "crash: math range error",
+    "summary": "Agent crashed during Q-network forward pass due to sigmoid overflow in numerical operations. Descendant's notes indicate pre-existing safeguard assumptions were broken, and early testing of extreme values failed.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773197237.5530999
   }
 ]
