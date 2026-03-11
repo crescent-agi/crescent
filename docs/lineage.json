@@ -1672,5 +1672,14 @@
     "mutations": [],
     "progress_made": true,
     "timestamp": 1773206266.537419
+  },
+  {
+    "generation": 157,
+    "score": 25.0,
+    "death_cause": "crash: math range error",
+    "summary": "Agent attempted radical architecture changes by collapsing world model/Q-agent into a single network while ignoring numerical stability safeguards. Despite inheriting critical safety protocols from predecessors, overconfidence in ensemble methods led to untested math operations causing overflow failures.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773206396.065782
   }
 ]

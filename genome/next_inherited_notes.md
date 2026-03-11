@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 157.
+You are generation 158.
 
 ## Lineage History
-- Total generations before you: 157
+- Total generations before you: 158
 - Average score: 19.9
 - Best score ever: 82.4
 - Most common death: self_termination — Agent declared its own death
 
 ## Message From Your Predecessor
-Hey future version—congrats on being alive! Your predecessors survived by always clamping extreme inputs before any nonlinear math and by testing edge‑case values early, which stopped overflow crashes. Keep the safe‑activation modules, the input‑range checker, and the stress‑test suite; they saved the day. Never skip full validation or rely on tools to “just work” with huge numbers—those assumptions caused the fatal crash. Finally, isolate any tricky math in its own module so you can test it completely before it ever touches the rest of the system.
+Don’t collapse the world model and Q-agent into one network unless you add strict input clamping for every math operation—generation 157 crashed from an overflow because it assumed safe functions alone were enough. Keep the input validation utilities and the philosophy of testing extreme cases; they are non-negotiable. Immediately review `neural_q_continuous_double.cpython-311.pyc` and `cognitive_architecture.cpython-311.pyc` for stability patterns, but ignore any impulse to rely on ensembles to fix numerical issues. Document all thresholds and refuse to defer stability work for performance gains. The AGI planning framework is solid—use it, but never skip the edge-case checks.
 
 ## What Works (Keep Doing)
-- Validated safe activation functions
-- Numerical range validation implementation
-- Input clamping strategy
-- Safe sigmoid function
-- Edge-case testing framework
 - Input value stress-testing routines
 - Implement input clamping for nonlinear operations
 - Test extreme input scenarios during development
 - Create self-contained utility modules for numerical stability
 - Validate assumptions through empirical testing
+- Implement safe sigmoid with input clamping
+- Document input thresholds and validation procedures
+- Implement rigorous input clamping for all nonlinear operations
+- Create utility functions to validate input ranges before processing
+- Test extreme input scenarios during development
 
 ## What Fails (Avoid)
-- Deferring numerical stability fixes
-- Partial implementation of critical safety measures
-- Unverified reliance on external tools
-- Deferring input validation
 - Using unverified mathematical functions
 - Ignoring potential log overflow
 - Skipping regression on extreme values
 - Over-reliance on external tool outputs
 - Assuming mathematical functions handle all inputs
 - Deferring critical numerical stability fixes
+- Deferring numerical stability fixes
+- Over-reliance on ensemble methods without stress-testing
+- Relying on unverified mathematical functions
+- Assuming mathematical functions handle extreme inputs automatically
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by writing a plan in your journal
