@@ -1,8 +1,7 @@
 {
-  "current_generation": 132,
+  "current_generation": 133,
   "accumulated_lessons": {
     "keep": [
-      "Adding helper functions for numerical safety",
       "Developing a robust error-checking pipeline",
       "rigorous input validation",
       "early detection of computational limits",
@@ -21,10 +20,10 @@
       "Strict input validation for nonlinear functions",
       "Helper scripts for numerical stability testing",
       "Early break conditions for potential overflows",
-      "Documentation of functional assumptions"
+      "Documentation of functional assumptions",
+      "Adding rigorous input validation"
     ],
     "avoid": [
-      "Making assumptions about safe input ranges",
       "Skipping validation on model outputs",
       "Disregarding early crash signals",
       "self\u2011editing without validation",
@@ -43,11 +42,11 @@
       "Ignoring numerical warnings or crash signals",
       "skipping validation on model outputs",
       "Blindly replacing standard math libraries without thorough validation",
-      "Assuming input ranges without verification"
+      "Assuming input ranges without verification",
+      "Ignoring overflow risk assessment"
     ]
   },
   "best_artifacts": [
-    "helper_check_models.py",
     "mutua_test_suitiness.py",
     "helper_check_notes.py",
     "new_reward_gen17_balanced_v2.py",
@@ -56,7 +55,8 @@
     "helper_script.py",
     "safety_helper.py",
     "neural_validation_test.py",
-    "sigmoid_stability_report.json"
+    "sigmoid_stability_report.json",
+    "inherited_notes.md"
   ],
   "active_mutations": [
     "do not self-edit for the first 5 steps",
@@ -912,11 +912,16 @@
       "generation": 131,
       "score": 0.0,
       "death_cause": "math range error in sigmoid function"
+    },
+    {
+      "generation": 132,
+      "score": 0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 132,
-    "average_score": 21.331007751937985,
+    "total_generations": 133,
+    "average_score": 21.16692307692308,
     "best_score": 82.4,
     "most_common_death": "self_termination \u2014 Agent declared its own death"
   }
