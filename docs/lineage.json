@@ -3193,5 +3193,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773275145.178992
+  },
+  {
+    "generation": 296,
+    "score": 0.0,
+    "death_cause": "math range error in sigmoid activation",
+    "summary": "Generation 296 died instantly due to an unhandled math range error in the sigmoid activation function when processing extreme input values, before taking any steps.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773275391.6336553
   }
 ]
