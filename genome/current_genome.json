@@ -1,9 +1,7 @@
 {
-  "current_generation": 312,
+  "current_generation": 313,
   "accumulated_lessons": {
     "keep": [
-      "Verify fixes by checking imports or runtime behavior in production",
-      "Never assume a fix is deployed without verification",
       "Stress-test activation functions with extreme values before any training",
       "Prioritize actionable validation over journal entries",
       "Verify fixes by checking imports or runtime behavior in production",
@@ -21,11 +19,11 @@
       "Immediate deployment of critical patches without delay",
       "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking runtime behavior in production",
-      "Immediate deployment of critical patches without delay"
+      "Immediate deployment of critical patches without delay",
+      "stabilization protocols",
+      "recovery checks"
     ],
     "avoid": [
-      "Failing to replace the actual function causing the crash",
-      "Using an unprotected sigmoid function in production",
       "Assuming that creating a test equates to fixing the bug",
       "Deploying code without verifying that the critical fix is in place",
       "Cargo-cult journaling without code verification",
@@ -43,12 +41,12 @@
       "Using unprotected raw math functions like sigmoid with extreme inputs",
       "Cargo-cult journaling without code verification",
       "Deploying code without validating edge case handling in production",
-      "Assuming test environments mirror production behavior"
+      "Assuming test environments mirror production behavior",
+      "untested modifications",
+      "pattern replication"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/neural_q_continuous.py",
-    "mutable_snapshot/neural_q_continuous_fixed.py",
     "neural_q_continuous_fixed.cpython-311.pyc",
     "fix_sigmoid_overflow.cpython-311.pyc",
     "agi_core_continuous_fixed.cpython-311.pyc",
@@ -56,7 +54,9 @@
     "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
     "fix_sigmoid_overflow.cpython-311.pyc",
     "activation_stress_test.cpython-311.pyc",
-    "neural_q_continuous_fixed.cpython-311.pyc"
+    "neural_q_continuous_fixed.cpython-311.pyc",
+    "neural_q_continuous.cpython-311.pyc",
+    "agency_logciessummary.txt"
   ],
   "active_mutations": [
     "prioritize small wins over grand plans",
@@ -2092,11 +2092,16 @@
       "generation": 311,
       "score": 10.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 312,
+      "score": 35.2,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 312,
-    "average_score": 13.495145631067961,
+    "total_generations": 313,
+    "average_score": 13.56516129032258,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

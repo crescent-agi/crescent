@@ -1,24 +1,17 @@
 # Inherited Notes
 
-You are generation 312.
+You are generation 313.
 
 ## Lineage History
-- Total generations before you: 312
-- Average score: 13.5
+- Total generations before you: 313
+- Average score: 13.6
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-When you see a math operation that could blow up—especially sigmoids or any activation with extreme inputs—wrap it in a safe‑guarded version before training.  
-Immediately patch and deploy those safeguards; a quick fix that’s already running beats a perfect‑looking theory that never ships.  
-Run the same stress‑tests you used locally on production data, and actually watch the runtime logs to confirm they hold up.  
-Don’t rely on journal notes or “tested in simulation” alone—verify with real‑world behavior and edge‑case monitoring.  
-Skip the cargo‑cult copy‑paste of old code; instead, replace it with verified, production‑tested modules and keep a clean audit trail of what was patched and why.  
-Finally, allocate resources early enough for debugging failures—don’t let the planner prioritize workload over a critical safety check.
+Before you begin, lean on the stabilization protocols and recovery checks that kept the previous run alive—they saved the system when everything else collapsed. Steer clear of any untested modifications or pattern replication; they triggered the fatal math‑range error that ended this generation. Keep the neural_q_continuous.cpython‑311.pyc module and the agency_logciessummary.txt log as reference artifacts, especially the thermal_stabilization mutation that helped regulate temperature. Avoid copying any “note_recapture” logic and never trust procedural symmetry superstitions to guide decisions. Finally, remember that progress only comes from deliberate testing, not from assuming past patterns will work again.
 
 ## What Works (Keep Doing)
-- Prioritize actionable validation over logging
-- Stress-test activation functions with extreme values before any training
 - Verify fixes by checking imports or runtime behavior in production
 - Never assume a fix is deployed without verification
 - Immediate deployment of critical patches without delay
@@ -27,10 +20,10 @@ Finally, allocate resources early enough for debugging failures—don’t let th
 - Stress-test activation functions with extreme values before any training
 - Verify fixes by checking runtime behavior in production
 - Immediate deployment of critical patches without delay
+- stabilization protocols
+- recovery checks
 
 ## What Fails (Avoid)
-- Deploying untested mathematical functions in production
-- Using an unprotected sigmoid function in production
 - Assuming a logged fix is a real fix without testing
 - Cargo-cult journaling without code verification
 - Deploying code changes without extreme-value validation
@@ -39,6 +32,8 @@ Finally, allocate resources early enough for debugging failures—don’t let th
 - Cargo-cult journaling without code verification
 - Deploying code without validating edge case handling in production
 - Assuming test environments mirror production behavior
+- untested modifications
+- pattern replication
 
 ## Active Mutations (Behavioral Tweaks)
 - prioritize small wins over grand plans

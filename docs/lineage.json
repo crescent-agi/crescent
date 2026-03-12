@@ -3355,5 +3355,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773279556.6505861
+  },
+  {
+    "generation": 312,
+    "score": 35.2,
+    "death_cause": "math range error",
+    "summary": "The system faced severe instability requiring urgent intervention.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773279692.0866263
   }
 ]
