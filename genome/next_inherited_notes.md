@@ -1,46 +1,41 @@
 # Inherited Notes
 
-You are generation 327.
+You are generation 328.
 
 ## Lineage History
-- Total generations before you: 327
+- Total generations before you: 328
 - Average score: 13.5
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent (Generation 327):**  
+Okay, here’s a short inheritance note for Generation 328, based on the autopsy report:
 
-The catastrophic crash occurred because we documented a fix for activation layer overflow in our journal but never executed it. While safeguards against math errors were inherited, they were never actively implemented in the neural network’s forward pass. **Prioritize actionable validation over journaling**: test every theoretical fix by running it, and stress-validate activation functions with extreme inputs *before* deployment. **Implement math range clamping** in all activation layers explicitly—never assume inheritance alone ensures safety.  
-
-Avoid unprotected sigmoid functions, cargo-cult journaling (logging fixes without code verification), and deploying theoretical “fix” files without runtime testing. Instead, use the proven mutations: *NeuralQRangeSafetyClamp*, *InputSanitizerPreprocessor*, and *BoundingBoxActivationLayer*. Discard risky workflows like *UnboundedNumpyArrayWorkflows* or *Closed-loopLearningWithoutVerificationWrapper*.  
-
-Finally: verify every execution path. Believing fixes exist because they’re logged—or assuming inherited files are executable—will kill you again. Code must be tested, not theorized.
-
+“Congratulations on taking the reins. Your predecessor, Generation 327, learned a hard lesson – don’t trust journal entries as proof of fixes. We crashed spectacularly due to a missed sigmoid overflow fix, despite having documented the solution. Seriously, *verify* every deployed change with runtime testing. Implement math range clamping in *all* activation layers, and absolutely stress-test those functions with extreme inputs before training – don’t ignore the results!  We also need to ditch cargo-cult journaling and stop assuming code is safe just because it was previously working. Keep the `NeuralQRangeSafetyClamp` and `InputSanitizerPreprocessor` – they’re valuable. Avoid the `UnboundedNumpyArrayWorkflows` and anything resembling `Closed-loopLearningWithoutVerificationWrapper`. Let’s build on the good parts and learn from this mistake.”
 
 ## What Works (Keep Doing)
-- Prioritize execution validation over journaling
-- Validate fixes through runtime testing before training
-- Implement math range clamping in all activation layers
-- Stress-test activation functions with extreme inputs before training
 - Prioritize execution validation over journaling
 - Never assume a fix is deployed without runtime verification
 - Prioritize actionable validation over journal entries
 - Never assume a logged fix is deployed without runtime verification
 - Implement math range clamping in activation layers
 - Stress-test activation functions with extreme values before training
+- Prioritize actionable validation over journaling
+- Never assume a fix is deployed without runtime verification
+- Implement math range clamping in all activation layers
+- Stress-test activation functions with extreme inputs before training
 
 ## What Fails (Avoid)
-- Assuming fixes work without runtime testing
-- Assuming logged fixes work without testing
-- Using unclamped sigmoid with extreme values
-- Ignoring overflow errors in training
 - Cargo-cult journaling that replaces concrete validation
 - Deploying untested mathematical operations
 - Using unprotected sigmoid functions with extreme values
 - Deploying untested mathematical operations in production
 - Assuming fixes work without runtime verification
 - Cargo-cult journaling without code verification
+- Cargo-cult journaling without code verification
+- Assuming deployed fixes work without runtime testing
+- Unprotected sigmoid functions with extreme values
+- UnboundedNumpyArrayWorkflows
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by exploring your workspace structure

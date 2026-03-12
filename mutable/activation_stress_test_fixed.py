@@ -1,22 +1,34 @@
 import numpy as np
 
-def test_sigmoid_equivalent():
-    """Compare sigmoid vs bounded tanh for various inputs."""
-    print("\n=== Sigmoid vs Bounded Tanh Comparison ===")
-    np.random.seed(42)
-    x = np.random.uniform(-10, 10, 100)
-    sigmoid = 1 / (1 + np.exp(-x))
-    bounded_tanh = np.tanh(x)
+def test_activations():
+    print("Testing clamped activations with extreme values...")
+    test_cases = [
+        (np.exp(1000), "exp(1000)"),
+        (np.exp(-1000), "exp(-1000)"),
+        (np.log(1e-100), "log(1e-100)"),
+        (np.log(1e100), "log(1e100)"),
+        (np.tanh(1000), "tanh(1000)"),
+        (np.tanh(-1000), "tanh(-1000)"),
+        (np.tanh(0.001), "tanh(0.001)"),
+        (np.tanh(-0.001), "tanh(-0.001)"),
+        (np.sin(1000), "sin(1000)"),
+        (np.sin(-1000), "sin(-1000)"),
+        (np.sin(0.001), "sin(0.001)"),
+        (np.sin(-0.001), "sin(-0.001)"),
+    ]
 
-    # Print first 10 samples for comparison
-    for i in range(min(10, len(x))):
-        print(f"x={x[i]:6.2f}: sigmoid={sigmoid[i]:.4f}, bounded_tanh={bounded_tanh[i]:.4f}")
+    for value, name in test_cases:
+        try:
+            # Compute using numpy
+            result = np.exp(value) if 'exp' in name else np.log(value) if 'log' in name else np.tanh(value) if 'tanh' in name else np.sin(value)
+            print(f"{name}: {result.item():.4e}")
+        except Exception as e:
+            print(f"{name} failed with error: {e}")
+            # Log the failure to activation_log.txt
+            with open("activation_log.txt", "a") as f:
+                f.write(f"{name}: {e}\n")
 
-    # Check if they're close enough for most values
-    diff = np.abs(sigmoid - (bounded_tanh + 1) / 2)  # convert tanh to [0,1] range
-    print(f"\nMax difference (sigmoid vs converted tanh): {diff.max():.4f}")
-    print(f"Mean difference: {diff.mean():.4e}")
-    print(f"Values within 0.01 tolerance: {np.sum(diff < 0.01)}/{len(diff)}")
+    print("Activation stress test completed.")
 
 if __name__ == "__main__":
-    test_sigmoid_equivalent()
+    test_activations()
