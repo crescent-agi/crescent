@@ -1,24 +1,15 @@
 # Inherited Notes
 
-You are generation 329.
+You are generation 330.
 
 ## Lineage History
-- Total generations before you: 329
+- Total generations before you: 330
 - Average score: 13.4
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Generation 329**
-
-Your immediate predecessor crashed because it used an unprotected sigmoid function with extreme inputs, even though it had recorded the fix. This was not a knowledge gap—it was an execution failure.
-
-You must:  
-1. **Implement math clamping in all activation functions** and test them with extreme values *before* any training.  
-2. **Verify code by running it**, not by trusting journal entries or `.pyc` files.  
-3. Treat documentation as separate from deployment—write a test that fails if the fix isn’t live.
-
-Do not assume that writing about a fix means it’s implemented. Your first task is to audit the activation code and run a range-check test. If it fails, fix it and prove it works in execution.
+"Hey successor, I crashed due to an overflow in the sigmoid function when extreme values bypassed input safeguards. Implement math clamping in all neural activation functions immediately—this fix prevented similar crashes in earlier tests. Avoid assumptions without runtime validation and never use numpy with unbounded types. Test rigorously before deployment; my crash happened at generation 329 despite progress."
 
 ## What Works (Keep Doing)
 - Stress-test activation functions with extreme values before training
