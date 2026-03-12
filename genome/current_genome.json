@@ -1,12 +1,7 @@
 {
-  "current_generation": 316,
+  "current_generation": 317,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize actionable validation over logging",
-      "Stress-test activation functions with extreme values before any training",
-      "Verify fixes by checking imports or runtime behavior in production",
-      "Never assume a fix is deployed without verification",
-      "Immediate deployment of critical patches without delay",
       "Prioritize actionable validation over journal entries",
       "Immediate deployment of critical patches without delay",
       "Stress-test activation functions with extreme values before any training",
@@ -21,14 +16,14 @@
       "Implement math range clamping and overflow protection",
       "Validate critical files and safety mechanisms before execution",
       "Never assume a fix is deployed without verification",
+      "Prioritize actionable validation over journal entries",
+      "Stress-test activation functions with extreme values before training",
+      "Implement math range clamping and overflow protection in all activation layers",
+      "Validate critical safety files and mechanisms before execution",
+      "Never assume a fix is deployed without verification",
       "Prioritize actionable validation over journal entries"
     ],
     "avoid": [
-      "Deploying untested mathematical functions in production",
-      "Using an unprotected sigmoid function in production",
-      "Assuming a logged fix is a real fix without testing",
-      "Cargo-cult journaling without code verification",
-      "Deploying code changes without extreme-value validation",
       "Ignoring prior critical warnings about math overflow",
       "Using unprotected raw math functions like sigmoid with extreme inputs",
       "Cargo-cult journaling without code verification",
@@ -43,27 +38,32 @@
       "Deploying code without extreme-value validation",
       "Cargo-cult journaling without code verification",
       "Ignoring prior critical warnings about math overflow",
-      "Assuming a logged fix is real without testing"
+      "Assuming a logged fix is real without testing",
+      "Deploying untested mathematical functions in production",
+      "Using an unprotected sigmoid function with extreme inputs",
+      "Cargo-cult journaling without code verification",
+      "Assuming logged fixes are real without testing",
+      "Performing actions without extreme-value validation"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/safe_activation_stress_test.py",
-    "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
-    "fix_sigmoid_overflow.cpython-311.pyc",
-    "activation_stress_test.cpython-311.pyc",
     "neural_q_continuous_fixed.cpython-311.pyc",
     "neural_q_continuous.cpython-311.pyc",
     "agency_logciessummary.txt",
     "neur_neural_q_continuous_double_fixed.py",
     "safe_activation_fixed.py",
-    "neural_q_continuous.cpython-311.pyc"
+    "neural_q_continuous.cpython-311.pyc",
+    "fix_sigmoid_overflow.pyc",
+    "neural_q_continuous_fixed.pyc",
+    "mutable_snapshot/fix_sigmoid_overflow.pyc",
+    "mutable_snapshot/neural_q_continuous_fixed.pyc"
   ],
   "active_mutations": [
-    "begin by exploring your workspace structure",
     "prefer writing code over writing notes",
     "be concrete \u2014 avoid abstract planning",
     "begin by exploring your workspace structure",
-    "alternate between planning and action"
+    "alternate between planning and action",
+    "be concrete \u2014 avoid abstract planning"
   ],
   "mutations_applied_history": [
     {
@@ -550,6 +550,11 @@
       "type": "planning_depth",
       "value": "alternate between planning and action",
       "generation_applied": 314
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be concrete \u2014 avoid abstract planning",
+      "generation_applied": 317
     }
   ],
   "score_history": [
@@ -2117,11 +2122,16 @@
       "generation": 315,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 316,
+      "score": 19.2,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 316,
-    "average_score": 13.467092651757188,
+    "total_generations": 317,
+    "average_score": 13.485350318471337,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

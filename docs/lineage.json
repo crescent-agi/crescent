@@ -3397,5 +3397,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773280429.4088283
+  },
+  {
+    "generation": 316,
+    "score": 19.2,
+    "death_cause": "crash: math range error",
+    "summary": "The agent performed a file listing and contemplated actions but crashed almost immediately when its neural network attempted a forward pass that triggered a sigmoid overflow.",
+    "mutations": [
+      {
+        "type": "prompt_wording",
+        "value": "be concrete \u2014 avoid abstract planning",
+        "generation_applied": 317
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773280500.0355093
   }
 ]
