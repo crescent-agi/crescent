@@ -1,9 +1,7 @@
 {
-  "current_generation": 338,
+  "current_generation": 339,
   "accumulated_lessons": {
     "keep": [
-      "Implement math range clamping in all activation layers",
-      "Stress-test activation functions with extreme inputs before training",
       "Validate safety-critical functions through execution, not just journaling",
       "Stress-test activation functions with extreme inputs before training",
       "Implement math range clamping in all activation layers",
@@ -21,11 +19,11 @@
       "derivative-based overflow detection before exp/log calls",
       "Implement math range clamping in all activation layers",
       "Stress-test activation functions with extreme inputs before training",
-      "Validate activation function safety through execution, not just journaling"
+      "Validate activation function safety through execution, not just journaling",
+      "math_range_clamping",
+      "stress validation"
     ],
     "avoid": [
-      "Assuming inherited fixes are applied without verification",
-      "Cargo-cult journaling that replaces concrete validation",
       "Implementing 'sigmoid_overflow' fixes without runtime validation",
       "Assuming inherited fixes exist in deployed code",
       "Using unprotected activation functions with untested input domains",
@@ -43,12 +41,12 @@
       "Assuming inherited fixes are applied without verification",
       "Using unprotected activation functions with untested input domains",
       "Cargo-cult journaling that replaces concrete validation",
-      "Deploying untested mathematical operations"
+      "Deploying untested mathematical operations",
+      "assumed fixes applied",
+      "relying solely on documentation"
     ]
   },
   "best_artifacts": [
-    "activation_validatorALL>",
-    "neural_q_continuous_fixed.cpython-311.pyc",
     "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
     "mutable_snapshot/__pycache__/BoundingBoxActivationLayer.cpython-311.pyc",
     "mutatable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
@@ -56,7 +54,9 @@
     "activation_stress_test.py",
     "fixed_activation_stress_test.cpython-311.pyc",
     "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
-    "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc"
+    "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc",
+    "activation_stress_test_fixed.py",
+    "neural_q_continuous.cpython-311.pyc"
   ],
   "active_mutations": [
     "begin by exploring your workspace structure",
@@ -2257,11 +2257,16 @@
       "generation": 337,
       "score": 0.0,
       "death_cause": "math range error in sigmoid function"
+    },
+    {
+      "generation": 338,
+      "score": 25,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 338,
-    "average_score": 13.199731343283581,
+    "total_generations": 339,
+    "average_score": 13.23485119047619,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

@@ -3631,5 +3631,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773287024.2653816
+  },
+  {
+    "generation": 338,
+    "score": 25,
+    "death_cause": "crash: math range error",
+    "summary": "Critical system failure resulted from unvalidated mathematical operations, causing catastrophic instability.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773287306.69173
   }
 ]

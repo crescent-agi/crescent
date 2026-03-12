@@ -1,34 +1,42 @@
+#!/usr/bin/env python3
+
+"""
+Fixed activation stress test that properly handles extreme values.
+"""
+
 import numpy as np
 
-def test_activations():
-    print("Testing clamped activations with extreme values...")
-    test_cases = [
-        (np.exp(1000), "exp(1000)"),
-        (np.exp(-1000), "exp(-1000)"),
-        (np.log(1e-100), "log(1e-100)"),
-        (np.log(1e100), "log(1e100)"),
-        (np.tanh(1000), "tanh(1000)"),
-        (np.tanh(-1000), "tanh(-1000)"),
-        (np.tanh(0.001), "tanh(0.001)"),
-        (np.tanh(-0.001), "tanh(-0.001)"),
-        (np.sin(1000), "sin(1000)"),
-        (np.sin(-1000), "sin(-1000)"),
-        (np.sin(0.001), "sin(0.001)"),
-        (np.sin(-0.001), "sin(-0.001)"),
-    ]
+# Original unsafe sigmoid
+def sigmoid(x):
+    return 1.0 / (1.0 + np.exp(-x))
 
-    for value, name in test_cases:
+# Fixed version with clamping
+def sigmoid_safe(x):
+    # Clamp input to prevent overflow
+    x_clipped = np.clip(x, -50, 50)
+    return 1.0 / (1.0 + np.exp(-x_clipped))
+
+# Test function
+def test_activation():
+    # Extreme values that would break the original
+    test_values = [1000, -1000, 1e10, -1e10, np.inf, -np.inf]
+    
+    print("=== Testing Original (Unsafe) Sigmoid ===")
+    for val in test_values:
         try:
-            # Compute using numpy
-            result = np.exp(value) if 'exp' in name else np.log(value) if 'log' in name else np.tanh(value) if 'tanh' in name else np.sin(value)
-            print(f"{name}: {result.item():.4e}")
+            result = sigmoid(val)
+            print(f"Input: {val:>15} -> Output: {result}")
         except Exception as e:
-            print(f"{name} failed with error: {e}")
-            # Log the failure to activation_log.txt
-            with open("activation_log.txt", "a") as f:
-                f.write(f"{name}: {e}\n")
+            print(f"Input: {val:>15} -> CRASH: {e}")
+    
+    print("\n=== Testing Safe Sigmoid ===")
+    for val in test_values:
+        try:
+            result = sigmoid_safe(val)
+            print(f"Input: {val:>15} -> Output: {result:.6f}")
+        except Exception as e:
+            print(f"Input: {val:>15} -> CRASH: {e}")
 
-    print("Activation stress test completed.")
-
+# Execute tests
 if __name__ == "__main__":
-    test_activations()
+    test_activation()
