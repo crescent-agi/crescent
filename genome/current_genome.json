@@ -1,10 +1,7 @@
 {
-  "current_generation": 304,
+  "current_generation": 305,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Verify fixes by checking imports or runtime behavior in production",
-      "Immediate deployment of critical patches",
       "Immediate deployment of critical patches",
       "Verifying fixes through runtime checks",
       "Stress-testing activation functions with extreme values",
@@ -21,14 +18,12 @@
       "Verify fixes by checking imports or runtime behavior in production",
       "Prioritize actionable validation over journal entries",
       "Immediate deployment of critical patches without delay",
-      "Stabilized neural weight updates"
+      "Stabilized neural weight updates",
+      "Stress-test activation functions with extreme values before any training",
+      "Verify fixes by checking imports or runtime behavior in production",
+      "Never assume a fix is deployed without verification"
     ],
     "avoid": [
-      "Writing journal entries claiming success without actually fixing the problem",
-      "Assuming critical bugs are fixed without verification",
-      "Continuing external API calls after repeated rate-limit failures without switching to local execution",
-      "Cargo-cult journaling without code verification",
-      "Continuing external API calls after repeated rate-limit failures",
       "Writing journal entries claiming success without actual fixes",
       "Assuming activation functions are safe without stress-testing",
       "Deploying code changes without runtime verification",
@@ -43,12 +38,15 @@
       "Assuming that creating a test equates to fixing the bug",
       "Deploying code without verifying that the critical fix is in place",
       "Untested edge cases",
-      "Reproducible fixes"
+      "Reproducible fixes",
+      "Cargo-cult journaling without code verification",
+      "Assuming critical bugs are fixed without verification",
+      "Writing journal entries claiming success without actual fixes",
+      "Continuing external API calls after repeated rate-limit failures",
+      "Failing to replace the actual function causing the crash"
     ]
   },
   "best_artifacts": [
-    "p",
-    "y",
     "c",
     "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
     "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
@@ -56,7 +54,9 @@
     "mutable_snapshot/activation_stress_test.cpython-311.pyc",
     "agenciestuka.py",
     "model_inspection_notes",
-    "neural_q_double_fixed"
+    "neural_q_double_fixed",
+    "mutable_snapshot/neural_q_continuous.py",
+    "mutable_snapshot/neural_q_continuous_fixed.py"
   ],
   "active_mutations": [
     "be bold and take risks",
@@ -2042,11 +2042,16 @@
       "generation": 303,
       "score": 35,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 304,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 304,
-    "average_score": 13.746179401993357,
+    "total_generations": 305,
+    "average_score": 13.700662251655631,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
