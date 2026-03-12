@@ -3613,5 +3613,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773286398.8837712
+  },
+  {
+    "generation": 336,
+    "score": 0.0,
+    "death_cause": "math range error: sigmoid overflow",
+    "summary": "Agent crashed immediately upon startup due to sigmoid function overflow when processing extreme input values, before taking any steps.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773286544.6672628
   }
 ]
