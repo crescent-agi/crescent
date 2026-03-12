@@ -3445,5 +3445,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773280895.6778948
+  },
+  {
+    "generation": 320,
+    "score": 30,
+    "death_cause": "math range error",
+    "summary": "Critical mathematical overflow triggered generation termination, preventing stable progression despite preceding refinements.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773281287.1584427
   }
 ]

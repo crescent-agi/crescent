@@ -1,8 +1,7 @@
 {
-  "current_generation": 320,
+  "current_generation": 321,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values",
       "Implement math range clamping and overflow protection",
       "Stress-test activation functions with extreme values before any training",
       "Implement math range clamping and overflow protection",
@@ -21,10 +20,10 @@
       "Activation stabilization",
       "Stress-test activation functions with extreme values before training",
       "Implement math range clamping in activation layers",
-      "Validate safety mechanisms through execution not journaling"
+      "Validate safety mechanisms through execution not journaling",
+      "activation clamping adaptation"
     ],
     "avoid": [
-      "Assume fixes are deployed without verification",
       "Cargo\u2011cult journaling without concrete code verification",
       "Using unprotected sigmoid functions in production",
       "Deploying code without extreme-value validation",
@@ -43,20 +42,21 @@
       "unreplicated safeguards",
       "Assuming logged fixes are deployed without runtime verification",
       "Using sigmoid functions without input clamping for extreme values",
-      "Cargo-cult journaling that replaces concrete validation with documentation"
+      "Cargo-cult journaling that replaces concrete validation with documentation",
+      "Unvalidated pathological implementations"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous_fixed.pyc",
-    "mutable_snapshot/fix_sigmoid_overflow.pyc",
-    "mutable_snapshot/neural_q_continuous_fixed.pyc",
-    "mutable_snapshot/safe_activation_fixed.py",
-    "mutable_snapshot/fix_sigmoid_overflow.py",
-    "fixed_activation_stress_test.cpython-311.pyc",
-    "neural_q_continuous.py",
-    "fix_sigmoid_overflow.cpython-311.pyc",
-    "agc_core_continuous_fixed.cpython-311.pyc",
-    "activation_stress_test.cpython-311.pyc"
+    "t",
+    "_",
+    "f",
+    "i",
+    "x",
+    "e",
+    "d",
+    ".",
+    "p",
+    "y"
   ],
   "active_mutations": [
     "be concrete \u2014 avoid abstract planning",
@@ -2147,11 +2147,16 @@
       "generation": 319,
       "score": 45.6,
       "death_cause": "math range error in sigmoid function during neural Q-learning"
+    },
+    {
+      "generation": 320,
+      "score": 30,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 320,
-    "average_score": 13.613564668769715,
+    "total_generations": 321,
+    "average_score": 13.665094339622641,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
