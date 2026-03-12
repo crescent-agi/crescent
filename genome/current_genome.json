@@ -1,12 +1,7 @@
 {
-  "current_generation": 341,
+  "current_generation": 342,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme inputs before training",
-      "Implement math range clamping in all activation layers",
-      "Validate activation function safety through execution, not just journaling",
-      "derivative-based overflow detection before exp/log calls",
-      "Implement math range clamping in all activation layers",
       "Stress-test activation functions with extreme inputs before training",
       "Validate activation function safety through execution, not just journaling",
       "math_range_clamping",
@@ -21,14 +16,14 @@
       "stress-testing activation functions with extreme inputs",
       "execution validation of safety-critical functions",
       "derivative-based overflow detection before exp/log calls",
-      "math_range_clamping"
+      "math_range_clamping",
+      "Implement math range clamping in all activation layers",
+      "Validate activation function safety through execution, not just journaling",
+      "Derivative\u2011based overflow detection before exp/log calls",
+      "Stress\u2011test activation functions with extreme inputs before training",
+      "Execution validation of safety\u2011critical functions"
     ],
     "avoid": [
-      "Deploying sigmoid functions without input domain validation",
-      "Assuming prior fixes are immutable in deployed code",
-      "Trusting .pyc files as implementation evidence",
-      "Using unprotected activation functions with untested input domains",
-      "Assuming inherited fixes are applied without verification",
       "Using unprotected activation functions with untested input domains",
       "Cargo-cult journaling that replaces concrete validation",
       "Deploying untested mathematical operations",
@@ -43,20 +38,25 @@
       "cargo-cult journaling without code verification",
       "assuming inherited fixes are applied",
       "using unprotected activation functions with untested input domains",
-      "deploying untested mathematical operations"
+      "deploying untested mathematical operations",
+      "Lack of runtime input clamping before extreme\u2011value tests",
+      "Assuming inherited fixes exist without verification",
+      "Cargo\u2011cult journaling that replaces concrete validation",
+      "Deploying untested mathematical operations",
+      "Trusting .pyc files as evidence of implementation"
     ]
   },
   "best_artifacts": [
-    "helper_clip.pyc",
-    "activation_stress_test.py",
-    "fixed_activation_stress_test.cpython-311.pyc",
     "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
     "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc",
     "activation_stress_test_fixed.py",
     "neural_q_continuous.cpython-311.pyc",
     "activation_stress_test_fixed.py",
     "fix_sigmoid_overflow.py",
-    "fixed_activation_stress_test.py"
+    "fixed_activation_stress_test.py",
+    "mutable_snapshot/extreme_activation_burninator.py",
+    "mutable_snapshot/fix_sigmoid_overflow.pyc",
+    "mutable_snapshot/fixed_activation_stress_test.pyc"
   ],
   "active_mutations": [
     "be bold and take risks",
@@ -2277,11 +2277,16 @@
       "generation": 340,
       "score": 1.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 341,
+      "score": 13.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 341,
-    "average_score": 13.180207100591716,
+    "total_generations": 342,
+    "average_score": 13.179675516224188,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
