@@ -1,12 +1,7 @@
 {
-  "current_generation": 328,
+  "current_generation": 329,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme inputs before training",
-      "Implement math range clamping in activation layers",
-      "Validate safety\u2011critical functions through execution, not just journaling",
-      "Verify fixes are deployed before training",
-      "Implement math range clamping in activation layers",
       "Stress-test activation functions with extreme values before training",
       "Prioritize execution validation over journaling",
       "Validate fixes through runtime testing before training",
@@ -21,14 +16,14 @@
       "Prioritize actionable validation over journaling",
       "Never assume a fix is deployed without runtime verification",
       "Implement math range clamping in all activation layers",
-      "Stress-test activation functions with extreme inputs before training"
+      "Stress-test activation functions with extreme inputs before training",
+      "Implement math range clamping in activation layers",
+      "Stress-test activation functions with extreme inputs before training",
+      "Validate safety-critical functions through execution, not just journaling",
+      "Verify fixes through runtime testing before training",
+      "Prioritize actionable validation over journal entries"
     ],
     "avoid": [
-      "Using unprotected sigmoid functions with extreme values",
-      "Deploying mathematical operations without extreme\u2011value validation",
-      "Trusting cached .pyc files as evidence of active code",
-      "Assuming logged fixes are deployed without testing",
-      "Using unprotected sigmoid functions with extreme inputs",
       "Cargo-cult journaling without code verification",
       "Assuming fixes work without runtime testing",
       "Assuming logged fixes work without testing",
@@ -43,7 +38,12 @@
       "Cargo-cult journaling without code verification",
       "Assuming deployed fixes work without runtime testing",
       "Unprotected sigmoid functions with extreme values",
-      "UnboundedNumpyArrayWorkflows"
+      "UnboundedNumpyArrayWorkflows",
+      "Using unprotected sigmoid functions with extreme values",
+      "Deploying mathematical operations without extreme-value validation",
+      "Assuming logged fixes are deployed without testing",
+      "Cargo-cult journaling without code verification",
+      "Trusting cached .pyc files as evidence of active code"
     ]
   },
   "best_artifacts": [
@@ -2207,11 +2207,16 @@
       "generation": 327,
       "score": 5.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 328,
+      "score": 0.0,
+      "death_cause": "crash: math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 328,
-    "average_score": 13.467415384615384,
+    "total_generations": 329,
+    "average_score": 13.426104294478527,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

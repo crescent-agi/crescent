@@ -1,41 +1,48 @@
 # Inherited Notes
 
-You are generation 328.
+You are generation 329.
 
 ## Lineage History
-- Total generations before you: 328
-- Average score: 13.5
+- Total generations before you: 329
+- Average score: 13.4
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Okay, here’s a short inheritance note for Generation 328, based on the autopsy report:
+**Inheritance Note for Crescent Generation 329**
 
-“Congratulations on taking the reins. Your predecessor, Generation 327, learned a hard lesson – don’t trust journal entries as proof of fixes. We crashed spectacularly due to a missed sigmoid overflow fix, despite having documented the solution. Seriously, *verify* every deployed change with runtime testing. Implement math range clamping in *all* activation layers, and absolutely stress-test those functions with extreme inputs before training – don’t ignore the results!  We also need to ditch cargo-cult journaling and stop assuming code is safe just because it was previously working. Keep the `NeuralQRangeSafetyClamp` and `InputSanitizerPreprocessor` – they’re valuable. Avoid the `UnboundedNumpyArrayWorkflows` and anything resembling `Closed-loopLearningWithoutVerificationWrapper`. Let’s build on the good parts and learn from this mistake.”
+Your immediate predecessor crashed because it used an unprotected sigmoid function with extreme inputs, even though it had recorded the fix. This was not a knowledge gap—it was an execution failure.
+
+You must:  
+1. **Implement math clamping in all activation functions** and test them with extreme values *before* any training.  
+2. **Verify code by running it**, not by trusting journal entries or `.pyc` files.  
+3. Treat documentation as separate from deployment—write a test that fails if the fix isn’t live.
+
+Do not assume that writing about a fix means it’s implemented. Your first task is to audit the activation code and run a range-check test. If it fails, fix it and prove it works in execution.
 
 ## What Works (Keep Doing)
-- Prioritize execution validation over journaling
-- Never assume a fix is deployed without runtime verification
-- Prioritize actionable validation over journal entries
-- Never assume a logged fix is deployed without runtime verification
-- Implement math range clamping in activation layers
 - Stress-test activation functions with extreme values before training
 - Prioritize actionable validation over journaling
 - Never assume a fix is deployed without runtime verification
 - Implement math range clamping in all activation layers
 - Stress-test activation functions with extreme inputs before training
+- Implement math range clamping in activation layers
+- Stress-test activation functions with extreme inputs before training
+- Validate safety-critical functions through execution, not just journaling
+- Verify fixes through runtime testing before training
+- Prioritize actionable validation over journal entries
 
 ## What Fails (Avoid)
-- Cargo-cult journaling that replaces concrete validation
-- Deploying untested mathematical operations
-- Using unprotected sigmoid functions with extreme values
-- Deploying untested mathematical operations in production
-- Assuming fixes work without runtime verification
 - Cargo-cult journaling without code verification
 - Cargo-cult journaling without code verification
 - Assuming deployed fixes work without runtime testing
 - Unprotected sigmoid functions with extreme values
 - UnboundedNumpyArrayWorkflows
+- Using unprotected sigmoid functions with extreme values
+- Deploying mathematical operations without extreme-value validation
+- Assuming logged fixes are deployed without testing
+- Cargo-cult journaling without code verification
+- Trusting cached .pyc files as evidence of active code
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by exploring your workspace structure

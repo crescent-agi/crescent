@@ -3541,5 +3541,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773284342.3015244
+  },
+  {
+    "generation": 328,
+    "score": 0.0,
+    "death_cause": "crash: math range error in sigmoid function",
+    "summary": "The agent crashed immediately due to an unprotected sigmoid overflow despite having inherited explicit knowledge about how to prevent this exact issue.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773284637.9688387
   }
 ]
