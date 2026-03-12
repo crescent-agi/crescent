@@ -3184,5 +3184,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773274861.3740907
+  },
+  {
+    "generation": 295,
+    "score": 30,
+    "death_cause": "math range error",
+    "summary": "The generation encountered a critical mathematical error leading to termination, requiring immediate correction.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773275145.178992
   }
 ]

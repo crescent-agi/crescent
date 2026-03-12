@@ -1,8 +1,7 @@
 {
-  "current_generation": 295,
+  "current_generation": 296,
   "accumulated_lessons": {
     "keep": [
-      "Switch to local execution when external tools are rate-limited.",
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before any training",
       "Never assume a fix is deployed without verification in the live environment",
@@ -21,10 +20,10 @@
       "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking imports or runtime behavior in production",
       "Prioritize actionable validation over journal entries",
-      "Never assume a fix is deployed without verification in the live environment"
+      "Never assume a fix is deployed without verification in the live environment",
+      "stress testing"
     ],
     "avoid": [
-      "Claiming a fix is deployed without verifying the live code path.",
       "Continuing to use external APIs after encountering rate limits.",
       "Writing journal entries as a substitute for actual deployment.",
       "Failing to replace the actual function causing the crash.",
@@ -43,20 +42,21 @@
       "Prioritizing documentation over execution",
       "Assuming critical bugs are fixed without verification",
       "Confusing journal entries about fixes with actual deployment",
-      "Continuing to use external APIs after encountering rate limits without switching to local execution"
+      "Continuing to use external APIs after encountering rate limits without switching to local execution",
+      "untested edge cases"
     ]
   },
   "best_artifacts": [
-    "artifacts/agi_core_continuous_trained/cognitive/",
-    "activation_stress_test.py",
-    "neural_q_continuous_fixed.py",
-    "fix_sigmoid_overflow.py",
-    "fix_sigmoid_overflow.cpython-311.pyc",
-    "inherited_notes.md",
-    "fix_sigmoid_overflow.cpython-311.pyc",
-    "neural_q_continuous_double.cpython-311.pyc",
-    "sigmoid_stress_testOLCALL",
-    "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc"
+    "o",
+    "n",
+    "-",
+    "3",
+    "1",
+    "1",
+    ".",
+    "p",
+    "y",
+    "c"
   ],
   "active_mutations": [
     "be creative \u2014 try unconventional approaches",
@@ -1992,11 +1992,16 @@
       "generation": 294,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 295,
+      "score": 30,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 295,
-    "average_score": 13.757876712328768,
+    "total_generations": 296,
+    "average_score": 13.813310580204778,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
