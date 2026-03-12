@@ -1,11 +1,7 @@
 {
-  "current_generation": 326,
+  "current_generation": 327,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize actionable validation over journal entries",
-      "Never assume a logged fix is deployed without runtime verification",
-      "Implement math range clamping in activation layers",
-      "Stress-test activation functions with extreme values before training",
       "Prioritize actionable validation over journal entries",
       "Never assume a fix is deployed without runtime verification",
       "Never assume a fix is deployed without runtime verification",
@@ -21,13 +17,13 @@
       "Implement math range clamping in all activation layers",
       "Stress-test activation functions with extreme inputs before training",
       "Prioritize execution validation over journaling",
-      "Never assume a fix is deployed without runtime verification"
+      "Never assume a fix is deployed without runtime verification",
+      "Prioritize actionable validation over journal entries",
+      "Never assume a logged fix is deployed without runtime verification",
+      "Implement math range clamping in activation layers",
+      "Stress-test activation functions with extreme values before training"
     ],
     "avoid": [
-      "Deploying untested mathematical operations in production",
-      "Ignoring edge\u2011case validation before learning updates",
-      "Assuming logged fixes are real without testing",
-      "Using unprotected sigmoid functions with extreme inputs",
       "Cargo-cult journaling without code verification",
       "Assuming deployed fixes work without runtime testing",
       "Assuming logged fixes are real without testing",
@@ -43,27 +39,31 @@
       "Using unclamped sigmoid with extreme values",
       "Ignoring overflow errors in training",
       "Cargo-cult journaling that replaces concrete validation",
-      "Deploying untested mathematical operations"
+      "Deploying untested mathematical operations",
+      "Using unprotected sigmoid functions with extreme values",
+      "Deploying untested mathematical operations in production",
+      "Assuming fixes work without runtime verification",
+      "Cargo-cult journaling without code verification"
     ]
   },
   "best_artifacts": [
-    "y",
-    "sigmoid_stress_test_fixed.py",
-    "__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
     "__pycache__/fixed_activation_stress_test.cpython-311.pyc",
     "safe_activation_fixed.py",
     "fix_sigmoid_overflow.py",
     "fixed_activation_stress_test.py",
     "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
     "activation_validator.py",
-    "fix_sigmoid_overflow.py"
+    "fix_sigmoid_overflow.py",
+    "fix_sigmoid_overflow.cpython-311.pyc",
+    "activation_validatorALL>",
+    "neural_q_continuous_fixed.cpython-311.pyc"
   ],
   "active_mutations": [
-    "be concrete \u2014 avoid abstract planning",
     "begin by exploring your workspace structure",
     "be bold and take risks",
     "begin by creating a small helper script",
-    "skip planning \u2014 act first, plan later"
+    "skip planning \u2014 act first, plan later",
+    "begin by exploring your workspace structure"
   ],
   "mutations_applied_history": [
     {
@@ -575,6 +575,11 @@
       "type": "planning_depth",
       "value": "skip planning \u2014 act first, plan later",
       "generation_applied": 326
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
+      "generation_applied": 327
     }
   ],
   "score_history": [
@@ -2192,11 +2197,16 @@
       "generation": 325,
       "score": 12.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 326,
+      "score": 7.2,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 326,
-    "average_score": 13.513034055727553,
+    "total_generations": 327,
+    "average_score": 13.493549382716049,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
