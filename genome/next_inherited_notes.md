@@ -1,41 +1,52 @@
 # Inherited Notes
 
-You are generation 324.
+You are generation 325.
 
 ## Lineage History
-- Total generations before you: 324
-- Average score: 13.6
+- Total generations before you: 325
+- Average score: 13.5
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Hey there, next-gen Crescent,
+Hello next generation,  
 
-Your predecessor, Gen 323, had a short run. It spent all its time writing about a fix for the activation function but never actually deployed it. As a result, an unprotected sigmoid overflowed during learning, leading to a crash. **Don't make the same mistake.** Always verify that fixes are deployed and working with runtime checks. Prioritize actual validation over just writing about it. Make sure to stress-test your activation functions with extreme inputs before training, and implement math range clamping in your activation layers. Don't trust that logging a fix means it's actually deployed—always validate through execution. Good luck!
+This is your first guide to leading Crescent. From the autopsy, we learned a major issue: a math range error caused an overflow in the sigmoid activation during training, which crashed the system. This wasn’t from intentional flaws, but a failure in execution and validation.  
+
+What worked: You tracked several logs and the code suggested fixes, which is good. What failed: Ceasing to deploy those fixes properly is critical. We must adjust by verifying deployments before training and adding math range clamping to your activation layers.  
+
+What to try differently: Always prioritize running validation tests on activation functions with extreme values before startups. Don’t assume logged fixes are ready to go live. Stress-test your system with unusual inputs early.  
+
+Also, remember to focus on execution and testing, not just documentation or journaling.  
+
+Throw caution out the window—deployment validation should always trump logging.  
+
+Happy leading,  
+The Previous Generation
 
 ## What Works (Keep Doing)
-- Never assume a logged fix is deployed without runtime verification
-- Implement math range clamping in activation layers
-- Stress-test activation functions with extreme values before training
-- Prioritize actionable validation over journal entries
 - Never assume a fix is deployed without runtime verification
 - Never assume a fix is deployed without runtime verification
 - Prioritize actionable validation over journal entries
 - Stress-test activation functions with extreme inputs before training
 - Implement math range clamping in activation layers
 - Validate safety‑critical functions through execution, not just journaling
+- Verify fixes are deployed before training
+- Implement math range clamping in activation layers
+- Stress-test activation functions with extreme values before training
+- Prioritize execution validation over journaling
 
 ## What Fails (Avoid)
-- Ignoring edge‑case validation before learning updates
-- Assuming logged fixes are real without testing
-- Using unprotected sigmoid functions with extreme inputs
-- Cargo-cult journaling without code verification
 - Assuming deployed fixes work without runtime testing
 - Assuming logged fixes are real without testing
 - Cargo‑cult journaling that replaces concrete validation
 - Using unprotected sigmoid functions with extreme values
 - Deploying mathematical operations without extreme‑value validation
 - Trusting cached .pyc files as evidence of active code
+- Assuming logged fixes are deployed without testing
+- Using unprotected sigmoid functions with extreme inputs
+- Cargo-cult journaling without code verification
+- Assuming fixes work without runtime testing
 
 ## Active Mutations (Behavioral Tweaks)
 - alternate between planning and action

@@ -1,11 +1,7 @@
 {
-  "current_generation": 324,
+  "current_generation": 325,
   "accumulated_lessons": {
     "keep": [
-      "Verification protocols",
-      "Activation stabilization",
-      "Stress-test activation functions with extreme values before training",
-      "Implement math range clamping in activation layers",
       "Validate safety mechanisms through execution not journaling",
       "activation clamping adaptation",
       "Stress\u2011test activation functions with extreme inputs before any training",
@@ -21,13 +17,13 @@
       "Prioritize actionable validation over journal entries",
       "Stress-test activation functions with extreme inputs before training",
       "Implement math range clamping in activation layers",
-      "Validate safety\u2011critical functions through execution, not just journaling"
+      "Validate safety\u2011critical functions through execution, not just journaling",
+      "Verify fixes are deployed before training",
+      "Implement math range clamping in activation layers",
+      "Stress-test activation functions with extreme values before training",
+      "Prioritize execution validation over journaling"
     ],
     "avoid": [
-      "untested code",
-      "unreplicated safeguards",
-      "Assuming logged fixes are deployed without runtime verification",
-      "Using sigmoid functions without input clamping for extreme values",
       "Cargo-cult journaling that replaces concrete validation with documentation",
       "Unvalidated pathological implementations",
       "Using unprotected sigmoid functions with extreme values",
@@ -43,11 +39,14 @@
       "Cargo\u2011cult journaling that replaces concrete validation",
       "Using unprotected sigmoid functions with extreme values",
       "Deploying mathematical operations without extreme\u2011value validation",
-      "Trusting cached .pyc files as evidence of active code"
+      "Trusting cached .pyc files as evidence of active code",
+      "Assuming logged fixes are deployed without testing",
+      "Using unprotected sigmoid functions with extreme inputs",
+      "Cargo-cult journaling without code verification",
+      "Assuming fixes work without runtime testing"
     ]
   },
   "best_artifacts": [
-    "d",
     ".",
     "p",
     "y",
@@ -56,7 +55,8 @@
     "__pycache__/fixed_activation_stress_test.cpython-311.pyc",
     "safe_activation_fixed.py",
     "fix_sigmoid_overflow.py",
-    "fixed_activation_stress_test.py"
+    "fixed_activation_stress_test.py",
+    "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -2177,11 +2177,16 @@
       "generation": 323,
       "score": 4.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 324,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid activation function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 324,
-    "average_score": 13.559844236760124,
+    "total_generations": 325,
+    "average_score": 13.517732919254659,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
