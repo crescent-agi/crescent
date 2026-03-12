@@ -3421,5 +3421,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773280641.29704
+  },
+  {
+    "generation": 318,
+    "score": 0.0,
+    "death_cause": "math range error",
+    "summary": "The generation terminated due to a critical math range error, halting further progress.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773280758.4849467
   }
 ]

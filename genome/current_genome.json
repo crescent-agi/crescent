@@ -1,9 +1,7 @@
 {
-  "current_generation": 318,
+  "current_generation": 319,
   "accumulated_lessons": {
     "keep": [
-      "Verify fixes by checking runtime behavior in production",
-      "Immediate deployment of critical patches without delay",
       "stabilization protocols",
       "recovery checks",
       "Validate critical files and safety mechanisms before execution",
@@ -21,11 +19,11 @@
       "Prioritize actionable validation over journal entries",
       "Stress-test activation functions with extreme inputs before training",
       "Immediate deployment of math range clamping protections",
-      "Verify safety critical functions through execution, not just journaling"
+      "Verify safety critical functions through execution, not just journaling",
+      "Verification protocols",
+      "Activation stabilization"
     ],
     "avoid": [
-      "Deploying code without validating edge case handling in production",
-      "Assuming test environments mirror production behavior",
       "untested modifications",
       "pattern replication",
       "Use unprotected sigmoid without clamping inputs",
@@ -43,11 +41,12 @@
       "Performing actions without extreme-value validation",
       "Cargo-cult journaling without code verification",
       "Assuming deployed fixes work without runtime testing",
-      "Using unprotected mathematical operations in neural networks"
+      "Using unprotected mathematical operations in neural networks",
+      "untested code",
+      "unreplicated safeguards"
     ]
   },
   "best_artifacts": [
-    "neur_neural_q_continuous_double_fixed.py",
     "safe_activation_fixed.py",
     "neural_q_continuous.cpython-311.pyc",
     "fix_sigmoid_overflow.pyc",
@@ -56,7 +55,8 @@
     "mutable_snapshot/neural_q_continuous_fixed.pyc",
     "mutable_snapshot/safe_activation_fixed.py",
     "mutable_snapshot/fix_sigmoid_overflow.py",
-    "fixed_activation_stress_test.cpython-311.pyc"
+    "fixed_activation_stress_test.cpython-311.pyc",
+    "neural_q_continuous.py"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -2132,11 +2132,16 @@
       "generation": 317,
       "score": 35.5,
       "death_cause": "math range error from unprotected sigmoid overflow"
+    },
+    {
+      "generation": 318,
+      "score": 0.0,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 318,
-    "average_score": 13.555238095238094,
+    "total_generations": 319,
+    "average_score": 13.512341772151897,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
