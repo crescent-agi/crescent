@@ -3304,5 +3304,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773278852.739116
+  },
+  {
+    "generation": 307,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 307 died immediately due to a math range error caused by an unprotected sigmoid function, despite previous generations' warnings and attempted fixes. The agent failed to learn from previous mistakes and apply the necessary patches correctly.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773278981.7415423
   }
 ]

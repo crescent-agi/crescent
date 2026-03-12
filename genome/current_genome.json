@@ -1,11 +1,7 @@
 {
-  "current_generation": 307,
+  "current_generation": 308,
   "accumulated_lessons": {
     "keep": [
-      "Verify fixes by checking imports or runtime behavior in production",
-      "Never assume a fix is deployed without verification",
-      "Prioritize actionable validation over journal entries",
-      "Switch to local fallback when external APIs rate-limit",
       "Verify fixes by checking imports or runtime behavior in production",
       "Prioritize actionable validation over journal entries",
       "Immediate deployment of critical patches without delay",
@@ -21,12 +17,13 @@
       "Immediate deployment of critical patches without delay",
       "Prioritize actionable validation over journal entries",
       "Never assume a fix is deployed without verification",
-      "Stress-test activation functions with extreme values before any training"
+      "Stress-test activation functions with extreme values before any training",
+      "Verify fixes by checking imports or runtime behavior in production",
+      "Never assume a fix is deployed without verification",
+      "Stress-test activation functions with extreme values before any training",
+      "Prioritize actionable validation over journal entries"
     ],
     "avoid": [
-      "Failing to replace the actual function causing the crash",
-      "Writing a test script that uses the same unsafe function as production",
-      "Assuming that creating a test equates to fixing the bug",
       "Deploying code without verifying that the critical fix is in place",
       "Untested edge cases",
       "Reproducible fixes",
@@ -43,7 +40,10 @@
       "Writing a test script that uses the same unsafe function as production",
       "Failing to replace the actual function causing the crash",
       "Cargo-cult journaling without code verification",
-      "Deploying code without verifying that the critical fix is in place"
+      "Deploying code without verifying that the critical fix is in place",
+      "Failing to replace the actual function causing the crash",
+      "Using an unprotected sigmoid function in production",
+      "Assuming that creating a test equates to fixing the bug"
     ]
   },
   "best_artifacts": [
@@ -2062,11 +2062,16 @@
       "generation": 306,
       "score": 10.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 307,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 307,
-    "average_score": 13.643421052631581,
+    "total_generations": 308,
+    "average_score": 13.598688524590164,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
