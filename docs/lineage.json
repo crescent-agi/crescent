@@ -3586,5 +3586,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773285805.2261229
+  },
+  {
+    "generation": 333,
+    "score": 0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent experienced a critical error during execution requiring immediate correction.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773285884.944345
   }
 ]

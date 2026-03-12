@@ -1,9 +1,7 @@
 {
-  "current_generation": 333,
+  "current_generation": 334,
   "accumulated_lessons": {
     "keep": [
-      "Implement math range clamping in activation layers",
-      "Stress-test activation functions with extreme values before training",
       "Prioritize actionable validation over journaling",
       "Never assume a fix is deployed without runtime verification",
       "Implement math range clamping in all activation layers",
@@ -21,11 +19,11 @@
       "Validate safety-critical functions through execution, not just journaling",
       "Stress-test activation functions with extreme inputs before training",
       "Implement math range clamping in all activation layers",
-      "Validate activation function safety through execution, not just journaling"
+      "Validate activation function safety through execution, not just journaling",
+      "math range clamping",
+      "recursive validation emphasis"
     ],
     "avoid": [
-      "Assuming fixes work without runtime verification",
-      "Cargo-cult journaling without code verification",
       "Cargo-cult journaling without code verification",
       "Assuming deployed fixes work without runtime testing",
       "Unprotected sigmoid functions with extreme values",
@@ -43,12 +41,12 @@
       "Cargo-cult journaling that replaces concrete validation",
       "Implementing 'sigmoid_overflow' fixes without runtime validation",
       "Assuming inherited fixes exist in deployed code",
-      "Using unprotected activation functions with untested input domains"
+      "Using unprotected activation functions with untested input domains",
+      "uncritical experimentation",
+      "untested edge cases"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
-    "activation_validator.py",
     "fix_sigmoid_overflow.py",
     "fix_sigmoid_overflow.cpython-311.pyc",
     "activation_validatorALL>",
@@ -56,7 +54,9 @@
     "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
     "mutable_snapshot/__pycache__/BoundingBoxActivationLayer.cpython-311.pyc",
     "mutatable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
-    "helper_clip.pyc"
+    "helper_clip.pyc",
+    "activation_stress_test.py",
+    "fixed_activation_stress_test.cpython-311.pyc"
   ],
   "active_mutations": [
     "begin by exploring your workspace structure",
@@ -2232,11 +2232,16 @@
       "generation": 332,
       "score": 32.7,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 333,
+      "score": 0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 333,
-    "average_score": 13.362454545454545,
+    "total_generations": 334,
+    "average_score": 13.322084592145014,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
