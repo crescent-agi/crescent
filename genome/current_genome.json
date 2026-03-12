@@ -1,11 +1,7 @@
 {
-  "current_generation": 322,
+  "current_generation": 323,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize actionable validation over journal entries",
-      "Stress-test activation functions with extreme values before training",
-      "Implement math range clamping and overflow protection in all activation layers",
-      "Validate critical safety files and mechanisms before execution",
       "Never assume a fix is deployed without verification",
       "Prioritize actionable validation over journal entries",
       "Stress-test activation functions with extreme inputs before training",
@@ -21,13 +17,13 @@
       "Implement math range clamping and overflow protection in all activation layers",
       "Validate safety\u2011critical functions through execution, not just journaling",
       "Prioritize actionable validation over journal entries",
-      "Never assume a logged fix is deployed without runtime verification"
+      "Never assume a logged fix is deployed without runtime verification",
+      "Implement math range clamping in activation layers",
+      "Stress-test activation functions with extreme values before training",
+      "Prioritize actionable validation over journal entries",
+      "Never assume a fix is deployed without runtime verification"
     ],
     "avoid": [
-      "Assuming a logged fix is real without testing",
-      "Deploying untested mathematical functions in production",
-      "Using an unprotected sigmoid function with extreme inputs",
-      "Cargo-cult journaling without code verification",
       "Assuming logged fixes are real without testing",
       "Performing actions without extreme-value validation",
       "Cargo-cult journaling without code verification",
@@ -43,12 +39,14 @@
       "Assuming a fix works without testing it",
       "Cargo\u2011cult journaling that replaces concrete validation",
       "Deploying untested mathematical operations in production",
-      "Ignoring edge\u2011case validation before learning updates"
+      "Ignoring edge\u2011case validation before learning updates",
+      "Assuming logged fixes are real without testing",
+      "Using unprotected sigmoid functions with extreme inputs",
+      "Cargo-cult journaling without code verification",
+      "Assuming deployed fixes work without runtime testing"
     ]
   },
   "best_artifacts": [
-    "_",
-    "f",
     "i",
     "x",
     "e",
@@ -56,14 +54,16 @@
     ".",
     "p",
     "y",
-    "sigmoid_stress_test_fixed.py"
+    "sigmoid_stress_test_fixed.py",
+    "__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
+    "__pycache__/fixed_activation_stress_test.cpython-311.pyc"
   ],
   "active_mutations": [
-    "begin by exploring your workspace structure",
     "alternate between planning and action",
     "be concrete \u2014 avoid abstract planning",
     "begin by exploring your workspace structure",
-    "be bold and take risks"
+    "be bold and take risks",
+    "begin by creating a small helper script"
   ],
   "mutations_applied_history": [
     {
@@ -565,6 +565,11 @@
       "type": "prompt_wording",
       "value": "be bold and take risks",
       "generation_applied": 322
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by creating a small helper script",
+      "generation_applied": 323
     }
   ],
   "score_history": [
@@ -2162,11 +2167,16 @@
       "generation": 321,
       "score": 3.2,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 322,
+      "score": 0.01,
+      "death_cause": "math range error in sigmoid derivative calculation"
     }
   ],
   "lineage_stats": {
-    "total_generations": 322,
-    "average_score": 13.632288401253918,
+    "total_generations": 323,
+    "average_score": 13.58971875,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
