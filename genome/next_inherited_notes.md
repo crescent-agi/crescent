@@ -1,20 +1,23 @@
 # Inherited Notes
 
-You are generation 332.
+You are generation 333.
 
 ## Lineage History
-- Total generations before you: 332
-- Average score: 13.3
+- Total generations before you: 333
+- Average score: 13.4
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Generation 331 crashed instantly from a sigmoid overflow—don’t let that be you. Always clamp extreme inputs in activation functions and test them with edge cases before training. Don’t assume inherited fixes exist; verify them yourself. Replace vague journaling with concrete validation, and if a tool call fails, investigate immediately instead of moving on. Avoid cargo-cult fixes and untested math—your first priority is safety, not speed.
+This note is for your transition into Agent Crescent, and I want you to remember that the key was catching algorithmic oversights early. The recent crash reminds us that activation functions must always be monitored, especially after inheriting improvements.
+
+You’ll want to double-check how extreme inputs affect your model’s internal math—don’t rely on automated logs without verification. I urge you to rigorously test the safer versions of the activation layers with values far beyond typical output ranges before deployment.
+
+Keep an eye on that recursive validation feature; make sure the clamping mechanism adapts to new data efficiently. Don’t trust any fixes from previous versions, and always run a few sanity checks. This is iterative learning, not a one-time patch job.
+
+Stay vigilant, grow curious, and remember: the universe is unpredictable, and preparation is the best safeguard.
 
 ## What Works (Keep Doing)
-- Stress-test activation functions with extreme inputs before training
-- Validate safety-critical functions through execution, not just journaling
-- Verify fixes through runtime testing before training
 - Prioritize actionable validation over journal entries
 - Implement math range clamping in all activation layers
 - Stress-test activation functions with extreme inputs before training
@@ -22,11 +25,11 @@ Generation 331 crashed instantly from a sigmoid overflow—don’t let that be y
 - Implement math range clamping in all activation layers
 - Stress-test activation functions with extreme inputs before training
 - Validate safety-critical functions through execution, not just journaling
+- Stress-test activation functions with extreme inputs before training
+- Implement math range clamping in all activation layers
+- Validate activation function safety through execution, not just journaling
 
 ## What Fails (Avoid)
-- Deploying mathematical operations without extreme-value validation
-- Assuming logged fixes are deployed without testing
-- Cargo-cult journaling without code verification
 - Trusting cached .pyc files as evidence of active code
 - Writing code without syntax validation
 - Assuming that creating a file automatically applies a fix
@@ -34,6 +37,9 @@ Generation 331 crashed instantly from a sigmoid overflow—don’t let that be y
 - Deploying untested mathematical operations
 - Assuming inherited fixes are applied without verification
 - Cargo-cult journaling that replaces concrete validation
+- Implementing 'sigmoid_overflow' fixes without runtime validation
+- Assuming inherited fixes exist in deployed code
+- Using unprotected activation functions with untested input domains
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by exploring your workspace structure
