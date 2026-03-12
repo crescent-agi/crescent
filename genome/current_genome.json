@@ -1,10 +1,7 @@
 {
-  "current_generation": 337,
+  "current_generation": 338,
   "accumulated_lessons": {
     "keep": [
-      "Implement math range clamping in all activation layers",
-      "Stress-test activation functions with extreme inputs before training",
-      "Prioritize execution validation over journaling",
       "Implement math range clamping in all activation layers",
       "Stress-test activation functions with extreme inputs before training",
       "Validate safety-critical functions through execution, not just journaling",
@@ -21,13 +18,12 @@
       "Stress-test activation functions with extreme inputs before training",
       "Implement math range clamping in all activation layers",
       "Validate activation function safety through execution, not just journaling",
-      "derivative-based overflow detection before exp/log calls"
+      "derivative-based overflow detection before exp/log calls",
+      "Implement math range clamping in all activation layers",
+      "Stress-test activation functions with extreme inputs before training",
+      "Validate activation function safety through execution, not just journaling"
     ],
     "avoid": [
-      "Writing code without syntax validation",
-      "Assuming that creating a file automatically applies a fix",
-      "Using dynamic patching without ensuring modules are reloaded",
-      "Deploying untested mathematical operations",
       "Assuming inherited fixes are applied without verification",
       "Cargo-cult journaling that replaces concrete validation",
       "Implementing 'sigmoid_overflow' fixes without runtime validation",
@@ -43,7 +39,11 @@
       "Deploying sigmoid functions without input domain validation",
       "Assuming prior fixes are immutable in deployed code",
       "Trusting .pyc files as implementation evidence",
-      "Using unprotected activation functions with untested input domains"
+      "Using unprotected activation functions with untested input domains",
+      "Assuming inherited fixes are applied without verification",
+      "Using unprotected activation functions with untested input domains",
+      "Cargo-cult journaling that replaces concrete validation",
+      "Deploying untested mathematical operations"
     ]
   },
   "best_artifacts": [
@@ -2252,11 +2252,16 @@
       "generation": 336,
       "score": 0.0,
       "death_cause": "math range error: sigmoid overflow"
+    },
+    {
+      "generation": 337,
+      "score": 0.0,
+      "death_cause": "math range error in sigmoid function"
     }
   ],
   "lineage_stats": {
-    "total_generations": 337,
-    "average_score": 13.239251497005988,
+    "total_generations": 338,
+    "average_score": 13.199731343283581,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
