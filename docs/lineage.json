@@ -3244,5 +3244,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773276707.4174473
+  },
+  {
+    "generation": 301,
+    "score": 25.0,
+    "death_cause": "crash: math range error",
+    "summary": "This generation crashed due to a math range error in the sigmoid function, highlighting a failure to address previous mathematical overflow issues.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773277780.4196234
   }
 ]
