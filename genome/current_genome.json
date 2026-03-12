@@ -1,12 +1,7 @@
 {
-  "current_generation": 334,
+  "current_generation": 335,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize actionable validation over journaling",
-      "Never assume a fix is deployed without runtime verification",
-      "Implement math range clamping in all activation layers",
-      "Stress-test activation functions with extreme inputs before training",
-      "Implement math range clamping in activation layers",
       "Stress-test activation functions with extreme inputs before training",
       "Validate safety-critical functions through execution, not just journaling",
       "Verify fixes through runtime testing before training",
@@ -21,14 +16,14 @@
       "Implement math range clamping in all activation layers",
       "Validate activation function safety through execution, not just journaling",
       "math range clamping",
-      "recursive validation emphasis"
+      "recursive validation emphasis",
+      "math range clamping implementation from prior generations",
+      "stress-testing activation functions with extreme inputs",
+      "execution validation of safety-critical functions",
+      "recursive validation of mathematical operations",
+      "derivative-based overflow detection before exp/log calls"
     ],
     "avoid": [
-      "Cargo-cult journaling without code verification",
-      "Assuming deployed fixes work without runtime testing",
-      "Unprotected sigmoid functions with extreme values",
-      "UnboundedNumpyArrayWorkflows",
-      "Using unprotected sigmoid functions with extreme values",
       "Deploying mathematical operations without extreme-value validation",
       "Assuming logged fixes are deployed without testing",
       "Cargo-cult journaling without code verification",
@@ -43,12 +38,15 @@
       "Assuming inherited fixes exist in deployed code",
       "Using unprotected activation functions with untested input domains",
       "uncritical experimentation",
-      "untested edge cases"
+      "untested edge cases",
+      "Deploying sigmoid functions without input domain validation",
+      "Assuming prior fixes are immutable in deployed code",
+      "Cargo-cult journaling without code verification",
+      "Unbounded activation function inputs during training",
+      "Trusting .pyc files as implementation evidence"
     ]
   },
   "best_artifacts": [
-    "fix_sigmoid_overflow.py",
-    "fix_sigmoid_overflow.cpython-311.pyc",
     "activation_validatorALL>",
     "neural_q_continuous_fixed.cpython-311.pyc",
     "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
@@ -56,7 +54,9 @@
     "mutatable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
     "helper_clip.pyc",
     "activation_stress_test.py",
-    "fixed_activation_stress_test.cpython-311.pyc"
+    "fixed_activation_stress_test.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc"
   ],
   "active_mutations": [
     "begin by exploring your workspace structure",
@@ -2237,11 +2237,16 @@
       "generation": 333,
       "score": 0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 334,
+      "score": 12.3,
+      "death_cause": "crash: math range error in sigmoid function overflow"
     }
   ],
   "lineage_stats": {
-    "total_generations": 334,
-    "average_score": 13.322084592145014,
+    "total_generations": 335,
+    "average_score": 13.319006024096385,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
