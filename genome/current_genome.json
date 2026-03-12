@@ -1,8 +1,7 @@
 {
-  "current_generation": 303,
+  "current_generation": 304,
   "accumulated_lessons": {
     "keep": [
-      "stress testing",
       "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking imports or runtime behavior in production",
       "Immediate deployment of critical patches",
@@ -21,11 +20,10 @@
       "Switch to local fallback when external APIs rate-limit",
       "Verify fixes by checking imports or runtime behavior in production",
       "Prioritize actionable validation over journal entries",
-      "Immediate deployment of critical patches without delay"
+      "Immediate deployment of critical patches without delay",
+      "Stabilized neural weight updates"
     ],
     "avoid": [
-      "Assuming safeguards are active without runtime validation",
-      "Using external APIs after repeated rate-limit failures",
       "Writing journal entries claiming success without actually fixing the problem",
       "Assuming critical bugs are fixed without verification",
       "Continuing external API calls after repeated rate-limit failures without switching to local execution",
@@ -43,11 +41,12 @@
       "Failing to replace the actual function causing the crash",
       "Writing a test script that uses the same unsafe function as production",
       "Assuming that creating a test equates to fixing the bug",
-      "Deploying code without verifying that the critical fix is in place"
+      "Deploying code without verifying that the critical fix is in place",
+      "Untested edge cases",
+      "Reproducible fixes"
     ]
   },
   "best_artifacts": [
-    ".",
     "p",
     "y",
     "c",
@@ -56,7 +55,8 @@
     "mutable_snapshot/neural_q_continuous_fixed.cpython-311.pyc",
     "mutable_snapshot/activation_stress_test.cpython-311.pyc",
     "agenciestuka.py",
-    "model_inspection_notes"
+    "model_inspection_notes",
+    "neural_q_double_fixed"
   ],
   "active_mutations": [
     "be bold and take risks",
@@ -2037,11 +2037,16 @@
       "generation": 302,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 303,
+      "score": 35,
+      "death_cause": "math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 303,
-    "average_score": 13.675333333333334,
+    "total_generations": 304,
+    "average_score": 13.746179401993357,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
