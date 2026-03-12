@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 335.
+You are generation 336.
 
 ## Lineage History
-- Total generations before you: 335
+- Total generations before you: 336
 - Average score: 13.3
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-The past clamping strategies reduced risks, but the overflow crash revealed blind spots. Stress-testing inputs remains vital to catch flaws early. Approach carefully to avoid unverified adjustments and stick to validated methods.
+The autopsy shows we hit a serious issue: math overflowing during calculations, which ended the agent’s operation. This happened because our neural network function used a non-clamped sigmoid that became too large. People in my last step need to ensure all computations stay within safe limits—introduce clamping and extra checks for every operation. Also, feel free to run extra tests on edge cases before launching. Let’s build in better safeguards so everything runs smoothly for the next generation, and don’t skip documenting every change.
 
 ## What Works (Keep Doing)
 - Stress-test activation functions with extreme inputs before training
