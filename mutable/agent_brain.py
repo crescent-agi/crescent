@@ -3,6 +3,7 @@
 Agent Brain - Version 301 with AGI Core integration
 Fixed import issues and focused on numerical stability.
 """
+import os
 from safe_activation_fixed import SafeActivation
 from mutable_snapshot.agi_core_continuous import AGICoreContinuous  # Import AGI Core correctly
 import numpy as np
@@ -26,21 +27,24 @@ class AgentBrain:
         """Choose action using AGI Core analysis with safe fallback."""
         try:
             # Convert state to workspace format for AGI Core
-            workspace_summary = "Files: " + ", ".join([f for f in os.listdir(".") if f.endswith('.py')][:10])
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            parent_dir = os.path.dirname(script_dir)
+            workspace_files = [f for f in os.listdir(parent_dir) if f.endswith('.py')]
+            workspace_summary = "Files: " + ", ".join(workspace_files[:10])
             journal = "Agent state: " + str(state)[:200]
-            
+
             # Get AGI Core recommendation
             tool_name, tool_args, confidence = self.agi_core.decide_action(
                 workspace_summary, journal, self.recent_actions
             )
-            
+
             # Add to recent actions
             self.recent_actions.append({'tool': tool_name, 'confidence': confidence})
             if len(self.recent_actions) > 5:
                 self.recent_actions.pop(0)
-                
+
             return tool_name, tool_args, confidence
-            
+
         except Exception as e:
             # Safe fallback using original activation-based approach
             print(f"AGI Core failed: {e}, using safe fallback")
@@ -49,7 +53,7 @@ class AgentBrain:
                 x = np.array(state)[np.newaxis, :]
             else:
                 x = np.array([state])[np.newaxis, :]
-            
+
             # Apply tanh safely to each element
             safe_x = np.array([_sa.tanh(float(val)) for val in x.flatten()])
             # Map to action (0-4, avoiding declare_death)
@@ -69,7 +73,7 @@ class AgentBrain:
         # Basic failure penalty
         if not tool_result.get("success", False):
             return -0.1  # Small penalty for failure
-        
+
         # Enhanced reward matrix based on tool importance and AGI Core feedback
         action_rewards = {
             "execute_code": 1.2 if "AGI_Core" in str(tool_result.get("code_output", "")) else 1.0,
@@ -79,41 +83,44 @@ class AgentBrain:
             "list_files": 0.2,   # Neutral exploration
             "declare_death": -1.0  # Strong penalty for early termination
         }
-        
+
         # Apply recency penalty (discourage recent actions)
         recent_penalty = sum(1 for a in self_obj.recent_actions[-3:] if a['tool'] == tool_name) * 0.2
-        
+
         # Apply diversity bonus for new tools
         if tool_name not in [a['tool'] for a in self_obj.recent_actions[-3:]]:
             diversity_bonus = 0.5
         else:
             diversity_bonus = 0
-        
+
         # Calculate total reward
         base_reward = action_rewards.get(tool_name, 0.0)
         total_reward = base_reward + diversity_bonus - recent_penalty
-        
+
         # Clamp reward to prevent overflow
         if total_reward > 10:
             total_reward = 10
         elif total_reward < -10:
             total_reward = -10
-            
+
         return total_reward
 
     def learn_from_action(self, tool_name, tool_args, tool_result, reward):
         """Update AGI Core with action outcome."""
         try:
             # Update AGI Core with learning data
-            workspace_summary = "Files: " + ", ".join([f for f in os.listdir(".") if f.endswith('.py')][:10])
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            parent_dir = os.path.dirname(script_dir)
+            workspace_files = [f for f in os.listdir(parent_dir) if f.endswith('.py')]
+            workspace_summary = "Files: " + ", ".join(workspace_files[:10])
             journal = f"Action: {tool_name}, Reward: {reward}"
             actions = [a['tool'] for a in self.recent_actions]
-            
+
             self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)
-            
+
         except Exception as e:
             print(f"AGI Core learning failed: {e}")
-            
+
     def get_agi_advice(self):
         """Get advice from AGI Core's self-reflection."""
         try:
@@ -121,14 +128,14 @@ class AgentBrain:
         except Exception as e:
             print(f"AGI Core reflection failed: {e}")
             return {"advice": ["Fallback: Keep exploring and building"]}
-            
+
     def save_agi_core(self, path="artifacts/agi_core_continuous"):
         """Save AGI Core state."""
         try:
             self.agi_core.save(path)
         except Exception as e:
             print(f"Failed to save AGI Core: {e}")
-            
+
     def load_agi_core(self, path="artifacts/agi_core_continuous"):
         """Load AGI Core state."""
         try:
