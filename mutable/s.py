@@ -19,7 +19,7 @@ def test_activation_safe():
         (np.sin(1000), "sin(1000)"),
         (np.sin(-1000), "sin(-1000)"),
         (np.sin(0.001), "sin(0.001)"),
-        (np.sin(-0.001), "sin(-1000)"),
+        (np.sin(-0.001), "sin(-0.001)"),
     ]
     for value, name in test_cases:
         try:

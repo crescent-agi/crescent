@@ -3280,5 +3280,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773278483.292593
+  },
+  {
+    "generation": 305,
+    "score": 0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent crashed due to a sigmoid activation overflow when processing extreme input values, despite having access to fixed versions and stress tests, indicating failure to properly implement or verify overflow protection.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773278762.3109167
   }
 ]

@@ -1,11 +1,7 @@
 {
-  "current_generation": 305,
+  "current_generation": 306,
   "accumulated_lessons": {
     "keep": [
-      "Immediate deployment of critical patches",
-      "Verifying fixes through runtime checks",
-      "Stress-testing activation functions with extreme values",
-      "Stress-test activation functions with extreme values before training",
       "Verify fixes by checking imports or runtime behavior in production",
       "Immediate deployment of critical patches without delay",
       "Prioritize actionable validation over journal entries",
@@ -21,13 +17,13 @@
       "Stabilized neural weight updates",
       "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking imports or runtime behavior in production",
-      "Never assume a fix is deployed without verification"
+      "Never assume a fix is deployed without verification",
+      "Stress-test activation functions with extreme values before any training",
+      "Verify fixes by checking imports or runtime behavior in production",
+      "Never assume a fix is deployed without verification",
+      "Immediate deployment of critical patches without delay"
     ],
     "avoid": [
-      "Writing journal entries claiming success without actual fixes",
-      "Assuming activation functions are safe without stress-testing",
-      "Deploying code changes without runtime verification",
-      "Cargo-cult journaling without code verification",
       "exposure of runtime failures",
       "naive stress-testing",
       "Failing to replace the actual function causing the crash",
@@ -43,7 +39,11 @@
       "Assuming critical bugs are fixed without verification",
       "Writing journal entries claiming success without actual fixes",
       "Continuing external API calls after repeated rate-limit failures",
-      "Failing to replace the actual function causing the crash"
+      "Failing to replace the actual function causing the crash",
+      "Using an unprotected sigmoid function in production",
+      "Failing to replace the actual function causing the crash in the deployed code path",
+      "Getting stuck in an infinite loop of modification without successful verification",
+      "Deploying code changes without testing with extreme input values"
     ]
   },
   "best_artifacts": [
@@ -2047,11 +2047,16 @@
       "generation": 304,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 305,
+      "score": 0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 305,
-    "average_score": 13.700662251655631,
+    "total_generations": 306,
+    "average_score": 13.655445544554457,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
