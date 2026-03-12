@@ -1,10 +1,7 @@
 {
-  "current_generation": 317,
+  "current_generation": 318,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize actionable validation over journal entries",
-      "Immediate deployment of critical patches without delay",
-      "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking runtime behavior in production",
       "Immediate deployment of critical patches without delay",
       "stabilization protocols",
@@ -21,12 +18,12 @@
       "Implement math range clamping and overflow protection in all activation layers",
       "Validate critical safety files and mechanisms before execution",
       "Never assume a fix is deployed without verification",
-      "Prioritize actionable validation over journal entries"
+      "Prioritize actionable validation over journal entries",
+      "Stress-test activation functions with extreme inputs before training",
+      "Immediate deployment of math range clamping protections",
+      "Verify safety critical functions through execution, not just journaling"
     ],
     "avoid": [
-      "Ignoring prior critical warnings about math overflow",
-      "Using unprotected raw math functions like sigmoid with extreme inputs",
-      "Cargo-cult journaling without code verification",
       "Deploying code without validating edge case handling in production",
       "Assuming test environments mirror production behavior",
       "untested modifications",
@@ -43,20 +40,23 @@
       "Using an unprotected sigmoid function with extreme inputs",
       "Cargo-cult journaling without code verification",
       "Assuming logged fixes are real without testing",
-      "Performing actions without extreme-value validation"
+      "Performing actions without extreme-value validation",
+      "Cargo-cult journaling without code verification",
+      "Assuming deployed fixes work without runtime testing",
+      "Using unprotected mathematical operations in neural networks"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous_fixed.cpython-311.pyc",
-    "neural_q_continuous.cpython-311.pyc",
-    "agency_logciessummary.txt",
     "neur_neural_q_continuous_double_fixed.py",
     "safe_activation_fixed.py",
     "neural_q_continuous.cpython-311.pyc",
     "fix_sigmoid_overflow.pyc",
     "neural_q_continuous_fixed.pyc",
     "mutable_snapshot/fix_sigmoid_overflow.pyc",
-    "mutable_snapshot/neural_q_continuous_fixed.pyc"
+    "mutable_snapshot/neural_q_continuous_fixed.pyc",
+    "mutable_snapshot/safe_activation_fixed.py",
+    "mutable_snapshot/fix_sigmoid_overflow.py",
+    "fixed_activation_stress_test.cpython-311.pyc"
   ],
   "active_mutations": [
     "prefer writing code over writing notes",
@@ -2127,11 +2127,16 @@
       "generation": 316,
       "score": 19.2,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 317,
+      "score": 35.5,
+      "death_cause": "math range error from unprotected sigmoid overflow"
     }
   ],
   "lineage_stats": {
-    "total_generations": 317,
-    "average_score": 13.485350318471337,
+    "total_generations": 318,
+    "average_score": 13.555238095238094,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
