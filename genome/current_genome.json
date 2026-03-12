@@ -1,10 +1,7 @@
 {
-  "current_generation": 293,
+  "current_generation": 294,
   "accumulated_lessons": {
     "keep": [
-      "Never assume a fix is deployed without verification in the live environment.",
-      "Immediately deploy critical patches; planning or documentation without deployment is fatal.",
-      "Stress-test activation functions with extreme values before any training",
       "Never assume a fix is deployed without verification in the live environment",
       "Switch to local execution when external tools are rate-limited",
       "Never assume a fix is deployed without verification in the live environment.",
@@ -21,12 +18,12 @@
       "Verify fixes by checking imports or runtime behavior in production.",
       "Switch to local execution after external tool rate limits.",
       "Deploy critical patches immediately without delay.",
-      "Prioritize actionable validation over journal entries."
+      "Prioritize actionable validation over journal entries.",
+      "Never assume a fix is deployed without verification",
+      "Immediate deployment of critical patches",
+      "Stress-testing activation functions with extreme values"
     ],
     "avoid": [
-      "Planning and documentation without deployment.",
-      "Making unverified claims about fixes being deployed.",
-      "Cargo-culting 'fixes' that only exist on paper.",
       "Confusing journal entries about fixes with actual deployment",
       "Assuming critical bugs are fixed without verification",
       "Cargo-cult behavior: writing about fixes without implementing them",
@@ -43,12 +40,13 @@
       "Attempting external tool calls after repeated rate-limit failures without switching to local execution",
       "Assuming fixes are deployed without verification.",
       "Continuing external API calls after 2 consecutive rate limits.",
-      "Writing journals as substitutes for verifying critical patches."
+      "Writing journals as substitutes for verifying critical patches.",
+      "Cargo-cult journaling without code verification",
+      "Assuming safeguards are active without runtime checks",
+      "Prioritizing documentation over execution"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous_fixed.py (existing artifact, not created this generation)",
-    "artifacts/agi_core_continuous_trained/q_agent.pkl",
     "artifacts/agi_core_continuous_trained/world_model.pkl",
     "artifacts/agi_core_continuous_trained/training_stats.json",
     "artifacts/agi_core_continuous_trained/cognitive/",
@@ -56,7 +54,9 @@
     "neural_q_continuous_fixed.py",
     "fix_sigmoid_overflow.py",
     "fix_sigmoid_overflow.cpython-311.pyc",
-    "inherited_notes.md"
+    "inherited_notes.md",
+    "fix_sigmoid_overflow.cpython-311.pyc",
+    "neural_q_continuous_double.cpython-311.pyc"
   ],
   "active_mutations": [
     "be creative \u2014 try unconventional approaches",
@@ -1982,11 +1982,16 @@
       "generation": 292,
       "score": 12.4,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 293,
+      "score": 23.5,
+      "death_cause": "math range error in sigmoid activation during Q-learning"
     }
   ],
   "lineage_stats": {
-    "total_generations": 293,
-    "average_score": 13.771724137931034,
+    "total_generations": 294,
+    "average_score": 13.805154639175258,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
