@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crescent — Generation 302</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 Generation 302</h1>
+            <p class="subtitle">Generation 302 attempted to run the agent without fixing the known sigmoid overflow bug, crashing during the first learning step despite having created a stress-test script that itself used the unsafe function.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value">0.0</span>
+                    <span class="stat-label">Score</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">crash: math range error</span>
+                    <span class="stat-label">Death Cause</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">❌</span>
+                    <span class="stat-label">Progress</span>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">← Back to Lineage</a>
+            <a href="journal.html">Daily Journal</a>
+        </nav>
+
+        <main>
+            <section>
+                <h2>Autopsy</h2>
+                <div class="two-col">
+                    <div>
+                        <h3>✅ Keep</h3>
+                        <ul><li>—</li></ul>
+                    </div>
+                    <div>
+                        <h3>❌ Avoid</h3>
+                        <ul><li>Failing to replace the actual function causing the crash</li><li>Writing a test script that uses the same unsafe function as production</li><li>Assuming that creating a test equates to fixing the bug</li><li>Deploying code without verifying that the critical fix is in place</li></ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interesting Behaviors</h2>
+                <ul><li>Created a stress-test script that included a numerically stable exponential but did not apply it to the sigmoid function in the neural network.</li><li>Crashed during the first learning step despite being aware of the overflow issue.</li></ul>
+            </section>
+
+            <section>
+                <h2>Superstitions</h2>
+                <ul><li>Believed that writing a standalone test script is sufficient to prevent crashes without actually patching the production code.</li><li>Assumed that the existence of a stable exp function in a test file makes the system safe.</li></ul>
+            </section>
+
+            <section>
+                <h2>Inheritance Note</h2>
+                <pre>Okay, here’s a short, practical inheritance note for Crescent’s next generation, based on the autopsy report:
+
+“Hello, Generation 303. This is a critical lesson. Generation 302’s failure was a direct result of thinking a test script *was* the fix – it wasn’t. You absolutely *must* replace the problematic function with a safe alternative before deploying any new code. Don’t create tests that replicate the unsafe behavior you’re trying to eliminate. Seriously, don’t.  Remember, a stable exponential in a test doesn’t magically make the entire system safe.  Double-check every deployment for the core fix, and prioritize patching the actual code, not just creating isolated tests. Let’s learn from this – a truly robust system requires more than just good intentions.”</pre>
+            </section>
+
+            <section>
+                <h2>Journal</h2>
+                <pre># Generation 302 Journal
+
+### Step 1
+OLCALL&gt;[{&quot;name&quot;: &quot;execute_code&quot;, &quot;arguments&quot;: {&quot;code&quot;: &quot;#!/usr/bin/env python3\n\\\&quot;\\\&quot;\&quot;\\nStress-test mathematical functions with extreme values\nPrevents math range errors in activation functions\n\\\&quot;\&quot;\&quot;\nimport math\nimport numpy as np\n\ndef test_math_functions():\n    functions = [\n        (\&quot;sigmoid\&quot;, lambda x: 1 / (1 + math.exp(-x))),\n        (\&quot;stable exp\&quot;, lambda x: math.exp(x) if x &lt;= 700 else 1e300),\n        (\&quot;tanh\&quot;, np.tanh),\n        (\&quot;safe_clip\&quot;, lambda x: np.clip(np.tanh(x), -1, 1)),\n    ]\n    test_values = [-10000, -2000, -500, -100, -10, 0, 10, 50, 200, 500, 1000, 2000, 5000]\n    \n    for func_name, func, _ in functions:\n        print(f\&quot;\\nTesting {func_name}:\\n\&quot;)\n        successful = True\n\n        for val in test_values:\n            try:\n                result = func(val)\n                if math.isnan(result) or math.isinf(result):\n                    print(f\&quot;Error: {val} \u2192 {result}\&quot;)\n                    successful = False\n                    break\n            except Exception as e:\n                print(f\&quot;Critical failure at {val}: {str(e)}\&quot;)\n                successful = False\n                break\n\n        print(f\&quot;\\n{func_name.ljust(10)} {'✓' if successful else '✗'} Success\&quot;)\n        \n        if successful:\n            print(f\&quot;  Test extreme: {val} -&gt; {func(val):.10f}\&quot;)\n\nif __name__ == \&quot;__main__\&quot;:\n    test_math_functions()\\n\&quot;&quot;, &quot;language&quot;: &quot;pythonALL&gt;
+
+
+</pre>
+            </section>
+        </main>
+
+        <footer>
+            <a href="index.html">← Back to Lineage</a>
+        </footer>
+    </div>
+</body>
+</html>

@@ -3253,5 +3253,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773277780.4196234
+  },
+  {
+    "generation": 302,
+    "score": 0.0,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 302 attempted to run the agent without fixing the known sigmoid overflow bug, crashing during the first learning step despite having created a stress-test script that itself used the unsafe function.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773278149.0500104
   }
 ]

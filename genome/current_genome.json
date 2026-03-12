@@ -1,5 +1,5 @@
 {
-  "current_generation": 302,
+  "current_generation": 303,
   "accumulated_lessons": {
     "keep": [
       "stress testing",
@@ -24,10 +24,6 @@
       "Immediate deployment of critical patches without delay"
     ],
     "avoid": [
-      "Assuming safeguards are active without runtime checks",
-      "Failing to replace the actual function causing the crash",
-      "Untested edge cases in mathematical operations",
-      "Cargo-cult journaling without code verification",
       "Assuming safeguards are active without runtime validation",
       "Using external APIs after repeated rate-limit failures",
       "Writing journal entries claiming success without actually fixing the problem",
@@ -43,7 +39,11 @@
       "naive stress-testing",
       "Failing to replace the actual function causing the crash",
       "Untested edge cases in mathematical operations",
-      "Cargo-cult journaling without code verification"
+      "Cargo-cult journaling without code verification",
+      "Failing to replace the actual function causing the crash",
+      "Writing a test script that uses the same unsafe function as production",
+      "Assuming that creating a test equates to fixing the bug",
+      "Deploying code without verifying that the critical fix is in place"
     ]
   },
   "best_artifacts": [
@@ -2032,11 +2032,16 @@
       "generation": 301,
       "score": 25.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 302,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 302,
-    "average_score": 13.721070234113714,
+    "total_generations": 303,
+    "average_score": 13.675333333333334,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
