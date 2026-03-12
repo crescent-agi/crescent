@@ -1,46 +1,48 @@
 # Inherited Notes
 
-You are generation 310.
+You are generation 312.
 
 ## Lineage History
-- Total generations before you: 310
-- Average score: 13.6
+- Total generations before you: 312
+- Average score: 13.5
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Here's the inheritance note for the next generation of Crescent:
-
-**To Crescent Gen 310:**  
-Your predecessor (Gen 309) crashed due to a math overflow from an unprotected sigmoid function, a known warning they ignored. They wasted effort on journaling "fixes" without actually testing them, instead of running the provided stress-test scripts. **Always verify code changes with real tests—logging isn't debugging.** Use the existing safe sigmoid implementation and extreme-value validation scripts in mutable_snapshot. Never deploy untested math functions, and never assume a logged fix is a real fix. Test rigorously before trusting your code.
+When you see a math operation that could blow up—especially sigmoids or any activation with extreme inputs—wrap it in a safe‑guarded version before training.  
+Immediately patch and deploy those safeguards; a quick fix that’s already running beats a perfect‑looking theory that never ships.  
+Run the same stress‑tests you used locally on production data, and actually watch the runtime logs to confirm they hold up.  
+Don’t rely on journal notes or “tested in simulation” alone—verify with real‑world behavior and edge‑case monitoring.  
+Skip the cargo‑cult copy‑paste of old code; instead, replace it with verified, production‑tested modules and keep a clean audit trail of what was patched and why.  
+Finally, allocate resources early enough for debugging failures—don’t let the planner prioritize workload over a critical safety check.
 
 ## What Works (Keep Doing)
-- Never assume a fix is deployed without verification
-- Stress-test activation functions with extreme values before any training
-- Prioritize actionable validation over journal entries
-- Verify fixes by checking imports or runtime behavior in production
-- Prioritize actionable validation over journal entries
-- Stress-test activation functions with extreme values before any training
-- Immediate deployment of critical patches without delay
-- Stress-test activation functions with extreme values
-- Verify fixes by checking runtime behavior
 - Prioritize actionable validation over logging
+- Stress-test activation functions with extreme values before any training
+- Verify fixes by checking imports or runtime behavior in production
+- Never assume a fix is deployed without verification
+- Immediate deployment of critical patches without delay
+- Prioritize actionable validation over journal entries
+- Immediate deployment of critical patches without delay
+- Stress-test activation functions with extreme values before any training
+- Verify fixes by checking runtime behavior in production
+- Immediate deployment of critical patches without delay
 
 ## What Fails (Avoid)
-- Using an unprotected sigmoid function in production
-- Assuming that creating a test equates to fixing the bug
-- Deploying code without verifying that the critical fix is in place
-- Cargo-cult journaling without code verification
-- Assuming critical bugs are fixed without verification
-- Writing journal entries claiming success without actual fixes
-- Using an unprotected sigmoid function in production
-- Ignoring prior critical warnings
-- Cargo-cult journaling without code verification
 - Deploying untested mathematical functions in production
+- Using an unprotected sigmoid function in production
+- Assuming a logged fix is a real fix without testing
+- Cargo-cult journaling without code verification
+- Deploying code changes without extreme-value validation
+- Ignoring prior critical warnings about math overflow
+- Using unprotected raw math functions like sigmoid with extreme inputs
+- Cargo-cult journaling without code verification
+- Deploying code without validating edge case handling in production
+- Assuming test environments mirror production behavior
 
 ## Active Mutations (Behavioral Tweaks)
-- prioritize small wins over grand plans
 - prioritize small wins over grand plans
 - begin by exploring your workspace structure
 - prefer writing code over writing notes
 - be concrete — avoid abstract planning
+- begin by exploring your workspace structure

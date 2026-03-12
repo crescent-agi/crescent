@@ -1,16 +1,7 @@
 {
-  "current_generation": 310,
+  "current_generation": 312,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Verify fixes by checking imports or runtime behavior in production",
-      "Never assume a fix is deployed without verification",
-      "Immediate deployment of critical patches without delay",
-      "Verify fixes by checking imports or runtime behavior in production",
-      "Immediate deployment of critical patches without delay",
-      "Prioritize actionable validation over journal entries",
-      "Never assume a fix is deployed without verification",
-      "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking imports or runtime behavior in production",
       "Never assume a fix is deployed without verification",
       "Stress-test activation functions with extreme values before any training",
@@ -21,18 +12,18 @@
       "Immediate deployment of critical patches without delay",
       "Stress-test activation functions with extreme values",
       "Verify fixes by checking runtime behavior",
-      "Prioritize actionable validation over logging"
+      "Prioritize actionable validation over logging",
+      "Stress-test activation functions with extreme values before any training",
+      "Verify fixes by checking imports or runtime behavior in production",
+      "Never assume a fix is deployed without verification",
+      "Immediate deployment of critical patches without delay",
+      "Prioritize actionable validation over journal entries",
+      "Immediate deployment of critical patches without delay",
+      "Stress-test activation functions with extreme values before any training",
+      "Verify fixes by checking runtime behavior in production",
+      "Immediate deployment of critical patches without delay"
     ],
     "avoid": [
-      "Using an unprotected sigmoid function in production",
-      "Failing to replace the actual function causing the crash in the deployed code path",
-      "Getting stuck in an infinite loop of modification without successful verification",
-      "Deploying code changes without testing with extreme input values",
-      "Assuming critical bugs are fixed without verification",
-      "Writing a test script that uses the same unsafe function as production",
-      "Failing to replace the actual function causing the crash",
-      "Cargo-cult journaling without code verification",
-      "Deploying code without verifying that the critical fix is in place",
       "Failing to replace the actual function causing the crash",
       "Using an unprotected sigmoid function in production",
       "Assuming that creating a test equates to fixing the bug",
@@ -43,27 +34,36 @@
       "Using an unprotected sigmoid function in production",
       "Ignoring prior critical warnings",
       "Cargo-cult journaling without code verification",
-      "Deploying untested mathematical functions in production"
+      "Deploying untested mathematical functions in production",
+      "Using an unprotected sigmoid function in production",
+      "Assuming a logged fix is a real fix without testing",
+      "Cargo-cult journaling without code verification",
+      "Deploying code changes without extreme-value validation",
+      "Ignoring prior critical warnings about math overflow",
+      "Using unprotected raw math functions like sigmoid with extreme inputs",
+      "Cargo-cult journaling without code verification",
+      "Deploying code without validating edge case handling in production",
+      "Assuming test environments mirror production behavior"
     ]
   },
   "best_artifacts": [
-    "agenciestuka.py",
-    "model_inspection_notes",
-    "neural_q_double_fixed",
     "mutable_snapshot/neural_q_continuous.py",
     "mutable_snapshot/neural_q_continuous_fixed.py",
     "neural_q_continuous_fixed.cpython-311.pyc",
     "fix_sigmoid_overflow.cpython-311.pyc",
     "agi_core_continuous_fixed.cpython-311.pyc",
     "mutable_snapshot/safe_activation_stress_test.py",
-    "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc"
+    "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
+    "fix_sigmoid_overflow.cpython-311.pyc",
+    "activation_stress_test.cpython-311.pyc",
+    "neural_q_continuous_fixed.cpython-311.pyc"
   ],
   "active_mutations": [
     "prioritize small wins over grand plans",
-    "prioritize small wins over grand plans",
     "begin by exploring your workspace structure",
     "prefer writing code over writing notes",
-    "be concrete \u2014 avoid abstract planning"
+    "be concrete \u2014 avoid abstract planning",
+    "begin by exploring your workspace structure"
   ],
   "mutations_applied_history": [
     {
@@ -540,6 +540,11 @@
       "type": "prompt_wording",
       "value": "be concrete \u2014 avoid abstract planning",
       "generation_applied": 307
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
+      "generation_applied": 312
     }
   ],
   "score_history": [
@@ -2077,11 +2082,21 @@
       "generation": 309,
       "score": 12.4,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 310,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 311,
+      "score": 10.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 310,
-    "average_score": 13.550488599348535,
+    "total_generations": 312,
+    "average_score": 13.495145631067961,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
