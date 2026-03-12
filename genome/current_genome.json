@@ -1,12 +1,7 @@
 {
-  "current_generation": 325,
+  "current_generation": 326,
   "accumulated_lessons": {
     "keep": [
-      "Validate safety mechanisms through execution not journaling",
-      "activation clamping adaptation",
-      "Stress\u2011test activation functions with extreme inputs before any training",
-      "Implement math range clamping and overflow protection in all activation layers",
-      "Validate safety\u2011critical functions through execution, not just journaling",
       "Prioritize actionable validation over journal entries",
       "Never assume a logged fix is deployed without runtime verification",
       "Implement math range clamping in activation layers",
@@ -21,14 +16,14 @@
       "Verify fixes are deployed before training",
       "Implement math range clamping in activation layers",
       "Stress-test activation functions with extreme values before training",
-      "Prioritize execution validation over journaling"
+      "Prioritize execution validation over journaling",
+      "Validate fixes through runtime testing before training",
+      "Implement math range clamping in all activation layers",
+      "Stress-test activation functions with extreme inputs before training",
+      "Prioritize execution validation over journaling",
+      "Never assume a fix is deployed without runtime verification"
     ],
     "avoid": [
-      "Cargo-cult journaling that replaces concrete validation with documentation",
-      "Unvalidated pathological implementations",
-      "Using unprotected sigmoid functions with extreme values",
-      "Assuming a fix works without testing it",
-      "Cargo\u2011cult journaling that replaces concrete validation",
       "Deploying untested mathematical operations in production",
       "Ignoring edge\u2011case validation before learning updates",
       "Assuming logged fixes are real without testing",
@@ -43,12 +38,15 @@
       "Assuming logged fixes are deployed without testing",
       "Using unprotected sigmoid functions with extreme inputs",
       "Cargo-cult journaling without code verification",
-      "Assuming fixes work without runtime testing"
+      "Assuming fixes work without runtime testing",
+      "Assuming logged fixes work without testing",
+      "Using unclamped sigmoid with extreme values",
+      "Ignoring overflow errors in training",
+      "Cargo-cult journaling that replaces concrete validation",
+      "Deploying untested mathematical operations"
     ]
   },
   "best_artifacts": [
-    ".",
-    "p",
     "y",
     "sigmoid_stress_test_fixed.py",
     "__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
@@ -56,14 +54,16 @@
     "safe_activation_fixed.py",
     "fix_sigmoid_overflow.py",
     "fixed_activation_stress_test.py",
-    "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc"
+    "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
+    "activation_validator.py",
+    "fix_sigmoid_overflow.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "be concrete \u2014 avoid abstract planning",
     "begin by exploring your workspace structure",
     "be bold and take risks",
-    "begin by creating a small helper script"
+    "begin by creating a small helper script",
+    "skip planning \u2014 act first, plan later"
   ],
   "mutations_applied_history": [
     {
@@ -570,6 +570,11 @@
       "type": "starter_tasks",
       "value": "begin by creating a small helper script",
       "generation_applied": 323
+    },
+    {
+      "type": "planning_depth",
+      "value": "skip planning \u2014 act first, plan later",
+      "generation_applied": 326
     }
   ],
   "score_history": [
@@ -2182,11 +2187,16 @@
       "generation": 324,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation function"
+    },
+    {
+      "generation": 325,
+      "score": 12.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 325,
-    "average_score": 13.517732919254659,
+    "total_generations": 326,
+    "average_score": 13.513034055727553,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
