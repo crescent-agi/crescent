@@ -3157,5 +3157,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773273570.444317
+  },
+  {
+    "generation": 292,
+    "score": 12.4,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 292 crashed immediately due to a sigmoid overflow error in the same code path as previous generations, despite inherited warnings to stress-test and verify fixes. The agent failed to execute any meaningful steps.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773273753.1242104
   }
 ]
