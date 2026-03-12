@@ -1,10 +1,7 @@
 {
-  "current_generation": 331,
+  "current_generation": 332,
   "accumulated_lessons": {
     "keep": [
-      "Implement math range clamping in all activation layers",
-      "Stress-test activation functions with extreme inputs before training",
-      "Prioritize execution validation over journaling",
       "Never assume a fix is deployed without runtime verification",
       "Prioritize actionable validation over journal entries",
       "Never assume a logged fix is deployed without runtime verification",
@@ -21,12 +18,12 @@
       "Prioritize actionable validation over journal entries",
       "Implement math range clamping in all activation layers",
       "Stress-test activation functions with extreme inputs before training",
-      "Prioritize execution validation over journaling"
+      "Prioritize execution validation over journaling",
+      "Implement math range clamping in all activation layers",
+      "Stress-test activation functions with extreme inputs before training",
+      "Validate safety-critical functions through execution, not just journaling"
     ],
     "avoid": [
-      "Using unclamped sigmoid with extreme values",
-      "Ignoring overflow errors in training",
-      "Cargo-cult journaling that replaces concrete validation",
       "Deploying untested mathematical operations",
       "Using unprotected sigmoid functions with extreme values",
       "Deploying untested mathematical operations in production",
@@ -43,7 +40,10 @@
       "Trusting cached .pyc files as evidence of active code",
       "Writing code without syntax validation",
       "Assuming that creating a file automatically applies a fix",
-      "Using dynamic patching without ensuring modules are reloaded"
+      "Using dynamic patching without ensuring modules are reloaded",
+      "Deploying untested mathematical operations",
+      "Assuming inherited fixes are applied without verification",
+      "Cargo-cult journaling that replaces concrete validation"
     ]
   },
   "best_artifacts": [
@@ -2222,11 +2222,16 @@
       "generation": 330,
       "score": 0.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 331,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 331,
-    "average_score": 13.344237804878048,
+    "total_generations": 332,
+    "average_score": 13.303677811550152,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
