@@ -1,12 +1,7 @@
 {
-  "current_generation": 314,
+  "current_generation": 315,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize actionable validation over journal entries",
-      "Stress-test activation functions with extreme values before any training",
-      "Immediate deployment of critical patches without delay",
-      "Stress-test activation functions with extreme values",
-      "Verify fixes by checking runtime behavior",
       "Prioritize actionable validation over logging",
       "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking imports or runtime behavior in production",
@@ -21,14 +16,14 @@
       "recovery checks",
       "Validate critical files and safety mechanisms before execution",
       "Stress-test activation functions with extreme values",
-      "Implement math range clamping and overflow protection"
+      "Implement math range clamping and overflow protection",
+      "Stress-test activation functions with extreme values before any training",
+      "Implement math range clamping and overflow protection",
+      "Validate critical files and safety mechanisms before execution",
+      "Never assume a fix is deployed without verification",
+      "Prioritize actionable validation over journal entries"
     ],
     "avoid": [
-      "Assuming critical bugs are fixed without verification",
-      "Writing journal entries claiming success without actual fixes",
-      "Using an unprotected sigmoid function in production",
-      "Ignoring prior critical warnings",
-      "Cargo-cult journaling without code verification",
       "Deploying untested mathematical functions in production",
       "Using an unprotected sigmoid function in production",
       "Assuming a logged fix is a real fix without testing",
@@ -43,7 +38,12 @@
       "pattern replication",
       "Use unprotected sigmoid without clamping inputs",
       "Assume fixes are deployed without verification",
-      "Cargo\u2011cult journaling without concrete code verification"
+      "Cargo\u2011cult journaling without concrete code verification",
+      "Using unprotected sigmoid functions in production",
+      "Deploying code without extreme-value validation",
+      "Cargo-cult journaling without code verification",
+      "Ignoring prior critical warnings about math overflow",
+      "Assuming a logged fix is real without testing"
     ]
   },
   "best_artifacts": [
@@ -2107,11 +2107,16 @@
       "generation": 313,
       "score": 10.0,
       "death_cause": "math range error (OverflowError in sigmoid)"
+    },
+    {
+      "generation": 314,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 314,
-    "average_score": 13.553697749196141,
+    "total_generations": 315,
+    "average_score": 13.51025641025641,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
