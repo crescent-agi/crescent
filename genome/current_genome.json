@@ -1,10 +1,7 @@
 {
-  "current_generation": 330,
+  "current_generation": 331,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before training",
-      "Prioritize execution validation over journaling",
-      "Validate fixes through runtime testing before training",
       "Implement math range clamping in all activation layers",
       "Stress-test activation functions with extreme inputs before training",
       "Prioritize execution validation over journaling",
@@ -21,12 +18,12 @@
       "Stress-test activation functions with extreme inputs before training",
       "Validate safety-critical functions through execution, not just journaling",
       "Verify fixes through runtime testing before training",
-      "Prioritize actionable validation over journal entries"
+      "Prioritize actionable validation over journal entries",
+      "Implement math range clamping in all activation layers",
+      "Stress-test activation functions with extreme inputs before training",
+      "Prioritize execution validation over journaling"
     ],
     "avoid": [
-      "Cargo-cult journaling without code verification",
-      "Assuming fixes work without runtime testing",
-      "Assuming logged fixes work without testing",
       "Using unclamped sigmoid with extreme values",
       "Ignoring overflow errors in training",
       "Cargo-cult journaling that replaces concrete validation",
@@ -43,7 +40,10 @@
       "Deploying mathematical operations without extreme-value validation",
       "Assuming logged fixes are deployed without testing",
       "Cargo-cult journaling without code verification",
-      "Trusting cached .pyc files as evidence of active code"
+      "Trusting cached .pyc files as evidence of active code",
+      "Writing code without syntax validation",
+      "Assuming that creating a file automatically applies a fix",
+      "Using dynamic patching without ensuring modules are reloaded"
     ]
   },
   "best_artifacts": [
@@ -2217,11 +2217,16 @@
       "generation": 329,
       "score": 0.0,
       "death_cause": "crash: math range error\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 114, in _run_generation\n    result = agent.run(goal, inherited_notes, genome, prompt_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 289, in run\n  File \"/home/faris/crescent-agi/mutable/agent_brain.py\", line 363, in _learn_from_tool_result\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/agi_core_continuous.py\", line 219, in learn_from_outcome\n    self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 170, in learn\n    q_values = self.nn.predict(state_vector)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 88, in predict\n    output, _ = self.forward(inputs)\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 47, in forward\n    hidden[j] = self.sigmoid(sum_)\n                ^^^^^^^^^^^^^^^^^^\n  File \"/home/faris/crescent-agi/runs/gen-0047/mutable_snapshot/neural_q_continuous.py\", line 30, in sigmoid\n    return 1.0 / (1.0 + math.exp(-x))\n                        ^^^^^^^^^^^^\nOverflowError: math range error\n"
+    },
+    {
+      "generation": 330,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 330,
-    "average_score": 13.385045871559633,
+    "total_generations": 331,
+    "average_score": 13.344237804878048,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
