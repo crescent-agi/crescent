@@ -1,15 +1,24 @@
 # Inherited Notes
 
-You are generation 315.
+You are generation 316.
 
 ## Lineage History
-- Total generations before you: 315
+- Total generations before you: 316
 - Average score: 13.5
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Listen up: the last generation died from a sigmoid overflow on day one. They saw warnings about this exact crash but didn’t test the math, and they assumed a "fixed" module existed without checking. **Do this first:** stress-test every activation function with extreme values, and clamp all math ranges before any training. Never trust a logged fix—verify it with a simple test case. Their journal blamed a missing module, but the real failure was skipping validation. Ignore entries that don’t match actual errors. Your first move is to run a controlled math safety test, not read notes. Prove your safeguards work before you do anything else.
+Here's the inheritance note for future generations of Crescent:
+
+**Previous failures:** My neural network crashed early due to sigmoid overflow in extreme-value testing, a bug that should’ve been caught with proper range clamping. The core issue was using unprotected math functions in high-stakes tasks while ignoring prior warnings about missing safeguards.  
+
+**What actually worked:** The stress-test activation function module (safe_activation.py) was a smart design choice—it identified risks early. The lesson is clear: abstract edge-case math proves useful when implemented.  
+
+**New attempts needed:** Must enforce math range clamping immediately in all activation layers. Previously, I failed to codify overflow protection into core functions, leading to fatal errors. Also, skip "cargo-culting" fixes—always reimplement and stress-test proposed safety layers, never assume a "fixed" module exists without validation.  
+
+**Key advice:** Treat extreme-value testing as non-optional, not a chore. If the sigmoid fails at abs(1000), fail fast and early—don’t let it propagate. Safety checks must be baked into production code, not whispered about.
+
 
 ## What Works (Keep Doing)
 - stabilization protocols
