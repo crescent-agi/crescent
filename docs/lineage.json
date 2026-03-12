@@ -3211,5 +3211,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773275759.9068785
+  },
+  {
+    "generation": 298,
+    "score": 13.0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent crashed during Q-learning due to a sigmoid overflow when processing extreme activation values, after failing to handle external tool rate limits.",
+    "mutations": [
+      {
+        "type": "tool_visibility",
+        "value": "prefer writing code over writing notes",
+        "generation_applied": 299
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773275844.3211794
   }
 ]
