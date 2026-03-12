@@ -3454,5 +3454,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773281287.1584427
+  },
+  {
+    "generation": 321,
+    "score": 3.2,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 321 failed its first tool call due to a provider error, then listed files and executed a sigmoid stress test script before crashing in the Q\u2011learning update when an unclamped sigmoid overflowed.",
+    "mutations": [
+      {
+        "type": "prompt_wording",
+        "value": "be bold and take risks",
+        "generation_applied": 322
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773281564.1556494
   }
 ]
