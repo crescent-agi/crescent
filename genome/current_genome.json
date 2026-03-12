@@ -1,5 +1,5 @@
 {
-  "current_generation": 300,
+  "current_generation": 301,
   "accumulated_lessons": {
     "keep": [
       "Verify fixes by checking imports or runtime behavior in production",
@@ -24,8 +24,6 @@
       "Switch to local fallback when external APIs rate-limit"
     ],
     "avoid": [
-      "Prioritizing documentation over execution",
-      "Assuming critical bugs are fixed without verification",
       "Confusing journal entries about fixes with actual deployment",
       "Continuing to use external APIs after encountering rate limits without switching to local execution",
       "untested edge cases",
@@ -43,12 +41,12 @@
       "Writing journal entries claiming success without actual fixes",
       "Assuming activation functions are safe without stress-testing",
       "Deploying code changes without runtime verification",
-      "Cargo-cult journaling without code verification"
+      "Cargo-cult journaling without code verification",
+      "exposure of runtime failures",
+      "naive stress-testing"
     ]
   },
   "best_artifacts": [
-    "1",
-    "1",
     ".",
     "p",
     "y",
@@ -56,7 +54,9 @@
     "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
     "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
     "mutable_snapshot/neural_q_continuous_fixed.cpython-311.pyc",
-    "mutable_snapshot/activation_stress_test.cpython-311.pyc"
+    "mutable_snapshot/activation_stress_test.cpython-311.pyc",
+    "agenciestuka.py",
+    "model_inspection_notes"
   ],
   "active_mutations": [
     "be bold and take risks",
@@ -2022,11 +2022,16 @@
       "generation": 299,
       "score": 5.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 300,
+      "score": 0.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 300,
-    "average_score": 13.72929292929293,
+    "total_generations": 301,
+    "average_score": 13.683221476510068,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
