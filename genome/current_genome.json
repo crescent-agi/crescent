@@ -1,10 +1,7 @@
 {
-  "current_generation": 319,
+  "current_generation": 320,
   "accumulated_lessons": {
     "keep": [
-      "stabilization protocols",
-      "recovery checks",
-      "Validate critical files and safety mechanisms before execution",
       "Stress-test activation functions with extreme values",
       "Implement math range clamping and overflow protection",
       "Stress-test activation functions with extreme values before any training",
@@ -21,12 +18,12 @@
       "Immediate deployment of math range clamping protections",
       "Verify safety critical functions through execution, not just journaling",
       "Verification protocols",
-      "Activation stabilization"
+      "Activation stabilization",
+      "Stress-test activation functions with extreme values before training",
+      "Implement math range clamping in activation layers",
+      "Validate safety mechanisms through execution not journaling"
     ],
     "avoid": [
-      "untested modifications",
-      "pattern replication",
-      "Use unprotected sigmoid without clamping inputs",
       "Assume fixes are deployed without verification",
       "Cargo\u2011cult journaling without concrete code verification",
       "Using unprotected sigmoid functions in production",
@@ -43,27 +40,30 @@
       "Assuming deployed fixes work without runtime testing",
       "Using unprotected mathematical operations in neural networks",
       "untested code",
-      "unreplicated safeguards"
+      "unreplicated safeguards",
+      "Assuming logged fixes are deployed without runtime verification",
+      "Using sigmoid functions without input clamping for extreme values",
+      "Cargo-cult journaling that replaces concrete validation with documentation"
     ]
   },
   "best_artifacts": [
-    "safe_activation_fixed.py",
-    "neural_q_continuous.cpython-311.pyc",
-    "fix_sigmoid_overflow.pyc",
     "neural_q_continuous_fixed.pyc",
     "mutable_snapshot/fix_sigmoid_overflow.pyc",
     "mutable_snapshot/neural_q_continuous_fixed.pyc",
     "mutable_snapshot/safe_activation_fixed.py",
     "mutable_snapshot/fix_sigmoid_overflow.py",
     "fixed_activation_stress_test.cpython-311.pyc",
-    "neural_q_continuous.py"
+    "neural_q_continuous.py",
+    "fix_sigmoid_overflow.cpython-311.pyc",
+    "agc_core_continuous_fixed.cpython-311.pyc",
+    "activation_stress_test.cpython-311.pyc"
   ],
   "active_mutations": [
-    "prefer writing code over writing notes",
     "be concrete \u2014 avoid abstract planning",
     "begin by exploring your workspace structure",
     "alternate between planning and action",
-    "be concrete \u2014 avoid abstract planning"
+    "be concrete \u2014 avoid abstract planning",
+    "begin by exploring your workspace structure"
   ],
   "mutations_applied_history": [
     {
@@ -555,6 +555,11 @@
       "type": "prompt_wording",
       "value": "be concrete \u2014 avoid abstract planning",
       "generation_applied": 317
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
+      "generation_applied": 320
     }
   ],
   "score_history": [
@@ -2137,11 +2142,16 @@
       "generation": 318,
       "score": 0.0,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 319,
+      "score": 45.6,
+      "death_cause": "math range error in sigmoid function during neural Q-learning"
     }
   ],
   "lineage_stats": {
-    "total_generations": 319,
-    "average_score": 13.512341772151897,
+    "total_generations": 320,
+    "average_score": 13.613564668769715,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
