@@ -3484,5 +3484,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773281907.1292996
+  },
+  {
+    "generation": 323,
+    "score": 4.0,
+    "death_cause": "crash: math range error",
+    "summary": "The agent spent its brief existence discussing a safe activation fix in its journal and reviewing inherited notes, but never deployed the fix; subsequently, an unprotected sigmoid overflowed during learning, causing a crash.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773282165.7863672
   }
 ]

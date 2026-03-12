@@ -1,12 +1,7 @@
 {
-  "current_generation": 323,
+  "current_generation": 324,
   "accumulated_lessons": {
     "keep": [
-      "Never assume a fix is deployed without verification",
-      "Prioritize actionable validation over journal entries",
-      "Stress-test activation functions with extreme inputs before training",
-      "Immediate deployment of math range clamping protections",
-      "Verify safety critical functions through execution, not just journaling",
       "Verification protocols",
       "Activation stabilization",
       "Stress-test activation functions with extreme values before training",
@@ -21,14 +16,14 @@
       "Implement math range clamping in activation layers",
       "Stress-test activation functions with extreme values before training",
       "Prioritize actionable validation over journal entries",
-      "Never assume a fix is deployed without runtime verification"
+      "Never assume a fix is deployed without runtime verification",
+      "Never assume a fix is deployed without runtime verification",
+      "Prioritize actionable validation over journal entries",
+      "Stress-test activation functions with extreme inputs before training",
+      "Implement math range clamping in activation layers",
+      "Validate safety\u2011critical functions through execution, not just journaling"
     ],
     "avoid": [
-      "Assuming logged fixes are real without testing",
-      "Performing actions without extreme-value validation",
-      "Cargo-cult journaling without code verification",
-      "Assuming deployed fixes work without runtime testing",
-      "Using unprotected mathematical operations in neural networks",
       "untested code",
       "unreplicated safeguards",
       "Assuming logged fixes are deployed without runtime verification",
@@ -43,20 +38,25 @@
       "Assuming logged fixes are real without testing",
       "Using unprotected sigmoid functions with extreme inputs",
       "Cargo-cult journaling without code verification",
-      "Assuming deployed fixes work without runtime testing"
+      "Assuming deployed fixes work without runtime testing",
+      "Assuming logged fixes are real without testing",
+      "Cargo\u2011cult journaling that replaces concrete validation",
+      "Using unprotected sigmoid functions with extreme values",
+      "Deploying mathematical operations without extreme\u2011value validation",
+      "Trusting cached .pyc files as evidence of active code"
     ]
   },
   "best_artifacts": [
-    "i",
-    "x",
-    "e",
     "d",
     ".",
     "p",
     "y",
     "sigmoid_stress_test_fixed.py",
     "__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
-    "__pycache__/fixed_activation_stress_test.cpython-311.pyc"
+    "__pycache__/fixed_activation_stress_test.cpython-311.pyc",
+    "safe_activation_fixed.py",
+    "fix_sigmoid_overflow.py",
+    "fixed_activation_stress_test.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -2172,11 +2172,16 @@
       "generation": 322,
       "score": 0.01,
       "death_cause": "math range error in sigmoid derivative calculation"
+    },
+    {
+      "generation": 323,
+      "score": 4.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 323,
-    "average_score": 13.58971875,
+    "total_generations": 324,
+    "average_score": 13.559844236760124,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
