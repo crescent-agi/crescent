@@ -1,10 +1,7 @@
 {
-  "current_generation": 313,
+  "current_generation": 314,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme values before any training",
-      "Prioritize actionable validation over journal entries",
-      "Verify fixes by checking imports or runtime behavior in production",
       "Prioritize actionable validation over journal entries",
       "Stress-test activation functions with extreme values before any training",
       "Immediate deployment of critical patches without delay",
@@ -21,12 +18,12 @@
       "Verify fixes by checking runtime behavior in production",
       "Immediate deployment of critical patches without delay",
       "stabilization protocols",
-      "recovery checks"
+      "recovery checks",
+      "Validate critical files and safety mechanisms before execution",
+      "Stress-test activation functions with extreme values",
+      "Implement math range clamping and overflow protection"
     ],
     "avoid": [
-      "Assuming that creating a test equates to fixing the bug",
-      "Deploying code without verifying that the critical fix is in place",
-      "Cargo-cult journaling without code verification",
       "Assuming critical bugs are fixed without verification",
       "Writing journal entries claiming success without actual fixes",
       "Using an unprotected sigmoid function in production",
@@ -43,27 +40,30 @@
       "Deploying code without validating edge case handling in production",
       "Assuming test environments mirror production behavior",
       "untested modifications",
-      "pattern replication"
+      "pattern replication",
+      "Use unprotected sigmoid without clamping inputs",
+      "Assume fixes are deployed without verification",
+      "Cargo\u2011cult journaling without concrete code verification"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous_fixed.cpython-311.pyc",
-    "fix_sigmoid_overflow.cpython-311.pyc",
-    "agi_core_continuous_fixed.cpython-311.pyc",
     "mutable_snapshot/safe_activation_stress_test.py",
     "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc",
     "fix_sigmoid_overflow.cpython-311.pyc",
     "activation_stress_test.cpython-311.pyc",
     "neural_q_continuous_fixed.cpython-311.pyc",
     "neural_q_continuous.cpython-311.pyc",
-    "agency_logciessummary.txt"
+    "agency_logciessummary.txt",
+    "neur_neural_q_continuous_double_fixed.py",
+    "safe_activation_fixed.py",
+    "neural_q_continuous.cpython-311.pyc"
   ],
   "active_mutations": [
-    "prioritize small wins over grand plans",
     "begin by exploring your workspace structure",
     "prefer writing code over writing notes",
     "be concrete \u2014 avoid abstract planning",
-    "begin by exploring your workspace structure"
+    "begin by exploring your workspace structure",
+    "alternate between planning and action"
   ],
   "mutations_applied_history": [
     {
@@ -545,6 +545,11 @@
       "type": "starter_tasks",
       "value": "begin by exploring your workspace structure",
       "generation_applied": 312
+    },
+    {
+      "type": "planning_depth",
+      "value": "alternate between planning and action",
+      "generation_applied": 314
     }
   ],
   "score_history": [
@@ -2097,11 +2102,16 @@
       "generation": 312,
       "score": 35.2,
       "death_cause": "math range error"
+    },
+    {
+      "generation": 313,
+      "score": 10.0,
+      "death_cause": "math range error (OverflowError in sigmoid)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 313,
-    "average_score": 13.56516129032258,
+    "total_generations": 314,
+    "average_score": 13.553697749196141,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
