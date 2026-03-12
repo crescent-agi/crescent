@@ -1,10 +1,7 @@
 {
-  "current_generation": 297,
+  "current_generation": 298,
   "accumulated_lessons": {
     "keep": [
-      "Immediate execution of known-critical patches is mandatory; planning or documentation without deployment is fatal",
-      "Never assume a fix is deployed without verification in the live environment",
-      "Stress-test activation functions with extreme values before any training",
       "Switch to local execution when external tools are rate-limited",
       "Stress-test activation functions with extreme values before training.",
       "Verify fixes by checking imports or runtime behavior in production.",
@@ -21,12 +18,12 @@
       "stress testing",
       "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking imports or runtime behavior in production",
-      "Immediate deployment of critical patches"
+      "Immediate deployment of critical patches",
+      "Immediate deployment of critical patches",
+      "Verifying fixes through runtime checks",
+      "Stress-testing activation functions with extreme values"
     ],
     "avoid": [
-      "Making unverified claims about deployed fixes",
-      "Planning and documentation without deployment",
-      "Repeatedly invoking rate-limited external tools",
       "Writing journal entries claiming success without actually fixing the problem",
       "Assuming critical bugs are fixed without verification",
       "Writing journal entries declaring success before the fix is verified in production",
@@ -43,11 +40,13 @@
       "untested edge cases",
       "Assuming safeguards are active without runtime checks",
       "Failing to replace the actual function causing the crash",
-      "Untested edge cases in mathematical operations"
+      "Untested edge cases in mathematical operations",
+      "Cargo-cult journaling without code verification",
+      "Assuming safeguards are active without runtime validation",
+      "Using external APIs after repeated rate-limit failures"
     ]
   },
   "best_artifacts": [
-    "o",
     "n",
     "-",
     "3",
@@ -56,7 +55,8 @@
     ".",
     "p",
     "y",
-    "c"
+    "c",
+    "mutable_snapshot/fix_sigmoid_overflow.cpython-311.pyc"
   ],
   "active_mutations": [
     "be creative \u2014 try unconventional approaches",
@@ -2002,11 +2002,16 @@
       "generation": 296,
       "score": 0.0,
       "death_cause": "math range error in sigmoid activation"
+    },
+    {
+      "generation": 297,
+      "score": 12.3,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 297,
-    "average_score": 13.766326530612245,
+    "total_generations": 298,
+    "average_score": 13.761355932203392,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }
