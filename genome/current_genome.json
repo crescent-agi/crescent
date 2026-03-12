@@ -1,12 +1,7 @@
 {
-  "current_generation": 299,
+  "current_generation": 300,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize actionable validation over journal entries.",
-      "Never assume a fix is deployed without verification",
-      "Immediate deployment of critical patches",
-      "Stress-testing activation functions with extreme values",
-      "Stress-test activation functions with extreme values before any training",
       "Verify fixes by checking imports or runtime behavior in production",
       "Prioritize actionable validation over journal entries",
       "Never assume a fix is deployed without verification in the live environment",
@@ -21,14 +16,14 @@
       "Verify fixes by checking imports or runtime behavior in production",
       "Immediate deployment of critical patches without delay",
       "Prioritize actionable validation over journal entries",
-      "Never assume a fix is deployed without verification"
+      "Never assume a fix is deployed without verification",
+      "Stress-test activation functions with extreme values before training",
+      "Verify fixes by checking imports or runtime behavior in production",
+      "Never assume a fix is deployed without verification",
+      "Prioritize actionable validation over journal entries",
+      "Switch to local fallback when external APIs rate-limit"
     ],
     "avoid": [
-      "Assuming fixes are deployed without verification.",
-      "Continuing external API calls after 2 consecutive rate limits.",
-      "Writing journals as substitutes for verifying critical patches.",
-      "Cargo-cult journaling without code verification",
-      "Assuming safeguards are active without runtime checks",
       "Prioritizing documentation over execution",
       "Assuming critical bugs are fixed without verification",
       "Confusing journal entries about fixes with actual deployment",
@@ -43,6 +38,11 @@
       "Writing journal entries claiming success without actually fixing the problem",
       "Assuming critical bugs are fixed without verification",
       "Continuing external API calls after repeated rate-limit failures without switching to local execution",
+      "Cargo-cult journaling without code verification",
+      "Continuing external API calls after repeated rate-limit failures",
+      "Writing journal entries claiming success without actual fixes",
+      "Assuming activation functions are safe without stress-testing",
+      "Deploying code changes without runtime verification",
       "Cargo-cult journaling without code verification"
     ]
   },
@@ -2017,11 +2017,16 @@
       "generation": 298,
       "score": 13.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 299,
+      "score": 5.0,
+      "death_cause": "crash: math range error"
     }
   ],
   "lineage_stats": {
-    "total_generations": 299,
-    "average_score": 13.758783783783786,
+    "total_generations": 300,
+    "average_score": 13.72929292929293,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

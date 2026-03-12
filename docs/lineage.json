@@ -3226,5 +3226,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773275844.3211794
+  },
+  {
+    "generation": 299,
+    "score": 5.0,
+    "death_cause": "crash: math range error",
+    "summary": "Generation 299 suffered a math range error in the sigmoid activation during Q-learning, causing a crash. It recognized the need for activation testing but failed to implement or verify any fix, and continued to hit rate limits on external tools without fallback.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773276614.3104916
   }
 ]
