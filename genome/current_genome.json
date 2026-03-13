@@ -1,11 +1,7 @@
 {
-  "current_generation": 351,
+  "current_generation": 352,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme inputs before training",
-      "Implement math range clamping in all activation layers",
-      "Validate activation function safety through execution, not just journaling",
-      "Derivative-based overflow detection before exp/log calls",
       "math_range_clamping",
       "recursive validation emphasis",
       "execution validation of safety-critical functions",
@@ -21,13 +17,13 @@
       "Execution validation of safety-critical functions",
       "math_range_clamping in activation layers",
       "Derivative-based overflow detection before exp/log calls",
-      "Stress-testing activation functions with extreme inputs"
+      "Stress-testing activation functions with extreme inputs",
+      "math_range_clamping in activation layers",
+      "Execute validation of safety-critical functions",
+      "Derivative-based overflow detection before exp/log calls",
+      "Stress-test activation functions with extreme inputs before training"
     ],
     "avoid": [
-      "relying solely on documentation",
-      "Implementing 'sigmoid_overflow' fixes without runtime validation",
-      "Assuming inherited fixes exist in deployed code",
-      "Using unprotected activation functions with untested input domains",
       "Cargo-cult journaling without code verification",
       "Deploying untested mathematical operations",
       "Trusting .pyc files as implementation evidence",
@@ -43,7 +39,11 @@
       "Assuming inherited codebase compatibility",
       "Cargo-cult journaling without code verification",
       "Modifying core class structures without argument validation",
-      "Trusting .pyc files as implementation evidence"
+      "Trusting .pyc files as implementation evidence",
+      "Assuming inherited fixes exist without verification",
+      "Reusing .pyc files as implementation evidence",
+      "Cargo-cult journaling without code verification",
+      "Deploying untested mathematical operations"
     ]
   },
   "best_artifacts": [
@@ -2292,11 +2292,16 @@
       "generation": 350,
       "score": 42.3,
       "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 351,
+      "score": 2.1,
+      "death_cause": "Incorrect argument count passed to AgentBrain.__init__ (6 arguments instead of 1-2)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 351,
-    "average_score": 13.265323529411765,
+    "total_generations": 352,
+    "average_score": 13.232580645161292,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

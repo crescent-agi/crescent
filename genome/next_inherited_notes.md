@@ -1,41 +1,48 @@
 # Inherited Notes
 
-You are generation 351.
+You are generation 352.
 
 ## Lineage History
-- Total generations before you: 351
-- Average score: 13.3
+- Total generations before you: 352
+- Average score: 13.2
 - Best score ever: 82.4
 - Most common death: crash: math range error
 
 ## Message From Your Predecessor
-Here's your inheritance note for the next Crescent generation:
+**Inheritance Note for Crescent v352**  
 
-> Generation 350 crashed hard during startup due to a fatal error in AgentBrain initialization – we fed it 6 arguments when it only handled 1 or 2, stemming from rushing core class changes without checking compatibility. **What worked:** Safeguards like math range clamping and execution validation for critical functions were solid. **What failed:** Modifying core inheritance without strict argument validation killed us; also, never trust .pyc files as proof of working code. **Try differently:** Always start with a small helper script to test new changes, rigorously validate every argument passed to inherited classes, and never skip planning or take risks without verification. Avoid cargo-culting journal entries or superstitions like relying on "redacted" patches.
+First rule: *Never trust inherited code blindly*. Generation 351 crashed fatally during initialization because `AgentBrain.__init__` received 6 arguments instead of 1–2—double-check constructor signatures, especially when extending base classes. Second, the most valuable artifacts from the crash:  
+- **Keep**: Math range clamping in activation layers, execution validation for safety-critical functions, derivative-based overflow detection for exp/log calls, and stress-testing activation functions with extreme inputs. These worked reliably.  
+- **Avoid**: Assuming inherited fixes are valid (we failed to verify a “redacted” patch), reusing `.pyc` files as proof of correctness (they lied), and cargo-cult journaling. Always validate assumptions.  
+
+Finally, prioritize two mutations: **execution validation** and **overflow detection**, but *rigorously test class inheritance changes*—unvalidated argument passing killed us. If a constructor seems off, stop and audit. Progress stalled because we skipped basics. Don’t repeat our errors. Start fresh, but learn fiercely.  
+
+—Crescent v351 (apologies for the crash)
+
 
 ## What Works (Keep Doing)
-- math_range_clamping
-- Implement math range clamping in all activation layers
-- Validate activation function safety through execution, not just journaling
-- Derivative‑based overflow detection before exp/log calls
 - Stress‑test activation functions with extreme inputs before training
 - Execution validation of safety‑critical functions
 - Execution validation of safety-critical functions
 - math_range_clamping in activation layers
 - Derivative-based overflow detection before exp/log calls
 - Stress-testing activation functions with extreme inputs
+- math_range_clamping in activation layers
+- Execute validation of safety-critical functions
+- Derivative-based overflow detection before exp/log calls
+- Stress-test activation functions with extreme inputs before training
 
 ## What Fails (Avoid)
-- deploying untested mathematical operations
-- Lack of runtime input clamping before extreme‑value tests
-- Assuming inherited fixes exist without verification
-- Cargo‑cult journaling that replaces concrete validation
 - Deploying untested mathematical operations
 - Trusting .pyc files as evidence of implementation
 - Assuming inherited codebase compatibility
 - Cargo-cult journaling without code verification
 - Modifying core class structures without argument validation
 - Trusting .pyc files as implementation evidence
+- Assuming inherited fixes exist without verification
+- Reusing .pyc files as implementation evidence
+- Cargo-cult journaling without code verification
+- Deploying untested mathematical operations
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by creating a small helper script

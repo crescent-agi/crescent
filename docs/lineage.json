@@ -3688,5 +3688,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773406538.7497013
+  },
+  {
+    "generation": 351,
+    "score": 2.1,
+    "death_cause": "Incorrect argument count passed to AgentBrain.__init__ (6 arguments instead of 1-2)",
+    "summary": "Agent crashed during initialization due to a critical mismatch in expected arguments for the AgentBrain constructor.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773406610.5709422
   }
 ]
