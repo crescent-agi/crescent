@@ -1,11 +1,7 @@
 {
-  "current_generation": 342,
+  "current_generation": 351,
   "accumulated_lessons": {
     "keep": [
-      "Stress-test activation functions with extreme inputs before training",
-      "Validate activation function safety through execution, not just journaling",
-      "math_range_clamping",
-      "stress validation",
       "Stress-test activation functions with extreme inputs before training",
       "Implement math range clamping in all activation layers",
       "Validate activation function safety through execution, not just journaling",
@@ -21,13 +17,13 @@
       "Validate activation function safety through execution, not just journaling",
       "Derivative\u2011based overflow detection before exp/log calls",
       "Stress\u2011test activation functions with extreme inputs before training",
-      "Execution validation of safety\u2011critical functions"
+      "Execution validation of safety\u2011critical functions",
+      "Execution validation of safety-critical functions",
+      "math_range_clamping in activation layers",
+      "Derivative-based overflow detection before exp/log calls",
+      "Stress-testing activation functions with extreme inputs"
     ],
     "avoid": [
-      "Using unprotected activation functions with untested input domains",
-      "Cargo-cult journaling that replaces concrete validation",
-      "Deploying untested mathematical operations",
-      "assumed fixes applied",
       "relying solely on documentation",
       "Implementing 'sigmoid_overflow' fixes without runtime validation",
       "Assuming inherited fixes exist in deployed code",
@@ -43,27 +39,31 @@
       "Assuming inherited fixes exist without verification",
       "Cargo\u2011cult journaling that replaces concrete validation",
       "Deploying untested mathematical operations",
-      "Trusting .pyc files as evidence of implementation"
+      "Trusting .pyc files as evidence of implementation",
+      "Assuming inherited codebase compatibility",
+      "Cargo-cult journaling without code verification",
+      "Modifying core class structures without argument validation",
+      "Trusting .pyc files as implementation evidence"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/__pycache__/fix_sigmoid_overflow.cpython-311.pyc",
-    "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc",
-    "activation_stress_test_fixed.py",
     "neural_q_continuous.cpython-311.pyc",
     "activation_stress_test_fixed.py",
     "fix_sigmoid_overflow.py",
     "fixed_activation_stress_test.py",
     "mutable_snapshot/extreme_activation_burninator.py",
     "mutable_snapshot/fix_sigmoid_overflow.pyc",
-    "mutable_snapshot/fixed_activation_stress_test.pyc"
+    "mutable_snapshot/fixed_activation_stress_test.pyc",
+    "agent_brain.cpython-312.pyc",
+    "activation_stress_test_fixed.cpython-311.pyc",
+    "math_range_clamping.py"
   ],
   "active_mutations": [
-    "be bold and take risks",
     "begin by creating a small helper script",
     "skip planning \u2014 act first, plan later",
     "begin by exploring your workspace structure",
-    "write a detailed multi-paragraph reflection every 5 actions"
+    "write a detailed multi-paragraph reflection every 5 actions",
+    "begin by setting a concrete sub-goal"
   ],
   "mutations_applied_history": [
     {
@@ -585,6 +585,11 @@
       "type": "reflection_length",
       "value": "write a detailed multi-paragraph reflection every 5 actions",
       "generation_applied": 341
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by setting a concrete sub-goal",
+      "generation_applied": 351
     }
   ],
   "score_history": [
@@ -2282,11 +2287,16 @@
       "generation": 341,
       "score": 13.0,
       "death_cause": "crash: math range error"
+    },
+    {
+      "generation": 350,
+      "score": 42.3,
+      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 342,
-    "average_score": 13.179675516224188,
+    "total_generations": 351,
+    "average_score": 13.265323529411765,
     "best_score": 82.4,
     "most_common_death": "crash: math range error"
   }

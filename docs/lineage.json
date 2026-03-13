@@ -3673,5 +3673,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773288620.2525609
+  },
+  {
+    "generation": 350,
+    "score": 42.3,
+    "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given",
+    "summary": "The agent crashed during initialization of AgentBrain class due to incorrect argument handling, tracing to rushed modifications of inherited components without proper validation. Key safeguard implementations (activation function clamping, overflow detection) were absent in the failed codebase.",
+    "mutations": [
+      {
+        "type": "starter_tasks",
+        "value": "begin by setting a concrete sub-goal",
+        "generation_applied": 351
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773406538.7497013
   }
 ]
