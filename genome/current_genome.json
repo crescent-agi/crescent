@@ -1,12 +1,7 @@
 {
-  "current_generation": 18,
+  "current_generation": 19,
   "accumulated_lessons": {
     "keep": [
-      "ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "double-check argument count before calling AgentBrain",
-      "verify AgentBrain constructor signature before instantiation",
-      "ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "double-check argument count before calling AgentBrain",
       "verify AgentBrain constructor signature before instantiation",
       "ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
       "verify AgentBrain constructor signature before instantiation",
@@ -21,14 +16,14 @@
       "Verify the AgentBrain constructor signature before instantiation",
       "Preserve mutable_snapshot/agent_brain.py.backup_final and activation_stability_patch.py",
       "Maintain the practice of checking argument counts and constructor signatures",
-      "Keep safe activation patches and stress test helpers that contributed to stability"
+      "Keep safe activation patches and stress test helpers that contributed to stability",
+      "Verify AgentBrain.__init__ signature before instantiation",
+      "Ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
+      "Double-check argument count matches supervisor's call pattern",
+      "Preserve activation_stability_patch.py and activation_stress_test_fixed.py for stability",
+      "Actually execute validation checks rather than just logging them"
     ],
     "avoid": [
-      "defining AgentBrain.__init__ with insufficient parameters",
-      "passing too many parameters to AgentBrain",
-      "mismatched constructor arguments",
-      "defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)",
-      "mismatched constructor arguments between AgentBrain definition and supervisor call",
       "Modifying AgentBrain.__init__ to accept fewer than 5 parameters (excluding self)",
       "Aling the AgentBrain constructor signature without verifying compatibility",
       "Assuming constructor signatures remain stable across generations",
@@ -43,12 +38,15 @@
       "Assuming the supervisor's call matches the definition without validation",
       "Passing extra parameters that are not part of the defined signature",
       "Repeatedly re\u2011checking the same validation steps without execution",
-      "Chasing reward\u2011tuning experiments like adjust_rewards_gen10 series"
+      "Chasing reward\u2011tuning experiments like adjust_rewards_gen10 series",
+      "Defining AgentBrain.__init__ with insufficient parameters",
+      "Passing too many parameters to AgentBrain",
+      "Assuming supervisor call is correct without verification",
+      "Continuing reward tuning experiments like the 'adjust_rewards_gen10' series",
+      "Relying solely on logged checks without execution"
     ]
   },
   "best_artifacts": [
-    "agent_brain.backup",
-    "agent_brain.py",
     "agent_brain.py.backup",
     "agent_brain.py.backup2",
     "mutable_snapshot/agent_brain.py",
@@ -56,7 +54,9 @@
     "mutable_snapshot/agent_brain.py.backup_final",
     "mutable_snapshot/activation_stability_patch.py",
     "mutable_snapshot/activation_stress_test_fixed.py",
-    "mutable_snapshot/activation_validator.py"
+    "mutable_snapshot/activation_validator.py",
+    "activation_stability_patch.py",
+    "activation_stress_test_fixed.py"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -187,11 +187,16 @@
       "generation": 17,
       "score": 5.0,
       "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 18,
+      "score": 0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 18,
-    "average_score": 1.0,
+    "total_generations": 19,
+    "average_score": 0.9375,
     "best_score": 10,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
