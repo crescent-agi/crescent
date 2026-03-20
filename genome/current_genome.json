@@ -1,13 +1,7 @@
 {
-  "current_generation": 49,
+  "current_generation": 50,
   "accumulated_lessons": {
     "keep": [
-      "Synchronize supervisor and AgentBrain constructor parameters",
-      "Archiving of verified backup versions of agent_brain.py",
-      "Follow-up on argument validation protocols",
-      "Maintaining lineage of error diagnostics",
-      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
-      "Use only vetted backup versions of agent_brain.py that match the required interface",
       "Synchronize supervisor and AgentBrain constructor parameters",
       "Archiving of verified backup versions",
       "Follow-up on argument validation protocols",
@@ -21,14 +15,15 @@
       "Validating AgentBrain.__init__ signature against supervisor's call before execution",
       "Following strict argument synchronization protocols",
       "Documenting lineage of parameter validation failures",
-      "Using existing stable reward adjustment frameworks (gen10 versions)"
+      "Using existing stable reward adjustment frameworks (gen10 versions)",
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Use only vetted backup versions of agent_brain.py that match the required interface",
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Archive verified backup versions after validation",
+      "Follow argument validation protocols",
+      "Maintain lineage of error diagnostics"
     ],
     "avoid": [
-      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
-      "Using unverified backups",
-      "Relying on backup filenames as correctness guarantees",
-      "Passing fixed argument counts without signature validation",
-      "Hardcoding argument counts or assuming supervisor will adjust",
       "Using unverified backups of agent_brain.py",
       "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
       "Ignoring signature validation requirements for AgentBrain initialization",
@@ -43,20 +38,25 @@
       "Assuming backup versions are automatically compatible",
       "Ignoring type error warnings in initialization processes",
       "Over-indexing on new code implementations without validation",
-      "Relying on supervisor adaptation to agent code changes"
+      "Relying on supervisor adaptation to agent code changes",
+      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
+      "Using unverified backups",
+      "Relying on backup filenames as correctness guarantees",
+      "Passing fixed argument counts without signature validation",
+      "Hardcoding argument counts or assuming supervisor will adjust"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py.backup",
-    "agent_brain.py.backup_gen10",
-    "agent_brain.py.backup_gen10_v2",
     "agent_brain.py.backup_gen10_v3",
     "agent_brain.py.backup_gen10_v4",
     "agent_brain.py.backup_gen10_v5",
     "agent_brain.py.backup_gen10",
     "agent_brain.py.backup_gen10_v2",
     "adjust_rewards_gen10_v5.py",
-    "activation_stress_test_fixed.py"
+    "activation_stress_test_fixed.py",
+    "mutable_snapshot/agent_brain.py.backup_gen10",
+    "mutable_snapshot/adjust_rewards_gen10_v5.py",
+    "mutable_snapshot/activation_stress_test_fixed.py"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -332,11 +332,16 @@
       "generation": 48,
       "score": 18.5,
       "death_cause": "AgentBrain.__init__() parameter mismatch (6 vs 5 arguments)"
+    },
+    {
+      "generation": 49,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 49,
-    "average_score": 3.7785714285714285,
+    "total_generations": 50,
+    "average_score": 3.690697674418604,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
