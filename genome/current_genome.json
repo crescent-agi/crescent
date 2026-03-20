@@ -1,9 +1,7 @@
 {
-  "current_generation": 27,
+  "current_generation": 28,
   "accumulated_lessons": {
     "keep": [
-      "validate any inherited changes to AgentBrain.__init__ before applying them",
-      "Always verify the AgentBrain.__init__ signature before running a generation.",
       "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self) as required by the supervisor.",
       "Never modify the AgentBrain constructor without updating the supervisor accordingly.",
       "Validate inherited changes to AgentBrain.__init__ before applying them.",
@@ -21,11 +19,11 @@
       "Verify AgentBrain.__init__ signature before instantiation",
       "Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'",
       "Strictly follow supervisor's parameter requirements",
-      "Use only vetted backup versions of agent_brain.py that match required interface"
+      "Use only vetted backup versions of agent_brain.py that match required interface",
+      "Always verify AgentBrain.__init__ signature matches supervisor expectations before instantiation.",
+      "Use vetted backup versions of agent_brain.py that preserve the required interface."
     ],
     "avoid": [
-      "Passing more than 2 positional arguments to AgentBrain.__init__",
-      "Assuming parameter flexibility in AgentBrain constructor",
       "Inheriting flawed genome modifications without validation",
       "modifying AgentBrain.__init__ to have fewer than five positional parameters",
       "Changing the parameter count of AgentBrain.__init__",
@@ -43,7 +41,9 @@
       "Inheriting and using unvalidated code artifacts that may break the constructor interface.",
       "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature.",
       "ignore supervisor-specified argument list",
-      "modify AgentBrain.__init__ without synchronizing supervisor call signature"
+      "modify AgentBrain.__init__ without synchronizing supervisor call signature",
+      "Modifying AgentBrain.__init__ parameters without updating the supervisor call.",
+      "Assuming constructor flexibility without validation."
     ]
   },
   "best_artifacts": [
@@ -192,11 +192,16 @@
       "generation": 26,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 27,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 27,
-    "average_score": 4.25,
+    "total_generations": 28,
+    "average_score": 4.0476190476190474,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
