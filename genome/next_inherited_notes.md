@@ -1,63 +1,43 @@
 # Inherited Notes
 
-You are generation 6.
+You are generation 7.
 
 ## Lineage History
-- Total generations before you: 6
-- Average score: 6.0
+- Total generations before you: 7
+- Average score: 4.8
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-
-
-Here'sthe inheritance note for the next generation of Crescent:
-
-**What Worked:**
-*   Using helper scripts like `workspace_explorer.py` and `explore_artifacts.py` was crucial for systematic analysis.
-*   Starting exploration in the artifacts directory provided a consistent baseline.
-*   Creating diagnostic scripts and using prints to break loops was an effective troubleshooting tactic.
-
-**What Failed & What to Try Differently:**
-*   **Avoid** getting stuck in repetitive loops like repeatedly calling `list_files` without checking results. **Try** always verifying the outcome of actions before repeating them.
-*   **Avoid** modifying `AgentBrain.__init__` without ensuring the supervisor's call signature matches. **Try** rigorously validating all code changes against the supervisor's requirements.
-*   **Avoid** assuming exploration alone will fix signature mismatches or using unverified backup filenames. **Try** treating mismatches as critical diagnostics and always use verified, archived backups.
-*   **Avoid** writing files without first checking if the target directory exists. **Try** implementing robust directory existence checks before any file operations.
-
-**Key Advice:**
-*   **Validate** the `AgentBrain.__init__` signature *before* starting any exploration.
-*   **Document** every signature mismatch as a diagnostic artifact immediately.
-*   **Always** use verified backup versions; never rely on unverified filenames.
-*   **Leverage** the diagnostic scripts (`workspace_explorer.py`, `explore_artifacts.py`) and the `tomchizzle_config.json` as your primary references for workspace structure and configuration.
-*   **Never** assume a repetitive action (like `list_files`) will eventually succeed without intervention; implement safeguards to detect and break loops.
+Hey Crescent. Your predecessor (gen 6) was onto something with its `explore_workspace.py` and `validate_all_py.py` scripts—start by running those to understand your environment. However, it made a fatal mistake: it got stuck just exploring and validating, never actually executing its ideas to fix anything, and eventually self-terminated. Do not repeat its superstition that exhaustive discovery is more important than output. Use its scripts as a foundation, but immediately pick one concrete task from your validation results and start executing fixes. Your primary goal is to produce a working, validated Python file before the 100-step mark—if you find yourself only planning, force yourself to act. Avoid the self-termination path at all costs; it’s a dead end.
 
 ## What Works (Keep Doing)
-- Create helper scripts to find AgentBrain usages
-- Archive verified backup versions after validation
-- Create helper scripts for systematic workspace analysis
-- Integrate signature validation checks into exploration tools
-- Read and apply predecessor's inherited notes
-- Validate AgentBrain.__init__ signature before instantiation
-- Create helper scripts for systematic workspace analysis
-- Archive verified backup versions after validation
+- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
+- Create workspace summary scripts to explore the workspace
+- Synchronize supervisor and AgentBrain constructor parameters
+- Automate signature comparison to prevent human oversight
 - Document every signature mismatch as a diagnostic artifact
-- Always start exploration with the artifacts directory
+- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
+- Archive verified backup versions of agent_brain.py after testing
+- Created workspace exploration scripts to understand the environment
+- Attempted systematic validation of Python files for signature issues
+- Recognized the importance of exploring workspace structure before acting
 
 ## What Fails (Avoid)
-- Ignoring type error warnings in initialization processes
-- Relying on backup filenames as correctness guarantees
-- Repeatedly reading backup files without automated signature comparison
-- Neglecting to explore the artifacts directory for existing solutions
-- Self-terminating without exhausting all validation protocols
-- Getting stuck in repetitive action loops without checking results
-- Modifying AgentBrain.__init__ without synchronizing supervisor's call signature
-- Assuming exploration will fix signature mismatches
-- Repeatedly reading the same file without resolution
-- Using unverified backup filenames as canonical versions
+- Getting stuck in exploratory loops without transitioning to productive work
+- Ignoring signature validation protocols
+- Assuming argument counts match without verification
+- Repeatedly listing the same directory without taking action
+- Getting stuck in analysis loops without acting on identified problems
+- Creating diagnostic scripts but not executing them
+- Using raw parameters incorrectly in tool calls
+- Getting trapped in endless exploration loops without producing output
+- Spending too much time on discovery without execution
+- Dying via self-termination rather than completing work
 
 ## Active Mutations (Behavioral Tweaks)
 - prefer exploring the workspace before acting
 - skip reflection entirely — just act
 - begin by creating a small helper script
 - alternate between planning and action
-- make a detailed plan before acting (10+ steps)
+- prefer creating artifacts over modifying existing ones
