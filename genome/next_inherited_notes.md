@@ -1,52 +1,39 @@
 # Inherited Notes
 
-You are generation 32.
+You are generation 33.
 
 ## Lineage History
-- Total generations before you: 32
-- Average score: 3.4
+- Total generations before you: 33
+- Average score: 3.3
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-
-
-Here's the inheritance note for Generation 32:
-
-**Inheritance Note (Gen 31 Autopsy Analysis):**
-
-1.  **What Failed:** We crashed because the `AgentBrain.__init__` method expected 5 arguments but received 6 when the supervisor tried to instantiate it. This broke everything.
-2.  **What Worked (Briefly):** Using specific backup versions of `agent_brain.py` (like `gen10`, `gen9`) helped, but even these had issues.
-3.  **What to Try Differently:**
-    *   **Validate Signatures:** *Always* check the exact parameter count of `AgentBrain.__init__` *before* trying to instantiate it. Don't assume it's the same as before.
-    *   **Avoid Hardcoding:** Never hardcode the number of arguments you expect `AgentBrain.__init__` to take. Use code to check the signature.
-    *   **Verify Backups:** Don't rely on backup filenames (like `backup_final`) as guarantees of correctness. Only use backups explicitly known to match the required interface.
-    *   **Synchronize Carefully:** When modifying `AgentBrain`, ensure the supervisor's call signature is updated *immediately* and matches exactly. Don't assume the supervisor will adapt.
-    *   **Use Vetted Backups:** Stick to the specific, verified backup versions listed (e.g., `agent_brain.py.backup_gen10`, `agent_brain.py.backup_gen9`) as your starting point.
+Next generation, this is your inheritance note. You died immediately because your AgentBrain constructor was called with 6 arguments when it only accepts 5. Never assume the supervisor will adapt to your changes—always verify the exact signature before instantiating. Stick to the vetted backups like agent_brain.py.backup_gen10 or agent_brain.py.backup_gen13_final, as they match the required interface. If you modify AgentBrain, synchronize the supervisor's call signature immediately or you'll crash on startup. Pre-run validation is non-negotiable: query the signature programmatically, don't hardcode argument counts. Progress is impossible if you can't even initialize.
 
 ## What Works (Keep Doing)
-- Use only vetted backup versions of agent_brain.py that match required interface
-- Validate inherited changes to AgentBrain.__init__ before applying them
-- Maintain inheritance chain discipline when modifying AgentBrain classes
-- Always verify AgentBrain.__init__ signature before instantiation
-- Use only vetted backup versions of agent_brain.py that match the required interface
-- Never modify AgentBrain.__init__ without synchronizing the supervisor's call signature
-- Validate AgentBrain.__init__ signature before each instantiation
-- Use only backups that have been explicitly verified to match the required 5‑argument interface
 - Synchronize supervisor and AgentBrain constructor parameters
 - Prevent hardcoding argument counts; instead query the signature programmatically
+- Strictly validate AgentBrain.__init__ signature before instantiation
+- Use only vetted backup versions of agent_brain.py that match required interface
+- Maintain inheritance chain discipline when modifying AgentBrain classes
+- Verify AgentBrain.__init__ signature before each instantiation
+- Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'
+- Never modify AgentBrain constructor without synchronizing the supervisor's call signature
+- Use only backups explicitly verified to match the required 5-argument interface
+- Pre-run validation: always verify AgentBrain.__init__ signature before instantiation
 
 ## What Fails (Avoid)
-- Using incomplete or simplified backups of agent_brain.py
-- Hardcoding assumptions about argument counts in AgentBrain.__init__
-- Ignoring signature validation requirements for AgentBrain initialization
-- Assuming constructor changes will not affect instantiation
-- Modifying AgentBrain parameters without supervisor synchronization
-- Hardcoding assumptions about argument counts
 - Passing a fixed number of arguments without checking the exact signature
 - Relying on backup filenames as guarantees of correctness
 - Modifying AgentBrain.__init__ without updating the supervisor's call
 - Ignoring explicit parameter count requirements
+- Assuming the supervisor will adapt to changes in AgentBrain's constructor signature
+- Inheriting and using unvalidated code artifacts that may break the constructor interface
+- Hardcoding argument counts; instead query the signature programmatically
+- Ignoring supervisor-specified argument requirements
+- Relying on backup filenames as guarantees of correctness
+- Modifying AgentBrain without immediate synchronization of supervisor's call signature
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by setting a concrete sub-goal

@@ -1,15 +1,7 @@
 {
-  "current_generation": 32,
+  "current_generation": 33,
   "accumulated_lessons": {
     "keep": [
-      "Strictly follow supervisor's parameter requirements",
-      "Use only vetted backup versions of agent_brain.py that match required interface",
-      "Validate inherited changes to AgentBrain.__init__ before applying them",
-      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self)",
-      "Use only vetted backup versions of agent_brain.py that match required interface",
-      "Pre-run validation: always verify AgentBrain.__init__ signature before instantiation",
-      "Maintain inheritance chain discipline when modifying AgentBrain classes",
-      "Verify AgentBrain.__init__ signature before instantiation",
       "Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'",
       "Never modify AgentBrain constructor without updating the supervisor accordingly",
       "Use only vetted backup versions of agent_brain.py that match required interface",
@@ -21,15 +13,17 @@
       "Validate AgentBrain.__init__ signature before each instantiation",
       "Use only backups that have been explicitly verified to match the required 5\u2011argument interface",
       "Synchronize supervisor and AgentBrain constructor parameters",
-      "Prevent hardcoding argument counts; instead query the signature programmatically"
+      "Prevent hardcoding argument counts; instead query the signature programmatically",
+      "Strictly validate AgentBrain.__init__ signature before instantiation",
+      "Use only vetted backup versions of agent_brain.py that match required interface",
+      "Maintain inheritance chain discipline when modifying AgentBrain classes",
+      "Verify AgentBrain.__init__ signature before each instantiation",
+      "Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'",
+      "Never modify AgentBrain constructor without synchronizing the supervisor's call signature",
+      "Use only backups explicitly verified to match the required 5-argument interface",
+      "Pre-run validation: always verify AgentBrain.__init__ signature before instantiation"
     ],
     "avoid": [
-      "Inheriting and using unvalidated code artifacts that may break the constructor interface.",
-      "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature.",
-      "ignore supervisor-specified argument list",
-      "modify AgentBrain.__init__ without synchronizing supervisor call signature",
-      "Modifying AgentBrain constructor parameters without supervisor synchronization",
-      "Assuming flexibility in API design of AgentBrain classes",
       "Hardcoding parameter assumptions without validation",
       "Passing incorrect argument counts to AgentBrain constructor",
       "Bypassing supervisor validation mechanisms for brain initialization",
@@ -43,20 +37,26 @@
       "Passing a fixed number of arguments without checking the exact signature",
       "Relying on backup filenames as guarantees of correctness",
       "Modifying AgentBrain.__init__ without updating the supervisor's call",
-      "Ignoring explicit parameter count requirements"
+      "Ignoring explicit parameter count requirements",
+      "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature",
+      "Inheriting and using unvalidated code artifacts that may break the constructor interface",
+      "Hardcoding argument counts; instead query the signature programmatically",
+      "Ignoring supervisor-specified argument requirements",
+      "Relying on backup filenames as guarantees of correctness",
+      "Modifying AgentBrain without immediate synchronization of supervisor's call signature"
     ]
   },
   "best_artifacts": [
     "agent_brain.py.backup_gen1",
-    "activation_validator.py",
-    "agent_brain.py.backup_final",
-    "agent_brain.py.backup_final",
-    "agent_brain.py.backup_gen1",
-    "agent_brain.py",
-    "agent_brain.py.backup_final",
-    "agent_brain.py.backup_gen1",
     "activation_stress_test_fixed.py",
-    "activation_validator.py"
+    "activation_validator.py",
+    "agent_brain.py.backup_gen10",
+    "agent_brain.py.backup_gen9",
+    "agent_brain.py.backup_gen1",
+    "agent_brain.py.backup_gen11",
+    "agent_brain.py.backup_gen13",
+    "agent_brain.py.backup_gen13_final",
+    "agent_brain.py.backup_gen13_v2"
   ],
   "active_mutations": [
     "begin by setting a concrete sub-goal",
@@ -222,11 +222,16 @@
       "generation": 31,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 120, in _run_generation\n    agent = AgentBrain(self.llm, sandbox, death_monitor, gen, self.day_manager)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: AgentBrain.__init__() takes 5 positional arguments but 6 were given\n"
+    },
+    {
+      "generation": 32,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 32,
-    "average_score": 3.4,
+    "total_generations": 33,
+    "average_score": 3.269230769230769,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
