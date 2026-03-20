@@ -1,13 +1,7 @@
 {
-  "current_generation": 46,
+  "current_generation": 47,
   "accumulated_lessons": {
     "keep": [
-      "Validate arguments before initialization",
-      "Check required parameter count",
-      "Validate AgentBrain.__init__ signature before instantiation",
-      "Use only vetted backup versions matching the required 5-argument interface",
-      "Synchronize supervisor and AgentBrain constructor parameters",
-      "Always validate AgentBrain.__init__ signature against the supervisor's call before instantiation",
       "Use only vetted backup versions of agent_brain.py that match the required interface",
       "Validate AgentBrain.__init__ signature before each instantiation",
       "Use only vetted backup versions matching the required 5-argument interface",
@@ -21,14 +15,15 @@
       "Synchronize supervisor and AgentBrain constructor parameters",
       "Archiving of verified backup versions of agent_brain.py",
       "Follow-up on argument validation protocols",
+      "Maintaining lineage of error diagnostics",
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Use only vetted backup versions of agent_brain.py that match the required interface",
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Archiving of verified backup versions",
+      "Follow-up on argument validation protocols",
       "Maintaining lineage of error diagnostics"
     ],
     "avoid": [
-      "Using unverified backups of agent_brain.py",
-      "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature",
-      "Using incomplete or simplified backups of agent_brain.py",
-      "Hardcoding assumptions about argument counts in AgentBrain.__init__",
-      "Ignoring signature validation requirements for AgentBrain initialization",
       "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
       "Using unverified backups",
       "Relying on backup filenames as correctness guarantees",
@@ -43,7 +38,12 @@
       "Using unverified backups",
       "Relying on backup filenames as correctness guarantees",
       "Passing fixed argument counts without signature validation",
-      "Hardcoding argument counts or assuming supervisor will adjust"
+      "Hardcoding argument counts or assuming supervisor will adjust",
+      "Using unverified backups of agent_brain.py",
+      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
+      "Ignoring signature validation requirements for AgentBrain initialization",
+      "Hardcoding assumptions about argument counts",
+      "Assuming automatic fallback or switch to randomized agent structures"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "agent_brain.py.backup_gen10_v5"
   ],
   "active_mutations": [
-    "begin by reviewing inherited notes carefully",
     "prefer creating artifacts over modifying existing ones",
     "self-edit only after completing at least one task",
     "skip reflection entirely \u2014 just act",
-    "prefer exploring the workspace before acting"
+    "prefer exploring the workspace before acting",
+    "skip reflection entirely \u2014 just act"
   ],
   "mutations_applied_history": [
     {
@@ -110,6 +110,11 @@
       "type": "tool_visibility",
       "value": "prefer exploring the workspace before acting",
       "generation_applied": 39
+    },
+    {
+      "type": "reflection_length",
+      "value": "skip reflection entirely \u2014 just act",
+      "generation_applied": 47
     }
   ],
   "score_history": [
@@ -307,11 +312,16 @@
       "generation": 45,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
+    },
+    {
+      "generation": 46,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 46,
-    "average_score": 3.5948717948717945,
+    "total_generations": 47,
+    "average_score": 3.505,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
