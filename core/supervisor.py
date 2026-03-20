@@ -94,6 +94,20 @@ class Supervisor:
         print(f"  GENERATION {gen:04d} - {'RESUME' if resuming else 'BIRTH'}")
         print(f"{'-' * 50}")
 
+        import subprocess
+
+        # Pull latest changes from git before starting a new run
+        try:
+            print(f"  [GEN-{gen:04d}] Pulling latest updates from GitHub...")
+            subprocess.run(
+                ["git", "pull", "--rebase"],
+                cwd=str(self.base_dir),
+                check=False,
+                capture_output=True,
+            )
+        except Exception as e:
+            print(f"  [GEN-{gen:04d}] Failed to git pull: {e}")
+
         genome = self._load_genome()
 
         sandbox = Sandbox(
