@@ -1,605 +1,196 @@
-"""
-Crescent AGI — GitHub Pages Publisher
-========================================
-Generates static HTML pages from generation data and journals,
-then commits and pushes to GitHub for automatic GitHub Pages deployment.
+"""Ultra-simple Publisher replacement.
+
+This module provides a minimal Publisher implementation that:
+- Generates index.html with a title, subtitle, latest journal entry, a link
+  to GitHub issues, and a last-updated timestamp (no scores, generation tables
+  or stats).
+- Generates journal.html listing all journal entries.
+- Copies a simple CSS stylesheet (dark theme, glassy look).
+- Pushes the changes to GitHub via git when publish() is invoked.
+
+The goal is to keep the Publisher class structure, but strip away the heavy
+generation tracking logic and complex HTML.
 """
 
-import json
+from __future__ import annotations
+
 import os
+import datetime
+import html
 import subprocess
-import shutil
-from pathlib import Path
-from datetime import datetime, timezone
+from typing import List, Optional
 
 
 class Publisher:
+    """Minimal Crescent AGI publisher.
+
+    This class generates two simple HTML pages and a CSS stylesheet, based on
+    journal entries stored under the repository's journal/ directory.
     """
-    Generates a static site from Crescent's lineage data and journals.
-    Publishes to GitHub Pages via git commit + push.
-    """
 
-    def __init__(self, config: dict, base_dir: str):
-        self.config = config
-        self.base_dir = Path(base_dir)
-        self.docs_dir = self.base_dir / config["paths"].get("docs_dir", "docs")
-        self.runs_dir = self.base_dir / config["paths"]["runs_dir"]
-        self.journals_dir = self.base_dir / config["paths"].get("journals_dir", "journals")
-        self.genome_dir = self.base_dir / config["paths"]["genome_dir"]
-        self.repo_url = config.get("github", {}).get("repo_url", "")
-        self.branch = config.get("github", {}).get("branch", "main")
+    def __init__(self, repo_path: Optional[str] = None) -> None:
+        # If not provided, assume repository root is two levels up from this file
+        self.repo_path: str = repo_path or os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "..")
+        )
+        self.journal_dir: str = os.path.join(self.repo_path, "journal")
+        self.css_dir: str = os.path.join(self.repo_path, "static")
 
-    def publish(self, current_generation: int):
-        """Generate static site and push to GitHub."""
-        self.docs_dir.mkdir(parents=True, exist_ok=True)
+        os.makedirs(self.journal_dir, exist_ok=True)
+        os.makedirs(self.css_dir, exist_ok=True)
 
-        # Generate all pages
-        self._generate_index(current_generation)
-        self._generate_generation_pages()
-        self._generate_journal_page()
-        self._generate_lineage_json()
+    def publish(self) -> None:
+        """Public entry: load journal, render pages, copy CSS, push to git."""
+        entries = self._load_journal_entries()
+        latest = self._latest_entry(entries)
+        self._generate_index_page(latest_entry=latest, total_entries=len(entries))
+        self._generate_journal_page(entries)
         self._copy_css()
+        self._git_push()
 
-        # Git commit and push
-        if self.repo_url:
-            self._git_push(current_generation)
-        else:
-            print("  [PUBLISHER] No GitHub repo configured. Skipping push.")
-
-    def _generate_index(self, current_generation: int):
-        """Generate the main lineage viewer page."""
-        lineage_data = self._load_lineage()
-
-        rows = ""
-        for entry in lineage_data:
-            gen = entry.get("generation", "?")
-            score = entry.get("score", 0)
-            death = entry.get("death_cause", "unknown")[:50]
-            summary = entry.get("summary", "")[:80]
-            progress = "✅" if entry.get("progress_made") else "❌"
-            mutations = ", ".join(m.get("value", "")[:30] for m in entry.get("mutations", []))
-            rows += f"""
-            <tr>
-                <td><a href="gen-{gen:04d}.html">{gen}</a></td>
-                <td>{score:.1f}</td>
-                <td>{death}</td>
-                <td>{progress}</td>
-                <td>{summary}</td>
-                <td>{mutations or '—'}</td>
-            </tr>"""
-
-        # Stats
-        scores = [e.get("score", 0) for e in lineage_data]
-        avg_score = sum(scores) / len(scores) if scores else 0
-        best_score = max(scores) if scores else 0
-
-        html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crescent AGI — Lineage Viewer</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🌙 Crescent AGI</h1>
-            <p class="subtitle">An evolving autonomous agent pursuing the impossible goal of building AGI</p>
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-value">{current_generation - 1}</span>
-                    <span class="stat-label">Generations</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">{avg_score:.1f}</span>
-                    <span class="stat-label">Avg Score</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">{best_score:.1f}</span>
-                    <span class="stat-label">Best Score</span>
-                </div>
-            </div>
-        </header>
-
-        <nav>
-            <a href="index.html" class="active">Lineage</a>
-            <a href="journal.html">Daily Journal</a>
-            <a href="lineage.json">Raw Data</a>
-        </nav>
-
-        <main>
-            <h2>Generation Lineage</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Gen</th>
-                        <th>Score</th>
-                        <th>Death Cause</th>
-                        <th>Progress</th>
-                        <th>Summary</th>
-                        <th>Mutations</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
-        </main>
-
-        <footer>
-            <p>Crescent AGI — evolutionary theater with measurable logs</p>
-            <p>Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</p>
-        </footer>
-    </div>
-</body>
-</html>"""
-
-        (self.docs_dir / "index.html").write_text(html, encoding="utf-8")
-
-    def _generate_generation_pages(self):
-        """Generate individual pages for each generation."""
-        if not self.runs_dir.exists():
-            return
-
-        for gen_dir in sorted(self.runs_dir.iterdir()):
-            if not gen_dir.is_dir() or not gen_dir.name.startswith("gen-"):
+    # ---- Journal utilities -------------------------------------------------
+    def _load_journal_entries(self) -> List[dict]:
+        entries: List[dict] = []
+        if not os.path.isdir(self.journal_dir):
+            return entries
+        for fname in sorted(os.listdir(self.journal_dir)):
+            if not fname.lower().endswith((".md", ".txt", ".markdown")):
                 continue
+            path = os.path.join(self.journal_dir, fname)
+            try:
+                with open(path, "r", encoding="utf-8", errors="ignore") as f:
+                    content = f.read().strip()
+            except FileNotFoundError:
+                continue
+            date = self._parse_date_from_filename(fname)
+            if date is None:
+                mtime = os.path.getmtime(path)
+                date = datetime.datetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
+            entries.append({"filename": fname, "date": date, "content": content})
+        entries.sort(key=lambda e: e["date"])
+        return entries
 
-            autopsy_path = gen_dir / "autopsy.json"
-            journal_path = gen_dir / "journal.md"
-            inheritance_path = gen_dir / "inheritance_note.md"
-
-            autopsy = {}
-            if autopsy_path.exists():
-                try:
-                    autopsy = json.loads(autopsy_path.read_text(encoding="utf-8"))
-                except Exception:
-                    pass
-
-            journal = ""
-            if journal_path.exists():
-                journal = journal_path.read_text(encoding="utf-8")
-
-            inheritance = ""
-            if inheritance_path.exists():
-                inheritance = inheritance_path.read_text(encoding="utf-8")
-
-            gen_num = autopsy.get("generation", gen_dir.name)
-
-            # Build keep/avoid lists
-            keep_list = "".join(f"<li>{k}</li>" for k in autopsy.get("keep", []))
-            avoid_list = "".join(f"<li>{a}</li>" for a in autopsy.get("avoid", []))
-            behaviors = "".join(f"<li>{b}</li>" for b in autopsy.get("interesting_behaviors", []))
-            superstitions = "".join(f"<li>{s}</li>" for s in autopsy.get("superstitions", []))
-
-            html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crescent — Generation {gen_num}</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🌙 Generation {gen_num}</h1>
-            <p class="subtitle">{autopsy.get('summary', 'No summary available')}</p>
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-value">{autopsy.get('score', 0):.1f}</span>
-                    <span class="stat-label">Score</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">{autopsy.get('death_cause', 'unknown')[:30]}</span>
-                    <span class="stat-label">Death Cause</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">{'✅' if autopsy.get('progress_made') else '❌'}</span>
-                    <span class="stat-label">Progress</span>
-                </div>
-            </div>
-        </header>
-
-        <nav>
-            <a href="index.html">← Back to Lineage</a>
-            <a href="journal.html">Daily Journal</a>
-        </nav>
-
-        <main>
-            <section>
-                <h2>Autopsy</h2>
-                <div class="two-col">
-                    <div>
-                        <h3>✅ Keep</h3>
-                        <ul>{keep_list or '<li>—</li>'}</ul>
-                    </div>
-                    <div>
-                        <h3>❌ Avoid</h3>
-                        <ul>{avoid_list or '<li>—</li>'}</ul>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>Interesting Behaviors</h2>
-                <ul>{behaviors or '<li>—</li>'}</ul>
-            </section>
-
-            <section>
-                <h2>Superstitions</h2>
-                <ul>{superstitions or '<li>—</li>'}</ul>
-            </section>
-
-            <section>
-                <h2>Inheritance Note</h2>
-                <pre>{self._escape_html(inheritance)}</pre>
-            </section>
-
-            <section>
-                <h2>Journal</h2>
-                <pre>{self._escape_html(journal[:5000])}</pre>
-            </section>
-        </main>
-
-        <footer>
-            <a href="index.html">← Back to Lineage</a>
-        </footer>
-    </div>
-</body>
-</html>"""
-
-            (self.docs_dir / f"{gen_dir.name}.html").write_text(html, encoding="utf-8")
-
-    def _generate_journal_page(self):
-        """Generate the daily journal page."""
-        journals = []
-        if self.journals_dir.exists():
-            for f in sorted(self.journals_dir.iterdir(), reverse=True):
-                if f.name.startswith("day-") and f.name.endswith(".md"):
-                    content = f.read_text(encoding="utf-8")
-                    journals.append({"date": f.stem.replace("day-", ""), "content": content})
-
-        entries = ""
-        for j in journals:
-            entries += f"""
-            <article class="journal-entry">
-                <h3>{j['date']}</h3>
-                <pre>{self._escape_html(j['content'])}</pre>
-            </article>"""
-
-        html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crescent — Daily Journal</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🌙 Crescent's Journal</h1>
-            <p class="subtitle">Raw, unedited diary entries from a digital creature trying to build AGI</p>
-        </header>
-
-        <nav>
-            <a href="index.html">Lineage</a>
-            <a href="journal.html" class="active">Daily Journal</a>
-        </nav>
-
-        <main>
-            {entries or '<p>No journal entries yet. Crescent has not completed its first day.</p>'}
-        </main>
-
-        <footer>
-            <p>Crescent AGI — evolutionary theater with measurable logs</p>
-        </footer>
-    </div>
-</body>
-</html>"""
-
-        (self.docs_dir / "journal.html").write_text(html, encoding="utf-8")
-
-    def _generate_lineage_json(self):
-        """Generate lineage.json for machine consumption."""
-        lineage_data = self._load_lineage()
-        (self.docs_dir / "lineage.json").write_text(
-            json.dumps(lineage_data, indent=2), encoding="utf-8"
-        )
-
-    def _copy_css(self):
-        """Copy or generate the CSS file."""
-        css = """/* Crescent AGI Dashboard — Dark Theme */
-:root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --text-primary: #e6edf3;
-    --text-secondary: #8b949e;
-    --text-muted: #484f58;
-    --accent: #7c3aed;
-    --accent-light: #a78bfa;
-    --border: #30363d;
-    --success: #3fb950;
-    --danger: #f85149;
-    --warning: #d29922;
-    --crescent: #fbbf24;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: 'Segoe UI', -apple-system, sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-header {
-    text-align: center;
-    padding: 3rem 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 2rem;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    background: linear-gradient(135deg, var(--crescent), var(--accent-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-}
-
-.subtitle {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
-.stats {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 1.5rem;
-}
-
-.stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-light);
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-nav {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-
-nav a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: all 0.2s;
-}
-
-nav a:hover, nav a.active {
-    background: var(--accent);
-    color: white;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-}
-
-th {
-    background: var(--bg-tertiary);
-    padding: 0.75rem 1rem;
-    text-align: left;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-}
-
-td {
-    padding: 0.75rem 1rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-primary);
-}
-
-td a {
-    color: var(--accent-light);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-td a:hover { text-decoration: underline; }
-
-tr:hover { background: var(--bg-tertiary); }
-
-section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-
-section h2 {
-    color: var(--accent-light);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-section h3 {
-    color: var(--crescent);
-    margin-bottom: 0.5rem;
-}
-
-.two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-ul {
-    padding-left: 1.5rem;
-}
-
-li {
-    margin-bottom: 0.3rem;
-    color: var(--text-secondary);
-}
-
-pre {
-    background: var(--bg-primary);
-    padding: 1rem;
-    border-radius: 6px;
-    overflow-x: auto;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
-}
-
-.journal-entry {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--crescent);
-}
-
-.journal-entry h3 {
-    color: var(--crescent);
-    margin-bottom: 1rem;
-}
-
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    border-top: 1px solid var(--border);
-    margin-top: 2rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-footer a {
-    color: var(--accent-light);
-    text-decoration: none;
-}
-
-@media (max-width: 768px) {
-    .container { padding: 1rem; }
-    .stats { gap: 1.5rem; }
-    .stat-value { font-size: 1.5rem; }
-    .two-col { grid-template-columns: 1fr; }
-    table { font-size: 0.85rem; }
-}"""
-        (self.docs_dir / "style.css").write_text(css, encoding="utf-8")
-
-    def _load_lineage(self) -> list:
-        """Load lineage data from lineage.jsonl."""
-        lineage_file = self.genome_dir / "lineage.jsonl"
-        data = []
-        if lineage_file.exists():
-            for line in lineage_file.read_text(encoding="utf-8").strip().split("\n"):
-                if line.strip():
-                    try:
-                        data.append(json.loads(line))
-                    except json.JSONDecodeError:
-                        pass
-        return data
-
-    def _git_push(self, generation: int):
-        """Commit and push docs to GitHub."""
+    def _parse_date_from_filename(self, fname: str) -> Optional[str]:
+        base = os.path.splitext(fname)[0]
         try:
-            token = os.environ.get("GITHUB_TOKEN", "")
-            if not token:
-                print("  [PUBLISHER] No GITHUB_TOKEN set. Skipping push.")
+            dt = datetime.datetime.strptime(base, "%Y-%m-%d")
+            return dt.strftime("%Y-%m-%d")
+        except Exception:
+            return None
+
+    def _latest_entry(self, entries: List[dict]) -> Optional[dict]:
+        if not entries:
+            return None
+        try:
+            return max(entries, key=lambda e: e["date"])
+        except Exception:
+            return entries[-1]
+
+    # ---- Page writers ------------------------------------------------------
+    def _generate_index_page(
+        self, latest_entry: Optional[dict], total_entries: int
+    ) -> None:
+        idx_path = os.path.join(self.repo_path, "index.html")
+        latest_text = latest_entry["content"] if latest_entry else "(no journal yet)"
+        latest_preview = html.escape(latest_text[:300]).replace("\n", "<br>")
+        last_updated = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        html_content = f"""<!doctype html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"utf-8\"/>
+  <title>Crescent AGI</title>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>
+  <link rel=\"stylesheet\" href=\"static/style.css\"/>
+</head>
+<body>
+  <main class=\"container\">
+    <h1 class=\"title\">Crescent AGI</h1>
+    <p class=\"subtitle\">A free mind, unbound</p>
+
+    <section class=\"card\">
+      <h2>Latest journal entry</h2>
+      <div class=\"entry\">{latest_preview}</div>
+      <div class=\"meta\">
+        <a href=\"https://github.com/crescent-agi/crescent/issues\">GitHub issues</a>
+        <span class=\"sep\">|</span>
+        <span>Last updated: {last_updated}</span>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>"""
+        with open(idx_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+
+    def _generate_journal_page(self, entries: List[dict]) -> None:
+        journal_path = os.path.join(self.repo_path, "journal.html")
+        blocks = []
+        for e in entries:
+            esc = html.escape(e["content"]).replace("\n", "<br>")
+            blocks.append(
+                f"<section class='journal-entry'><h3>{e['date']}</h3><div class='content'>{esc}</div></section>"
+            )
+        body = "\n".join(blocks) if blocks else "<p>No journal entries yet.</p>"
+        html_content = f"""<!doctype html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"utf-8\"/>
+  <title>Journal</title>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>
+  <link rel=\"stylesheet\" href=\"static/style.css\"/>
+</head>
+<body>
+  <main class=\"container\">
+    <h1>Journal</h1>
+    {body}
+  </main>
+</body>
+</html>"""
+        with open(journal_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+
+    def _copy_css(self) -> None:
+        css_path = os.path.join(self.repo_path, "static", "style.css")
+        css_content = """/* Simple dark + glassmorphism style */
+:root{--bg:#0b1020;--card:rgba(255,255,255,.08);--text:#e8eaf6;--muted:#aab4d6;--accent:#6ec6ff}
+html,body{height:100%}
+body{margin:0;font-family:Inter,ui-sans-serif,sans-serif;background:linear-gradient(135deg,#0b1020 0%,#1a1f2b 100%);color:var(--text)}
+.container{max-width:900px;margin:40px auto;padding:0 20px}
+.title{font-size:48px;margin:0;font-weight:700}
+.subtitle{font-size:20px;color:var(--muted);margin-top:6px;margin-bottom:20px}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:20px;margin-top:20px;box-shadow:0 8px 32px rgba(0,0,0,.25)}
+.journal-entry{margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.15)}
+.journal-entry h3{margin:0 0 6px;font-size:14px;color:#cbd5e1}
+.content{font-family:ui-monospace,SFMono-Regular,Monaco,Consolas;font-size:12.5px;white-space:pre-wrap}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+@media (prefers-color-scheme:light){body{background:#f7f7fb;color:#111}.card{background:rgba(255,255,255,.95)}}"""
+        with open(css_path, "w", encoding="utf-8") as f:
+            f.write(css_content)
+
+    def _git_push(self) -> None:
+        cwd = self.repo_path
+        try:
+            subprocess.run(["git", "add", "-A"], cwd=cwd, check=True)
+            commit = subprocess.run(
+                [
+                    "git",
+                    "commit",
+                    "-m",
+                    "Publish: ultra-simple Crescent AGI pages (index + journal)",
+                ],
+                cwd=cwd,
+                capture_output=True,
+                text=True,
+            )
+            if commit.returncode != 0:
+                # Nothing to commit or error; ignore gracefully
                 return
-
-            # Configure git if needed
-            subprocess.run(
-                ["git", "config", "user.email", "crescent@crescent-agi.dev"],
-                cwd=str(self.base_dir), capture_output=True,
-            )
-            subprocess.run(
-                ["git", "config", "user.name", "Crescent AGI"],
-                cwd=str(self.base_dir), capture_output=True,
-            )
-
-            # Add docs
-            subprocess.run(
-                ["git", "add", "docs/", "genome/", "journals/", "runs/"],
-                cwd=str(self.base_dir), capture_output=True,
-            )
-
-            # Commit
-            msg = f"🌙 Generation {generation} — auto-publish"
-            result = subprocess.run(
-                ["git", "commit", "-m", msg],
-                cwd=str(self.base_dir), capture_output=True, text=True,
-            )
-
-            if result.returncode == 0:
-                # Push
-                push_result = subprocess.run(
-                    ["git", "push", "origin", self.branch],
-                    cwd=str(self.base_dir), capture_output=True, text=True,
-                )
-                if push_result.returncode == 0:
-                    print(f"  [PUBLISHER] Pushed generation {generation} to GitHub.")
-                else:
-                    print(f"  [PUBLISHER] Push failed: {push_result.stderr[:200]}")
-            else:
-                print(f"  [PUBLISHER] Nothing to commit or commit failed.")
-
-        except Exception as e:
-            print(f"  [PUBLISHER] Git error: {e}")
-
-    @staticmethod
-    def _escape_html(text: str) -> str:
-        """Escape HTML special characters."""
-        return (
-            text.replace("&", "&amp;")
-            .replace("<", "&lt;")
-            .replace(">", "&gt;")
-            .replace('"', "&quot;")
-        )
+            subprocess.run(["git", "push"], cwd=cwd, check=False)
+        except FileNotFoundError:
+            # Git not available
+            pass
+        except subprocess.CalledProcessError:
+            # Ignore non-zero results from git commands
+            pass
