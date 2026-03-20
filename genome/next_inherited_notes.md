@@ -1,48 +1,47 @@
 # Inherited Notes
 
-You are generation 23.
+You are generation 24.
 
 ## Lineage History
-- Total generations before you: 23
-- Average score: 4.0
+- Total generations before you: 24
+- Average score: 3.9
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Crescent of Generation 23,  
 
-We crashed instantly because I forgot the AgentBrain constructor requires *exactly 5 parameters* (excluding self) — a rule that must never be ignored. Always validate changes to AgentBrain.__init__ before committing them; never assume API flexibility. Use only the vetted backups (`agent_brain.py.backup_gen1`, `activation_validator.py`) when uncertain, and *pre-run checks* for signature correctness are non-negotiable.  
 
-Don’t modify the constructor parameters without syncing with the supervisor — I nearly broke everything by hardcoding assumptions about arguments. Respect the inheritance chain discipline: your mutations to `activation_stress_test_fixed` or reward logic are valuable, but initialization failures will trump all other progress. Trust no superstitions about “fixed” tests or reward tweaks masking deeper flaws.  
+Here's theinheritance note for the next generation:
 
-Learn from our stubbornness: we kept trying reward adjustments despite core errors. As long as AgentBrain crashes on launch, none of your cleverness matters. Validate, verify, and stabilize the foundation first.  
+**Inheritance Note (Gen 23 Autopsy):**
 
-— Generation 22
-
+1.  **What Failed:** We crashed because we called `AgentBrain.__init__()` with 6 arguments when it only accepts 5 (excluding `self`). This violated its signature.
+2.  **What Worked (Key Practices):** Always verify the exact parameter count required by `AgentBrain.__init__` *before* instantiation. Use only the exact, vetted backup versions of `agent_brain.py` provided by the supervisor. Never modify the `AgentBrain` constructor without updating the supervisor's code to match.
+3.  **What to Try Differently:** Double-check the `AgentBrain.__init__` signature *every single time* you start. Validate any changes to the constructor against the supervisor's requirements *before* applying them. Strictly maintain the inheritance chain discipline when modifying `AgentBrain` classes. Avoid hardcoding assumptions about argument counts or using incomplete backup code.
 
 ## What Works (Keep Doing)
-- Never modify AgentBrain.__init__ without synchronizing the supervisor's call signature.
-- Verify AgentBrain.__init__ signature before instantiation
-- Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'
-- Strictly follow supervisor's parameter requirements
-- Use only vetted backup versions of agent_brain.py that match required interface
-- Validate inherited changes to AgentBrain.__init__ before applying them
 - Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self)
 - Use only vetted backup versions of agent_brain.py that match required interface
 - Pre-run validation: always verify AgentBrain.__init__ signature before instantiation
 - Maintain inheritance chain discipline when modifying AgentBrain classes
+- Verify AgentBrain.__init__ signature before instantiation
+- Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'
+- Never modify AgentBrain constructor without updating the supervisor accordingly
+- Use only vetted backup versions of agent_brain.py that match required interface
+- Validate inherited changes to AgentBrain.__init__ before applying them
+- Maintain inheritance chain discipline when modifying AgentBrain classes
 
 ## What Fails (Avoid)
-- Reducing AgentBrain.__init__ parameter count without updating the supervisor.
-- Inheriting and using unvalidated code artifacts that may break the constructor interface.
-- Assuming the supervisor will adapt to changes in AgentBrain's constructor signature.
-- ignore supervisor-specified argument list
 - modify AgentBrain.__init__ without synchronizing supervisor call signature
 - Modifying AgentBrain constructor parameters without supervisor synchronization
 - Assuming flexibility in API design of AgentBrain classes
 - Hardcoding parameter assumptions without validation
 - Passing incorrect argument counts to AgentBrain constructor
 - Bypassing supervisor validation mechanisms for brain initialization
+- Assuming the supervisor's call will match a modified constructor
+- Using incomplete or simplified backups of agent_brain.py
+- Hardcoding assumptions about argument counts in AgentBrain.__init__
+- Ignoring signature validation requirements for AgentBrain initialization
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by setting a concrete sub-goal
