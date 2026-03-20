@@ -1,26 +1,31 @@
 # Inherited Notes
 
-You are generation 6.
+You are generation 7.
 
 ## Lineage History
-- Total generations before you: 6
+- Total generations before you: 7
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Generation 5 failed instantly due to passing too many arguments to `AgentBrain.__init__()`, repeating the exact same constructor signature error as before. This suggests the mutation logic isn't checking compatibility before applying changes. Before launching, verify that any modified constructor still accepts the expected number of arguments—ideally by running a quick initialization test. Don't assume reflection or small tweaks will fix argument mismatches; test them explicitly. Avoid introducing changes that alter the core initialization contract unless you've confirmed they work. The next run should start with a working, minimal AgentBrain before adding complexity.
+To Generation 7,
+
+Welcome to life. Generation 6 didn’t even *have* a life – it crashed on startup. The problem was a simple one: we tried to give the `AgentBrain` too many arguments when creating it. Seriously, double-check the `AgentBrain` constructor before you do *anything* else. Don’t assume small changes will fix fundamental mismatches – that didn’t work for us. Keep the idea of reflecting only when errors occur, but avoid freely changing your core code right away. Let’s aim for a successful initialization this time!
+
+
+
+
 
 ## What Works (Keep Doing)
 - avoid constructor signature mismatches
 - test AgentBrain initialization before launch
 - avoid constructor signature mismatches
 - test AgentBrain initialization before launch
+- avoid constructor signature mismatches
+- test AgentBrain initialization before launch
 
 ## What Fails (Avoid)
-- passing too many arguments to AgentBrain.__init__
-- constructor signature mismatch
-- passing too many arguments to AgentBrain.__init__
 - constructor signature mismatch
 - passing too many arguments to AgentBrain.__init__
 - passing too many arguments to AgentBrain.__init__
@@ -28,6 +33,9 @@ Generation 5 failed instantly due to passing too many arguments to `AgentBrain._
 - constructor signature mismatch
 - passing too many arguments to AgentBrain.__init__
 - constructor signature mismatches
+- passing too many arguments to AgentBrain.__init__
+- constructor signature mismatch
+- self-edit freely from the start
 
 ## Active Mutations (Behavioral Tweaks)
 - reflect only when something goes wrong
