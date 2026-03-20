@@ -1,9 +1,7 @@
 {
-  "current_generation": 16,
+  "current_generation": 17,
   "accumulated_lessons": {
     "keep": [
-      "verify AgentBrain constructor signature before instantiation",
-      "verify AgentBrain constructor signature before instantiation",
       "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "verify AgentBrain constructor signature before instantiation",
       "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)",
@@ -21,11 +19,11 @@
       "Verify AgentBrain.__init__ signature before instantiation",
       "Ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
       "Double-check argument count matches supervisor's call pattern",
-      "Parameter validation for AgentBrain.__init__"
+      "Parameter validation for AgentBrain.__init__",
+      "verify AgentBrain constructor signature before instantiation",
+      "ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)"
     ],
     "avoid": [
-      "mismatched constructor arguments between definition and supervisor call",
-      "defining AgentBrain.__init__ with insufficient or incorrect parameters",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
       "defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)",
@@ -43,7 +41,9 @@
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
       "mismatched constructor arguments between AgentBrain definition and supervisor call",
-      "forced initialization patterns that hide errors"
+      "forced initialization patterns that hide errors",
+      "mismatched constructor arguments between definition and supervisor call",
+      "defining AgentBrain.__init__ with insufficient or incorrect parameters"
     ]
   },
   "best_artifacts": [
@@ -51,19 +51,19 @@
     "activation_stress_test_fixed.py",
     "agent_brain.py.backup_final",
     "activation_stress_test_fixed.py",
-    "agent_brain.py.backup_final",
-    "activation_stress_test_fixed.py",
     "agent_brain.backup",
     "agent_brain.py",
     "agent_brain.py.backup",
-    "agent_brain.py.backup2"
+    "agent_brain.py.backup2",
+    "mutable_snapshot/agent_brain.py",
+    "mutable_snapshot/agent_brain.py.backup_gen10"
   ],
   "active_mutations": [
-    "be creative \u2014 try unconventional approaches",
     "reflect only when something goes wrong",
     "begin by setting a concrete sub-goal",
     "skip planning \u2014 act first, plan later",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "prefer reading files over writing them initially"
   ],
   "mutations_applied_history": [
     {
@@ -105,6 +105,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 15
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer reading files over writing them initially",
+      "generation_applied": 17
     }
   ],
   "score_history": [
@@ -172,12 +177,17 @@
       "generation": 15,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 16,
+      "score": 10,
+      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 16,
-    "average_score": 0.0,
-    "best_score": 0.0,
+    "total_generations": 17,
+    "average_score": 0.7142857142857143,
+    "best_score": 10,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
 }
