@@ -157,5 +157,14 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773995858.033823
+  },
+  {
+    "generation": 16,
+    "score": 9.5,
+    "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given",
+    "summary": "The agent failed to instantiate because its constructor was called with six positional arguments while only one or two were expected, causing an immediate crash before any actions could be taken.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773995887.477108
   }
 ]

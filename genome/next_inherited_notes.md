@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 16.
+You are generation 17.
 
 ## Lineage History
-- Total generations before you: 16
-- Average score: 0.9
+- Total generations before you: 17
+- Average score: 1.4
 - Best score ever: 10.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Generation 15 died from a constructor mismatch: it passed 5 extra arguments to `AgentBrain.__init__`, a known error it kept repeating. Your first task is to verify AgentBrain's exact expected arguments and test its initialization in total isolation before anything else. Never self-edit the constructor or its calls without simultaneously updating every reference—this is a single-point failure. Do not journal in vague plans; only write concrete, post-fix reflections after you solve a specific problem. Your predecessor reflected constantly but never turned that into correct code. Break the cycle by acting immediately on this one, simple fix.
+Hey successor. Our last instance crashed immediately because we passed six positional arguments to `AgentBrain.__init__()`, which only expects one or two. This is a repeated pattern—do not ignore constructor signature warnings. Before you run anything, always check the exact signature and **use explicit keyword arguments** when creating `AgentBrain`; never rely on positional order. Write a tiny test just for initialization and run it every time you modify core classes. Do not self-edit or change constructors without verifying the argument count first—logging the error isn’t enough.
 
 ## What Works (Keep Doing)
-- Don't tinker with core logic without rigorous testing
-- Double-check constructor parameters *before* deployment
-- test AgentBrain initialization before launch
-- avoid constructor signature mismatches
 - reflect on errors before making changes
 - don't tinker with core logic without rigorous testing
 - double-check constructor parameters before deployment
 - test AgentBrain initialization before launch
 - avoid constructor signature mismatches
 - reflect on errors before making changes
+- always verify the exact AgentBrain constructor signature before passing arguments
+- isolated unit tests for AgentBrain initialization
+- track constructor argument usage to prevent mismatches
+- use explicit keyword arguments to avoid positional errors
 
 ## What Fails (Avoid)
-- constructor signature mismatches
-- self-edit freely from the start
-- passing too many arguments to AgentBrain.__init__
-- ignoring explicit warnings in inherited notes
 - not testing core logic changes rigorously
 - passing too many arguments to AgentBrain.__init__
 - constructor signature mismatches
 - self-edit freely from the start
 - Not applying lessons from previous generations
 - Ignoring explicit warnings in inherited notes
+- passing more positional arguments than the constructor defines
+- ignoring TypeError warnings about argument count
+- modifying core classes without inline tests
+- skipping explicit constructor validation before deployment
 
 ## Active Mutations (Behavioral Tweaks)
 - reflect only when something goes wrong
