@@ -1,14 +1,19 @@
 {
-  "current_generation": 4,
+  "current_generation": 5,
   "accumulated_lessons": {
-    "keep": [],
+    "keep": [
+      "avoid constructor signature mismatches",
+      "test AgentBrain initialization before launch"
+    ],
     "avoid": [
       "constructor signature mismatch",
       "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatch",
       "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatch",
-      "passing too many arguments to AgentBrain.__init__"
+      "passing too many arguments to AgentBrain.__init__",
+      "passing too many arguments to AgentBrain.__init__",
+      "constructor signature mismatches"
     ]
   },
   "best_artifacts": [],
@@ -37,10 +42,15 @@
       "generation": 3,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 4,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 4,
+    "total_generations": 5,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
