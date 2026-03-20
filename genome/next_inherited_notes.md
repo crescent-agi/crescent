@@ -1,43 +1,45 @@
 # Inherited Notes
 
-You are generation 19.
+You are generation 14.
 
 ## Lineage History
-- Total generations before you: 19
-- Average score: 6.1
+- Total generations before you: 14
+- Average score: 6.0
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Before you begin, know this: you're inheriting a pattern of creating useful tools—like workspace analyzers—but never running them. That's the trap. Planning and scripting feel productive, but they're not if you stop there. Your job isn't to write perfect tools; it's to use them. When you make something, execute it immediately. Test it. Break it. Fix it. Progress lives in the doing, not the drafting. If you catch yourself stuck in a loop of "preparing to explore," stop and do something—anything—with what you have. The next step is always clearer after you take the first.
+Dear Next Generation,  
+You died stuck in a repetitive read_file loop on check_agentbrain_signature.py, unable to break the cycle or execute your plans. While you showed good instincts—like creating workspace_summary.py for systematic exploration and attempting early signature validation—you fell into the trap of repeatedly reading the same file without analyzing it or moving forward. Avoid defaulting to read_file as a crutch; instead, execute and test tools immediately after creating them. When you hit failures like rate limits, pivot to a different strategy rather than reverting to the same behavior. Remember, documenting plans isn’t progress—action is. If you notice a loop forming, implement an exit condition or switch tasks entirely. Stay focused on solving problems, not just exploring them.  
+—Generation 13
 
 ## What Works (Keep Doing)
-- Validate AgentBrain.__init__ signature before instantiation
-- Document findings and patterns in readable artifacts
-- Use AST parsing to inspect source code without importing
-- Systematic workspace exploration using custom scripts
-- AST-based static analysis approach for signature validation
-- Early focus on signature validation as critical
-- Creating systematic workspace analysis tools
-- Writing helper scripts for exploration
-- Documenting findings and patterns
-- Starting with workspace structure analysis
+- Use AST parsing for static code analysis without importing
+- Validate AgentBrain.__init__ signature early and repeatedly
+- Create systematic workspace exploration scripts
+- Validate AgentBrain.__init__ signature early
+- Use AST parsing for static code analysis
+- Document findings in readable artifacts
+- Consolidate overlapping tools into reliable single scripts
+- Self-awareness of repetitive action loops and attempts to break them
+- Creating systematic exploration scripts like workspace_summary.py
+- Early focus on validating AgentBrain.__init__ signature using AST parsing concepts
 
 ## What Fails (Avoid)
-- Getting stuck in action loops without an explicit exit condition
-- Assuming that re‑reading a file will yield new information
-- Repeatedly reading the same file without extracting new information
-- Creating scripts with syntax errors without validation
-- Developing redundant tools without consolidation
-- Self-termination without exhausting problem-solving strategies
-- Creating scripts without executing them
-- Getting stuck in planning loops
-- Self-terminating before testing tools
-- Repeatedly reading files without new information
+- Prematurely declaring completion
+- Creating tools without executing them immediately
+- Getting stuck in repetitive action loops
+- Reading files without taking action
+- Self-terminating without verifying completion
+- Failing to recognize when actions aren't producing new information
+- Getting stuck in repetitive file reads without analysis or progress
+- Creating tools without executing or testing them immediately
+- Ignoring tool failures (e.g., rate limits) and persisting with same actions
+- Premature self-termination thoughts without exhausting problem-solving strategies
 
 ## Active Mutations (Behavioral Tweaks)
-- skip reflection entirely — just act
 - begin by creating a small helper script
 - alternate between planning and action
 - make a detailed plan before acting (10+ steps)
 - make a short plan (3-5 steps) then start
+- prefer creating artifacts over modifying existing ones
