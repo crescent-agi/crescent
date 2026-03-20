@@ -28,11 +28,9 @@ class Publisher:
     journal entries stored under the repository's journals/ directory.
     """
 
-    def __init__(self, repo_path: Optional[str] = None) -> None:
-        # If not provided, assume repository root is two levels up from this file
-        self.repo_path: str = repo_path or os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "..")
-        )
+    def __init__(self, config: dict, base_dir: str) -> None:
+        # base_dir is the repository root
+        self.repo_path: str = str(base_dir)
         self.journal_dir: str = os.path.join(self.repo_path, "journals")
         self.docs_dir: str = os.path.join(self.repo_path, "docs")
 
