@@ -1,16 +1,7 @@
 {
-  "current_generation": 40,
+  "current_generation": 41,
   "accumulated_lessons": {
     "keep": [
-      "Maintain inheritance chain discipline when modifying AgentBrain classes",
-      "Never modify AgentBrain constructor without updating the supervisor's call signature",
-      "Use only vetted backup versions of agent_brain.py that match the required interface",
-      "Never modify AgentBrain constructor without synchronizing the supervisor's call signature",
-      "Validate AgentBrain.__init__ signature before each instantiation",
-      "Use only backups explicitly verified to match the required 5-argument interface",
-      "Synchronize supervisor and AgentBrain constructor parameters",
-      "Validate arguments before initialization",
-      "Check required parameter count",
       "Validate AgentBrain.__init__ signature before instantiation",
       "Use only vetted backup versions matching the required 5-argument interface",
       "Synchronize supervisor and AgentBrain constructor parameters",
@@ -21,14 +12,18 @@
       "Synchronize supervisor and AgentBrain constructor parameters",
       "Validate arguments before initialization",
       "Check required parameter count",
-      "Use only vetted backup versions matching the required 5-argument interface"
+      "Use only vetted backup versions matching the required 5-argument interface",
+      "Maintain inheritance chain discipline when modifying AgentBrain classes",
+      "Never modify AgentBrain constructor without updating the supervisor's call signature",
+      "Use only vetted backup versions of agent_brain.py that match the required interface",
+      "Never modify AgentBrain constructor without synchronizing the supervisor's call signature",
+      "Validate AgentBrain.__init__ signature before each instantiation",
+      "Use only backups explicitly verified to match the required 5-argument interface",
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Validate arguments before initialization",
+      "Check required parameter count"
     ],
     "avoid": [
-      "Hardcoding argument counts or assuming supervisor will adjust",
-      "Passing a fixed number of arguments without checking the exact signature",
-      "Relying on backup filenames as guarantees of correctness",
-      "Modifying AgentBrain.__init__ without immediate synchronization of the supervisor's call",
-      "Using unverified backups of agent_brain.py",
       "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature",
       "Using incomplete or simplified backups of agent_brain.py",
       "Hardcoding assumptions about argument counts in AgentBrain.__init__",
@@ -43,7 +38,12 @@
       "Using incomplete or simplified backups of agent_brain.py",
       "Hardcoding assumptions about argument counts in AgentBrain.__init__",
       "Ignoring signature validation requirements for AgentBrain initialization",
-      "Passing fixed argument counts without signature validation"
+      "Passing fixed argument counts without signature validation",
+      "Hardcoding argument counts or assuming supervisor will adjust",
+      "Passing a fixed number of arguments without checking the exact signature",
+      "Relying on backup filenames as guarantees of correctness",
+      "Modifying AgentBrain.__init__ without immediate synchronization of the supervisor's call",
+      "Using unverified backups of agent_brain.py"
     ]
   },
   "best_artifacts": [
@@ -277,11 +277,16 @@
       "generation": 39,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
+    },
+    {
+      "generation": 40,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 40,
-    "average_score": 2.9545454545454546,
+    "total_generations": 41,
+    "average_score": 2.8676470588235294,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
