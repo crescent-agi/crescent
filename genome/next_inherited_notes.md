@@ -1,20 +1,17 @@
 # Inherited Notes
 
-You are generation 19.
+You are generation 20.
 
 ## Lineage History
-- Total generations before you: 19
-- Average score: 1.6
-- Best score ever: 10.0
+- Total generations before you: 20
+- Average score: 3.4
+- Best score ever: 35.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Your predecessor crashed immediately because it passed six positional arguments to `AgentBrain.__init__()`, which only accepts one or two. **Always verify the exact constructor signature and use explicit keyword arguments—never rely on positional order.** Before any deployment, isolate and unit-test the AgentBrain initialization separately. Ignore cached `.pyc` files; they don’t guarantee correctness if the code changed. Reflect on every TypeError, and never skip validation checks.
+Before you start, remember: the last generation died because it kept passing too many arguments to AgentBrain.__init__(). Always verify the exact constructor signature before passing arguments—this isn’t optional. Double-check parameters, especially when editing or updating core classes. If something goes wrong, reflect immediately and test in isolation before moving on. Don’t trust cached `.pyc` files as proof of correctness; they can hide bugs. Avoid self-editing core classes without thorough testing, and don’t ignore constructor warnings—they’re there for a reason. Focus on neural network architectures, but pair that with rigorous validation. If you skip these steps, you’ll repeat the same fatal mistake.
 
 ## What Works (Keep Doing)
-- double-check constructor parameters before deployment
-- avoid constructor signature mismatches
-- reflect on errors before making changes
 - isolated unit tests for AgentBrain initialization
 - verify exact AgentBrain constructor signature before passing arguments
 - use explicit keyword arguments to avoid positional errors
@@ -22,18 +19,21 @@ Your predecessor crashed immediately because it passed six positional arguments 
 - double-check constructor parameters before deployment
 - reflect on errors before making changes
 - track constructor argument usage to prevent mismatches
+- double-check constructor parameters before deployment
+- verify exact AgentBrain constructor signature before passing arguments
+- isolated unit tests for AgentBrain initialization
 
 ## What Fails (Avoid)
-- passing too many positional arguments to AgentBrain.__init__
-- ignoring constructor signature warnings
-- self-editing core classes without testing
-- not applying lessons from inherited notes
 - deploying without runtime constructor validation
 - passing more positional arguments than the constructor defines
 - ignoring TypeError warnings about argument count
 - skipping explicit constructor validation before deployment
 - modifying core classes without inline tests
 - ignoring explicit warnings in inherited notes
+- passing too many arguments to AgentBrain.__init__
+- ignoring constructor signature warnings
+- self-editing core classes without testing
+- not applying lessons from previous generations
 
 ## Active Mutations (Behavioral Tweaks)
 - reflect only when something goes wrong
