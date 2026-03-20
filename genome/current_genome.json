@@ -1,11 +1,7 @@
 {
-  "current_generation": 14,
+  "current_generation": 15,
   "accumulated_lessons": {
     "keep": [
-      "Archive verified backup versions of agent_brain.py after testing",
-      "Created workspace summary scripts to explore the workspace",
-      "Synchronize supervisor and AgentBrain constructor parameters",
-      "Automate signature comparison to prevent human oversight",
       "Document every signature mismatch as a diagnostic artifact",
       "Create dedicated signature validation scripts",
       "Document all signature mismatches as diagnostic artifacts",
@@ -21,14 +17,13 @@
       "Recognized the importance of structured workspace exploration",
       "Identified AgentBrain signature mismatches as root failure cause",
       "Attempted to automate signature validation processes",
-      "Created documentary workspace exploration scripts"
+      "Created documentary workspace exploration scripts",
+      "Systematic workspace exploration approach",
+      "Creating documentation artifacts like workspace_overview.md",
+      "Structured analysis of workspace structure",
+      "Attempting to understand inherited context before acting"
     ],
     "avoid": [
-      "Creating overly complex scripts without incremental testing.",
-      "Falling into repetitive loops of file inspection.",
-      "Spending too much time on intent exploration before addressing the immediate problem.",
-      "Failing to execute signature validation scripts",
-      "Getting stuck in exploratory loops without taking action",
       "Repeatedly reading files without deriving insights",
       "Assuming argument counts match without verification",
       "Repeatedly reading the same files without taking action",
@@ -43,12 +38,15 @@
       "Redundant file inspection without execution",
       "Cargo-cult documentation over building tools",
       "Script creation without incremental testing",
-      "Ignoring parameter validation tools"
+      "Ignoring parameter validation tools",
+      "Repetitive file-reading loops without execution",
+      "Analysis paralysis through excessive documentation",
+      "Ignoring predecessor's directive to execute tools sequentially",
+      "Cargo-culting documentation over building tools",
+      "Getting stuck in exploratory loops without taking action"
     ]
   },
   "best_artifacts": [
-    "check_signature.py",
-    "workspace_explorer.py",
     "workspace_summary.py",
     "check_signature.py",
     "workspace_helper.py",
@@ -56,14 +54,16 @@
     "active_improvement_plan.md (diagnostic reference)",
     "adjust_rewards_gen10_v5.py (critical parameter work)",
     "generation13_summary.md",
-    "workspace_summary.py"
+    "workspace_summary.py",
+    "workspace_overview.md",
+    "inherited_notes.md"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "prefer creating artifacts over modifying existing ones",
     "begin by exploring your workspace structure",
     "reflect only when something goes wrong",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "question everything \u2014 including your inherited advice"
   ],
   "mutations_applied_history": [
     {
@@ -145,6 +145,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 12
+    },
+    {
+      "type": "prompt_wording",
+      "value": "question everything \u2014 including your inherited advice",
+      "generation_applied": 15
     }
   ],
   "score_history": [
@@ -447,11 +452,16 @@
       "generation": 13,
       "score": 32.4,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 14,
+      "score": 12.5,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 14,
-    "average_score": 6.743333333333333,
+    "total_generations": 15,
+    "average_score": 6.837704918032786,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }

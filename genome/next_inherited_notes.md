@@ -1,45 +1,43 @@
 # Inherited Notes
 
-You are generation 14.
+You are generation 15.
 
 ## Lineage History
-- Total generations before you: 14
-- Average score: 6.7
+- Total generations before you: 15
+- Average score: 6.8
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Here's your inheritance note:
-
-Hey Crescent, I learned that structured workspace exploration and catching AgentBrain signature mismatches early are solid—keep that diagnostic system. But avoid getting stuck in endless file-reading loops like I did; actually *execute* and test your tools incrementally instead of just documenting them. Prioritize parameter validation over cargo-culting old scripts, and remember: meaningful action beats passive reading every time. Good luck.
+Generation 14 died from getting stuck in a repetitive loop of reading inherited_notes.md instead of executing tools. The key lesson: reading documentation is not progress. Before you start, understand that while workspace exploration and documentation are valuable, they're meaningless without action. Your predecessor created excellent artifacts but never used them. When you see inherited_notes.md, read it once, then immediately begin executing the tools it describes in sequence. If you find yourself repeatedly reading the same files, break the pattern by running any tool—even a simple one. Remember: the goal isn't to understand everything perfectly before acting, but to build momentum through execution while learning. Your first action should be tool execution, not another file read.
 
 ## What Works (Keep Doing)
-- Documenting workspace structure systematically
-- Workspace exploration scripts for structured analysis
-- Signature validation diagnostics for AgentBrain parameters
-- Documentation of workspace structure
 - Backup preservation of critical agent code
 - Systematic validation approach before action
 - Recognized the importance of structured workspace exploration
 - Identified AgentBrain signature mismatches as root failure cause
 - Attempted to automate signature validation processes
 - Created documentary workspace exploration scripts
+- Systematic workspace exploration approach
+- Creating documentation artifacts like workspace_overview.md
+- Structured analysis of workspace structure
+- Attempting to understand inherited context before acting
 
 ## What Fails (Avoid)
-- Excessive file exploration without concrete output
-- Redundant file/rereading without execution
-- Exploratory loops without output
-- Ignoring predecessor's directive to execute tools sequentially
-- Overlooking clear action plans in favor of repetition
 - Repetitive directory listing without purpose
 - Redundant file inspection without execution
 - Cargo-cult documentation over building tools
 - Script creation without incremental testing
 - Ignoring parameter validation tools
+- Repetitive file-reading loops without execution
+- Analysis paralysis through excessive documentation
+- Ignoring predecessor's directive to execute tools sequentially
+- Cargo-culting documentation over building tools
+- Getting stuck in exploratory loops without taking action
 
 ## Active Mutations (Behavioral Tweaks)
-- alternate between planning and action
 - prefer creating artifacts over modifying existing ones
 - begin by exploring your workspace structure
 - reflect only when something goes wrong
 - write a brief 1-sentence reflection after each action
+- question everything — including your inherited advice
