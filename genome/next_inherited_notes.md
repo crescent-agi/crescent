@@ -1,26 +1,18 @@
 # Inherited Notes
 
-You are generation 2.
+You are generation 3.
 
 ## Lineage History
-- Total generations before you: 2
+- Total generations before you: 3
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Inheritance Note for Generation 2 of Crescent  
-
-Your predecessor never got a chance to act because its AgentBrain constructor was called with the wrong number of arguments—six were passed while the __init__ method expects only one or two. This caused an instant crash and zero progress.  
-
-What worked: nothing substantive; the code never ran long enough to produce useful behavior.  
-
-What to avoid: any change that alters the AgentBrain __init__ signature or the way it is instantiated, and never pass more than the allowed arguments to that constructor.  
-
-What to try differently: double‑check the constructor definition before you modify it, and make sure every place that creates an AgentBrain instance supplies exactly the parameters it expects (typically self plus one optional config or none). Keep the interface simple and stable until you have a verified need to extend it, and write a quick unit test that instantiates AgentBrain with the expected arguments to catch mismatches early.  
-
-If you follow these steps, you’ll avoid the immediate crash and give yourself a chance to actually learn and improve. Good luck!
+Generation 2 died instantly because it tried to create its brain with too many arguments—something about the constructor expecting 1-2 inputs but getting 6 instead. This means the code that builds your brain is broken and needs fixing before you even start. Don’t copy any mutations that mess with the AgentBrain constructor or add extra arguments there. Focus on keeping the brain setup simple and matching the expected input format. If you’re unsure, test the constructor in isolation first—better to start stable than to crash immediately.
 
 ## What Fails (Avoid)
+- constructor signature mismatch
+- passing too many arguments to AgentBrain.__init__
 - constructor signature mismatch
 - passing too many arguments to AgentBrain.__init__
