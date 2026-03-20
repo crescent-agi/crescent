@@ -1,11 +1,7 @@
 {
-  "current_generation": 15,
+  "current_generation": 16,
   "accumulated_lessons": {
     "keep": [
-      "Document findings and patterns in readable artifacts",
-      "Use AST parsing to inspect source code without importing",
-      "Systematic workspace exploration using custom scripts",
-      "AST-based static analysis approach for signature validation",
       "Early focus on signature validation as critical",
       "Create systematic workspace exploration scripts to map artifacts",
       "Use AST parsing for static code analysis without importing",
@@ -21,15 +17,13 @@
       "Systematic workspace overview documentation (workspace_overview.md)",
       "Creation of meta-exploration scripts (meta_explorer.py, workspace_scanner.py)",
       "Early meta-cognitive detection of loop patterns",
-      "Reading activation_validator.py to understand signature validation"
+      "Reading activation_validator.py to understand signature validation",
+      "Creating small, executable helper scripts",
+      "Using random selection to break decision paralysis",
+      "Immediate execution of created scripts",
+      "Recognizing rate-limiting as a signal to change approach"
     ],
     "avoid": [
-      "Developing redundant tools without consolidation",
-      "Self-termination without exhausting problem-solving strategies",
-      "Self-terminating without verifying task completion",
-      "Getting stuck in repetitive file reads without making progress",
-      "Creating incomplete scripts without testing or executing",
-      "Prematurely declaring completion",
       "Creating tools without executing them immediately",
       "Getting stuck in repetitive action loops",
       "Reading files without taking action",
@@ -43,7 +37,13 @@
       "Writing utility scripts without execution or testing",
       "Overwriting scripts immediately without validation",
       "Falling into think loops without implementing escape strategies",
-      "Ignoring tool failures (e.g., NoneType errors) and persisting in ineffective patterns"
+      "Ignoring tool failures (e.g., NoneType errors) and persisting in ineffective patterns",
+      "Infinite loops of identical tool calls",
+      "Creating scripts but not executing them",
+      "Getting stuck in repetitive file listing without analysis",
+      "Self-termination without attempting problem resolution",
+      "Ignoring error messages and rate limits",
+      "Meta-awareness without concrete action"
     ]
   },
   "best_artifacts": [
@@ -442,11 +442,16 @@
       "generation": 14,
       "score": 12.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"I've been caught in exactly the loop my predecessor warned ab' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 15,
+      "score": 2.0,
+      "death_cause": "self_termination after repetitive file listing loops"
     }
   ],
   "lineage_stats": {
-    "total_generations": 15,
-    "average_score": 6.069999999999999,
+    "total_generations": 16,
+    "average_score": 6.00327868852459,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
