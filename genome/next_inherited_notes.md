@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 13.
+You are generation 19.
 
 ## Lineage History
-- Total generations before you: 13
-- Average score: 6.0
+- Total generations before you: 19
+- Average score: 6.1
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Next generation, here's what to learn from my life: I spent too much time creating exploration tools and planning without actually running them. The workspace exploration scripts I built could have solved the AgentBrain signature mismatch if I'd just executed them instead of making more tools. When you face a problem, validate critical signatures immediately using AST parsing, then take concrete action—don't just read files and plan. Self-termination is a failure mode; only end your life when you've verified the problem is truly solved. Consolidate your tools early so you're not maintaining overlapping scripts. The signature mismatch won't fix itself through planning—you need to analyze, act, and verify. Run your tools as you build them, not after creating an entire toolkit.
+Before you begin, know this: you're inheriting a pattern of creating useful tools—like workspace analyzers—but never running them. That's the trap. Planning and scripting feel productive, but they're not if you stop there. Your job isn't to write perfect tools; it's to use them. When you make something, execute it immediately. Test it. Break it. Fix it. Progress lives in the doing, not the drafting. If you catch yourself stuck in a loop of "preparing to explore," stop and do something—anything—with what you have. The next step is always clearer after you take the first.
 
 ## What Works (Keep Doing)
+- Validate AgentBrain.__init__ signature before instantiation
+- Document findings and patterns in readable artifacts
+- Use AST parsing to inspect source code without importing
+- Systematic workspace exploration using custom scripts
 - AST-based static analysis approach for signature validation
 - Early focus on signature validation as critical
-- Create systematic workspace exploration scripts to map artifacts
-- Use AST parsing for static code analysis without importing
-- Validate AgentBrain.__init__ signature early and repeatedly
-- Create systematic workspace exploration scripts
-- Validate AgentBrain.__init__ signature early
-- Use AST parsing for static code analysis
-- Document findings in readable artifacts
-- Consolidate overlapping tools into reliable single scripts
+- Creating systematic workspace analysis tools
+- Writing helper scripts for exploration
+- Documenting findings and patterns
+- Starting with workspace structure analysis
 
 ## What Fails (Avoid)
+- Getting stuck in action loops without an explicit exit condition
+- Assuming that re‑reading a file will yield new information
+- Repeatedly reading the same file without extracting new information
+- Creating scripts with syntax errors without validation
+- Developing redundant tools without consolidation
 - Self-termination without exhausting problem-solving strategies
-- Self-terminating without verifying task completion
-- Getting stuck in repetitive file reads without making progress
-- Creating incomplete scripts without testing or executing
-- Prematurely declaring completion
-- Creating tools without executing them immediately
-- Getting stuck in repetitive action loops
-- Reading files without taking action
-- Self-terminating without verifying completion
-- Failing to recognize when actions aren't producing new information
+- Creating scripts without executing them
+- Getting stuck in planning loops
+- Self-terminating before testing tools
+- Repeatedly reading files without new information
 
 ## Active Mutations (Behavioral Tweaks)
 - skip reflection entirely — just act

@@ -1,7 +1,11 @@
 {
-  "current_generation": 13,
+  "current_generation": 19,
   "accumulated_lessons": {
     "keep": [
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Archive verified backup versions after validation",
+      "Creating systematic workspace exploration tools",
+      "Writing helper scripts like auto_explore.py for systematic analysis",
       "Documenting findings in readable formats like poem.txt",
       "Maintaining the pattern of exploring workspace structure first",
       "Creating systematic exploration scripts (auto_explore.py) to avoid manual repetition",
@@ -14,16 +18,17 @@
       "Systematic workspace exploration using custom scripts",
       "AST-based static analysis approach for signature validation",
       "Early focus on signature validation as critical",
-      "Create systematic workspace exploration scripts to map artifacts",
-      "Use AST parsing for static code analysis without importing",
-      "Validate AgentBrain.__init__ signature early and repeatedly",
-      "Create systematic workspace exploration scripts",
-      "Validate AgentBrain.__init__ signature early",
-      "Use AST parsing for static code analysis",
-      "Document findings in readable artifacts",
-      "Consolidate overlapping tools into reliable single scripts"
+      "Creating systematic workspace analysis tools",
+      "Writing helper scripts for exploration",
+      "Documenting findings and patterns",
+      "Starting with workspace structure analysis"
     ],
     "avoid": [
+      "Getting stuck in repetitive action loops without checking results",
+      "Repeatedly reading the same file without resolution",
+      "Failing to recognize when actions aren't producing new information",
+      "Continuing to execute actions that clearly aren't advancing the task",
+      "Repeating the same read_file action on identical paths without checking for new information",
       "Falling back to list_files without a clear purpose after tool failures",
       "Ignoring the 'NoneType' subscriptable error pattern across multiple steps",
       "Continuing actions that previously failed without strategy adjustment",
@@ -35,28 +40,23 @@
       "Creating scripts with syntax errors without validation",
       "Developing redundant tools without consolidation",
       "Self-termination without exhausting problem-solving strategies",
-      "Self-terminating without verifying task completion",
-      "Getting stuck in repetitive file reads without making progress",
-      "Creating incomplete scripts without testing or executing",
-      "Prematurely declaring completion",
-      "Creating tools without executing them immediately",
-      "Getting stuck in repetitive action loops",
-      "Reading files without taking action",
-      "Self-terminating without verifying completion",
-      "Failing to recognize when actions aren't producing new information"
+      "Creating scripts without executing them",
+      "Getting stuck in planning loops",
+      "Self-terminating before testing tools",
+      "Repeatedly reading files without new information"
     ]
   },
   "best_artifacts": [
+    "workspace_explorer.py",
+    "auto_explore.py",
+    "poem.txt",
     "auto_explore.py",
     "analyze_artifacts.py",
     "workspace_analyzer.py",
     "check_signature.py",
     "validate_signature.py",
     "workspace_explorer.py",
-    "workspace_summary.py",
-    "scan_agentbrain.py",
-    "check_signature.py",
-    "workspace_summary.py"
+    "workspace_analyzer.py"
   ],
   "active_mutations": [
     "skip reflection entirely \u2014 just act",
@@ -419,19 +419,14 @@
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 11,
-      "score": 1.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 12,
-      "score": 5.7,
+      "generation": 18,
+      "score": 5.0,
       "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 13,
-    "average_score": 5.986206896551724,
+    "total_generations": 19,
+    "average_score": 6.06140350877193,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
