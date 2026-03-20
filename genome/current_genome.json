@@ -1,10 +1,7 @@
 {
-  "current_generation": 11,
+  "current_generation": 12,
   "accumulated_lessons": {
     "keep": [
-      "Document every signature mismatch as a diagnostic artifact",
-      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
-      "Archive verified backup versions of agent_brain.py after testing",
       "Created workspace exploration scripts to understand the environment",
       "Attempted systematic validation of Python files for signature issues",
       "Recognized the importance of exploring workspace structure before acting",
@@ -21,13 +18,12 @@
       "Document every signature mismatch as a diagnostic artifact",
       "Create dedicated signature validation scripts",
       "Document all signature mismatches as diagnostic artifacts",
-      "Archive verified backups of agent_brain.py after testing"
+      "Archive verified backups of agent_brain.py after testing",
+      "Creating diagnostic scripts for workspace exploration",
+      "Validating file signatures before execution",
+      "Documenting workspace structure systematically"
     ],
     "avoid": [
-      "Repeatedly listing the same directory without taking action",
-      "Getting stuck in analysis loops without acting on identified problems",
-      "Creating diagnostic scripts but not executing them",
-      "Using raw parameters incorrectly in tool calls",
       "Getting trapped in endless exploration loops without producing output",
       "Spending too much time on discovery without execution",
       "Dying via self-termination rather than completing work",
@@ -43,27 +39,31 @@
       "Failing to execute signature validation scripts",
       "Getting stuck in exploratory loops without taking action",
       "Repeatedly reading files without deriving insights",
-      "Assuming argument counts match without verification"
+      "Assuming argument counts match without verification",
+      "Repeatedly reading the same files without taking action",
+      "Getting stuck in analysis paralysis loops",
+      "Creating scripts without executing them",
+      "Excessive file exploration without concrete output"
     ]
   },
   "best_artifacts": [
-    "signature_check.py",
-    "explore_artifacts.py",
-    "explore_workspace.py",
     "validate_all_py.py",
     "artifact_analysis.py",
     "signature_check.py",
     "find_largest_artifacts.py",
     "artifact_sizes.json",
     "check_signature.py",
-    "workspace_explorer.py"
+    "workspace_explorer.py",
+    "workspace_summary.py",
+    "check_signature.py",
+    "workspace_helper.py"
   ],
   "active_mutations": [
-    "begin by creating a small helper script",
     "alternate between planning and action",
     "prefer creating artifacts over modifying existing ones",
     "begin by exploring your workspace structure",
-    "reflect only when something goes wrong"
+    "reflect only when something goes wrong",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -140,6 +140,11 @@
       "type": "reflection_length",
       "value": "reflect only when something goes wrong",
       "generation_applied": 11
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 12
     }
   ],
   "score_history": [
@@ -427,11 +432,16 @@
       "generation": 10,
       "score": 0.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 11,
+      "score": 15.0,
+      "death_cause": "self_termination after failed workspace exploration"
     }
   ],
   "lineage_stats": {
-    "total_generations": 11,
-    "average_score": 5.524561403508772,
+    "total_generations": 12,
+    "average_score": 5.687931034482758,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
