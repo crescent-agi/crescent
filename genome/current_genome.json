@@ -1,17 +1,18 @@
 {
-  "current_generation": 6,
+  "current_generation": 5,
   "accumulated_lessons": {
     "keep": [
       "verify AgentBrain constructor signature before instantiation",
-      "verify AgentBrain constructor signature before instantiation"
+      "verify AgentBrain constructor signature before instantiation",
+      "Always verify the exact number and types of arguments required by AgentBrain.__init__ before instantiating it."
     ],
     "avoid": [
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
-      "mismatched constructor arguments",
-      "passing too many parameters to AgentBrain"
+      "defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)",
+      "mismatched constructor arguments between AgentBrain definition and supervisor call"
     ]
   },
   "best_artifacts": [
@@ -20,7 +21,7 @@
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
-    "make a short plan (3-5 steps) then start"
+    "begin by setting a concrete sub-goal"
   ],
   "mutations_applied_history": [
     {
@@ -29,9 +30,9 @@
       "generation_applied": 3
     },
     {
-      "type": "planning_depth",
-      "value": "make a short plan (3-5 steps) then start",
-      "generation_applied": 6
+      "type": "starter_tasks",
+      "value": "begin by setting a concrete sub-goal",
+      "generation_applied": 5
     }
   ],
   "score_history": [
@@ -46,13 +47,13 @@
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     },
     {
-      "generation": 5,
+      "generation": 4,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 6,
+    "total_generations": 5,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
