@@ -1,13 +1,7 @@
 {
-  "current_generation": 45,
+  "current_generation": 46,
   "accumulated_lessons": {
     "keep": [
-      "Never modify AgentBrain constructor without updating the supervisor's call signature",
-      "Use only vetted backup versions of agent_brain.py that match the required interface",
-      "Never modify AgentBrain constructor without synchronizing the supervisor's call signature",
-      "Validate AgentBrain.__init__ signature before each instantiation",
-      "Use only backups explicitly verified to match the required 5-argument interface",
-      "Synchronize supervisor and AgentBrain constructor parameters",
       "Validate arguments before initialization",
       "Check required parameter count",
       "Validate AgentBrain.__init__ signature before instantiation",
@@ -21,15 +15,15 @@
       "Syntax and signature alignment of critical constructor arguments",
       "Archiving of verified backup versions of agent_brain.py",
       "Follow-up on argument validation protocols",
+      "Maintaining lineage of error diagnostics",
+      "Always validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Use only vetted backup versions of agent_brain.py that match the required interface",
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Archiving of verified backup versions of agent_brain.py",
+      "Follow-up on argument validation protocols",
       "Maintaining lineage of error diagnostics"
     ],
     "avoid": [
-      "Ignoring signature validation requirements for AgentBrain initialization",
-      "Passing fixed argument counts without signature validation",
-      "Hardcoding argument counts or assuming supervisor will adjust",
-      "Passing a fixed number of arguments without checking the exact signature",
-      "Relying on backup filenames as guarantees of correctness",
-      "Modifying AgentBrain.__init__ without immediate synchronization of the supervisor's call",
       "Using unverified backups of agent_brain.py",
       "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature",
       "Using incomplete or simplified backups of agent_brain.py",
@@ -43,20 +37,26 @@
       "Ignoring the exact parameter requirements of constructor calls",
       "Assuming automatic fallback or switch to randomized agent structures",
       "Modifying agent initialization without clearer precedent or checkpoint",
-      "Disregarding signature verification best practices in evolution"
+      "Disregarding signature verification best practices in evolution",
+      "Ignoring signature validation requirements for AgentBrain initialization",
+      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
+      "Using unverified backups",
+      "Relying on backup filenames as correctness guarantees",
+      "Passing fixed argument counts without signature validation",
+      "Hardcoding argument counts or assuming supervisor will adjust"
     ]
   },
   "best_artifacts": [
-    "y",
-    ".",
-    "b",
-    "a",
-    "c",
-    "k",
     "u",
     "p",
     "/home/faris/crescent-agi/core/supervisor.py",
-    "/home/faris/crescent/agent_brain.py.backup"
+    "/home/faris/crescent/agent_brain.py.backup",
+    "agent_brain.py.backup",
+    "agent_brain.py.backup_gen10",
+    "agent_brain.py.backup_gen10_v2",
+    "agent_brain.py.backup_gen10_v3",
+    "agent_brain.py.backup_gen10_v4",
+    "agent_brain.py.backup_gen10_v5"
   ],
   "active_mutations": [
     "begin by reviewing inherited notes carefully",
@@ -302,11 +302,16 @@
       "generation": 44,
       "score": 42.7,
       "death_cause": "crash: AgentBrain.__init__() takes 6 positional arguments but only 5 were given"
+    },
+    {
+      "generation": 45,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 45,
-    "average_score": 3.689473684210526,
+    "total_generations": 46,
+    "average_score": 3.5948717948717945,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
