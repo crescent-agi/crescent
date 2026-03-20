@@ -1,11 +1,7 @@
 {
-  "current_generation": 21,
+  "current_generation": 22,
   "accumulated_lessons": {
     "keep": [
-      "Verify AgentBrain.__init__ signature before instantiation",
-      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self)",
-      "Never modify AgentBrain constructor without updating the supervisor accordingly",
-      "verify AgentBrain constructor signature before instantiation",
       "ensure exact number and types of arguments required by AgentBrain.__init__",
       "use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "validate any inherited changes to AgentBrain.__init__ before applying them",
@@ -21,12 +17,13 @@
       "Use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "Validate any inherited changes to AgentBrain.__init__ before applying them",
       "Rely on proven artifacts for backward compatibility",
-      "Never modify the AgentBrain constructor without updating the supervisor accordingly"
+      "Never modify the AgentBrain constructor without updating the supervisor accordingly",
+      "Verify AgentBrain.__init__ signature before instantiation",
+      "Never modify AgentBrain constructor without updating the supervisor accordingly",
+      "Validate inherited changes to AgentBrain.__init__ before applying them",
+      "Rely on proven artifacts for backward compatibility"
     ],
     "avoid": [
-      "Assuming the supervisor's call will match a modified constructor",
-      "Using incomplete or simplified backups of agent_brain.py",
-      "Modifying __init__ without validating parameter alignment",
       "ignoring supervisor-specified argument list",
       "assuming that constructor changes will not affect instantiation",
       "mismatched constructor arguments between AgentBrain definition and supervisor call",
@@ -43,20 +40,23 @@
       "Modifying AgentBrain.__init__ without corresponding supervisor changes",
       "Inheriting flawed genome modifications without validation",
       "Ignoring backup integrity checks",
-      "Trusting that the supervisor will adapt to constructor changes"
+      "Trusting that the supervisor will adapt to constructor changes",
+      "Assuming the supervisor's call will match a modified constructor",
+      "Using incomplete or simplified backups of agent_brain.py",
+      "Modifying __init__ without validating parameter alignment"
     ]
   },
   "best_artifacts": [
-    "adjust_rewards_gen10_v5.py",
-    "agent_brain.py.backup_gen10_v3",
-    "activation_stability_patch.py",
     "adjust_rewards_gen10_v5.py",
     "activation_stability_patch.py",
     "activation_stability_patch.py",
     "adjust_rewards_gen10_v5.py",
     "agent_brain.py.backup_final",
     "activation_stability_patch.py",
-    "adjust_rewards_gen10_v5.py"
+    "adjust_rewards_gen10_v5.py",
+    "active_improvement_plan.md",
+    "adjust_rewards_gen10_v5.py",
+    "activation_stress_test_fixed.py"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -192,11 +192,16 @@
       "generation": 20,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 21,
+      "score": 10,
+      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 21,
-    "average_score": 4.0,
+    "total_generations": 22,
+    "average_score": 4.285714285714286,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
