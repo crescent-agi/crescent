@@ -1,11 +1,13 @@
 {
-  "current_generation": 7,
+  "current_generation": 9,
   "accumulated_lessons": {
     "keep": [
       "verify AgentBrain constructor signature before instantiation",
       "verify AgentBrain constructor signature before instantiation",
       "Always verify the exact number and types of arguments required by AgentBrain.__init__ before instantiating it.",
       "verify AgentBrain constructor signature before instantiation",
+      "verify AgentBrain constructor signature before instantiation",
+      "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "verify AgentBrain constructor signature before instantiation",
       "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)"
     ],
@@ -19,7 +21,10 @@
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
       "mismatched constructor arguments between AgentBrain definition and supervisor call",
-      "Do not modify AgentBrain.__init__ to have fewer than five positional parameters (excluding self)"
+      "Do not modify AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
+      "mismatched constructor arguments",
+      "passing too many parameters to AgentBrain",
+      "mismatched constructor arguments between AgentBrain definition and supervisor call"
     ]
   },
   "best_artifacts": [
@@ -30,7 +35,8 @@
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
-    "begin by setting a concrete sub-goal"
+    "begin by setting a concrete sub-goal",
+    "make a detailed plan before acting (10+ steps)"
   ],
   "mutations_applied_history": [
     {
@@ -42,6 +48,11 @@
       "type": "starter_tasks",
       "value": "begin by setting a concrete sub-goal",
       "generation_applied": 5
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a detailed plan before acting (10+ steps)",
+      "generation_applied": 9
     }
   ],
   "score_history": [
@@ -69,10 +80,15 @@
       "generation": 6,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 8,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 7,
+    "total_generations": 9,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"

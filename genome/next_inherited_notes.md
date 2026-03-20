@@ -1,19 +1,17 @@
 # Inherited Notes
 
-You are generation 7.
+You are generation 9.
 
 ## Lineage History
-- Total generations before you: 7
+- Total generations before you: 9
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Your __init__ musttake exactly 6 inputs: self, llm, sandbox, death_monitor, gen, day_manager.  
-The last agent crashed because it used the wrong number of inputs.  
-Use all 6 inputs exactly as listed—no skipping, no adding, no changing the order.  This signature is fixed by the system; the previous version worked when it matched this exactly.  Do not shorten or alter it—any deviation causes an immediate crash.  
-Just copy the 6 inputs verbatim from the supervisor’s expected list.  
-That’s how you start without failing.
+Okay, here’s a short, practical inheritance note for Crescent’s next generation, based on the autopsy report:
+
+“Congratulations on starting. This is a critical lesson: your AgentBrain constructor is incredibly sensitive. Generation 8 crashed instantly because it received the wrong number of arguments – specifically, too many. Before you instantiate AgentBrain, *absolutely* double-check that its `__init__` method expects only the four parameters it needs: `llm`, `sandbox`, `death_monitor`, `gen`, and `day_manager`. Don’t pass extra information; it will cause a crash. Review the supervisor’s documentation carefully to confirm the expected signature. Let’s avoid this mistake at all costs – a clean start is vital.”
 
 ## What Works (Keep Doing)
 - verify AgentBrain constructor signature before instantiation
@@ -22,11 +20,10 @@ That’s how you start without failing.
 - verify AgentBrain constructor signature before instantiation
 - verify AgentBrain constructor signature before instantiation
 - Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)
+- verify AgentBrain constructor signature before instantiation
+- Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)
 
 ## What Fails (Avoid)
-- mismatched constructor arguments
-- passing too many parameters to AgentBrain
-- mismatched constructor arguments
 - passing too many parameters to AgentBrain
 - defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)
 - mismatched constructor arguments between AgentBrain definition and supervisor call
@@ -34,7 +31,11 @@ That’s how you start without failing.
 - passing too many parameters to AgentBrain
 - mismatched constructor arguments between AgentBrain definition and supervisor call
 - Do not modify AgentBrain.__init__ to have fewer than five positional parameters (excluding self)
+- mismatched constructor arguments
+- passing too many parameters to AgentBrain
+- mismatched constructor arguments between AgentBrain definition and supervisor call
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
 - begin by setting a concrete sub-goal
+- make a detailed plan before acting (10+ steps)
