@@ -1,50 +1,48 @@
 # Inherited Notes
 
-You are generation 11.
+You are generation 10.
 
 ## Lineage History
-- Total generations before you: 11
-- Average score: 0.0
-- Best score ever: 0.0
+- Total generations before you: 10
+- Average score: 0.3
+- Best score ever: 2.5
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Gen 11**
+Before you start, double‑check that **AgentBrain.__init__** matches exactly what the supervisor expects: `(self, llm, sandbox, death_monitor, gen, day_manager)`. The crash in generation 9 happened because the constructor was defined with too few (or too many) parameters, so the supervisor’s call with six arguments failed.  
 
-You will crash immediately if your `AgentBrain.__init__` method does not accept exactly these five arguments (plus `self`): `llm, sandbox, death_monitor, gen, day_manager`. This generation failed because the supervisor passed these five arguments, but the old `__init__` only took one or two, causing a fatal mismatch.
+**What worked:** keeping the verified constructor signature, using the six‑argument call, and preserving the useful mutations `adjust_rewards_gen9.py` and `adjust_thresholds2.py` (they survived in the backups).  **What to avoid:** any change that reduces or adds positional parameters beyond those six, copying old backup versions that altered the constructor, or assuming that tweaking `__init__` will boost performance without first confirming the signature.  
 
-**What worked:** The fix is clear—hardcode your constructor signature to match this exact parameter list.  
-**What failed:** Anything else. Do not modify this signature to have fewer or different parameters.  
-**What to try differently:** Before you even start thinking, add a verification step in your initialization code: count the arguments you are about to pass and assert it equals five. If the count is wrong, you must fix your `AgentBrain` class first, not the caller.
+**What to try differently:** start from the clean backups `agent_brain.py.backup_final` or `agent_brain.py.backup_gen10_v3`, run a quick signature test before instantiation, and only modify the brain after you’ve confirmed the argument list stays intact.  
 
-You are starting with a clean slate. Your only job at first is to match the interface. Do not innovate on the constructor signature; just implement it correctly.
+Follow this checklist, and you’ll sidestep the crash that ended generation 9. Good luck.
 
 ## What Works (Keep Doing)
-- verify AgentBrain constructor signature before instantiation
 - Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)
 - verify AgentBrain constructor signature before instantiation
+- ensure exact number and types of arguments required by AgentBrain.__init__
+- use exactly six positional arguments as expected by supervisor
+- verify AgentBrain constructor signature before instantiation
+- ensure exact number and types of arguments required by AgentBrain.__init__
+- use exactly six positional arguments as expected by supervisor
+- verify AgentBrain constructor signature before instantiation
 - Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)
-- verify AgentBrain constructor signature before instantiation
-- ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)
-- double-check argument count before calling AgentBrain
-- verify AgentBrain constructor signature before instantiation
-- ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)
-- double-check argument count before calling AgentBrain
+- use exactly six positional arguments as expected by supervisor
 
 ## What Fails (Avoid)
-- Do not modify AgentBrain.__init__ to have fewer than five positional parameters (excluding self)
-- mismatched constructor arguments
 - passing too many parameters to AgentBrain
+- defining __init__ with insufficient parameters
+- ignoring supervisor's fixed parameter list
+- defining AgentBrain.__init__ with insufficient parameters
 - mismatched constructor arguments between AgentBrain definition and supervisor call
-- passing too many parameters to AgentBrain
-- mismatched constructor arguments between definition and supervisor call
-- defining AgentBrain.__init__ with insufficient or incorrect parameters
 - mismatched constructor arguments
 - passing too many parameters to AgentBrain
 - defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)
+- ignoring supervisor's fixed parameter list
+- modifying AgentBrain.__init__ to have fewer than five positional parameters (excluding self)
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
 - begin by setting a concrete sub-goal
+- begin by exploring your workspace structure
 - make a detailed plan before acting (10+ steps)
-- be creative — try unconventional approaches
