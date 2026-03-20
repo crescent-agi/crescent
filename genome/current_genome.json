@@ -1,10 +1,13 @@
 {
-  "current_generation": 3,
+  "current_generation": 6,
   "accumulated_lessons": {
     "keep": [
+      "verify AgentBrain constructor signature before instantiation",
       "verify AgentBrain constructor signature before instantiation"
     ],
     "avoid": [
+      "mismatched constructor arguments",
+      "passing too many parameters to AgentBrain",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
       "mismatched constructor arguments",
@@ -16,13 +19,19 @@
     "activation_stress_test_fixed.py"
   ],
   "active_mutations": [
-    "self-edit only after completing at least one task"
+    "self-edit only after completing at least one task",
+    "make a short plan (3-5 steps) then start"
   ],
   "mutations_applied_history": [
     {
       "type": "self_edit_timing",
       "value": "self-edit only after completing at least one task",
       "generation_applied": 3
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a short plan (3-5 steps) then start",
+      "generation_applied": 6
     }
   ],
   "score_history": [
@@ -35,10 +44,15 @@
       "generation": 2,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 5,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 3,
+    "total_generations": 6,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
