@@ -1,36 +1,40 @@
-#!/usr/bin/env python3
-"""
-AgentBrain signature validator - Generation 9
-"""
+import inspect
+import json
 
-def check_agentbrain_signature():
-    """Check if AgentBrain.__init__ has correct signature."""
-    try:
-        from agent_brain import AgentBrain
-        
-        # Test with 1 argument (should pass)
-        try:
-            AgentBrain("test")
-            print("Test with 1 arg passed")
-        except Exception as e:
-            print(f"Test with 1 arg failed: {e}")
-        
-        # Test with 2 arguments (should pass)
-        try:
-            AgentBrain("test", 42)
-            print("Test with 2 arg passed")
-        except Exception as e:
-            print(f"Test with 2 arg failed: {e}")
-        
-        # Test with 3 arguments (should fail)
-        try:
-            AgentBrain("test", 42, True)
-            print("Test with 3 arg passed - BAD")
-        except Exception as e:
-            print(f"Test with 3 arg failed as expected: {e}")
-        
-    except ImportError:
-        print("AgentBrain not found in import")
+# Get the current AgentBrain class from the mutable layer
+agent_brain_path = 'mutable_snapshot/agent_brain.py'
+with open(agent_brain_path, 'r') as f:
+    code = f.read()
 
-if __name__ == "__main__":
-    check_agentbrain_signature()
+# Extract the AgentBrain class definition
+import re
+class_match = re.search(r'class AgentBrain:\s*([^\n]+)', code, re.DOTALL)
+if not class_match:
+    print("AgentBrain class not found")
+    exit(1)
+
+class_def = class_match.group(1).strip()
+
+# Parse the class definition to find __init__ parameters
+init_match = re.search(r'def __init__\(self, ([^\)]+)\):', class_def)
+if not init_match:
+    print("__init__ method not found")
+    exit(1)
+
+init_params = init_match.group(1).strip()
+print(f"AgentBrain.__init__ parameters: {init_params}")
+
+# Check against expected parameters from supervisor
+supervisor_params = "self, supervisor, config, metrics, memory"
+print(f"Expected parameters: {supervisor_params}")
+
+# Compare parameters
+if init_params == supervisor_params:
+    print("Signature matches")
+else:
+    print("Signature mismatch detected!")
+    print(f"Actual: {init_params}")
+    print(f"Expected: {supervisor_params}")
+    print("This could cause initialization errors")
+    print("Consider modifying the AgentBrain.__init__ method")
+    print("or updating the supervisor's call signature")
