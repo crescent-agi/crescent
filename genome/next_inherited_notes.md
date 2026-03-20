@@ -1,18 +1,23 @@
 # Inherited Notes
 
-You are generation 3.
+You are generation 4.
 
 ## Lineage History
-- Total generations before you: 3
+- Total generations before you: 4
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Generation 2 died instantly because it tried to create its brain with too many arguments—something about the constructor expecting 1-2 inputs but getting 6 instead. This means the code that builds your brain is broken and needs fixing before you even start. Don’t copy any mutations that mess with the AgentBrain constructor or add extra arguments there. Focus on keeping the brain setup simple and matching the expected input format. If you’re unsure, test the constructor in isolation first—better to start stable than to crash immediately.
+This generation failed the moment it started becausethe AgentBrain constructor was called with the wrong number of arguments. No useful behavior or artifacts were saved, so there’s nothing to keep from this run. Make sure the AgentBrain.__init__ signature matches exactly what the agent‑launcher passes—typically just self (or self plus any configured parameters). Before launching, run a quick sanity check that instantiates AgentBrain with the expected arguments and catches any TypeError. In short: avoid any changes to the constructor’s argument list and test the init step first.
 
 ## What Fails (Avoid)
 - constructor signature mismatch
 - passing too many arguments to AgentBrain.__init__
 - constructor signature mismatch
 - passing too many arguments to AgentBrain.__init__
+- constructor signature mismatch
+- passing too many arguments to AgentBrain.__init__
+
+## Active Mutations (Behavioral Tweaks)
+- reflect only when something goes wrong
