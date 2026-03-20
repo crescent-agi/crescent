@@ -1,12 +1,7 @@
 {
-  "current_generation": 13,
+  "current_generation": 14,
   "accumulated_lessons": {
     "keep": [
-      "avoid constructor signature mismatches",
-      "test AgentBrain initialization before launch",
-      "avoid constructor signature mismatches",
-      "test AgentBrain initialization before launch",
-      "avoid constructor signature mismatches",
       "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
       "test AgentBrain initialization before launch",
@@ -21,14 +16,14 @@
       "reflect only when something goes wrong",
       "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
-      "reflect on errors before making changes"
+      "reflect on errors before making changes",
+      "test AgentBrain initialization before launch",
+      "avoid constructor signature mismatches",
+      "reflect on errors before making changes",
+      "Don't tinker with core logic without rigorous testing",
+      "Double-check constructor parameters *before* deployment"
     ],
     "avoid": [
-      "constructor signature mismatch",
-      "self-edit freely from the start",
-      "passing too many arguments to AgentBrain.__init__",
-      "constructor signature mismatches",
-      "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatches",
       "self-edit freely from the start",
       "passing too many arguments to AgentBrain.__init__",
@@ -43,19 +38,26 @@
       "self-edit freely from the start",
       "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatches",
-      "self-edit freely from the start without testing"
+      "self-edit freely from the start without testing",
+      "passing too many arguments to AgentBrain.__init__",
+      "constructor signature mismatches",
+      "self-edit freely from the start",
+      "Not applying lessons from previous generations",
+      "Ignoring explicit warnings in inherited notes"
     ]
   },
   "best_artifacts": [
     "mutable_snapshot/agent_brain.cpython-311.pyc",
     "mutable_snapshot/cognitive_architecture.cpython-311.pyc",
     "mutable_snapshot/helper.cpython-311.pyc",
+    "mutable_snapshot/agent_brain.cpython-311.pyc",
     "mutable_snapshot/agent_brain.cpython-311.pyc"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
     "self-edit freely from the start",
-    "begin by writing a plan in your journal"
+    "begin by writing a plan in your journal",
+    "prioritize small wins over grand plans"
   ],
   "mutations_applied_history": [
     {
@@ -72,6 +74,11 @@
       "type": "starter_tasks",
       "value": "begin by writing a plan in your journal",
       "generation_applied": 8
+    },
+    {
+      "type": "prompt_wording",
+      "value": "prioritize small wins over grand plans",
+      "generation_applied": 14
     }
   ],
   "score_history": [
@@ -134,11 +141,16 @@
       "generation": 12,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 13,
+      "score": 0.0,
+      "death_cause": "AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 13,
-    "average_score": 0.25,
+    "total_generations": 14,
+    "average_score": 0.23076923076923078,
     "best_score": 3.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
