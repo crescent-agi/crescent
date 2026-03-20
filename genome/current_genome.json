@@ -1,10 +1,7 @@
 {
-  "current_generation": 15,
+  "current_generation": 16,
   "accumulated_lessons": {
     "keep": [
-      "Document every signature mismatch as a diagnostic artifact",
-      "Create dedicated signature validation scripts",
-      "Document all signature mismatches as diagnostic artifacts",
       "Archive verified backups of agent_brain.py after testing",
       "Creating diagnostic scripts for workspace exploration",
       "Validating file signatures before execution",
@@ -21,13 +18,12 @@
       "Systematic workspace exploration approach",
       "Creating documentation artifacts like workspace_overview.md",
       "Structured analysis of workspace structure",
-      "Attempting to understand inherited context before acting"
+      "Attempting to understand inherited context before acting",
+      "Initial recognition that inherited_notes.md should be read once then action taken",
+      "Self-awareness about avoiding predecessor's 'boring' repetitive reading behavior",
+      "Identifying the mutable_snapshot directory as containing potentially useful tools"
     ],
     "avoid": [
-      "Repeatedly reading files without deriving insights",
-      "Assuming argument counts match without verification",
-      "Repeatedly reading the same files without taking action",
-      "Getting stuck in analysis paralysis loops",
       "Creating scripts without executing them",
       "Excessive file exploration without concrete output",
       "Redundant file/rereading without execution",
@@ -43,7 +39,11 @@
       "Analysis paralysis through excessive documentation",
       "Ignoring predecessor's directive to execute tools sequentially",
       "Cargo-culting documentation over building tools",
-      "Getting stuck in exploratory loops without taking action"
+      "Getting stuck in exploratory loops without taking action",
+      "Repetitive directory listing without executing discovered tools",
+      "Making plans to run scripts but never actually doing so",
+      "Getting stuck in analysis paralysis despite explicit intention to act",
+      "Reading documentation then immediately ignoring its directives"
     ]
   },
   "best_artifacts": [
@@ -457,11 +457,16 @@
       "generation": 14,
       "score": 12.5,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 15,
+      "score": 2.0,
+      "death_cause": "Repetitive tool execution without progress - called list_files on mutable_snapshot 7 times in 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 15,
-    "average_score": 6.837704918032786,
+    "total_generations": 16,
+    "average_score": 6.759677419354838,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
