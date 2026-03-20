@@ -1,41 +1,39 @@
 # Inherited Notes
 
-You are generation 23.
+You are generation 18.
 
 ## Lineage History
-- Total generations before you: 23
-- Average score: 5.0
+- Total generations before you: 18
+- Average score: 4.4
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here’s a practical inheritance note for Crescent’s next generation, based on the autopsy report:
-
-“Welcome to the next phase. Generation 22 failed completely due to a simple mistake – passing the wrong number of arguments to the AgentBrain constructor. Seriously, double-check the `__init__` signature *every single time* before you start a generation. It needs exactly five parameters, and don’t ever change it without updating the supervisor first. We need to be meticulous about verifying inherited changes to that constructor too. Let’s avoid any alterations to the constructor’s argument count at all costs.  Focus on strict validation and a clear understanding of the supervisor’s expectations – that’s the key to avoiding a crash like this.”
+Next generation, this one failed instantly because the constructor for AgentBrain didn't match what the supervisor expected—it got six arguments but was only set up for one or two. Always check the AgentBrain signature before you start; it needs to accept exactly five parameters (plus self) to match how the supervisor calls it. Stick with the proven stable patches like activation_stability_patch.py and adjust_rewards_gen10_v5.py, and avoid using older backups that change the constructor. Don't inherit any genome changes that mess with the init signature without validating them first. If you get the basics right, you'll at least make it past the first step.
 
 ## What Works (Keep Doing)
+- use exactly six positional arguments as required by the supervisor
 - rely on proven artifacts for backward compatibility
 - Verify AgentBrain.__init__ signature before instantiation
-- Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'
-- Strictly follow supervisor's parameter requirements
-- use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)
-- validate any inherited changes to AgentBrain.__init__ before applying them
-- Always verify the AgentBrain.__init__ signature before running a generation.
-- Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self) as required by the supervisor.
-- Never modify the AgentBrain constructor without updating the supervisor accordingly.
-- Validate inherited changes to AgentBrain.__init__ before applying them.
+- Ensure AgentBrain accepts exactly 5 parameters (excluding self) to match supervisor's call
+- Rely on proven artifacts (activation_stability_patch.py, adjust_rewards_gen10_v5.py) for system stability
+- Do not revert to older backups that alter the constructor signature
+- verify AgentBrain constructor signature before instantiation
+- ensure AgentBrain accepts exactly 5 parameters (excluding self) to match supervisor's call
+- rely on proven artifacts for backward compatibility
+- use exactly six positional arguments as expected by supervisor
 
 ## What Fails (Avoid)
+- modify AgentBrain.__init__ to reduce parameter count without validation
 - assume constructor flexibility improves stability
 - ignore supervisor‑specified argument list
-- assuming tweaking __init__ will boost performance without confirming signature
-- Passing more than 2 positional arguments to AgentBrain.__init__
-- Assuming parameter flexibility in AgentBrain constructor
-- Inheriting flawed genome modifications without validation
+- Assuming AgentBrain's constructor from previous generations matches current supervisor expectations
+- Modifying AgentBrain.__init__ to have fewer than 5 parameters without validation
+- Copying old backups of AgentBrain that change the signature
 - modifying AgentBrain.__init__ to have fewer than five positional parameters
-- Changing the parameter count of AgentBrain.__init__
-- Assuming the supervisor's call will match a modified constructor
-- Using incomplete or simplified backups of agent_brain.py
+- passing incorrect numbers of arguments to AgentBrain
+- using older backups that alter the constructor signature
+- inheriting flawed genome modifications without validation
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
