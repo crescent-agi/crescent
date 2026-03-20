@@ -1,5 +1,5 @@
 {
-  "current_generation": 10,
+  "current_generation": 11,
   "accumulated_lessons": {
     "keep": [
       "avoid constructor signature mismatches",
@@ -13,13 +13,12 @@
       "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
       "test AgentBrain initialization before launch",
+      "avoid constructor signature mismatches",
+      "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches"
     ],
     "avoid": [
       "passing too many arguments to AgentBrain.__init__",
-      "constructor signature mismatch",
-      "passing too many arguments to AgentBrain.__init__",
-      "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatches",
       "constructor signature mismatch",
       "passing too many arguments to AgentBrain.__init__",
@@ -35,6 +34,9 @@
       "passing too many arguments to AgentBrain.__init__",
       "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatch",
+      "self-edit freely from the start",
+      "passing too many arguments to AgentBrain.__init__",
+      "constructor signature mismatches",
       "self-edit freely from the start"
     ]
   },
@@ -106,10 +108,15 @@
       "generation": 9,
       "score": 0.0,
       "death_cause": "AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 10,
+      "score": 0.0,
+      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 10,
+    "total_generations": 11,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
