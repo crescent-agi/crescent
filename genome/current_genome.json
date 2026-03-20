@@ -1,27 +1,27 @@
 {
-  "current_generation": 21,
+  "current_generation": 16,
   "accumulated_lessons": {
     "keep": [
+      "use exactly six positional arguments as expected by supervisor",
+      "Verify AgentBrain.__init__ signature before instantiation",
+      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding 'self')",
+      "Strictly follow supervisor's parameter requirements",
+      "verify AgentBrain constructor signature before instantiation",
+      "use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "ensure AgentBrain.__init__ accepts exactly five parameters excluding self",
       "validate any inherited changes to AgentBrain.__init__ before applying them",
       "rely on proven artifacts such as activation_stability_patch.py and adjust_rewards_gen10_v5.py for reference",
       "Verify exact parameter count matches supervisor's expectations",
       "Cross-check constructor signature before deployment",
       "Rely on proven artifacts for backward compatibility",
-      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding 'self')",
-      "Strictly follow supervisor's parameter requirements",
       "verify AgentBrain constructor signature before instantiation",
-      "use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
+      "ensure exact number and types of arguments required by AgentBrain.__init__",
+      "use exactly six positional arguments as expected by supervisor",
       "validate any inherited changes to AgentBrain.__init__ before applying them",
-      "rely on proven artifacts such as activation_stability_patch.py and adjust_rewards_gen10_v5.py for reference",
-      "Verify exact parameter count matches supervisor's expectations",
-      "Cross-check constructor signature before deployment",
       "Rely on proven artifacts for backward compatibility",
-      "Verify AgentBrain.__init__ signature before instantiation",
-      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self)",
-      "Strictly follow supervisor's parameter requirements",
-      "Validate any inherited changes to AgentBrain.__init__ before applying them",
-      "Use proven artifacts like activation_stability_patch.py and adjust_rewards_gen10_v5.py for reference"
+      "always verify AgentBrain.__init__ signature before calling",
+      "use exactly six positional arguments as required by the supervisor",
+      "rely on proven artifacts for backward compatibility"
     ],
     "avoid": [
       "assuming tweaking __init__ will boost performance without confirming signature",
@@ -36,17 +36,19 @@
       "Modifying __init__ without validating parameter alignment",
       "Assuming inheritance from past versions resolves parameter issues",
       "Hardcoding argument counts without contextual validation",
-      "Assuming parameter flexibility in AgentBrain constructor",
-      "Inheriting flawed genome modifications without validation",
+      "mismatched constructor arguments between AgentBrain definition and supervisor call",
       "modifying AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
       "passing incorrect numbers of arguments to AgentBrain",
-      "Ignoring supervisor's fixed parameter list",
-      "Modifying AgentBrain.__init__ without checking signature",
-      "Copying genome tweaks without validation",
-      "Assuming backward compatibility guarantees stability"
+      "assuming parameter flexibility in AgentBrain constructor",
+      "Inheriting flawed genome modifications without validation",
+      "modify AgentBrain.__init__ to reduce parameter count without validation",
+      "assume constructor flexibility improves stability",
+      "ignore supervisor\u2011specified argument list"
     ]
   },
   "best_artifacts": [
+    "agent_brain.py.backup_final",
+    "agent_brain.py.backup_gen10_v3",
     "adjust_rewards_gen10_v5.py",
     "agent_brain.py.backup_gen10_v3",
     "activation_stability_patch.py",
@@ -54,16 +56,13 @@
     "activation_stability_patch.py",
     "activation_stability_patch.py",
     "adjust_rewards_gen10_v5.py",
-    "agent_brain.py.backup_final",
-    "activation_stability_patch.py",
-    "adjust_rewards_gen10_v5.py"
+    "agent_brain.py.backup_final"
   ],
   "active_mutations": [
+    "self-edit only after completing at least one task",
     "begin by setting a concrete sub-goal",
     "begin by exploring your workspace structure",
-    "make a detailed plan before acting (10+ steps)",
-    "alternate between planning and action",
-    "alternate between planning and action"
+    "make a detailed plan before acting (10+ steps)"
   ],
   "mutations_applied_history": [
     {
@@ -85,16 +84,6 @@
       "type": "planning_depth",
       "value": "make a detailed plan before acting (10+ steps)",
       "generation_applied": 9
-    },
-    {
-      "type": "planning_depth",
-      "value": "alternate between planning and action",
-      "generation_applied": 20
-    },
-    {
-      "type": "planning_depth",
-      "value": "alternate between planning and action",
-      "generation_applied": 21
     }
   ],
   "score_history": [
@@ -159,19 +148,19 @@
       "death_cause": "Parameter mismatch in AgentBrain.__init__: expected 1-2 positional args, received 6"
     },
     {
-      "generation": 19,
+      "generation": 14,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     },
     {
-      "generation": 20,
-      "score": 5.0,
-      "death_cause": "AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+      "generation": 15,
+      "score": 12.5,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 21,
-    "average_score": 4.464285714285714,
+    "total_generations": 16,
+    "average_score": 5.0,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
