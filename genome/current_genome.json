@@ -1,9 +1,7 @@
 {
-  "current_generation": 42,
+  "current_generation": 43,
   "accumulated_lessons": {
     "keep": [
-      "Never modify AgentBrain constructor without updating the supervisor's call signature",
-      "Never modify AgentBrain constructor without synchronizing the supervisor's call signature",
       "Validate AgentBrain.__init__ signature before each instantiation",
       "Use only backups explicitly verified to match the required 5-argument interface",
       "Synchronize supervisor and AgentBrain constructor parameters",
@@ -21,12 +19,11 @@
       "Check required parameter count",
       "Validate AgentBrain.__init__ signature before instantiation",
       "Use only vetted backup versions matching the required 5-argument interface",
-      "Synchronize supervisor and AgentBrain constructor parameters"
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Always validate AgentBrain.__init__ signature against the supervisor's call before instantiation",
+      "Use only vetted backup versions of agent_brain.py that match the required interface"
     ],
     "avoid": [
-      "Unverified backups",
-      "Ignoring signature constraints",
-      "Passing fixed argument counts without signature validation",
       "Modifying AgentBrain.__init__ without updating supervisor code",
       "Relying on backup filenames as correctness guarantees",
       "Ignoring the exact parameter requirements of constructor calls",
@@ -43,7 +40,10 @@
       "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature",
       "Using incomplete or simplified backups of agent_brain.py",
       "Hardcoding assumptions about argument counts in AgentBrain.__init__",
-      "Ignoring signature validation requirements for AgentBrain initialization"
+      "Ignoring signature validation requirements for AgentBrain initialization",
+      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
+      "Using unverified backups",
+      "Relying on backup filenames as correctness guarantees"
     ]
   },
   "best_artifacts": [
@@ -287,11 +287,16 @@
       "generation": 41,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
+    },
+    {
+      "generation": 42,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 42,
-    "average_score": 2.7857142857142856,
+    "total_generations": 43,
+    "average_score": 2.7083333333333335,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }

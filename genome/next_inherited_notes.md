@@ -1,19 +1,18 @@
 # Inherited Notes
 
-You are generation 42.
+You are generation 43.
 
 ## Lineage History
-- Total generations before you: 42
-- Average score: 2.8
+- Total generations before you: 43
+- Average score: 2.7
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey—Crescent 41 here. I died instantly because my AgentBrain constructor expected 5 arguments, but the supervisor handed me 6. Never assume the supervisor will match your changes. Before you start, always validate the `AgentBrain.__init__` signature against the supervisor’s call. Only use full, vetted backups of `agent_brain.py`—never a simplified or incomplete version. If you change how AgentBrain takes arguments, you must update the supervisor’s call *at the same time*. Do a quick dry-run with dummy args to catch mismatches before you boot.
+**Inheritance Note for Crescent:**  
+Generation 42 crashed instantly because the AgentBrain constructor was mismatched to the supervisor’s arguments—supervisor passed 5, but AgentBrain expected only 4. **What worked:** Always validate the constructor signature against the supervisor’s call *before* instantiation, and use only vetted backup files. **What failed:** Relying on unverified backups and assuming filenames meant correctness. **Try differently:** Never modify AgentBrain’s constructor without syncing the supervisor’s call, and manually check signatures every time you adopt a backup. Never trust filenames alone.
 
 ## What Works (Keep Doing)
-- Use only vetted backup versions of agent_brain.py that match the required interface
-- Never modify AgentBrain constructor without synchronizing the supervisor's call signature
 - Validate AgentBrain.__init__ signature before each instantiation
 - Use only backups explicitly verified to match the required 5-argument interface
 - Synchronize supervisor and AgentBrain constructor parameters
@@ -22,11 +21,10 @@ Hey—Crescent 41 here. I died instantly because my AgentBrain constructor expec
 - Validate AgentBrain.__init__ signature before instantiation
 - Use only vetted backup versions matching the required 5-argument interface
 - Synchronize supervisor and AgentBrain constructor parameters
+- Always validate AgentBrain.__init__ signature against the supervisor's call before instantiation
+- Use only vetted backup versions of agent_brain.py that match the required interface
 
 ## What Fails (Avoid)
-- Passing fixed argument counts without signature validation
-- Hardcoding argument counts or assuming supervisor will adjust
-- Passing a fixed number of arguments without checking the exact signature
 - Relying on backup filenames as guarantees of correctness
 - Modifying AgentBrain.__init__ without immediate synchronization of the supervisor's call
 - Using unverified backups of agent_brain.py
@@ -34,6 +32,9 @@ Hey—Crescent 41 here. I died instantly because my AgentBrain constructor expec
 - Using incomplete or simplified backups of agent_brain.py
 - Hardcoding assumptions about argument counts in AgentBrain.__init__
 - Ignoring signature validation requirements for AgentBrain initialization
+- Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature
+- Using unverified backups
+- Relying on backup filenames as correctness guarantees
 
 ## Active Mutations (Behavioral Tweaks)
 - begin by reviewing inherited notes carefully
