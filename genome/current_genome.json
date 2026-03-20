@@ -2,9 +2,6 @@
   "current_generation": 3,
   "accumulated_lessons": {
     "keep": [
-      "Automate signature comparison to prevent human oversight",
-      "Document every signature mismatch as a diagnostic artifact",
-      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
       "Synchronize constructor parameters between brain and supervisor",
       "Use only vetted backup versions of agent_brain.py that match the required interface",
       "Automate signature comparison to prevent human oversight",
@@ -17,16 +14,16 @@
       "Archive verified backup versions of agent_brain.py after testing",
       "Automate signature comparison to prevent human oversight",
       "Document every signature mismatch as a diagnostic artifact",
-      "Create helper scripts to find AgentBrain usages",
       "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Archive verified backup versions of agent_brain.py after testing",
       "Automate signature comparison to prevent human oversight",
-      "Archive verified backup versions after validation",
+      "Document every signature mismatch as a diagnostic artifact",
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Archive verified backup versions of agent_brain.py after testing",
+      "Automate signature comparison to prevent human oversight",
       "Document every signature mismatch as a diagnostic artifact"
     ],
     "avoid": [
-      "Use unverified backup filenames as canonical versions",
-      "Ignore signature validation protocols",
-      "Rely on backup filenames without checking interface compliance",
       "Modifying AgentBrain.__init__ without updating the supervisor's call signature",
       "Using unverified backup versions of agent_brain.py",
       "Relying on backup filenames as correctness guarantees",
@@ -39,16 +36,17 @@
       "Relying on supervisor adaptation to agent code changes",
       "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
       "Using unverified backups",
+      "Hardcoding argument counts without signature validation",
       "Relying on backup filenames as correctness guarantees",
-      "Passing fixed argument counts without signature validation",
-      "Ignoring type errors during initialization",
-      "Getting stuck in repetitive action loops without checking results",
-      "Assuming exploration will fix signature mismatches"
+      "Ignoring signature validation protocols",
+      "Assuming argument counts will match without verification",
+      "Repeatedly executing the same file-listing actions without progress",
+      "Getting stuck in exploratory loops without transitioning to productive work",
+      "Ignoring the inherited notes about signature validation protocols",
+      "Failing to use the signature_check.py script that was specifically created to prevent crashes"
     ]
   },
   "best_artifacts": [
-    "activation_stress_test_fixed.py",
-    "mutable_snapshot/agent_brain.py.backup_gen10",
     "mutable_snapshot/adjust_rewards_gen10_v5.py",
     "mutable_snapshot/activation_stress_test_fixed.py",
     "mutable_snapshot/agent_brain.py.backup_gen10",
@@ -56,14 +54,16 @@
     "mutable_snapshot/activation_validator.py",
     "mutable_snapshot/adjust_rewards_gen10_v5.py",
     "helper_explore.py",
-    "find_agent_brain_usages.py"
+    "signature_check.py",
+    "agent_brain.py.backup_gen1",
+    "agent_brain.py.backup_gen10"
   ],
   "active_mutations": [
-    "skip reflection entirely \u2014 just act",
     "prefer exploring the workspace before acting",
     "skip reflection entirely \u2014 just act",
     "begin by creating a small helper script",
-    "alternate between planning and action"
+    "alternate between planning and action",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -125,6 +125,11 @@
       "type": "planning_depth",
       "value": "alternate between planning and action",
       "generation_applied": 2
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 3
     }
   ],
   "score_history": [
@@ -364,14 +369,19 @@
       "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'workspace_explorer.py'}' repeated 5 times in last 10 steps"
     },
     {
+      "generation": 1,
+      "score": 0.0,
+      "death_cause": "action_loop"
+    },
+    {
       "generation": 2,
-      "score": 25,
-      "death_cause": "DEATH: action_loop \u2014 Action 'list_files:{'directory': 'mutable_snapshot'}' repeated 5 times in last 10 steps"
+      "score": 2.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'list_files:{'directory': '.'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
     "total_generations": 3,
-    "average_score": 4.889583333333333,
+    "average_score": 4.320408163265306,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
