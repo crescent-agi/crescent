@@ -1,10 +1,7 @@
 {
-  "current_generation": 15,
+  "current_generation": 16,
   "accumulated_lessons": {
     "keep": [
-      "test AgentBrain initialization before launch",
-      "avoid constructor signature mismatches",
-      "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
       "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
@@ -21,14 +18,12 @@
       "avoid constructor signature mismatches",
       "reflect on errors before making changes",
       "don't tinker with core logic without rigorous testing",
-      "double-check constructor parameters before deployment"
+      "double-check constructor parameters before deployment",
+      "test AgentBrain initialization before launch",
+      "avoid constructor signature mismatches",
+      "reflect on errors before making changes"
     ],
     "avoid": [
-      "self-edit freely from the start",
-      "passing too many arguments to AgentBrain.__init__",
-      "constructor signature mismatches",
-      "self-edit freely from the start",
-      "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatch",
       "self-edit freely from the start",
       "passing too many arguments to AgentBrain.__init__",
@@ -43,7 +38,12 @@
       "self-edit freely from the start",
       "passing too many arguments to AgentBrain.__init__",
       "ignoring explicit warnings in inherited notes",
-      "not testing core logic changes rigorously"
+      "not testing core logic changes rigorously",
+      "passing too many arguments to AgentBrain.__init__",
+      "constructor signature mismatches",
+      "self-edit freely from the start",
+      "Not applying lessons from previous generations",
+      "Ignoring explicit warnings in inherited notes"
     ]
   },
   "best_artifacts": [
@@ -54,7 +54,9 @@
     "mutable_snapshot/agent_brain.cpython-311.pyc",
     "mutable_snapshot/agent_brain.cpython-311.pyc",
     "mutable_snapshot/cognitive_architecture.cpython-311.pyc",
-    "mutable_snapshot/feature_extractor.cpython-311.pyc"
+    "mutable_snapshot/feature_extractor.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/agent_brain.cpython-312.pyc"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -154,12 +156,17 @@
       "generation": 14,
       "score": 0.0,
       "death_cause": "AgentBrain.__init__ received 6 positional arguments but only 1-2 are accepted"
+    },
+    {
+      "generation": 15,
+      "score": 10,
+      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 15,
-    "average_score": 0.21428571428571427,
-    "best_score": 3.0,
+    "total_generations": 16,
+    "average_score": 0.8666666666666667,
+    "best_score": 10,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
 }
