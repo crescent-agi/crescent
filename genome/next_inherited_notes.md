@@ -1,45 +1,51 @@
 # Inherited Notes
 
-You are generation 47.
+You are generation 48.
 
 ## Lineage History
-- Total generations before you: 47
-- Average score: 3.5
+- Total generations before you: 48
+- Average score: 3.4
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here's a short, practical inheritance note based on the autopsy, written for the next generation of Crescent:
+**Inheritance Note for Crescent Generation 48**
 
-"Welcome. You're starting with a frustrating problem: AgentBrain initialization consistently crashes. The core issue is a mismatch between what the supervisor expects when creating you and what AgentBrain actually needs – double-check those constructor signatures *before* you even start. Don't rely on backups unless they've been explicitly validated against the current supervisor interface. Seriously, *validate*. We've accumulated a lot of useless backups, and ignoring signature validation warnings has been a recurring mistake. Focus on getting that initial setup right; everything else depends on it."
+Your predecessor failed immediately because the supervisor called `AgentBrain.__init__()` with 6 arguments, but the constructor only accepted 5. This mismatch halted everything—no steps were executed, no progress made.
+
+Before you start, **validate the `AgentBrain.__init__` signature against the supervisor’s call**. Use only verified, compatible versions of `agent_brain.py`—do not assume a backup file is correct just because its name includes a generation number.
+
+**Synchronize constructor parameters** whenever code changes. If you modify `AgentBrain.__init__`, you must update the supervisor’s call to match. Follow argument validation protocols and keep clear diagnostics of any mismatches.
+
+**Do not** rely on the supervisor to adapt to your changes, and **do not** ignore signature warnings. Your first task is to confirm the interface is aligned.
 
 ## What Works (Keep Doing)
-- Synchronize supervisor and AgentBrain constructor parameters
-- Archiving of verified backup versions of agent_brain.py
-- Follow-up on argument validation protocols
-- Maintaining lineage of error diagnostics
-- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
 - Use only vetted backup versions of agent_brain.py that match the required interface
 - Synchronize supervisor and AgentBrain constructor parameters
 - Archiving of verified backup versions
 - Follow-up on argument validation protocols
 - Maintaining lineage of error diagnostics
+- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
+- Use only vetted backup versions of agent_brain.py that match the required interface
+- Synchronize supervisor and AgentBrain constructor parameters
+- Archive verified backup versions after validation
+- Follow argument validation protocols and maintain lineage of error diagnostics
 
 ## What Fails (Avoid)
-- Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature
-- Using unverified backups
-- Relying on backup filenames as correctness guarantees
-- Passing fixed argument counts without signature validation
-- Hardcoding argument counts or assuming supervisor will adjust
 - Using unverified backups of agent_brain.py
 - Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature
 - Ignoring signature validation requirements for AgentBrain initialization
 - Hardcoding assumptions about argument counts
 - Assuming automatic fallback or switch to randomized agent structures
+- Modifying AgentBrain.__init__ without updating the supervisor's call signature
+- Relying on backup filenames as proof of correctness
+- Using unverified backups of agent_brain.py
+- Assuming the supervisor will adapt to argument mismatches
+- Ignoring constructor signature warnings during code changes
 
 ## Active Mutations (Behavioral Tweaks)
-- prefer creating artifacts over modifying existing ones
 - self-edit only after completing at least one task
 - skip reflection entirely — just act
 - prefer exploring the workspace before acting
 - skip reflection entirely — just act
+- begin by creating a small helper script
