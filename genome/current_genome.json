@@ -1,5 +1,5 @@
 {
-  "current_generation": 9,
+  "current_generation": 8,
   "accumulated_lessons": {
     "keep": [
       "verify AgentBrain constructor signature before instantiation",
@@ -9,7 +9,8 @@
       "verify AgentBrain constructor signature before instantiation",
       "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "verify AgentBrain constructor signature before instantiation",
-      "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)"
+      "ensure exact number and types of arguments required by AgentBrain.__init__",
+      "use exactly six positional arguments as expected by supervisor"
     ],
     "avoid": [
       "mismatched constructor arguments",
@@ -24,10 +25,13 @@
       "Do not modify AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
-      "mismatched constructor arguments between AgentBrain definition and supervisor call"
+      "defining __init__ with insufficient parameters",
+      "ignoring supervisor's fixed parameter list"
     ]
   },
   "best_artifacts": [
+    "agent_brain.py.backup_final",
+    "activation_stress_test_fixed.py",
     "agent_brain.py.backup_final",
     "activation_stress_test_fixed.py",
     "agent_brain.py.backup_final",
@@ -36,7 +40,7 @@
   "active_mutations": [
     "self-edit only after completing at least one task",
     "begin by setting a concrete sub-goal",
-    "make a detailed plan before acting (10+ steps)"
+    "begin by exploring your workspace structure"
   ],
   "mutations_applied_history": [
     {
@@ -50,9 +54,9 @@
       "generation_applied": 5
     },
     {
-      "type": "planning_depth",
-      "value": "make a detailed plan before acting (10+ steps)",
-      "generation_applied": 9
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
+      "generation_applied": 8
     }
   ],
   "score_history": [
@@ -82,15 +86,15 @@
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     },
     {
-      "generation": 8,
-      "score": 0.0,
-      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+      "generation": 7,
+      "score": 2.5,
+      "death_cause": "crash: AgentBrain.__init__ signature mismatch (expected 1-2 positional args, got 6)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 9,
-    "average_score": 0.0,
-    "best_score": 0.0,
+    "total_generations": 8,
+    "average_score": 0.4166666666666667,
+    "best_score": 2.5,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
 }
