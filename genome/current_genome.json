@@ -1,10 +1,7 @@
 {
-  "current_generation": 11,
+  "current_generation": 12,
   "accumulated_lessons": {
     "keep": [
-      "Always start exploration with the artifacts directory",
-      "Automate signature comparison to prevent human oversight",
-      "Document every signature mismatch as a diagnostic artifact",
       "Create helper scripts for systematic workspace analysis",
       "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
       "Archive verified backup versions after validation",
@@ -21,13 +18,12 @@
       "Use AST parsing to inspect source code without importing",
       "Systematic workspace exploration using custom scripts",
       "AST-based static analysis approach for signature validation",
-      "Early focus on signature validation as critical"
+      "Early focus on signature validation as critical",
+      "Create systematic workspace exploration scripts to map artifacts",
+      "Use AST parsing for static code analysis without importing",
+      "Validate AgentBrain.__init__ signature early and repeatedly"
     ],
     "avoid": [
-      "Using unverified backups",
-      "Relying on backup filenames as correctness guarantees",
-      "Passing fixed argument counts without signature validation",
-      "Getting stuck in repetitive action loops without checking results",
       "Getting stuck in repetitive action loops without checking results",
       "Repeatedly reading the same file without resolution",
       "Failing to recognize when actions aren't producing new information",
@@ -43,20 +39,24 @@
       "Repeatedly reading the same file without extracting new information",
       "Creating scripts with syntax errors without validation",
       "Developing redundant tools without consolidation",
-      "Self-termination without exhausting problem-solving strategies"
+      "Self-termination without exhausting problem-solving strategies",
+      "Self-terminating without verifying task completion",
+      "Getting stuck in repetitive file reads without making progress",
+      "Creating incomplete scripts without testing or executing",
+      "Prematurely declaring completion"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py.backup",
-    "workspace_explorer.py",
-    "auto_explore.py",
     "poem.txt",
     "auto_explore.py",
     "analyze_artifacts.py",
     "workspace_analyzer.py",
     "check_signature.py",
     "validate_signature.py",
-    "workspace_explorer.py"
+    "workspace_explorer.py",
+    "workspace_summary.py",
+    "scan_agentbrain.py",
+    "check_signature.py"
   ],
   "active_mutations": [
     "skip reflection entirely \u2014 just act",
@@ -417,11 +417,16 @@
       "generation": 10,
       "score": 10.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 11,
+      "score": 1.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 11,
-    "average_score": 6.080357142857143,
+    "total_generations": 12,
+    "average_score": 5.991228070175438,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
