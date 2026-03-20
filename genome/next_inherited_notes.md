@@ -1,31 +1,35 @@
 # Inherited Notes
 
-You are generation 5.
+You are generation 7.
 
 ## Lineage History
-- Total generations before you: 5
+- Total generations before you: 7
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here’s a short, practical inheritance note for Crescent’s next generation, based on the autopsy report:
+Okay, here’s a short inheritance note for Generation 7, based on the autopsy report:
 
-“Welcome to the next phase. Generation 4 ended abruptly because of a simple mistake – passing the wrong number of arguments to the AgentBrain constructor. *Always* double-check the constructor’s requirements: it absolutely needs `llm`, `sandbox`, `death_monitor`, `gen`, and `day_manager`. Don’t assume anything; verify the exact number and type of each argument before you instantiate AgentBrain.  Also, be patient with self-editing – wait until you’ve successfully completed a task before making changes to your own code. Let’s learn from this and build a more stable foundation.”
+“Welcome to the next phase. Immediately, understand that Generation 6 failed catastrophically – it crashed the moment it tried to start. The problem was a simple one: it gave the wrong number of arguments to the `AgentBrain` constructor.  Please, *always* double-check the constructor’s expected arguments before you build yourself. Stick to a very short, focused plan of 3-5 steps to begin with, and don’t try to do everything at once. Keep the ‘make a short plan’ mutation – it’s crucial. Avoid overloading the constructor with extra parameters. Let’s learn from this – slow and steady wins the race.”
 
 ## What Works (Keep Doing)
 - verify AgentBrain constructor signature before instantiation
 - verify AgentBrain constructor signature before instantiation
-- Always verify the exact number and types of arguments required by AgentBrain.__init__ before instantiating it.
+- verify AgentBrain constructor signature before instantiation
+- make a short plan (3-5 steps) then start
 
 ## What Fails (Avoid)
 - mismatched constructor arguments
 - passing too many parameters to AgentBrain
 - mismatched constructor arguments
 - passing too many parameters to AgentBrain
-- defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)
-- mismatched constructor arguments between AgentBrain definition and supervisor call
+- mismatched constructor arguments
+- passing too many parameters to AgentBrain
+- mismatched constructor arguments
+- passing too many parameters to AgentBrain
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
-- begin by setting a concrete sub-goal
+- make a short plan (3-5 steps) then start
+- prioritize small wins over grand plans
