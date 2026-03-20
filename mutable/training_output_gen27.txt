@@ -1,0 +1,109 @@
+Patched NeuralNetwork.backward with weight clipping.
+Patched NeuralQLearningAgentContinuousDouble.choose_action to mask non-productive tools.
+=== Generation 27: Equal extra rewards across productive tools ===
+Goal: make Q-values more balanced to prevent deterministic collapse.
+=== Quick sanity check (5 episodes) ===
+Starting Generation 27 training: 5 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen26
+Loaded previous model from artifacts/agi_core_continuous_trained_gen26
+Episode 5: avg reward last 5=-526.74, deaths=0
+  Top actions: [('read_file', 19), ('write_file', 16), ('modify_self', 11), ('execute_code', 4)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: -2633.72
+Average reward per step: -52.674
+
+Action distribution:
+  read_file: 19 (38.0%)
+  write_file: 16 (32.0%)
+  modify_self: 11 (22.0%)
+  execute_code: 4 (8.0%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 16 (32.0%)
+    -> within target range
+  execute_code: 4 (8.0%)
+    -> OUTSIDE target range
+  modify_self: 11 (22.0%)
+    -> within target range
+  read_file: 19 (38.0%)
+    -> OUTSIDE target range
+Saved model to artifacts/agi_core_continuous_trained_gen27/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen27
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen27
+
+=== Full training (200 episodes) ===
+Starting Generation 27 training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen26
+Loaded previous model from artifacts/agi_core_continuous_trained_gen26
+Episode 5: avg reward last 5=-522.09, deaths=0
+  Top actions: [('read_file', 18), ('modify_self', 12), ('write_file', 12), ('execute_code', 8)]
+  Non-productive actions: zero
+Episode 10: avg reward last 5=-544.04, deaths=0
+  Top actions: [('modify_self', 33), ('read_file', 28), ('write_file', 23), ('execute_code', 16)]
+  Non-productive actions: zero
+Episode 15: avg reward last 5=-625.58, deaths=0
+  Top actions: [('modify_self', 42), ('write_file', 42), ('read_file', 38), ('execute_code', 28)]
+  Non-productive actions: zero
+Episode 20: avg reward last 5=-542.33, deaths=0
+  Top actions: [('read_file', 55), ('modify_self', 50), ('execute_code', 50), ('write_file', 45)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: -11170.22
+Average reward per step: -55.851
+
+Action distribution:
+  read_file: 55 (27.5%)
+  modify_self: 50 (25.0%)
+  execute_code: 50 (25.0%)
+  write_file: 45 (22.5%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 45 (22.5%)
+    -> within target range
+  execute_code: 50 (25.0%)
+    -> within target range
+  modify_self: 50 (25.0%)
+    -> within target range
+  read_file: 55 (27.5%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen27/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen27
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen27
+
+Total training took 9.3 seconds
+
+=== Final validation (epsilon=0, 1000 steps) ===
+Non-productive actions: 0
+Average reward per step: -495.916
+Productive distribution:
+  write_file: 100.0%
+    -> OUTSIDE target range
+  execute_code: 0.0%
+    -> OUTSIDE target range
+  modify_self: 0.0%
+    -> OUTSIDE target range
+  read_file: 0.0%
+    -> OUTSIDE target range
+FAIL: Average reward -495.916 <= 2.0
+FAIL: write_file distribution 100.0% outside 15-35%
+FAIL: execute_code distribution 0.0% outside 15-35%
+FAIL: modify_self distribution 0.0% outside 15-35%
+FAIL: read_file distribution 0.0% outside 15-35%
+
+*** GOALS NOT MET ***
+Done.

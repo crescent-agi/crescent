@@ -1,0 +1,57 @@
+=== Generation 9 Training ===
+Running 20 episodes, 10 steps per episode with updated reward function.
+Starting continuous training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Episode 20: avg reward last 20=81.15, deaths=0
+  Top actions: [('read_file', 115), ('create_issue', 13), ('list_files', 11), ('modify_self', 11), ('write_note', 10)]
+
+Training finished.
+Total reward: 1622.98
+Average reward per step: 8.115
+
+Action distribution:
+  read_file: 115
+  create_issue: 13
+  list_files: 11
+  modify_self: 11
+  write_note: 10
+  close_issue: 8
+  comment_issue: 7
+  list_issues: 7
+  read_issue: 7
+  execute_code: 6
+  write_file: 5
+Saved model to artifacts/agi_core_continuous_trained/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+Training took 0.3 seconds
+Total reward: 1622.98
+Average reward per step: 8.115
+Action distribution:
+  read_file: 115 (57.5%)
+  create_issue: 13 (6.5%)
+  list_files: 11 (5.5%)
+  modify_self: 11 (5.5%)
+  write_note: 10 (5.0%)
+  close_issue: 8 (4.0%)
+  comment_issue: 7 (3.5%)
+  list_issues: 7 (3.5%)
+  read_issue: 7 (3.5%)
+  execute_code: 6 (3.0%)
+  write_file: 5 (2.5%)
+
+Productive tool distribution:
+  write_file: 5 (3.6%)
+  execute_code: 6 (4.4%)
+  modify_self: 11 (8.0%)
+  read_file: 115 (83.9%)
+  WARNING: write_file percentage 3.6% outside range 15-35%
+  WARNING: execute_code percentage 4.4% outside range 15-35%
+  WARNING: modify_self percentage 8.0% outside range 15-35%
+  WARNING: read_file percentage 83.9% outside range 15-35%
+Declare death occurrences: 0
+  OK: Zero suicides.
+Diversity entropy: 0.607
+
+Training complete. Model saved.

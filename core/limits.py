@@ -150,3 +150,23 @@ class DeathMonitor:
             "consecutive_self_edits": self.consecutive_self_edits,
             "total_actions": len(self.action_history),
         }
+
+    def export_state(self) -> dict:
+        """Serialize monitor state so a life can resume later."""
+        return {
+            "start_time": self.start_time,
+            "step_count": self.step_count,
+            "action_history": self.action_history,
+            "consecutive_self_edits": self.consecutive_self_edits,
+            "agent_declared_death": self.agent_declared_death,
+            "crash_error": self.crash_error,
+        }
+
+    def import_state(self, state: dict):
+        """Restore serialized monitor state."""
+        self.start_time = state.get("start_time", self.start_time)
+        self.step_count = state.get("step_count", 0)
+        self.action_history = state.get("action_history", [])
+        self.consecutive_self_edits = state.get("consecutive_self_edits", 0)
+        self.agent_declared_death = state.get("agent_declared_death", False)
+        self.crash_error = state.get("crash_error")

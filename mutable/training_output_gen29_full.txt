@@ -1,0 +1,111 @@
+Patched NeuralNetwork.backward with weight clipping.
+Patched NeuralQLearningAgentContinuousDouble.choose_action to mask non-productive tools.
+=== Generation 29: Equal extra rewards across productive tools ===
+Goal: make Q-values more balanced to prevent deterministic collapse.
+=== Quick sanity check (5 episodes) ===
+Starting Generation 29 training: 5 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen26
+Loaded previous model from artifacts/agi_core_continuous_trained_gen26
+Episode 5: avg reward last 5=-763.52, deaths=0
+  Top actions: [('modify_self', 19), ('read_file', 13), ('write_file', 10), ('execute_code', 8)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: -3817.58
+Average reward per step: -76.352
+
+Action distribution:
+  modify_self: 19 (38.0%)
+  read_file: 13 (26.0%)
+  write_file: 10 (20.0%)
+  execute_code: 8 (16.0%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 10 (20.0%)
+    -> within target range
+  execute_code: 8 (16.0%)
+    -> within target range
+  modify_self: 19 (38.0%)
+    -> OUTSIDE target range
+  read_file: 13 (26.0%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen29/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen29
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen29
+
+=== Full training (200 episodes) ===
+Starting Generation 29 training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen26
+Loaded previous model from artifacts/agi_core_continuous_trained_gen26
+Episode 5: avg reward last 5=-853.80, deaths=0
+  Top actions: [('read_file', 17), ('execute_code', 16), ('write_file', 9), ('modify_self', 8)]
+  Non-productive actions: zero
+Episode 10: avg reward last 5=-902.18, deaths=0
+  Top actions: [('modify_self', 31), ('execute_code', 31), ('read_file', 19), ('write_file', 18), ('write_note', 1)]
+  Non-productive actions: {'write_note': 1}
+Episode 15: avg reward last 5=-529.33, deaths=0
+  Top actions: [('execute_code', 45), ('modify_self', 42), ('write_file', 36), ('read_file', 26), ('write_note', 1)]
+  Non-productive actions: {'write_note': 1}
+Episode 20: avg reward last 5=-698.49, deaths=0
+  Top actions: [('modify_self', 56), ('execute_code', 55), ('read_file', 46), ('write_file', 42), ('write_note', 1)]
+  Non-productive actions: {'write_note': 1}
+
+Training finished.
+Total reward: -14919.01
+Average reward per step: -74.595
+
+Action distribution:
+  modify_self: 56 (28.0%)
+  execute_code: 55 (27.5%)
+  read_file: 46 (23.0%)
+  write_file: 42 (21.0%)
+  write_note: 1 (0.5%)
+
+Non-productive tool counts:
+  Total non-productive actions: 1
+    write_note: 1
+
+Productive tool distribution:
+  write_file: 42 (21.1%)
+    -> within target range
+  execute_code: 55 (27.6%)
+    -> within target range
+  modify_self: 56 (28.1%)
+    -> within target range
+  read_file: 46 (23.1%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen29/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen29
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen29
+
+Total training took 9.1 seconds
+
+=== Final validation (epsilon=0, 1000 steps) ===
+Non-productive actions: 0
+Average reward per step: -497.630
+Productive distribution:
+  write_file: 0.0%
+    -> OUTSIDE target range
+  execute_code: 100.0%
+    -> OUTSIDE target range
+  modify_self: 0.0%
+    -> OUTSIDE target range
+  read_file: 0.0%
+    -> OUTSIDE target range
+FAIL: Average reward -497.630 <= 2.0
+FAIL: write_file distribution 0.0% outside 15-35%
+FAIL: execute_code distribution 100.0% outside 15-35%
+FAIL: modify_self distribution 0.0% outside 15-35%
+FAIL: read_file distribution 0.0% outside 15-35%
+
+*** GOALS NOT MET ***
+Done.

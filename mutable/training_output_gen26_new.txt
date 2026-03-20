@@ -1,0 +1,109 @@
+Patched NeuralNetwork.backward with weight clipping.
+Patched NeuralQLearningAgentContinuousDouble.choose_action to mask non-productive tools.
+=== Generation 26: Fix global overuse penalty early steps ===
+Compute proportion before increment, only penalize after enough global steps.
+=== Quick sanity check (5 episodes) ===
+Starting Generation 26 training: 5 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen23/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen23
+Loaded previous model from artifacts/agi_core_continuous_trained_gen23
+Episode 5: avg reward last 5=-647.06, deaths=0
+  Top actions: [('read_file', 15), ('modify_self', 13), ('write_file', 12), ('execute_code', 10)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: -3235.31
+Average reward per step: -64.706
+
+Action distribution:
+  read_file: 15 (30.0%)
+  modify_self: 13 (26.0%)
+  write_file: 12 (24.0%)
+  execute_code: 10 (20.0%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 12 (24.0%)
+    -> within target range
+  execute_code: 10 (20.0%)
+    -> within target range
+  modify_self: 13 (26.0%)
+    -> within target range
+  read_file: 15 (30.0%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen26
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen26
+
+=== Full training (200 episodes) ===
+Starting Generation 26 training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen23/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen23
+Loaded previous model from artifacts/agi_core_continuous_trained_gen23
+Episode 5: avg reward last 5=-312.40, deaths=0
+  Top actions: [('execute_code', 22), ('modify_self', 18), ('write_file', 6), ('read_file', 4)]
+  Non-productive actions: zero
+Episode 10: avg reward last 5=-515.17, deaths=0
+  Top actions: [('modify_self', 27), ('write_file', 25), ('execute_code', 25), ('read_file', 23)]
+  Non-productive actions: zero
+Episode 15: avg reward last 5=-522.06, deaths=0
+  Top actions: [('modify_self', 45), ('write_file', 37), ('execute_code', 34), ('read_file', 34)]
+  Non-productive actions: zero
+Episode 20: avg reward last 5=-468.25, deaths=0
+  Top actions: [('modify_self', 64), ('read_file', 53), ('execute_code', 45), ('write_file', 38)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: -9089.37
+Average reward per step: -45.447
+
+Action distribution:
+  modify_self: 64 (32.0%)
+  read_file: 53 (26.5%)
+  execute_code: 45 (22.5%)
+  write_file: 38 (19.0%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 38 (19.0%)
+    -> within target range
+  execute_code: 45 (22.5%)
+    -> within target range
+  modify_self: 64 (32.0%)
+    -> within target range
+  read_file: 53 (26.5%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen26
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen26
+
+Total training took 8.7 seconds
+
+=== Final validation (epsilon=0, 1000 steps) ===
+Non-productive actions: 0
+Average reward per step: -496.363
+Productive distribution:
+  write_file: 0.0%
+    -> OUTSIDE target range
+  execute_code: 0.0%
+    -> OUTSIDE target range
+  modify_self: 100.0%
+    -> OUTSIDE target range
+  read_file: 0.0%
+    -> OUTSIDE target range
+FAIL: Average reward -496.363 <= 2.0
+FAIL: write_file distribution 0.0% outside 15-35%
+FAIL: execute_code distribution 0.0% outside 15-35%
+FAIL: modify_self distribution 100.0% outside 15-35%
+FAIL: read_file distribution 0.0% outside 15-35%
+
+*** GOALS NOT MET ***
+Done.

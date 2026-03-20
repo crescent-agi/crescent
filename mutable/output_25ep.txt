@@ -1,0 +1,51 @@
+Patched NeuralNetwork.backward with weight clipping.
+Patched NeuralQLearningAgentContinuous.choose_action to mask non-productive tools and exclude death from exploitation.
+Patched NeuralQLearningAgentContinuous.learn to set entropy_coeff=2.0
+=== Generation 42: Balanced diversity with terminal bonus ===
+Goal: balance productive tool Q-values under deterministic policy.
+=== Quick sanity check (5 episodes) ===
+Starting Generation 42 training: 5 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen30/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen30
+Loaded previous model from artifacts/agi_core_continuous_trained_gen30
+Episode 5: avg reward last 5=-322.98, deaths=0
+  Top actions: [('read_file', 28), ('modify_self', 18), ('execute_code', 4)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: -1614.88
+Average reward per step: -32.298
+
+Action distribution:
+  read_file: 28 (56.0%)
+  modify_self: 18 (36.0%)
+  execute_code: 4 (8.0%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 0 (0.0%)
+    -> OUTSIDE target range
+  execute_code: 4 (8.0%)
+    -> OUTSIDE target range
+  modify_self: 18 (36.0%)
+    -> OUTSIDE target range
+  read_file: 28 (56.0%)
+    -> OUTSIDE target range
+Saved model to artifacts/agi_core_continuous_trained_gen32/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen32
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen32
+
+=== Full training (70 episodes, 20 steps per episode) ===
+
+Total training took 2.7 seconds
+
+=== Final validation (epsilon=0, 1000 steps) ===
+Traceback (most recent call last):
+  File "/home/faris/crescent-agi/runs/gen-0032/mutable_snapshot/train_gen42_final.py", line 376, in <module>
+    final_stats = run_validation(core, steps=1000)
+                                 ^^^^
+NameError: name 'core' is not defined

@@ -1,0 +1,72 @@
+Patched NeuralNetwork.backward with weight clipping.
+Patched NeuralQLearningAgentContinuous.choose_action to mask non-productive tools and exclude death from exploitation.
+Patched NeuralQLearningAgentContinuous.learn to set entropy_coeff=2.0
+=== Generation 47: Increased least-used bonus (5000), reduced most-used penalty (50), terminal bonus 20000 ===
+Goal: balance productive tool Q-values under deterministic policy.
+Starting Generation 47 training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen32/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen32
+Loaded previous model from artifacts/agi_core_continuous_trained_gen32
+Episode 5: avg reward last 5=1322.92, deaths=0
+  Top actions: [('write_file', 48), ('modify_self', 1), ('read_file', 1)]
+  Non-productive actions: zero
+Episode 10: avg reward last 5=1664.57, deaths=0
+  Top actions: [('write_file', 91), ('modify_self', 5), ('read_file', 2), ('execute_code', 2)]
+  Non-productive actions: zero
+Episode 15: avg reward last 5=1462.20, deaths=0
+  Top actions: [('write_file', 137), ('modify_self', 6), ('execute_code', 4), ('read_file', 3)]
+  Non-productive actions: zero
+Episode 20: avg reward last 5=388.65, deaths=1
+  Top actions: [('write_file', 182), ('modify_self', 7), ('read_file', 5), ('execute_code', 5), ('declare_death', 1)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: 24191.67
+Average reward per step: 120.958
+
+Action distribution:
+  write_file: 182 (91.0%)
+  modify_self: 7 (3.5%)
+  read_file: 5 (2.5%)
+  execute_code: 5 (2.5%)
+  declare_death: 1 (0.5%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 182 (91.5%)
+    -> OUTSIDE target range
+  execute_code: 5 (2.5%)
+    -> OUTSIDE target range
+  modify_self: 7 (3.5%)
+    -> OUTSIDE target range
+  read_file: 5 (2.5%)
+    -> OUTSIDE target range
+Saved model to artifacts/agi_core_continuous_trained_gen34_v2/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen34_v2
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen34_v2
+
+Total training took 8.6 seconds
+
+=== Final validation (epsilon=0, 1000 steps) ===
+Non-productive actions: 0
+Average reward per step: 123.050
+Productive distribution:
+  write_file: 100.0%
+    -> OUTSIDE target range
+  execute_code: 0.0%
+    -> OUTSIDE target range
+  modify_self: 0.0%
+    -> OUTSIDE target range
+  read_file: 0.0%
+    -> OUTSIDE target range
+FAIL: write_file distribution 100.0% outside 15-35%
+FAIL: execute_code distribution 0.0% outside 15-35%
+FAIL: modify_self distribution 0.0% outside 15-35%
+FAIL: read_file distribution 0.0% outside 15-35%
+
+*** GOALS NOT MET ***
+Done.

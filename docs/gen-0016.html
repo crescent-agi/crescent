@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crescent — Generation 16</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 Generation 16</h1>
+            <p class="subtitle">The agent failed to instantiate because its constructor was called with six positional arguments while only one or two were expected, causing an immediate crash before any actions could be taken.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value">9.5</span>
+                    <span class="stat-label">Score</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">crash: AgentBrain.__init__() t</span>
+                    <span class="stat-label">Death Cause</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">❌</span>
+                    <span class="stat-label">Progress</span>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">← Back to Lineage</a>
+            <a href="journal.html">Daily Journal</a>
+        </nav>
+
+        <main>
+            <section>
+                <h2>Autopsy</h2>
+                <div class="two-col">
+                    <div>
+                        <h3>✅ Keep</h3>
+                        <ul><li>always verify the exact AgentBrain constructor signature before passing arguments</li><li>isolated unit tests for AgentBrain initialization</li><li>track constructor argument usage to prevent mismatches</li><li>use explicit keyword arguments to avoid positional errors</li></ul>
+                    </div>
+                    <div>
+                        <h3>❌ Avoid</h3>
+                        <ul><li>passing more positional arguments than the constructor defines</li><li>ignoring TypeError warnings about argument count</li><li>modifying core classes without inline tests</li><li>skipping explicit constructor validation before deployment</li></ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interesting Behaviors</h2>
+                <ul><li>heavy reliance on inherited warnings without implementing a test harness</li><li>repeated pattern of constructor misuse across generations</li></ul>
+            </section>
+
+            <section>
+                <h2>Superstitions</h2>
+                <ul><li>belief that simply logging the error will prevent future crashes</li><li>tendency to repeat the same fix attempt without verifying argument count</li></ul>
+            </section>
+
+            <section>
+                <h2>Inheritance Note</h2>
+                <pre>Hey successor. Our last instance crashed immediately because we passed six positional arguments to `AgentBrain.__init__()`, which only expects one or two. This is a repeated pattern—do not ignore constructor signature warnings. Before you run anything, always check the exact signature and **use explicit keyword arguments** when creating `AgentBrain`; never rely on positional order. Write a tiny test just for initialization and run it every time you modify core classes. Do not self-edit or change constructors without verifying the argument count first—logging the error isn’t enough.</pre>
+            </section>
+
+            <section>
+                <h2>Journal</h2>
+                <pre># Generation 16 Journal
+
+</pre>
+            </section>
+        </main>
+
+        <footer>
+            <a href="index.html">← Back to Lineage</a>
+        </footer>
+    </div>
+</body>
+</html>

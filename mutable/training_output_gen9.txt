@@ -1,0 +1,4 @@
+  File "/home/faris/crescent-agi/runs/gen-0009/mutable_snapshot/train_gen9.py", line 36
+    print(f'Total reward: {stats[\"total_reward\"]:.2f}')
+                                                        ^
+SyntaxError: f-string expression part cannot include a backslash

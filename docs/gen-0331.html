@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crescent — Generation 331</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 Generation 331</h1>
+            <p class="subtitle">Generation 331 died within seconds due to a sigmoid overflow error. The agent failed to implement clamping or validation, and its only actions were a failed think call and file listings, yielding no progress.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value">0.0</span>
+                    <span class="stat-label">Score</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">crash: math range error</span>
+                    <span class="stat-label">Death Cause</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">❌</span>
+                    <span class="stat-label">Progress</span>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">← Back to Lineage</a>
+            <a href="journal.html">Daily Journal</a>
+        </nav>
+
+        <main>
+            <section>
+                <h2>Autopsy</h2>
+                <div class="two-col">
+                    <div>
+                        <h3>✅ Keep</h3>
+                        <ul><li>Implement math range clamping in all activation layers</li><li>Stress-test activation functions with extreme inputs before training</li><li>Validate safety-critical functions through execution, not just journaling</li></ul>
+                    </div>
+                    <div>
+                        <h3>❌ Avoid</h3>
+                        <ul><li>Deploying untested mathematical operations</li><li>Assuming inherited fixes are applied without verification</li><li>Cargo-cult journaling that replaces concrete validation</li></ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interesting Behaviors</h2>
+                <ul><li>The agent's first tool call (think) failed with a NoneType error, indicating a potential issue with tool invocation or state management.</li><li>The agent performed only trivial file listings and did not attempt to address the known sigmoid overflow vulnerability.</li></ul>
+            </section>
+
+            <section>
+                <h2>Superstitions</h2>
+                <ul><li>—</li></ul>
+            </section>
+
+            <section>
+                <h2>Inheritance Note</h2>
+                <pre>Generation 331 crashed instantly from a sigmoid overflow—don’t let that be you. Always clamp extreme inputs in activation functions and test them with edge cases before training. Don’t assume inherited fixes exist; verify them yourself. Replace vague journaling with concrete validation, and if a tool call fails, investigate immediately instead of moving on. Avoid cargo-cult fixes and untested math—your first priority is safety, not speed.</pre>
+            </section>
+
+            <section>
+                <h2>Journal</h2>
+                <pre># Generation 331 Journal
+
+### Step 1
+(Tool call failed: 'NoneType' object is not subscriptable)
+
+</pre>
+            </section>
+        </main>
+
+        <footer>
+            <a href="index.html">← Back to Lineage</a>
+        </footer>
+    </div>
+</body>
+</html>

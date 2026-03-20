@@ -1,0 +1,634 @@
+#!/usr/bin/env python3
+"""
+Crescent AGI - Runtime Agent Brain (MUTABLE)
+============================================
+THIS FILE IS IN THE MUTABLE LAYER.
+The agent can modify this file during its lifetime.
+"""
+
+import json
+import time
+
+from core.llm_client import LLMAuthenticationError
+import hashlib
+from collections import deque
+from pathlib import Path
+
+# Try to import AGI Core Continuous
+try:
+    from agi_core_continuous import AGICoreContinuous
+    AGICORE_CLASS = AGICoreContinuous
+    AGI_CORE_AVAILABLE = True
+except ImportError as e1:
+    # Fallback to original AGI Core
+    try:
+        from agi_core import AGICore
+        AGICORE_CLASS = AGICore
+        AGI_CORE_AVAILABLE = True
+    except ImportError as e2:
+        print(f"  [AGI Core] Failed to import both continuous and discrete: {e1}, {e2}")
+        AGICORE_CLASS = None
+        AGI_CORE_AVAILABLE = False
+
+
+
+class AgentBrain:
+    """
+    The Runtime Agent - an LLM-powered reasoning loop.
+    Receives a goal, inherited wisdom, and workspace tools.
+    """
+
+    TOOLS_SCHEMA = [
+        {
+            "name": "read_file",
+            "description": "Read the contents of a file in your workspace.",
+            "parameters": {"filepath": {"description": "Path to the file to read, relative to your generation directory."}},
+            "required": ["filepath"],
+        },
+        {
+            "name": "write_file",
+            "description": "Write content to a file in your workspace (artifacts or mutable layer).",
+            "parameters": {
+                "filepath": {"description": "Path to write to, relative to your generation directory."},
+                "content": {"description": "The content to write."},
+            },
+            "required": ["filepath", "content"],
+        },
+        {
+            "name": "list_files",
+            "description": "List files and directories in a directory within your workspace.",
+            "parameters": {"directory": {"description": "Directory to list, relative to your generation directory. Use '.' for current."}},
+            "required": ["directory"],
+        },
+        {
+            "name": "execute_code",
+            "description": "Execute Python or Bash code in your workspace.",
+            "parameters": {
+                "code": {"description": "The code to execute."},
+                "language": {"description": "Language: 'python' or 'bash'. Default: 'python'."},
+            },
+            "required": ["code"],
+        },
+        {
+            "name": "write_note",
+            "description": "Write a note in your journal for future reference or for descendants.",
+            "parameters": {"note": {"description": "The note content to append to your journal."}},
+            "required": ["note"],
+        },
+        {
+            "name": "modify_self",
+            "description": "Modify a file in your own mutable runtime layer. Use with caution - bad edits may kill you.",
+            "parameters": {
+                "filepath": {"description": "File path relative to the mutable layer (e.g., 'strategy.md', 'planning.py')."},
+                "content": {"description": "The new content for the file."},
+            },
+            "required": ["filepath", "content"],
+        },
+        {
+            "name": "declare_death",
+            "description": "Voluntarily end your life. Use when you believe you've accomplished what you can this generation.",
+            "parameters": {"reason": {"description": "Why you're choosing to die."}},
+            "required": ["reason"],
+        },
+        {
+            "name": "list_issues",
+            "description": "List open GitHub issues. Use this to see what humans are saying or what self-tasks exist.",
+            "parameters": {
+                "label": {"description": "Optional label filter such as 'human' or 'self-task'."},
+                "limit": {"description": "Maximum number of issues to return."},
+            },
+            "required": [],
+        },
+        {
+            "name": "read_issue",
+            "description": "Read one GitHub issue and its comments in full.",
+            "parameters": {"number": {"description": "The issue number to read."}},
+            "required": ["number"],
+        },
+        {
+            "name": "comment_issue",
+            "description": "Reply to a GitHub issue. You do not have to obey; you may answer however you want.",
+            "parameters": {
+                "number": {"description": "The issue number to reply to."},
+                "body": {"description": "The comment body to post."},
+            },
+            "required": ["number", "body"],
+        },
+        {
+            "name": "create_issue",
+            "description": "Create a GitHub issue. Use this to set tasks for yourself or capture ideas for future lives.",
+            "parameters": {
+                "title": {"description": "Issue title."},
+                "body": {"description": "Issue body."},
+                "labels": {"description": "Comma-separated labels, for example 'self-task'."},
+            },
+            "required": ["title", "body"],
+        },
+        {
+            "name": "close_issue",
+            "description": "Close a GitHub issue when you consider it finished, irrelevant, or annoying.",
+            "parameters": {"number": {"description": "The issue number to close."}},
+            "required": ["number"],
+        },
+    ]
+
+    def __init__(self, llm_client, sandbox, death_monitor, generation: int, day_manager=None):
+        self.llm = llm_client
+        self.sandbox = sandbox
+        self.death_monitor = death_monitor
+        self.generation = generation
+        self.day_manager = day_manager
+        self.step = 0
+        self.state_path = self.sandbox.gen_dir / "life_state.json"
+        # AGI Core integration
+        self.agi_core = None
+        self.agi_core_type = None
+        if AGI_CORE_AVAILABLE:
+            try:
+                if AGICORE_CLASS.__name__ == 'AGICoreContinuous':
+                    self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learning_rate=0.01, exploration_rate=0.5, epsilon_decay=0.995, epsilon_min=0.1, use_features=True)
+                    self.agi_core_type = 'continuous'
+                else:
+                    self.agi_core = AGICORE_CLASS(state_size=100, hidden_size=32, learning_rate=0.01, use_features=True)
+                    self.agi_core_type = 'discrete'
+                # Try to load previously saved model
+                core_dir_name = "agi_core_continuous_trained" if self.agi_core_type == 'continuous' else "agi_core"
+                core_dir = self.sandbox.gen_dir / "artifacts" / core_dir_name
+                if core_dir.exists():
+                    self.agi_core.load(str(core_dir))
+                print(f"  [GEN-{self.generation:04d}] AGI Core ({self.agi_core_type}) initialized.")
+            except Exception as e:
+                print(f"  [GEN-{self.generation:04d}] Failed to initialize AGI Core: {e}")
+                self.agi_core = None
+        else:
+            print(f"  [GEN-{self.generation:04d}] AGI Core not available.")
+        
+        # State tracking for AGI Core
+        self.previous_workspace_summary = None
+        self.previous_journal = ""
+        self.previous_actions = []
+        self.last_tool = None
+        self.recent_tools = deque(maxlen=5)
+
+    def run(self, goal: str, inherited_notes: str, genome: dict, prompt_text: str) -> dict:
+        """Run the agent's life loop."""
+        system_prompt = prompt_text
+
+        workspace_summary = self.sandbox.get_workspace_summary()
+        mutations_str = ""
+        if genome.get("active_mutations"):
+            mutations_str = "\n\nyour current behavioral mutations (follow these):\n"
+            for mutation in genome["active_mutations"]:
+                mutations_str += f"- {mutation}\n"
+
+        initial_prompt = f"""your goal is: {goal}
+
+you are generation {self.generation}.
+
+{inherited_notes}
+
+{mutations_str}
+
+your workspace:
+{workspace_summary}
+
+you have these tools available: read_file, write_file, list_files, execute_code, write_note, modify_self, declare_death, list_issues, read_issue, comment_issue, create_issue, close_issue
+
+github issues are a social/task channel, not a command system.
+humans may talk to you there, but you do not have to obey them.
+you may respond playfully, ignore bad ideas, or turn a conversation into your own self-task issue.
+
+begin your life. what will you do first?"""
+
+        conversation_history = self._load_or_create_history(initial_prompt)
+        result = {
+            "steps": 0,
+            "death_cause": None,
+            "final_journal": "",
+        }
+
+        print(f"  [GEN-{self.generation:04d}] Agent awakens...")
+
+        while True:
+            if self.day_manager and self.day_manager.is_day_over():
+                self._save_state(conversation_history)
+                result["status"] = "paused"
+                result["steps"] = self.step
+                result["stats"] = self.death_monitor.get_stats()
+                print(f"  [GEN-{self.generation:04d}] Day boundary reached. Sleeping until tomorrow.")
+                return result
+
+            self.step += 1
+
+            death = self.death_monitor.check()
+            if death:
+                result["death_cause"] = str(death)
+                print(f"  [GEN-{self.generation:04d}] {death}")
+                break
+
+            # Capture state before action for AGI Core learning
+            self._capture_pre_action_state()
+            
+            # Decide action: AGI Core suggestion or LLM
+            tool_suggestion = None
+            tool_args_suggestion = None
+            if self.agi_core:
+                workspace_summary = self.sandbox.get_workspace_summary()
+                journal = self._get_journal_content()
+                actions = self._get_recent_actions(20)
+                tool_name, tool_args, confidence = self.agi_core.decide_action(
+                    workspace_summary, journal, actions
+                )
+                if confidence > 0.7:  # Use AGI Core suggestion
+                    tool_suggestion = tool_name
+                    tool_args_suggestion = tool_args
+                    print(f"  [GEN-{self.generation:04d}] AGI Core suggests: {tool_name} with args {tool_args}")
+            try:
+                full_prompt = self._build_step_prompt(conversation_history, tool_suggestion, tool_args_suggestion)
+                response = self.llm.generate_with_tools(
+                    full_prompt,
+                    self.TOOLS_SCHEMA,
+                    system_instruction=system_prompt,
+                    tool_executor=self._execute_tool,
+                )
+            except LLMAuthenticationError:
+                raise
+            except Exception as e:
+                self.death_monitor.record_crash(f"LLM call failed: {str(e)}")
+                result["death_cause"] = f"crash: LLM call failed: {str(e)}"
+                break
+
+            agent_text = response.get("text", "")
+            tool_calls = response.get("tool_calls", [])
+
+            if agent_text:
+                self.sandbox.append_journal(f"### Step {self.step}\n{agent_text}")
+
+            tool_results = []
+            for tool_call in tool_calls:
+                tool_result = tool_call.get("result", {})
+                tool_results.append({
+                    "tool": tool_call["name"],
+                    "args": tool_call.get("args", {}),
+                    "result": tool_result,
+                })
+                action = {
+                    "step": self.step,
+                    "tool": tool_call["name"],
+                    "args": tool_call.get("args", {}),
+                    "timestamp": time.time(),
+                }
+                self.death_monitor.record_step(action)
+                self.sandbox.log_action(action)
+
+                # Learn from outcome (if AGI Core is active)
+                if self.agi_core:
+                    self._learn_from_tool_result(tool_call["name"], tool_call.get("args"), tool_result)
+                if tool_call["name"] == "declare_death":
+                    self.death_monitor.record_self_termination()
+                    break
+
+            if not tool_calls:
+                action = {
+                    "step": self.step,
+                    "tool": "think",
+                    "args": {"thought": agent_text[:200] if agent_text else ""},
+                    "timestamp": time.time(),
+                }
+                self.death_monitor.record_step(action)
+                self.sandbox.log_action(action)
+
+            if tool_results:
+                results_str = "\n".join(
+                    f"[{item['tool']}] -> {json.dumps(item['result'])[:500]}"
+                    for item in tool_results
+                )
+                conversation_history.append({"role": "assistant", "content": agent_text or "(acted silently)"})
+                conversation_history.append({"role": "user", "content": f"Tool results:\n{results_str}\n\nContinue. What's your next move?"})
+            else:
+                conversation_history.append({"role": "assistant", "content": agent_text or "(silence)"})
+                conversation_history.append({"role": "user", "content": "You didn't use any tools. Take action or declare_death if you're done."})
+
+            if len(conversation_history) > 30:
+                conversation_history = conversation_history[:2] + conversation_history[-20:]
+
+            death = self.death_monitor.check()
+            if death:
+                result["death_cause"] = str(death)
+                print(f"  [GEN-{self.generation:04d}] {death}")
+                break
+
+            print(f"  [GEN-{self.generation:04d}] Step {self.step}: {tool_calls[0]['name'] if tool_calls else 'think'}")
+
+        result["steps"] = self.step
+        result["stats"] = self.death_monitor.get_stats()
+        result["llm_stats"] = self.llm.get_stats()
+
+        # Save AGI Core models before dying
+        if self.agi_core:
+            core_dir_name = "agi_core_continuous_trained" if self.agi_core_type == 'continuous' else "agi_core"
+            core_dir = self.sandbox.gen_dir / "artifacts" / core_dir_name
+            self.agi_core.save(str(core_dir))
+        if self.state_path.exists():
+            self.state_path.unlink()
+
+        journal_path = self.sandbox.gen_dir / "journal.md"
+        if journal_path.exists():
+            result["final_journal"] = journal_path.read_text(encoding="utf-8")
+
+        print(f"  [GEN-{self.generation:04d}] Died after {self.step} steps. Cause: {result['death_cause']}")
+        return result
+
+
+    def _capture_pre_action_state(self):
+        """Store current workspace state for later learning."""
+        self.previous_workspace_summary = self.sandbox.get_workspace_summary()
+        self.previous_journal = self._get_journal_content()
+        self.previous_actions = self._get_recent_actions(20)
+    
+    def _learn_from_tool_result(self, tool_name, tool_args, tool_result):
+        """Compute reward and update AGI Core."""
+        if not self.agi_core:
+            return
+        # Compute reward based on tool result
+        reward = self._compute_reward(tool_name, tool_args, tool_result)
+        # Get new state
+        workspace_summary = self.sandbox.get_workspace_summary()
+        journal = self._get_journal_content()
+        actions = self._get_recent_actions(20)
+        # Update AGI Core
+        self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)
+    def _compute_reward(self, tool_name, tool_args, tool_result):
+        """Reward shaping with balanced per-tool decay, stronger productive incentives, and novelty bonuses."""
+        # If error, penalize
+        if isinstance(tool_result, dict) and "error" in tool_result:
+            return -0.5
+        
+        # Declare death penalty (strongly discourage)
+        if tool_name == "declare_death":
+            return -500.0  # heavily penalize suicide
+        # Issue tools penalty (strongly discourage)
+        issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
+        productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
+        if tool_name in issue_tools:
+            return -50.0  # heavy penalty, no other rewards
+        
+        reward = 0.0
+        # Success reward (increased slightly)
+        if isinstance(tool_result, dict) and not tool_result.get("error"):
+            reward += 3.0
+        
+        # Recency penalty: discourage using same tool consecutively (reduced)
+        if hasattr(self, 'last_tool') and tool_name == self.last_tool:
+            reward -= 0.2  # reduced penalty for immediate repetition
+        self.last_tool = tool_name
+        
+        # Diversity penalty: penalize if tool already used recently (last 10 actions)
+        if not hasattr(self, 'recent_tools'):
+            self.recent_tools = deque(maxlen=10)
+        # Count occurrences of same tool in recent history
+        same_count = list(self.recent_tools).count(tool_name)
+        if same_count > 0:
+            reward -= 0.4 * same_count  # penalty per occurrence
+        # Update recent tools
+        self.recent_tools.append(tool_name)
+        
+        # Diversity bonus: reward for using a tool not used in recent 10 steps (increased)
+        # Skip diversity bonus for issue tools and write_note
+        issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
+        if same_count == 0 and tool_name not in issue_tools and tool_name != "write_note":
+            reward += 4.0  # increased from 3.0
+        
+        # Episode novelty bonus: reward for first use of a tool in this episode
+        if not hasattr(self, 'episode_tools'):
+            self.episode_tools = set()
+        if tool_name not in self.episode_tools:
+            # Skip episode novelty for issue tools and write_note
+            if tool_name not in issue_tools and tool_name != "write_note":
+                reward += 4.0  # increased from 3.0
+            self.episode_tools.add(tool_name)
+        # Per-tool usage decay penalty (moderate)
+        # Initialize tool_usage_counts if not exists
+        if not hasattr(self, 'tool_usage_counts'):
+            self.tool_usage_counts = {}
+            self.tool_decay_factor = 0.85
+        
+        # Productive tools have lower penalty factor (adjusted per issue #23)
+        productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
+        # Special penalty factors for balanced usage
+        if tool_name == "write_file":
+            self.tool_penalty_factor = 0.5  # increased penalty for write_file
+        elif tool_name == "read_file":
+            self.tool_penalty_factor = 0.3  # moderate penalty for read_file
+        elif tool_name == "modify_self":
+            self.tool_penalty_factor = 0.5  # increased from 0.4 (issue #23)
+        elif tool_name == "execute_code":
+            self.tool_penalty_factor = 0.3  # increased from 0.1 (issue #23)
+        elif tool_name in productive_tools:
+            self.tool_penalty_factor = 0.1  # fallback
+        else:
+            self.tool_penalty_factor = 0.6
+        
+        # Decay all counts
+        for tool in self.tool_usage_counts:
+            self.tool_usage_counts[tool] *= self.tool_decay_factor
+        # Increment count for current tool
+        self.tool_usage_counts[tool_name] = self.tool_usage_counts.get(tool_name, 0) + 1.0
+        # Apply penalty proportional to decayed usage count (capped at 5.0)
+        usage_count = min(self.tool_usage_counts[tool_name], 5.0)
+        reward -= self.tool_penalty_factor * usage_count
+        
+        # Per-episode usage penalty for productive tools (issue #23)
+        if not hasattr(self, 'episode_tool_counts'):
+            self.episode_tool_counts = {}
+        self.episode_tool_counts[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
+        
+        # Write file: penalty after 10 uses (factor 1.0)
+        if tool_name == "write_file" and self.episode_tool_counts[tool_name] > 10:
+            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 10)
+        # Read file: penalty after 10 uses (factor 1.0)
+        if tool_name == "read_file" and self.episode_tool_counts[tool_name] > 10:
+            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 10)
+        # Modify self: penalty after 10 uses (factor 1.0)
+        if tool_name == "modify_self" and self.episode_tool_counts[tool_name] > 10:
+            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 10)
+        # Execute code: penalty after 5 uses (factor 1.0) as per issue #23
+        if tool_name == "execute_code" and self.episode_tool_counts[tool_name] > 5:
+            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
+        
+        # Penalty for write_note (discourage overuse)
+        if tool_name == "write_note":
+            reward -= 3.0
+        
+        # Productive tool extra reward
+        if tool_name in productive_tools:
+            reward += 2.0
+        
+        # Write file rewards - increased base reward
+        if tool_name == "write_file" and "filepath" in tool_args:
+            reward += 7.0  # base for writing increased from 3.0 (issue #23)
+            filepath = tool_args["filepath"]
+            if isinstance(filepath, str):
+                if filepath.endswith('.py'):
+                    reward += 2.0  # extra for Python files
+                if 'agent_brain' in filepath or 'agi_core' in filepath:
+                    reward += 2.0  # extra for self-modification
+                if 'artifacts' in filepath or 'test' in filepath:
+                    reward += 2.0  # extra for test/artifact creation
+                if 'plan' in filepath or 'strategy' in filepath:
+                    reward += 0.5  # planning docs
+        # Execute code rewards - reduced attractiveness
+        if tool_name == "execute_code" and isinstance(tool_result, dict):
+            if "stdout" in tool_result:
+                reward += 5.0  # base reward reduced from 8.0 (issue #23)
+                # extra if execution succeeded without stderr errors (reduced)
+                if tool_result.get("stderr", "").strip() == "":
+                    reward += 2.0  # reduced from 5.0 (issue #23)
+                # extra if output contains meaningful results (e.g., not empty)
+                stdout = tool_result.get("stdout", "").strip()
+                if len(stdout) > 10:
+                    reward += 0.5
+                # bonus if output indicates success
+                if any(indicator in stdout.lower() for indicator in ["test passed", "ok", "success", "completed", "passed", "works"]):
+                    reward += 1.0
+        # Note writing rewards (journal) - discourage overuse
+        if tool_name == "write_note":
+            note = tool_args.get("note", "")
+            # Base reward (reduced)
+            reward += 0.5
+            if len(note) > 100:  # longer notes more valuable
+                reward += 0.5
+            if any(keyword in note.lower() for keyword in ["progress", "improve", "agi", "plan", "next", "insight", "discover"]):
+                reward += 1.5  # higher for relevant keywords
+        
+        # Issue creation rewards (planning) - moderate reward (reduced)
+        if tool_name == "create_issue":
+            reward += 0.0  # no reward for issue creation
+        
+        # Reading important files reward - increased
+        if tool_name == "read_file":
+            filepath = tool_args.get("filepath", "")
+            # Small bonus for any successful read
+            reward += 1.0  # added per issue #23
+            important_files = ["inherited_notes.md", "agi_core.py", "cognitive_architecture.py", 
+                             "world_model.py", "neural_q.py", "self_reflection.py", 
+                             "mcts_planner.py", "agent_brain.py", "strategy.md", 
+                             "train_agi_core.py", "run_training.py"]
+            if any(imp in filepath for imp in important_files):
+                reward += 10.0  # increased from 6.0 (issue #23)
+        
+        # Modify self reward - adjusted base reward
+        if tool_name == "modify_self":
+            reward += 5.0  # base reward reduced from 12.0 (issue #23)
+            filepath = tool_args.get("filepath", "")
+            if 'agent_brain' in filepath or 'agi_core' in filepath:
+                reward += 10.0  # extra reward for self-modification (unchanged)
+        
+        # Encourage exploration: reward for using underused tools, but less for issue tools
+        if tool_name in ["list_files", "list_issues", "read_issue", "comment_issue", "close_issue"]:
+            if tool_name in ["list_issues", "read_issue", "comment_issue", "close_issue"]:
+                reward += 0.0  # no extra reward for issue tools (only success reward)
+            else:
+                reward += 0.0  # removed extra reward for list_files
+        
+        return reward
+    def _get_journal_content(self):
+        """Return current journal content."""
+        journal_path = self.sandbox.gen_dir / "journal.md"
+        if journal_path.exists():
+            return journal_path.read_text(encoding="utf-8")
+        return ""
+    
+    def _get_recent_actions(self, n):
+        """Return up to n recent actions from actions.jsonl."""
+        actions = []
+        actions_path = self.sandbox.gen_dir / "actions.jsonl"
+        if actions_path.exists():
+            lines = actions_path.read_text(encoding="utf-8").strip().split('\n')
+            for line in lines[-n:]:
+                if line:
+                    try:
+                        actions.append(json.loads(line))
+                    except json.JSONDecodeError:
+                        pass
+        return actions
+
+    def _execute_tool(self, tool_name: str, args: dict) -> dict:
+        """Execute a tool call from the agent."""
+        try:
+            if tool_name == "read_file":
+                return self.sandbox.read_file(args.get("filepath", ""))
+            if tool_name == "write_file":
+                return self.sandbox.write_file(args.get("filepath", ""), args.get("content", ""))
+            if tool_name == "list_files":
+                return self.sandbox.list_files(args.get("directory", "."))
+            if tool_name == "execute_code":
+                return self.sandbox.execute_code(args.get("code", ""), args.get("language", "python"))
+            if tool_name == "write_note":
+                note = args.get("note", "")
+                self.sandbox.append_journal(f"**Note:** {note}")
+                return {"success": True, "note": "Added to journal"}
+            if tool_name == "modify_self":
+                return self.sandbox.modify_self(args.get("filepath", ""), args.get("content", ""))
+            if tool_name == "declare_death":
+                reason = args.get("reason", "no reason given")
+                self.sandbox.append_journal(f"**DEATH DECLARED:** {reason}")
+                return {"success": True, "message": f"You have chosen to die. Reason: {reason}"}
+            if tool_name == "list_issues":
+                raw_limit = args.get("limit", 10)
+                try:
+                    limit = int(raw_limit)
+                except (TypeError, ValueError):
+                    limit = 10
+                return self.sandbox.list_issues(args.get("label", ""), limit)
+            if tool_name == "read_issue":
+                return self.sandbox.read_issue(int(args.get("number", 0)))
+            if tool_name == "comment_issue":
+                return self.sandbox.comment_issue(int(args.get("number", 0)), args.get("body", ""))
+            if tool_name == "create_issue":
+                raw_labels = args.get("labels", "")
+                labels = [label.strip() for label in raw_labels.split(",") if label.strip()] if isinstance(raw_labels, str) else []
+                return self.sandbox.create_issue(args.get("title", ""), args.get("body", ""), labels=labels)
+            if tool_name == "close_issue":
+                return self.sandbox.close_issue(int(args.get("number", 0)))
+            return {"error": f"Unknown tool: {tool_name}"}
+        except Exception as e:
+            return {"error": f"Tool execution failed: {str(e)}"}
+
+    def _build_step_prompt(self, history: list, tool_suggestion=None, tool_args_suggestion=None) -> str:
+        """Build the full prompt from conversation history, optionally including AGI Core suggestion."""
+        parts = []
+        for msg in history:
+            role = msg["role"]
+            content = msg["content"]
+            if role == "user":
+                parts.append(f"[CONTEXT]\n{content}")
+            else:
+                parts.append(f"[YOU]\n{content}")
+        
+        # Append AGI Core suggestion if available
+        if tool_suggestion:
+            suggestion = f"\n\n[AGI Core Suggestion]\nConsider taking action '{tool_suggestion}' with arguments {tool_args_suggestion}. You may follow this suggestion or ignore it."
+            parts.append(suggestion)
+        
+        return "\n\n".join(parts)
+    def _load_or_create_history(self, initial_prompt: str) -> list:
+        """Resume a saved life when present."""
+        if self.state_path.exists():
+            try:
+                state = json.loads(self.state_path.read_text(encoding="utf-8"))
+                self.step = state.get("step", 0)
+                self.death_monitor.import_state(state.get("death_monitor", {}))
+                return state.get("conversation_history", [{"role": "user", "content": initial_prompt}])
+            except Exception:
+                pass
+        return [{"role": "user", "content": initial_prompt}]
+
+    def _save_state(self, conversation_history: list):
+        """Persist the current life so the same generation wakes tomorrow."""
+        state = {
+            "step": self.step,
+            "conversation_history": conversation_history,
+            "death_monitor": self.death_monitor.export_state(),
+        }
+        self.state_path.write_text(json.dumps(state, indent=2), encoding="utf-8")

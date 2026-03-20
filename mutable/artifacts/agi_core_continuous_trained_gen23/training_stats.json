@@ -1,0 +1,52 @@
+{
+  "episode_rewards": [
+    -9930.0,
+    -4440.207792207792,
+    -10345.385982692198,
+    -10000.0,
+    -10360.488789541421,
+    -554.3513215341164,
+    -10490.153846153846,
+    -935.2020327724151,
+    -1107.8095238095239,
+    -1000.5797430280602,
+    -2581.8876765875557,
+    -2590.432338773152,
+    -1058.7003231942583,
+    -1118.042735042735,
+    -1555.234777334771,
+    -1124.7697541370876,
+    -852.8226124257724,
+    -1104.635066059882,
+    -1111.7593146783463,
+    -3101.4660473661124
+  ],
+  "action_counts": {
+    "execute_code": 42,
+    "comment_issue": 1,
+    "modify_self": 40,
+    "read_file": 39,
+    "write_note": 2,
+    "list_files": 3,
+    "write_file": 45,
+    "close_issue": 1,
+    "read_issue": 1,
+    "list_issues": 1,
+    "create_issue": 1
+  },
+  "total_reward": -75363.92967733904,
+  "declare_death_count": 0,
+  "write_file_count": 45,
+  "execute_code_count": 42,
+  "read_file_count": 39,
+  "other_count": 50,
+  "non_productive_counts": {
+    "comment_issue": 1,
+    "write_note": 2,
+    "list_files": 3,
+    "close_issue": 1,
+    "read_issue": 1,
+    "list_issues": 1,
+    "create_issue": 1
+  }
+}

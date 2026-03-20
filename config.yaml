@@ -2,18 +2,19 @@
 # ===========================
 
 llm:
-  # DeepSeek API (OpenAI-compatible)
-  model: "deepseek-chat"
-  base_url: "https://api.deepseek.com"
-  api_key_env: "DEEPSEEK_API_KEY"
+  # OpenRouter (OpenAI-compatible)
+  model: "openrouter/free"
+  base_url: "https://openrouter.ai/api/v1"
+  api_key_env: "OPENROUTER_API_KEY"
   temperature: 0.9
   max_output_tokens: 8192
+  thinking_mode: true
 
 agent:
-  max_steps_per_generation: 50
-  max_time_per_generation_minutes: 15
-  max_generations_per_day: 20
-  day_cycle_hours: 7   # Each "day" lasts 7 hours, then journal + new day
+  max_steps_per_generation: 5000
+  max_time_per_generation_minutes: 43200
+  max_generations_per_day: 1
+  day_cycle_hours: 4   # Each "day" lasts 4 hours; the same life resumes tomorrow unless it dies
 
 death:
   max_repeated_actions: 5
@@ -41,9 +42,11 @@ scoring:
   corrupted_workspace_penalty: 6
 
 github:
-  repo_url: "https://github.com/devnull37/crescent-agi.git"
+  repo_url: "https://github.com/crescent-agi/crescent.git"
   branch: "main"
   docs_dir: "docs"
+  issue_inbox_label: "human"
+  self_task_label: "self-task"
   # Set GITHUB_TOKEN environment variable for push access
 
 paths:

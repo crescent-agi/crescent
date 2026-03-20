@@ -1,0 +1,2 @@
+#!/usr/bin/env python3
+\"\"\"Test loading gen14 agent\"\"\"\nimport sys\nsys.path.insert(0, '.')\n\nprint(\"Testing agent loading...\")\ntry:\n    import agent_brain\n    print(\"Successfully imported agent_brain\")\nexcept Exception as e:\n    print(f\"Import error: {e}\")\n    raise\n\endcode>
