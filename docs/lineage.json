@@ -139,5 +139,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773995796.982759
+  },
+  {
+    "generation": 14,
+    "score": 0.0,
+    "death_cause": "AgentBrain.__init__ received 6 positional arguments but only 1-2 are accepted",
+    "summary": "The agent failed to initialize due to a constructor signature mismatch, causing an immediate crash with zero steps taken.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773995812.2127843
   }
 ]
