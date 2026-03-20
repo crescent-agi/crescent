@@ -1,12 +1,7 @@
 {
-  "current_generation": 48,
+  "current_generation": 49,
   "accumulated_lessons": {
     "keep": [
-      "Archiving of verified backup versions of agent_brain.py",
-      "Follow-up on argument validation protocols",
-      "Maintaining lineage of error diagnostics",
-      "Always validate AgentBrain.__init__ signature against supervisor's call before instantiation",
-      "Use only vetted backup versions of agent_brain.py that match the required interface",
       "Synchronize supervisor and AgentBrain constructor parameters",
       "Archiving of verified backup versions of agent_brain.py",
       "Follow-up on argument validation protocols",
@@ -21,14 +16,14 @@
       "Use only vetted backup versions of agent_brain.py that match the required interface",
       "Synchronize supervisor and AgentBrain constructor parameters",
       "Archive verified backup versions after validation",
-      "Follow argument validation protocols and maintain lineage of error diagnostics"
+      "Follow argument validation protocols and maintain lineage of error diagnostics",
+      "Archiving verified backup versions of agent_brain.py that match supervisor interface",
+      "Validating AgentBrain.__init__ signature against supervisor's call before execution",
+      "Following strict argument synchronization protocols",
+      "Documenting lineage of parameter validation failures",
+      "Using existing stable reward adjustment frameworks (gen10 versions)"
     ],
     "avoid": [
-      "Ignoring the exact parameter requirements of constructor calls",
-      "Assuming automatic fallback or switch to randomized agent structures",
-      "Modifying agent initialization without clearer precedent or checkpoint",
-      "Disregarding signature verification best practices in evolution",
-      "Ignoring signature validation requirements for AgentBrain initialization",
       "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
       "Using unverified backups",
       "Relying on backup filenames as correctness guarantees",
@@ -43,20 +38,25 @@
       "Relying on backup filenames as proof of correctness",
       "Using unverified backups of agent_brain.py",
       "Assuming the supervisor will adapt to argument mismatches",
-      "Ignoring constructor signature warnings during code changes"
+      "Ignoring constructor signature warnings during code changes",
+      "Modifying AgentBrain.__init__ without supervisor signature update",
+      "Assuming backup versions are automatically compatible",
+      "Ignoring type error warnings in initialization processes",
+      "Over-indexing on new code implementations without validation",
+      "Relying on supervisor adaptation to agent code changes"
     ]
   },
   "best_artifacts": [
-    "u",
-    "p",
-    "/home/faris/crescent-agi/core/supervisor.py",
-    "/home/faris/crescent/agent_brain.py.backup",
     "agent_brain.py.backup",
     "agent_brain.py.backup_gen10",
     "agent_brain.py.backup_gen10_v2",
     "agent_brain.py.backup_gen10_v3",
     "agent_brain.py.backup_gen10_v4",
-    "agent_brain.py.backup_gen10_v5"
+    "agent_brain.py.backup_gen10_v5",
+    "agent_brain.py.backup_gen10",
+    "agent_brain.py.backup_gen10_v2",
+    "adjust_rewards_gen10_v5.py",
+    "activation_stress_test_fixed.py"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -327,11 +327,16 @@
       "generation": 47,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
+    },
+    {
+      "generation": 48,
+      "score": 18.5,
+      "death_cause": "AgentBrain.__init__() parameter mismatch (6 vs 5 arguments)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 48,
-    "average_score": 3.419512195121951,
+    "total_generations": 49,
+    "average_score": 3.7785714285714285,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
