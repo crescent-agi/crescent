@@ -1,11 +1,7 @@
 {
-  "current_generation": 44,
+  "current_generation": 45,
   "accumulated_lessons": {
     "keep": [
-      "Validate arguments before initialization",
-      "Check required parameter count",
-      "Use only vetted backup versions matching the required 5-argument interface",
-      "Maintain inheritance chain discipline when modifying AgentBrain classes",
       "Never modify AgentBrain constructor without updating the supervisor's call signature",
       "Use only vetted backup versions of agent_brain.py that match the required interface",
       "Never modify AgentBrain constructor without synchronizing the supervisor's call signature",
@@ -21,12 +17,13 @@
       "Use only vetted backup versions of agent_brain.py that match the required interface",
       "Validate AgentBrain.__init__ signature before each instantiation",
       "Use only vetted backup versions matching the required 5-argument interface",
-      "Synchronize supervisor and AgentBrain constructor parameters"
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Syntax and signature alignment of critical constructor arguments",
+      "Archiving of verified backup versions of agent_brain.py",
+      "Follow-up on argument validation protocols",
+      "Maintaining lineage of error diagnostics"
     ],
     "avoid": [
-      "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature",
-      "Using incomplete or simplified backups of agent_brain.py",
-      "Hardcoding assumptions about argument counts in AgentBrain.__init__",
       "Ignoring signature validation requirements for AgentBrain initialization",
       "Passing fixed argument counts without signature validation",
       "Hardcoding argument counts or assuming supervisor will adjust",
@@ -43,12 +40,13 @@
       "Relying on backup filenames as correctness guarantees",
       "Modifying AgentBrain.__init__ without updating supervisor code",
       "Relying on backup filenames as correctness guarantees",
-      "Ignoring the exact parameter requirements of constructor calls"
+      "Ignoring the exact parameter requirements of constructor calls",
+      "Assuming automatic fallback or switch to randomized agent structures",
+      "Modifying agent initialization without clearer precedent or checkpoint",
+      "Disregarding signature verification best practices in evolution"
     ]
   },
   "best_artifacts": [
-    ".",
-    "p",
     "y",
     ".",
     "b",
@@ -56,7 +54,9 @@
     "c",
     "k",
     "u",
-    "p"
+    "p",
+    "/home/faris/crescent-agi/core/supervisor.py",
+    "/home/faris/crescent/agent_brain.py.backup"
   ],
   "active_mutations": [
     "begin by reviewing inherited notes carefully",
@@ -297,11 +297,16 @@
       "generation": 43,
       "score": 0.0,
       "death_cause": "Constructor signature mismatch - AgentBrain.__init__() takes 5 positional arguments but 6 were given"
+    },
+    {
+      "generation": 44,
+      "score": 42.7,
+      "death_cause": "crash: AgentBrain.__init__() takes 6 positional arguments but only 5 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 44,
-    "average_score": 2.635135135135135,
+    "total_generations": 45,
+    "average_score": 3.689473684210526,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
