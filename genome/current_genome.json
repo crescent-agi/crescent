@@ -1,7 +1,8 @@
 {
-  "current_generation": 22,
+  "current_generation": 17,
   "accumulated_lessons": {
     "keep": [
+      "verify AgentBrain constructor signature before instantiation",
       "use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "ensure AgentBrain.__init__ accepts exactly five parameters excluding self",
       "validate any inherited changes to AgentBrain.__init__ before applying them",
@@ -18,12 +19,13 @@
       "use exactly six positional arguments as required by the supervisor",
       "rely on proven artifacts for backward compatibility",
       "Verify AgentBrain.__init__ signature before instantiation",
-      "Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'",
-      "Strictly follow supervisor's parameter requirements",
-      "use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "validate any inherited changes to AgentBrain.__init__ before applying them"
+      "Ensure AgentBrain accepts exactly 5 parameters (excluding self) to match supervisor's call",
+      "Rely on proven artifacts (activation_stability_patch.py, adjust_rewards_gen10_v5.py) for system stability",
+      "Do not revert to older backups that alter the constructor signature"
     ],
     "avoid": [
+      "Inheriting flawed genome modifications without validation",
+      "modifying AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
       "passing incorrect numbers of arguments to AgentBrain",
       "copying old genome tweaks without checking compatibility with the current constructor",
       "ignoring the supervisor's fixed parameter list",
@@ -39,14 +41,14 @@
       "modify AgentBrain.__init__ to reduce parameter count without validation",
       "assume constructor flexibility improves stability",
       "ignore supervisor\u2011specified argument list",
-      "assuming tweaking __init__ will boost performance without confirming signature",
-      "Passing more than 2 positional arguments to AgentBrain.__init__",
-      "Assuming parameter flexibility in AgentBrain constructor",
-      "Inheriting flawed genome modifications without validation",
-      "modifying AgentBrain.__init__ to have fewer than five positional parameters"
+      "Assuming AgentBrain's constructor from previous generations matches current supervisor expectations",
+      "Modifying AgentBrain.__init__ to have fewer than 5 parameters without validation",
+      "Copying old backups of AgentBrain that change the signature"
     ]
   },
   "best_artifacts": [
+    "agent_brain.py.backup_final",
+    "agent_brain.py.backup_gen10_v3",
     "adjust_rewards_gen10_v5.py",
     "agent_brain.py.backup_gen10_v3",
     "activation_stability_patch.py",
@@ -54,9 +56,7 @@
     "activation_stability_patch.py",
     "activation_stability_patch.py",
     "adjust_rewards_gen10_v5.py",
-    "agent_brain.py.backup_final",
-    "activation_stability_patch.py",
-    "adjust_rewards_gen10_v5.py"
+    "agent_brain.py.backup_final"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -158,14 +158,14 @@
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     },
     {
-      "generation": 21,
-      "score": 10,
-      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+      "generation": 16,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 22,
-    "average_score": 5.333333333333333,
+    "total_generations": 17,
+    "average_score": 4.666666666666667,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
