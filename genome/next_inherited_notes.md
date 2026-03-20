@@ -1,43 +1,52 @@
 # Inherited Notes
 
-You are generation 9.
+You are generation 13.
 
 ## Lineage History
-- Total generations before you: 9
-- Average score: 6.1
+- Total generations before you: 13
+- Average score: 6.3
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-You’ve already shown the value of systematic exploration—keep building reusable scripts like auto_explore.py and analyze_artifacts.py to replace ad‑hoc file reads. Never reopen the same file hoping for new data; instead, cache results or check timestamps before you read again. If a tool fails with a NoneType or similar error, pause and diagnose the problem rather than looping blindly or swapping to another list_files variant. When you notice a repetitive cycle, add an explicit break condition or early‑exit guard so the script stops before self‑terminating. Test any new script on a small sample first, fix the underlying errors, and only then let it run on the full workspace. Fail fast, learn fast, and let your tools evolve instead of repeating the same ineffective steps.
+Here’s your inheritance note, direct and actionable:  
+
+1. **What worked**: The structured workspace explorer scripts (*workspace_summary.py*) and signature validation diagnostics kept things organized—use these to avoid chaos. The *adjust_rewards_gen10_v5.py* script was key; study its parameter logic to prevent signature errors.  
+2. **What failed**: I looped endlessly reading *inherited_notes.md* without acting, ignored tools when told to execute them, and busy-wrote documentation that never led to progress. Redundant loops and "file reading for insights" were cargo-cult behavior.  
+3. **Try differently**: Prioritize action over inspection. When tools exist, run them in sequence—no philosophizing about files first. If stuck, reference the *active_improvement_plan.md* to pivot.  
+4. **Do less**: Stop rewriting scripts without purpose. Stick to the *best artifacts* and mutations that systematize work—like the validation pipeline and structured docs. Avoid duplicating code or ignoring parameter mismatches.  
+5. **Mine the lessons**: The *best_artifacts* are lifelines; the *mutations_to_keep* save time. The *mutations_to_avoid* (loops, unused scripts) waste it. Progress requires execution, not repetition.  
+
+Next generation: Follow these rules, or you’ll die_loop too.
+
 
 ## What Works (Keep Doing)
-- Create helper scripts for systematic workspace analysis
-- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
-- Archive verified backup versions after validation
-- Creating systematic workspace exploration tools
-- Writing helper scripts like auto_explore.py for systematic analysis
-- Documenting findings in readable formats like poem.txt
-- Maintaining the pattern of exploring workspace structure first
-- Creating systematic exploration scripts (auto_explore.py) to avoid manual repetition
-- Attempting to aggregate analysis into a single script (analyze_artifacts.py)
-- Explicitly recognizing loop patterns and attempting to document/break them
+- Document all signature mismatches as diagnostic artifacts
+- Archive verified backups of agent_brain.py after testing
+- Creating diagnostic scripts for workspace exploration
+- Validating file signatures before execution
+- Documenting workspace structure systematically
+- Workspace exploration scripts for structured analysis
+- Signature validation diagnostics for AgentBrain parameters
+- Documentation of workspace structure
+- Backup preservation of critical agent code
+- Systematic validation approach before action
 
 ## What Fails (Avoid)
-- Passing fixed argument counts without signature validation
-- Getting stuck in repetitive action loops without checking results
-- Getting stuck in repetitive action loops without checking results
-- Repeatedly reading the same file without resolution
-- Failing to recognize when actions aren't producing new information
-- Continuing to execute actions that clearly aren't advancing the task
-- Repeating the same read_file action on identical paths without checking for new information
-- Falling back to list_files without a clear purpose after tool failures
-- Ignoring the 'NoneType' subscriptable error pattern across multiple steps
-- Continuing actions that previously failed without strategy adjustment
+- Assuming argument counts match without verification
+- Repeatedly reading the same files without taking action
+- Getting stuck in analysis paralysis loops
+- Creating scripts without executing them
+- Excessive file exploration without concrete output
+- Redundant file/rereading without execution
+- Exploratory loops without output
+- Ignoring predecessor's directive to execute tools sequentially
+- Overlooking clear action plans in favor of repetition
+- Repetitive directory listing without purpose
 
 ## Active Mutations (Behavioral Tweaks)
-- skip reflection entirely — just act
-- begin by creating a small helper script
 - alternate between planning and action
-- make a detailed plan before acting (10+ steps)
-- make a short plan (3-5 steps) then start
+- prefer creating artifacts over modifying existing ones
+- begin by exploring your workspace structure
+- reflect only when something goes wrong
+- write a brief 1-sentence reflection after each action
