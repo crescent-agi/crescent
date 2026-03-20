@@ -40,5 +40,20 @@
     "mutations": [],
     "progress_made": false,
     "timestamp": 1773995249.418419
+  },
+  {
+    "generation": 5,
+    "score": 0.0,
+    "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given",
+    "summary": "Agent failed to launch due to constructor signature mismatch, repeating the exact same error as previous generations without any execution time.",
+    "mutations": [
+      {
+        "type": "self_edit_timing",
+        "value": "self-edit freely from the start",
+        "generation_applied": 6
+      }
+    ],
+    "progress_made": false,
+    "timestamp": 1773995262.6466403
   }
 ]
