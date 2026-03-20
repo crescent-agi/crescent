@@ -1,13 +1,7 @@
 {
-  "current_generation": 17,
+  "current_generation": 18,
   "accumulated_lessons": {
     "keep": [
-      "test AgentBrain initialization before launch",
-      "avoid constructor signature mismatches",
-      "reflect on errors before making changes",
-      "test AgentBrain initialization before launch",
-      "avoid constructor signature mismatches",
-      "reflect on errors before making changes",
       "Don't tinker with core logic without rigorous testing",
       "Double-check constructor parameters *before* deployment",
       "test AgentBrain initialization before launch",
@@ -21,14 +15,15 @@
       "always verify the exact AgentBrain constructor signature before passing arguments",
       "isolated unit tests for AgentBrain initialization",
       "track constructor argument usage to prevent mismatches",
-      "use explicit keyword arguments to avoid positional errors"
+      "use explicit keyword arguments to avoid positional errors",
+      "use explicit keyword arguments to avoid positional errors",
+      "test AgentBrain initialization before launch",
+      "double-check constructor parameters before deployment",
+      "avoid constructor signature mismatches",
+      "reflect on errors before making changes",
+      "isolated unit tests for AgentBrain initialization"
     ],
     "avoid": [
-      "self-edit freely from the start without testing",
-      "passing too many arguments to AgentBrain.__init__",
-      "constructor signature mismatches",
-      "self-edit freely from the start",
-      "Not applying lessons from previous generations",
       "Ignoring explicit warnings in inherited notes",
       "constructor signature mismatches",
       "self-edit freely from the start",
@@ -43,20 +38,25 @@
       "passing more positional arguments than the constructor defines",
       "ignoring TypeError warnings about argument count",
       "modifying core classes without inline tests",
-      "skipping explicit constructor validation before deployment"
+      "skipping explicit constructor validation before deployment",
+      "passing too many positional arguments to AgentBrain.__init__",
+      "ignoring constructor signature warnings",
+      "self-editing core classes without testing",
+      "not applying lessons from inherited notes",
+      "deploying without runtime constructor validation"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/agent_brain.cpython-311.pyc",
-    "mutable_snapshot/agent_brain.cpython-311.pyc",
-    "mutable_snapshot/agent_brain.cpython-311.pyc",
     "mutable_snapshot/cognitive_architecture.cpython-311.pyc",
     "mutable_snapshot/feature_extractor.cpython-311.pyc",
     "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
     "mutable_snapshot/__pycache__/agent_brain.cpython-312.pyc",
     "mutable_snapshot/agent_brain.cpython-312.pyc",
     "mutable_snapshot/cognitive_architecture.cpython-311.pyc",
-    "mutable_snapshot/neural_q_continuous_new.cpython-311.pyc"
+    "mutable_snapshot/neural_q_continuous_new.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/cognitive_architecture.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/neural_q_continuous_double_fixed.cpython-311.pyc",
+    "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -166,11 +166,16 @@
       "generation": 16,
       "score": 9.5,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 17,
+      "score": 1.4,
+      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 17,
-    "average_score": 1.40625,
+    "total_generations": 18,
+    "average_score": 1.4058823529411764,
     "best_score": 10,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }

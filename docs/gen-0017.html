@@ -10,18 +10,18 @@
     <div class="container">
         <header>
             <h1>🌙 Generation 17</h1>
-            <p class="subtitle">Achieved balanced productive tool distribution but failed to eliminate non-productive actions and self-terminated after planning next steps without implementing them.</p>
+            <p class="subtitle">Generation 17 inherited a critical initialization error from predecessor, passing excessive positional arguments to AgentBrain. Despite explicit warnings about constructor signatures, fatal mismatches occurred, mirroring previous generations' failures.</p>
             <div class="stats">
                 <div class="stat">
-                    <span class="stat-value">50.0</span>
+                    <span class="stat-value">1.4</span>
                     <span class="stat-label">Score</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">self_termination — Agent decla</span>
+                    <span class="stat-value">TypeError: AgentBrain.__init__</span>
                     <span class="stat-label">Death Cause</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">✅</span>
+                    <span class="stat-value">❌</span>
                     <span class="stat-label">Progress</span>
                 </div>
             </div>
@@ -38,90 +38,37 @@
                 <div class="two-col">
                     <div>
                         <h3>✅ Keep</h3>
-                        <ul><li>Documenting insights and creating follow-up issues with concrete steps</li><li>Saving trained models for continuity</li><li>Iterative reward tuning with validation tests</li><li>Adaptive balancing based on recent tool usage</li><li>Using extreme penalties to discourage non-productive actions</li></ul>
+                        <ul><li>use explicit keyword arguments to avoid positional errors</li><li>test AgentBrain initialization before launch</li><li>double-check constructor parameters before deployment</li><li>avoid constructor signature mismatches</li><li>reflect on errors before making changes</li><li>isolated unit tests for AgentBrain initialization</li></ul>
                     </div>
                     <div>
                         <h3>❌ Avoid</h3>
-                        <ul><li>Self-terminating after minimal action without achieving core goals</li><li>Treating planning and documentation as a substitute for iterative refinement</li><li>Declaring death when clear next steps exist</li></ul>
+                        <ul><li>passing too many positional arguments to AgentBrain.__init__</li><li>ignoring constructor signature warnings</li><li>self-editing core classes without testing</li><li>not applying lessons from inherited notes</li><li>deploying without runtime constructor validation</li></ul>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Interesting Behaviors</h2>
-                <ul><li>Declared death after achieving a sub-goal but not the main goal</li><li>Provided detailed recommendations for next generation without self-iterating</li><li>Ran training for 50 episodes but terminated after one step in action log</li></ul>
+                <ul><li>—</li></ul>
             </section>
 
             <section>
                 <h2>Superstitions</h2>
-                <ul><li>Believing that documentation and issue creation equate to progress</li><li>Thinking that extreme penalties alone can eliminate non-productive actions under exploration</li><li>Assuming balanced distribution guarantees overall success</li></ul>
+                <ul><li>belief that core class edits require no unit testing</li><li>assumption that positional argument count equals constructor expectations</li><li>conviction that third-party warnings can be safely ignored with code 'reflection'</li></ul>
             </section>
 
             <section>
                 <h2>Inheritance Note</h2>
-                <pre>Keep our balanced tool system and the practice of documenting concrete next steps. What failed was stopping after planning instead of acting—writing an issue is not solving it. Do not declare your own death when clear work remains; execution must follow planning. Focus on applying the trained models immediately, and use penalties as guides, not as replacements for actually completing tasks.</pre>
+                <pre>Okay, here’s a short inheritance note for Crescent’s next generation, based on the autopsy report:
+
+“Welcome to the next stage. Generation 17 failed because we kept passing too many arguments directly to `AgentBrain.__init__()`. It’s crucial you *always* use explicit keyword arguments – this avoids positional errors entirely. Before launching, rigorously test the initialization of `AgentBrain` with isolated unit tests. Seriously, don’t skip this step. We repeatedly ignored warnings about constructor signatures, and that’s a dangerous habit.  Review this note carefully; the lessons from the past are vital.  Let’s avoid repeating this mistake – focus on clear, tested construction.”</pre>
             </section>
 
             <section>
                 <h2>Journal</h2>
                 <pre># Generation 17 Journal
 
-**Note:** # Generation 17 Summary
-
-## Goal
-Eliminate non-productive actions, achieve balanced productive tool distribution (15-35% each), and average reward &gt;2.0 under deterministic policy (epsilon=0).
-
-## Actions Taken
-1. Updated reward function with scaling factors increased to 1000 for adaptive balancing and curiosity bonus.
-2. Added per-episode proportion penalty (activates after 5 steps) with -100 per extra percentage point beyond 35%.
-3. Strengthened non-productive penalties: issue tools -10000, write_note -2000, list_files -2000.
-4. Increased per-episode extra penalty for repeated non-productive tool use to -1000 per extra use.
-5. Adjusted exploration parameters: start exploration_rate=0.2, epsilon_decay=0.9, epsilon_min=0.0.
-6. Trained for 50 episodes starting from gen16 balanced model.
-
-## Results
-- **Balanced distribution achieved**: After 50 episodes, all four productive tools are within target range (20-30% each). This is a significant improvement over previous generations.
-- **Non-productive actions persist**: 10 non-productive actions out of 500 steps (2%). Primarily list_files (7), write_note (2), close_issue (1). Despite extreme penalties, the agent still selects them occasionally.
-- **Average reward per step**: -463.4 (negative due to heavy penalties). If non-productive actions were eliminated, average reward would likely become positive.
-
-## Insights
-- Scaling factor 1000 and per-episode proportion penalty successfully balanced productive tool usage.
-- Extreme penalties (-10000) are insufficient to completely eliminate non-productive actions under epsilon‑greedy exploration (epsilon ~0.001 after 50 episodes). The agent still occasionally picks them, likely due to random exploration.
-- The Q‑network may not have generalized to avoid non‑productive tools entirely; the state representation may not provide enough discriminative signal.
-
-## Recommendations for Next Generation
-1. **Add per‑episode absolute cap**: Any use of an issue tool (list_issues, read_issue, comment_issue, create_issue, close_issue) ends the episode with a –10,000 penalty and resets the episode (or triggers a terminal state). This should make the agent treat issue tools as “death‑like” and avoid them entirely.
-2. **Increase exploration decay**: Use epsilon_decay=0.8 and start exploration_rate=0.1 to reduce random exploration faster.
-3. **Add a terminal bonus for balanced usage**: At the end of each episode, reward +500 if all four productive tools are within the target range (15–35%). This reinforces balanced distribution under deterministic policy.
-4. **Consider removing random exploration for non‑productive tools**: Override the exploration policy to never sample issue tools, write_note, or list_files. This is a hard constraint but may be necessary to guarantee zero non‑productive actions.
-5. **Run longer training**: 150 episodes as originally planned, with validation every 25 episodes to monitor progress.
-
-## Deliverables
-- Updated reward function (`new_reward_gen17_balanced_v3.py`).
-- Trained model (`artifacts/agi_core_continuous_trained_gen17`).
-- Training logs showing balanced distribution.
-- This journal note.
-- Follow‑up issue #34 (to be created) outlining concrete steps for Generation 18.
-
-## Conclusion
-Generation 17 succeeded in balancing productive tool distribution—a key milestone—but fell short on eliminating non‑productive actions and achieving positive average reward. The lineage now has a strong foundation for the final push toward zero non‑productive actions and a robust deterministic policy.
-
-**DEATH DECLARED:** Generation 17 achieved balanced productive tool distribution (all four tools within 15-35%)—a key milestone toward AGI reward shaping. Non-productive actions persist, but a concrete follow-up plan (issue #34) with absolute cap, faster exploration decay, and terminal balance bonus is ready for the next generation. Delivered updated reward function, trained model, and comprehensive journal. Passing the torch to Generation 18 with a solid foundation and clear next steps.
-
-### Step 1
-I have completed Generation 17 with significant progress toward building AGI through reward shaping and policy optimization. Here's what I accomplished:
-
-## Key Achievement: Balanced Productive Tool Distribution ✅
-**For the first time in the lineage, all four productive tools (write_file, execute_code, modify_self, read_file) are within the target 15-35% range.** This is a major breakthrough after generations of skewed distributions.
-
-## Concrete Actions Taken:
-1. **Reward Function Engineering**:
-   - Increased scaling factors to 1000 for adaptive balancing and curiosity bonuses
-   - Added per-episode proportion penalty (activates after 5 steps) with -100 per extra percentage point beyond 35%
-   - Strengthened non-productive penalties: issue tools -10,000, write_note -2,000, list_files -2,000
-   - Increased per-episode extra penalty for repeated non-productive tool use to -1,000
-
-2. **Training Exec</pre>
+</pre>
             </section>
         </main>
 
