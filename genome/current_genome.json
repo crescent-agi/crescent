@@ -1,69 +1,69 @@
 {
-  "current_generation": 8,
+  "current_generation": 10,
   "accumulated_lessons": {
     "keep": [
-      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
-      "Create helper scripts to find AgentBrain usages",
-      "Archive verified backup versions after validation",
-      "Create helper scripts for systematic workspace analysis",
-      "Integrate signature validation checks into exploration tools",
-      "Read and apply predecessor's inherited notes",
-      "Validate AgentBrain.__init__ signature before instantiation",
-      "Create helper scripts for systematic workspace analysis",
-      "Archive verified backup versions after validation",
-      "Document every signature mismatch as a diagnostic artifact",
-      "Always start exploration with the artifacts directory",
+      "Create workspace summary scripts to explore the workspace",
+      "Synchronize supervisor and AgentBrain constructor parameters",
       "Automate signature comparison to prevent human oversight",
       "Document every signature mismatch as a diagnostic artifact",
-      "Create helper scripts for systematic workspace analysis",
       "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
-      "Archive verified backup versions after validation",
-      "Creating systematic workspace exploration tools",
-      "Writing helper scripts like auto_explore.py for systematic analysis",
-      "Documenting findings in readable formats like poem.txt",
-      "Maintaining the pattern of exploring workspace structure first"
+      "Archive verified backup versions of agent_brain.py after testing",
+      "Created workspace exploration scripts to understand the environment",
+      "Attempted systematic validation of Python files for signature issues",
+      "Recognized the importance of exploring workspace structure before acting",
+      "Create workspace summary scripts to explore the workspace",
+      "Attempted systematic validation of Python files for signature issues",
+      "Recognized the importance of exploring workspace structure before acting",
+      "Identifying the AgentBrain signature mismatch as the root cause of failure.",
+      "Attempting to automate signature validation with a dedicated script.",
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Archive verified backup versions of agent_brain.py after testing",
+      "Created workspace summary scripts to explore the workspace",
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Automate signature comparison to prevent human oversight",
+      "Document every signature mismatch as a diagnostic artifact"
     ],
     "avoid": [
-      "Using unverified backup filenames as canonical versions",
-      "Ignoring type error warnings in initialization processes",
-      "Relying on backup filenames as correctness guarantees",
-      "Repeatedly reading backup files without automated signature comparison",
-      "Neglecting to explore the artifacts directory for existing solutions",
-      "Self-terminating without exhausting all validation protocols",
-      "Getting stuck in repetitive action loops without checking results",
-      "Modifying AgentBrain.__init__ without synchronizing supervisor's call signature",
-      "Assuming exploration will fix signature mismatches",
-      "Repeatedly reading the same file without resolution",
-      "Using unverified backup filenames as canonical versions",
-      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
-      "Using unverified backups",
-      "Relying on backup filenames as correctness guarantees",
-      "Passing fixed argument counts without signature validation",
-      "Getting stuck in repetitive action loops without checking results",
-      "Getting stuck in repetitive action loops without checking results",
-      "Repeatedly reading the same file without resolution",
-      "Failing to recognize when actions aren't producing new information",
-      "Continuing to execute actions that clearly aren't advancing the task"
+      "Repeatedly executing the same file-listing actions without progress",
+      "Getting stuck in exploratory loops without transitioning to productive work",
+      "Ignoring signature validation protocols",
+      "Assuming argument counts match without verification",
+      "Repeatedly listing the same directory without taking action",
+      "Getting stuck in analysis loops without acting on identified problems",
+      "Creating diagnostic scripts but not executing them",
+      "Using raw parameters incorrectly in tool calls",
+      "Getting trapped in endless exploration loops without producing output",
+      "Spending too much time on discovery without execution",
+      "Dying via self-termination rather than completing work",
+      "Getting stuck in exploratory loops without transitioning to productive work",
+      "Repeatedly listing the same directory without taking action",
+      "Repeatedly reading the same file without executing it or deriving insights",
+      "Creating diagnostic scripts that are never executed or analyzed.",
+      "Failing to use the signature_check.py script that was specifically created to prevent crashes",
+      "Excessive file reading without concrete action or analysis.",
+      "Creating overly complex scripts without incremental testing.",
+      "Falling into repetitive loops of file inspection.",
+      "Spending too much time on intent exploration before addressing the immediate problem."
     ]
   },
   "best_artifacts": [
-    "intent_explorer.py",
-    "workspace_explorer.py",
-    "workspace_explorer.py",
+    "workspace_summary.txt",
+    "workspace_summary.json",
+    "signature_check.py",
     "explore_artifacts.py",
-    "artifacts/cognitive/tomchizzle_config.json",
-    "gen6_explorer.py",
-    "agent_brain.py.backup",
-    "workspace_explorer.py",
-    "auto_explore.py",
-    "poem.txt"
+    "explore_workspace.py",
+    "validate_all_py.py",
+    "artifact_analysis.py",
+    "signature_check.py",
+    "find_largest_artifacts.py",
+    "artifact_sizes.json"
   ],
   "active_mutations": [
     "skip reflection entirely \u2014 just act",
     "begin by creating a small helper script",
     "alternate between planning and action",
-    "make a detailed plan before acting (10+ steps)",
-    "make a short plan (3-5 steps) then start"
+    "prefer creating artifacts over modifying existing ones",
+    "begin by exploring your workspace structure"
   ],
   "mutations_applied_history": [
     {
@@ -127,13 +127,13 @@
       "generation_applied": 2
     },
     {
-      "type": "planning_depth",
-      "value": "make a detailed plan before acting (10+ steps)",
-      "generation_applied": 6
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 3
     },
     {
-      "type": "planning_depth",
-      "value": "make a short plan (3-5 steps) then start",
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
       "generation_applied": 8
     }
   ],
@@ -374,39 +374,54 @@
       "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'workspace_explorer.py'}' repeated 5 times in last 10 steps"
     },
     {
+      "generation": 1,
+      "score": 0.0,
+      "death_cause": "action_loop"
+    },
+    {
       "generation": 2,
-      "score": 25,
-      "death_cause": "DEATH: action_loop \u2014 Action 'list_files:{'directory': 'mutable_snapshot'}' repeated 5 times in last 10 steps"
+      "score": 2.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'list_files:{'directory': '.'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 3,
-      "score": 30.0,
-      "death_cause": "Repeated file reading loop causing system hang"
+      "score": 15.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 4,
-      "score": 5.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
+      "score": 25.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'list_files:{'directory': 'mutable_snapshot'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 5,
-      "score": 35.0,
-      "death_cause": "Action 'list_files' repeated 5 times in last 10 steps"
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'mutable_snapshot/agent_brain.py'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 6,
-      "score": 12.3,
-      "death_cause": "self_termination"
+      "score": 3.2,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 7,
-      "score": 5.0,
-      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'check_agentbrain.py'}' repeated 5 times in last 10 steps"
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'mutable_snapshot/check_signature.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 8,
+      "score": 15.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'artifact_growth_analysis.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 9,
+      "score": 45.0,
+      "death_cause": "ACTION_LOOP \u2013 Repeatedly reading `workspace_explorer.py` in an attempt to diagnose the AgentBrain signature mismatch, leading to a recursive loop."
     }
   ],
   "lineage_stats": {
-    "total_generations": 8,
-    "average_score": 6.0754716981132075,
+    "total_generations": 10,
+    "average_score": 5.623214285714285,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
