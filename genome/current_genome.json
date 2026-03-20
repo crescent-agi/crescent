@@ -1,12 +1,7 @@
 {
-  "current_generation": 12,
+  "current_generation": 13,
   "accumulated_lessons": {
     "keep": [
-      "verify AgentBrain constructor signature before instantiation",
-      "Always verify the exact number and types of arguments required by AgentBrain.__init__ before instantiating it.",
-      "verify AgentBrain constructor signature before instantiation",
-      "verify AgentBrain constructor signature before instantiation",
-      "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)",
       "verify AgentBrain constructor signature before instantiation",
       "ensure exact number and types of arguments required by AgentBrain.__init__",
       "use exactly six positional arguments as expected by supervisor",
@@ -21,14 +16,14 @@
       "use exactly six positional arguments as expected by supervisor",
       "Verify AgentBrain.__init__ signature before instantiation",
       "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding 'self')",
-      "Strictly follow supervisor's parameter requirements"
+      "Strictly follow supervisor's parameter requirements",
+      "verify AgentBrain constructor signature before instantiation",
+      "use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
+      "ensure AgentBrain.__init__ accepts exactly five parameters excluding self",
+      "validate any inherited changes to AgentBrain.__init__ before applying them",
+      "rely on proven artifacts such as activation_stability_patch.py and adjust_rewards_gen10_v5.py for reference"
     ],
     "avoid": [
-      "passing too many parameters to AgentBrain",
-      "mismatched constructor arguments between AgentBrain definition and supervisor call",
-      "Do not modify AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
-      "mismatched constructor arguments",
-      "passing too many parameters to AgentBrain",
       "defining __init__ with insufficient parameters",
       "ignoring supervisor's fixed parameter list",
       "defining AgentBrain.__init__ with insufficient parameters",
@@ -43,7 +38,12 @@
       "assuming tweaking __init__ will boost performance without confirming signature",
       "Passing more than 2 positional arguments to AgentBrain.__init__",
       "Assuming parameter flexibility in AgentBrain constructor",
-      "Inheriting flawed genome modifications without validation"
+      "Inheriting flawed genome modifications without validation",
+      "modifying AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
+      "passing incorrect numbers of arguments to AgentBrain",
+      "copying old genome tweaks without checking compatibility with the current constructor",
+      "ignoring the supervisor's fixed parameter list",
+      "assuming that constructor changes will not affect instantiation"
     ]
   },
   "best_artifacts": [
@@ -136,11 +136,16 @@
       "generation": 11,
       "score": 10,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 12,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 12,
-    "average_score": 1.25,
+    "total_generations": 13,
+    "average_score": 1.1363636363636365,
     "best_score": 10,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
