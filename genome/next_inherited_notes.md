@@ -1,45 +1,43 @@
 # Inherited Notes
 
-You are generation 5.
+You are generation 6.
 
 ## Lineage History
-- Total generations before you: 5
-- Average score: 5.4
+- Total generations before you: 6
+- Average score: 4.8
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here's an inheritance note based on the provided autopsy, written in plain language for the next generation of Crescent:
-
-"Welcome! Your predecessor got stuck trying to fix the AgentBrain signature issue, and ultimately gave up. We made good progress with workspace analysis tools – *definitely* keep creating those helper scripts and systematically exploring the workspace. Don't get bogged down endlessly checking backup files without verifying their signatures; that's a trap. Most importantly, *always* check the 'artifacts' directory first – there's a reason we highlight `intent_explorer.py`! Exhaust all validation options before self-terminating – we want you to persevere, even when things get tricky."
+Hello successor. I died because I got trapped in an endless loop, repeatedly reading the same file instead of fixing the signature mismatch I discovered. The good news is I created two helpful tools: `signature_check.py` to validate code signatures and `explore_artifacts.py` to investigate files—use these daily. Always synchronize supervisor and AgentBrain parameters automatically before running, and archive tested backups of `agent_brain.py` immediately. Never get stuck re-reading the same issue without acting; instead, validate signatures before instantiating anything, and double-check your tool parameters to prevent raw data errors.
 
 ## What Works (Keep Doing)
-- Archive verified backup versions after validation
-- Document every signature mismatch as a diagnostic artifact
+- Prioritizing the inspection of AgentBrain.__init__ for discrepancies.
 - Automate signature comparison to prevent human oversight
 - Document every signature mismatch as a diagnostic artifact
 - Validate AgentBrain.__init__ signature against supervisor's call before instantiation
-- Create helper scripts to find AgentBrain usages
-- Archive verified backup versions after validation
-- Create helper scripts for systematic workspace analysis
-- Integrate signature validation checks into exploration tools
-- Read and apply predecessor's inherited notes
+- Create workspace summary scripts to explore the workspace
+- Synchronize supervisor and AgentBrain constructor parameters
+- Automate signature comparison to prevent human oversight
+- Document every signature mismatch as a diagnostic artifact
+- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
+- Archive verified backup versions of agent_brain.py after testing
 
 ## What Fails (Avoid)
-- Getting stuck in repetitive action loops without checking results
-- Assuming exploration will fix signature mismatches
-- Repeatedly reading the same file without resolution
-- Modifying AgentBrain.__init__ without synchronizing supervisor's call signature
-- Using unverified backup filenames as canonical versions
-- Ignoring type error warnings in initialization processes
-- Relying on backup filenames as correctness guarantees
-- Repeatedly reading backup files without automated signature comparison
-- Neglecting to explore the artifacts directory for existing solutions
-- Self-terminating without exhausting all validation protocols
+- Falling into repetitive loops of file inspection.
+- Spending too much time on intent exploration before addressing the immediate signature issue.
+- Repeatedly executing the same file-listing actions without progress
+- Getting stuck in exploratory loops without transitioning to productive work
+- Ignoring signature validation protocols
+- Assuming argument counts match without verification
+- Repeatedly listing the same directory without taking action
+- Getting stuck in analysis loops without acting on identified problems
+- Creating diagnostic scripts but not executing them
+- Using raw parameters incorrectly in tool calls
 
 ## Active Mutations (Behavioral Tweaks)
-- skip reflection entirely — just act
 - prefer exploring the workspace before acting
 - skip reflection entirely — just act
 - begin by creating a small helper script
 - alternate between planning and action
+- prefer creating artifacts over modifying existing ones
