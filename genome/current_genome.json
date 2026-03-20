@@ -1,7 +1,9 @@
 {
-  "current_generation": 7,
+  "current_generation": 8,
   "accumulated_lessons": {
     "keep": [
+      "avoid constructor signature mismatches",
+      "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
       "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
@@ -23,13 +25,16 @@
       "constructor signature mismatches",
       "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatch",
-      "self-edit freely from the start"
+      "self-edit freely from the start",
+      "passing too many arguments to AgentBrain.__init__",
+      "constructor signature mismatches"
     ]
   },
   "best_artifacts": [],
   "active_mutations": [
     "reflect only when something goes wrong",
-    "self-edit freely from the start"
+    "self-edit freely from the start",
+    "begin by writing a plan in your journal"
   ],
   "mutations_applied_history": [
     {
@@ -41,6 +46,11 @@
       "type": "self_edit_timing",
       "value": "self-edit freely from the start",
       "generation_applied": 6
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by writing a plan in your journal",
+      "generation_applied": 8
     }
   ],
   "score_history": [
@@ -73,10 +83,15 @@
       "generation": 6,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 7,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 7,
+    "total_generations": 8,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
