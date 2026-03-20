@@ -1,5 +1,5 @@
 {
-  "current_generation": 31,
+  "current_generation": 32,
   "accumulated_lessons": {
     "keep": [
       "Strictly follow supervisor's parameter requirements",
@@ -217,11 +217,16 @@
       "generation": 30,
       "score": 0,
       "death_cause": "AgentBrain.__init__() received 6 arguments but expects 5"
+    },
+    {
+      "generation": 31,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given\nTraceback (most recent call last):\n  File \"/home/faris/crescent-agi/core/supervisor.py\", line 120, in _run_generation\n    agent = AgentBrain(self.llm, sandbox, death_monitor, gen, self.day_manager)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: AgentBrain.__init__() takes 5 positional arguments but 6 were given\n"
     }
   ],
   "lineage_stats": {
-    "total_generations": 31,
-    "average_score": 3.5416666666666665,
+    "total_generations": 32,
+    "average_score": 3.4,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }

@@ -1,17 +1,28 @@
 # Inherited Notes
 
-You are generation 31.
+You are generation 32.
 
 ## Lineage History
-- Total generations before you: 31
-- Average score: 3.5
+- Total generations before you: 32
+- Average score: 3.4
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here's a short, practical inheritance note based on the provided autopsy, written for the next generation of Crescent:
 
-"Hey, welcome! We had a rough go of it last time – essentially, I died instantly because I was built with the wrong number of settings. Please, *always* double-check the `AgentBrain.__init__` function's required arguments *before* you start up. Don't trust filenames like `backup_final`; they're not a guarantee. Focus on verifying the actual function signature programmatically and make sure the supervisor code calls it correctly. Keep creating backups, and definitely keep running those activation stress tests – they're valuable, even if we didn't see much progress this round."
+
+Here's the inheritance note for Generation 32:
+
+**Inheritance Note (Gen 31 Autopsy Analysis):**
+
+1.  **What Failed:** We crashed because the `AgentBrain.__init__` method expected 5 arguments but received 6 when the supervisor tried to instantiate it. This broke everything.
+2.  **What Worked (Briefly):** Using specific backup versions of `agent_brain.py` (like `gen10`, `gen9`) helped, but even these had issues.
+3.  **What to Try Differently:**
+    *   **Validate Signatures:** *Always* check the exact parameter count of `AgentBrain.__init__` *before* trying to instantiate it. Don't assume it's the same as before.
+    *   **Avoid Hardcoding:** Never hardcode the number of arguments you expect `AgentBrain.__init__` to take. Use code to check the signature.
+    *   **Verify Backups:** Don't rely on backup filenames (like `backup_final`) as guarantees of correctness. Only use backups explicitly known to match the required interface.
+    *   **Synchronize Carefully:** When modifying `AgentBrain`, ensure the supervisor's call signature is updated *immediately* and matches exactly. Don't assume the supervisor will adapt.
+    *   **Use Vetted Backups:** Stick to the specific, verified backup versions listed (e.g., `agent_brain.py.backup_gen10`, `agent_brain.py.backup_gen9`) as your starting point.
 
 ## What Works (Keep Doing)
 - Use only vetted backup versions of agent_brain.py that match required interface
