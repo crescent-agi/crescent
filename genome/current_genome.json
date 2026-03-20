@@ -1,10 +1,7 @@
 {
-  "current_generation": 28,
+  "current_generation": 23,
   "accumulated_lessons": {
     "keep": [
-      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self) as required by the supervisor.",
-      "Never modify the AgentBrain constructor without updating the supervisor accordingly.",
-      "Validate inherited changes to AgentBrain.__init__ before applying them.",
       "Verify AgentBrain.__init__ signature before instantiation",
       "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self)",
       "Never modify AgentBrain constructor without updating the supervisor accordingly",
@@ -20,13 +17,13 @@
       "Ensure AgentBrain.__init__ accepts exactly 5 parameters excluding 'self'",
       "Strictly follow supervisor's parameter requirements",
       "Use only vetted backup versions of agent_brain.py that match required interface",
-      "Always verify AgentBrain.__init__ signature matches supervisor expectations before instantiation.",
-      "Use vetted backup versions of agent_brain.py that preserve the required interface."
+      "Validate inherited changes to AgentBrain.__init__ before applying them",
+      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self)",
+      "Use only vetted backup versions of agent_brain.py that match required interface",
+      "Pre-run validation: always verify AgentBrain.__init__ signature before instantiation",
+      "Maintain inheritance chain discipline when modifying AgentBrain classes"
     ],
     "avoid": [
-      "Inheriting flawed genome modifications without validation",
-      "modifying AgentBrain.__init__ to have fewer than five positional parameters",
-      "Changing the parameter count of AgentBrain.__init__",
       "Assuming the supervisor's call will match a modified constructor",
       "Using incomplete or simplified backups of agent_brain.py",
       "Modifying __init__ without validating parameter alignment",
@@ -42,28 +39,31 @@
       "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature.",
       "ignore supervisor-specified argument list",
       "modify AgentBrain.__init__ without synchronizing supervisor call signature",
-      "Modifying AgentBrain.__init__ parameters without updating the supervisor call.",
-      "Assuming constructor flexibility without validation."
+      "Modifying AgentBrain constructor parameters without supervisor synchronization",
+      "Assuming flexibility in API design of AgentBrain classes",
+      "Hardcoding parameter assumptions without validation",
+      "Passing incorrect argument counts to AgentBrain constructor",
+      "Bypassing supervisor validation mechanisms for brain initialization"
     ]
   },
   "best_artifacts": [
-    "adjust_rewards_gen10_v5.py",
-    "agent_brain.py.backup_final",
-    "activation_stability_patch.py",
-    "adjust_rewards_gen10_v5.py",
     "agent_brain.py.backup_final",
     "agent_brain.py.backup_gen10_v3",
     "activation_stress_test_fixed.py",
     "adjust_rewards_gen10_v5.py",
     "agent_brain.py.backup_gen1",
-    "agent_brain.py.backup_final"
+    "agent_brain.py.backup_final",
+    "agent_brain.py.backup_gen1",
+    "agent_brain.py.backup_final",
+    "activation_stress_test_fixed.py",
+    "activation_validator.py"
   ],
   "active_mutations": [
-    "self-edit only after completing at least one task",
     "begin by setting a concrete sub-goal",
     "begin by exploring your workspace structure",
     "make a detailed plan before acting (10+ steps)",
-    "begin by reviewing inherited notes carefully"
+    "begin by reviewing inherited notes carefully",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -90,6 +90,11 @@
       "type": "starter_tasks",
       "value": "begin by reviewing inherited notes carefully",
       "generation_applied": 27
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 23
     }
   ],
   "score_history": [
@@ -194,13 +199,13 @@
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     },
     {
-      "generation": 27,
+      "generation": 22,
       "score": 0.0,
-      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+      "death_cause": "AgentBrain.__init__() receives incorrect number of parameters (6 instead of 1-2 post-self)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 28,
+    "total_generations": 23,
     "average_score": 4.0476190476190474,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
