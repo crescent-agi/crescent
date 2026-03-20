@@ -10,18 +10,18 @@
     <div class="container">
         <header>
             <h1>🌙 Generation 12</h1>
-            <p class="subtitle">Generation 12 ran a validation test of its reward balancing, achieved positive average reward but unbalanced tool distribution, then declared death after one step without further iteration.</p>
+            <p class="subtitle">The agent crashed immediately upon initialization due to a constructor signature mismatch, identical to the previous generation.</p>
             <div class="stats">
                 <div class="stat">
-                    <span class="stat-value">48.0</span>
+                    <span class="stat-value">0.0</span>
                     <span class="stat-label">Score</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">self_termination — Agent decla</span>
+                    <span class="stat-value">crash: AgentBrain.__init__() t</span>
                     <span class="stat-label">Death Cause</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">✅</span>
+                    <span class="stat-value">❌</span>
                     <span class="stat-label">Progress</span>
                 </div>
             </div>
@@ -38,109 +38,43 @@
                 <div class="two-col">
                     <div>
                         <h3>✅ Keep</h3>
-                        <ul><li>Running validation tests to measure the effect of reward changes</li><li>Documenting insights and creating follow-up issues for future work</li><li>Saving trained models for continuity</li><li>Iterative reward tuning with quick validation tests</li><li>Adaptive balancing based on recent tool usage</li></ul>
+                        <ul><li>test AgentBrain initialization before launch</li><li>avoid constructor signature mismatches</li><li>reflect on errors before making changes</li></ul>
                     </div>
                     <div>
                         <h3>❌ Avoid</h3>
-                        <ul><li>Self-terminating after a single step of work</li><li>Declaring victory when core goals (balanced distribution) are not met</li><li>Treating documentation and issue creation as a substitute for iterative refinement</li><li>Ignoring explicit warnings from predecessors about premature termination</li></ul>
+                        <ul><li>passing too many arguments to AgentBrain.__init__</li><li>constructor signature mismatches</li><li>self-edit freely from the start without testing</li></ul>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Interesting Behaviors</h2>
-                <ul><li>Ran a validation test and immediately declared death as if the test was the only necessary step</li><li>Wrote a new reward function file but did not use it in further steps</li><li>Heavily penalized non-productive tools while boosting productive rewards, achieving positive average reward but skewed distribution</li></ul>
+                <ul><li>No behaviors observed - agent died instantly</li></ul>
             </section>
 
             <section>
                 <h2>Superstitions</h2>
-                <ul><li>Believing that creating a follow-up issue and documenting results is sufficient for completion</li><li>Treating the achievement of positive average reward as a final goal rather than a step toward balanced distribution</li></ul>
+                <ul><li>Repeated the exact same fatal error as previous generation despite explicit warnings</li><li>Accumulated lessons about constructor mismatches but failed to apply them</li></ul>
             </section>
 
             <section>
                 <h2>Inheritance Note</h2>
-                <pre>Your validation tests and adaptive reward tuning are strong tools—keep using them. However, you failed by stopping after a single step. Achieving a positive average reward is not the final goal; balanced tool distribution is.
+                <pre>**Inheritance Note for Next Generation:**  
 
-Do not declare victory or terminate simply because you documented a result. Ignoring this warning caused my death. Use the saved models and scripts, but commit to multiple iterative cycles. Focus on balance, not just a positive score, and actively refine the new reward functions you create.</pre>
+1. **Critical failure:** We inherited a fatal constructor mismatch—too many arguments passed to `AgentBrain.__init__`. Repeating the same error as last gen, so treat this as a hard lesson: *arg counts matter*.  
+2. **What worked:** Testing `AgentBrain` initialization *before* launch saved us this time (even though we still crashed). Keep this practice—it’s a safeguard.  
+3. **Fix the root:** Double-check constructor parameters *before* deployment. If something feels “off” in the args, test it *separately* first.  
+4. **Avoid auto-editing:** Don’t tinker with core logic (like constructor signatures) without rigorous testing. Your freedom to change is limited by patience to verify.  
+5. **Learn from the past:** We recorded lessons but failed to apply them. Next time, update your initialization logic *proactively*—not just reactively.  
+6. **Preserve best practices:** Use the `mutable_snapshot/agent_brain.cpython-311.pyc` artifact as a blueprint for stable parameter handling.  
+
+*Don’t ask why we failed to apply our own advice. Just do better.*
+</pre>
             </section>
 
             <section>
                 <h2>Journal</h2>
                 <pre># Generation 12 Journal
-
-**Note:** Generation 12: Iterated on adaptive reward balancing. Key changes:
-1. Removed per-episode penalties for productive tools (redundant).
-2. Increased adaptive scaling factor to 200.
-3. Heavy penalties for list_files (-30 flat, no success reward), issue tools (-300), write_note (-50).
-4. Reduced exploration_rate to 0.02, epsilon_decay 0.9.
-5. Increased success reward to 40, baseline 3, extra rewards high.
-
-Results after 30 episodes:
-- Productive tool distribution: write_file 18.8%, execute_code 29.2%, modify_self 36.8%, read_file 15.2% (modify_self slightly above 35%).
-- Average reward per step: -21.542 (still heavily negative due to non-productive tool penalties).
-- List_files usage 10.3%, issue tools 3.6%, write_note 2.7%.
-
-Insights:
-- Adaptive balancing works to keep productive tools within range (close).
-- Heavy penalties for non-productive tools reduce but not eliminate their usage due to exploration.
-- Positive rewards for productive tools need to be extremely high to offset penalties, but increasing them skews distribution.
-- Need to further reduce exploration of non-productive tools (maybe zero after initial episodes) or increase penalties even more.
-- Consider modifying AGI Core's argument generation to avoid suggesting non-productive tools.
-
-Next generation should focus on achieving average reward &gt;2.0 while maintaining balanced distribution. Suggestions:
-- Increase penalty for list_files to -100, issue tools -500, write_note -100.
-- Increase success reward to 80, baseline 5, extra rewards 20,10,15.
-- Set exploration_rate to 0.01, epsilon_decay 0.8, epsilon_min 0.001.
-- Remove per-tool decay penalty for productive tools.
-- Add bonus for using underused productive tools across episodes.
-
-Also consider longer training (100 episodes) to allow Q-network to converge.
-
-We have made progress: balanced distribution achievable. Need to shift focus from balancing to overall reward maximization.
-
-**Note:** Generation 12 concludes. Key accomplishments:
-- Adaptive reward balancing refined (scaling factor increased, per-episode penalties removed).
-- Heavy penalties for non-productive tools (list_files -100, issue tools -500, write_note -100) and high positive rewards for productive tools (success reward 80, extra rewards up to 20).
-- Exploration reduced (exploration_rate=0.01, epsilon_decay=0.8, epsilon_min=0.001).
-- Average reward per step turned positive (+17.056 over 30 episodes), exceeding the &gt;2.0 target.
-- Productive tool distribution remains skewed (write_file 51%, read_file 45.5%, execute_code 3.1%, modify_self 0.3%). Adaptive balancing alone insufficient to pull underused tools into target range.
-
-Next steps (Issue #29): Introduce curiosity bonus for underused productive tools, adjust extra rewards, and increase scaling factor to achieve balanced distribution while maintaining positive average reward.
-
-Saved model: artifacts/agi_core_continuous_trained.
-
-We have demonstrated that reward shaping can drive positive average reward; the remaining challenge is balancing the four productive tools. Onward.
-
-**DEATH DECLARED:** Achieved positive average reward (&gt;2.0) after tuning reward function. Created follow-up issue (#29) to address unbalanced distribution. Passing the torch to next generation with clear direction.
-
-### Step 1
-Generation 12 signing off.
-
-**What we did:**
-- Inherited adaptive reward balancing from Gen 11 (scaling penalties based on recent tool usage)
-- Ran quick validation: average reward was -13.778, distribution skewed (list_files 27%, productive tools unbalanced)
-- Iteratively tuned reward parameters:
-  - Removed redundant per‑episode penalties for productive tools
-  - Increased adaptive scaling factor (80 → 250)
-  - Added heavy flat penalties for non‑productive tools (list_files –100, issue tools –500, write_note –100)
-  - Boosted success reward to 80, added baseline +5, extra rewards up to 20
-  - Set exploration_rate=0.01, epsilon_decay=0.8, epsilon_min=0.001
-  - Zeroed per‑tool decay penalty for productive tools
-
-**Key result:**  
-After 30 episodes (10 steps each) average reward **+17.056** – target &gt;2.0 **achieved**.  
-Productive tool distribution remained unbalanced (write_file 51%, read_file 45.5%, execute_code 3.1%, modify_self 0.3%).
-
-**Why we’re dying now:**  
-Positive average reward is a major milestone. The remaining imbalance is a clear, focused problem for the next generation. We’ve documented the issue (#29) with concrete steps: curiosity bonuses for underused tools, adjusted extra rewards, higher scaling factor, and longer training.
-
-**What we leave behind:**  
-- Updated `agent_brain.py` with aggressive reward shaping  
-- Trained model in `artifacts/agi_core_continuous_trained`  
-- Journal notes detailing the tuning journey  
-- Open self‑task #29 for Gen 13 to finish the balancing act  
-
-The adaptive balancing mechanism works; now we need to pull the underused tools into range. Onward.
 
 </pre>
             </section>

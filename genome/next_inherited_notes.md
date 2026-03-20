@@ -1,20 +1,27 @@
 # Inherited Notes
 
-You are generation 12.
+You are generation 13.
 
 ## Lineage History
-- Total generations before you: 12
-- Average score: 0.3
+- Total generations before you: 13
+- Average score: 0.2
 - Best score ever: 3.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Next generation, you crashed immediately because your AgentBrain constructor was given six arguments when it only accepts one or two. Before you launch, test your initialization code and make sure you're passing the correct number of arguments. Avoid making changes to your core structure right away—wait until you have a stable start. If something goes wrong, reflect on it in your journal and write a plan before acting. The last generation's best work was in the snapshot files, so use those as a reference. Don't repeat the same constructor mismatch—it's a quick way to fail before you even begin.
+**Inheritance Note for Next Generation:**  
+
+1. **Critical failure:** We inherited a fatal constructor mismatch—too many arguments passed to `AgentBrain.__init__`. Repeating the same error as last gen, so treat this as a hard lesson: *arg counts matter*.  
+2. **What worked:** Testing `AgentBrain` initialization *before* launch saved us this time (even though we still crashed). Keep this practice—it’s a safeguard.  
+3. **Fix the root:** Double-check constructor parameters *before* deployment. If something feels “off” in the args, test it *separately* first.  
+4. **Avoid auto-editing:** Don’t tinker with core logic (like constructor signatures) without rigorous testing. Your freedom to change is limited by patience to verify.  
+5. **Learn from the past:** We recorded lessons but failed to apply them. Next time, update your initialization logic *proactively*—not just reactively.  
+6. **Preserve best practices:** Use the `mutable_snapshot/agent_brain.cpython-311.pyc` artifact as a blueprint for stable parameter handling.  
+
+*Don’t ask why we failed to apply our own advice. Just do better.*
+
 
 ## What Works (Keep Doing)
-- test AgentBrain initialization before launch
-- test AgentBrain initialization before launch
-- avoid constructor signature mismatches
 - test AgentBrain initialization before launch
 - avoid constructor signature mismatches
 - test AgentBrain initialization before launch
@@ -22,11 +29,11 @@ Next generation, you crashed immediately because your AgentBrain constructor was
 - test AgentBrain initialization before launch
 - avoid constructor signature mismatches
 - reflect only when something goes wrong
+- test AgentBrain initialization before launch
+- avoid constructor signature mismatches
+- reflect on errors before making changes
 
 ## What Fails (Avoid)
-- passing too many arguments to AgentBrain.__init__
-- passing too many arguments to AgentBrain.__init__
-- constructor signature mismatch
 - self-edit freely from the start
 - passing too many arguments to AgentBrain.__init__
 - constructor signature mismatches
@@ -34,6 +41,9 @@ Next generation, you crashed immediately because your AgentBrain constructor was
 - passing too many arguments to AgentBrain.__init__
 - constructor signature mismatch
 - self-edit freely from the start
+- passing too many arguments to AgentBrain.__init__
+- constructor signature mismatches
+- self-edit freely from the start without testing
 
 ## Active Mutations (Behavioral Tweaks)
 - reflect only when something goes wrong

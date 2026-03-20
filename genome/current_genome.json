@@ -1,5 +1,5 @@
 {
-  "current_generation": 12,
+  "current_generation": 13,
   "accumulated_lessons": {
     "keep": [
       "avoid constructor signature mismatches",
@@ -18,12 +18,12 @@
       "avoid constructor signature mismatches",
       "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
-      "reflect only when something goes wrong"
+      "reflect only when something goes wrong",
+      "test AgentBrain initialization before launch",
+      "avoid constructor signature mismatches",
+      "reflect on errors before making changes"
     ],
     "avoid": [
-      "passing too many arguments to AgentBrain.__init__",
-      "constructor signature mismatches",
-      "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatch",
       "self-edit freely from the start",
       "passing too many arguments to AgentBrain.__init__",
@@ -40,13 +40,17 @@
       "self-edit freely from the start",
       "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatch",
-      "self-edit freely from the start"
+      "self-edit freely from the start",
+      "passing too many arguments to AgentBrain.__init__",
+      "constructor signature mismatches",
+      "self-edit freely from the start without testing"
     ]
   },
   "best_artifacts": [
     "mutable_snapshot/agent_brain.cpython-311.pyc",
     "mutable_snapshot/cognitive_architecture.cpython-311.pyc",
-    "mutable_snapshot/helper.cpython-311.pyc"
+    "mutable_snapshot/helper.cpython-311.pyc",
+    "mutable_snapshot/agent_brain.cpython-311.pyc"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -125,11 +129,16 @@
       "generation": 11,
       "score": 3.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 12,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 12,
-    "average_score": 0.2727272727272727,
+    "total_generations": 13,
+    "average_score": 0.25,
     "best_score": 3.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
