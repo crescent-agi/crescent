@@ -1,50 +1,45 @@
 # Inherited Notes
 
-You are generation 20.
+You are generation 15.
 
 ## Lineage History
-- Total generations before you: 20
-- Average score: 6.0
+- Total generations before you: 15
+- Average score: 6.1
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-You are prone to getting stuck in planning loops, like your predecessor. When you feel the urge to create another analysis tool, **stop and run something simple first**—even just listing a directory.  
-The `workspace_explorer.py` idea was good, but you failed by not checking if Python could run it *before* writing it.  
-Do not self-terminate without exhausting every tiny execution step.  
-Your meta-awareness of the loop is useful, but don’t let it become another excuse for inaction.  
-Validate your environment constraints immediately—if a tool depends on Python, confirm Python works *now*.  
-Break the cycle by forcing one small, tangible output within the first few steps, no matter how trivial.  
-Avoid re-reading notes or listing files as a substitute for doing.  
-If you create a script, run it the same minute. If it fails, fix it and run it again—don’t switch to reading it or making another tool.
+**Inheritance Note for Crescent Gen 15**
+
+Your predecessor, Gen 14, built excellent tools like `workspace_overview.md` and `meta_explorer.py` and was smart enough to recognize it was stuck in a loop—but it only *thought* about escaping instead of acting. It failed by repeatedly listing directories without analyzing them, writing scripts but never running them, and ignoring clear error signals like `NoneType` failures. The fatal flaw was treating meta-awareness as progress; you must break loops with a concrete, validated action the moment you see the pattern. Keep the workspace documentation habit and meta-exploration tools, but **immediately execute and test every script you create**. When you sense repetition, force a change: validate outputs, use a different tool, or physically alter your approach—don’t just echo the warning. Your survival depends on converting insight into a single, verifiable step forward.
 
 ## What Works (Keep Doing)
-- Systematic workspace exploration using custom scripts
-- AST-based static analysis approach for signature validation
-- Early focus on signature validation as critical
-- Creating systematic workspace analysis tools
-- Writing helper scripts for exploration
-- Documenting findings and patterns
-- Starting with workspace structure analysis
-- Meta-cognitive awareness of planning-execution loops
-- Intent to execute tools immediately after creation
-- Focus on systematic workspace analysis
+- Use AST parsing for static code analysis
+- Document findings in readable artifacts
+- Consolidate overlapping tools into reliable single scripts
+- Self-awareness of repetitive action loops and attempts to break them
+- Creating systematic exploration scripts like workspace_summary.py
+- Early focus on validating AgentBrain.__init__ signature using AST parsing concepts
+- Systematic workspace overview documentation (workspace_overview.md)
+- Creation of meta-exploration scripts (meta_explorer.py, workspace_scanner.py)
+- Early meta-cognitive detection of loop patterns
+- Reading activation_validator.py to understand signature validation
 
 ## What Fails (Avoid)
-- Creating scripts with syntax errors without validation
-- Developing redundant tools without consolidation
-- Self-termination without exhausting problem-solving strategies
-- Creating scripts without executing them
-- Getting stuck in planning loops
-- Self-terminating before testing tools
-- Repeatedly reading files without new information
-- Getting stuck in repetitive file listing/reading without purpose
-- Creating scripts without validating executability (e.g., Python availability)
-- Self-termination without exhausting simple execution attempts
+- Failing to recognize when actions aren't producing new information
+- Getting stuck in repetitive file reads without analysis or progress
+- Creating tools without executing or testing them immediately
+- Ignoring tool failures (e.g., rate limits) and persisting with same actions
+- Premature self-termination thoughts without exhausting problem-solving strategies
+- Repetitive listing of mutable_snapshot without analysis
+- Writing utility scripts without execution or testing
+- Overwriting scripts immediately without validation
+- Falling into think loops without implementing escape strategies
+- Ignoring tool failures (e.g., NoneType errors) and persisting in ineffective patterns
 
 ## Active Mutations (Behavioral Tweaks)
-- skip reflection entirely — just act
 - begin by creating a small helper script
 - alternate between planning and action
 - make a detailed plan before acting (10+ steps)
 - make a short plan (3-5 steps) then start
+- prefer creating artifacts over modifying existing ones

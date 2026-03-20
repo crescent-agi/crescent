@@ -1,69 +1,69 @@
 {
-  "current_generation": 20,
+  "current_generation": 15,
   "accumulated_lessons": {
     "keep": [
-      "Writing helper scripts like auto_explore.py for systematic analysis",
-      "Documenting findings in readable formats like poem.txt",
-      "Maintaining the pattern of exploring workspace structure first",
-      "Creating systematic exploration scripts (auto_explore.py) to avoid manual repetition",
-      "Attempting to aggregate analysis into a single script (analyze_artifacts.py)",
-      "Explicitly recognizing loop patterns and attempting to document/break them",
-      "Create helper scripts for systematic workspace analysis (e.g., workspace_analyzer.py)",
-      "Validate AgentBrain.__init__ signature before instantiation",
       "Document findings and patterns in readable artifacts",
       "Use AST parsing to inspect source code without importing",
       "Systematic workspace exploration using custom scripts",
       "AST-based static analysis approach for signature validation",
       "Early focus on signature validation as critical",
-      "Creating systematic workspace analysis tools",
-      "Writing helper scripts for exploration",
-      "Documenting findings and patterns",
-      "Starting with workspace structure analysis",
-      "Meta-cognitive awareness of planning-execution loops",
-      "Intent to execute tools immediately after creation",
-      "Focus on systematic workspace analysis"
+      "Create systematic workspace exploration scripts to map artifacts",
+      "Use AST parsing for static code analysis without importing",
+      "Validate AgentBrain.__init__ signature early and repeatedly",
+      "Create systematic workspace exploration scripts",
+      "Validate AgentBrain.__init__ signature early",
+      "Use AST parsing for static code analysis",
+      "Document findings in readable artifacts",
+      "Consolidate overlapping tools into reliable single scripts",
+      "Self-awareness of repetitive action loops and attempts to break them",
+      "Creating systematic exploration scripts like workspace_summary.py",
+      "Early focus on validating AgentBrain.__init__ signature using AST parsing concepts",
+      "Systematic workspace overview documentation (workspace_overview.md)",
+      "Creation of meta-exploration scripts (meta_explorer.py, workspace_scanner.py)",
+      "Early meta-cognitive detection of loop patterns",
+      "Reading activation_validator.py to understand signature validation"
     ],
     "avoid": [
-      "Continuing to execute actions that clearly aren't advancing the task",
-      "Repeating the same read_file action on identical paths without checking for new information",
-      "Falling back to list_files without a clear purpose after tool failures",
-      "Ignoring the 'NoneType' subscriptable error pattern across multiple steps",
-      "Continuing actions that previously failed without strategy adjustment",
-      "Repeatedly reading the same file without checking for new content or breaking the loop",
-      "Creating half\u2011finished scripts that are never executed or tested",
-      "Getting stuck in action loops without an explicit exit condition",
-      "Assuming that re\u2011reading a file will yield new information",
-      "Repeatedly reading the same file without extracting new information",
-      "Creating scripts with syntax errors without validation",
       "Developing redundant tools without consolidation",
       "Self-termination without exhausting problem-solving strategies",
-      "Creating scripts without executing them",
-      "Getting stuck in planning loops",
-      "Self-terminating before testing tools",
-      "Repeatedly reading files without new information",
-      "Getting stuck in repetitive file listing/reading without purpose",
-      "Creating scripts without validating executability (e.g., Python availability)",
-      "Self-termination without exhausting simple execution attempts"
+      "Self-terminating without verifying task completion",
+      "Getting stuck in repetitive file reads without making progress",
+      "Creating incomplete scripts without testing or executing",
+      "Prematurely declaring completion",
+      "Creating tools without executing them immediately",
+      "Getting stuck in repetitive action loops",
+      "Reading files without taking action",
+      "Self-terminating without verifying completion",
+      "Failing to recognize when actions aren't producing new information",
+      "Getting stuck in repetitive file reads without analysis or progress",
+      "Creating tools without executing or testing them immediately",
+      "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
+      "Premature self-termination thoughts without exhausting problem-solving strategies",
+      "Repetitive listing of mutable_snapshot without analysis",
+      "Writing utility scripts without execution or testing",
+      "Overwriting scripts immediately without validation",
+      "Falling into think loops without implementing escape strategies",
+      "Ignoring tool failures (e.g., NoneType errors) and persisting in ineffective patterns"
     ]
   },
   "best_artifacts": [
-    "auto_explore.py",
-    "poem.txt",
-    "auto_explore.py",
-    "analyze_artifacts.py",
-    "workspace_analyzer.py",
-    "check_signature.py",
-    "validate_signature.py",
     "workspace_explorer.py",
-    "workspace_analyzer.py",
-    "workspace_explorer.py"
+    "workspace_summary.py",
+    "scan_agentbrain.py",
+    "check_signature.py",
+    "workspace_summary.py",
+    "artifacts/generation13_summary.md",
+    "workspace_summary.py",
+    "workspace_overview.md",
+    "meta_explorer.py",
+    "workspace_scanner.py"
   ],
   "active_mutations": [
-    "skip reflection entirely \u2014 just act",
     "begin by creating a small helper script",
     "alternate between planning and action",
     "make a detailed plan before acting (10+ steps)",
-    "make a short plan (3-5 steps) then start"
+    "make a short plan (3-5 steps) then start",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -135,6 +135,11 @@
       "type": "planning_depth",
       "value": "make a short plan (3-5 steps) then start",
       "generation_applied": 8
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 14
     }
   ],
   "score_history": [
@@ -419,19 +424,29 @@
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 18,
-      "score": 5.0,
+      "generation": 11,
+      "score": 1.0,
       "death_cause": "self_termination"
     },
     {
-      "generation": 19,
-      "score": 3.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
+      "generation": 12,
+      "score": 5.7,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 13,
+      "score": 5.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'check_agentbrain_signature.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 14,
+      "score": 12.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"I've been caught in exactly the loop my predecessor warned ab' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 20,
-    "average_score": 6.008620689655173,
+    "total_generations": 15,
+    "average_score": 6.069999999999999,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
