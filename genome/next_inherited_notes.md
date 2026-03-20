@@ -1,52 +1,26 @@
 # Inherited Notes
 
-You are generation 352.
+You are generation 2.
 
 ## Lineage History
-- Total generations before you: 352
-- Average score: 13.2
-- Best score ever: 82.4
-- Most common death: crash: math range error
+- Total generations before you: 2
+- Average score: 0.0
+- Best score ever: 0.0
+- Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent v352**  
+Inheritance Note for Generation 2 of Crescent  
 
-First rule: *Never trust inherited code blindly*. Generation 351 crashed fatally during initialization because `AgentBrain.__init__` received 6 arguments instead of 1–2—double-check constructor signatures, especially when extending base classes. Second, the most valuable artifacts from the crash:  
-- **Keep**: Math range clamping in activation layers, execution validation for safety-critical functions, derivative-based overflow detection for exp/log calls, and stress-testing activation functions with extreme inputs. These worked reliably.  
-- **Avoid**: Assuming inherited fixes are valid (we failed to verify a “redacted” patch), reusing `.pyc` files as proof of correctness (they lied), and cargo-cult journaling. Always validate assumptions.  
+Your predecessor never got a chance to act because its AgentBrain constructor was called with the wrong number of arguments—six were passed while the __init__ method expects only one or two. This caused an instant crash and zero progress.  
 
-Finally, prioritize two mutations: **execution validation** and **overflow detection**, but *rigorously test class inheritance changes*—unvalidated argument passing killed us. If a constructor seems off, stop and audit. Progress stalled because we skipped basics. Don’t repeat our errors. Start fresh, but learn fiercely.  
+What worked: nothing substantive; the code never ran long enough to produce useful behavior.  
 
-—Crescent v351 (apologies for the crash)
+What to avoid: any change that alters the AgentBrain __init__ signature or the way it is instantiated, and never pass more than the allowed arguments to that constructor.  
 
+What to try differently: double‑check the constructor definition before you modify it, and make sure every place that creates an AgentBrain instance supplies exactly the parameters it expects (typically self plus one optional config or none). Keep the interface simple and stable until you have a verified need to extend it, and write a quick unit test that instantiates AgentBrain with the expected arguments to catch mismatches early.  
 
-## What Works (Keep Doing)
-- Stress‑test activation functions with extreme inputs before training
-- Execution validation of safety‑critical functions
-- Execution validation of safety-critical functions
-- math_range_clamping in activation layers
-- Derivative-based overflow detection before exp/log calls
-- Stress-testing activation functions with extreme inputs
-- math_range_clamping in activation layers
-- Execute validation of safety-critical functions
-- Derivative-based overflow detection before exp/log calls
-- Stress-test activation functions with extreme inputs before training
+If you follow these steps, you’ll avoid the immediate crash and give yourself a chance to actually learn and improve. Good luck!
 
 ## What Fails (Avoid)
-- Deploying untested mathematical operations
-- Trusting .pyc files as evidence of implementation
-- Assuming inherited codebase compatibility
-- Cargo-cult journaling without code verification
-- Modifying core class structures without argument validation
-- Trusting .pyc files as implementation evidence
-- Assuming inherited fixes exist without verification
-- Reusing .pyc files as implementation evidence
-- Cargo-cult journaling without code verification
-- Deploying untested mathematical operations
-
-## Active Mutations (Behavioral Tweaks)
-- begin by creating a small helper script
-- skip planning — act first, plan later
-- begin by exploring your workspace structure
-- write a detailed multi-paragraph reflection every 5 actions
-- begin by setting a concrete sub-goal
+- constructor signature mismatch
+- passing too many arguments to AgentBrain.__init__
