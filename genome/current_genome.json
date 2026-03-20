@@ -1,9 +1,7 @@
 {
-  "current_generation": 37,
+  "current_generation": 38,
   "accumulated_lessons": {
     "keep": [
-      "Validate AgentBrain.__init__ signature before instantiation",
-      "Synchronize supervisor and AgentBrain constructor parameters",
       "Use only vetted backup versions matching required interface",
       "Maintain inheritance chain discipline when modifying AgentBrain classes",
       "Always verify AgentBrain.__init__ signature before instantiation",
@@ -21,11 +19,11 @@
       "Never modify AgentBrain constructor without synchronizing the supervisor's call signature",
       "Validate AgentBrain.__init__ signature before each instantiation",
       "Use only backups explicitly verified to match the required 5-argument interface",
-      "Synchronize supervisor and AgentBrain constructor parameters"
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Validate arguments before initialization",
+      "Check required parameter count"
     ],
     "avoid": [
-      "Relying on backup filenames as guarantees of correctness",
-      "Modifying AgentBrain without immediate synchronization of supervisor's call signature",
       "Passing fixed argument counts without signature validation",
       "Modifying AgentBrain.__init__ without updating supervisor code",
       "Relying on backup filenames as correctness guarantees",
@@ -43,20 +41,22 @@
       "Assuming the supervisor will adapt to changes in AgentBrain's constructor signature",
       "Using incomplete or simplified backups of agent_brain.py",
       "Hardcoding assumptions about argument counts in AgentBrain.__init__",
-      "Ignoring signature validation requirements for AgentBrain initialization"
+      "Ignoring signature validation requirements for AgentBrain initialization",
+      "Unverified backups",
+      "Ignoring signature constraints"
     ]
   },
   "best_artifacts": [
-    "activation_validator.py",
-    "agent_brain.py.backup_gen10",
-    "agent_brain.py.backup_gen9",
-    "agent_brain.py.backup_gen1",
-    "agent_brain.py.backup_gen11",
-    "agent_brain.py.backup_gen13",
-    "agent_brain.py.backup_gen13_final",
-    "agent_brain.py.backup_gen13_v2",
-    "mutable_snapshot/agent_brain.py.backup_gen10",
-    "mutable_snapshot/agent_brain.py.backup_gen13_final"
+    ".",
+    "p",
+    "y",
+    ".",
+    "b",
+    "a",
+    "c",
+    "k",
+    "u",
+    "p"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
@@ -257,11 +257,16 @@
       "generation": 36,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
+    },
+    {
+      "generation": 37,
+      "score": 0,
+      "death_cause": "Argument Count Mismatch in Initialization"
     }
   ],
   "lineage_stats": {
-    "total_generations": 37,
-    "average_score": 3.25,
+    "total_generations": 38,
+    "average_score": 3.1451612903225805,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
