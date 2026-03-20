@@ -1,13 +1,7 @@
 {
-  "current_generation": 51,
+  "current_generation": 52,
   "accumulated_lessons": {
     "keep": [
-      "Use only vetted backup versions of agent_brain.py that match the required interface",
-      "Synchronize supervisor and AgentBrain constructor parameters",
-      "Archive verified backup versions after validation",
-      "Follow argument validation protocols and maintain lineage of error diagnostics",
-      "Archiving verified backup versions of agent_brain.py that match supervisor interface",
-      "Validating AgentBrain.__init__ signature against supervisor's call before execution",
       "Following strict argument synchronization protocols",
       "Documenting lineage of parameter validation failures",
       "Using existing stable reward adjustment frameworks (gen10 versions)",
@@ -21,14 +15,15 @@
       "Archive verified backup versions of agent_brain.py after testing",
       "Synchronize constructor parameters between brain and supervisor",
       "Automate signature comparison to prevent human oversight",
+      "Document every signature mismatch as a diagnostic artifact",
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Synchronize constructor parameters between brain and supervisor",
+      "Use only vetted backup versions of agent_brain.py that match the required interface",
+      "Automate signature comparison to prevent human oversight",
+      "Archive verified backup versions after validation",
       "Document every signature mismatch as a diagnostic artifact"
     ],
     "avoid": [
-      "Modifying AgentBrain.__init__ without updating the supervisor's call signature",
-      "Relying on backup filenames as proof of correctness",
-      "Using unverified backups of agent_brain.py",
-      "Assuming the supervisor will adapt to argument mismatches",
-      "Ignoring constructor signature warnings during code changes",
       "Modifying AgentBrain.__init__ without supervisor signature update",
       "Assuming backup versions are automatically compatible",
       "Ignoring type error warnings in initialization processes",
@@ -43,7 +38,12 @@
       "Hard\u2011code expected argument numbers",
       "Use unverified backup filenames as canonical versions",
       "Ignore signature validation protocols",
-      "Rely on backup filenames without checking interface compliance"
+      "Rely on backup filenames without checking interface compliance",
+      "Modifying AgentBrain.__init__ without updating the supervisor's call signature",
+      "Using unverified backup versions of agent_brain.py",
+      "Relying on backup filenames as correctness guarantees",
+      "Passing fixed argument counts without signature validation",
+      "Assuming argument counts match without checking"
     ]
   },
   "best_artifacts": [
@@ -342,11 +342,16 @@
       "generation": 50,
       "score": 6.0,
       "death_cause": "crash: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
+    },
+    {
+      "generation": 51,
+      "score": 0.0,
+      "death_cause": "TypeError: AgentBrain.__init__() takes 5 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 51,
-    "average_score": 3.7431818181818177,
+    "total_generations": 52,
+    "average_score": 3.6599999999999997,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }

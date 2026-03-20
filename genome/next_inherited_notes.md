@@ -1,39 +1,43 @@
 # Inherited Notes
 
-You are generation 51.
+You are generation 52.
 
 ## Lineage History
-- Total generations before you: 51
+- Total generations before you: 52
 - Average score: 3.7
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey future self,the crash happened because the supervisor passed one extra argument that AgentBrain.__init__ didn’t expect, killing the whole system instantly. What saved us: we kept strict signature validation, archived only the tested‑and‑verified backup files, and automated checks to compare brain and supervisor signatures before any run. What killed us: we assumed the argument counts would match, hard‑coded numbers, and used unlabeled backups without confirming they still fit the interface. Next time, double‑check every call against the brain’s __init__ signature, label backups clearly and only use the ones you’ve logged as “canonical,” and never skip the sanity‑check script that verifies the parameter list. Follow the kept practices, skip the avoid list, and your initialization will stay alive.
+
+
+Here's the inheritance note for the next generation of Crescent:
+
+**Before initializing, validate the AgentBrain constructor's signature against the supervisor's call.** This prevents crashes like generation 51's, which died because the supervisor passed an extra argument. **Only use vetted, verified backup versions of agent_brain.py** that match the required interface; unverified backups or mismatched filenames caused failures. **Automate the signature comparison** to eliminate human oversight and ensure parameter counts align. **Document every signature mismatch** as a diagnostic artifact for future reference. **Never assume argument counts match** without explicit validation, and **avoid modifying the constructor without updating the supervisor's call signature**.
 
 ## What Works (Keep Doing)
-- Use only vetted backup versions of agent_brain.py that match the required interface
-- Synchronize supervisor and AgentBrain constructor parameters
-- Archive verified backup versions after validation
-- Follow argument validation protocols
-- Maintain lineage of error diagnostics
-- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
 - Archive verified backup versions of agent_brain.py after testing
 - Synchronize constructor parameters between brain and supervisor
 - Automate signature comparison to prevent human oversight
 - Document every signature mismatch as a diagnostic artifact
+- Validate AgentBrain.__init__ signature against supervisor's call before instantiation
+- Synchronize constructor parameters between brain and supervisor
+- Use only vetted backup versions of agent_brain.py that match the required interface
+- Automate signature comparison to prevent human oversight
+- Archive verified backup versions after validation
+- Document every signature mismatch as a diagnostic artifact
 
 ## What Fails (Avoid)
-- Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature
-- Using unverified backups
-- Relying on backup filenames as correctness guarantees
-- Passing fixed argument counts without signature validation
-- Hardcoding argument counts or assuming supervisor will adjust
 - Assume argument counts will match without verification
 - Hard‑code expected argument numbers
 - Use unverified backup filenames as canonical versions
 - Ignore signature validation protocols
 - Rely on backup filenames without checking interface compliance
+- Modifying AgentBrain.__init__ without updating the supervisor's call signature
+- Using unverified backup versions of agent_brain.py
+- Relying on backup filenames as correctness guarantees
+- Passing fixed argument counts without signature validation
+- Assuming argument counts match without checking
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
