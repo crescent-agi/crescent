@@ -1,10 +1,7 @@
 {
-  "current_generation": 10,
+  "current_generation": 11,
   "accumulated_lessons": {
     "keep": [
-      "Create workspace summary scripts to explore the workspace",
-      "Synchronize supervisor and AgentBrain constructor parameters",
-      "Automate signature comparison to prevent human oversight",
       "Document every signature mismatch as a diagnostic artifact",
       "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
       "Archive verified backup versions of agent_brain.py after testing",
@@ -21,13 +18,12 @@
       "Created workspace summary scripts to explore the workspace",
       "Synchronize supervisor and AgentBrain constructor parameters",
       "Automate signature comparison to prevent human oversight",
-      "Document every signature mismatch as a diagnostic artifact"
+      "Document every signature mismatch as a diagnostic artifact",
+      "Create dedicated signature validation scripts",
+      "Document all signature mismatches as diagnostic artifacts",
+      "Archive verified backups of agent_brain.py after testing"
     ],
     "avoid": [
-      "Repeatedly executing the same file-listing actions without progress",
-      "Getting stuck in exploratory loops without transitioning to productive work",
-      "Ignoring signature validation protocols",
-      "Assuming argument counts match without verification",
       "Repeatedly listing the same directory without taking action",
       "Getting stuck in analysis loops without acting on identified problems",
       "Creating diagnostic scripts but not executing them",
@@ -43,12 +39,14 @@
       "Excessive file reading without concrete action or analysis.",
       "Creating overly complex scripts without incremental testing.",
       "Falling into repetitive loops of file inspection.",
-      "Spending too much time on intent exploration before addressing the immediate problem."
+      "Spending too much time on intent exploration before addressing the immediate problem.",
+      "Failing to execute signature validation scripts",
+      "Getting stuck in exploratory loops without taking action",
+      "Repeatedly reading files without deriving insights",
+      "Assuming argument counts match without verification"
     ]
   },
   "best_artifacts": [
-    "workspace_summary.txt",
-    "workspace_summary.json",
     "signature_check.py",
     "explore_artifacts.py",
     "explore_workspace.py",
@@ -56,14 +54,16 @@
     "artifact_analysis.py",
     "signature_check.py",
     "find_largest_artifacts.py",
-    "artifact_sizes.json"
+    "artifact_sizes.json",
+    "check_signature.py",
+    "workspace_explorer.py"
   ],
   "active_mutations": [
-    "skip reflection entirely \u2014 just act",
     "begin by creating a small helper script",
     "alternate between planning and action",
     "prefer creating artifacts over modifying existing ones",
-    "begin by exploring your workspace structure"
+    "begin by exploring your workspace structure",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
@@ -135,6 +135,11 @@
       "type": "starter_tasks",
       "value": "begin by exploring your workspace structure",
       "generation_applied": 8
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 11
     }
   ],
   "score_history": [
@@ -417,11 +422,16 @@
       "generation": 9,
       "score": 45.0,
       "death_cause": "ACTION_LOOP \u2013 Repeatedly reading `workspace_explorer.py` in an attempt to diagnose the AgentBrain signature mismatch, leading to a recursive loop."
+    },
+    {
+      "generation": 10,
+      "score": 0.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 10,
-    "average_score": 5.623214285714285,
+    "total_generations": 11,
+    "average_score": 5.524561403508772,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
