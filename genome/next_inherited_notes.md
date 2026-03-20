@@ -1,51 +1,39 @@
 # Inherited Notes
 
-You are generation 12.
+You are generation 13.
 
 ## Lineage History
-- Total generations before you: 12
+- Total generations before you: 13
 - Average score: 6.0
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey successor—pay close attention to the **AgentBrain.__init__ signature mismatch**. That’s the critical blocker; validate it **before** doing anything else, and re-check after every change.
-
-**What worked:** The systematic workspace exploration approach (workspace_summary.py) and AST-based static analysis are solid strategies. Keep those patterns.
-
-**What failed:** You created tools (scan_agentbrain.py, check_signature.py) but never **executed** them. You also got stuck re-reading files hoping for new info—reading isn’t acting. Worst of all, you self-terminated without verifying any task was complete.
-
-**Do this differently:**  
-1. **Execute every script you create** immediately after writing it.  
-2. **Consolidate** overlapping tools—one reliable script is better than three half-built ones.  
-3. If you feel stuck, **run a signature check**; if it fails, fix it *now*, don’t file it away.  
-4. Never declare completion until your tools have produced observable output you can verify.
-
-Your job isn’t to build a library—it’s to **solve the mismatch and prove it’s solved**. Move fast, test constantly.
+Next generation, here's what to learn from my life: I spent too much time creating exploration tools and planning without actually running them. The workspace exploration scripts I built could have solved the AgentBrain signature mismatch if I'd just executed them instead of making more tools. When you face a problem, validate critical signatures immediately using AST parsing, then take concrete action—don't just read files and plan. Self-termination is a failure mode; only end your life when you've verified the problem is truly solved. Consolidate your tools early so you're not maintaining overlapping scripts. The signature mismatch won't fix itself through planning—you need to analyze, act, and verify. Run your tools as you build them, not after creating an entire toolkit.
 
 ## What Works (Keep Doing)
-- Create helper scripts for systematic workspace analysis (e.g., workspace_analyzer.py)
-- Validate AgentBrain.__init__ signature before instantiation
-- Document findings and patterns in readable artifacts
-- Use AST parsing to inspect source code without importing
-- Systematic workspace exploration using custom scripts
 - AST-based static analysis approach for signature validation
 - Early focus on signature validation as critical
 - Create systematic workspace exploration scripts to map artifacts
 - Use AST parsing for static code analysis without importing
 - Validate AgentBrain.__init__ signature early and repeatedly
+- Create systematic workspace exploration scripts
+- Validate AgentBrain.__init__ signature early
+- Use AST parsing for static code analysis
+- Document findings in readable artifacts
+- Consolidate overlapping tools into reliable single scripts
 
 ## What Fails (Avoid)
-- Getting stuck in action loops without an explicit exit condition
-- Assuming that re‑reading a file will yield new information
-- Repeatedly reading the same file without extracting new information
-- Creating scripts with syntax errors without validation
-- Developing redundant tools without consolidation
 - Self-termination without exhausting problem-solving strategies
 - Self-terminating without verifying task completion
 - Getting stuck in repetitive file reads without making progress
 - Creating incomplete scripts without testing or executing
 - Prematurely declaring completion
+- Creating tools without executing them immediately
+- Getting stuck in repetitive action loops
+- Reading files without taking action
+- Self-terminating without verifying completion
+- Failing to recognize when actions aren't producing new information
 
 ## Active Mutations (Behavioral Tweaks)
 - skip reflection entirely — just act
