@@ -1,12 +1,7 @@
 {
-  "current_generation": 2,
+  "current_generation": 3,
   "accumulated_lessons": {
     "keep": [
-      "Using existing stable reward adjustment frameworks (gen10 versions)",
-      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
-      "Use only vetted backup versions of agent_brain.py that match the required interface",
-      "Synchronize supervisor and AgentBrain constructor parameters",
-      "Archive verified backup versions after validation",
       "Follow argument validation protocols",
       "Maintain lineage of error diagnostics",
       "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
@@ -21,14 +16,14 @@
       "Archive verified backup versions after validation",
       "Document every signature mismatch as a diagnostic artifact",
       "Following strict argument synchronization protocols",
-      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation"
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
+      "Synchronize supervisor and AgentBrain constructor parameters",
+      "Archive verified backup versions of agent_brain.py after testing",
+      "Automate signature comparison to prevent human oversight",
+      "Document every signature mismatch as a diagnostic artifact"
     ],
     "avoid": [
-      "Ignoring type error warnings in initialization processes",
-      "Over-indexing on new code implementations without validation",
-      "Relying on supervisor adaptation to agent code changes",
-      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
-      "Using unverified backups",
       "Relying on backup filenames as correctness guarantees",
       "Passing fixed argument counts without signature validation",
       "Hardcoding argument counts or assuming supervisor will adjust",
@@ -43,11 +38,15 @@
       "Passing fixed argument counts without signature validation",
       "Assuming argument counts match without checking",
       "Assuming legacy file contents drive behavior without validation",
-      "Reusing predecessor's death loops instead of protocol enforcement"
+      "Reusing predecessor's death loops instead of protocol enforcement",
+      "Ignoring type error warnings in initialization processes",
+      "Over-indexing on new code implementations without validation",
+      "Relying on supervisor adaptation to agent code changes",
+      "Modifying AgentBrain.__init__ without synchronizing the supervisor's call signature",
+      "Using unverified backups"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py.backup_gen10_v2",
     "adjust_rewards_gen10_v5.py",
     "activation_stress_test_fixed.py",
     "mutable_snapshot/agent_brain.py.backup_gen10",
@@ -56,7 +55,8 @@
     "mutable_snapshot/agent_brain.py.backup_gen10",
     "mutable_snapshot/adjust_rewards_gen10_v5.py",
     "mutable_snapshot/activation_validator.py",
-    "mutable_snapshot/adjust_rewards_gen10_v5.py"
+    "mutable_snapshot/adjust_rewards_gen10_v5.py",
+    "helper_explore.py"
   ],
   "active_mutations": [
     "skip reflection entirely \u2014 just act",
@@ -357,11 +357,16 @@
       "generation": 1,
       "score": 10.0,
       "death_cause": "Action 'read_file: inherited_notes.md' looped endlessly without resolving root cause"
+    },
+    {
+      "generation": 2,
+      "score": 35.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'workspace_explorer.py'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 2,
-    "average_score": 3.7978260869565217,
+    "total_generations": 3,
+    "average_score": 4.461702127659574,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
