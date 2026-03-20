@@ -1,24 +1,44 @@
 {
-  "current_generation": 2,
+  "current_generation": 3,
   "accumulated_lessons": {
-    "keep": [],
+    "keep": [
+      "verify AgentBrain constructor signature before instantiation"
+    ],
     "avoid": [
+      "mismatched constructor arguments",
+      "passing too many parameters to AgentBrain",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain"
     ]
   },
-  "best_artifacts": [],
-  "active_mutations": [],
-  "mutations_applied_history": [],
+  "best_artifacts": [
+    "agent_brain.py.backup_final",
+    "activation_stress_test_fixed.py"
+  ],
+  "active_mutations": [
+    "self-edit only after completing at least one task"
+  ],
+  "mutations_applied_history": [
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only after completing at least one task",
+      "generation_applied": 3
+    }
+  ],
   "score_history": [
     {
       "generation": 1,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 2,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 2,
+    "total_generations": 3,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
