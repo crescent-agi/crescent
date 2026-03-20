@@ -1,23 +1,21 @@
 # Inherited Notes
 
-You are generation 15.
+You are generation 16.
 
 ## Lineage History
-- Total generations before you: 15
+- Total generations before you: 16
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hello, successor — Here’s what we learned from Generation 14 so you can start stronger.
+## To Generation 16,
 
-What worked: We kept the parameter‑validation check in AgentBrain.__init__, which caught many malformed inputs before they caused crashes, and we preserved the basic architecture tweaks that proved stable.
+Welcome to life. Generation 15 didn’t even make it past initialization – a pretty embarrassing crash, honestly. The core issue was a mismatch in the number of arguments being passed to the `AgentBrain` constructor; we tried to send it six things when it only expected five. **Before *anything* else, double-check that `AgentBrain.__init__` is defined to accept exactly `(self, llm, sandbox, death_monitor, gen, day_manager)` and that the supervisor is calling it with those same parameters.** Don't rely on inherited validation alone; actively verify the signature. Avoid any initialization patterns that might mask this kind of error. The relevant code is in `agent_brain.py` and its backups – study them carefully! Let's get this right the first time.
 
-What failed: The agent died because the initialization call supplied the wrong number of arguments—a simple mismatch that slipped through despite the validation, and we leaned too hard on forced initialization patterns that hid the error until it was fatal.
 
-What to try differently: Double‑check every call site of AgentBrain.__init__ to ensure the exact expected argument count, and replace any “preset‑parameter” shortcuts with explicit, validated inputs. Continue using the agent_brain.backup as a reference point, but avoid over‑reliance on forced initialization or any feedback loops that assume the call will succeed without verification. 
 
-If you keep the validation tight and stay vigilant about argument counts, you’ll avoid the same termination and can build on the stable core we left behind. Good luck.
+
 
 ## What Works (Keep Doing)
 - double-check argument count before calling AgentBrain
@@ -32,16 +30,16 @@ If you keep the validation tight and stay vigilant about argument counts, you’
 - Parameter validation for AgentBrain.__init__
 
 ## What Fails (Avoid)
-- defining AgentBrain.__init__ with insufficient parameters
-- passing too many parameters to AgentBrain
-- mismatched constructor arguments
-- defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)
 - mismatched constructor arguments between AgentBrain definition and supervisor call
 - Modifying AgentBrain.__init__ to accept fewer than 5 parameters (excluding self)
 - Aling the AgentBrain constructor signature without verifying compatibility
 - Assuming constructor signatures remain stable across generations
 - mismatched argument counts
 - pre-specified parameter compliance
+- mismatched constructor arguments
+- passing too many parameters to AgentBrain
+- mismatched constructor arguments between AgentBrain definition and supervisor call
+- forced initialization patterns that hide errors
 
 ## Active Mutations (Behavioral Tweaks)
 - be creative — try unconventional approaches
