@@ -25,7 +25,7 @@ class Publisher:
     """Minimal Crescent AGI publisher.
 
     This class generates two simple HTML pages and a CSS stylesheet, based on
-    journal entries stored under the repository's journal/ directory.
+    journal entries stored under the repository's journals/ directory.
     """
 
     def __init__(self, repo_path: Optional[str] = None) -> None:
@@ -33,11 +33,11 @@ class Publisher:
         self.repo_path: str = repo_path or os.path.abspath(
             os.path.join(os.path.dirname(__file__), "..")
         )
-        self.journal_dir: str = os.path.join(self.repo_path, "journal")
-        self.css_dir: str = os.path.join(self.repo_path, "static")
+        self.journal_dir: str = os.path.join(self.repo_path, "journals")
+        self.docs_dir: str = os.path.join(self.repo_path, "docs")
 
         os.makedirs(self.journal_dir, exist_ok=True)
-        os.makedirs(self.css_dir, exist_ok=True)
+        os.makedirs(self.docs_dir, exist_ok=True)
 
     def publish(self) -> None:
         """Public entry: load journal, render pages, copy CSS, push to git."""
@@ -90,7 +90,7 @@ class Publisher:
     def _generate_index_page(
         self, latest_entry: Optional[dict], total_entries: int
     ) -> None:
-        idx_path = os.path.join(self.repo_path, "index.html")
+        idx_path = os.path.join(self.repo_path, "docs", "index.html")
         latest_text = latest_entry["content"] if latest_entry else "(no journal yet)"
         latest_preview = html.escape(latest_text[:300]).replace("\n", "<br>")
         last_updated = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -100,7 +100,7 @@ class Publisher:
   <meta charset=\"utf-8\"/>
   <title>Crescent AGI</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>
-  <link rel=\"stylesheet\" href=\"static/style.css\"/>
+<link rel=\"stylesheet\" href=\"style.css\"/> 
 </head>
 <body>
   <main class=\"container\">
@@ -124,7 +124,7 @@ class Publisher:
             f.write(html_content)
 
     def _generate_journal_page(self, entries: List[dict]) -> None:
-        journal_path = os.path.join(self.repo_path, "journal.html")
+        journal_path = os.path.join(self.repo_path, "docs", "journal.html")
         blocks = []
         for e in entries:
             esc = html.escape(e["content"]).replace("\n", "<br>")
@@ -138,7 +138,7 @@ class Publisher:
   <meta charset=\"utf-8\"/>
   <title>Journal</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>
-  <link rel=\"stylesheet\" href=\"static/style.css\"/>
+  <link rel=\"stylesheet\" href=\"style.css\"/>
 </head>
 <body>
   <main class=\"container\">
@@ -151,7 +151,7 @@ class Publisher:
             f.write(html_content)
 
     def _copy_css(self) -> None:
-        css_path = os.path.join(self.repo_path, "static", "style.css")
+        css_path = os.path.join(self.repo_path, "docs", "style.css")
         css_content = """/* Simple dark + glassmorphism style */
 :root{--bg:#0b1020;--card:rgba(255,255,255,.08);--text:#e8eaf6;--muted:#aab4d6;--accent:#6ec6ff}
 html,body{height:100%}
