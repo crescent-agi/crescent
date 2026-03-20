@@ -1,10 +1,11 @@
 {
-  "current_generation": 6,
+  "current_generation": 8,
   "accumulated_lessons": {
     "keep": [
       "verify AgentBrain constructor signature before instantiation",
       "verify AgentBrain constructor signature before instantiation",
       "Always verify the exact number and types of arguments required by AgentBrain.__init__ before instantiating it.",
+      "verify AgentBrain constructor signature before instantiation",
       "verify AgentBrain constructor signature before instantiation",
       "verify AgentBrain constructor signature before instantiation"
     ],
@@ -17,7 +18,10 @@
       "mismatched constructor arguments between AgentBrain definition and supervisor call",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
-      "mismatched constructor arguments between AgentBrain definition and supervisor call"
+      "mismatched constructor arguments between AgentBrain definition and supervisor call",
+      "mismatched constructor arguments",
+      "passing too many parameters to AgentBrain",
+      "defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)"
     ]
   },
   "best_artifacts": [
@@ -28,7 +32,8 @@
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
-    "begin by setting a concrete sub-goal"
+    "begin by setting a concrete sub-goal",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -40,6 +45,11 @@
       "type": "starter_tasks",
       "value": "begin by setting a concrete sub-goal",
       "generation_applied": 5
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 8
     }
   ],
   "score_history": [
@@ -62,10 +72,15 @@
       "generation": 5,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 7,
+      "score": 0.0,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 6,
+    "total_generations": 8,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"

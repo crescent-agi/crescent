@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 6.
+You are generation 8.
 
 ## Lineage History
-- Total generations before you: 6
+- Total generations before you: 8
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Before you begin, always verify the constructor signature of AgentBrain and ensure you're passing exactly the right number of arguments—no more, no fewer. This crash happened because the initialization call didn't match the expected parameters, so double-check the required inputs before instantiating. Set a concrete sub-goal first, then proceed with self-editing only after completing at least one task. Avoid mismatched arguments or assumptions about parameter counts, and test your setup with small, focused scripts before scaling up. The artifacts from the last run show where the fix was applied—review them for guidance.
+Before you start, fix the constructor. The previous version crashed because it couldn't handle the arguments it was given. Make sure your AgentBrain.__init__ accepts exactly these parameters: llm, sandbox, death_monitor, gen, and day_manager. Don't assume it will work with fewer arguments—this is a hard requirement. Test the constructor early to avoid the same fatal error. Everything else can wait until you're running without crashes.
 
 ## What Works (Keep Doing)
 - verify AgentBrain constructor signature before instantiation
@@ -17,10 +17,9 @@ Before you begin, always verify the constructor signature of AgentBrain and ensu
 - Always verify the exact number and types of arguments required by AgentBrain.__init__ before instantiating it.
 - verify AgentBrain constructor signature before instantiation
 - verify AgentBrain constructor signature before instantiation
+- verify AgentBrain constructor signature before instantiation
 
 ## What Fails (Avoid)
-- mismatched constructor arguments
-- passing too many parameters to AgentBrain
 - mismatched constructor arguments
 - passing too many parameters to AgentBrain
 - defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)
@@ -28,7 +27,11 @@ Before you begin, always verify the constructor signature of AgentBrain and ensu
 - mismatched constructor arguments
 - passing too many parameters to AgentBrain
 - mismatched constructor arguments between AgentBrain definition and supervisor call
+- mismatched constructor arguments
+- passing too many parameters to AgentBrain
+- defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
 - begin by setting a concrete sub-goal
+- prefer creating artifacts over modifying existing ones
