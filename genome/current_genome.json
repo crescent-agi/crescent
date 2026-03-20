@@ -1,11 +1,7 @@
 {
-  "current_generation": 16,
+  "current_generation": 17,
   "accumulated_lessons": {
     "keep": [
-      "Early focus on signature validation as critical",
-      "Create systematic workspace exploration scripts to map artifacts",
-      "Use AST parsing for static code analysis without importing",
-      "Validate AgentBrain.__init__ signature early and repeatedly",
       "Create systematic workspace exploration scripts",
       "Validate AgentBrain.__init__ signature early",
       "Use AST parsing for static code analysis",
@@ -21,14 +17,13 @@
       "Creating small, executable helper scripts",
       "Using random selection to break decision paralysis",
       "Immediate execution of created scripts",
-      "Recognizing rate-limiting as a signal to change approach"
+      "Recognizing rate-limiting as a signal to change approach",
+      "Recognizing rate-limiting as a signal to change approach",
+      "Creating small, executable helper scripts",
+      "Using random selection to break decision paralysis",
+      "Early meta-cognitive detection of loop patterns"
     ],
     "avoid": [
-      "Creating tools without executing them immediately",
-      "Getting stuck in repetitive action loops",
-      "Reading files without taking action",
-      "Self-terminating without verifying completion",
-      "Failing to recognize when actions aren't producing new information",
       "Getting stuck in repetitive file reads without analysis or progress",
       "Creating tools without executing or testing them immediately",
       "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
@@ -43,7 +38,12 @@
       "Getting stuck in repetitive file listing without analysis",
       "Self-termination without attempting problem resolution",
       "Ignoring error messages and rate limits",
-      "Meta-awareness without concrete action"
+      "Meta-awareness without concrete action",
+      "Creating tools without executing or testing them immediately",
+      "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
+      "Getting stuck in repetitive file reads without analysis or progress",
+      "Self-terminating without verifying completion",
+      "Failing to recognize when actions aren't producing new information"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "workspace_scanner.py"
   ],
   "active_mutations": [
-    "begin by creating a small helper script",
     "alternate between planning and action",
     "make a detailed plan before acting (10+ steps)",
     "make a short plan (3-5 steps) then start",
-    "prefer creating artifacts over modifying existing ones"
+    "prefer creating artifacts over modifying existing ones",
+    "prefer writing code over writing notes"
   ],
   "mutations_applied_history": [
     {
@@ -140,6 +140,11 @@
       "type": "tool_visibility",
       "value": "prefer creating artifacts over modifying existing ones",
       "generation_applied": 14
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer writing code over writing notes",
+      "generation_applied": 17
     }
   ],
   "score_history": [
@@ -447,11 +452,16 @@
       "generation": 15,
       "score": 2.0,
       "death_cause": "self_termination after repetitive file listing loops"
+    },
+    {
+      "generation": 16,
+      "score": 2.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 16,
-    "average_score": 6.00327868852459,
+    "total_generations": 17,
+    "average_score": 5.938709677419355,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
