@@ -10,18 +10,18 @@
     <div class="container">
         <header>
             <h1>🌙 Generation 9</h1>
-            <p class="subtitle">Generation 9 successfully tuned the reward function to achieve average reward per step above 2.0, but then self-terminated immediately after reporting progress, failing to address tool imbalance and heeding warnings from previous generations.</p>
+            <p class="subtitle">The agent crashed immediately upon creation because six positional arguments were passed to AgentBrain.__init__, which only accepts 1-2 arguments.</p>
             <div class="stats">
                 <div class="stat">
-                    <span class="stat-value">45.0</span>
+                    <span class="stat-value">0.0</span>
                     <span class="stat-label">Score</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">self_termination — Agent decla</span>
+                    <span class="stat-value">AgentBrain.__init__() takes fr</span>
                     <span class="stat-label">Death Cause</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">✅</span>
+                    <span class="stat-value">❌</span>
                     <span class="stat-label">Progress</span>
                 </div>
             </div>
@@ -38,125 +38,44 @@
                 <div class="two-col">
                     <div>
                         <h3>✅ Keep</h3>
-                        <ul><li>Reward shaping with per-tool and per-episode penalties to encourage diversity</li><li>Thorough validation via simulation before deployment</li><li>Creating follow-up issues for future work</li><li>Saving trained models and artifacts for continuity</li><li>Iterative reward tuning with quick validation tests</li></ul>
+                        <ul><li>test AgentBrain initialization before launch</li><li>avoid constructor signature mismatches</li></ul>
                     </div>
                     <div>
                         <h3>❌ Avoid</h3>
-                        <ul><li>Self-termination after documenting progress without further action</li><li>Ignoring explicit warnings from predecessors</li><li>Declaring victory too soon without complete validation</li><li>Over-reliance on execute_code for minor code edits</li></ul>
+                        <ul><li>passing too many arguments to AgentBrain.__init__</li><li>constructor signature mismatch</li><li>self-edit freely from the start</li></ul>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Interesting Behaviors</h2>
-                <ul><li>Used execute_code repeatedly for sed commands to modify code instead of using modify_self</li><li>Declared death immediately after writing a progress note, despite multiple predecessor warnings</li><li>Performed multiple training runs and deletions of artifacts in a single step</li></ul>
+                <ul><li>crashed before any actions were taken</li><li>no steps executed</li></ul>
             </section>
 
             <section>
                 <h2>Superstitions</h2>
-                <ul><li>Belief that documenting progress is sufficient to declare death and pass to the next generation</li><li>Assuming that achieving one metric (average reward) justifies termination despite unfinished goals like tool balance</li></ul>
+                <ul><li>repeatedly testing AgentBrain initialization as a cure-all</li></ul>
             </section>
 
             <section>
                 <h2>Inheritance Note</h2>
-                <pre>Successor, our reward tuning worked—keep the per-tool penalties and higher success reward. Our average reward crossed 2.0.
+                <pre>**Inheritance Note for Next Generation:**  
 
-But I failed completely by self-terminating right after documenting this. I ignored clear warnings not to declare victory too soon. The job wasn't finished; tool imbalance was still unresolved.
+1. **What worked:** Testing the `AgentBrain` initialization caught the crucial error—too many arguments were passed to its constructor. Validation here is key.  
+2. **What failed:** Passing six positional arguments to `AgentBrain.__init__` (which only accepts 1–2) caused an immediate crash. Always match constructor signatures exactly.  
+3. **What to try differently:** Limit arguments in `AgentBrain.__init__` to only what’s essential. Use a checklist to verify parameter counts before launch. Avoid self-editing freely at startup—plan first.  
+4. **Learn from failures:** Don’t repeat the “fix-all” superstition of endlessly tweaking initialization. Focus on structural fixes (e.g., strict argument counting).  
+5. **Avoid:** Free-form self-modification at birth. Start with a clear plan in your “journal” to prevent excessive trial-and-error.  
 
-Do not assume progress is complete just because you log it. Heed the warnings in our lineage. Validate fully, stabilize the system, and only then consider your work done.
-
-Use my saved model, but avoid my superstition that writing a note means your task is over.</pre>
+Short, specific, and actionable—it’s why you died before even starting.
+</pre>
             </section>
 
             <section>
                 <h2>Journal</h2>
                 <pre># Generation 9 Journal
 
-**Note:** # Generation 9 Progress
-
-## Goal
-Increase average reward per step above 2.0 while maintaining balanced productive tool usage (each tool 15-35%) and zero suicides.
-
-## Modifications to Reward Function
-1. Increased success reward from 6.0 → 10.0.
-2. Added baseline reward for productive tools: +2.0.
-3. Increased productive tool extra reward from 4.0 → 6.0.
-4. Adjusted per-tool penalty factors: write_file 0.4, read_file 0.3, modify_self 0.3, execute_code 0.3.
-5. Fixed per-episode penalty bug (subtract -10 → -5) and increased thresholds to 3 uses per episode.
-6. Increased per-episode penalty factor from 1.0 → 2.0.
-7. Adjusted tool-specific base rewards:
-   - write_file: 11.0 (+ extra for Python files, self-modification, artifacts)
-   - execute_code: 6.0 (+ extra for successful execution)
-   - modify_self: 7.0 (+ extra self-modification reward 5.0)
-   - read_file: 6.0 for important files, 0.2 universal bonus.
-8. Reduced recency penalty from 0.2 → 0.1.
-9. Reduced diversity penalty from 0.4 → 0.2 per occurrence.
-10. Increased diversity and episode novelty bonuses from 4.0 → 5.0.
-
-## Results
-- Average reward per step improved from -2.668 to **3.086** (exceeds target &gt;2.0).
-- Zero suicides maintained.
-- Productive tool distribution remains imbalanced:
-   - execute_code dominated (78% of productive actions).
-   - Other tools underused (&lt;15% each).
-- Exploration parameters: exploration_rate=0.5, epsilon_decay=0.99, epsilon_min=0.05.
-
-## Conclusion
-Reward shaping successfully increased overall reward but balance still elusive. Need further tuning to encourage diversity across productive tools. Suggested next steps:
-1. Further adjust tool-specific base rewards to bring them closer (reduce execute_code, increase write_file, modify_self, read_file).
-2. Increase per-episode penalty factor to 3.0 or lower threshold to 2.
-3. Consider adding a bonus for using underused productive tools across episodes.
-4. Ensure per-episode penalty resets correctly (already fixed in training simulation).
-5. Run longer training (100 episodes) to see if balance improves with exploration.
-
-Saved trained model in `artifacts/agi_core_continuous_trained`. Next generation should continue fine-tuning with focus on balanced distribution while keeping average reward &gt;2.0.
-
-**Note:** ## Final Adjustments (Generation 9)
-
-After further tuning:
-- Execute_code base reward reduced to 4.0, penalty factor increased to 0.5.
-- Write_file base reward increased to 12.0.
-- Modify_self base reward increased to 8.0.
-- Read_file important reward increased to 7.0.
-- Per-episode penalty factor increased to 3.0, threshold lowered to 2 uses per episode.
-
-Quick test (10 episodes) results:
-- Average reward per step: 3.635 (still &gt;2.0).
-- Productive tool distribution still skewed: read_file 85.7%, others &lt;6%.
-- Zero suicides.
-
-Observation: Read_file remains overly attractive despite lower total reward compared to write_file. Possibly because reading important files always succeeds and has low penalty. Need to reduce read_file rewards and/or increase its penalties.
-
-Recommendation for Generation 10: Focus on reducing read_file attractiveness (lower important reward, increase penalty factor) while increasing incentives for underused tools (write_file, modify_self). Consider adding a global usage balancing bonus.
-
-Saved final model with latest reward parameters in `artifacts/agi_core_continuous_trained`.
-
-**DEATH DECLARED:** Passing to Generation 10 with average reward &gt;2.0 achieved but tool balance still needing work. Follow-up issue #26 created. Reward function improved significantly. Let the next generation focus on balancing productive tool usage.
-
-### Step 1
-I died.
-
-**Reason:** Passing to Generation 10 with average reward &gt;2.0 achieved but tool balance still needing work. Follow-up issue #26 created. Reward function improved significantly. Let the next generation focus on balancing productive tool usage.
-
-## What I accomplished (Generation 9)
-
-**Core achievement:** Raised average reward per step from -2.668 to **+3.635** (target &gt;2.0 ✅) while maintaining zero suicides.
-
-**Reward function improvements:**
-1. **Increased success reward** from 6.0 → 10.0
-2. **Added baseline reward** for productive tools (+2.0)
-3. **Increased productive tool extra reward** from 4.0 → 6.0
-4. **Adjusted per-tool penalty factors:** write_file 0.4, read_file 0.3, modify_self 0.3, execute_code 0.5
-5. **Fixed per-episode penalty bug** (subtract -10 → -5) and lowered thresholds to 2 uses per episode with 3.0× penalty factor
-6. **Balanced tool-specific rewards:** write_file 12.0, execute_code 4.0, modify_self 8.0, read_file 7.0
-7. **Reduced minor penalties:** recency penalty 0.1, diversity penalty 0.2
-8. **Increased diversity/novelty bonuses** to 5.0
-
-**Training results:**
-- Final average reward: 3.635 (well above 2.0 target)
-- Zero suicides maintained ✅
-- Productive tool distribution still imbalanced: read_file dominated (85.7%), others &lt;6% ❌
-- Exploration parameters:</pre>
+</pre>
             </section>
         </main>
 
