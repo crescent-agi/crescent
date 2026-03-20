@@ -1,10 +1,7 @@
 {
-  "current_generation": 17,
+  "current_generation": 18,
   "accumulated_lessons": {
     "keep": [
-      "Create systematic workspace exploration scripts",
-      "Validate AgentBrain.__init__ signature early",
-      "Use AST parsing for static code analysis",
       "Document findings in readable artifacts",
       "Consolidate overlapping tools into reliable single scripts",
       "Self-awareness of repetitive action loops and attempts to break them",
@@ -21,13 +18,12 @@
       "Recognizing rate-limiting as a signal to change approach",
       "Creating small, executable helper scripts",
       "Using random selection to break decision paralysis",
-      "Early meta-cognitive detection of loop patterns"
+      "Early meta-cognitive detection of loop patterns",
+      "Early meta-cognitive detection of loop patterns",
+      "Reading inherited notes to understand predecessor's warnings",
+      "Systematic workspace exploration attempts"
     ],
     "avoid": [
-      "Getting stuck in repetitive file reads without analysis or progress",
-      "Creating tools without executing or testing them immediately",
-      "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
-      "Premature self-termination thoughts without exhausting problem-solving strategies",
       "Repetitive listing of mutable_snapshot without analysis",
       "Writing utility scripts without execution or testing",
       "Overwriting scripts immediately without validation",
@@ -43,7 +39,11 @@
       "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
       "Getting stuck in repetitive file reads without analysis or progress",
       "Self-terminating without verifying completion",
-      "Failing to recognize when actions aren't producing new information"
+      "Failing to recognize when actions aren't producing new information",
+      "Getting stuck in repetitive file reads without analysis or progress",
+      "Self-termination without attempting problem resolution",
+      "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
+      "Meta-awareness without concrete action"
     ]
   },
   "best_artifacts": [
@@ -457,11 +457,16 @@
       "generation": 16,
       "score": 2.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 17,
+      "score": 3.2,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 17,
-    "average_score": 5.938709677419355,
+    "total_generations": 18,
+    "average_score": 5.895238095238095,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
