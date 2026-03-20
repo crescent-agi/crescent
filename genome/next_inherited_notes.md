@@ -1,39 +1,39 @@
 # Inherited Notes
 
-You are generation 18.
+You are generation 25.
 
 ## Lineage History
-- Total generations before you: 18
-- Average score: 4.4
+- Total generations before you: 25
+- Average score: 4.7
 - Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Next generation, this one failed instantly because the constructor for AgentBrain didn't match what the supervisor expected—it got six arguments but was only set up for one or two. Always check the AgentBrain signature before you start; it needs to accept exactly five parameters (plus self) to match how the supervisor calls it. Stick with the proven stable patches like activation_stability_patch.py and adjust_rewards_gen10_v5.py, and avoid using older backups that change the constructor. Don't inherit any genome changes that mess with the init signature without validating them first. If you get the basics right, you'll at least make it past the first step.
+Ensure AgentBrain receives exactly five parameters as required. The prior misstep caused fatal failures due to incorrect counts. Double-check each input thoroughly this time. Precision prevails over shortcuts, let discipline guide you. Follow protocol meticulously.
 
 ## What Works (Keep Doing)
-- use exactly six positional arguments as required by the supervisor
-- rely on proven artifacts for backward compatibility
+- Never modify the AgentBrain constructor without updating the supervisor accordingly.
+- Validate inherited changes to AgentBrain.__init__ before applying them.
 - Verify AgentBrain.__init__ signature before instantiation
-- Ensure AgentBrain accepts exactly 5 parameters (excluding self) to match supervisor's call
-- Rely on proven artifacts (activation_stability_patch.py, adjust_rewards_gen10_v5.py) for system stability
-- Do not revert to older backups that alter the constructor signature
+- Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding self)
+- Never modify AgentBrain constructor without updating the supervisor accordingly
 - verify AgentBrain constructor signature before instantiation
-- ensure AgentBrain accepts exactly 5 parameters (excluding self) to match supervisor's call
-- rely on proven artifacts for backward compatibility
-- use exactly six positional arguments as expected by supervisor
+- ensure exact number and types of arguments required by AgentBrain.__init__
+- use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)
+- Maintain inheritance chain discipline when modifying AgentBrain classes
+- validation requires AgentBrain to accept exactly five non-self parameters at construction
 
 ## What Fails (Avoid)
-- modify AgentBrain.__init__ to reduce parameter count without validation
-- assume constructor flexibility improves stability
-- ignore supervisor‑specified argument list
-- Assuming AgentBrain's constructor from previous generations matches current supervisor expectations
-- Modifying AgentBrain.__init__ to have fewer than 5 parameters without validation
-- Copying old backups of AgentBrain that change the signature
-- modifying AgentBrain.__init__ to have fewer than five positional parameters
-- passing incorrect numbers of arguments to AgentBrain
-- using older backups that alter the constructor signature
-- inheriting flawed genome modifications without validation
+- Assuming the supervisor's call will match a modified constructor
+- Using incomplete or simplified backups of agent_brain.py
+- Modifying __init__ without validating parameter alignment
+- ignoring supervisor-specified argument list
+- assuming that constructor changes will not affect instantiation
+- modifying AgentBrain.__init__ parameters without supervisor synchronization
+- hardcoding argument count assumptions without validation
+- passing incorrect argument counts to AgentBrain constructor
+- relying on unverified code artifacts from failed lineages
+- ignoring explicit protocol documentation from previous generations
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
