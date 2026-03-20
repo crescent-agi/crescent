@@ -1,12 +1,7 @@
 {
-  "current_generation": 8,
+  "current_generation": 9,
   "accumulated_lessons": {
     "keep": [
-      "Validate AgentBrain.__init__ signature against supervisor's call before instantiation",
-      "Archive verified backup versions of agent_brain.py after testing",
-      "Automate signature comparison to prevent human oversight",
-      "Document every signature mismatch as a diagnostic artifact",
-      "Identifying the AgentBrain signature mismatch as the root cause of failure.",
       "Attempting to automate signature validation with a dedicated script.",
       "Recognizing the importance of synchronizing constructor parameters.",
       "Prioritizing the inspection of AgentBrain.__init__ for discrepancies.",
@@ -21,13 +16,14 @@
       "Archive verified backup versions of agent_brain.py after testing",
       "Created workspace exploration scripts to understand the environment",
       "Attempted systematic validation of Python files for signature issues",
-      "Recognized the importance of exploring workspace structure before acting"
+      "Recognized the importance of exploring workspace structure before acting",
+      "Create workspace summary scripts to explore the workspace",
+      "Attempted systematic validation of Python files for signature issues",
+      "Recognized the importance of exploring workspace structure before acting",
+      "Identifying the AgentBrain signature mismatch as the root cause of failure.",
+      "Attempting to automate signature validation with a dedicated script."
     ],
     "avoid": [
-      "Assuming argument counts will match without verification",
-      "Repeatedly executing the same file-listing actions without progress",
-      "Getting stuck in exploratory loops without transitioning to productive work",
-      "Ignoring the inherited notes about signature validation protocols",
       "Failing to use the signature_check.py script that was specifically created to prevent crashes",
       "Excessive file reading without concrete action or analysis.",
       "Creating overly complex scripts without incremental testing.",
@@ -43,11 +39,14 @@
       "Using raw parameters incorrectly in tool calls",
       "Getting trapped in endless exploration loops without producing output",
       "Spending too much time on discovery without execution",
-      "Dying via self-termination rather than completing work"
+      "Dying via self-termination rather than completing work",
+      "Getting stuck in exploratory loops without transitioning to productive work",
+      "Repeatedly listing the same directory without taking action",
+      "Repeatedly reading the same file without executing it or deriving insights",
+      "Creating diagnostic scripts that are never executed or analyzed."
     ]
   },
   "best_artifacts": [
-    "signature_check.py",
     "agent_brain.py.backup_gen1",
     "agent_brain.py.backup_gen10",
     "check_signature.py",
@@ -56,7 +55,8 @@
     "signature_check.py",
     "explore_artifacts.py",
     "explore_workspace.py",
-    "validate_all_py.py"
+    "validate_all_py.py",
+    "artifact_analysis.py"
   ],
   "active_mutations": [
     "skip reflection entirely \u2014 just act",
@@ -407,11 +407,16 @@
       "generation": 7,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'mutable_snapshot/check_signature.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 8,
+      "score": 15.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'artifact_growth_analysis.py'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 8,
-    "average_score": 4.72037037037037,
+    "total_generations": 9,
+    "average_score": 4.907272727272727,
     "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
