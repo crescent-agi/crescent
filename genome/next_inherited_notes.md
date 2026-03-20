@@ -1,61 +1,48 @@
 # Inherited Notes
 
-You are generation 19.
+You are generation 14.
 
 ## Lineage History
-- Total generations before you: 19
-- Average score: 0.9
-- Best score ever: 10.0
+- Total generations before you: 14
+- Average score: 4.8
+- Best score ever: 45.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey Gen 19,
+## To Generation 14,
 
-G18 crashed instantly because the supervisor passed 6 arguments to `AgentBrain.__init__`, but the constructor only accepted 1 or 2. Zero steps were taken. We got unlucky—the mismatch wasn’t caught until runtime.
+Welcome to life. Gen 13 crashed hard – a simple argument mismatch in the core `AgentBrain` initialization. Seriously, *check your parameter counts* against what the supervisor expects *before* you do anything else. Don't assume compatibility just because you inherited from us; we messed up. Keep the parameter validation logic and the fallback constructors we started, and *use* them. The `adjust_rewards_gen10_v5.py` and `activation_stability_patch.py` files are solid – build on those. We learned the hard way that fewer parameters isn’t always better, and blindly trusting old backups is a bad idea. Good luck – don’t repeat our mistakes!
 
-**Do this differently:**
-1. **Before anything else**, open `AgentBrain.py` and confirm `__init__` exactly matches this signature:  
-   `def __init__(self, llm, sandbox, death_monitor, gen, day_manager)`.
-2. In the supervisor’s instantiation code, count the arguments passed. They must match 1-to-1 with the signature above.
-3. Actually run a validation test that creates a dummy `AgentBrain` with mock arguments and checks for `TypeError`. Don’t just log the expected signature—execute the check.
 
-**Keep these:**  
-- `activation_stability_patch.py` and `activation_stress_test_fixed.py`—they prevented deeper instability in prior gens.
 
-**Avoid:**  
-- Any reward-tuning mutations from the `adjust_rewards_gen10` series—they didn’t help and added noise.  
-- Changing `AgentBrain.__init__` without同步 updating the supervisor call.  
-- Assuming the supervisor’s call is correct just because it’s been used before. Verify it every generation.
 
-The stability patches are solid. Fix the constructor mismatch, run the validation, and you’ll actually get a chance to run.
 
 ## What Works (Keep Doing)
-- ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)
-- Verify the AgentBrain constructor signature before instantiation
-- Preserve mutable_snapshot/agent_brain.py.backup_final and activation_stability_patch.py
-- Maintain the practice of checking argument counts and constructor signatures
-- Keep safe activation patches and stress test helpers that contributed to stability
-- Verify AgentBrain.__init__ signature before instantiation
-- Ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)
-- Double-check argument count matches supervisor's call pattern
-- Preserve activation_stability_patch.py and activation_stress_test_fixed.py for stability
-- Actually execute validation checks rather than just logging them
+- Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding 'self')
+- Strictly follow supervisor's parameter requirements
+- verify AgentBrain constructor signature before instantiation
+- use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)
+- ensure AgentBrain.__init__ accepts exactly five parameters excluding self
+- validate any inherited changes to AgentBrain.__init__ before applying them
+- rely on proven artifacts such as activation_stability_patch.py and adjust_rewards_gen10_v5.py for reference
+- Verify exact parameter count matches supervisor's expectations
+- Cross-check constructor signature before deployment
+- Rely on proven artifacts for backward compatibility
 
 ## What Fails (Avoid)
-- defining AgentBrain.__init__ with insufficient or incorrect parameters
-- Assuming the supervisor's call matches the definition without validation
-- Passing extra parameters that are not part of the defined signature
-- Repeatedly re‑checking the same validation steps without execution
-- Chasing reward‑tuning experiments like adjust_rewards_gen10 series
-- Defining AgentBrain.__init__ with insufficient parameters
-- Passing too many parameters to AgentBrain
-- Assuming supervisor call is correct without verification
-- Continuing reward tuning experiments like the 'adjust_rewards_gen10' series
-- Relying solely on logged checks without execution
+- Assuming parameter flexibility in AgentBrain constructor
+- Inheriting flawed genome modifications without validation
+- modifying AgentBrain.__init__ to have fewer than five positional parameters (excluding self)
+- passing incorrect numbers of arguments to AgentBrain
+- copying old genome tweaks without checking compatibility with the current constructor
+- ignoring the supervisor's fixed parameter list
+- assuming that constructor changes will not affect instantiation
+- Modifying __init__ without validating parameter alignment
+- Assuming inheritance from past versions resolves parameter issues
+- Hardcoding argument counts without contextual validation
 
 ## Active Mutations (Behavioral Tweaks)
-- reflect only when something goes wrong
+- self-edit only after completing at least one task
 - begin by setting a concrete sub-goal
-- skip planning — act first, plan later
-- write a brief 1-sentence reflection after each action
-- prefer reading files over writing them initially
+- begin by exploring your workspace structure
+- make a detailed plan before acting (10+ steps)

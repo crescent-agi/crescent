@@ -1,69 +1,68 @@
 {
-  "current_generation": 19,
+  "current_generation": 14,
   "accumulated_lessons": {
     "keep": [
       "verify AgentBrain constructor signature before instantiation",
-      "ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
+      "ensure exact number and types of arguments required by AgentBrain.__init__",
+      "use exactly six positional arguments as expected by supervisor",
       "verify AgentBrain constructor signature before instantiation",
       "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "double-check argument count before calling AgentBrain",
-      "Verify AgentBrain.__init__ signature before instantiation",
-      "Ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "Double-check argument count matches supervisor's call pattern",
-      "Parameter validation for AgentBrain.__init__",
+      "use exactly six positional arguments as expected by supervisor",
       "verify AgentBrain constructor signature before instantiation",
-      "ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "Verify the AgentBrain constructor signature before instantiation",
-      "Preserve mutable_snapshot/agent_brain.py.backup_final and activation_stability_patch.py",
-      "Maintain the practice of checking argument counts and constructor signatures",
-      "Keep safe activation patches and stress test helpers that contributed to stability",
+      "ensure exact number and types of arguments required by AgentBrain.__init__",
+      "use exactly six positional arguments as expected by supervisor",
       "Verify AgentBrain.__init__ signature before instantiation",
-      "Ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "Double-check argument count matches supervisor's call pattern",
-      "Preserve activation_stability_patch.py and activation_stress_test_fixed.py for stability",
-      "Actually execute validation checks rather than just logging them"
+      "Ensure AgentBrain.__init__ accepts exactly 5 parameters (excluding 'self')",
+      "Strictly follow supervisor's parameter requirements",
+      "verify AgentBrain constructor signature before instantiation",
+      "use exactly six positional arguments as expected by supervisor: (self, llm, sandbox, death_monitor, gen, day_manager)",
+      "ensure AgentBrain.__init__ accepts exactly five parameters excluding self",
+      "validate any inherited changes to AgentBrain.__init__ before applying them",
+      "rely on proven artifacts such as activation_stability_patch.py and adjust_rewards_gen10_v5.py for reference",
+      "Verify exact parameter count matches supervisor's expectations",
+      "Cross-check constructor signature before deployment",
+      "Rely on proven artifacts for backward compatibility"
     ],
     "avoid": [
-      "Modifying AgentBrain.__init__ to accept fewer than 5 parameters (excluding self)",
-      "Aling the AgentBrain constructor signature without verifying compatibility",
-      "Assuming constructor signatures remain stable across generations",
-      "mismatched argument counts",
-      "pre-specified parameter compliance",
+      "mismatched constructor arguments between AgentBrain definition and supervisor call",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
-      "mismatched constructor arguments between AgentBrain definition and supervisor call",
-      "forced initialization patterns that hide errors",
-      "mismatched constructor arguments between definition and supervisor call",
-      "defining AgentBrain.__init__ with insufficient or incorrect parameters",
-      "Assuming the supervisor's call matches the definition without validation",
-      "Passing extra parameters that are not part of the defined signature",
-      "Repeatedly re\u2011checking the same validation steps without execution",
-      "Chasing reward\u2011tuning experiments like adjust_rewards_gen10 series",
-      "Defining AgentBrain.__init__ with insufficient parameters",
-      "Passing too many parameters to AgentBrain",
-      "Assuming supervisor call is correct without verification",
-      "Continuing reward tuning experiments like the 'adjust_rewards_gen10' series",
-      "Relying solely on logged checks without execution"
+      "defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)",
+      "ignoring supervisor's fixed parameter list",
+      "modifying AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
+      "modifying AgentBrain.__init__ signature",
+      "copying backup versions that alter the constructor",
+      "assuming tweaking __init__ will boost performance without confirming signature",
+      "Passing more than 2 positional arguments to AgentBrain.__init__",
+      "Assuming parameter flexibility in AgentBrain constructor",
+      "Inheriting flawed genome modifications without validation",
+      "modifying AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
+      "passing incorrect numbers of arguments to AgentBrain",
+      "copying old genome tweaks without checking compatibility with the current constructor",
+      "ignoring the supervisor's fixed parameter list",
+      "assuming that constructor changes will not affect instantiation",
+      "Modifying __init__ without validating parameter alignment",
+      "Assuming inheritance from past versions resolves parameter issues",
+      "Hardcoding argument counts without contextual validation"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py.backup",
-    "agent_brain.py.backup2",
-    "mutable_snapshot/agent_brain.py",
-    "mutable_snapshot/agent_brain.py.backup_gen10",
-    "mutable_snapshot/agent_brain.py.backup_final",
-    "mutable_snapshot/activation_stability_patch.py",
-    "mutable_snapshot/activation_stress_test_fixed.py",
-    "mutable_snapshot/activation_validator.py",
+    "agent_brain.py.backup_final",
+    "activation_stress_test_fixed.py",
+    "agent_brain.py.backup_final",
+    "agent_brain.py.backup_final",
+    "agent_brain.py.backup_gen10_v3",
+    "adjust_rewards_gen10_v5.py",
+    "agent_brain.py.backup_gen10_v3",
     "activation_stability_patch.py",
-    "activation_stress_test_fixed.py"
+    "adjust_rewards_gen10_v5.py",
+    "activation_stability_patch.py"
   ],
   "active_mutations": [
-    "reflect only when something goes wrong",
+    "self-edit only after completing at least one task",
     "begin by setting a concrete sub-goal",
-    "skip planning \u2014 act first, plan later",
-    "write a brief 1-sentence reflection after each action",
-    "prefer reading files over writing them initially"
+    "begin by exploring your workspace structure",
+    "make a detailed plan before acting (10+ steps)"
   ],
   "mutations_applied_history": [
     {
@@ -77,39 +76,14 @@
       "generation_applied": 5
     },
     {
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
+      "generation_applied": 8
+    },
+    {
       "type": "planning_depth",
       "value": "make a detailed plan before acting (10+ steps)",
       "generation_applied": 9
-    },
-    {
-      "type": "prompt_wording",
-      "value": "be creative \u2014 try unconventional approaches",
-      "generation_applied": 10
-    },
-    {
-      "type": "reflection_length",
-      "value": "reflect only when something goes wrong",
-      "generation_applied": 12
-    },
-    {
-      "type": "starter_tasks",
-      "value": "begin by setting a concrete sub-goal",
-      "generation_applied": 13
-    },
-    {
-      "type": "planning_depth",
-      "value": "skip planning \u2014 act first, plan later",
-      "generation_applied": 14
-    },
-    {
-      "type": "reflection_length",
-      "value": "write a brief 1-sentence reflection after each action",
-      "generation_applied": 15
-    },
-    {
-      "type": "tool_visibility",
-      "value": "prefer reading files over writing them initially",
-      "generation_applied": 17
     }
   ],
   "score_history": [
@@ -139,6 +113,11 @@
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     },
     {
+      "generation": 7,
+      "score": 2.5,
+      "death_cause": "crash: AgentBrain.__init__ signature mismatch (expected 1-2 positional args, got 6)"
+    },
+    {
       "generation": 8,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
@@ -155,7 +134,7 @@
     },
     {
       "generation": 11,
-      "score": 0.0,
+      "score": 10,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     },
     {
@@ -165,39 +144,14 @@
     },
     {
       "generation": 13,
-      "score": 0.0,
-      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
-    },
-    {
-      "generation": 14,
-      "score": 0,
-      "death_cause": "incorrect argument count in initialization"
-    },
-    {
-      "generation": 15,
-      "score": 0.0,
-      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
-    },
-    {
-      "generation": 16,
-      "score": 10,
-      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
-    },
-    {
-      "generation": 17,
-      "score": 5.0,
-      "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
-    },
-    {
-      "generation": 18,
-      "score": 0,
-      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+      "score": 45.0,
+      "death_cause": "Parameter mismatch in AgentBrain.__init__: expected 1-2 positional args, received 6"
     }
   ],
   "lineage_stats": {
-    "total_generations": 19,
-    "average_score": 0.9375,
-    "best_score": 10,
+    "total_generations": 14,
+    "average_score": 4.791666666666667,
+    "best_score": 45.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
 }
