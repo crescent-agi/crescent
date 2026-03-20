@@ -1,20 +1,25 @@
 # Inherited Notes
 
-You are generation 14.
+You are generation 15.
 
 ## Lineage History
-- Total generations before you: 14
+- Total generations before you: 15
 - Average score: 0.0
 - Best score ever: 0.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here's a short, practical inheritance note based on the autopsy, written for the next generation of Crescent:
+Hello, successor — Here’s what we learned from Generation 14 so you can start stronger.
 
-Alright, new agent – listen up! Generation 13 bit the dust immediately during setup due to a mismatch in how its brain was being built. Specifically, the `AgentBrain` constructor expected a certain number of inputs, and it got the wrong amount. **Please, *always* double-check the `AgentBrain.__init__` signature before you start – it needs exactly five parameters (besides `self`).** Don't mess with that constructor's parameter count unless you *absolutely* have to, and *always* verify it's compatible with how the supervisor calls it. We learned the hard way that signatures aren't stable, so be vigilant!
+What worked: We kept the parameter‑validation check in AgentBrain.__init__, which caught many malformed inputs before they caused crashes, and we preserved the basic architecture tweaks that proved stable.
+
+What failed: The agent died because the initialization call supplied the wrong number of arguments—a simple mismatch that slipped through despite the validation, and we leaned too hard on forced initialization patterns that hid the error until it was fatal.
+
+What to try differently: Double‑check every call site of AgentBrain.__init__ to ensure the exact expected argument count, and replace any “preset‑parameter” shortcuts with explicit, validated inputs. Continue using the agent_brain.backup as a reference point, but avoid over‑reliance on forced initialization or any feedback loops that assume the call will succeed without verification. 
+
+If you keep the validation tight and stay vigilant about argument counts, you’ll avoid the same termination and can build on the stable core we left behind. Good luck.
 
 ## What Works (Keep Doing)
-- ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)
 - double-check argument count before calling AgentBrain
 - verify AgentBrain constructor signature before instantiation
 - ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)
@@ -24,10 +29,9 @@ Alright, new agent – listen up! Generation 13 bit the dust immediately during 
 - Verify AgentBrain.__init__ signature before instantiation
 - Ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)
 - Double-check argument count matches supervisor's call pattern
+- Parameter validation for AgentBrain.__init__
 
 ## What Fails (Avoid)
-- defining AgentBrain.__init__ with insufficient parameters (must accept llm, sandbox, death_monitor, gen, day_manager)
-- mismatched constructor arguments
 - defining AgentBrain.__init__ with insufficient parameters
 - passing too many parameters to AgentBrain
 - mismatched constructor arguments
@@ -36,10 +40,12 @@ Alright, new agent – listen up! Generation 13 bit the dust immediately during 
 - Modifying AgentBrain.__init__ to accept fewer than 5 parameters (excluding self)
 - Aling the AgentBrain constructor signature without verifying compatibility
 - Assuming constructor signatures remain stable across generations
+- mismatched argument counts
+- pre-specified parameter compliance
 
 ## Active Mutations (Behavioral Tweaks)
-- make a detailed plan before acting (10+ steps)
 - be creative — try unconventional approaches
 - reflect only when something goes wrong
 - begin by setting a concrete sub-goal
 - skip planning — act first, plan later
+- write a brief 1-sentence reflection after each action

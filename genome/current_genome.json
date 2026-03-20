@@ -1,8 +1,7 @@
 {
-  "current_generation": 14,
+  "current_generation": 15,
   "accumulated_lessons": {
     "keep": [
-      "Always verify the exact number and types of arguments required by AgentBrain.__init__ before instantiating it.",
       "verify AgentBrain constructor signature before instantiation",
       "verify AgentBrain constructor signature before instantiation",
       "Ensure AgentBrain.__init__ signature matches supervisor's expected parameters: (self, llm, sandbox, death_monitor, gen, day_manager)",
@@ -21,11 +20,10 @@
       "double-check argument count before calling AgentBrain",
       "Verify AgentBrain.__init__ signature before instantiation",
       "Ensure AgentBrain.__init__ accepts exactly (self, llm, sandbox, death_monitor, gen, day_manager)",
-      "Double-check argument count matches supervisor's call pattern"
+      "Double-check argument count matches supervisor's call pattern",
+      "Parameter validation for AgentBrain.__init__"
     ],
     "avoid": [
-      "mismatched constructor arguments between AgentBrain definition and supervisor call",
-      "Do not modify AgentBrain.__init__ to have fewer than five positional parameters (excluding self)",
       "mismatched constructor arguments",
       "passing too many parameters to AgentBrain",
       "mismatched constructor arguments between AgentBrain definition and supervisor call",
@@ -43,7 +41,9 @@
       "mismatched constructor arguments between AgentBrain definition and supervisor call",
       "Modifying AgentBrain.__init__ to accept fewer than 5 parameters (excluding self)",
       "Aling the AgentBrain constructor signature without verifying compatibility",
-      "Assuming constructor signatures remain stable across generations"
+      "Assuming constructor signatures remain stable across generations",
+      "mismatched argument counts",
+      "pre-specified parameter compliance"
     ]
   },
   "best_artifacts": [
@@ -52,14 +52,15 @@
     "agent_brain.py.backup_final",
     "activation_stress_test_fixed.py",
     "agent_brain.py.backup_final",
-    "activation_stress_test_fixed.py"
+    "activation_stress_test_fixed.py",
+    "agent_brain.backup"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "be creative \u2014 try unconventional approaches",
     "reflect only when something goes wrong",
     "begin by setting a concrete sub-goal",
-    "skip planning \u2014 act first, plan later"
+    "skip planning \u2014 act first, plan later",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -96,6 +97,11 @@
       "type": "planning_depth",
       "value": "skip planning \u2014 act first, plan later",
       "generation_applied": 14
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 15
     }
   ],
   "score_history": [
@@ -153,10 +159,15 @@
       "generation": 13,
       "score": 0.0,
       "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 14,
+      "score": 0,
+      "death_cause": "incorrect argument count in initialization"
     }
   ],
   "lineage_stats": {
-    "total_generations": 14,
+    "total_generations": 15,
     "average_score": 0.0,
     "best_score": 0.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
