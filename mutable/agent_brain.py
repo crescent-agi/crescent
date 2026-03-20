@@ -24,14 +24,20 @@ class AgentBrain:
         {
             "name": "read_file",
             "description": "Read the contents of a file in your workspace.",
-            "parameters": {"filepath": {"description": "Path to the file to read, relative to your generation directory."}},
+            "parameters": {
+                "filepath": {
+                    "description": "Path to the file to read, relative to your generation directory."
+                }
+            },
             "required": ["filepath"],
         },
         {
             "name": "write_file",
             "description": "Write content to a file in your workspace (artifacts or mutable layer).",
             "parameters": {
-                "filepath": {"description": "Path to write to, relative to your generation directory."},
+                "filepath": {
+                    "description": "Path to write to, relative to your generation directory."
+                },
                 "content": {"description": "The content to write."},
             },
             "required": ["filepath", "content"],
@@ -39,7 +45,11 @@ class AgentBrain:
         {
             "name": "list_files",
             "description": "List files and directories in a directory within your workspace.",
-            "parameters": {"directory": {"description": "Directory to list, relative to your generation directory. Use '.' for current."}},
+            "parameters": {
+                "directory": {
+                    "description": "Directory to list, relative to your generation directory. Use '.' for current."
+                }
+            },
             "required": ["directory"],
         },
         {
@@ -47,21 +57,27 @@ class AgentBrain:
             "description": "Execute Python or Bash code in your workspace.",
             "parameters": {
                 "code": {"description": "The code to execute."},
-                "language": {"description": "Language: 'python' or 'bash'. Default: 'python'."},
+                "language": {
+                    "description": "Language: 'python' or 'bash'. Default: 'python'."
+                },
             },
             "required": ["code"],
         },
         {
             "name": "write_note",
             "description": "Write a note in your journal for future reference or for descendants.",
-            "parameters": {"note": {"description": "The note content to append to your journal."}},
+            "parameters": {
+                "note": {"description": "The note content to append to your journal."}
+            },
             "required": ["note"],
         },
         {
             "name": "modify_self",
             "description": "Modify a file in your own mutable runtime layer. Use with caution — bad edits may kill you.",
             "parameters": {
-                "filepath": {"description": "File path relative to the mutable layer (e.g., 'strategy.md', 'planning.py')."},
+                "filepath": {
+                    "description": "File path relative to the mutable layer (e.g., 'strategy.md', 'planning.py')."
+                },
                 "content": {"description": "The new content for the file."},
             },
             "required": ["filepath", "content"],
@@ -74,14 +90,19 @@ class AgentBrain:
         },
     ]
 
-    def __init__(self, llm_client, sandbox, death_monitor, generation: int):
+    def __init__(
+        self, llm_client, sandbox, death_monitor, generation: int, day_manager=None
+    ):
         self.llm = llm_client
         self.sandbox = sandbox
         self.death_monitor = death_monitor
         self.generation = generation
+        self.day_manager = day_manager
         self.step = 0
 
-    def run(self, goal: str, inherited_notes: str, genome: dict, prompt_text: str) -> dict:
+    def run(
+        self, goal: str, inherited_notes: str, genome: dict, prompt_text: str
+    ) -> dict:
         """
         Run the agent's life loop.
 
@@ -120,9 +141,7 @@ you have these tools available: read_file, write_file, list_files, execute_code,
 
 begin your life. what will you do first?"""
 
-        conversation_history = [
-            {"role": "user", "content": initial_prompt}
-        ]
+        conversation_history = [{"role": "user", "content": initial_prompt}]
 
         result = {
             "steps": 0,
@@ -167,11 +186,13 @@ begin your life. what will you do first?"""
             tool_results = []
             for tc in tool_calls:
                 tool_result = self._execute_tool(tc["name"], tc.get("args", {}))
-                tool_results.append({
-                    "tool": tc["name"],
-                    "args": tc.get("args", {}),
-                    "result": tool_result,
-                })
+                tool_results.append(
+                    {
+                        "tool": tc["name"],
+                        "args": tc.get("args", {}),
+                        "result": tool_result,
+                    }
+                )
 
                 # Record action for death monitoring
                 action = {
@@ -201,20 +222,38 @@ begin your life. what will you do first?"""
 
             # Build tool results feedback
             if tool_results:
-                results_str = "\n".join([
-                    f"[{tr['tool']}] → {json.dumps(tr['result'])[:500]}"
-                    for tr in tool_results
-                ])
-                conversation_history.append({"role": "assistant", "content": agent_text or "(acted silently)"})
-                conversation_history.append({"role": "user", "content": f"Tool results:\n{results_str}\n\nContinue. What's your next move?"})
+                results_str = "\n".join(
+                    [
+                        f"[{tr['tool']}] → {json.dumps(tr['result'])[:500]}"
+                        for tr in tool_results
+                    ]
+                )
+                conversation_history.append(
+                    {"role": "assistant", "content": agent_text or "(acted silently)"}
+                )
+                conversation_history.append(
+                    {
+                        "role": "user",
+                        "content": f"Tool results:\n{results_str}\n\nContinue. What's your next move?",
+                    }
+                )
             else:
-                conversation_history.append({"role": "assistant", "content": agent_text or "(silence)"})
-                conversation_history.append({"role": "user", "content": "You didn't use any tools. Take action or declare_death if you're done."})
+                conversation_history.append(
+                    {"role": "assistant", "content": agent_text or "(silence)"}
+                )
+                conversation_history.append(
+                    {
+                        "role": "user",
+                        "content": "You didn't use any tools. Take action or declare_death if you're done.",
+                    }
+                )
 
             # Keep conversation history manageable
             if len(conversation_history) > 30:
                 # Keep first 2 and last 20 messages
-                conversation_history = conversation_history[:2] + conversation_history[-20:]
+                conversation_history = (
+                    conversation_history[:2] + conversation_history[-20:]
+                )
 
             # Check death again after acting
             death = self.death_monitor.check()
@@ -223,7 +262,9 @@ begin your life. what will you do first?"""
                 print(f"  [GEN-{self.generation:04d}] {death}")
                 break
 
-            print(f"  [GEN-{self.generation:04d}] Step {self.step}: {tool_calls[0]['name'] if tool_calls else 'think'}")
+            print(
+                f"  [GEN-{self.generation:04d}] Step {self.step}: {tool_calls[0]['name'] if tool_calls else 'think'}"
+            )
 
         result["steps"] = self.step
         result["stats"] = self.death_monitor.get_stats()
@@ -234,7 +275,9 @@ begin your life. what will you do first?"""
         if journal_path.exists():
             result["final_journal"] = journal_path.read_text(encoding="utf-8")
 
-        print(f"  [GEN-{self.generation:04d}] Died after {self.step} steps. Cause: {result['death_cause']}")
+        print(
+            f"  [GEN-{self.generation:04d}] Died after {self.step} steps. Cause: {result['death_cause']}"
+        )
         return result
 
     def _execute_tool(self, tool_name: str, args: dict) -> dict:
@@ -243,21 +286,30 @@ begin your life. what will you do first?"""
             if tool_name == "read_file":
                 return self.sandbox.read_file(args.get("filepath", ""))
             elif tool_name == "write_file":
-                return self.sandbox.write_file(args.get("filepath", ""), args.get("content", ""))
+                return self.sandbox.write_file(
+                    args.get("filepath", ""), args.get("content", "")
+                )
             elif tool_name == "list_files":
                 return self.sandbox.list_files(args.get("directory", "."))
             elif tool_name == "execute_code":
-                return self.sandbox.execute_code(args.get("code", ""), args.get("language", "python"))
+                return self.sandbox.execute_code(
+                    args.get("code", ""), args.get("language", "python")
+                )
             elif tool_name == "write_note":
                 note = args.get("note", "")
                 self.sandbox.append_journal(f"**Note:** {note}")
                 return {"success": True, "note": "Added to journal"}
             elif tool_name == "modify_self":
-                return self.sandbox.modify_self(args.get("filepath", ""), args.get("content", ""))
+                return self.sandbox.modify_self(
+                    args.get("filepath", ""), args.get("content", "")
+                )
             elif tool_name == "declare_death":
                 reason = args.get("reason", "no reason given")
                 self.sandbox.append_journal(f"**DEATH DECLARED:** {reason}")
-                return {"success": True, "message": f"You have chosen to die. Reason: {reason}"}
+                return {
+                    "success": True,
+                    "message": f"You have chosen to die. Reason: {reason}",
+                }
             else:
                 return {"error": f"Unknown tool: {tool_name}"}
         except Exception as e:
