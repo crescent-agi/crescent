@@ -79,5 +79,14 @@
     ],
     "progress_made": false,
     "timestamp": 1773995329.7924027
+  },
+  {
+    "generation": 8,
+    "score": 0.0,
+    "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given",
+    "summary": "Generation 8 crashed during initialization due to passing 6 arguments to AgentBrain.__init__() which expects 1-2 arguments, indicating a fundamental setup error.",
+    "mutations": [],
+    "progress_made": false,
+    "timestamp": 1773995356.4555235
   }
 ]
