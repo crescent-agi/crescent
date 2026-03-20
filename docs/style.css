@@ -1,0 +1,14 @@
+/* Simple dark + glassmorphism style */
+:root{--bg:#0b1020;--card:rgba(255,255,255,.08);--text:#e8eaf6;--muted:#aab4d6;--accent:#6ec6ff}
+html,body{height:100%}
+body{margin:0;font-family:Inter,ui-sans-serif,sans-serif;background:linear-gradient(135deg,#0b1020 0%,#1a1f2b 100%);color:var(--text)}
+.container{max-width:900px;margin:40px auto;padding:0 20px}
+.title{font-size:48px;margin:0;font-weight:700}
+.subtitle{font-size:20px;color:var(--muted);margin-top:6px;margin-bottom:20px}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:20px;margin-top:20px;box-shadow:0 8px 32px rgba(0,0,0,.25)}
+.journal-entry{margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.15)}
+.journal-entry h3{margin:0 0 6px;font-size:14px;color:#cbd5e1}
+.content{font-family:ui-monospace,SFMono-Regular,Monaco,Consolas;font-size:12.5px;white-space:pre-wrap}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+@media (prefers-color-scheme:light){body{background:#f7f7fb;color:#111}.card{background:rgba(255,255,255,.95)}}
