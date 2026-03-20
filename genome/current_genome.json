@@ -1,13 +1,7 @@
 {
-  "current_generation": 18,
+  "current_generation": 19,
   "accumulated_lessons": {
     "keep": [
-      "Don't tinker with core logic without rigorous testing",
-      "Double-check constructor parameters *before* deployment",
-      "test AgentBrain initialization before launch",
-      "avoid constructor signature mismatches",
-      "reflect on errors before making changes",
-      "don't tinker with core logic without rigorous testing",
       "double-check constructor parameters before deployment",
       "test AgentBrain initialization before launch",
       "avoid constructor signature mismatches",
@@ -21,14 +15,15 @@
       "double-check constructor parameters before deployment",
       "avoid constructor signature mismatches",
       "reflect on errors before making changes",
-      "isolated unit tests for AgentBrain initialization"
+      "isolated unit tests for AgentBrain initialization",
+      "verify exact AgentBrain constructor signature before passing arguments",
+      "use explicit keyword arguments to avoid positional errors",
+      "perform isolated unit tests for AgentBrain initialization",
+      "double-check constructor parameters before deployment",
+      "reflect on errors before making changes",
+      "track constructor argument usage to prevent mismatches"
     ],
     "avoid": [
-      "Ignoring explicit warnings in inherited notes",
-      "constructor signature mismatches",
-      "self-edit freely from the start",
-      "passing too many arguments to AgentBrain.__init__",
-      "ignoring explicit warnings in inherited notes",
       "not testing core logic changes rigorously",
       "passing too many arguments to AgentBrain.__init__",
       "constructor signature mismatches",
@@ -43,12 +38,15 @@
       "ignoring constructor signature warnings",
       "self-editing core classes without testing",
       "not applying lessons from inherited notes",
-      "deploying without runtime constructor validation"
+      "deploying without runtime constructor validation",
+      "passing more positional arguments than the constructor defines",
+      "ignoring TypeError warnings about argument count",
+      "skipping explicit constructor validation before deployment",
+      "modifying core classes without inline tests",
+      "ignoring explicit warnings in inherited notes"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/cognitive_architecture.cpython-311.pyc",
-    "mutable_snapshot/feature_extractor.cpython-311.pyc",
     "mutable_snapshot/__pycache__/agent_brain.cpython-311.pyc",
     "mutable_snapshot/__pycache__/agent_brain.cpython-312.pyc",
     "mutable_snapshot/agent_brain.cpython-312.pyc",
@@ -56,13 +54,16 @@
     "mutable_snapshot/neural_q_continuous_new.cpython-311.pyc",
     "mutable_snapshot/__pycache__/cognitive_architecture.cpython-311.pyc",
     "mutable_snapshot/__pycache__/neural_q_continuous_double_fixed.cpython-311.pyc",
-    "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc"
+    "mutable_snapshot/__pycache__/activation_stress_test_fixed.cpython-311.pyc",
+    "mutable_snapshot/activation_stress_test_fixed.cpython-311.pyc",
+    "mutable_snapshot/fixed_activation_stress_test.cpython-311.pyc"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
     "self-edit freely from the start",
     "begin by writing a plan in your journal",
-    "prioritize small wins over grand plans"
+    "prioritize small wins over grand plans",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -84,6 +85,11 @@
       "type": "prompt_wording",
       "value": "prioritize small wins over grand plans",
       "generation_applied": 14
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 19
     }
   ],
   "score_history": [
@@ -171,11 +177,16 @@
       "generation": 17,
       "score": 1.4,
       "death_cause": "TypeError: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
+    },
+    {
+      "generation": 18,
+      "score": 5.2,
+      "death_cause": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
     }
   ],
   "lineage_stats": {
-    "total_generations": 18,
-    "average_score": 1.4058823529411764,
+    "total_generations": 19,
+    "average_score": 1.6166666666666665,
     "best_score": 10,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
