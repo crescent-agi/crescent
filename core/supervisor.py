@@ -37,8 +37,12 @@ class Supervisor:
         self.publisher = Publisher(config, base_dir)
         self.day_manager = DayManager(config, self.llm, base_dir)
 
-        self.genome_path = self.base_dir / config["paths"]["genome_dir"] / "current_genome.json"
-        self.lineage_path = self.base_dir / config["paths"]["genome_dir"] / "lineage.jsonl"
+        self.genome_path = (
+            self.base_dir / config["paths"]["genome_dir"] / "current_genome.json"
+        )
+        self.lineage_path = (
+            self.base_dir / config["paths"]["genome_dir"] / "lineage.jsonl"
+        )
         self.mutable_dir = self.base_dir / config["paths"]["mutable_dir"]
         self.seeds_dir = self.base_dir / config["paths"]["seeds_dir"]
         self.runs_dir = self.base_dir / config["paths"]["runs_dir"]
@@ -55,7 +59,9 @@ class Supervisor:
         try:
             while True:
                 if self.day_manager.is_day_over():
-                    print("\n[SUPERVISOR] Day is over. Triggering end-of-day sequence...")
+                    print(
+                        "\n[SUPERVISOR] Day is over. Triggering end-of-day sequence..."
+                    )
                     self._end_of_day()
                     self.day_manager.wait_for_new_day()
                     continue
@@ -75,6 +81,7 @@ class Supervisor:
         except Exception as e:
             print(f"\n[SUPERVISOR] Fatal error: {e}")
             import traceback
+
             traceback.print_exc()
 
     def _run_generation(self):
@@ -168,12 +175,18 @@ class Supervisor:
 
         score = eval_result["autopsy"].get("score", 0)
         mutations = distill_result.get("mutations_applied", [])
-        mutations_str = ", ".join(m.get("value", "")[:40] for m in mutations) if mutations else "none"
-        print(f"  [GEN-{gen:04d}] Score: {score:.1f} | Death: {death_cause[:50]} | Mutations: {mutations_str}")
+        mutations_str = (
+            ", ".join(m.get("value", "")[:40] for m in mutations)
+            if mutations
+            else "none"
+        )
+        print(
+            f"  [GEN-{gen:04d}] Score: {score:.1f} | Death: {death_cause[:50]} | Mutations: {mutations_str}"
+        )
 
         self.current_generation = gen + 1
         print(f"  [GEN-{gen:04d}] Publishing latest state to GitHub...")
-        self.publisher.publish(self.current_generation)
+        self.publisher.publish()
         return "completed"
 
     def _end_of_day(self):
@@ -182,7 +195,7 @@ class Supervisor:
         self.day_manager.write_daily_journal(self.current_generation)
 
         print("[SUPERVISOR] Publishing to GitHub...")
-        self.publisher.publish(self.current_generation)
+        self.publisher.publish()
 
         print("[SUPERVISOR] Day complete.\n")
 
@@ -235,7 +248,11 @@ class Supervisor:
             self.runs_dir.mkdir(parents=True, exist_ok=True)
             return 1
 
-        existing = [d for d in self.runs_dir.iterdir() if d.is_dir() and d.name.startswith("gen-")]
+        existing = [
+            d
+            for d in self.runs_dir.iterdir()
+            if d.is_dir() and d.name.startswith("gen-")
+        ]
         if not existing:
             return 1
 

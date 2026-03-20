@@ -37,7 +37,7 @@ class Publisher:
         os.makedirs(self.journal_dir, exist_ok=True)
         os.makedirs(self.docs_dir, exist_ok=True)
 
-    def publish(self) -> None:
+    def publish(self, *_args, **_kwargs) -> None:
         """Public entry: load journal, render pages, copy CSS, push to git."""
         entries = self._load_journal_entries()
         latest = self._latest_entry(entries)
