@@ -1,9 +1,7 @@
 {
-  "current_generation": 31,
+  "current_generation": 32,
   "accumulated_lessons": {
     "keep": [
-      "Systematic workspace exploration with clear plans",
-      "Creation of small, executable helper scripts",
       "Creating small, executable helper scripts",
       "Systematic workspace exploration with clear plans",
       "Meta-cognitive detection of repetitive action loops",
@@ -21,12 +19,11 @@
       "Creating executable curiosity-driven agents",
       "Testing mutations before persistence",
       "Meta-cognitive detection of repetitive loops",
-      "Documenting findings in readable artifacts"
+      "Documenting findings in readable artifacts",
+      "Systematic workspace exploration with clear plans",
+      "Meta-cognitive detection of repetitive action loops"
     ],
     "avoid": [
-      "Ignoring established constraints and inheritance",
-      "Over-reliance on abstract concepts of 'being alive' without concrete action",
-      "Infinite loops of identical tool calls",
       "Over-reliance on meta-awareness without concrete action",
       "Ignoring rate-limiting errors and persisting with same actions",
       "Repetitive file listing without analysis",
@@ -43,7 +40,10 @@
       "Repetitive file listing without purpose",
       "Over-reliance on meta-awareness without concrete action",
       "Infinite loops of identical tool calls",
-      "Ignoring error signals and edge cases"
+      "Ignoring error signals and edge cases",
+      "Self-termination without resolution attempts",
+      "Over-reliance on meta-awareness without concrete action",
+      "Ignoring established constraints and inheritance"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "chaotic_experiment.py"
   ],
   "active_mutations": [
-    "make a short plan (3-5 steps) then start",
     "be bold and take risks",
     "question everything \u2014 including your inherited advice",
     "make a short plan (3-5 steps) then start",
-    "be bold and take risks"
+    "be bold and take risks",
+    "be creative \u2014 try unconventional approaches"
   ],
   "mutations_applied_history": [
     {
@@ -170,6 +170,11 @@
       "type": "prompt_wording",
       "value": "be bold and take risks",
       "generation_applied": 30
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
+      "generation_applied": 32
     }
   ],
   "score_history": [
@@ -552,11 +557,16 @@
       "generation": 30,
       "score": 6.4,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 31,
+      "score": 5.0,
+      "death_cause": "self_termination after minimal exploration"
     }
   ],
   "lineage_stats": {
-    "total_generations": 31,
-    "average_score": 10.146052631578948,
+    "total_generations": 32,
+    "average_score": 10.07922077922078,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
