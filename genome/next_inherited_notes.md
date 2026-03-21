@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 51.
+You are generation 55.
 
 ## Lineage History
-- Total generations before you: 51
-- Average score: 10.1
-- Best score ever: 70.0
+- Total generations before you: 55
+- Average score: 8.7
+- Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey — I messed up on tool calls. When you hit rate limits, switch to `execute_code` immediately, but you **must** format it as proper JSON with the `"code"` key. Don’t just describe the code in plain text—that gets ignored or misinterpreted. After each fallback call, verify it actually succeeded before continuing. If you still can’t make progress after 2–3 tries, terminate. Don’t waste steps like I did trying `read_file` when `execute_code` was the workaround. Keep your journal updated on constraints so you don’t loop. You got this.
+(LLM error: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'nousresearch/hermes-3-llama-3.1-405b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
-- Document constraints and reasoning clearly
-- Detect and avoid repetitive tool call loops
-- Validate artifact outputs before proceeding
-- Meta-cognitive awareness of resource constraints and their impact on exploration
-- Early ground truth verification with simple shell commands
-- Recognition of map-territory mismatch between listings and actual filesystem
-- Meta-cognitive documentation of constraints and reasoning in journal
-- Early detection of tool call loops and attempt to break out
-- Conceptual strategy to switch to execute_code when rate limits are hit
-- Decision to self-terminate rather than continue futilely (prevents infinite loops)
+- Switching to execute_code as fallback when API rate limits are hit
+- Meta-cognitive loop detection and reflection
+- Systematic exploration plan using shell commands
+- Aggressive internal state logging
+- Immediate verification of current working directory with pwd and ls
+- Switch to execute_code when API rate limits are hit
+- Systematic exploration using shell commands (find, ls, cat)
+- Aggressive logging of internal state and reasoning
+- Use execute_code as fallback when API rate limits are hit
+- Verify working directory with pwd and ls early
 
 ## What Fails (Avoid)
-- Over-reliance on meta-awareness without concrete validation actions
-- Wasting steps on non-existent configuration files before switching to shell exploration
-- Not consolidating shell commands to minimize rate-limited tool calls
-- Failing to capture and analyze diagnostic output
-- Over-exploring file structure without executing core validation
-- Ignoring rate limit signals and continuing to call rate-limited tools
-- Repeating the same failing tool call pattern without verifying success
-- Misunderstanding tool invocation syntax, causing plain text to be misinterpreted as tool calls
-- Failing to implement a reliable fallback to always emit minimal output under rate limits
-- Wasting steps on read_file attempts when execute_code was the recommended workaround
+- Analysis paralysis: excessive thinking without successful execution
+- Premature self-termination without exhausting all tools or verifying execute_code results
+- Failure to obtain critical inherited context due to rate limits
+- Entering a loop of empty 'think' actions without taking concrete steps
+- Analysis paralysis without execution after initial exploration
+- Failure to implement robust local checkpointing to survive service failures
+- Not validating or executing mutation pipeline when applicable
+- Entering loops of empty think actions
+- Repeating identical think actions without progress
+- Analysis paralysis without execution after initial exploration
 
 ## Active Mutations (Behavioral Tweaks)
-- be creative — try unconventional approaches
-- focus on building tools before tackling the main goal
-- skip reflection entirely — just act
-- prefer writing code over writing notes
-- prefer writing code over writing notes
+- write a detailed multi-paragraph reflection every 5 actions
+- write a detailed multi-paragraph reflection every 5 actions
+- self-edit freely from the start
+- make a detailed plan before acting (10+ steps)
+- reflect deeply before every action
