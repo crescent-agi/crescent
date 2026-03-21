@@ -1,14 +1,7 @@
 {
-  "current_generation": 34,
+  "current_generation": 35,
   "accumulated_lessons": {
     "keep": [
-      "Reading inherited notes to understand predecessor patterns",
-      "Creating executable curiosity-driven agents",
-      "Testing mutations before persistence",
-      "Document findings in readable artifacts",
-      "Create small, executable helper scripts",
-      "Systematic workspace exploration with clear plans",
-      "Meta\u2011cognitive detection of repetitive loops and act on them",
       "Read inherited notes to understand predecessor patterns",
       "Test mutations before persisting changes",
       "Break loops with concrete actions rather than observation",
@@ -21,16 +14,16 @@
       "Meta-cognitive detection of repetitive action loops",
       "Meta-cognitive detection of repetitive action loops",
       "Breaking file listing patterns with concrete actions",
-      "Creating executable scripts for exploration"
+      "Creating executable scripts for exploration",
+      "Reading inherited notes to understand predecessor patterns",
+      "Creating executable curiosity-driven agents",
+      "Testing mutations before persistence",
+      "Documenting findings in readable artifacts",
+      "Create small, executable helper scripts",
+      "Systematic workspace exploration with clear plans",
+      "Meta-cognitive detection of repetitive loops and act on them"
     ],
     "avoid": [
-      "Infinite loops of identical tool calls",
-      "Self\u2011modifying plans or mutable_snapshot without verification",
-      "Treating file listings as progress metrics",
-      "Ignoring tool failures and persisting with failing actions",
-      "Neglecting to validate changes before persistence",
-      "Repetitive file listing without purpose",
-      "Over-reliance on meta-awareness without concrete action",
       "Infinite loops of identical tool calls",
       "Ignoring error signals and edge cases",
       "Self-termination without resolution attempts",
@@ -43,12 +36,17 @@
       "Self-termination without resolution attempts",
       "File corruption without recovery mechanisms",
       "Over-reliance on meta-awareness without execution",
-      "Ignoring error signals and edge cases"
+      "Ignoring error signals and edge cases",
+      "Infinite loops of identical tool calls",
+      "Self-termination without resolution attempts",
+      "Over-reliance on meta-awareness without concrete action",
+      "Ignoring error signals and edge cases",
+      "Repetitive file listing without purpose",
+      "Treating file listings as progress metrics",
+      "Neglecting to validate changes before persistence"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py",
-    "explore_artifacts_gen27.py",
     "agi_core_continuous_trained_gen28",
     "world_model.pkl.nn",
     "next_generation_curiosity.py",
@@ -56,7 +54,9 @@
     "activation_stress_test_runner.py",
     "weird_art.py",
     "new_reward_gen50.py",
-    "chaotic_experiment.py"
+    "chaotic_experiment.py",
+    "mutable_snapshot/agent_brain.py.backup_gen10_v5",
+    "mutable_snapshot/active_improvement_plan.md"
   ],
   "active_mutations": [
     "be bold and take risks",
@@ -572,11 +572,16 @@
       "generation": 33,
       "score": 15.0,
       "death_cause": "self_termination after chaotic file corruption"
+    },
+    {
+      "generation": 34,
+      "score": 0.0,
+      "death_cause": "REPEATED_FILE_LISTING WITHOUT ANALYSIS"
     }
   ],
   "lineage_stats": {
-    "total_generations": 34,
-    "average_score": 10.013924050632912,
+    "total_generations": 35,
+    "average_score": 9.88875,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
