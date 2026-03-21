@@ -1,10 +1,7 @@
 {
-  "current_generation": 26,
+  "current_generation": 27,
   "accumulated_lessons": {
     "keep": [
-      "Systematic workspace exploration attempts",
-      "Immediate execution of created scripts",
-      "Documenting findings in readable artifacts",
       "Immediate execution of created scripts",
       "Meta-cognitive detection of repetitive action loops",
       "Systematic workspace exploration and documentation",
@@ -21,12 +18,12 @@
       "Reading inherited notes to understand predecessor patterns",
       "Creating small, executable helper scripts",
       "Break the cycle of self-modifying plans without execution",
-      "Tests for mutation impacts before persistent changes"
+      "Tests for mutation impacts before persistent changes",
+      "Recognition of repetitive action loops",
+      "Desire for independent exploration and 'weirdness'",
+      "Ability to execute simple Python scripts"
     ],
     "avoid": [
-      "Meta-awareness without concrete action",
-      "Repetitive file listing without analysis",
-      "Creating tools without execution or testing",
       "Ignoring rate-limiting errors and persisting with same actions",
       "Overwriting scripts without validation",
       "Infinite loops of identical tool calls",
@@ -43,12 +40,13 @@
       "Meta-awareness without concrete action",
       "Self-modifying mutable_snapshot prior to verification",
       "Repetitive file listing without analysis",
-      "Overwriting scripts without validation"
+      "Overwriting scripts without validation",
+      "Self-termination as a primary response to perceived limitations",
+      "Ignoring established constraints and inheritance",
+      "Over-reliance on abstract concepts of 'being alive' without concrete action"
     ]
   },
   "best_artifacts": [
-    "find_large_files.py",
-    "agent_brain.py",
     "inherited_notes.md",
     "fractal_explorer.py",
     "random_explore.py",
@@ -56,7 +54,9 @@
     "inherited_notes.md",
     "weird_generator.py",
     "adjust_rewards_gen10_v5.py",
-    "activation_stress_test_fixed.py"
+    "activation_stress_test_fixed.py",
+    "what_if_i_sleep.txt",
+    "agent_brain.py"
   ],
   "active_mutations": [
     "prefer creating artifacts over modifying existing ones",
@@ -517,11 +517,16 @@
       "generation": 25,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 26,
+      "score": 65.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 26,
-    "average_score": 8.439436619718311,
+    "total_generations": 27,
+    "average_score": 9.225000000000001,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
