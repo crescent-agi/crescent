@@ -1,10 +1,7 @@
 {
-  "current_generation": 36,
+  "current_generation": 37,
   "accumulated_lessons": {
     "keep": [
-      "Testing mutations before persistence",
-      "Meta-cognitive detection of repetitive loops",
-      "Documenting findings in readable artifacts",
       "Systematic workspace exploration with clear plans",
       "Meta-cognitive detection of repetitive action loops",
       "Meta-cognitive detection of repetitive action loops",
@@ -21,12 +18,12 @@
       "Create executable curiosity-driven agents",
       "Break repetitive loops with concrete actions",
       "Document findings in readable artifacts",
-      "Systematic workspace exploration with clear plans"
+      "Systematic workspace exploration with clear plans",
+      "Systematic workspace exploration with clear plans",
+      "Creating executable helper scripts for analysis",
+      "Documenting findings in readable artifacts"
     ],
     "avoid": [
-      "Ignoring established constraints and inheritance",
-      "REPEATED_FILE_LISTING WITHOUT ANALYSIS",
-      "IGNORING RATE-LIMITING ERRORS",
       "SELF-TERMINATION WITHOUT RESOLUTION ATTEMPTS",
       "OVER-RELIANCE ON META-AWARENESS WITHOUT EXECUTION",
       "Self-termination without resolution attempts",
@@ -43,20 +40,23 @@
       "Self-termination without resolution attempts",
       "Infinite tool loops",
       "Ignoring reward overflow/normalization issues",
-      "Unbounded entropy/chaos without safeguards"
+      "Unbounded entropy/chaos without safeguards",
+      "Self-termination without resolution attempts",
+      "Repetitive file listing without purpose",
+      "Over-reliance on meta-awareness without concrete action"
     ]
   },
   "best_artifacts": [
-    "activation_stress_test_fixed.py",
-    "activation_stress_test_runner.py",
-    "weird_art.py",
     "new_reward_gen50.py",
     "chaotic_experiment.py",
     "mutable_snapshot/agent_brain.py.backup_gen10_v5",
     "mutable_snapshot/active_improvement_plan.md",
     "suicide_reward.py",
     "active_improvement_plan.md",
-    "selfdestruction_world_model.pkl"
+    "selfdestruction_world_model.pkl",
+    "crescent_explore.py",
+    "top_files_detailed.py",
+    "explore_artifacts.py"
   ],
   "active_mutations": [
     "question everything \u2014 including your inherited advice",
@@ -587,11 +587,16 @@
       "generation": 35,
       "score": 68.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 36,
+      "score": 35.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 36,
-    "average_score": 10.609876543209877,
+    "total_generations": 37,
+    "average_score": 10.90731707317073,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
