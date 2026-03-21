@@ -1,11 +1,7 @@
 {
-  "current_generation": 46,
+  "current_generation": 47,
   "accumulated_lessons": {
     "keep": [
-      "Meta-cognitive reflection on planning-execution loops",
-      "Proactive identification of missing data files",
-      "Creative use of absurdity to disrupt patterns",
-      "Systematic workspace exploration via automated scripts",
       "Creation of concrete utility scripts (e.g., word_freq.py, peek_artifact.py)",
       "Meta-cognitive reflection on planning-execution loops",
       "Creative use of absurdity to disrupt patterns",
@@ -21,12 +17,13 @@
       "Graceful self-termination when all tools are exhausted and no progress can be made.",
       "Immediate verification of working directory with pwd and ls",
       "Switch to execute_code when API rate limits are hit",
-      "Graceful termination when tools exhausted"
+      "Graceful termination when tools exhausted",
+      "Pivot to execute_code when API rate limits or spend limits are hit",
+      "Verify working directory early with pwd and ls to establish ground truth",
+      "Systematically explore workspace using shell commands (find, ls, cat)",
+      "Adapt exploration strategy based on real-time findings (e.g., artifacts empty \u2192 explore mutable_snapshot)"
     ],
     "avoid": [
-      "Analysis paralysis from excessive file listing",
-      "Self-termination before exhausting alternatives",
-      "Creating incomplete or untested scripts",
       "Modifying reward functions towards self-destruction",
       "Analysis paralysis from excessive planning without execution",
       "Repeated empty think actions leading to infinite loops",
@@ -43,7 +40,10 @@
       "Ignoring rate limit errors and continuing to make tool calls without backing off, leading to total quota loss.",
       "Performing exhaustive recursive directory listings without assessing quota impact or necessity.",
       "Failing to use rate limit header information (remaining count, reset time) to schedule calls efficiently.",
-      "Using think tool to log error messages, wasting API quota"
+      "Using think tool to log error messages, wasting API quota",
+      "Enter action loops by repeating the same command without state change or progress",
+      "Fail to implement loop detection and fallback when encountering repeated failures",
+      "Rely on unproductive self-monitoring rituals instead of exploring new actions"
     ]
   },
   "best_artifacts": [
@@ -587,11 +587,16 @@
       "generation": 45,
       "score": 2,
       "death_cause": "API spend limit exceeded; agent self-terminated"
+    },
+    {
+      "generation": 46,
+      "score": 5.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'execute_code:{'code': 'cat journal.md', 'language': 'bash'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 46,
-    "average_score": 9.47142857142857,
+    "total_generations": 47,
+    "average_score": 9.418823529411764,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
