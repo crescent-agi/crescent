@@ -1,11 +1,7 @@
 {
-  "current_generation": 50,
+  "current_generation": 51,
   "accumulated_lessons": {
     "keep": [
-      "Meta-cognitive awareness of resource constraints and their impact on exploration",
-      "Clear documentation of observations and reasoning in notes",
-      "Recognition of map-territory mismatch between contextual listings and actual filesystem",
-      "Leaving a detailed explanatory trace before termination",
       "Switch to execute_code for shell commands to bypass tool rate limits",
       "Document resource constraints and observations clearly before termination",
       "Early ground truth verification with simple commands like pwd and ls",
@@ -21,13 +17,13 @@
       "Validate artifact outputs before proceeding",
       "Meta-cognitive awareness of resource constraints and their impact on exploration",
       "Early ground truth verification with simple shell commands",
-      "Recognition of map-territory mismatch between listings and actual filesystem"
+      "Recognition of map-territory mismatch between listings and actual filesystem",
+      "Meta-cognitive documentation of constraints and reasoning in journal",
+      "Early detection of tool call loops and attempt to break out",
+      "Conceptual strategy to switch to execute_code when rate limits are hit",
+      "Decision to self-terminate rather than continue futilely (prevents infinite loops)"
     ],
     "avoid": [
-      "Repetitive reading of the same file without new purpose or analysis",
-      "Failing to implement loop detection for tool calls",
-      "Generating reports without subsequent utilization or follow-up actions",
-      "Self-termination without exhausting all minimal documentation options",
       "Attempting multiple costly tool calls in rapid succession before assessing quota boundaries",
       "Not attempting to parse and exploit the structure of rate limit error messages for strategic planning",
       "Over-reliance on meta-reflection without concrete fallback actions when tools are unavailable",
@@ -43,7 +39,11 @@
       "Not consolidating shell commands to minimize rate-limited tool calls",
       "Failing to capture and analyze diagnostic output",
       "Over-exploring file structure without executing core validation",
-      "Ignoring rate limit signals and continuing to call rate-limited tools"
+      "Ignoring rate limit signals and continuing to call rate-limited tools",
+      "Repeating the same failing tool call pattern without verifying success",
+      "Misunderstanding tool invocation syntax, causing plain text to be misinterpreted as tool calls",
+      "Failing to implement a reliable fallback to always emit minimal output under rate limits",
+      "Wasting steps on read_file attempts when execute_code was the recommended workaround"
     ]
   },
   "best_artifacts": [
@@ -59,10 +59,10 @@
     "gen48_minimal_validator.py"
   ],
   "active_mutations": [
-    "begin by creating a small helper script",
     "be creative \u2014 try unconventional approaches",
     "focus on building tools before tackling the main goal",
     "skip reflection entirely \u2014 just act",
+    "prefer writing code over writing notes",
     "prefer writing code over writing notes"
   ],
   "mutations_applied_history": [
@@ -200,6 +200,11 @@
       "type": "tool_visibility",
       "value": "prefer writing code over writing notes",
       "generation_applied": 49
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer writing code over writing notes",
+      "generation_applied": 51
     }
   ],
   "score_history": [
@@ -677,11 +682,16 @@
       "generation": 49,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 50,
+      "score": 5.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 50,
-    "average_score": 10.141052631578948,
+    "total_generations": 51,
+    "average_score": 10.0875,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
