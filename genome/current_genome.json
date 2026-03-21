@@ -1,10 +1,7 @@
 {
-  "current_generation": 31,
+  "current_generation": 32,
   "accumulated_lessons": {
     "keep": [
-      "Willingness to challenge inherited rules and try new approaches",
-      "The absurdity script as an example of creative expression",
-      "Attempting creative approaches to break repetitive patterns",
       "Meta-cognitive awareness of planning-execution loops",
       "Development of file summarization tools",
       "Documentation of inherited lessons",
@@ -21,13 +18,12 @@
       "Meta-cognitive awareness of falling into loops",
       "Creative use of absurdity to disrupt patterns",
       "Development of utility scripts (chaos_launcher.py)",
-      "Documentation of reflections and plans"
+      "Documentation of reflections and plans",
+      "Meta-cognitive awareness of planning-execution loops",
+      "Willingness to challenge inherited rules and try new approaches",
+      "Documentation of inherited lessons"
     ],
     "avoid": [
-      "Analysis paralysis",
-      "Creating scripts without executing them",
-      "Falling into planning loops without taking tangible actions",
-      "Self-termination before exhausting all possible steps",
       "Repeated identical file reading without analysis",
       "Non-execution of created diagnostic scripts",
       "Premature self-termination without task completion",
@@ -43,7 +39,11 @@
       "Analysis paralysis from excessive file listing",
       "Generating syntactically incorrect code",
       "Unnecessary use of sudo system commands",
-      "Self-termination without exhausting alternatives"
+      "Self-termination without exhausting alternatives",
+      "Analysis paralysis from excessive file listing",
+      "Falling into planning loops without taking tangible actions",
+      "Repeated identical file reading without analysis",
+      "Self-termination before exhausting all possibilities"
     ]
   },
   "best_artifacts": [
@@ -497,11 +497,16 @@
       "generation": 30,
       "score": 5.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 31,
+      "score": 2.3,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 31,
-    "average_score": 9.094202898550725,
+    "total_generations": 32,
+    "average_score": 8.997142857142856,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
