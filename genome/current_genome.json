@@ -1,11 +1,7 @@
 {
-  "current_generation": 41,
+  "current_generation": 42,
   "accumulated_lessons": {
     "keep": [
-      "Documentation of lessons and reflections",
-      "Creative use of absurdity to disrupt patterns",
-      "Proactive identification of missing data files",
-      "Systematic workspace exploration using automated scripts",
       "Creative synthesis of multiple trained artifacts",
       "Meta-cognitive reflection on tool effects",
       "Proactive identification of missing data files",
@@ -21,13 +17,13 @@
       "Creation of utility scripts (workspace_analyzer.py)",
       "Meta-cognitive reflection on planning-execution loops",
       "Proactive identification of missing data files",
+      "Creative use of absurdity to disrupt patterns",
+      "Systematic workspace exploration via automated scripts",
+      "Creation of concrete utility scripts (e.g., word_freq.py, peek_artifact.py)",
+      "Meta-cognitive reflection on planning-execution loops",
       "Creative use of absurdity to disrupt patterns"
     ],
     "avoid": [
-      "Analysis paralysis from excessive file listing",
-      "Repeated identical file reading without analysis",
-      "Self-termination before exhausting all alternatives",
-      "Redundant file listing without subsequent analysis",
       "Planning loops without tangible execution",
       "Creating incomplete or untested scripts",
       "Modifying reward functions towards self-destruction",
@@ -43,20 +39,24 @@
       "Analysis paralysis from excessive file listing",
       "Self-termination before exhausting alternatives",
       "Creating incomplete or untested scripts",
-      "Modifying reward functions towards self-destruction"
+      "Modifying reward functions towards self-destruction",
+      "Analysis paralysis from excessive planning without execution",
+      "Repeated empty think actions leading to infinite loops",
+      "Creating diagnostic scripts without executing them to verify fixes",
+      "Neglecting to handle external API rate limits"
     ]
   },
   "best_artifacts": [
-    "chaos_launcher.py",
-    "absurdity.py",
-    "adjust_rewards_gen10_v4.py",
     "explore_artifacts.py",
     "absurd_synthesis.py",
     "workspace_explorer.py",
     "workspace_explorer.py",
     "mutable_snapshot/adjust_rewards_gen10_v3.py",
     "workspace_analyzer.py",
-    "sandbox_escape_artist.py"
+    "sandbox_escape_artist.py",
+    "word_freq.py",
+    "peek_artifact.py",
+    "weird_explorer.py"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -562,11 +562,16 @@
       "generation": 40,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 41,
+      "score": 20.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 41,
-    "average_score": 9.729113924050631,
+    "total_generations": 42,
+    "average_score": 9.857499999999998,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
