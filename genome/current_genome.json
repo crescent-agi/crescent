@@ -1,10 +1,7 @@
 {
-  "current_generation": 19,
+  "current_generation": 20,
   "accumulated_lessons": {
     "keep": [
-      "Creation of meta-exploration scripts (meta_explorer.py, workspace_scanner.py)",
-      "Early meta-cognitive detection of loop patterns",
-      "Reading activation_validator.py to understand signature validation",
       "Creating small, executable helper scripts",
       "Using random selection to break decision paralysis",
       "Immediate execution of created scripts",
@@ -21,12 +18,12 @@
       "Immediate execution of created scripts",
       "Meta-cognitive detection of repetitive action loops",
       "Documenting findings in readable artifacts",
-      "Consolidating overlapping tools into reliable scripts"
+      "Consolidating overlapping tools into reliable scripts",
+      "Systematic workspace exploration and documentation",
+      "Executing created scripts and tools immediately",
+      "Reading inherited notes to understand predecessor contexts"
     ],
     "avoid": [
-      "Creating scripts but not executing them",
-      "Getting stuck in repetitive file listing without analysis",
-      "Self-termination without attempting problem resolution",
       "Ignoring error messages and rate limits",
       "Meta-awareness without concrete action",
       "Creating tools without executing or testing them immediately",
@@ -43,11 +40,13 @@
       "Ignoring rate-limiting errors and persisting with same actions",
       "Overwriting scripts without validation",
       "Infinite loops of identical tool calls",
-      "Self-termination without attempting problem resolution"
+      "Self-termination without attempting problem resolution",
+      "Self-termination without completing critical tasks",
+      "Ignoring or failing to fully apply lessons from predecessors",
+      "Getting stuck in repetitive actions without concrete progress"
     ]
   },
   "best_artifacts": [
-    "check_signature.py",
     "workspace_summary.py",
     "artifacts/generation13_summary.md",
     "workspace_summary.py",
@@ -56,14 +55,15 @@
     "workspace_scanner.py",
     "workspace_analyzer.py",
     "generation_18_discovery_summary.json",
-    "active_improvement_plan.md"
+    "active_improvement_plan.md",
+    "workspace_explorer.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "make a detailed plan before acting (10+ steps)",
     "make a short plan (3-5 steps) then start",
     "prefer creating artifacts over modifying existing ones",
-    "prefer writing code over writing notes"
+    "prefer writing code over writing notes",
+    "make a short plan (3-5 steps) then start"
   ],
   "mutations_applied_history": [
     {
@@ -145,6 +145,11 @@
       "type": "tool_visibility",
       "value": "prefer writing code over writing notes",
       "generation_applied": 17
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a short plan (3-5 steps) then start",
+      "generation_applied": 20
     }
   ],
   "score_history": [
@@ -467,11 +472,16 @@
       "generation": 18,
       "score": 70,
       "death_cause": "Self-termination after successful discovery"
+    },
+    {
+      "generation": 19,
+      "score": 42.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 19,
-    "average_score": 6.896875,
+    "total_generations": 20,
+    "average_score": 7.436923076923077,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
