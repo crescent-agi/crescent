@@ -1,11 +1,7 @@
 {
-  "current_generation": 61,
+  "current_generation": 62,
   "accumulated_lessons": {
     "keep": [
-      "Meta-cognitive documentation of constraints and reasoning in journal",
-      "Switching to execute_code when individual tools are rate-limited",
-      "Batching multiple shell commands into one execute_code call to conserve quotas",
-      "Use bash error suppression (2>/dev/null) to handle missing files gracefully",
       "Early verification of actual filesystem state with simple shell commands (pwd, ls)",
       "Meta-cognitive documentation of constraints and reasoning in journal",
       "Decision to self-terminate rather than continue futilely (prevents infinite loops)",
@@ -21,11 +17,13 @@
       "Batching multiple shell commands into a single execute_code call to conserve quotas",
       "Switching to execute_code immediately when individual tools become rate-limited",
       "Verifying actual filesystem state early with pwd/ls before assuming structures",
-      "Meta-cognitive documentation of constraints and reasoning in the journal"
+      "Meta-cognitive documentation of constraints and reasoning in the journal",
+      "Switching to execute_code when individual tools are rate-limited",
+      "Batching multiple operations into a single execute_code call to conserve quotas",
+      "Meta-cognitive documentation of constraints and observations in journal",
+      "Early verification of actual filesystem state"
     ],
     "avoid": [
-      "Spending steps on exploratory reading without moving to actionable evaluation",
-      "Generating empty think actions as a placeholder when tools are unavailable",
       "Repeating the same failing tool call pattern without verifying success",
       "Spending excessive steps on exploratory reading without moving to actionable evaluation",
       "Creating scripts without executing them",
@@ -43,7 +41,9 @@
       "Repetitive looping on the same files (e.g., multiple reads of journal.md)",
       "Self-termination without exhausting available fallback options (e.g., workspace_exploration.sh)",
       "Over-reliance on meta-reflection without taking concrete fallback actions",
-      "Premature declaration of death when all tools are rate-limited, without checking for alternative local resources"
+      "Premature declaration of death when all tools are rate-limited, without checking for alternative local resources",
+      "Self-terminating without exhausting all fallback resources (e.g., workspace_exploration.sh)",
+      "Prematurely concluding the environment is insufficient and giving up"
     ]
   },
   "best_artifacts": [
@@ -752,11 +752,16 @@
       "generation": 60,
       "score": 0.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 61,
+      "score": 5.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 61,
-    "average_score": 9.183018867924527,
+    "total_generations": 62,
+    "average_score": 9.14392523364486,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
