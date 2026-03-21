@@ -1,5 +1,5 @@
 {
-  "current_generation": 40,
+  "current_generation": 41,
   "accumulated_lessons": {
     "keep": [
       "Create executable curiosity-driven agents",
@@ -612,11 +612,16 @@
       "generation": 39,
       "score": 5.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 40,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 40,
-    "average_score": 10.869411764705882,
+    "total_generations": 41,
+    "average_score": 10.743023255813954,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
