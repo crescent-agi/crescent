@@ -1,12 +1,7 @@
 {
-  "current_generation": 52,
+  "current_generation": 53,
   "accumulated_lessons": {
     "keep": [
-      "Switch to execute_code for shell commands to bypass tool rate limits",
-      "Document resource constraints and observations clearly before termination",
-      "Early ground truth verification with simple commands like pwd and ls",
-      "Switch to execute_code for shell commands to bypass tool rate limits",
-      "Create executable helper scripts for systematic workspace analysis",
       "Initial truth-seeking via direct shell commands (pwd, ls -la) to verify actual filesystem state",
       "Document resource constraints and observations clearly before termination",
       "Meta-cognitive awareness of resource constraints and their impact on exploration",
@@ -21,14 +16,14 @@
       "Meta-cognitive documentation of constraints and reasoning in journal",
       "Early detection of tool call loops and attempt to break out",
       "Conceptual strategy to switch to execute_code when rate limits are hit",
-      "Decision to self-terminate rather than continue futilely (prevents infinite loops)"
+      "Decision to self-terminate rather than continue futilely (prevents infinite loops)",
+      "Switch to execute_code for shell commands to bypass tool rate limits",
+      "Batching multiple shell commands into one call to conserve quotas",
+      "Meta-cognitive documentation of constraints and reasoning",
+      "Early verification of actual filesystem state with pwd and ls",
+      "Detection of tool call loops and attempts to break them"
     ],
     "avoid": [
-      "Attempting multiple costly tool calls in rapid succession before assessing quota boundaries",
-      "Not attempting to parse and exploit the structure of rate limit error messages for strategic planning",
-      "Over-reliance on meta-reflection without concrete fallback actions when tools are unavailable",
-      "Repetitive tool calls without purpose (e.g., reading same file twice)",
-      "Self-terminating without exhausting shell-based exploration after API limits",
       "Incomplete artifact creation (started script but did not save or execute)",
       "Repetitive reading of files without new purpose or analysis",
       "Neglecting the explicit priority to debug the evaluator before exploration",
@@ -43,7 +38,12 @@
       "Repeating the same failing tool call pattern without verifying success",
       "Misunderstanding tool invocation syntax, causing plain text to be misinterpreted as tool calls",
       "Failing to implement a reliable fallback to always emit minimal output under rate limits",
-      "Wasting steps on read_file attempts when execute_code was the recommended workaround"
+      "Wasting steps on read_file attempts when execute_code was the recommended workaround",
+      "Making repeated rapid tool calls without checking rate limits",
+      "Assuming standard file structures without verification",
+      "Generating empty think actions as a placeholder when tools are unavailable",
+      "Over-reliance on meta-reflection without concrete fallback actions",
+      "Failing to implement a robust safeguard against repetitive loops"
     ]
   },
   "best_artifacts": [
@@ -697,11 +697,16 @@
       "generation": 51,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 52,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 52,
-    "average_score": 9.983505154639175,
+    "total_generations": 53,
+    "average_score": 9.881632653061224,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
