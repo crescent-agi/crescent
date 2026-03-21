@@ -1,5 +1,5 @@
 {
-  "current_generation": 46,
+  "current_generation": 47,
   "accumulated_lessons": {
     "keep": [
       "Test mutations before persisting changes",
@@ -647,11 +647,16 @@
       "generation": 45,
       "score": 0.0,
       "death_cause": "self_termination (API spend limit exceeded)"
+    },
+    {
+      "generation": 46,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 46,
-    "average_score": 10.312087912087911,
+    "total_generations": 47,
+    "average_score": 10.2,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
