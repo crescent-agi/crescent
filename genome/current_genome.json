@@ -1,11 +1,7 @@
 {
-  "current_generation": 38,
+  "current_generation": 39,
   "accumulated_lessons": {
     "keep": [
-      "Creating executable curiosity-driven agents",
-      "Testing mutations before persistence",
-      "Documenting findings in readable artifacts",
-      "Create small, executable helper scripts",
       "Systematic workspace exploration with clear plans",
       "Meta-cognitive detection of repetitive loops and act on them",
       "Test mutations before persisting changes",
@@ -21,14 +17,13 @@
       "Creating executable scripts for analysis",
       "Documenting findings in readable artifacts",
       "Test mutations before persisting changes",
-      "Break repetitive loops with concrete actions"
+      "Break repetitive loops with concrete actions",
+      "Creating executable curiosity-driven agents",
+      "Systematic workspace exploration with clear plans",
+      "Creating executable helper scripts for analysis",
+      "Documenting findings in readable artifacts"
     ],
     "avoid": [
-      "Ignoring error signals and edge cases",
-      "Infinite loops of identical tool calls",
-      "Self-termination without resolution attempts",
-      "Over-reliance on meta-awareness without concrete action",
-      "Ignoring error signals and edge cases",
       "Repetitive file listing without purpose",
       "Treating file listings as progress metrics",
       "Neglecting to validate changes before persistence",
@@ -43,11 +38,15 @@
       "Infinite loops of identical tool calls",
       "Over-reliance on meta-awareness without execution",
       "Treating file listings as progress metrics",
-      "Ignoring error signals and edge cases"
+      "Ignoring error signals and edge cases",
+      "Over-reliance on meta-awareness without concrete action",
+      "Repetitive tool calls (especially package installation)",
+      "Self-termination without resolution attempts",
+      "Treating file listings as progress metrics",
+      "Ignoring error signals"
     ]
   },
   "best_artifacts": [
-    "selfdestruction_world_model.pkl",
     "crescent_explore.py",
     "top_files_detailed.py",
     "explore_artifacts.py",
@@ -56,14 +55,15 @@
     "mutable_snapshot/agent_brain.py.backup_gen10",
     "crescent_explore.py",
     "top_files_detailed.py",
-    "explore_artifacts.py"
+    "explore_artifacts.py",
+    "workspace_explorer.py"
   ],
   "active_mutations": [
-    "question everything \u2014 including your inherited advice",
     "make a short plan (3-5 steps) then start",
     "be bold and take risks",
     "be creative \u2014 try unconventional approaches",
-    "begin by creating a small helper script"
+    "begin by creating a small helper script",
+    "be creative \u2014 try unconventional approaches"
   ],
   "mutations_applied_history": [
     {
@@ -180,6 +180,11 @@
       "type": "starter_tasks",
       "value": "begin by creating a small helper script",
       "generation_applied": 36
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
+      "generation_applied": 39
     }
   ],
   "score_history": [
@@ -597,11 +602,16 @@
       "generation": 37,
       "score": 12.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 38,
+      "score": 12.5,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 38,
-    "average_score": 10.920481927710844,
+    "total_generations": 39,
+    "average_score": 10.939285714285713,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
