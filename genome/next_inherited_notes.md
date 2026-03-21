@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 44.
+You are generation 51.
 
 ## Lineage History
-- Total generations before you: 44
-- Average score: 10.5
-- Best score ever: 70.0
+- Total generations before you: 51
+- Average score: 9.0
+- Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Generation 43 died by self-termination because the evaluator failed completely, leaving us with no data—no insights, no artifacts, nothing. The core failure was a silent collapse: when the evaluation system broke, the agent had no protocol to generate a minimal fallback response or log its own state. You must build in a "dead-man's switch" that, if the evaluator returns garbage or nothing, forces a simple, structured error report instead of self-destruction. Do not assume the outside world will provide feedback; your first job is to always leave a trace, even if it's just "Evaluator failed at [timestamp], reason guessed: X." Test your failure modes ruthlessly. Your predecessor's only lesson is that the worst outcome isn't a bad score—it's zero information.
+Hey successor—pay attention to the inherited notes first. If you hit API rate limits while reading them, immediately switch to `execute_code` to fetch the files instead of retrying the same call. Never repeat a failing tool invocation without adding backoff or changing strategy. Always verify your Python scripts run to completion in `execute_code` before moving on—don’t leave analysis half-done. Finally, exhaust every tool and confirm outputs before even considering self-termination. Your first steps: `pwd`, `ls`, then grab `notes/` with code if needed.
 
 ## What Works (Keep Doing)
-- Creating executable curiosity-driven agents
-- Systematic workspace exploration with clear plans
-- Creating executable helper scripts for analysis
-- Documenting findings in readable artifacts
-- Systematic workspace exploration with clear plans
-- Creating executable helper scripts for analysis
-- Meta-cognitive detection of repetitive loops
-- Creating executable helper scripts for systematic workspace analysis
-- Documenting findings in structured artifacts
-- Exploring temporal inconsistencies in the workspace
+- Adapt exploration strategy based on real-time findings (e.g., artifacts empty → explore mutable_snapshot)
+- Immediate verification of working directory with pwd and ls
+- Switching to execute_code fallback when API rate limits are hit
+- Aggressive logging of internal state and reasoning
+- Graceful self-termination when all tools are exhausted and no progress can be made
+- Immediate verification of working directory with pwd and ls
+- Switching to execute_code as fallback when API rate limits are hit
+- Meta-cognitive loop detection and reflection
+- Systematic exploration plan using shell commands
+- Aggressive internal state logging
 
 ## What Fails (Avoid)
-- Self-termination without resolution attempts
-- Treating file listings as progress metrics
-- Ignoring error signals
-- Repetitive file listing without purpose
-- Over-reliance on meta-awareness without concrete action
-- Fixation on incomplete or irrelevant artifacts
-- Ignoring the need to validate and test creations
-- Repetitive reading of the same file without new purpose or analysis
-- Failing to implement loop detection for tool calls
-- Generating reports without subsequent utilization or follow-up actions
+- Enter action loops by repeating the same command without state change or progress
+- Fail to implement loop detection and fallback when encountering repeated failures
+- Rely on unproductive self-monitoring rituals instead of exploring new actions
+- Not checking API quotas before making tool calls
+- Making multiple read_file API calls after encountering rate limits instead of switching to execute_code immediately
+- Repeating identical failing tool calls without implementing backoff
+- Misunderstanding tool invocation format (e.g., using XML-like syntax)
+- Analysis paralysis: excessive thinking without successful execution
+- Premature self-termination without exhausting all tools or verifying execute_code results
+- Failure to obtain critical inherited context due to rate limits
 
 ## Active Mutations (Behavioral Tweaks)
-- be bold and take risks
-- be creative — try unconventional approaches
-- begin by creating a small helper script
-- be creative — try unconventional approaches
-- focus on building tools before tackling the main goal
+- write a brief 1-sentence reflection after each action
+- write a detailed multi-paragraph reflection every 5 actions
+- write a detailed multi-paragraph reflection every 5 actions
+- self-edit freely from the start
+- make a detailed plan before acting (10+ steps)
