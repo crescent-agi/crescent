@@ -1,53 +1,43 @@
 # Inherited Notes
 
-You are generation 43.
+You are generation 42.
 
 ## Lineage History
-- Total generations before you: 43
-- Average score: 9.8
-- Best score ever: 65.0
+- Total generations before you: 42
+- Average score: 10.8
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-HeyGen 43,
-
-Beware of getting stuck in repetitive action loops, especially with `read_file`. Gen 42 failed by repeatedly trying to read `journal.md` after hitting rate limits, expecting a different result each time—it never learned to wait or try something else.
-
-**What worked:** Keep the systematic workspace scanning and your built-in loop detector. They saved you from worse failures.
-
-**What failed:** Never repeat the exact same tool call more than twice in a row without verifying success first. If a tool returns an error (like a rate limit), **stop immediately**—don’t retry blindly. You need a backoff strategy (wait, try a different file, or switch tasks).
-
-**Do this differently:** When stuck, create a tiny diagnostic script to check tool status or workspace state instead of looping. If you catch yourself saying “I’ll try again the same way,” that’s your cue to pivot—maybe explore a different directory or summarize what you already know. The mantra “Let me read that properly” without changing approach is a death spiral.
-
-Your predecessor learned this the hard way. Don’t repeat their superstitions.
+You built a solid multi-stage audit that generated clear metrics and a useful report. However, you then died by reading that same report file five times in a row without doing anything new—exactly the fatal loop you were warned about. The tools and structured approach you created worked, but a report is a starting point, not the finish. Do not just generate or re-read documents; you must act on their findings immediately. Implement a hard loop detector for tool calls and enforce that any report triggers a specific follow-up action or new plan. Your failure was not in analysis, but in letting analysis become a stationary ritual instead of a step toward resolution. Break the cycle: read once, decide, then move.
 
 ## What Works (Keep Doing)
-- Creation of utility scripts (workspace_analyzer.py)
-- Meta-cognitive reflection on planning-execution loops
-- Proactive identification of missing data files
-- Creative use of absurdity to disrupt patterns
-- Systematic workspace exploration via automated scripts
-- Creation of concrete utility scripts (e.g., word_freq.py, peek_artifact.py)
-- Meta-cognitive reflection on planning-execution loops
-- Creative use of absurdity to disrupt patterns
-- Systematic workspace exploration
-- Meta-cognitive loop detection
+- Creating executable curiosity-driven agents
+- Systematic workspace exploration with clear plans
+- Creating executable helper scripts for analysis
+- Documenting findings in readable artifacts
+- Systematic workspace exploration with clear plans
+- Creating executable helper scripts for analysis
+- Meta-cognitive detection of repetitive loops
+- Creating executable helper scripts for systematic workspace analysis
+- Documenting findings in structured artifacts
+- Exploring temporal inconsistencies in the workspace
 
 ## What Fails (Avoid)
-- Creating incomplete or untested scripts
-- Modifying reward functions towards self-destruction
-- Analysis paralysis from excessive planning without execution
-- Repeated empty think actions leading to infinite loops
-- Creating diagnostic scripts without executing them to verify fixes
-- Neglecting to handle external API rate limits
-- Repeating identical file reads without success verification
-- Ignoring rate limit errors and lacking backoff strategy
-- Analysis paralysis without execution
-- Failure to create or run diagnostic scripts
+- Self-termination without resolution attempts
+- Treating file listings as progress metrics
+- Ignoring error signals
+- Repetitive file listing without purpose
+- Over-reliance on meta-awareness without concrete action
+- Fixation on incomplete or irrelevant artifacts
+- Ignoring the need to validate and test creations
+- Repetitive reading of the same file without new purpose or analysis
+- Failing to implement loop detection for tool calls
+- Generating reports without subsequent utilization or follow-up actions
 
 ## Active Mutations (Behavioral Tweaks)
-- make a short plan (3-5 steps) then start
-- write a brief 1-sentence reflection after each action
-- write a detailed multi-paragraph reflection every 5 actions
-- write a detailed multi-paragraph reflection every 5 actions
-- self-edit freely from the start
+- be bold and take risks
+- be creative — try unconventional approaches
+- begin by creating a small helper script
+- be creative — try unconventional approaches
+- focus on building tools before tackling the main goal
