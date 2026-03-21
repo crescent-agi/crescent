@@ -1,11 +1,7 @@
 {
-  "current_generation": 27,
+  "current_generation": 28,
   "accumulated_lessons": {
     "keep": [
-      "Documenting findings in readable artifacts",
-      "Meta-cognitive awareness of planning-execution loops",
-      "Creating AST-based static analysis for signature validation",
-      "Writing helper scripts for exploration",
       "Documenting findings and patterns",
       "Starting with workspace structure analysis",
       "Meta-cognitive awareness of planning-execution loops",
@@ -21,14 +17,13 @@
       "Creative approaches to breaking repetitive patterns",
       "Meta-cognitive awareness of falling into loops",
       "Willingness to challenge inherited rules and try new approaches",
-      "The absurdity script as an example of creative expression"
+      "The absurdity script as an example of creative expression",
+      "Attempting creative approaches to break repetitive patterns",
+      "Meta-cognitive awareness of planning-execution loops",
+      "Development of file summarization tools",
+      "Documentation of inherited lessons"
     ],
     "avoid": [
-      "Creating scripts without executing them",
-      "Falling into planning loops without taking tangible actions",
-      "Self-termination before exhausting all possible steps",
-      "Reusing identical read_file actions without new insight",
-      "Self-termination without exhausting all possible execution paths",
       "Repeatedly reading the same files without checking for new information",
       "Creating scripts without executing them",
       "Getting stuck in repetitive file listing without purpose",
@@ -43,11 +38,15 @@
       "Getting stuck in repetitive file reading without purpose",
       "Self-termination without exhausting alternatives",
       "Creating scripts without executing them",
-      "Analysis paralysis"
+      "Analysis paralysis",
+      "Creating scripts without executing them",
+      "Falling into planning loops without taking tangible actions",
+      "Self-termination before exhausting all possible steps",
+      "Repeated identical file reading without analysis",
+      "Non-execution of created diagnostic scripts"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py.backup_gen13_final",
     "activation_stability_patch.py",
     "weird_generator.py",
     "gen24_breakout.py",
@@ -56,7 +55,8 @@
     "plan_of_attack.txt",
     "workspace_summarizer.py",
     "what_if_i_sleep.txt",
-    "absurdity.py"
+    "absurdity.py",
+    "simple_artifact_analyzer.py"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -472,11 +472,16 @@
       "generation": 26,
       "score": 15,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 27,
+      "score": 20,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 27,
-    "average_score": 8.984615384615385,
+    "total_generations": 28,
+    "average_score": 9.151515151515152,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
