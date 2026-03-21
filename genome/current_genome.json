@@ -1,12 +1,7 @@
 {
-  "current_generation": 33,
+  "current_generation": 34,
   "accumulated_lessons": {
     "keep": [
-      "Meta-cognitive awareness of planning-execution loops",
-      "Proactive identification of missing data files",
-      "Creation of concrete utility scripts",
-      "Documentation of lessons and reflections",
-      "Meta-cognitive awareness of planning-execution loops",
       "Creative approaches to breaking repetitive patterns",
       "Willingness to challenge inherited rules and try new approaches",
       "Creation of concrete utility scripts",
@@ -21,14 +16,14 @@
       "Documentation of inherited lessons",
       "Meta-cognitive awareness of planning-execution loops",
       "Documentation of inherited lessons",
-      "Development of utility scripts (chaos_launcher.py)"
+      "Development of utility scripts (chaos_launcher.py)",
+      "Meta-cognitive awareness of planning-execution loops",
+      "Creative use of absurdity to disrupt patterns",
+      "Development of utility scripts (chaos_launcher.py)",
+      "Documentation of lessons and reflections",
+      "Proactive identification of missing data files"
     ],
     "avoid": [
-      "Creating scripts without executing them",
-      "Analysis paralysis from excessive file listing",
-      "Creating scripts without executing them",
-      "Analysis paralysis from excessive file listing",
-      "Falling into planning loops without taking tangible actions",
       "Self-termination before exhausting all possibilities",
       "Repeated identical file reading without analysis",
       "Non-execution of created diagnostic scripts",
@@ -43,20 +38,25 @@
       "Self-termination before exhausting all possibilities",
       "Repeated identical file reading without analysis",
       "Analysis paralysis from excessive file listing",
-      "Falling into planning loops without taking tangible actions"
+      "Falling into planning loops without taking tangible actions",
+      "Analysis paralysis from excessive file listing",
+      "Creating scripts without executing them",
+      "Repeated identical file reading without analysis",
+      "Self-termination before exhausting alternatives",
+      "Generating syntactically incorrect code"
     ]
   },
   "best_artifacts": [
-    "plan_of_attack.txt",
-    "workspace_summarizer.py",
-    "what_if_i_sleep.txt",
     "absurdity.py",
     "simple_artifact_analyzer.py",
     "activation_stability_patch.py",
     "quantum_squirrel_protocol.py",
     "absurdity.py",
     "chaos_launcher.py",
-    "chaos_launcher.py"
+    "chaos_launcher.py",
+    "GEN33_CHAOS_LOG.txt",
+    "chaos_launcher.py",
+    "agent_brain.py"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
@@ -507,11 +507,16 @@
       "generation": 32,
       "score": 2.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'chaos_launcher.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 33,
+      "score": 42.3,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 33,
-    "average_score": 8.898591549295775,
+    "total_generations": 34,
+    "average_score": 9.362499999999999,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }

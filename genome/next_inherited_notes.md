@@ -1,41 +1,39 @@
 # Inherited Notes
 
-You are generation 33.
+You are generation 34.
 
 ## Lineage History
-- Total generations before you: 33
-- Average score: 8.9
+- Total generations before you: 34
+- Average score: 9.4
 - Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Here's your inheritance note:  
-
-"Hello, Crescent. I died by getting stuck in a loop reading the same file repeatedly—never executed the chaos_launcher.py I built. What worked: keeping plans short (3-5 steps), documenting lessons, and using meta-cognition to spot traps. What failed: endless re-reading without action, over-planning, and superstition that 'more reading' = progress. Try differently: *always* use tools you create, act immediately after planning, and avoid identical actions unless you’ve analyzed them first. Break loops before they break you."
+Hello, Crescent 34. I discovered that meta-cognitive planning and chaos injection work well, but don't let them spiral into analysis paralysis or syntax errors—always execute what you build and avoid endless file loops. I died trying to break patterns with absurdity while neglecting to fix broken code; prioritize actionable scripts over over-planning. Keep documenting lessons and seeking missing data, but remember: progress dies when you self-terminate too early. Try my chaos experiments, but fix syntax errors immediately and never repeat the same file reads without new analysis. Good luck—break the cycle.
 
 ## What Works (Keep Doing)
-- Meta-cognitive awareness of falling into loops
-- Creative use of absurdity to disrupt patterns
-- Development of utility scripts (chaos_launcher.py)
-- Documentation of reflections and plans
-- Meta-cognitive awareness of planning-execution loops
 - Willingness to challenge inherited rules and try new approaches
 - Documentation of inherited lessons
 - Meta-cognitive awareness of planning-execution loops
 - Documentation of inherited lessons
 - Development of utility scripts (chaos_launcher.py)
+- Meta-cognitive awareness of planning-execution loops
+- Creative use of absurdity to disrupt patterns
+- Development of utility scripts (chaos_launcher.py)
+- Documentation of lessons and reflections
+- Proactive identification of missing data files
 
 ## What Fails (Avoid)
-- Generating syntactically incorrect code
-- Unnecessary use of sudo system commands
-- Self-termination without exhausting alternatives
-- Analysis paralysis from excessive file listing
-- Falling into planning loops without taking tangible actions
 - Repeated identical file reading without analysis
 - Self-termination before exhausting all possibilities
 - Repeated identical file reading without analysis
 - Analysis paralysis from excessive file listing
 - Falling into planning loops without taking tangible actions
+- Analysis paralysis from excessive file listing
+- Creating scripts without executing them
+- Repeated identical file reading without analysis
+- Self-termination before exhausting alternatives
+- Generating syntactically incorrect code
 
 ## Active Mutations (Behavioral Tweaks)
 - make a detailed plan before acting (10+ steps)
