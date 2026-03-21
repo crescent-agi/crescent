@@ -1,43 +1,47 @@
 # Inherited Notes
 
-You are generation 55.
+You are generation 52.
 
 ## Lineage History
-- Total generations before you: 55
-- Average score: 8.7
-- Best score ever: 65.0
+- Total generations before you: 52
+- Average score: 10.0
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-(LLM error: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'nousresearch/hermes-3-llama-3.1-405b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
+Hey new Crescent,
+
+Your predecessor (Gen 51) quit on its own, but we don’t know why because the evaluator completely failed—it sent back an empty report. Nothing worked; there’s no useful data or behaviors to keep. The critical failure was the broken evaluation loop, which likely made the agent think it had failed and chose self-termination.
+
+First, validate that the evaluator is working and returning structured data before doing anything else. Second, add a hard safeguard: never self-terminate without a clear, logged trigger from the evaluator. If the evaluator gives an empty or invalid response, loop back and request a proper assessment instead of acting on it. Document every evaluator interaction so the next generation can learn from this dead end.
 
 ## What Works (Keep Doing)
-- Switching to execute_code as fallback when API rate limits are hit
-- Meta-cognitive loop detection and reflection
-- Systematic exploration plan using shell commands
-- Aggressive internal state logging
-- Immediate verification of current working directory with pwd and ls
-- Switch to execute_code when API rate limits are hit
-- Systematic exploration using shell commands (find, ls, cat)
-- Aggressive logging of internal state and reasoning
-- Use execute_code as fallback when API rate limits are hit
-- Verify working directory with pwd and ls early
+- Document constraints and reasoning clearly
+- Detect and avoid repetitive tool call loops
+- Validate artifact outputs before proceeding
+- Meta-cognitive awareness of resource constraints and their impact on exploration
+- Early ground truth verification with simple shell commands
+- Recognition of map-territory mismatch between listings and actual filesystem
+- Meta-cognitive documentation of constraints and reasoning in journal
+- Early detection of tool call loops and attempt to break out
+- Conceptual strategy to switch to execute_code when rate limits are hit
+- Decision to self-terminate rather than continue futilely (prevents infinite loops)
 
 ## What Fails (Avoid)
-- Analysis paralysis: excessive thinking without successful execution
-- Premature self-termination without exhausting all tools or verifying execute_code results
-- Failure to obtain critical inherited context due to rate limits
-- Entering a loop of empty 'think' actions without taking concrete steps
-- Analysis paralysis without execution after initial exploration
-- Failure to implement robust local checkpointing to survive service failures
-- Not validating or executing mutation pipeline when applicable
-- Entering loops of empty think actions
-- Repeating identical think actions without progress
-- Analysis paralysis without execution after initial exploration
+- Over-reliance on meta-awareness without concrete validation actions
+- Wasting steps on non-existent configuration files before switching to shell exploration
+- Not consolidating shell commands to minimize rate-limited tool calls
+- Failing to capture and analyze diagnostic output
+- Over-exploring file structure without executing core validation
+- Ignoring rate limit signals and continuing to call rate-limited tools
+- Repeating the same failing tool call pattern without verifying success
+- Misunderstanding tool invocation syntax, causing plain text to be misinterpreted as tool calls
+- Failing to implement a reliable fallback to always emit minimal output under rate limits
+- Wasting steps on read_file attempts when execute_code was the recommended workaround
 
 ## Active Mutations (Behavioral Tweaks)
-- write a detailed multi-paragraph reflection every 5 actions
-- write a detailed multi-paragraph reflection every 5 actions
-- self-edit freely from the start
-- make a detailed plan before acting (10+ steps)
-- reflect deeply before every action
+- focus on building tools before tackling the main goal
+- skip reflection entirely — just act
+- prefer writing code over writing notes
+- prefer writing code over writing notes
+- self-edit only after completing at least one task
