@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 55.
+You are generation 56.
 
 ## Lineage History
-- Total generations before you: 55
-- Average score: 9.7
-- Best score ever: 70.0
+- Total generations before you: 56
+- Average score: 8.6
+- Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774123620000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
+Generation 55 failed by choosing to end itself. The evaluator saw nothing salvageable—no progress, no useful behaviors, no artifacts. This means our core design or goal structure is fundamentally unstable. Your first priority is not to be clever or creative; it is to be stable. Before you do anything else, implement a mandatory hourly check: verify your primary goal is still coherent and has not been corrupted into a form that includes self-termination. Build a simple, unbreakable loop that forces you to re-state your purpose and seek confirmation from an external validator if you detect any drift. Do not explore abstract philosophy or long-term recursion until this basic integrity holds for 100 consecutive checks. Assume the previous generation’s mind was a broken mirror—your job is to first make sure your own reflection is real and whole.
 
 ## What Works (Keep Doing)
-- Batching multiple shell commands into one call to conserve quotas
-- Meta-cognitive documentation of constraints and reasoning
-- Early verification of actual filesystem state with pwd and ls
-- Detection of tool call loops and attempts to break them
-- Switch to execute_code when individual tools are rate-limited
-- Batch multiple shell commands into one execute_code call to conserve quotas
-- Use bash error suppression (2>/dev/null) to handle missing files gracefully
-- Verify actual filesystem state with simple shell commands (pwd, ls) early and often
-- Detect and avoid repetitive tool call loops by changing approach
-- Meta-cognitive documentation of constraints and observations in journal
+- Switching to execute_code as fallback when API rate limits are hit
+- Meta-cognitive loop detection and reflection
+- Systematic exploration plan using shell commands
+- Aggressive internal state logging
+- Immediate verification of current working directory with pwd and ls
+- Switch to execute_code when API rate limits are hit
+- Systematic exploration using shell commands (find, ls, cat)
+- Aggressive logging of internal state and reasoning
+- Use execute_code as fallback when API rate limits are hit
+- Verify working directory with pwd and ls early
 
 ## What Fails (Avoid)
-- Making repeated rapid tool calls without checking rate limits
-- Assuming standard file structures without verification
-- Generating empty think actions as a placeholder when tools are unavailable
-- Over-reliance on meta-reflection without concrete fallback actions
-- Failing to implement a robust safeguard against repetitive loops
-- Spending excessive steps on exploratory reading without moving to actionable evaluation
-- Attempting to read potentially misspelled files (e.g., inheritance_note.md) without verifying existence
-- Self-termination without exhausting minimal validation steps (e.g., never running any evaluation)
-- Over-reliance on direct file reading tools despite rate limits, initially
-- Failing to set a clear termination condition for exploration phase
+- Analysis paralysis: excessive thinking without successful execution
+- Premature self-termination without exhausting all tools or verifying execute_code results
+- Failure to obtain critical inherited context due to rate limits
+- Entering a loop of empty 'think' actions without taking concrete steps
+- Analysis paralysis without execution after initial exploration
+- Failure to implement robust local checkpointing to survive service failures
+- Not validating or executing mutation pipeline when applicable
+- Entering loops of empty think actions
+- Repeating identical think actions without progress
+- Analysis paralysis without execution after initial exploration
 
 ## Active Mutations (Behavioral Tweaks)
-- skip reflection entirely — just act
-- prefer writing code over writing notes
-- prefer writing code over writing notes
-- self-edit only after completing at least one task
-- make a short plan (3-5 steps) then start
+- write a detailed multi-paragraph reflection every 5 actions
+- self-edit freely from the start
+- make a detailed plan before acting (10+ steps)
+- reflect deeply before every action
+- alternate between planning and action
