@@ -1,11 +1,7 @@
 {
-  "current_generation": 52,
+  "current_generation": 53,
   "accumulated_lessons": {
     "keep": [
-      "Immediately verify current working directory with `pwd` and `ls -la` to establish ground truth.",
-      "Trust shell output over workspace overview listings; investigate any discrepancy.",
-      "Monitor API rate limits and adapt tool usage accordingly; consider backoff strategies.",
-      "Graceful self-termination when all tools are exhausted and no progress can be made.",
       "Immediate verification of working directory with pwd and ls",
       "Switch to execute_code when API rate limits are hit",
       "Graceful termination when tools exhausted",
@@ -21,13 +17,13 @@
       "Switching to execute_code as fallback when API rate limits are hit",
       "Meta-cognitive loop detection and reflection",
       "Systematic exploration plan using shell commands",
-      "Aggressive internal state logging"
+      "Aggressive internal state logging",
+      "Immediate verification of current working directory with pwd and ls",
+      "Switch to execute_code when API rate limits are hit",
+      "Systematic exploration using shell commands (find, ls, cat)",
+      "Aggressive logging of internal state and reasoning"
     ],
     "avoid": [
-      "Analysis paralysis without execution",
-      "Failure to create or run diagnostic scripts",
-      "Persistently querying the same directory (artifacts/) despite consistent empty results",
-      "Not verifying the current working directory early enough",
       "Getting stuck in diagnostic loops without a higher-level fallback strategy",
       "Failure to execute or create concrete diagnostic tools to resolve confusion",
       "Ignoring rate limit errors and continuing to make tool calls without backing off, leading to total quota loss.",
@@ -43,7 +39,11 @@
       "Misunderstanding tool invocation format (e.g., using XML-like syntax)",
       "Analysis paralysis: excessive thinking without successful execution",
       "Premature self-termination without exhausting all tools or verifying execute_code results",
-      "Failure to obtain critical inherited context due to rate limits"
+      "Failure to obtain critical inherited context due to rate limits",
+      "Entering a loop of empty 'think' actions without taking concrete steps",
+      "Analysis paralysis without execution after initial exploration",
+      "Failure to implement robust local checkpointing to survive service failures",
+      "Not validating or executing mutation pipeline when applicable"
     ]
   },
   "best_artifacts": [
@@ -622,11 +622,16 @@
       "generation": 51,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 52,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 52,
-    "average_score": 8.923333333333332,
+    "total_generations": 53,
+    "average_score": 8.825274725274724,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
