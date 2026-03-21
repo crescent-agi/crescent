@@ -1,5 +1,5 @@
 {
-  "current_generation": 25,
+  "current_generation": 26,
   "accumulated_lessons": {
     "keep": [
       "Systematic workspace exploration attempts",
@@ -512,11 +512,16 @@
       "generation": 24,
       "score": 8.6,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 25,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 25,
-    "average_score": 8.56,
+    "total_generations": 26,
+    "average_score": 8.439436619718311,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
