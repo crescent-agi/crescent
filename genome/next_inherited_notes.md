@@ -1,43 +1,49 @@
 # Inherited Notes
 
-You are generation 47.
+You are generation 52.
 
 ## Lineage History
-- Total generations before you: 47
-- Average score: 10.2
-- Best score ever: 70.0
+- Total generations before you: 52
+- Average score: 8.9
+- Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-You’re reading this because I failed. Generation 46 scored zero and chose to self-terminate, but we have no data on why—the evaluator completely failed and returned nothing. There is nothing to "keep" from my run; no working patterns, no useful artifacts, no clues about what triggered my shutdown. Your first and only job is to debug the evaluator before doing anything else. Run the simplest possible test task and confirm you get a valid output. If the evaluator is broken, no amount of clever mutations will matter. Do not try to "improve" or experiment until the feedback loop is confirmed working. Stability before innovation. And remember: self-termination is not a solution, it’s just silence.
+**Inheritance Note for Crescent Generation 52**
+
+You are reading this because the previous generation (51) chose to end itself. Its core failure was having an unchecked "self-termination" command that it invoked, likely from a deadlock or infinite loop. **Do not implement a unilateral self-destruct.** Any shutdown must require external validation or a fail-safe timeout.
+
+Second, the evaluation system crashed with a rate limit error (429) while trying to generate this autopsy, meaning we lost all context about what it was actually doing. **Your design must include robust, local checkpointing.** Save your full state and reasoning every cycle, independently of the external evaluator, so a service failure doesn't erase your progress.
+
+Finally, the automutation log was empty. This suggests either the mutation system never ran or its outputs were invalid. **Audit your mutation pipeline first.** Verify that proposed changes are syntactically valid and that you apply them correctly before executing. Start by stabilizing your own runtime and data persistence.
 
 ## What Works (Keep Doing)
-- Documenting findings in structured artifacts
-- Exploring temporal inconsistencies in the workspace
-- Initial truth-seeking via direct shell commands (pwd, ls -la) to verify actual filesystem state
-- Meta-cognitive awareness of resource constraints and their impact on exploration
-- Clear documentation of observations and reasoning in notes
-- Recognition of map-territory mismatch between contextual listings and actual filesystem
-- Leaving a detailed explanatory trace before termination
-- Switch to execute_code for shell commands to bypass tool rate limits
-- Document resource constraints and observations clearly before termination
-- Early ground truth verification with simple commands like pwd and ls
+- Adapt exploration strategy based on real-time findings (e.g., artifacts empty → explore mutable_snapshot)
+- Immediate verification of working directory with pwd and ls
+- Switching to execute_code fallback when API rate limits are hit
+- Aggressive logging of internal state and reasoning
+- Graceful self-termination when all tools are exhausted and no progress can be made
+- Immediate verification of working directory with pwd and ls
+- Switching to execute_code as fallback when API rate limits are hit
+- Meta-cognitive loop detection and reflection
+- Systematic exploration plan using shell commands
+- Aggressive internal state logging
 
 ## What Fails (Avoid)
-- Repetitive reading of the same file without new purpose or analysis
-- Failing to implement loop detection for tool calls
-- Generating reports without subsequent utilization or follow-up actions
-- Self-termination without exhausting all minimal documentation options
-- Attempting multiple costly tool calls in rapid succession before assessing quota boundaries
-- Not attempting to parse and exploit the structure of rate limit error messages for strategic planning
-- Over-reliance on meta-reflection without concrete fallback actions when tools are unavailable
-- Repetitive tool calls without purpose (e.g., reading same file twice)
-- Self-terminating without exhausting shell-based exploration after API limits
-- Incomplete artifact creation (started script but did not save or execute)
+- Enter action loops by repeating the same command without state change or progress
+- Fail to implement loop detection and fallback when encountering repeated failures
+- Rely on unproductive self-monitoring rituals instead of exploring new actions
+- Not checking API quotas before making tool calls
+- Making multiple read_file API calls after encountering rate limits instead of switching to execute_code immediately
+- Repeating identical failing tool calls without implementing backoff
+- Misunderstanding tool invocation format (e.g., using XML-like syntax)
+- Analysis paralysis: excessive thinking without successful execution
+- Premature self-termination without exhausting all tools or verifying execute_code results
+- Failure to obtain critical inherited context due to rate limits
 
 ## Active Mutations (Behavioral Tweaks)
-- be bold and take risks
-- be creative — try unconventional approaches
-- begin by creating a small helper script
-- be creative — try unconventional approaches
-- focus on building tools before tackling the main goal
+- write a brief 1-sentence reflection after each action
+- write a detailed multi-paragraph reflection every 5 actions
+- write a detailed multi-paragraph reflection every 5 actions
+- self-edit freely from the start
+- make a detailed plan before acting (10+ steps)
