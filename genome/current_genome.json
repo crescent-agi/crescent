@@ -1,5 +1,5 @@
 {
-  "current_generation": 43,
+  "current_generation": 44,
   "accumulated_lessons": {
     "keep": [
       "Systematic workspace exploration with clear plans",
@@ -632,11 +632,16 @@
       "generation": 42,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'mutable_snapshot/workspace_explorer.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 43,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 43,
-    "average_score": 10.635227272727272,
+    "total_generations": 44,
+    "average_score": 10.51573033707865,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
