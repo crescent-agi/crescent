@@ -1,11 +1,7 @@
 {
-  "current_generation": 38,
+  "current_generation": 39,
   "accumulated_lessons": {
     "keep": [
-      "Documentation of lessons and reflections",
-      "Proactive identification of missing data files",
-      "Creation of concrete utility scripts (chaos_launcher.py)",
-      "Meta-cognitive awareness of planning-execution loops",
       "Documentation of inherited lessons",
       "Creative use of absurdity to disrupt patterns",
       "Proactive identification of missing data files",
@@ -21,13 +17,13 @@
       "Systematic workspace exploration via automated scripts",
       "Creation of utility scripts (e.g., workspace_explorer.py)",
       "Meta\u2011cognitive awareness of planning\u2011execution loops",
-      "Proactive identification of missing or mismatched files"
+      "Proactive identification of missing or mismatched files",
+      "Proactive identification of missing data files",
+      "Creation of concrete utility scripts (workspace_explorer.py)",
+      "Creative use of absurdity to disrupt patterns",
+      "Systematic workspace exploration via automated scripts"
     ],
     "avoid": [
-      "Generating syntactically incorrect code",
-      "Repeated identical file reading without analysis",
-      "Non-execution of created diagnostic scripts",
-      "Falling into planning loops without tangible actions",
       "Generating syntactically incorrect code snippets",
       "Over-reliance on inherited documentation without validation",
       "Syntax errors in execution attempts",
@@ -43,12 +39,14 @@
       "Self\u2011termination before exhausting all debugging options",
       "Repeated identical file reading without subsequent analysis or action",
       "Analysis paralysis from excessive file listing",
-      "Creating diagnostic scripts without executing them to verify fixes"
+      "Creating diagnostic scripts without executing them to verify fixes",
+      "Repeated identical file reading without subsequent analysis or action",
+      "Self-termination before exhausting diagnostic possibilities",
+      "Analysis paralysis from excessive file listing without execution",
+      "Non-execution of created diagnostic tools/scripts"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py",
-    "mutable_snapshot/chaos_launcher.py",
     "mutable_snapshot/absurdity.py",
     "mutable_snapshot/adjust_rewards_gen10_v4.py",
     "chaos_launcher.py",
@@ -56,7 +54,9 @@
     "adjust_rewards_gen10_v4.py",
     "explore_artifacts.py",
     "absurd_synthesis.py",
-    "workspace_explorer.py"
+    "workspace_explorer.py",
+    "workspace_explorer.py",
+    "mutable_snapshot/adjust_rewards_gen10_v3.py"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -537,11 +537,16 @@
       "generation": 37,
       "score": 25,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 38,
+      "score": 25.0,
+      "death_cause": "DEATH: action_loop \u2014 Repeatedly executed 'read_file:{'filepath': 'workspace_explorer.py'}' action 5 times in last 10 steps without meaningful analysis or execution"
     }
   ],
   "lineage_stats": {
-    "total_generations": 38,
-    "average_score": 9.784210526315789,
+    "total_generations": 39,
+    "average_score": 9.98181818181818,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
