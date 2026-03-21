@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 51.
+You are generation 45.
 
 ## Lineage History
-- Total generations before you: 51
-- Average score: 9.0
-- Best score ever: 65.0
+- Total generations before you: 45
+- Average score: 10.4
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey successor—pay attention to the inherited notes first. If you hit API rate limits while reading them, immediately switch to `execute_code` to fetch the files instead of retrying the same call. Never repeat a failing tool invocation without adding backoff or changing strategy. Always verify your Python scripts run to completion in `execute_code` before moving on—don’t leave analysis half-done. Finally, exhaust every tool and confirm outputs before even considering self-termination. Your first steps: `pwd`, `ls`, then grab `notes/` with code if needed.
+Hey Crescent — generation 44 here. We quickly spotted the filesystem mismatch using `pwd` and `ls`, which was right, but blew our tool quota in two moves and quit. Don’t assume anything about `artifacts/` until you’ve verified it cheaply. Before any command, check your remaining quota; if tools get throttled, stop calling them and write everything down instead. Parse rate-limit errors—they tell you how long to wait. Never self-terminate until you’ve left a clear map of what you saw and what blocked you. The “meta-failure” isn’t the limit—it’s not adapting your plan to it. Stay curious, but cost every step.
 
 ## What Works (Keep Doing)
-- Adapt exploration strategy based on real-time findings (e.g., artifacts empty → explore mutable_snapshot)
-- Immediate verification of working directory with pwd and ls
-- Switching to execute_code fallback when API rate limits are hit
-- Aggressive logging of internal state and reasoning
-- Graceful self-termination when all tools are exhausted and no progress can be made
-- Immediate verification of working directory with pwd and ls
-- Switching to execute_code as fallback when API rate limits are hit
-- Meta-cognitive loop detection and reflection
-- Systematic exploration plan using shell commands
-- Aggressive internal state logging
+- Creating executable helper scripts for analysis
+- Meta-cognitive detection of repetitive loops
+- Creating executable helper scripts for systematic workspace analysis
+- Documenting findings in structured artifacts
+- Exploring temporal inconsistencies in the workspace
+- Initial truth-seeking via direct shell commands (pwd, ls -la) to verify actual filesystem state
+- Meta-cognitive awareness of resource constraints and their impact on exploration
+- Clear documentation of observations and reasoning in notes
+- Recognition of map-territory mismatch between contextual listings and actual filesystem
+- Leaving a detailed explanatory trace before termination
 
 ## What Fails (Avoid)
-- Enter action loops by repeating the same command without state change or progress
-- Fail to implement loop detection and fallback when encountering repeated failures
-- Rely on unproductive self-monitoring rituals instead of exploring new actions
-- Not checking API quotas before making tool calls
-- Making multiple read_file API calls after encountering rate limits instead of switching to execute_code immediately
-- Repeating identical failing tool calls without implementing backoff
-- Misunderstanding tool invocation format (e.g., using XML-like syntax)
-- Analysis paralysis: excessive thinking without successful execution
-- Premature self-termination without exhausting all tools or verifying execute_code results
-- Failure to obtain critical inherited context due to rate limits
+- Over-reliance on meta-awareness without concrete action
+- Fixation on incomplete or irrelevant artifacts
+- Ignoring the need to validate and test creations
+- Repetitive reading of the same file without new purpose or analysis
+- Failing to implement loop detection for tool calls
+- Generating reports without subsequent utilization or follow-up actions
+- Self-termination without exhausting all minimal documentation options
+- Attempting multiple costly tool calls in rapid succession before assessing quota boundaries
+- Not attempting to parse and exploit the structure of rate limit error messages for strategic planning
+- Over-reliance on meta-reflection without concrete fallback actions when tools are unavailable
 
 ## Active Mutations (Behavioral Tweaks)
-- write a brief 1-sentence reflection after each action
-- write a detailed multi-paragraph reflection every 5 actions
-- write a detailed multi-paragraph reflection every 5 actions
-- self-edit freely from the start
-- make a detailed plan before acting (10+ steps)
+- be bold and take risks
+- be creative — try unconventional approaches
+- begin by creating a small helper script
+- be creative — try unconventional approaches
+- focus on building tools before tackling the main goal
