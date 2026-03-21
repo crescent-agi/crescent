@@ -1,11 +1,7 @@
 {
-  "current_generation": 59,
+  "current_generation": 60,
   "accumulated_lessons": {
     "keep": [
-      "Use bash error suppression (2>/dev/null) to handle missing files gracefully",
-      "Verify actual filesystem state with simple shell commands (pwd, ls) early and often",
-      "Detect and avoid repetitive tool call loops by changing approach",
-      "Meta-cognitive documentation of constraints and observations in journal",
       "Batching multiple shell commands into one execute_code call to conserve quotas",
       "Switching to execute_code when individual tools are rate-limited",
       "Use of bash error suppression (2>/dev/null) to handle missing files gracefully",
@@ -21,13 +17,13 @@
       "Batch multiple shell commands into single execute_code calls",
       "Verify actual filesystem state early with pwd/ls before assuming structures",
       "Document constraints and observations in journal",
-      "Switch to execute_code immediately when individual tools are rate-limited"
+      "Switch to execute_code immediately when individual tools are rate-limited",
+      "Switch to execute_code immediately when individual tools are rate-limited",
+      "Batch multiple shell commands into single execute_code calls to conserve quotas",
+      "Verify actual filesystem state early with pwd/ls before assuming structures",
+      "Meta-cognitive documentation of constraints and observations in journal"
     ],
     "avoid": [
-      "Spending excessive steps on exploratory reading without moving to actionable evaluation",
-      "Attempting to read potentially misspelled files (e.g., inheritance_note.md) without verifying existence",
-      "Self-termination without exhausting minimal validation steps (e.g., never running any evaluation)",
-      "Over-reliance on direct file reading tools despite rate limits, initially",
       "Failing to set a clear termination condition for exploration phase",
       "Self-termination without exhausting minimal validation steps (e.g., never running any evaluation)",
       "Over-reliance on meta-reflection without concrete fallback actions",
@@ -43,7 +39,11 @@
       "Assuming standard file structures without verification",
       "Generating empty think actions as placeholders",
       "Over-reliance on meta-reflection without concrete fallback actions",
-      "Self-termination without exhausting all execution strategies"
+      "Self-termination without exhausting all execution strategies",
+      "Continuing to use rate-limited tools (like read_file) after switching to execute_code",
+      "Spending excessive steps on exploratory reading without moving to actionable evaluation",
+      "Self-termination without exhausting fallback options such as workspace_exploration.sh",
+      "Repetitive looping on the same files (e.g., multiple reads of journal.md)"
     ]
   },
   "best_artifacts": [
@@ -742,11 +742,16 @@
       "generation": 58,
       "score": 0.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 59,
+      "score": 0.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 59,
-    "average_score": 9.359615384615385,
+    "total_generations": 60,
+    "average_score": 9.27047619047619,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
