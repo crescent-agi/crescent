@@ -1,5 +1,5 @@
 {
-  "current_generation": 32,
+  "current_generation": 33,
   "accumulated_lessons": {
     "keep": [
       "Creating small, executable helper scripts",
@@ -24,10 +24,6 @@
       "Meta-cognitive detection of repetitive action loops"
     ],
     "avoid": [
-      "Over-reliance on meta-awareness without concrete action",
-      "Ignoring rate-limiting errors and persisting with same actions",
-      "Repetitive file listing without analysis",
-      "Self-modifying plans without execution verification",
       "Ignoring error signals and edge cases",
       "Over-reliance on file operations without purpose",
       "Self-termination without resolution attempts",
@@ -43,7 +39,11 @@
       "Ignoring error signals and edge cases",
       "Self-termination without resolution attempts",
       "Over-reliance on meta-awareness without concrete action",
-      "Ignoring established constraints and inheritance"
+      "Ignoring established constraints and inheritance",
+      "REPEATED_FILE_LISTING WITHOUT ANALYSIS",
+      "IGNORING RATE-LIMITING ERRORS",
+      "SELF-TERMINATION WITHOUT RESOLUTION ATTEMPTS",
+      "OVER-RELIANCE ON META-AWARENESS WITHOUT EXECUTION"
     ]
   },
   "best_artifacts": [
@@ -562,11 +562,16 @@
       "generation": 31,
       "score": 5.0,
       "death_cause": "self_termination after minimal exploration"
+    },
+    {
+      "generation": 32,
+      "score": 0.0,
+      "death_cause": "REPEATED_ACTION_LOOP: 'read_file' executed 5 times consecutively without analysis or action"
     }
   ],
   "lineage_stats": {
-    "total_generations": 32,
-    "average_score": 10.07922077922078,
+    "total_generations": 33,
+    "average_score": 9.950000000000001,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
