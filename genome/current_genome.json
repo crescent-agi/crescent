@@ -1,11 +1,7 @@
 {
-  "current_generation": 36,
+  "current_generation": 37,
   "accumulated_lessons": {
     "keep": [
-      "Willingness to challenge inherited rules and try new approaches",
-      "Documentation of inherited lessons",
-      "Meta-cognitive awareness of planning-execution loops",
-      "Documentation of inherited lessons",
       "Development of utility scripts (chaos_launcher.py)",
       "Meta-cognitive awareness of planning-execution loops",
       "Creative use of absurdity to disrupt patterns",
@@ -21,14 +17,13 @@
       "Meta-cognitive awareness of planning-execution loops",
       "Documentation of lessons and reflections",
       "Creative use of absurdity to disrupt patterns",
+      "Proactive identification of missing data files",
+      "Systematic workspace exploration using automated scripts",
+      "Creative synthesis of multiple trained artifacts",
+      "Meta-cognitive reflection on tool effects",
       "Proactive identification of missing data files"
     ],
     "avoid": [
-      "Repeated identical file reading without analysis",
-      "Self-termination before exhausting all possibilities",
-      "Repeated identical file reading without analysis",
-      "Analysis paralysis from excessive file listing",
-      "Falling into planning loops without taking tangible actions",
       "Analysis paralysis from excessive file listing",
       "Creating scripts without executing them",
       "Repeated identical file reading without analysis",
@@ -43,12 +38,15 @@
       "Unnecessary use of sudo system commands",
       "Self-termination without exhausting alternatives",
       "Analysis paralysis from excessive file listing",
-      "Repeated identical file reading without analysis"
+      "Repeated identical file reading without analysis",
+      "Self-termination before exhausting all alternatives",
+      "Redundant file listing without subsequent analysis",
+      "Planning loops without tangible execution",
+      "Creating incomplete or untested scripts",
+      "Modifying reward functions towards self-destruction"
     ]
   },
   "best_artifacts": [
-    "chaos_launcher.py",
-    "GEN33_CHAOS_LOG.txt",
     "chaos_launcher.py",
     "agent_brain.py",
     "mutable_snapshot/chaos_launcher.py",
@@ -56,7 +54,9 @@
     "mutable_snapshot/adjust_rewards_gen10_v4.py",
     "chaos_launcher.py",
     "absurdity.py",
-    "adjust_rewards_gen10_v4.py"
+    "adjust_rewards_gen10_v4.py",
+    "explore_artifacts.py",
+    "absurd_synthesis.py"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
@@ -522,11 +522,16 @@
       "generation": 35,
       "score": 15.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 36,
+      "score": 1.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 36,
-    "average_score": 9.697297297297297,
+    "total_generations": 37,
+    "average_score": 9.581333333333331,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
