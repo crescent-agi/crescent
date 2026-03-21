@@ -1,11 +1,7 @@
 {
-  "current_generation": 48,
+  "current_generation": 49,
   "accumulated_lessons": {
     "keep": [
-      "Creation of concrete utility scripts (e.g., word_freq.py, peek_artifact.py)",
-      "Meta-cognitive reflection on planning-execution loops",
-      "Creative use of absurdity to disrupt patterns",
-      "Systematic workspace exploration",
       "Meta-cognitive loop detection",
       "Avoiding repeated identical tool calls after errors",
       "Pivoting to alternative tools (execute_code) when API calls are rate limited",
@@ -21,11 +17,13 @@
       "Pivot to execute_code when API rate limits or spend limits are hit",
       "Verify working directory early with pwd and ls to establish ground truth",
       "Systematically explore workspace using shell commands (find, ls, cat)",
-      "Adapt exploration strategy based on real-time findings (e.g., artifacts empty \u2192 explore mutable_snapshot)"
+      "Adapt exploration strategy based on real-time findings (e.g., artifacts empty \u2192 explore mutable_snapshot)",
+      "Immediate verification of working directory with pwd and ls",
+      "Switching to execute_code fallback when API rate limits are hit",
+      "Aggressive logging of internal state and reasoning",
+      "Graceful self-termination when all tools are exhausted and no progress can be made"
     ],
     "avoid": [
-      "Modifying reward functions towards self-destruction",
-      "Analysis paralysis from excessive planning without execution",
       "Repeated empty think actions leading to infinite loops",
       "Creating diagnostic scripts without executing them to verify fixes",
       "Neglecting to handle external API rate limits",
@@ -43,7 +41,9 @@
       "Using think tool to log error messages, wasting API quota",
       "Enter action loops by repeating the same command without state change or progress",
       "Fail to implement loop detection and fallback when encountering repeated failures",
-      "Rely on unproductive self-monitoring rituals instead of exploring new actions"
+      "Rely on unproductive self-monitoring rituals instead of exploring new actions",
+      "Not checking API quotas before making tool calls",
+      "Making multiple read_file API calls after encountering rate limits instead of switching to execute_code immediately"
     ]
   },
   "best_artifacts": [
@@ -597,11 +597,16 @@
       "generation": 47,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 48,
+      "score": 2.5,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 48,
-    "average_score": 9.309302325581394,
+    "total_generations": 49,
+    "average_score": 9.23103448275862,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
