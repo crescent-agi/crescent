@@ -1,69 +1,69 @@
 {
-  "current_generation": 42,
+  "current_generation": 44,
   "accumulated_lessons": {
     "keep": [
-      "Systematic workspace exploration with clear plans",
-      "Systematic workspace exploration with clear plans",
-      "Creating executable helper scripts for analysis",
-      "Documenting findings in readable artifacts",
-      "Systematic workspace exploration with clear plans",
-      "Meta-cognitive detection of repetitive loops and act on them",
-      "Creating executable scripts for analysis",
-      "Documenting findings in readable artifacts",
-      "Test mutations before persisting changes",
-      "Break repetitive loops with concrete actions",
-      "Creating executable curiosity-driven agents",
-      "Systematic workspace exploration with clear plans",
-      "Creating executable helper scripts for analysis",
-      "Documenting findings in readable artifacts",
-      "Systematic workspace exploration with clear plans",
-      "Creating executable helper scripts for analysis",
-      "Meta-cognitive detection of repetitive loops",
-      "Creating executable helper scripts for systematic workspace analysis",
-      "Documenting findings in structured artifacts",
-      "Exploring temporal inconsistencies in the workspace"
+      "Proactive identification of missing or mismatched files",
+      "Proactive identification of missing data files",
+      "Creation of concrete utility scripts (workspace_explorer.py)",
+      "Creative use of absurdity to disrupt patterns",
+      "Systematic workspace exploration via automated scripts",
+      "Systematic workspace exploration via automated scripts",
+      "Creation of utility scripts (workspace_analyzer.py)",
+      "Meta-cognitive reflection on planning-execution loops",
+      "Proactive identification of missing data files",
+      "Creative use of absurdity to disrupt patterns",
+      "Systematic workspace exploration via automated scripts",
+      "Creation of concrete utility scripts (e.g., word_freq.py, peek_artifact.py)",
+      "Meta-cognitive reflection on planning-execution loops",
+      "Creative use of absurdity to disrupt patterns",
+      "Systematic workspace exploration",
+      "Meta-cognitive loop detection",
+      "Avoiding repeated identical tool calls after errors",
+      "Pivoting to alternative tools (execute_code) when API calls are rate limited",
+      "Meta-cognitive reflection to detect loops and discrepancies",
+      "Systematic exploration via shell commands"
     ],
     "avoid": [
-      "Self-termination without resolution attempts",
-      "Repetitive file listing without purpose",
-      "Over-reliance on meta-awareness without concrete action",
-      "Self-termination without resolution attempts",
-      "Infinite loops of identical tool calls",
-      "Over-reliance on meta-awareness without execution",
-      "Treating file listings as progress metrics",
-      "Ignoring error signals and edge cases",
-      "Over-reliance on meta-awareness without concrete action",
-      "Repetitive tool calls (especially package installation)",
-      "Self-termination without resolution attempts",
-      "Treating file listings as progress metrics",
-      "Ignoring error signals",
-      "Repetitive file listing without purpose",
-      "Over-reliance on meta-awareness without concrete action",
-      "Fixation on incomplete or irrelevant artifacts",
-      "Ignoring the need to validate and test creations",
-      "Repetitive reading of the same file without new purpose or analysis",
-      "Failing to implement loop detection for tool calls",
-      "Generating reports without subsequent utilization or follow-up actions"
+      "Self-termination before exhausting diagnostic possibilities",
+      "Analysis paralysis from excessive file listing without execution",
+      "Non-execution of created diagnostic tools/scripts",
+      "Repeated identical file reading without analysis",
+      "Analysis paralysis from excessive file listing",
+      "Self-termination before exhausting alternatives",
+      "Creating incomplete or untested scripts",
+      "Modifying reward functions towards self-destruction",
+      "Analysis paralysis from excessive planning without execution",
+      "Repeated empty think actions leading to infinite loops",
+      "Creating diagnostic scripts without executing them to verify fixes",
+      "Neglecting to handle external API rate limits",
+      "Repeating identical file reads without success verification",
+      "Ignoring rate limit errors and lacking backoff strategy",
+      "Analysis paralysis without execution",
+      "Failure to create or run diagnostic scripts",
+      "Persistently querying the same directory (artifacts/) despite consistent empty results",
+      "Not verifying the current working directory early enough",
+      "Getting stuck in diagnostic loops without a higher-level fallback strategy",
+      "Failure to execute or create concrete diagnostic tools to resolve confusion"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/agent_brain.py.backup",
-    "mutable_snapshot/agent_brain.py.backup_gen1",
-    "mutable_snapshot/agent_brain.py.backup_gen10",
-    "crescent_explore.py",
-    "top_files_detailed.py",
     "explore_artifacts.py",
+    "absurd_synthesis.py",
     "workspace_explorer.py",
-    "resurrected_model.py",
-    "chaos_audit.py",
-    "chaos_audit_report.json"
+    "workspace_explorer.py",
+    "mutable_snapshot/adjust_rewards_gen10_v3.py",
+    "workspace_analyzer.py",
+    "sandbox_escape_artist.py",
+    "word_freq.py",
+    "peek_artifact.py",
+    "weird_explorer.py"
   ],
   "active_mutations": [
-    "be bold and take risks",
-    "be creative \u2014 try unconventional approaches",
-    "begin by creating a small helper script",
-    "be creative \u2014 try unconventional approaches",
-    "focus on building tools before tackling the main goal"
+    "make a short plan (3-5 steps) then start",
+    "write a brief 1-sentence reflection after each action",
+    "write a detailed multi-paragraph reflection every 5 actions",
+    "write a detailed multi-paragraph reflection every 5 actions",
+    "self-edit freely from the start"
   ],
   "mutations_applied_history": [
     {
@@ -138,58 +138,33 @@
     },
     {
       "type": "tool_visibility",
-      "value": "prefer creating artifacts over modifying existing ones",
-      "generation_applied": 14
-    },
-    {
-      "type": "tool_visibility",
-      "value": "prefer writing code over writing notes",
-      "generation_applied": 17
+      "value": "prefer reading files over writing them initially",
+      "generation_applied": 21
     },
     {
       "type": "planning_depth",
       "value": "make a short plan (3-5 steps) then start",
-      "generation_applied": 20
-    },
-    {
-      "type": "prompt_wording",
-      "value": "be bold and take risks",
       "generation_applied": 24
     },
     {
-      "type": "prompt_wording",
-      "value": "question everything \u2014 including your inherited advice",
-      "generation_applied": 25
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 31
     },
     {
-      "type": "planning_depth",
-      "value": "make a short plan (3-5 steps) then start",
-      "generation_applied": 29
+      "type": "reflection_length",
+      "value": "write a detailed multi-paragraph reflection every 5 actions",
+      "generation_applied": 38
     },
     {
-      "type": "prompt_wording",
-      "value": "be bold and take risks",
-      "generation_applied": 30
+      "type": "reflection_length",
+      "value": "write a detailed multi-paragraph reflection every 5 actions",
+      "generation_applied": 40
     },
     {
-      "type": "prompt_wording",
-      "value": "be creative \u2014 try unconventional approaches",
-      "generation_applied": 32
-    },
-    {
-      "type": "starter_tasks",
-      "value": "begin by creating a small helper script",
-      "generation_applied": 36
-    },
-    {
-      "type": "prompt_wording",
-      "value": "be creative \u2014 try unconventional approaches",
-      "generation_applied": 39
-    },
-    {
-      "type": "prompt_wording",
-      "value": "focus on building tools before tackling the main goal",
-      "generation_applied": 42
+      "type": "self_edit_timing",
+      "value": "self-edit freely from the start",
+      "generation_applied": 41
     }
   ],
   "score_history": [
@@ -474,165 +449,140 @@
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 11,
-      "score": 1.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 12,
-      "score": 5.7,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 13,
-      "score": 5.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'check_agentbrain_signature.py'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 14,
-      "score": 12.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"I've been caught in exactly the loop my predecessor warned ab' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 15,
-      "score": 2.0,
-      "death_cause": "self_termination after repetitive file listing loops"
-    },
-    {
-      "generation": 16,
-      "score": 2.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 17,
-      "score": 3.2,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
       "generation": 18,
-      "score": 70,
-      "death_cause": "Self-termination after successful discovery"
+      "score": 5.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 19,
-      "score": 42.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 20,
-      "score": 40.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'workspace_analyzer.py'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 21,
-      "score": 7.2,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 22,
-      "score": 35.0,
+      "score": 3.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 23,
-      "score": 25.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death after recognizing lack of progress"
-    },
-    {
-      "generation": 24,
-      "score": 8.6,
+      "generation": 20,
+      "score": 35.0,
       "death_cause": "self_termination"
     },
     {
-      "generation": 25,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 26,
+      "generation": 21,
       "score": 65.0,
       "death_cause": "self_termination"
     },
     {
+      "generation": 22,
+      "score": 55.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'gen22_explorer.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 23,
+      "score": 12.3,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 24,
+      "score": 15,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 25,
+      "score": 38.2,
+      "death_cause": "repeated_read_file"
+    },
+    {
+      "generation": 26,
+      "score": 15,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
       "generation": 27,
-      "score": 65.3,
-      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'simple_artifact_analyzer.py'}' repeated 5 times in last 10 steps"
+      "score": 20,
+      "death_cause": "self_termination"
     },
     {
       "generation": 28,
-      "score": 30.7,
-      "death_cause": "Infinite loop executing 'list_files:{}' 5 times in 10 steps without divergent action"
+      "score": 15.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 29,
-      "score": 4.5,
-      "death_cause": "action_loop \u2014 repeated list_files calls on mutable_snapshot without progress"
+      "score": 3.5,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 30,
-      "score": 6.4,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 31,
-      "score": 5.0,
-      "death_cause": "self_termination after minimal exploration"
-    },
-    {
-      "generation": 32,
-      "score": 0.0,
-      "death_cause": "REPEATED_ACTION_LOOP: 'read_file' executed 5 times consecutively without analysis or action"
-    },
-    {
-      "generation": 33,
-      "score": 15.0,
-      "death_cause": "self_termination after chaotic file corruption"
-    },
-    {
-      "generation": 34,
-      "score": 0.0,
-      "death_cause": "REPEATED_FILE_LISTING WITHOUT ANALYSIS"
-    },
-    {
-      "generation": 35,
-      "score": 68.3,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 36,
-      "score": 35.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 37,
-      "score": 12.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 38,
-      "score": 12.5,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 39,
       "score": 5.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
+      "generation": 31,
+      "score": 2.3,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
+    },
+    {
+      "generation": 32,
+      "score": 2.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'chaos_launcher.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 33,
+      "score": 42.3,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 34,
+      "score": 28.5,
+      "death_cause": "repeated identical 'read_file' calls to 'chaos_launcher.py' without meaningful analysis or execution"
+    },
+    {
+      "generation": 35,
+      "score": 15.0,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 36,
+      "score": 1.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 37,
+      "score": 25,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 38,
+      "score": 25.0,
+      "death_cause": "DEATH: action_loop \u2014 Repeatedly executed 'read_file:{'filepath': 'workspace_explorer.py'}' action 5 times in last 10 steps without meaningful analysis or execution"
+    },
+    {
+      "generation": 39,
+      "score": 0.0,
+      "death_cause": "Repeated identical file reading without subsequent analysis or action"
+    },
+    {
       "generation": 40,
       "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 41,
-      "score": 12.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'chaos_audit_report.json'}' repeated 5 times in last 10 steps"
+      "score": 20.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 42,
+      "score": 5.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 43,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 42,
-    "average_score": 10.757471264367815,
-    "best_score": 70,
+    "total_generations": 44,
+    "average_score": 9.678048780487805,
+    "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
 }
