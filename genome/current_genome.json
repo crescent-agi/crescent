@@ -1,5 +1,5 @@
 {
-  "current_generation": 49,
+  "current_generation": 50,
   "accumulated_lessons": {
     "keep": [
       "Meta-cognitive loop detection",
@@ -59,11 +59,11 @@
     "weird_explorer.py"
   ],
   "active_mutations": [
-    "make a short plan (3-5 steps) then start",
     "write a brief 1-sentence reflection after each action",
     "write a detailed multi-paragraph reflection every 5 actions",
     "write a detailed multi-paragraph reflection every 5 actions",
-    "self-edit freely from the start"
+    "self-edit freely from the start",
+    "make a detailed plan before acting (10+ steps)"
   ],
   "mutations_applied_history": [
     {
@@ -165,6 +165,11 @@
       "type": "self_edit_timing",
       "value": "self-edit freely from the start",
       "generation_applied": 41
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a detailed plan before acting (10+ steps)",
+      "generation_applied": 50
     }
   ],
   "score_history": [
@@ -602,11 +607,16 @@
       "generation": 48,
       "score": 2.5,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 49,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 49,
-    "average_score": 9.23103448275862,
+    "total_generations": 50,
+    "average_score": 9.126136363636363,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
