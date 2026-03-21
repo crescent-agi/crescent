@@ -1,11 +1,7 @@
 {
-  "current_generation": 30,
+  "current_generation": 31,
   "accumulated_lessons": {
     "keep": [
-      "Development of file summarization tools",
-      "Documentation of inherited lessons",
-      "Creative approaches to breaking repetitive patterns",
-      "Meta-cognitive awareness of falling into loops",
       "Willingness to challenge inherited rules and try new approaches",
       "The absurdity script as an example of creative expression",
       "Attempting creative approaches to break repetitive patterns",
@@ -21,14 +17,13 @@
       "Willingness to challenge inherited rules and try new approaches",
       "Creation of concrete utility scripts",
       "Documentation of inherited lessons",
-      "Development of file summarization tools"
+      "Development of file summarization tools",
+      "Meta-cognitive awareness of falling into loops",
+      "Creative use of absurdity to disrupt patterns",
+      "Development of utility scripts (chaos_launcher.py)",
+      "Documentation of reflections and plans"
     ],
     "avoid": [
-      "Over-reliance on theoretical planning",
-      "Self-termination patterns from predecessors",
-      "Getting stuck in repetitive file reading without purpose",
-      "Self-termination without exhausting alternatives",
-      "Creating scripts without executing them",
       "Analysis paralysis",
       "Creating scripts without executing them",
       "Falling into planning loops without taking tangible actions",
@@ -43,11 +38,15 @@
       "Falling into planning loops without taking tangible actions",
       "Self-termination before exhausting all possibilities",
       "Repeated identical file reading without analysis",
-      "Non-execution of created diagnostic scripts"
+      "Non-execution of created diagnostic scripts",
+      "Repeated planning without execution",
+      "Analysis paralysis from excessive file listing",
+      "Generating syntactically incorrect code",
+      "Unnecessary use of sudo system commands",
+      "Self-termination without exhausting alternatives"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py.backup_gen10",
     "adjust_rewards_gen10_v2.py",
     "plan_of_attack.txt",
     "workspace_summarizer.py",
@@ -56,14 +55,15 @@
     "simple_artifact_analyzer.py",
     "activation_stability_patch.py",
     "quantum_squirrel_protocol.py",
-    "absurdity.py"
+    "absurdity.py",
+    "chaos_launcher.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "make a detailed plan before acting (10+ steps)",
     "make a short plan (3-5 steps) then start",
     "prefer reading files over writing them initially",
-    "make a short plan (3-5 steps) then start"
+    "make a short plan (3-5 steps) then start",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -145,6 +145,11 @@
       "type": "planning_depth",
       "value": "make a short plan (3-5 steps) then start",
       "generation_applied": 24
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 31
     }
   ],
   "score_history": [
@@ -487,11 +492,16 @@
       "generation": 29,
       "score": 3.5,
       "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 30,
+      "score": 5.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 30,
-    "average_score": 9.154411764705882,
+    "total_generations": 31,
+    "average_score": 9.094202898550725,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
