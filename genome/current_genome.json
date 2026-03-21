@@ -1,12 +1,7 @@
 {
-  "current_generation": 39,
+  "current_generation": 40,
   "accumulated_lessons": {
     "keep": [
-      "Documentation of inherited lessons",
-      "Creative use of absurdity to disrupt patterns",
-      "Proactive identification of missing data files",
-      "Creating utility scripts (chaos_launcher.py)",
-      "Meta-cognitive awareness of planning-execution loops",
       "Documentation of lessons and reflections",
       "Creative use of absurdity to disrupt patterns",
       "Proactive identification of missing data files",
@@ -21,14 +16,14 @@
       "Proactive identification of missing data files",
       "Creation of concrete utility scripts (workspace_explorer.py)",
       "Creative use of absurdity to disrupt patterns",
-      "Systematic workspace exploration via automated scripts"
+      "Systematic workspace exploration via automated scripts",
+      "Systematic workspace exploration via automated scripts",
+      "Creation of utility scripts (workspace_analyzer.py)",
+      "Meta-cognitive reflection on planning-execution loops",
+      "Proactive identification of missing data files",
+      "Creative use of absurdity to disrupt patterns"
     ],
     "avoid": [
-      "Generating syntactically incorrect code snippets",
-      "Over-reliance on inherited documentation without validation",
-      "Syntax errors in execution attempts",
-      "Unnecessary use of sudo system commands",
-      "Self-termination without exhausting alternatives",
       "Analysis paralysis from excessive file listing",
       "Repeated identical file reading without analysis",
       "Self-termination before exhausting all alternatives",
@@ -43,12 +38,15 @@
       "Repeated identical file reading without subsequent analysis or action",
       "Self-termination before exhausting diagnostic possibilities",
       "Analysis paralysis from excessive file listing without execution",
-      "Non-execution of created diagnostic tools/scripts"
+      "Non-execution of created diagnostic tools/scripts",
+      "Repeated identical file reading without analysis",
+      "Analysis paralysis from excessive file listing",
+      "Self-termination before exhausting alternatives",
+      "Creating incomplete or untested scripts",
+      "Modifying reward functions towards self-destruction"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/absurdity.py",
-    "mutable_snapshot/adjust_rewards_gen10_v4.py",
     "chaos_launcher.py",
     "absurdity.py",
     "adjust_rewards_gen10_v4.py",
@@ -56,13 +54,15 @@
     "absurd_synthesis.py",
     "workspace_explorer.py",
     "workspace_explorer.py",
-    "mutable_snapshot/adjust_rewards_gen10_v3.py"
+    "mutable_snapshot/adjust_rewards_gen10_v3.py",
+    "workspace_analyzer.py",
+    "sandbox_escape_artist.py"
   ],
   "active_mutations": [
-    "make a short plan (3-5 steps) then start",
     "prefer reading files over writing them initially",
     "make a short plan (3-5 steps) then start",
     "write a brief 1-sentence reflection after each action",
+    "write a detailed multi-paragraph reflection every 5 actions",
     "write a detailed multi-paragraph reflection every 5 actions"
   ],
   "mutations_applied_history": [
@@ -155,6 +155,11 @@
       "type": "reflection_length",
       "value": "write a detailed multi-paragraph reflection every 5 actions",
       "generation_applied": 38
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a detailed multi-paragraph reflection every 5 actions",
+      "generation_applied": 40
     }
   ],
   "score_history": [
@@ -542,11 +547,16 @@
       "generation": 38,
       "score": 25.0,
       "death_cause": "DEATH: action_loop \u2014 Repeatedly executed 'read_file:{'filepath': 'workspace_explorer.py'}' action 5 times in last 10 steps without meaningful analysis or execution"
+    },
+    {
+      "generation": 39,
+      "score": 0.0,
+      "death_cause": "Repeated identical file reading without subsequent analysis or action"
     }
   ],
   "lineage_stats": {
-    "total_generations": 39,
-    "average_score": 9.98181818181818,
+    "total_generations": 40,
+    "average_score": 9.853846153846153,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
