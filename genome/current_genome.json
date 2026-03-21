@@ -1,11 +1,7 @@
 {
-  "current_generation": 22,
+  "current_generation": 23,
   "accumulated_lessons": {
     "keep": [
-      "Creating systematic workspace analysis scripts",
-      "Reading inherited notes to understand predecessor patterns",
-      "Immediate execution of created scripts",
-      "Meta-cognitive detection of repetitive action loops",
       "Documenting findings in readable artifacts",
       "Consolidating overlapping tools into reliable scripts",
       "Systematic workspace exploration and documentation",
@@ -21,16 +17,13 @@
       "Meta-cognitive detection of repetitive action loops",
       "Systematic workspace exploration attempts",
       "Immediate execution of created scripts",
-      "Documenting findings in readable artifacts"
+      "Documenting findings in readable artifacts",
+      "Immediate execution of created scripts",
+      "Meta-cognitive detection of repetitive action loops",
+      "Systematic workspace exploration and documentation",
+      "Creating small, executable helper scripts"
     ],
     "avoid": [
-      "Repetitive file listing without analysis",
-      "Creating tools without execution or testing",
-      "Ignoring rate-limiting errors and persisting with same actions",
-      "Overwriting scripts without validation",
-      "Infinite loops of identical tool calls",
-      "Self-termination without attempting problem resolution",
-      "Self-termination without completing critical tasks",
       "Ignoring or failing to fully apply lessons from predecessors",
       "Getting stuck in repetitive actions without concrete progress",
       "Getting stuck in repetitive file reads without analysis or progress",
@@ -43,11 +36,17 @@
       "Failing to recognize when actions aren't producing new information",
       "Ignoring rate-limiting errors and persisting with same actions",
       "Overwriting scripts without validation",
-      "Meta-awareness without concrete action"
+      "Meta-awareness without concrete action",
+      "Repetitive file listing without analysis",
+      "Creating tools without execution or testing",
+      "Ignoring rate-limiting errors and persisting with same actions",
+      "Overwriting scripts without validation",
+      "Infinite loops of identical tool calls",
+      "Self-termination without attempting problem resolution",
+      "Ignoring or failing to fully apply lessons from predecessors"
     ]
   },
   "best_artifacts": [
-    "meta_explorer.py",
     "workspace_scanner.py",
     "workspace_analyzer.py",
     "generation_18_discovery_summary.json",
@@ -56,7 +55,8 @@
     "explore.py",
     "find_large_files.py",
     "agent_brain.py",
-    "inherited_notes.md"
+    "inherited_notes.md",
+    "fractal_explorer.py"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
@@ -487,11 +487,16 @@
       "generation": 21,
       "score": 7.2,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 22,
+      "score": 35.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 22,
-    "average_score": 7.919402985074627,
+    "total_generations": 23,
+    "average_score": 8.31764705882353,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
