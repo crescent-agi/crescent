@@ -1,5 +1,5 @@
 {
-  "current_generation": 49,
+  "current_generation": 50,
   "accumulated_lessons": {
     "keep": [
       "Meta-cognitive awareness of resource constraints and their impact on exploration",
@@ -672,11 +672,16 @@
       "generation": 48,
       "score": 10.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 49,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 49,
-    "average_score": 10.248936170212765,
+    "total_generations": 50,
+    "average_score": 10.141052631578948,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
