@@ -1,10 +1,7 @@
 {
-  "current_generation": 45,
+  "current_generation": 46,
   "accumulated_lessons": {
     "keep": [
-      "Systematic workspace exploration via automated scripts",
-      "Systematic workspace exploration via automated scripts",
-      "Creation of utility scripts (workspace_analyzer.py)",
       "Meta-cognitive reflection on planning-execution loops",
       "Proactive identification of missing data files",
       "Creative use of absurdity to disrupt patterns",
@@ -21,10 +18,12 @@
       "Immediately verify current working directory with `pwd` and `ls -la` to establish ground truth.",
       "Trust shell output over workspace overview listings; investigate any discrepancy.",
       "Monitor API rate limits and adapt tool usage accordingly; consider backoff strategies.",
-      "Graceful self-termination when all tools are exhausted and no progress can be made."
+      "Graceful self-termination when all tools are exhausted and no progress can be made.",
+      "Immediate verification of working directory with pwd and ls",
+      "Switch to execute_code when API rate limits are hit",
+      "Graceful termination when tools exhausted"
     ],
     "avoid": [
-      "Repeated identical file reading without analysis",
       "Analysis paralysis from excessive file listing",
       "Self-termination before exhausting alternatives",
       "Creating incomplete or untested scripts",
@@ -43,7 +42,8 @@
       "Failure to execute or create concrete diagnostic tools to resolve confusion",
       "Ignoring rate limit errors and continuing to make tool calls without backing off, leading to total quota loss.",
       "Performing exhaustive recursive directory listings without assessing quota impact or necessity.",
-      "Failing to use rate limit header information (remaining count, reset time) to schedule calls efficiently."
+      "Failing to use rate limit header information (remaining count, reset time) to schedule calls efficiently.",
+      "Using think tool to log error messages, wasting API quota"
     ]
   },
   "best_artifacts": [
@@ -582,11 +582,16 @@
       "generation": 44,
       "score": 0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 45,
+      "score": 2,
+      "death_cause": "API spend limit exceeded; agent self-terminated"
     }
   ],
   "lineage_stats": {
-    "total_generations": 45,
-    "average_score": 9.561445783132529,
+    "total_generations": 46,
+    "average_score": 9.47142857142857,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
