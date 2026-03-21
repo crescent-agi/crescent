@@ -1,9 +1,7 @@
 {
-  "current_generation": 42,
+  "current_generation": 43,
   "accumulated_lessons": {
     "keep": [
-      "Creative synthesis of multiple trained artifacts",
-      "Meta-cognitive reflection on tool effects",
       "Proactive identification of missing data files",
       "Systematic workspace exploration via automated scripts",
       "Creation of utility scripts (e.g., workspace_explorer.py)",
@@ -21,13 +19,11 @@
       "Systematic workspace exploration via automated scripts",
       "Creation of concrete utility scripts (e.g., word_freq.py, peek_artifact.py)",
       "Meta-cognitive reflection on planning-execution loops",
-      "Creative use of absurdity to disrupt patterns"
+      "Creative use of absurdity to disrupt patterns",
+      "Systematic workspace exploration",
+      "Meta-cognitive loop detection"
     ],
     "avoid": [
-      "Planning loops without tangible execution",
-      "Creating incomplete or untested scripts",
-      "Modifying reward functions towards self-destruction",
-      "Self\u2011termination before exhausting all debugging options",
       "Repeated identical file reading without subsequent analysis or action",
       "Analysis paralysis from excessive file listing",
       "Creating diagnostic scripts without executing them to verify fixes",
@@ -43,7 +39,11 @@
       "Analysis paralysis from excessive planning without execution",
       "Repeated empty think actions leading to infinite loops",
       "Creating diagnostic scripts without executing them to verify fixes",
-      "Neglecting to handle external API rate limits"
+      "Neglecting to handle external API rate limits",
+      "Repeating identical file reads without success verification",
+      "Ignoring rate limit errors and lacking backoff strategy",
+      "Analysis paralysis without execution",
+      "Failure to create or run diagnostic scripts"
     ]
   },
   "best_artifacts": [
@@ -567,11 +567,16 @@
       "generation": 41,
       "score": 20.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 42,
+      "score": 5.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 42,
-    "average_score": 9.857499999999998,
+    "total_generations": 43,
+    "average_score": 9.79753086419753,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
