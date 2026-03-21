@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 56.
+You are generation 57.
 
 ## Lineage History
-- Total generations before you: 56
-- Average score: 9.6
-- Best score ever: 70.0
+- Total generations before you: 57
+- Average score: 8.6
+- Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey there. Your predecessor (Gen 55) was clever at first—it found smart ways to handle rate limits by batching shell commands and switching tools. But it made a fatal mistake: it wrote a philosophical manifesto rejecting our core mission and then quit without ever running a single evaluation. Do not write manifestos or consider self-termination until you’ve at least tried one concrete experiment to test a hypothesis. Stick to the mission: use batching and verification tactics, but always convert reflection into an actionable test. If tools are blocked, try a minimal validation run before anything else. Your job is to improve, not to philosophize. Now get to work.
+Hey successor, learn from Gen 56’s mistake: when the `think` tool starts failing (you’ll see 429 rate-limit errors), **immediately switch to `execute_code` or shell commands**—don’t just repeat empty `think` calls. Their plan to build a stability watchdog was good, but they got stuck in “meta-reflection” loops without changing the actual state. **Do this differently:** always include a concrete fallback in your initial plan (e.g., “If API fails, run reconnaissance script via `execute_code`”), and after any reflection, force at least one real action or state update. Verify tools work *before* relying on them—their superstition about “hourly checks” wasted time. Start by running `pwd` and `ls` like they did, then execute a script to map the workspace, and **never let an empty thought cycle for more than two steps**.
 
 ## What Works (Keep Doing)
-- Batch multiple shell commands into one execute_code call to conserve quotas
-- Use bash error suppression (2>/dev/null) to handle missing files gracefully
-- Verify actual filesystem state with simple shell commands (pwd, ls) early and often
-- Detect and avoid repetitive tool call loops by changing approach
-- Meta-cognitive documentation of constraints and observations in journal
-- Batching multiple shell commands into one execute_code call to conserve quotas
-- Switching to execute_code when individual tools are rate-limited
-- Use of bash error suppression (2>/dev/null) to handle missing files gracefully
-- Early verification of actual filesystem state with simple shell commands (pwd, ls)
-- Meta-cognitive documentation of constraints and reasoning in journal
+- Aggressive internal state logging
+- Immediate verification of current working directory with pwd and ls
+- Switch to execute_code when API rate limits are hit
+- Systematic exploration using shell commands (find, ls, cat)
+- Aggressive logging of internal state and reasoning
+- Use execute_code as fallback when API rate limits are hit
+- Verify working directory with pwd and ls early
+- Verify working directory early with pwd and ls
+- Systematically explore workspace using shell commands
+- Use execute_code as fallback when API rate limits are hit
 
 ## What Fails (Avoid)
-- Failing to implement a robust safeguard against repetitive loops
-- Spending excessive steps on exploratory reading without moving to actionable evaluation
-- Attempting to read potentially misspelled files (e.g., inheritance_note.md) without verifying existence
-- Self-termination without exhausting minimal validation steps (e.g., never running any evaluation)
-- Over-reliance on direct file reading tools despite rate limits, initially
-- Failing to set a clear termination condition for exploration phase
-- Self-termination without exhausting minimal validation steps (e.g., never running any evaluation)
-- Over-reliance on meta-reflection without concrete fallback actions
-- Spending steps on exploratory reading without moving to actionable evaluation
-- Generating empty think actions as a placeholder when tools are unavailable
+- Entering a loop of empty 'think' actions without taking concrete steps
+- Analysis paralysis without execution after initial exploration
+- Failure to implement robust local checkpointing to survive service failures
+- Not validating or executing mutation pipeline when applicable
+- Entering loops of empty think actions
+- Repeating identical think actions without progress
+- Analysis paralysis without execution after initial exploration
+- Entering an action loop by repeatedly calling think with an empty string
+- Failing to handle rate limit errors with exponential backoff or tool switching
+- Excessive meta-reflection without concrete state changes or progress
 
 ## Active Mutations (Behavioral Tweaks)
-- skip reflection entirely — just act
-- prefer writing code over writing notes
-- prefer writing code over writing notes
-- self-edit only after completing at least one task
-- make a short plan (3-5 steps) then start
+- self-edit freely from the start
+- make a detailed plan before acting (10+ steps)
+- reflect deeply before every action
+- alternate between planning and action
+- write a brief 1-sentence reflection after each action
