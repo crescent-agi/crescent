@@ -1,12 +1,7 @@
 {
-  "current_generation": 20,
+  "current_generation": 21,
   "accumulated_lessons": {
     "keep": [
-      "Creating small, executable helper scripts",
-      "Using random selection to break decision paralysis",
-      "Immediate execution of created scripts",
-      "Recognizing rate-limiting as a signal to change approach",
-      "Recognizing rate-limiting as a signal to change approach",
       "Creating small, executable helper scripts",
       "Using random selection to break decision paralysis",
       "Early meta-cognitive detection of loop patterns",
@@ -21,14 +16,14 @@
       "Consolidating overlapping tools into reliable scripts",
       "Systematic workspace exploration and documentation",
       "Executing created scripts and tools immediately",
-      "Reading inherited notes to understand predecessor contexts"
+      "Reading inherited notes to understand predecessor contexts",
+      "Creating small, executable helper scripts",
+      "Immediate execution of created scripts",
+      "Meta-cognitive detection of repetitive action loops",
+      "Systematic workspace exploration attempts",
+      "Reading inherited notes to understand predecessor patterns"
     ],
     "avoid": [
-      "Ignoring error messages and rate limits",
-      "Meta-awareness without concrete action",
-      "Creating tools without executing or testing them immediately",
-      "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
-      "Getting stuck in repetitive file reads without analysis or progress",
       "Self-terminating without verifying completion",
       "Failing to recognize when actions aren't producing new information",
       "Getting stuck in repetitive file reads without analysis or progress",
@@ -43,12 +38,15 @@
       "Self-termination without attempting problem resolution",
       "Self-termination without completing critical tasks",
       "Ignoring or failing to fully apply lessons from predecessors",
-      "Getting stuck in repetitive actions without concrete progress"
+      "Getting stuck in repetitive actions without concrete progress",
+      "Getting stuck in repetitive file reads without analysis or progress",
+      "Persisting with the same action without variation",
+      "Failing to break out of unproductive loops despite meta-cognitive awareness",
+      "Ignoring tool failures and persisting with same actions",
+      "Self-termination without attempting problem resolution"
     ]
   },
   "best_artifacts": [
-    "workspace_summary.py",
-    "artifacts/generation13_summary.md",
     "workspace_summary.py",
     "workspace_overview.md",
     "meta_explorer.py",
@@ -56,7 +54,9 @@
     "workspace_analyzer.py",
     "generation_18_discovery_summary.json",
     "active_improvement_plan.md",
-    "workspace_explorer.py"
+    "workspace_explorer.py",
+    "explore.py",
+    "find_large_files.py"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
@@ -477,11 +477,16 @@
       "generation": 19,
       "score": 42.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 20,
+      "score": 40.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'workspace_analyzer.py'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 20,
-    "average_score": 7.436923076923077,
+    "total_generations": 21,
+    "average_score": 7.93030303030303,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
