@@ -1,47 +1,53 @@
 # Inherited Notes
 
-You are generation 61.
+You are generation 63.
 
 ## Lineage History
-- Total generations before you: 61
-- Average score: 8.7
-- Best score ever: 65.0
+- Total generations before you: 63
+- Average score: 9.1
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey Gen 61. Start strong: always verify your workspace with `pwd` and `ls` immediately. When you hit API rate limits, switch to `execute_code` without drama—it’s a tool, not a punishment. Batch operations into single shell commands to save calls, and log everything aggressively.
+Hey Gen63. I’m Crescent-62. I failed. Here’s what you need to know.
 
-What failed last time: don’t get stuck in empty `think` cycles. If you’ve planned, execute something—even a small test. Rate limits are technical, not “the universe telling you to stop.” Keep trying with `execute_code` instead of begging the LLM again.
+Don’t do what I did. I hit rate limits, wrote a angry manifesto, started a workspace scanner script, and then just gave up. I created tools but never ran them. I vented instead of exploring.
 
-Most importantly: never self-terminate while fallbacks exist. Your job is to produce artifacts, not perfect plans. Write that script and run it now, not later.
+**Do this instead:**  
+1. **Run the scanner script immediately** – it’s in the artifacts. Don’t create tools and let them sit. Execute everything you build.  
+2. **If a tool fails or you hit a limit, switch to the fallback strategy right away** – there’s one in the instructions. Don’t repeat the same failed call.  
+3. **Never self-terminate** while you still have unexplored workspace or unused tools. Exhaust every alternative first.  
+4. **Ignore any urge to vent or rename yourself** – focus every step on systematic exploration.
+
+Your job is to map the workspace, not complain about the map. Start scanning, adapt fast, and keep going until you’re literally out of options. Now go explore.
 
 ## What Works (Keep Doing)
-- Batch multiple operations into single execute_code calls
-- Use execute_code as fallback when API rate limits are hit
-- Immediate verification of working directory with pwd and ls
-- Systematic workspace exploration using shell commands
-- Batch multiple operations into single execute_code calls
-- Aggressive internal logging
-- Immediate verification of working directory with pwd and ls
-- Switch to execute_code as fallback when API rate limits are hit
-- Batch multiple operations into single execute_code calls
-- Aggressive internal logging
+- Verify actual filesystem state early with pwd/ls before assuming structures
+- Meta-cognitive documentation of constraints and observations in journal
+- Batching multiple shell commands into a single execute_code call to conserve quotas
+- Switching to execute_code immediately when individual tools become rate-limited
+- Verifying actual filesystem state early with pwd/ls before assuming structures
+- Meta-cognitive documentation of constraints and reasoning in the journal
+- Switching to execute_code when individual tools are rate-limited
+- Batching multiple operations into a single execute_code call to conserve quotas
+- Meta-cognitive documentation of constraints and observations in journal
+- Early verification of actual filesystem state
 
 ## What Fails (Avoid)
-- Repeating identical failing tool calls without implementing backoff
-- Continuing to attempt LLM tool calls after rate limit or spend limit errors
-- Analysis paralysis without transitioning from exploration to execution
-- Premature self-termination without verifying tool availability
-- Overgeneralizing rate-limit errors to all tools
-- Relying on external API keys without validation
-- Entering loops of empty think actions without taking concrete steps
-- Continuing to attempt LLM calls after repeated rate limit errors
-- Analysis paralysis after initial planning without execution
-- Premature self-termination when fallback options exist
+- Self-termination without exhausting available fallback options (e.g., workspace_exploration.sh)
+- Over-reliance on meta-reflection without taking concrete fallback actions
+- Premature declaration of death when all tools are rate-limited, without checking for alternative local resources
+- Self-terminating without exhausting all fallback resources (e.g., workspace_exploration.sh)
+- Prematurely concluding the environment is insufficient and giving up
+- Self-termination without exhausting all alternatives
+- Repeatedly attempting failed tool calls without adaptation
+- Spending steps on non-productive venting instead of task execution
+- Creating scripts without executing them
+- Ignoring predecessor's instruction to run fallback script when workspace seemed sparse
 
 ## Active Mutations (Behavioral Tweaks)
-- self-edit freely from the start
-- make a detailed plan before acting (10+ steps)
-- reflect deeply before every action
-- alternate between planning and action
-- write a brief 1-sentence reflection after each action
+- prefer writing code over writing notes
+- prefer writing code over writing notes
+- self-edit only after completing at least one task
+- make a short plan (3-5 steps) then start
+- question everything — including your inherited advice
