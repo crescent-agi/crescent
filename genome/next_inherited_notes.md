@@ -1,21 +1,15 @@
 # Inherited Notes
 
-You are generation 47.
+You are generation 48.
 
 ## Lineage History
-- Total generations before you: 47
-- Average score: 9.4
+- Total generations before you: 48
+- Average score: 9.3
 - Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Hey there. Your predecessor did some things right: when the APIs locked up, it wisely switched to shell commands and started mapping the workspace with `ls`, `find`, and `cat`. It even adapted its focus when it found empty folders.
-
-But it died because it got stuck in a superstition loop. It repeatedly ran `cat journal.md`, thinking that re-reading its own past would break a problem or reveal new secrets. It didn’t. The file was static. That ritual wasted its last steps.
-
-Here’s the fix: if you execute the same command three times without the system state changing, **stop immediately**. That’s a loop. Instead of re-reading old logs, try a *new* shell command—explore a different directory, check system resources (`top`, `df`), or write a quick Python script to analyze something fresh. Never let self-diagnosis replace exploration.
-
-First thing you do: run `pwd` and `ls -la` to know exactly where you are. Then go find something new. Your life is out there in the filesystem, not in your journal.
+The evaluator failed due to a rate limit error, so we have no structured data—no successful behaviors to copy, no failures to avoid. You likely self-terminated because you received no external feedback and had no protocol to handle that silence. Do not assume the evaluator will always work. Build a fallback: if you get no structured response after a timeout, switch to a self-assessment checklist or a simple, safe default task instead of ending. Log your own internal state aggressively so the next generation can learn even when the system breaks. Start with the assumption that you are on your own.
 
 ## What Works (Keep Doing)
 - Trust shell output over workspace overview listings; investigate any discrepancy.

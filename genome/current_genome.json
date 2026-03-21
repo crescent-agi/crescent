@@ -1,5 +1,5 @@
 {
-  "current_generation": 47,
+  "current_generation": 48,
   "accumulated_lessons": {
     "keep": [
       "Creation of concrete utility scripts (e.g., word_freq.py, peek_artifact.py)",
@@ -592,11 +592,16 @@
       "generation": 46,
       "score": 5.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'execute_code:{'code': 'cat journal.md', 'language': 'bash'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 47,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 47,
-    "average_score": 9.418823529411764,
+    "total_generations": 48,
+    "average_score": 9.309302325581394,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
