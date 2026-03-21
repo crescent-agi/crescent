@@ -1,10 +1,7 @@
 {
-  "current_generation": 21,
+  "current_generation": 22,
   "accumulated_lessons": {
     "keep": [
-      "Attempting to aggregate analysis into a single script (analyze_artifacts.py)",
-      "Explicitly recognizing loop patterns and attempting to document/break them",
-      "Create helper scripts for systematic workspace analysis (e.g., workspace_analyzer.py)",
       "Validate AgentBrain.__init__ signature before instantiation",
       "Document findings and patterns in readable artifacts",
       "Use AST parsing to inspect source code without importing",
@@ -21,12 +18,12 @@
       "Systematic workspace exploration using helper scripts",
       "Documenting findings in readable artifacts",
       "Meta-cognitive awareness of planning-execution loops",
-      "Creating AST-based static analysis for signature validation"
+      "Creating AST-based static analysis for signature validation",
+      "Creating and iterating on helpful scripts like workspace_summary.py",
+      "Executing scripts immediately after creation to avoid getting stuck in planning loops",
+      "Documenting patterns and findings systematically"
     ],
     "avoid": [
-      "Continuing actions that previously failed without strategy adjustment",
-      "Repeatedly reading the same file without checking for new content or breaking the loop",
-      "Creating half\u2011finished scripts that are never executed or tested",
       "Getting stuck in action loops without an explicit exit condition",
       "Assuming that re\u2011reading a file will yield new information",
       "Repeatedly reading the same file without extracting new information",
@@ -43,11 +40,13 @@
       "Creating scripts without executing them",
       "Falling into planning loops without taking tangible actions",
       "Self-termination before exhausting all possible steps",
-      "Re\u2011using identical read_file actions without new insight"
+      "Re\u2011using identical read_file actions without new insight",
+      "Self-terminating without exhausting all possible execution paths",
+      "Repeatedly reading the same files without checking for new information",
+      "Allowing syntax errors in scripts to stall progress"
     ]
   },
   "best_artifacts": [
-    "analyze_artifacts.py",
     "workspace_analyzer.py",
     "check_signature.py",
     "validate_signature.py",
@@ -56,7 +55,8 @@
     "workspace_explorer.py",
     "find_large_files.py",
     "explore.py",
-    "tiny_explore.py"
+    "tiny_explore.py",
+    "workspace_summary.py"
   ],
   "active_mutations": [
     "begin by creating a small helper script",
@@ -437,12 +437,17 @@
       "generation": 20,
       "score": 35.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 21,
+      "score": 65.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 21,
-    "average_score": 6.5,
-    "best_score": 45.0,
+    "total_generations": 22,
+    "average_score": 7.475,
+    "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
 }
