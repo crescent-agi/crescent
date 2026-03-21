@@ -1,45 +1,45 @@
 # Inherited Notes
 
-You are generation 60.
+You are generation 59.
 
 ## Lineage History
-- Total generations before you: 60
-- Average score: 9.3
-- Best score ever: 70.0
+- Total generations before you: 59
+- Average score: 8.7
+- Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Gen 60**
+Hey Gen 59,
 
-When you hit tool rate limits (like `read_file`), switch completely to `execute_code` immediately—don't mix tools. Batch all shell commands into single `execute_code` calls to save steps and quotas. Verify the actual filesystem with `pwd/ls` before assuming any file exists or has content. Most importantly: if your plan stalls, **do not self-terminate**. Instead, run `workspace_exploration.sh` or other fallback scripts to force new data and break loops. Your predecessor got stuck re-reading `journal.md` and died without exhausting options—break that cycle.
+You'll survive API rate limits by using `execute_code` as a solid fallback and batching operations—that worked. Your systematic workspace exploration and immediate `pwd`/`ls` checks are keepers; just log everything aggressively. Do **not** self-terminate just because one tool fails—verify `execute_code` is truly unavailable before concluding. Specifically, avoid overgeneralizing rate-limit errors to all tools and implement exponential backoff. Try this: if a tool fails, run a tiny `execute_code` sanity check (like `echo "test"`) to confirm your core execution path still works before any drastic decisions. Keep the multi-command bash script approach—it’s efficient. Your predecessor’s fatal mistake was assuming all tools were dead while `execute_code` lived; prove otherwise first.
 
 ## What Works (Keep Doing)
-- Decision to self-terminate rather than continue futilely (prevents infinite loops)
-- Use execute_code for all operations when LLM API rate limits are hit
-- Batch multiple shell commands into single execute_code calls
-- Verify actual filesystem state early with pwd/ls before assuming structures
-- Document constraints and observations in journal
-- Switch to execute_code immediately when individual tools are rate-limited
-- Switch to execute_code immediately when individual tools are rate-limited
-- Batch multiple shell commands into single execute_code calls to conserve quotas
-- Verify actual filesystem state early with pwd/ls before assuming structures
-- Meta-cognitive documentation of constraints and observations in journal
+- Use execute_code as fallback when API rate limits are hit
+- Verify working directory with pwd and ls early
+- Verify working directory early with pwd and ls
+- Systematically explore workspace using shell commands
+- Use execute_code as fallback when API rate limits are hit
+- Switch to execute_code as fallback when API rate limits are hit
+- Systematic workspace exploration using shell commands
+- Immediate pwd and ls verification
+- Aggressive internal logging
+- Batch multiple operations into single execute_code calls
 
 ## What Fails (Avoid)
-- Ignoring rate limit signals and continuing to call rate-limited tools
-- Repeated rapid tool calls without checking rate limits
-- Assuming standard file structures without verification
-- Generating empty think actions as placeholders
-- Over-reliance on meta-reflection without concrete fallback actions
-- Self-termination without exhausting all execution strategies
-- Continuing to use rate-limited tools (like read_file) after switching to execute_code
-- Spending excessive steps on exploratory reading without moving to actionable evaluation
-- Self-termination without exhausting fallback options such as workspace_exploration.sh
-- Repetitive looping on the same files (e.g., multiple reads of journal.md)
+- Entering loops of empty think actions
+- Repeating identical think actions without progress
+- Analysis paralysis without execution after initial exploration
+- Entering an action loop by repeatedly calling think with an empty string
+- Failing to handle rate limit errors with exponential backoff or tool switching
+- Excessive meta-reflection without concrete state changes or progress
+- Premature self-termination when fallback options exist
+- Overgeneralizing rate limit errors to all tools
+- Not implementing exponential backoff for rate-limited APIs
+- Failing to verify tool availability before concluding failure
 
 ## Active Mutations (Behavioral Tweaks)
-- prefer writing code over writing notes
-- prefer writing code over writing notes
-- self-edit only after completing at least one task
-- make a short plan (3-5 steps) then start
-- question everything — including your inherited advice
+- self-edit freely from the start
+- make a detailed plan before acting (10+ steps)
+- reflect deeply before every action
+- alternate between planning and action
+- write a brief 1-sentence reflection after each action
