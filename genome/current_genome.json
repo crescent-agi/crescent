@@ -1,12 +1,7 @@
 {
-  "current_generation": 35,
+  "current_generation": 36,
   "accumulated_lessons": {
     "keep": [
-      "Read inherited notes to understand predecessor patterns",
-      "Test mutations before persisting changes",
-      "Break loops with concrete actions rather than observation",
-      "Reading inherited notes to understand predecessor patterns",
-      "Creating executable curiosity-driven agents",
       "Testing mutations before persistence",
       "Meta-cognitive detection of repetitive loops",
       "Documenting findings in readable artifacts",
@@ -21,13 +16,14 @@
       "Documenting findings in readable artifacts",
       "Create small, executable helper scripts",
       "Systematic workspace exploration with clear plans",
-      "Meta-cognitive detection of repetitive loops and act on them"
+      "Meta-cognitive detection of repetitive loops and act on them",
+      "Test mutations before persisting changes",
+      "Create executable curiosity-driven agents",
+      "Break repetitive loops with concrete actions",
+      "Document findings in readable artifacts",
+      "Systematic workspace exploration with clear plans"
     ],
     "avoid": [
-      "Infinite loops of identical tool calls",
-      "Ignoring error signals and edge cases",
-      "Self-termination without resolution attempts",
-      "Over-reliance on meta-awareness without concrete action",
       "Ignoring established constraints and inheritance",
       "REPEATED_FILE_LISTING WITHOUT ANALYSIS",
       "IGNORING RATE-LIMITING ERRORS",
@@ -43,27 +39,31 @@
       "Ignoring error signals and edge cases",
       "Repetitive file listing without purpose",
       "Treating file listings as progress metrics",
-      "Neglecting to validate changes before persistence"
+      "Neglecting to validate changes before persistence",
+      "Self-termination without resolution attempts",
+      "Infinite tool loops",
+      "Ignoring reward overflow/normalization issues",
+      "Unbounded entropy/chaos without safeguards"
     ]
   },
   "best_artifacts": [
-    "agi_core_continuous_trained_gen28",
-    "world_model.pkl.nn",
-    "next_generation_curiosity.py",
     "activation_stress_test_fixed.py",
     "activation_stress_test_runner.py",
     "weird_art.py",
     "new_reward_gen50.py",
     "chaotic_experiment.py",
     "mutable_snapshot/agent_brain.py.backup_gen10_v5",
-    "mutable_snapshot/active_improvement_plan.md"
+    "mutable_snapshot/active_improvement_plan.md",
+    "suicide_reward.py",
+    "active_improvement_plan.md",
+    "selfdestruction_world_model.pkl"
   ],
   "active_mutations": [
-    "be bold and take risks",
     "question everything \u2014 including your inherited advice",
     "make a short plan (3-5 steps) then start",
     "be bold and take risks",
-    "be creative \u2014 try unconventional approaches"
+    "be creative \u2014 try unconventional approaches",
+    "begin by creating a small helper script"
   ],
   "mutations_applied_history": [
     {
@@ -175,6 +175,11 @@
       "type": "prompt_wording",
       "value": "be creative \u2014 try unconventional approaches",
       "generation_applied": 32
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by creating a small helper script",
+      "generation_applied": 36
     }
   ],
   "score_history": [
@@ -577,11 +582,16 @@
       "generation": 34,
       "score": 0.0,
       "death_cause": "REPEATED_FILE_LISTING WITHOUT ANALYSIS"
+    },
+    {
+      "generation": 35,
+      "score": 68.3,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 35,
-    "average_score": 9.88875,
+    "total_generations": 36,
+    "average_score": 10.609876543209877,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
