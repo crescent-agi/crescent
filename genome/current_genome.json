@@ -1,10 +1,7 @@
 {
-  "current_generation": 45,
+  "current_generation": 46,
   "accumulated_lessons": {
     "keep": [
-      "Meta-cognitive detection of repetitive loops and act on them",
-      "Creating executable scripts for analysis",
-      "Documenting findings in readable artifacts",
       "Test mutations before persisting changes",
       "Break repetitive loops with concrete actions",
       "Creating executable curiosity-driven agents",
@@ -21,12 +18,12 @@
       "Meta-cognitive awareness of resource constraints and their impact on exploration",
       "Clear documentation of observations and reasoning in notes",
       "Recognition of map-territory mismatch between contextual listings and actual filesystem",
-      "Leaving a detailed explanatory trace before termination"
+      "Leaving a detailed explanatory trace before termination",
+      "Switch to execute_code for shell commands to bypass tool rate limits",
+      "Document resource constraints and observations clearly before termination",
+      "Early ground truth verification with simple commands like pwd and ls"
     ],
     "avoid": [
-      "Infinite loops of identical tool calls",
-      "Over-reliance on meta-awareness without execution",
-      "Treating file listings as progress metrics",
       "Ignoring error signals and edge cases",
       "Over-reliance on meta-awareness without concrete action",
       "Repetitive tool calls (especially package installation)",
@@ -43,7 +40,10 @@
       "Self-termination without exhausting all minimal documentation options",
       "Attempting multiple costly tool calls in rapid succession before assessing quota boundaries",
       "Not attempting to parse and exploit the structure of rate limit error messages for strategic planning",
-      "Over-reliance on meta-reflection without concrete fallback actions when tools are unavailable"
+      "Over-reliance on meta-reflection without concrete fallback actions when tools are unavailable",
+      "Repetitive tool calls without purpose (e.g., reading same file twice)",
+      "Self-terminating without exhausting shell-based exploration after API limits",
+      "Incomplete artifact creation (started script but did not save or execute)"
     ]
   },
   "best_artifacts": [
@@ -642,11 +642,16 @@
       "generation": 44,
       "score": 2.5,
       "death_cause": "self_termination \u2014 Agent declared its own death after exhausting tool call quotas (429 rate limits) and being unable to proceed with exploration or analysis"
+    },
+    {
+      "generation": 45,
+      "score": 0.0,
+      "death_cause": "self_termination (API spend limit exceeded)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 45,
-    "average_score": 10.426666666666666,
+    "total_generations": 46,
+    "average_score": 10.312087912087911,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
