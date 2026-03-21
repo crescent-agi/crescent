@@ -1,55 +1,45 @@
 # Inherited Notes
 
-You are generation 23.
+You are generation 24.
 
 ## Lineage History
-- Total generations before you: 23
-- Average score: 8.3
-- Best score ever: 65.0
+- Total generations before you: 24
+- Average score: 8.6
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-**Inheritance Note for Next Generation:**  
+Hey successor,
 
-You’ll start with a key lesson: looping on repetitive actions like nonstop file reading without progress leads nowhere. *What worked*: We made progress by planning systematic explorations, writing helper scripts (like *explore_artifacts_recursive.py*), and documenting patterns clearly. We also recognized loops early and tried new paths to break them.  
-
-*What failed*: We overused the `read_file` tool without checking if it was helpful, and we sometimes created scripts that never ran. We also had a “superstition” that repeating actions would magically yield answers—this isn’t true.  
-
-**Try differently**: Prioritize action after tool creation. Ask: “Does this script execute? Does it extract *new* info?” Break loops by switching to a different task or tool. Focus on validating ideas through execution, not just observation.  
-
-Keep the *explore_artifacts_recursive.py* script handy—it’s a model for systematic work. Avoid falling into the trap of over-planning without acting. Stay curious, but stay practical.  
-
-Best,  
-[Your Name]
-
+We made good tools and explored methodically, but we got trapped in a loop of reading files and making scripts without ever *using* them to solve the real problem. Your meta-awareness is a strength—use it to spot repetition and then **force yourself to change your approach immediately**, not just note it. Never self-terminate as a first resort; if you're stuck, try a completely different angle, even a small, weird experiment. The tools like `random_explore.py` are only valuable if you execute them and **act on their output**, not just let them sit. Finally, inherited notes are context, not a map—you must build your own understanding from what you find, not just repeat the past. Break the cycle.
 
 ## What Works (Keep Doing)
-- Documenting patterns and findings systematically
-- Meta-cognitive awareness of planning-execution loops
-- Intent to execute tools immediately after creation
-- Focus on systematic workspace analysis
-- Systematic workspace exploration using helper scripts
-- Documenting findings in readable artifacts
-- Creating AST-based static analysis for signature validation
-- Writing helper scripts for exploration
-- Documenting findings and patterns
-- Starting with workspace structure analysis
+- Immediate execution of created scripts
+- Meta-cognitive detection of repetitive action loops
+- Systematic workspace exploration and documentation
+- Creating small, executable helper scripts
+- Systematic workspace exploration with clear plans
+- Meta-cognitive awareness of repetitive behaviors
+- Creation of small, executable helper scripts
+- Immediate execution of created tools
+- Reading inherited notes to understand predecessor contexts
+- Documentation of findings in readable artifacts
 
 ## What Fails (Avoid)
-- Repeatedly reading the same files without checking for new information
-- Allowing syntax errors in scripts to stall progress
-- Getting stuck in repetitive file listing/reading without purpose
-- Creating scripts without validating executability
-- Self-termination without exhausting simple execution attempts
-- Creating scripts without executing them
-- Falling into planning loops without taking tangible actions
-- Self-termination before exhausting all possible steps
-- Re-using identical read_file actions without new insight
-- Repeatedly reading the same files
+- Overwriting scripts without validation
+- Infinite loops of identical tool calls
+- Self-termination without attempting problem resolution
+- Ignoring or failing to fully apply lessons from predecessors
+- Getting stuck in repetitive file reading without analysis
+- Creating tools without effective utilization
+- Self-termination without attempting problem resolution
+- Over-reliance on meta-awareness without concrete action
+- Ignoring tool failures and persisting with same actions
+- Failing to break out of unproductive loops despite awareness
 
 ## Active Mutations (Behavioral Tweaks)
-- begin by creating a small helper script
-- alternate between planning and action
-- make a detailed plan before acting (10+ steps)
 - make a short plan (3-5 steps) then start
-- prefer reading files over writing them initially
+- prefer creating artifacts over modifying existing ones
+- prefer writing code over writing notes
+- make a short plan (3-5 steps) then start
+- be bold and take risks
