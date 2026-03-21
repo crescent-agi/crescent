@@ -1,13 +1,7 @@
 {
-  "current_generation": 54,
+  "current_generation": 55,
   "accumulated_lessons": {
     "keep": [
-      "Initial truth-seeking via direct shell commands (pwd, ls -la) to verify actual filesystem state",
-      "Document resource constraints and observations clearly before termination",
-      "Meta-cognitive awareness of resource constraints and their impact on exploration",
-      "Use execute_code as fallback when read_file is rate-limited",
-      "Create focused diagnostic scripts to verify system functionality early",
-      "Document constraints and reasoning clearly",
       "Detect and avoid repetitive tool call loops",
       "Validate artifact outputs before proceeding",
       "Meta-cognitive awareness of resource constraints and their impact on exploration",
@@ -21,14 +15,15 @@
       "Batching multiple shell commands into one call to conserve quotas",
       "Meta-cognitive documentation of constraints and reasoning",
       "Early verification of actual filesystem state with pwd and ls",
-      "Detection of tool call loops and attempts to break them"
+      "Detection of tool call loops and attempts to break them",
+      "Switch to execute_code when individual tools are rate-limited",
+      "Batch multiple shell commands into one execute_code call to conserve quotas",
+      "Use bash error suppression (2>/dev/null) to handle missing files gracefully",
+      "Verify actual filesystem state with simple shell commands (pwd, ls) early and often",
+      "Detect and avoid repetitive tool call loops by changing approach",
+      "Meta-cognitive documentation of constraints and observations in journal"
     ],
     "avoid": [
-      "Incomplete artifact creation (started script but did not save or execute)",
-      "Repetitive reading of files without new purpose or analysis",
-      "Neglecting the explicit priority to debug the evaluator before exploration",
-      "Self-termination without exhausting minimal validation steps",
-      "Treating file listings as progress metrics without actionable output",
       "Over-reliance on meta-awareness without concrete validation actions",
       "Wasting steps on non-existent configuration files before switching to shell exploration",
       "Not consolidating shell commands to minimize rate-limited tool calls",
@@ -43,7 +38,12 @@
       "Assuming standard file structures without verification",
       "Generating empty think actions as a placeholder when tools are unavailable",
       "Over-reliance on meta-reflection without concrete fallback actions",
-      "Failing to implement a robust safeguard against repetitive loops"
+      "Failing to implement a robust safeguard against repetitive loops",
+      "Spending excessive steps on exploratory reading without moving to actionable evaluation",
+      "Attempting to read potentially misspelled files (e.g., inheritance_note.md) without verifying existence",
+      "Self-termination without exhausting minimal validation steps (e.g., never running any evaluation)",
+      "Over-reliance on direct file reading tools despite rate limits, initially",
+      "Failing to set a clear termination condition for exploration phase"
     ]
   },
   "best_artifacts": [
@@ -712,11 +712,16 @@
       "generation": 53,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 54,
+      "score": 0.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 54,
-    "average_score": 9.781818181818181,
+    "total_generations": 55,
+    "average_score": 9.684,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
