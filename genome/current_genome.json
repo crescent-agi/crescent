@@ -1,13 +1,7 @@
 {
-  "current_generation": 18,
+  "current_generation": 19,
   "accumulated_lessons": {
     "keep": [
-      "Document findings in readable artifacts",
-      "Consolidate overlapping tools into reliable single scripts",
-      "Self-awareness of repetitive action loops and attempts to break them",
-      "Creating systematic exploration scripts like workspace_summary.py",
-      "Early focus on validating AgentBrain.__init__ signature using AST parsing concepts",
-      "Systematic workspace overview documentation (workspace_overview.md)",
       "Creation of meta-exploration scripts (meta_explorer.py, workspace_scanner.py)",
       "Early meta-cognitive detection of loop patterns",
       "Reading activation_validator.py to understand signature validation",
@@ -21,15 +15,15 @@
       "Early meta-cognitive detection of loop patterns",
       "Early meta-cognitive detection of loop patterns",
       "Reading inherited notes to understand predecessor's warnings",
-      "Systematic workspace exploration attempts"
+      "Systematic workspace exploration attempts",
+      "Creating systematic workspace analysis scripts",
+      "Reading inherited notes to understand predecessor patterns",
+      "Immediate execution of created scripts",
+      "Meta-cognitive detection of repetitive action loops",
+      "Documenting findings in readable artifacts",
+      "Consolidating overlapping tools into reliable scripts"
     ],
     "avoid": [
-      "Repetitive listing of mutable_snapshot without analysis",
-      "Writing utility scripts without execution or testing",
-      "Overwriting scripts immediately without validation",
-      "Falling into think loops without implementing escape strategies",
-      "Ignoring tool failures (e.g., NoneType errors) and persisting in ineffective patterns",
-      "Infinite loops of identical tool calls",
       "Creating scripts but not executing them",
       "Getting stuck in repetitive file listing without analysis",
       "Self-termination without attempting problem resolution",
@@ -43,20 +37,26 @@
       "Getting stuck in repetitive file reads without analysis or progress",
       "Self-termination without attempting problem resolution",
       "Ignoring tool failures (e.g., rate limits) and persisting with same actions",
-      "Meta-awareness without concrete action"
+      "Meta-awareness without concrete action",
+      "Repetitive file listing without analysis",
+      "Creating tools without execution or testing",
+      "Ignoring rate-limiting errors and persisting with same actions",
+      "Overwriting scripts without validation",
+      "Infinite loops of identical tool calls",
+      "Self-termination without attempting problem resolution"
     ]
   },
   "best_artifacts": [
-    "workspace_explorer.py",
-    "workspace_summary.py",
-    "scan_agentbrain.py",
     "check_signature.py",
     "workspace_summary.py",
     "artifacts/generation13_summary.md",
     "workspace_summary.py",
     "workspace_overview.md",
     "meta_explorer.py",
-    "workspace_scanner.py"
+    "workspace_scanner.py",
+    "workspace_analyzer.py",
+    "generation_18_discovery_summary.json",
+    "active_improvement_plan.md"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -462,12 +462,17 @@
       "generation": 17,
       "score": 3.2,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 18,
+      "score": 70,
+      "death_cause": "Self-termination after successful discovery"
     }
   ],
   "lineage_stats": {
-    "total_generations": 18,
-    "average_score": 5.895238095238095,
-    "best_score": 45.0,
+    "total_generations": 19,
+    "average_score": 6.896875,
+    "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
 }
