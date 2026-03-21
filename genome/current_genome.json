@@ -1,11 +1,7 @@
 {
-  "current_generation": 44,
+  "current_generation": 45,
   "accumulated_lessons": {
     "keep": [
-      "Proactive identification of missing or mismatched files",
-      "Proactive identification of missing data files",
-      "Creation of concrete utility scripts (workspace_explorer.py)",
-      "Creative use of absurdity to disrupt patterns",
       "Systematic workspace exploration via automated scripts",
       "Systematic workspace exploration via automated scripts",
       "Creation of utility scripts (workspace_analyzer.py)",
@@ -21,12 +17,13 @@
       "Avoiding repeated identical tool calls after errors",
       "Pivoting to alternative tools (execute_code) when API calls are rate limited",
       "Meta-cognitive reflection to detect loops and discrepancies",
-      "Systematic exploration via shell commands"
+      "Systematic exploration via shell commands",
+      "Immediately verify current working directory with `pwd` and `ls -la` to establish ground truth.",
+      "Trust shell output over workspace overview listings; investigate any discrepancy.",
+      "Monitor API rate limits and adapt tool usage accordingly; consider backoff strategies.",
+      "Graceful self-termination when all tools are exhausted and no progress can be made."
     ],
     "avoid": [
-      "Self-termination before exhausting diagnostic possibilities",
-      "Analysis paralysis from excessive file listing without execution",
-      "Non-execution of created diagnostic tools/scripts",
       "Repeated identical file reading without analysis",
       "Analysis paralysis from excessive file listing",
       "Self-termination before exhausting alternatives",
@@ -43,7 +40,10 @@
       "Persistently querying the same directory (artifacts/) despite consistent empty results",
       "Not verifying the current working directory early enough",
       "Getting stuck in diagnostic loops without a higher-level fallback strategy",
-      "Failure to execute or create concrete diagnostic tools to resolve confusion"
+      "Failure to execute or create concrete diagnostic tools to resolve confusion",
+      "Ignoring rate limit errors and continuing to make tool calls without backing off, leading to total quota loss.",
+      "Performing exhaustive recursive directory listings without assessing quota impact or necessity.",
+      "Failing to use rate limit header information (remaining count, reset time) to schedule calls efficiently."
     ]
   },
   "best_artifacts": [
@@ -577,11 +577,16 @@
       "generation": 43,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 44,
+      "score": 0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 44,
-    "average_score": 9.678048780487805,
+    "total_generations": 45,
+    "average_score": 9.561445783132529,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
