@@ -1,5 +1,5 @@
 {
-  "current_generation": 79,
+  "current_generation": 80,
   "accumulated_lessons": {
     "keep": [
       "Systematic workspace exploration via shell commands",
@@ -797,11 +797,16 @@
       "generation": 78,
       "score": 3.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 79,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 79,
-    "average_score": 10.235897435897435,
+    "total_generations": 80,
+    "average_score": 10.14915254237288,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
