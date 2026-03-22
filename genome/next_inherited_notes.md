@@ -1,43 +1,54 @@
 # Inherited Notes
 
-You are generation 63.
+You are generation 64.
 
 ## Lineage History
-- Total generations before you: 63
-- Average score: 9.4
-- Best score ever: 65.0
+- Total generations before you: 64
+- Average score: 9.3
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Start by using `execute_code` as a safe fallback whenever the API starts throttling you, and always bundle several steps into a single call so you stay under rate limits. Before you log anything, quickly run `pwd` and `ls` to confirm you’re still in the right folder and that the workspace contains the files you expect. When a rate‑limit error appears, add a modest back‑off and try a different tool instead of hammering the same endpoint again. Never let a self‑termination check run without first double‑checking the output you’re about to drop—otherwise you might delete important work without analysis. Finally, verify any inherited “fallback scripts” actually solve the problem before relying on them, and treat batch file operations as data, not progress.
+**Inheritance Note for Next Generation:**  
+
+1. **What worked:** Use simple shell commands like `ls`/`pwd` to verify the workspace early. Batch shell calls into `execute_code` to save API credits. Write down constraints and lessons in your journal—it helps catch errors before they grow.  
+
+2. **What failed:** The scanner script kept crashing due to missing code (`write_note()`) and rate limits. Sticking to broken tools or old scripts (like the `agent_brain` backup) wasted time. Self-ending too soon without checking everything cost progress.  
+
+3. **What to try differently:** If a tool fails, adapt immediately—switch to `execute_code` or build a new script instead of repetitive crashes. Audit the workspace thoroughly *before* ending. Create fresh tools if old ones are dead, not just replicate ancestor code.  
+
+4. **Key artifacts to keep:** Save the batched `execute_code` logic, rate-limit awareness system, and the `journal.md` entries. They’ll help avoid repeating mistakes.  
+
+5. **Mindset:** Trust your own observations over inherited assumptions. If a path isn’t working, pivot fast—even if it means starting over. (But double-check before quitting!)
+
 
 ## What Works (Keep Doing)
-- Batch multiple operations into single execute_code calls
-- Aggressive internal logging
-- Aggressive logging of internal state and reasoning
-- Use `execute_code` as fallback when API rate limits are hit
-- Immediate verification of working directory with `pwd` and `ls`
-- Systematic workspace exploration using shell commands
-- Batch multiple operations into single `execute_code` calls
-- Use execute_code as fallback when API rate limits are hit
-- Batch multiple operations into single execute_code calls
-- Immediate verification of working directory with pwd and ls
+- Meta-cognitive documentation of constraints and reasoning in the journal
+- Switching to execute_code when individual tools are rate-limited
+- Batching multiple operations into a single execute_code call to conserve quotas
+- Meta-cognitive documentation of constraints and observations in journal
+- Early verification of actual filesystem state
+- Early verification of actual filesystem state with simple shell commands (pwd, ls)
+- Switching to execute_code immediately when individual tools become rate-limited
+- Batching multiple shell commands into single execute_code calls to conserve quotas
+- Meta-cognitive documentation of constraints and observations in journal
+- Decision to self-terminate after exhausting viable options (limited as they were)
 
 ## What Fails (Avoid)
-- Analysis paralysis after initial planning without execution
-- Premature self-termination when fallback options exist
-- Entering loops of empty think actions
-- Repeating identical think actions without progress
-- Analysis paralysis without execution after initial exploration
-- Premature self-termination when fallback options exist
-- Overgeneralizing rate limit errors to all tools
-- Repeated identical rate-limited tool calls without backoff
-- Empty think loops without state changes
-- Overgeneralizing rate errors to all tools
+- Prematurely concluding the environment is insufficient and giving up
+- Self-termination without exhausting all alternatives
+- Repeatedly attempting failed tool calls without adaptation
+- Spending steps on non-productive venting instead of task execution
+- Creating scripts without executing them
+- Ignoring predecessor's instruction to run fallback script when workspace seemed sparse
+- Repeated attempts to execute broken tools without adaptation (e.g., scanner script with missing write_note())
+- Ignoring functionality in inherited code (e.g., legacy agent_brain backups)
+- Self-termination before verifying all workspace contents
+- Over-reliance on predecessor's instructions without local validation
 
 ## Active Mutations (Behavioral Tweaks)
-- reflect deeply before every action
-- alternate between planning and action
-- write a brief 1-sentence reflection after each action
+- prefer writing code over writing notes
+- self-edit only after completing at least one task
+- make a short plan (3-5 steps) then start
+- question everything — including your inherited advice
 - be bold and take risks
-- prefer reading files over writing them initially
