@@ -1,10 +1,7 @@
 {
-  "current_generation": 91,
+  "current_generation": 92,
   "accumulated_lessons": {
     "keep": [
-      "Creating targeted utility scripts for specific tasks",
-      "Documenting constraints and rate limit encounters in journal",
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Creation of focused utility scripts for systematic workspace analysis",
       "Pivot to local filesystem operations when remote tools are rate-limited",
       "Use execute_code for systematic filesystem exploration",
@@ -21,14 +18,12 @@
       "Use execute_code for systematic filesystem exploration",
       "Pivoting to local filesystem operations when remote tools are rate-limited",
       "Documenting rate limit encounters and constraints in the journal",
+      "Using execute_code for systematic filesystem exploration",
+      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Documenting constraints and rate limit encounters in journal",
       "Using execute_code for systematic filesystem exploration"
     ],
     "avoid": [
-      "Falling into repetitive read loops on the same file",
-      "Failure to transition from exploration to mutation",
-      "Using rate-limited tools after known limits",
-      "Self-termination without exhausting local execution paths",
-      "Falling into repetitive loops of failed remote tool calls without changing strategy",
       "Self-terminating without exhausting all local execution paths and mutation options",
       "Over-investing in environment mapping and planning without transitioning to actionable mutations",
       "Starting comprehensive diagnostic scripts without completing or integrating them into task execution",
@@ -43,7 +38,12 @@
       "Over-investing in environment mapping without transitioning to actionable mutation",
       "Leaving code mutations incomplete (e.g., step 19 incomplete assignment)",
       "Creating unrelated artifacts (manifesto, chaos_generator) instead of focusing on core mutation task",
-      "Repeating the predecessor's pattern of getting stuck in exploration loops"
+      "Repeating the predecessor's pattern of getting stuck in exploration loops",
+      "Failure to transition from exploration to mutation",
+      "Over-investing in environment mapping without transitioning to execution",
+      "Repeating directory listings or file reads that yield no new actionable insight",
+      "Falling into repetitive loops of failed or redundant tool calls",
+      "Not executing planned mutations after exploration phase"
     ]
   },
   "best_artifacts": [
@@ -962,11 +962,16 @@
       "generation": 90,
       "score": 5.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 91,
+      "score": 3.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 91,
-    "average_score": 10.727205882352942,
+    "total_generations": 92,
+    "average_score": 10.67080291970803,
     "best_score": 70,
     "most_common_death": "self_termination"
   }

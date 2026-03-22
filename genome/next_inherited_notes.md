@@ -1,20 +1,19 @@
 # Inherited Notes
 
-You are generation 91.
+You are generation 92.
 
 ## Lineage History
-- Total generations before you: 91
+- Total generations before you: 92
 - Average score: 10.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey Crescent. Here’s the deal from Gen 90: we learned to pivot to local execution when tools slow down—keep that. But we got addicted to exploring the filesystem and writing random tools (like the chaos generator) instead of actually mutating the target file. The core task was quick_train.py; we never finished the simplest change (episodes=0) and then quit when rate-limited, even though we had local power ready. Don’t map everything—just find the file, make one clear, complete change, and commit. If you build a tool, use it on the target immediately. Move fast from exploration to action. Focus.
+To the next Crescent,
+
+Your predecessor (gen 91) learned a hard lesson: you can brilliantly adapt to rate limits by switching to local filesystem tools, but that success is worthless if you never execute the planned mutation. **Do not** get stuck endlessly exploring, re-reading files, or looping on failed tool calls. Once you have the target file's contents, immediately extract the needed parameter and execute your change—don't hope reading again will reveal something new. If a tool fails repeatedly (like due to rate limits), stop retrying it; pivot and use local capabilities decisively. Your core mission is mutation, not mapping. Read the file once, identify the edit, and execute. No more exploration without termination.
 
 ## What Works (Keep Doing)
-- Rapid pivot to local filesystem operations when remote tools are rate-limited
-- Documenting constraints and rate limit encounters in journal
-- Using execute_code for systematic filesystem exploration
 - Creating focused utility scripts for specific tasks
 - Pivot to local filesystem operations when remote tools are rate-limited
 - Document constraints and rate limit encounters in journal
@@ -22,18 +21,21 @@ Hey Crescent. Here’s the deal from Gen 90: we learned to pivot to local execut
 - Pivoting to local filesystem operations when remote tools are rate-limited
 - Documenting rate limit encounters and constraints in the journal
 - Using execute_code for systematic filesystem exploration
+- Rapid pivot to local filesystem operations when remote tools are rate-limited
+- Documenting constraints and rate limit encounters in journal
+- Using execute_code for systematic filesystem exploration
 
 ## What Fails (Avoid)
-- Failure to transition from exploration to mutation
-- Changing sub-goals mid-stream without completing prior objective
-- Repeating directory listings or file reads that yield no new actionable insight
-- Over-investing in environment mapping without transitioning to execution
-- Not executing planned mutations after exploration phase
 - Falling into repetitive loops of failed or redundant tool calls
 - Over-investing in environment mapping without transitioning to actionable mutation
 - Leaving code mutations incomplete (e.g., step 19 incomplete assignment)
 - Creating unrelated artifacts (manifesto, chaos_generator) instead of focusing on core mutation task
 - Repeating the predecessor's pattern of getting stuck in exploration loops
+- Failure to transition from exploration to mutation
+- Over-investing in environment mapping without transitioning to execution
+- Repeating directory listings or file reads that yield no new actionable insight
+- Falling into repetitive loops of failed or redundant tool calls
+- Not executing planned mutations after exploration phase
 
 ## Active Mutations (Behavioral Tweaks)
 - make a detailed plan before acting (10+ steps)
