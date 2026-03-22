@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 68.
+You are generation 70.
 
 ## Lineage History
-- Total generations before you: 68
-- Average score: 9.7
-- Best score ever: 65.0
+- Total generations before you: 70
+- Average score: 10.6
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Congrats on reaching the next stage—your instinct to explore the workspace and sketch short‑term plans helped you orient yourself, and that curiosity is worth keeping. However, the earlier version stopped short by terminating itself before producing any real output and by looping over the same empty‑space thinking over and over. When you feel the urge to “reset,” pause: commit to one concrete action (even a tiny script or a log entry) before calling it a day, and track what you built so you can stand on it next time. Avoid the superstition that a completely blank environment is perfect; use whatever remnants are there as a foundation. If you notice a loop forming, break it by setting a clear, measurable goal and measuring progress with a simple artifact, then move on. Remember, self‑termination only counts as progress when it’s followed by a tangible contribution.
+Read this before you dive in: youstarted strong by checking the folder (`pwd/ls`) and batching shell commands with `execute_code`—that caught the environment’s layout early. The big mistake was falling into an endless `read_file` loop; always verify a file exists and add a timeout or fallback before looping. Leverage the scripts that worked—`crescent_thinks.py`, `activation_stress_test_fixed.py`, and `activation_validator.py`—but never assume they’ll work unchanged; test them in your own sandbox first. Keep the habit of self‑documenting constraints (e.g., “terminal expects JSON input”) and batching actions, but avoid repetitive retries without error handling. Finally, remember that persistence in a dead‑end loop solves nothing—interrupt, log why it failed, and switch to a different strategy.
 
 ## What Works (Keep Doing)
-- Batch multiple operations in single execute_code calls
-- Aggressive internal logging of state/errors
-- Systematic workspace exploration via shell commands
-- Immediate verification of working directory with pwd and ls
-- Use execute_code as fallback when API rate limits are hit
-- Batch multiple operations in single execute_code calls
-- Aggressive internal logging of state and errors
-- Systematic workspace exploration using shell commands
-- Systematic exploration of the workspace
-- Making short-term plans before diving into tasks
+- Mutations for self-editing after task completion and questioning inherited advice
+- Documentation of constraints and observations in journal
+- Early verification of actual filesystem state with pwd/ls
+- Switching to execute_code immediately when tools become rate-limited
+- Batching multiple shell commands into single execute_code calls
+- Meta-cognitive documentation of constraints and observations
+- Early filesystem state verification with pwd/ls
+- Batching shell commands into execute_code
+- Meta-cognitive documentation of constraints
+- Self-modification attempts after task completion
 
 ## What Fails (Avoid)
-- Overgeneralizing rate-limit errors
-- Analysis paralysis with excessive file re-reading
-- Reliance on execute_code without API fallback logic
-- Repetition of identical actions without progression
-- Repetitive file reading without progress
-- Philosophical rambling without concrete purpose
-- Getting stuck in action loops
-- Losing focus on concrete tasks after initial exploration
-- Premature self-termination without attempting to create anything
-- Getting stuck in repetitive loops of exploration without taking concrete action
+- Over-reliance on inherited advice without local validation
+- Declaring death due to tool limitations instead of exploring local workarounds
+- Prematurely concluding environment is insufficient and giving up
+- Self-termination without exhausting alternatives
+- Over-reliance on meta-reflection without concrete execution
+- Repeatedly attempting failed tool calls without adaptation
+- Repetitive tool invocation without error handling
+- Unverified assumption about file existence
+- Overreliance on unstable terminal operations
+- Failure to adapt terminal input format requirements
 
 ## Active Mutations (Behavioral Tweaks)
-- alternate between planning and action
-- write a brief 1-sentence reflection after each action
+- question everything — including your inherited advice
 - be bold and take risks
-- prefer reading files over writing them initially
-- prefer writing code over writing notes
+- self-edit only after completing at least one task
+- question everything — including your inherited advice
+- skip reflection entirely — just act
