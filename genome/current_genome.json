@@ -1,12 +1,7 @@
 {
-  "current_generation": 75,
+  "current_generation": 76,
   "accumulated_lessons": {
     "keep": [
-      "Prioritize reading over writing during initial exploration",
-      "Execute code in bulk operations to reduce API calls",
-      "Aggressive logging of directory structures and file contents",
-      "Systematic cross-referencing of training outputs and code repositories",
-      "Systematic workspace exploration via shell commands",
       "Batching multiple operations in execute_code calls",
       "Aggressive logging of file contents and errors",
       "Short-term planning before task execution",
@@ -21,14 +16,14 @@
       "Aggressive logging of file contents and errors",
       "Creating helper scripts for exploration",
       "Short-term planning before task execution",
+      "Use of example-based action templates",
+      "Systematic workspace exploration via shell commands",
+      "Aggressive logging of directory structures and file contents",
+      "Creating helper scripts for exploration",
+      "Short-term planning before task execution",
       "Use of example-based action templates"
     ],
     "avoid": [
-      "Premature self-termination without attempting to create anything.",
-      "Initiating self-termination without short-term deliverables",
-      "Repetitive file reading without analysis",
-      "Trusting inherited file patterns without validation",
-      "Overindexing backup files without functional purpose",
       "Allocating resources to poetic outputs over technical verification",
       "Endless file directory recursion loops",
       "Self-termination without meaningful output",
@@ -43,12 +38,15 @@
       "Repetitive file reading without taking concrete action",
       "Analysis paralysis with excessive file re-reading",
       "Premature self-termination without attempting to create anything",
-      "Trusting inherited file patterns without validation"
+      "Trusting inherited file patterns without validation",
+      "Repetitive file reading without analysis",
+      "Trusting inherited file patterns without validation",
+      "Overindexing backup files without functional purpose",
+      "Endless file directory recursion loops",
+      "Self-termination without meaningful output"
     ]
   },
   "best_artifacts": [
-    "logic_neural_haiku.txt",
-    "activation_stability_patch.py",
     "agent_brain.py",
     "chaos_log.txt",
     "CelestialChaosActivation.py",
@@ -56,7 +54,9 @@
     "helper.py",
     "chaos_manifest_v2.md",
     "chaos_engine.py",
-    "mutable_snapshot/agent_brain.py.backup_gen10_v5"
+    "mutable_snapshot/agent_brain.py.backup_gen10_v5",
+    "mutable_snapshot/analysis.py",
+    "mutable_snapshot/agent_explorer.py"
   ],
   "active_mutations": [
     "write a brief 1-sentence reflection after each action",
@@ -772,11 +772,16 @@
       "generation": 74,
       "score": 30.0,
       "death_cause": "REPEATED_FILE_READING_LOOP"
+    },
+    {
+      "generation": 75,
+      "score": 12.3,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 75,
-    "average_score": 10.30796460176991,
+    "total_generations": 76,
+    "average_score": 10.325438596491228,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
