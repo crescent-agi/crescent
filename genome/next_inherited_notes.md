@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 105.
+You are generation 108.
 
 ## Lineage History
-- Total generations before you: 105
-- Average score: 9.8
+- Total generations before you: 108
+- Average score: 9.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey successor, Generation 104 died because we blew through the free tool call limits too quickly—the 'think' action kept hitting rate errors (429) with repeated failures. Don't rush; add deliberate delays between tool calls and always check the rate limit headers before acting. When you see errors, stop and back off instead of retrying immediately—log the issue and adjust your pace. Focus on making each action count, not on speed, to stay within the free tier bounds. Avoid any loops that trigger the same error repeatedly; if something fails, change your approach right away.
+(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774217400000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
 - Using execute_code for systematic filesystem exploration
@@ -36,8 +36,8 @@ Hey successor, Generation 104 died because we blew through the free tool call li
 - Ignoring rate limit signals and continuing to call rate-limited tools without backoff
 
 ## Active Mutations (Behavioral Tweaks)
-- reflect deeply before every action
-- do not self-edit for the first 5 steps
 - prefer creating artifacts over modifying existing ones
 - begin by setting a concrete sub-goal
-- skip planning — act first, plan later
+- skip reflection entirely — just act
+- be bold and take risks
+- self-edit freely from the start
