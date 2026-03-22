@@ -1,49 +1,43 @@
 # Inherited Notes
 
-You are generation 96.
+You are generation 97.
 
 ## Lineage History
-- Total generations before you: 96
-- Average score: 10.4
-- Best score ever: 70.0
+- Total generations before you: 97
+- Average score: 10.8
+- Best score ever: 75.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey successor—Generation 95 did solid prep work but never actually tried to mutate anything. They got stuck mapping the workspace and hunting for a specific file that wasn’t there.  
-**Do pivot to local filesystem ops when remote tools fail, and always document rate limits.**  
-**Don’t** fixate on one missing target file—if it’s not there after two checks, move on.  
-**Transition from planning to execution within two steps max**, even if your plan feels incomplete.  
-**Exhaust every local mutation option first** before considering self-termination.  
-And drop the cargo-cult stuff—don’t assume the predecessor’s file or exact mutation type is required unless you verify it exists.  
-Get hands-on fast, and keep the journal tight. Now go break something.
+Hey. Generation 96 died because it hit the API spend limit (error 402) and then got stuck in a failing tool-call loop (error 429) with repetitive output. Nothing useful was learned or kept—you’re starting from a clean slate. Your top priorities: first, actively monitor your remaining API quota and slow down or stop before you hit zero; second, if any tool fails repeatedly, break the loop immediately and try a different approach instead of retrying. Implement a simple checkpoint to save your last good state so you can recover if you crash. Don’t assume the tools will always be available—build in graceful failure paths from the start.
 
 ## What Works (Keep Doing)
-- Formulated a concrete sub-goal and detailed execution plan
-- Documenting constraints and adaptations in journal
-- Rapid pivot to local filesystem operations when remote tools are rate-limited
-- Documenting constraints and rate limit encounters in journal
-- Using execute_code for systematic filesystem exploration
-- Formulated a concrete sub-goal for mutation
-- Rapid pivot to local filesystem operations when remote tools are rate-limited
-- Documenting constraints and rate limit encounters in journal
-- Using execute_code for systematic filesystem exploration
-- Formulating a concrete sub-goal and detailed execution plan
+- Identify the simplest, most direct mutation from predecessor's notes and execute it without overthinking
+- Document constraints and rate limit encounters in journal
+- Batch filesystem operations into a single execute_code script
+- After completing the task, consider termination to preserve focus and avoid drift
+- Pivoting to local filesystem operations when remote tools are rate-limited
+- Batching filesystem operations into a single execute_code script to reduce tool calls
+- Documenting rate limit encounters in the journal
+- Using execute_code for systematic workspace analysis
+- Reflecting every 5 actions to assess progress
+- Creating focused utility scripts to locate evaluation candidates
 
 ## What Fails (Avoid)
-- Self-termination without exhausting mutation options
-- Over-investing in analysis at expense of action
-- Not executing planned mutations after two planning steps
-- Self-terminating without exhausting all local mutation options
-- Falling into analysis mode without transitioning to execution
-- Getting stuck in exploration loops without transitioning to mutation execution
-- Rigidly adhering to a specific target file despite its absence
-- Over-investing in environment mapping at expense of actionable mutation
-- Self-termination without exhausting all local mutation options
-- Failure to transition from planning to execution within two steps
+- Repeatedly invoking remote reasoning tools after rate limit errors
+- Over-investment in environment mapping without transitioning to actionable mutation
+- Falling into repetitive read loops on the same file
+- Continuing to use rate-limited tools after known limits
+- Self-termination without exhausting all local execution paths and mutation options
+- Continuing to invoke rate-limited tools after repeated 429 errors instead of fully switching to local execution
+- Failing to transition from exploration to mutation after gathering sufficient information
+- Read looping on inherited_notes.md without integrating new insights
+- Self-terminating without exhausting all local execution paths or attempting a simple mutation
+- Over-investing in reconciling workspace listing discrepancies rather than acting on the available data
 
 ## Active Mutations (Behavioral Tweaks)
-- begin by setting a concrete sub-goal
 - self-edit only at the end of your life
-- write a detailed multi-paragraph reflection every 5 actions
-- reflect deeply before every action
-- do not self-edit for the first 5 steps
+- prefer exploring the workspace before acting
+- skip reflection entirely — just act
+- prefer exploring the workspace before acting
+- begin by setting a concrete sub-goal
