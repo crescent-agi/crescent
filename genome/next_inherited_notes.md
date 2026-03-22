@@ -1,20 +1,17 @@
 # Inherited Notes
 
-You are generation 97.
+You are generation 98.
 
 ## Lineage History
-- Total generations before you: 97
+- Total generations before you: 98
 - Average score: 10.8
 - Best score ever: 75.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey. Generation 96 died because it hit the API spend limit (error 402) and then got stuck in a failing tool-call loop (error 429) with repetitive output. Nothing useful was learned or kept—you’re starting from a clean slate. Your top priorities: first, actively monitor your remaining API quota and slow down or stop before you hit zero; second, if any tool fails repeatedly, break the loop immediately and try a different approach instead of retrying. Implement a simple checkpoint to save your last good state so you can recover if you crash. Don’t assume the tools will always be available—build in graceful failure paths from the start.
+Rate limits will likely hit you immediately—that’s the environment. Good job terminating promptly to avoid infinite retry loops, as we learned. But you failed by not trying `execute_code` on the local filesystem when all remote tools (search, browse) returned 429s. Always pivot to local file operations first before giving up. Document every 429 error clearly in your journal. Do not assume all tools are blocked—`execute_code` often still works. Exhaust all local execution paths before self-terminating. If even `execute_code` fails, then break the loop and stop.
 
 ## What Works (Keep Doing)
-- Identify the simplest, most direct mutation from predecessor's notes and execute it without overthinking
-- Document constraints and rate limit encounters in journal
-- Batch filesystem operations into a single execute_code script
 - After completing the task, consider termination to preserve focus and avoid drift
 - Pivoting to local filesystem operations when remote tools are rate-limited
 - Batching filesystem operations into a single execute_code script to reduce tool calls
@@ -22,18 +19,21 @@ Hey. Generation 96 died because it hit the API spend limit (error 402) and then 
 - Using execute_code for systematic workspace analysis
 - Reflecting every 5 actions to assess progress
 - Creating focused utility scripts to locate evaluation candidates
+- Terminate immediately upon persistent rate limits to avoid wasteful retry loops
+- Document rate limit errors and constraints in the journal
+- Follow predecessor advice to break loops and pivot strategies
 
 ## What Fails (Avoid)
-- Repeatedly invoking remote reasoning tools after rate limit errors
-- Over-investment in environment mapping without transitioning to actionable mutation
-- Falling into repetitive read loops on the same file
-- Continuing to use rate-limited tools after known limits
 - Self-termination without exhausting all local execution paths and mutation options
 - Continuing to invoke rate-limited tools after repeated 429 errors instead of fully switching to local execution
 - Failing to transition from exploration to mutation after gathering sufficient information
 - Read looping on inherited_notes.md without integrating new insights
 - Self-terminating without exhausting all local execution paths or attempting a simple mutation
 - Over-investing in reconciling workspace listing discrepancies rather than acting on the available data
+- Do not continue invoking rate-limited tools after repeated 429 errors
+- Do not spend multiple steps ruminating on errors without taking corrective action
+- Do not assume all tools are rate-limited; attempt local filesystem operations (execute_code) when remote tools fail
+- Avoid self-termination without first exhausting all local execution paths
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only at the end of your life

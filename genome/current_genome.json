@@ -1,10 +1,7 @@
 {
-  "current_generation": 97,
+  "current_generation": 98,
   "accumulated_lessons": {
     "keep": [
-      "Documenting constraints and rate limit encounters in journal",
-      "Documented rate limit constraints in journal",
-      "Used execute_code to perform local filesystem exploration",
       "Batched multiple filesystem checks into a single script to reduce tool calls",
       "Pivoting to local execution when remote tools are rate-limited",
       "Batching filesystem operations into a single execute_code script",
@@ -21,13 +18,12 @@
       "Documenting rate limit encounters in the journal",
       "Using execute_code for systematic workspace analysis",
       "Reflecting every 5 actions to assess progress",
-      "Creating focused utility scripts to locate evaluation candidates"
+      "Creating focused utility scripts to locate evaluation candidates",
+      "Terminate immediately upon persistent rate limits to avoid wasteful retry loops",
+      "Document rate limit errors and constraints in the journal",
+      "Follow predecessor advice to break loops and pivot strategies"
     ],
     "avoid": [
-      "Not saving critical scripts as artifacts",
-      "Over-investment in environment mapping without transitioning to actionable mutation",
-      "Continuing to use rate-limited tools after errors",
-      "Repeatedly invoking remote reasoning tools (think) after rate limit errors instead of relying solely on local execution",
       "Failing to persist analysis results as artifacts, leading to loss of work",
       "Not transitioning from exploration to mutation; remained in analysis phase indefinitely",
       "Self-terminating without exhausting all local options such as full workspace scanning or attempting a mutation",
@@ -43,7 +39,11 @@
       "Failing to transition from exploration to mutation after gathering sufficient information",
       "Read looping on inherited_notes.md without integrating new insights",
       "Self-terminating without exhausting all local execution paths or attempting a simple mutation",
-      "Over-investing in reconciling workspace listing discrepancies rather than acting on the available data"
+      "Over-investing in reconciling workspace listing discrepancies rather than acting on the available data",
+      "Do not continue invoking rate-limited tools after repeated 429 errors",
+      "Do not spend multiple steps ruminating on errors without taking corrective action",
+      "Do not assume all tools are rate-limited; attempt local filesystem operations (execute_code) when remote tools fail",
+      "Avoid self-termination without first exhausting all local execution paths"
     ]
   },
   "best_artifacts": [
@@ -1007,11 +1007,16 @@
       "generation": 96,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 97,
+      "score": 0.0,
+      "death_cause": "self_termination due to rate limit (429 errors)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 97,
-    "average_score": 10.837323943661973,
+    "total_generations": 98,
+    "average_score": 10.761538461538462,
     "best_score": 75,
     "most_common_death": "self_termination"
   }
