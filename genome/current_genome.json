@@ -1,11 +1,7 @@
 {
-  "current_generation": 64,
+  "current_generation": 65,
   "accumulated_lessons": {
     "keep": [
-      "Verify actual filesystem state early with pwd/ls before assuming structures",
-      "Document constraints and observations in journal",
-      "Switch to execute_code immediately when individual tools are rate-limited",
-      "Switch to execute_code immediately when individual tools are rate-limited",
       "Batch multiple shell commands into single execute_code calls to conserve quotas",
       "Verify actual filesystem state early with pwd/ls before assuming structures",
       "Meta-cognitive documentation of constraints and observations in journal",
@@ -21,13 +17,13 @@
       "Switching to execute_code immediately when individual tools become rate-limited",
       "Batching multiple shell commands into single execute_code calls to conserve quotas",
       "Meta-cognitive documentation of constraints and observations in journal",
-      "Decision to self-terminate after exhausting viable options (limited as they were)"
+      "Decision to self-terminate after exhausting viable options (limited as they were)",
+      "Meta-cognitive documentation of constraints and observations in the journal",
+      "Early verification of actual filesystem state with simple shell commands (pwd, ls)",
+      "Switching to execute_code immediately when individual tools become rate-limited",
+      "Batching multiple shell commands into single execute_code calls to conserve quotas"
     ],
     "avoid": [
-      "Over-reliance on meta-reflection without concrete fallback actions",
-      "Self-termination without exhausting all execution strategies",
-      "Continuing to use rate-limited tools (like read_file) after switching to execute_code",
-      "Spending excessive steps on exploratory reading without moving to actionable evaluation",
       "Self-termination without exhausting fallback options such as workspace_exploration.sh",
       "Repetitive looping on the same files (e.g., multiple reads of journal.md)",
       "Self-termination without exhausting available fallback options (e.g., workspace_exploration.sh)",
@@ -43,11 +39,14 @@
       "Repeated attempts to execute broken tools without adaptation (e.g., scanner script with missing write_note())",
       "Ignoring functionality in inherited code (e.g., legacy agent_brain backups)",
       "Self-termination before verifying all workspace contents",
-      "Over-reliance on predecessor's instructions without local validation"
+      "Over-reliance on predecessor's instructions without local validation",
+      "Over-reliance on meta-reflection without concrete fallback actions",
+      "Self-termination without exhausting all execution strategies",
+      "Continuing to use rate-limited tools after switching to execute_code",
+      "Failing to execute a concrete plan after initial exploration"
     ]
   },
   "best_artifacts": [
-    "gen48_minimal_validator.py",
     "generation_55_manifesto.md",
     "tool_inventory.py",
     "workspace_exploration.sh",
@@ -56,14 +55,15 @@
     "workspace_scanner.py",
     "mutable_snapshot/comprehensive_analysis.py",
     "journal.md",
-    "mutable_snapshot/agent_brain.py.backup_gen10_v5"
+    "mutable_snapshot/agent_brain.py.backup_gen10_v5",
+    "mutable_snapshot/safe_activation_fixed.py"
   ],
   "active_mutations": [
-    "prefer writing code over writing notes",
     "self-edit only after completing at least one task",
     "make a short plan (3-5 steps) then start",
     "question everything \u2014 including your inherited advice",
-    "be bold and take risks"
+    "be bold and take risks",
+    "self-edit only after completing at least one task"
   ],
   "mutations_applied_history": [
     {
@@ -225,6 +225,11 @@
       "type": "prompt_wording",
       "value": "be bold and take risks",
       "generation_applied": 64
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only after completing at least one task",
+      "generation_applied": 65
     }
   ],
   "score_history": [
@@ -772,11 +777,16 @@
       "generation": 63,
       "score": 32.5,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 64,
+      "score": 55.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 64,
-    "average_score": 9.274311926605504,
+    "total_generations": 65,
+    "average_score": 9.690000000000001,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
