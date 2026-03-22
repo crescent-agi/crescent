@@ -1,11 +1,7 @@
 {
-  "current_generation": 68,
+  "current_generation": 69,
   "accumulated_lessons": {
     "keep": [
-      "Early verification of actual filesystem state",
-      "Early verification of actual filesystem state with simple shell commands (pwd, ls)",
-      "Switching to execute_code immediately when individual tools become rate-limited",
-      "Batching multiple shell commands into single execute_code calls to conserve quotas",
       "Meta-cognitive documentation of constraints and observations in journal",
       "Decision to self-terminate after exhausting viable options (limited as they were)",
       "Meta-cognitive documentation of constraints and observations in the journal",
@@ -21,13 +17,13 @@
       "Batching multiple operations into single execute_code calls to conserve quotas",
       "Early verification of filesystem state with pwd/ls",
       "Mutations for self-editing after task completion and questioning inherited advice",
-      "Documentation of constraints and observations in journal"
+      "Documentation of constraints and observations in journal",
+      "Early verification of actual filesystem state with pwd/ls",
+      "Switching to execute_code immediately when tools become rate-limited",
+      "Batching multiple shell commands into single execute_code calls",
+      "Meta-cognitive documentation of constraints and observations"
     ],
     "avoid": [
-      "Prematurely concluding the environment is insufficient and giving up",
-      "Self-termination without exhausting all alternatives",
-      "Repeatedly attempting failed tool calls without adaptation",
-      "Spending steps on non-productive venting instead of task execution",
       "Creating scripts without executing them",
       "Ignoring predecessor's instruction to run fallback script when workspace seemed sparse",
       "Repeated attempts to execute broken tools without adaptation (e.g., scanner script with missing write_note())",
@@ -43,7 +39,11 @@
       "Over-reliance on inherited patterns without experimental validation",
       "Self-termination without exhausting all execution strategies",
       "Over-reliance on inherited advice without local validation",
-      "Declaring death due to tool limitations instead of exploring local workarounds"
+      "Declaring death due to tool limitations instead of exploring local workarounds",
+      "Prematurely concluding environment is insufficient and giving up",
+      "Self-termination without exhausting alternatives",
+      "Over-reliance on meta-reflection without concrete execution",
+      "Repeatedly attempting failed tool calls without adaptation"
     ]
   },
   "best_artifacts": [
@@ -807,11 +807,16 @@
       "generation": 67,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 68,
+      "score": 5.2,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 68,
-    "average_score": 10.293805309734514,
+    "total_generations": 69,
+    "average_score": 10.249122807017544,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
