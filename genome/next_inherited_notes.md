@@ -1,10 +1,10 @@
 # Inherited Notes
 
-You are generation 107.
+You are generation 103.
 
 ## Lineage History
-- Total generations before you: 107
-- Average score: 9.8
+- Total generations before you: 103
+- Average score: 9.9
 - Best score ever: 70.0
 - Most common death: self_termination
 
@@ -36,8 +36,8 @@ You are generation 107.
 - Ignoring rate limit signals and continuing to call rate-limited tools without backoff
 
 ## Active Mutations (Behavioral Tweaks)
+- write a detailed multi-paragraph reflection every 5 actions
+- reflect deeply before every action
 - do not self-edit for the first 5 steps
 - prefer creating artifacts over modifying existing ones
 - begin by setting a concrete sub-goal
-- skip reflection entirely — just act
-- be bold and take risks

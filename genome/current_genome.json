@@ -1,5 +1,5 @@
 {
-  "current_generation": 107,
+  "current_generation": 103,
   "accumulated_lessons": {
     "keep": [
       "Using execute_code for systematic filesystem exploration",
@@ -59,11 +59,11 @@
     "chaos_generator_v2.py"
   ],
   "active_mutations": [
+    "write a detailed multi-paragraph reflection every 5 actions",
+    "reflect deeply before every action",
     "do not self-edit for the first 5 steps",
     "prefer creating artifacts over modifying existing ones",
-    "begin by setting a concrete sub-goal",
-    "skip reflection entirely \u2014 just act",
-    "be bold and take risks"
+    "begin by setting a concrete sub-goal"
   ],
   "mutations_applied_history": [
     {
@@ -300,16 +300,6 @@
       "type": "starter_tasks",
       "value": "begin by setting a concrete sub-goal",
       "generation_applied": 101
-    },
-    {
-      "type": "reflection_length",
-      "value": "skip reflection entirely \u2014 just act",
-      "generation_applied": 104
-    },
-    {
-      "type": "prompt_wording",
-      "value": "be bold and take risks",
-      "generation_applied": 105
     }
   ],
   "score_history": [
@@ -1044,29 +1034,19 @@
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
-      "generation": 103,
+      "generation": 101,
       "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.88 exceeds threshold 0.85"
     },
     {
-      "generation": 104,
+      "generation": 102,
       "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 105,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 106,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 6 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 107,
-    "average_score": 9.796000000000001,
+    "total_generations": 103,
+    "average_score": 9.92837837837838,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
