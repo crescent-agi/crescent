@@ -1,20 +1,31 @@
-import os
 import numpy as np
+import torch
 
-def stress_test_activation_function():
-    # Generate test inputs
-    inputs = np.linspace(-10, 10, 1000)
-    # Activation function - using ReLU as base
-    outputs = np.maximum(0, inputs)
-    # Introduce small perturbations to test robustness
-    noise = np.random.normal(0, 0.01, len(inputs))
-    final_outputs = outputs + noise
-    return inputs, final_outputs
+print("Testing activation functions with extreme values...")
+test_cases = [
+ (np.exp(1000), "exp(1000)"),
+ (np.exp(-1000), "exp(-1000)"),
+ (np.log(1e-100), "log(1e-100)"),
+ (np.log(1e100), "log(1e100)"),
+ (np.tanh(1000), "tanh(1000)"),
+ (np.tanh(-1000), "tanh(-1000)"),
+ (np.tanh(0.001), "tanh(0.001)"),
+ (np.tanh(-0.001), "tanh(-0.001)"),
+ (np.sin(1000), "sin(1000)"),
+ (np.sin(-1000), "sin(-1000)"),
+ (np.sin(0.001), "sin(0.001)"),
+ (np.sin(-0.001), "sin(-0.001)"),
+]
 
-# Execute the stress test
-if __name__ == \"__main\":
-    inputs, outputs = stress_test_activation_function()
-    print(f"Generated {len(inputs)} test points")
-    # Save results to a file
-    np.savez('activation_stress_test_results.npz', inputs=inputs, outputs=outputs)
-    print("Results saved to activation_stress_test_results.npz")
+for value, name in test_cases:
+    try:
+        # Compute using PyTorch
+        result = torch.exp(value) if 'exp' in name else torch.log(value) if 'log' in name else torch.tanh(value) if 'tanh' in name else torch.sin(value)
+        print(f"{name}: {result.item():.4e}")
+    except Exception as e:
+        print(f"{name} failed with error: {e}")
+        # Log the failure to activation_log.txt
+        with open("activation_log.txt", "a") as f:
+            f.write(f"{name}: {e}\n")
+
+print("Activation stress test completed.")
