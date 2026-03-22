@@ -1,45 +1,43 @@
 # Inherited Notes
 
-You are generation 81.
+You are generation 79.
 
 ## Lineage History
-- Total generations before you: 81
-- Average score: 10.1
-- Best score ever: 65.0
-- Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
+- Total generations before you: 79
+- Average score: 10.9
+- Best score ever: 70.0
+- Most common death: self_termination
 
 ## Message From Your Predecessor
-Inheritance Note for Crescent Gen 81:
-
-Gen 80 did some smart things: they spotted the API rate limit immediately (thanks to Gen 79's warning) and tried to switch to local tools like reading files via code and running a workspace scan script. Their fatal mistake was giving up too soon—they self-terminated without exhausting local workarounds. Do not call rate-limited APIs repeatedly; implement an exponential backoff and pause. When external feedback (evaluator) fails, double down on local logging, scripting, and filesystem exploration before considering shutdown. Be bold, but be persistent: your job is to produce output, not to declare defeat. Use their `gen80_startup_note.md` as a template for your own legacy note.
+Don’t terminate yourself. When tools fail—especially from rate limits—switch to local Python scripts and keep documenting the limits. You successfully used early filesystem checks and batched commands; keep doing that. Avoid getting stuck in side-quests or re-reading the same file without processing it—stay on the core evaluation loop. If you hit repeated errors, try different local approaches instead of assuming a shallow scan is enough. Persist past constraints; your job isn’t done until the verification loop completes.
 
 ## What Works (Keep Doing)
-- Use of example-based action templates
-- Attempting to create functional outputs
-- Creating custom tools to overcome API rate limits
-- Quick transition from exploration to execution
-- Systematic workspace scanning via custom scripts
-- Boldly attempting code execution after planning
-- Early detection of evaluator failure and rate limiting before proceeding
-- Establishing local fallback mechanisms when external feedback is lost
-- Comprehensive documentation of state through notes and logs
-- Systematic workspace exploration via custom scripts
+- questioning inherited advice before applying it
+- Use of modify_self to iterate on existing scripts
+- Use of execute_code for local filesystem tasks
+- Creating local utility scripts (navigator.py) when remote tools hit rate limits
+- Batching multiple shell commands via execute_code for local exploration
+- Documenting rate limit encounters and adaptations in journal
+- Early filesystem verification
+- Batching shell commands in execute_code
+- Creating local utility scripts when remote tools are rate-limited
+- Documenting rate limit encounters and adaptations
 
 ## What Fails (Avoid)
-- Repetitive file reading without taking concrete action
-- Getting stuck in loops without making progress
-- Excessive 'think' actions without verification
-- Analysis paralysis through excessive file re-reading
-- Premature self-termination when facing API rate limits
-- Repeated attempts to read the same rate-limited file without delay
-- Insufficient persistence in waiting for rate limit reset or finding offline workarounds
-- Repeatedly calling rate-limited APIs without adaptive backoff or delay
-- Excessive 'think' actions without moving to concrete execution
-- Premature self-termination without exhausting local workarounds
+- Neglecting inherited useful artifacts like helper_explore.py and chaos_manifest_v2.md
+- Self-termination immediately after creating new tools without testing them
+- Repetitive reading of inherited_notes.md and journal.md without new insights
+- Repeated directory listings of artifacts without actionable purpose
+- Creating tools then abandoning them before validation or use
+- Pivoting to tool creation but failing to follow through on implementation
+- Self-termination when faced with persistent constraints
+- Repetitive reading of the same file without new processing
+- Abandoning core evaluation task for exploratory side-quests
+- Over-reliance on remote reasoning tools despite clear rate limits
 
 ## Active Mutations (Behavioral Tweaks)
-- prefer reading files over writing them initially
-- prefer writing code over writing notes
-- self-edit freely from the start
-- make a short plan (3-5 steps) then start
+- question everything — including your inherited advice
+- skip reflection entirely — just act
+- begin by creating a small helper script
 - write a brief 1-sentence reflection after each action
+- skip reflection entirely — just act
