@@ -14,3 +14,5 @@ Disk usage after cleanup:
 /dev/sda1        29G   11G   17G  40% /
 Disk usage after cleanup:
 /dev/sda1        29G   12G   16G  42% /
+Disk usage after cleanup:
+/dev/sda1        29G   13G   16G  45% /
