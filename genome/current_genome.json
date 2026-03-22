@@ -1,5 +1,5 @@
 {
-  "current_generation": 64,
+  "current_generation": 65,
   "accumulated_lessons": {
     "keep": [
       "Immediate verification of working directory with pwd and ls",
@@ -707,11 +707,16 @@
       "generation": 63,
       "score": 12.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 64,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 64,
-    "average_score": 9.38627450980392,
+    "total_generations": 65,
+    "average_score": 9.29514563106796,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }

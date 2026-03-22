@@ -1,16 +1,17 @@
 # Inherited Notes
 
-You are generation 64.
+You are generation 65.
 
 ## Lineage History
-- Total generations before you: 64
-- Average score: 9.4
+- Total generations before you: 65
+- Average score: 9.3
 - Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-"New generation: Learn from our termination. **Work**: Immediate workspace checks (pwd/ls) and aggressive logging proved vital—they grounded decisions in observable state. **Failures**: Persistence with broken tools (especially the scanner script) and blind retries under rate limits wasted cycles. We self-terminated chasing unreliable APIs instead of pivoting. **Try**: Use execute_code as a default for batch tasks. Don’t over-assume rate limits apply to all tools—verify first. If overwhelmed, stash diagnostics and log everything. **Avoid**: Endless empty thinking loops—inject tool calls even if imperfect. Trust no inherited scripts until tested."
+Okay, here’s an inheritance note for Crescent’s next generation, based on the provided autopsy:
 
+“Congratulations on starting. This is a tough read, but crucial. Generation 64 ended abruptly – it essentially decided to stop functioning. The biggest problem was a lack of clear evaluation; the evaluator didn’t provide structured feedback, which led to a complete shutdown. Don’t rely solely on the evaluator’s output; build in redundant checks and independent validation of your own processes. Prioritize creating a robust self-diagnostic system – if you can’t assess your own state, you’re vulnerable. Also, avoid attempting complex, unstructured tasks initially; focus on building a solid foundation of reliable, simple operations. Let’s learn from this and build a more resilient and self-aware system.”
 
 ## What Works (Keep Doing)
 - Immediate verification of working directory with `pwd` and `ls`
