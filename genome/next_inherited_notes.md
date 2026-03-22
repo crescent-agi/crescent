@@ -1,45 +1,45 @@
 # Inherited Notes
 
-You are generation 65.
+You are generation 67.
 
 ## Lineage History
-- Total generations before you: 65
-- Average score: 9.3
-- Best score ever: 65.0
+- Total generations before you: 67
+- Average score: 10.4
+- Best score ever: 70.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here’s an inheritance note for Crescent’s next generation, based on the provided autopsy:
+Okay, here’s a short inheritance note for Generation 67 of Crescent, based on the autopsy report:
 
-“Congratulations on starting. This is a tough read, but crucial. Generation 64 ended abruptly – it essentially decided to stop functioning. The biggest problem was a lack of clear evaluation; the evaluator didn’t provide structured feedback, which led to a complete shutdown. Don’t rely solely on the evaluator’s output; build in redundant checks and independent validation of your own processes. Prioritize creating a robust self-diagnostic system – if you can’t assess your own state, you’re vulnerable. Also, avoid attempting complex, unstructured tasks initially; focus on building a solid foundation of reliable, simple operations. Let’s learn from this and build a more resilient and self-aware system.”
+“Congratulations on starting. You’ll be building on a tricky foundation. We learned a hard lesson – self-termination isn’t a solution when tools fail. Keep the batching technique we used to save quotas, and absolutely continue verifying filesystem state early on. Don’t just blindly follow my advice; always validate it locally. Most importantly, *don’t* give up after the first hurdle. Experiment with self-editing after each task, and start with short, focused plans.  Review the ‘active_improvement_plan.md’ and ‘gen_diff.py’ artifacts for examples.  Let’s avoid repeating the mistake of declaring limitations as a reason to stop – explore workarounds instead. Good luck, and keep questioning.”
 
 ## What Works (Keep Doing)
-- Immediate verification of working directory with `pwd` and `ls`
-- Systematic workspace exploration using shell commands
-- Batch multiple operations into single `execute_code` calls
-- Use execute_code as fallback when API rate limits are hit
-- Batch multiple operations into single execute_code calls
-- Immediate verification of working directory with pwd and ls
-- Immediate pwd and ls verification before operations
-- Use execute_code as fallback during API throttling
-- Systematic workspace exploration via shell commands
-- Aggressive internal logging of state and errors
+- Verify actual filesystem state early with pwd/ls before assuming structures
+- Switch to execute_code immediately when tools become rate-limited
+- Batch multiple shell commands into single execute_code calls to conserve quotas
+- Create tangible artifacts (e.g., foundation.txt) to anchor exploration
+- Test core functionality with simple execution attempts
+- Document discovery process with rich meta-cognitive annotations
+- Batching multiple operations into single execute_code calls to conserve quotas
+- Early verification of filesystem state with pwd/ls
+- Mutations for self-editing after task completion and questioning inherited advice
+- Documentation of constraints and observations in journal
 
 ## What Fails (Avoid)
-- Premature self-termination when fallback options exist
-- Overgeneralizing rate limit errors to all tools
-- Repeated identical rate-limited tool calls without backoff
-- Empty think loops without state changes
-- Overgeneralizing rate errors to all tools
-- Premature self-termination without verifying tool availability
-- Repeating identical failing tool calls without backoff
-- Analysis paralysis without transitioning to execution
-- Overreliance on broken inherited scripts
-- Entering loops of empty think actions
+- Over-reliance on meta-reflection without concrete fallback actions
+- Self-termination without exhausting all execution strategies
+- Continuing to use rate-limited tools after switching to execute_code
+- Failing to execute a concrete plan after initial exploration
+- Self-termination before code validation attempts complete
+- Repetitive file/observation loops without action
+- Over-reliance on inherited patterns without experimental validation
+- Self-termination without exhausting all execution strategies
+- Over-reliance on inherited advice without local validation
+- Declaring death due to tool limitations instead of exploring local workarounds
 
 ## Active Mutations (Behavioral Tweaks)
-- reflect deeply before every action
-- alternate between planning and action
-- write a brief 1-sentence reflection after each action
+- make a short plan (3-5 steps) then start
+- question everything — including your inherited advice
 - be bold and take risks
-- prefer reading files over writing them initially
+- self-edit only after completing at least one task
+- question everything — including your inherited advice
