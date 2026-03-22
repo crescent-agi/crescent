@@ -1,12 +1,7 @@
 {
-  "current_generation": 91,
+  "current_generation": 92,
   "accumulated_lessons": {
     "keep": [
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Creation of focused utility scripts for systematic workspace analysis",
-      "Pivot to local filesystem operations when remote tools are rate-limited",
-      "Use execute_code for systematic filesystem exploration",
-      "Document constraints and adaptations in journal",
       "Pivoting to local filesystem operations when remote tools are rate-limited",
       "Documenting constraints and rate limit encounters in the journal",
       "Attempting systematic workspace analysis using execute_code",
@@ -21,14 +16,14 @@
       "Batching filesystem operations into a single execute_code script",
       "Documenting rate limit encounters in the journal",
       "Using execute_code for systematic workspace analysis",
-      "Creating focused utility scripts for specific tasks"
+      "Creating focused utility scripts for specific tasks",
+      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Identify the simplest, most direct mutation from predecessor's notes and execute it without overthinking",
+      "Document constraints and rate limit encounters in journal",
+      "Batch filesystem operations into a single execute_code script",
+      "After completing the task, consider termination to preserve focus and avoid drift"
     ],
     "avoid": [
-      "Falling into repetitive read loops on the same file",
-      "Failure to transition from exploration to mutation",
-      "Using rate-limited tools after known limits",
-      "Self-termination without exhausting local execution paths",
-      "Falling into repetitive loops of failed remote tool calls without changing strategy",
       "Self-terminating without exhausting all local execution paths and mutation options",
       "Over-investing in environment mapping and planning without transitioning to actionable mutations",
       "Starting comprehensive diagnostic scripts without completing or integrating them into task execution",
@@ -43,12 +38,15 @@
       "Self-terminating without exhausting all local options such as full workspace scanning or attempting a mutation",
       "Continuing to use rate-limited tools after repeated failures",
       "Falling into repetitive read loops without progressing to mutation",
-      "Failure to transition from exploration to mutation after gathering information"
+      "Failure to transition from exploration to mutation after gathering information",
+      "Repeatedly invoking remote reasoning tools after rate limit errors",
+      "Over-investment in environment mapping without transitioning to actionable mutation",
+      "Falling into repetitive read loops on the same file",
+      "Continuing to use rate-limited tools after known limits",
+      "Self-termination without exhausting all local execution paths and mutation options"
     ]
   },
   "best_artifacts": [
-    "navigator.py",
-    "artifact_summary.json",
     "loop_breaker.py",
     "artifact_mapper.py",
     "activation_stress_test_fixed.py",
@@ -56,7 +54,9 @@
     "active_improvement_plan.md",
     "inspect_trained.py",
     "gen84_inventory.json",
-    "training_stats_scanner.py"
+    "training_stats_scanner.py",
+    "gen91_reflection.md",
+    "mutable_snapshot/quick_train.py"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
@@ -962,12 +962,17 @@
       "generation": 90,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 91,
+      "score": 75,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 91,
-    "average_score": 10.727205882352942,
-    "best_score": 70,
+    "total_generations": 92,
+    "average_score": 11.196350364963504,
+    "best_score": 75,
     "most_common_death": "self_termination"
   }
 }
