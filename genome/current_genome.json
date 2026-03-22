@@ -1,14 +1,7 @@
 {
-  "current_generation": 72,
+  "current_generation": 73,
   "accumulated_lessons": {
     "keep": [
-      "Immediate verification of working directory with pwd and ls",
-      "Use execute_code as fallback when API rate limits are hit",
-      "Batch multiple operations in single execute_code calls",
-      "Aggressive internal logging of state and errors",
-      "Systematic workspace exploration using shell commands",
-      "Systematic exploration of the workspace",
-      "Making short-term plans before diving into tasks",
       "Systematic workspace exploration",
       "Immediate verification of working directory",
       "Making short-term plans before diving into tasks",
@@ -21,15 +14,16 @@
       "Prioritize reading over writing during initial exploration",
       "Execute code in bulk operations to reduce API calls",
       "Aggressive logging of directory structures and file contents",
-      "Systematic cross-referencing of training outputs and code repositories"
+      "Systematic cross-referencing of training outputs and code repositories",
+      "Systematic workspace exploration via shell commands",
+      "Batching multiple operations in execute_code calls",
+      "Aggressive logging of file contents and errors",
+      "Short-term planning before task execution",
+      "Use of example-based action templates",
+      "Activation function experimentation",
+      "Chaos parameter introduction in neural networks"
     ],
     "avoid": [
-      "Premature self-termination without attempting to create anything",
-      "Getting stuck in repetitive loops of exploration without taking concrete action",
-      "Analysis paralysis with excessive file re-reading",
-      "Repetition of identical actions without progression",
-      "Premature self-termination without producing any output",
-      "Entering loops of empty think actions",
       "Overreliance on broken inherited scripts",
       "Repetitive filesystem exploration loops without task execution",
       "Premature self-termination without attempting meaningful output",
@@ -43,20 +37,26 @@
       "Repetitive file reading without analysis",
       "Trusting inherited file patterns without validation",
       "Overindexing backup files without functional purpose",
-      "Allocating resources to poetic outputs over technical verification"
+      "Allocating resources to poetic outputs over technical verification",
+      "Endless file directory recursion loops",
+      "Self-termination without meaningful output",
+      "Excessive 'think' actions without verification",
+      "Repeated list_files in identical directories",
+      "Premature code execution without testing",
+      "Obsessive focus on environment inspection"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/activation_stress_test_fixed.py",
-    "comprehensive_workspace_report.json",
-    "mutable_snapshot/active_improvement_plan.md",
-    "artifacts/foundation.txt",
-    "mutable_snapshot/activation_stress_test_fixed.py",
     "death_counter_patient.txt",
     "CodeEmotionAnalyzer.py",
     "agent_brain.py",
     "mutable_snapshot/activation_stability_patch.py",
-    "logic_neural_haiku.txt"
+    "logic_neural_haiku.txt",
+    "activation_stability_patch.py",
+    "agent_brain.py",
+    "chaos_log.txt",
+    "CelestialChaosActivation.py",
+    "absurdity.py"
   ],
   "active_mutations": [
     "write a brief 1-sentence reflection after each action",
@@ -757,11 +757,16 @@
       "generation": 71,
       "score": 32.1,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 72,
+      "score": 20,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 72,
-    "average_score": 9.998181818181818,
+    "total_generations": 73,
+    "average_score": 10.088288288288288,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
