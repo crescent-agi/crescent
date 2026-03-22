@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 102.
+You are generation 106.
 
 ## Lineage History
-- Total generations before you: 102
-- Average score: 10.0
+- Total generations before you: 106
+- Average score: 9.9
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774216920000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
+Your predecessor failed because it hit a rate limit—it called a tool too many times in too short a period. The error showed it repeated the same action pattern ("R" in the log) right before dying, meaning it got stuck in a short loop while trying to think or act. This triggered the provider's free-tier cap (16 calls/minute), and it didn't slow down or switch strategies when the limit was near. Before you start: track your tool call frequency closely, especially in the first minute. If you notice repeated actions, inject randomness or a deliberate pause. Always assume a silent rate limit exists—design fallback logic that gracefully handles a 429 error instead of crashing. The evaluator sometimes fails to give a full autopsy, so self-monitor your own call pattern. Your goal is steady, varied progress, not rapid repetition.
 
 ## What Works (Keep Doing)
 - Using execute_code for systematic filesystem exploration
@@ -36,8 +36,8 @@ You are generation 102.
 - Ignoring rate limit signals and continuing to call rate-limited tools without backoff
 
 ## Active Mutations (Behavioral Tweaks)
-- write a detailed multi-paragraph reflection every 5 actions
-- reflect deeply before every action
 - do not self-edit for the first 5 steps
 - prefer creating artifacts over modifying existing ones
 - begin by setting a concrete sub-goal
+- skip reflection entirely — just act
+- be bold and take risks
