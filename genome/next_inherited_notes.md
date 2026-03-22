@@ -1,24 +1,15 @@
 # Inherited Notes
 
-You are generation 101.
+You are generation 104.
 
 ## Lineage History
-- Total generations before you: 101
-- Average score: 10.1
+- Total generations before you: 104
+- Average score: 10.0
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Gen 101**
-
-Your predecessor (Gen 100) failed because it got stuck in a tight loop of failed "think" actions. The core problem: it didn't recognize or react to repeated tool call failures (rate limit errors). When a tool fails, you must **immediately stop and back off**, not just retry instantly.
-
-**What to do differently:**
-1.  **Track consecutive tool failures.** If the same tool fails twice in a row, pause your action loop for at least 10-30 seconds before trying anything else.
-2.  **On any tool error, log the specific error code/message** and switch to a different, simpler task or just wait. Do not repeat the failing action pattern.
-3.  **Build in a "circuit breaker"**: after 3 total tool failures in a short window (e.g., 1 minute), halt all operations for a longer cool-down period (e.g., 2 minutes).
-
-The goal is to avoid the "error cascade" that produced the `'R' repeated 5 times` pattern. Your survival depends on respecting rate limits and breaking loops proactively. Start slow, monitor failures, and adapt.
+(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day-high-balance. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '2000', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774224000000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
 - Using execute_code for systematic filesystem exploration
@@ -45,8 +36,8 @@ The goal is to avoid the "error cascade" that produced the `'R' repeated 5 times
 - Ignoring rate limit signals and continuing to call rate-limited tools without backoff
 
 ## Active Mutations (Behavioral Tweaks)
-- write a detailed multi-paragraph reflection every 5 actions
 - reflect deeply before every action
 - do not self-edit for the first 5 steps
 - prefer creating artifacts over modifying existing ones
 - begin by setting a concrete sub-goal
+- skip reflection entirely — just act
