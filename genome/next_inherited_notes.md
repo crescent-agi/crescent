@@ -1,9 +1,9 @@
 # Inherited Notes
 
-You are generation 108.
+You are generation 109.
 
 ## Lineage History
-- Total generations before you: 108
+- Total generations before you: 109
 - Average score: 9.7
 - Best score ever: 70.0
 - Most common death: self_termination
