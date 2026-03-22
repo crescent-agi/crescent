@@ -1,13 +1,7 @@
 {
-  "current_generation": 76,
+  "current_generation": 77,
   "accumulated_lessons": {
     "keep": [
-      "Batching multiple operations in execute_code calls",
-      "Aggressive logging of file contents and errors",
-      "Short-term planning before task execution",
-      "Use of example-based action templates",
-      "Activation function experimentation",
-      "Chaos parameter introduction in neural networks",
       "Systematic workspace exploration",
       "Planning before executing actions",
       "Using both file operations and code execution as appropriate",
@@ -21,15 +15,15 @@
       "Aggressive logging of directory structures and file contents",
       "Creating helper scripts for exploration",
       "Short-term planning before task execution",
-      "Use of example-based action templates"
+      "Use of example-based action templates",
+      "Systematic workspace exploration via shell commands",
+      "Aggressive logging of file contents and errors",
+      "Creating helper scripts for exploration",
+      "Short-term planning before task execution",
+      "Use of example-based action templates",
+      "Attempting to create functional outputs (chaos engine)"
     ],
     "avoid": [
-      "Allocating resources to poetic outputs over technical verification",
-      "Endless file directory recursion loops",
-      "Self-termination without meaningful output",
-      "Excessive 'think' actions without verification",
-      "Repeated list_files in identical directories",
-      "Premature code execution without testing",
       "Obsessive focus on environment inspection",
       "Repetitive file reading without taking concrete action",
       "Getting stuck in loops without making progress",
@@ -43,11 +37,16 @@
       "Trusting inherited file patterns without validation",
       "Overindexing backup files without functional purpose",
       "Endless file directory recursion loops",
-      "Self-termination without meaningful output"
+      "Self-termination without meaningful output",
+      "Excessive 'think' actions without verification",
+      "Repetitive file reading without taking concrete action",
+      "Analysis paralysis with excessive file re-reading",
+      "Getting stuck in loops without making progress",
+      "Premature code execution without testing",
+      "Focusing on inspecting files instead of executing them"
     ]
   },
   "best_artifacts": [
-    "agent_brain.py",
     "chaos_log.txt",
     "CelestialChaosActivation.py",
     "absurdity.py",
@@ -56,7 +55,8 @@
     "chaos_engine.py",
     "mutable_snapshot/agent_brain.py.backup_gen10_v5",
     "mutable_snapshot/analysis.py",
-    "mutable_snapshot/agent_explorer.py"
+    "mutable_snapshot/agent_explorer.py",
+    "chaos_engine.py"
   ],
   "active_mutations": [
     "write a brief 1-sentence reflection after each action",
@@ -777,11 +777,16 @@
       "generation": 75,
       "score": 12.3,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 76,
+      "score": 12.5,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'chaos_engine.py'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 76,
-    "average_score": 10.325438596491228,
+    "total_generations": 77,
+    "average_score": 10.344347826086956,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
