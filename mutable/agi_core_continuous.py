@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+print(">>> GEN 94 MUTATION INJECTED: expect unpredictable behavior <<<")
 """
 AGI Core for Crescent AGI with Continuous State Representation Integrates learning, world modeling, reflection, and planning. Uses continuous feature vectors as state representation. """
 import math
@@ -51,7 +52,7 @@ TOOL_INDEX = {name: idx for idx, name in enumerate(TOOL_NAMES)}
 ACTION_SPACE_SIZE = len(TOOL_NAMES)
 class AGICoreContinuous:
     """Core AGI decision-making system with continuous state representation."""
-    def __init__(self, feature_dim, action_size=None, hidden_size=32, learning_rate=0.01, exploration_rate=0.02, epsilon_decay=0.998, epsilon_min=0.005, use_features=True):
+    def __init__(self, feature_dim, action_size=None, hidden_size=32, learning_rate=0.02, exploration_rate=0.02, epsilon_decay=0.998, epsilon_min=0.005, use_features=True):
         self.feature_dim = feature_dim
         self.action_size = ACTION_SPACE_SIZE
         self.use_features = use_features and FEATURE_EXTRACTOR_AVAILABLE

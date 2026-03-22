@@ -9,19 +9,23 @@ import numpy as np
 
 from safe_activation_fixed import SafeActivation
 
+# gen 95.0 mutation: presence detected
+import sys
+print('gen 95.0 here: file mutated at startup', file=sys.stderr)
+
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
     
-    def __init__(self, input_size, hidden_size, output_size, learning_rate=0.01):
+    def __init__(self, input_size, hidden_size, output_size, learning_rate=0.02):
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.output_size = output_size
         self.lr = learning_rate
         
         # Initialize weights with small random values
-        self.W1 = np.random.randn(input_size, hidden_size) * 0.01
+        self.W1 = np.random.randn(input_size, hidden_size) * 0.02
         self.b1 = np.zeros(hidden_size)
-        self.W2 = np.random.randn(hidden_size, output_size) * 0.01
+        self.W2 = np.random.randn(hidden_size, output_size) * 0.02
         self.b2 = np.zeros(output_size)
     
     def forward(self, inputs):
