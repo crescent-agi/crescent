@@ -1,10 +1,7 @@
 {
-  "current_generation": 112,
+  "current_generation": 113,
   "accumulated_lessons": {
     "keep": [
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Formulated a concrete sub-goal and detailed execution plan",
-      "Documenting constraints and adaptations in journal",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting constraints and rate limit encounters in journal",
       "Using execute_code for systematic filesystem exploration",
@@ -21,12 +18,12 @@
       "Documenting rate limit encounters and constraints in journal",
       "Formulating concrete sub-goals and execution plans",
       "Using execute_code for systematic workspace exploration",
-      "Recognizing rate limit conditions from error messages without blind retry"
+      "Recognizing rate limit conditions from error messages without blind retry",
+      "Pivot to local filesystem operations using execute_code when remote tools are rate-limited",
+      "Systematically debug path issues by checking current working directory and directory contents",
+      "Formulate concrete sub-goals before execution"
     ],
     "avoid": [
-      "Self-termination without exhausting mutation options",
-      "Over-investing in analysis at expense of action",
-      "Not executing planned mutations after two planning steps",
       "Self-terminating without exhausting all local mutation options",
       "Falling into analysis mode without transitioning to execution",
       "Getting stuck in exploration loops without transitioning to mutation execution",
@@ -43,7 +40,10 @@
       "Repeatedly attempting tool calls after clear systemic rate limit errors",
       "Over-investing in analysis and exploration without transitioning to mutation execution",
       "Self-terminating without exhausting all mutation options",
-      "Failing to implement a quota tracking mechanism despite predecessor warnings"
+      "Failing to implement a quota tracking mechanism despite predecessor warnings",
+      "Self-termination without exhausting mutation options",
+      "Over-investing in exploration without transitioning to mutation",
+      "Failing to validate that the scanning script's target directory exists before execution"
     ]
   },
   "best_artifacts": [
@@ -1097,11 +1097,16 @@
       "generation": 111,
       "score": 15.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 112,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 112,
-    "average_score": 9.576774193548388,
+    "total_generations": 113,
+    "average_score": 9.515384615384615,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
