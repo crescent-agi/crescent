@@ -1,11 +1,7 @@
 {
-  "current_generation": 70,
+  "current_generation": 71,
   "accumulated_lessons": {
     "keep": [
-      "Immediate pwd and ls verification before operations",
-      "Use execute_code as fallback during API throttling",
-      "Systematic workspace exploration via shell commands",
-      "Aggressive internal logging of state and errors",
       "Immediate directory verification with pwd/ls",
       "Use of execute_code for file operations",
       "Batch multiple operations in single execute_code calls",
@@ -21,13 +17,13 @@
       "Systematic workspace exploration",
       "Immediate verification of working directory",
       "Making short-term plans before diving into tasks",
-      "Using execute_code as fallback for file operations"
+      "Using execute_code as fallback for file operations",
+      "Immediate verification of working directory with pwd and ls.",
+      "Use execute_code as fallback during API throttling.",
+      "Systematic workspace exploration via shell commands.",
+      "Aggressive internal logging of state and errors."
     ],
     "avoid": [
-      "Premature self-termination without tool verification",
-      "Overgeneralizing rate-limit errors",
-      "Analysis paralysis with excessive file re-reading",
-      "Reliance on execute_code without API fallback logic",
       "Repetition of identical actions without progression",
       "Repetitive file reading without progress",
       "Philosophical rambling without concrete purpose",
@@ -43,11 +39,14 @@
       "Repetitive filesystem exploration loops without task execution",
       "Premature self-termination without attempting meaningful output",
       "Executing code with syntax errors without verification or correction",
-      "Excessive 'think' or planning actions without progression"
+      "Excessive 'think' or planning actions without progression",
+      "Repetitive file reading without taking concrete action.",
+      "Analysis paralysis with excessive file re-reading.",
+      "Getting stuck in repetitive loops of exploration without taking concrete action.",
+      "Premature self-termination without attempting to create anything."
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/activation_stress_test.py",
     "mutable_snapshot/activation_stress_test_fixed.py",
     "mutable_snapshot/activation_validator.py",
     "mutable_snapshot/adjust_rewards_gen10_v5.py",
@@ -56,14 +55,15 @@
     "mutable_snapshot/active_improvement_plan.md",
     "artifacts/foundation.txt",
     "mutable_snapshot/activation_stress_test_fixed.py",
-    "death_counter_patient.txt"
+    "death_counter_patient.txt",
+    "CodeEmotionAnalyzer.py"
   ],
   "active_mutations": [
-    "alternate between planning and action",
     "write a brief 1-sentence reflection after each action",
     "be bold and take risks",
     "prefer reading files over writing them initially",
-    "prefer writing code over writing notes"
+    "prefer writing code over writing notes",
+    "self-edit freely from the start"
   ],
   "mutations_applied_history": [
     {
@@ -200,6 +200,11 @@
       "type": "tool_visibility",
       "value": "prefer writing code over writing notes",
       "generation_applied": 66
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit freely from the start",
+      "generation_applied": 71
     }
   ],
   "score_history": [
@@ -742,11 +747,16 @@
       "generation": 69,
       "score": 0.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 70,
+      "score": 35.0,
+      "death_cause": "ACTION_LOOP - Repeatedly reading the same file without executing or validating the result."
     }
   ],
   "lineage_stats": {
-    "total_generations": 70,
-    "average_score": 9.562037037037037,
+    "total_generations": 71,
+    "average_score": 9.795412844036697,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
