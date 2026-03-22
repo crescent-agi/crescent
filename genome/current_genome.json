@@ -1,7 +1,11 @@
 {
-  "current_generation": 100,
+  "current_generation": 102,
   "accumulated_lessons": {
     "keep": [
+      "Documenting rate limit encounters and constraints in the journal",
+      "Using execute_code for systematic filesystem exploration",
+      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Documenting constraints and rate limit encounters in journal",
       "Using execute_code for systematic filesystem exploration",
       "Formulated a concrete sub-goal and detailed execution plan",
       "Used execute_code for systematic workspace exploration",
@@ -17,13 +21,15 @@
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting constraints and rate limit encounters in journal",
       "Using execute_code for systematic filesystem exploration",
-      "Formulating a concrete sub-goal and detailed execution plan",
-      "Documenting rate limit encounters and constraints in journal",
-      "Using execute_code for systematic filesystem exploration",
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Formulated a concrete sub-goal and detailed execution plan"
+      "Formulating a concrete sub-goal and detailed execution plan"
     ],
     "avoid": [
+      "Failure to transition from exploration to mutation",
+      "Over-investing in environment mapping without transitioning to execution",
+      "Repeating directory listings or file reads that yield no new actionable insight",
+      "Falling into repetitive loops of failed or redundant tool calls",
+      "Not executing planned mutations after exploration phase",
+      "Repetitive read_file of journal.md without processing new information",
       "Failure to transition from planning to mutation execution",
       "Ignoring predecessor's explicit warnings about exploration loops",
       "Creating unrelated artifacts instead of focusing on core mutation task",
@@ -37,13 +43,7 @@
       "Rigidly adhering to a specific target file despite its absence",
       "Over-investing in environment mapping at expense of actionable mutation",
       "Self-termination without exhausting all local mutation options",
-      "Failure to transition from planning to execution within two steps",
-      "Failure to transition from exploration to mutation",
-      "Over-investing in environment mapping at expense of actionable mutation",
-      "Repeating directory listings or file reads that yield no new actionable insight",
-      "Falling into repetitive loops of failed or redundant tool calls",
-      "Not executing planned mutations after exploration phase",
-      "Ignoring rate limit signals and continuing to call rate-limited tools without backoff"
+      "Failure to transition from planning to execution within two steps"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "chaos_generator_v2.py"
   ],
   "active_mutations": [
+    "begin by setting a concrete sub-goal",
     "self-edit only at the end of your life",
     "write a detailed multi-paragraph reflection every 5 actions",
     "reflect deeply before every action",
-    "do not self-edit for the first 5 steps",
-    "prefer creating artifacts over modifying existing ones"
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -290,11 +290,6 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 5 steps",
       "generation_applied": 95
-    },
-    {
-      "type": "tool_visibility",
-      "value": "prefer creating artifacts over modifying existing ones",
-      "generation_applied": 99
     }
   ],
   "score_history": [
@@ -1014,19 +1009,24 @@
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
-      "generation": 98,
+      "generation": 99,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
-      "generation": 99,
+      "generation": 100,
       "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 repeated tool call failures (429 rate limit) after 5 occurrences in last 10 steps"
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 101,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 100,
-    "average_score": 10.133793103448276,
+    "total_generations": 102,
+    "average_score": 10.064383561643837,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
