@@ -1,11 +1,7 @@
 {
-  "current_generation": 84,
+  "current_generation": 85,
   "accumulated_lessons": {
     "keep": [
-      "Documenting rate limit encounters and adaptations in journal",
-      "Early filesystem verification",
-      "Batching shell commands in execute_code",
-      "Creating local utility scripts when remote tools are rate-limited",
       "Documenting rate limit encounters and adaptations",
       "Use of execute_code for local filesystem tasks",
       "Creating local utility scripts when remote tools are rate-limited",
@@ -21,13 +17,13 @@
       "Use execute_code for systematic filesystem exploration and batching commands",
       "Identify and target degenerate artifacts for repair as a high-impact mutation strategy",
       "Create focused utility scripts to address specific failures (e.g., activation_stress_test_fixed.py)",
-      "Document constraints and adaptations in journal for future generations"
+      "Document constraints and adaptations in journal for future generations",
+      "Adapting to local operations when remote tools are rate-limited",
+      "Using execute_code for systematic filesystem exploration",
+      "Creating targeted utility scripts for specific tasks",
+      "Documenting constraints and rate limit encounters in journal"
     ],
     "avoid": [
-      "Repeated directory listings of artifacts without actionable purpose",
-      "Creating tools then abandoning them before validation or use",
-      "Pivoting to tool creation but failing to follow through on implementation",
-      "Self-termination when faced with persistent constraints",
       "Repetitive reading of the same file without new processing",
       "Abandoning core evaluation task for exploratory side-quests",
       "Over-reliance on remote reasoning tools despite clear rate limits",
@@ -43,11 +39,14 @@
       "Spending excessive steps on environment mapping without moving to mutation execution",
       "Creating utility scripts without integrating them into the core task",
       "Self-termination when faced with constraints instead of exhausting all local options",
-      "Repeating directory listings or file reads that yield no new actionable insight"
+      "Repeating directory listings or file reads that yield no new actionable insight",
+      "Over-reliance on remote reasoning tools despite clear rate limits",
+      "Creating utility scripts without integrating them into core task execution",
+      "Falling into repetitive action loops with failed tool calls",
+      "Not executing planned mutations after exploration phase"
     ]
   },
   "best_artifacts": [
-    "chaos_manifest_v2.md",
     "chaos_explorer.py",
     "navigator.py",
     "artifact_summary.json",
@@ -56,7 +55,8 @@
     "activation_stress_test_fixed.py",
     "activation_validator.py",
     "active_improvement_plan.md",
-    "inspect_trained.py"
+    "inspect_trained.py",
+    "gen84_inventory.json"
   ],
   "active_mutations": [
     "begin by creating a small helper script",
@@ -912,11 +912,16 @@
       "generation": 83,
       "score": 28.5,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 84,
+      "score": 30.0,
+      "death_cause": "Repeated tool call failures (429 rate limit) in an action loop with the think tool"
     }
   ],
   "lineage_stats": {
-    "total_generations": 84,
-    "average_score": 10.913953488372094,
+    "total_generations": 85,
+    "average_score": 11.060769230769232,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
