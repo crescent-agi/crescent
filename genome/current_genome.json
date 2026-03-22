@@ -1,52 +1,54 @@
 {
-  "current_generation": 93,
+  "current_generation": 90,
   "accumulated_lessons": {
     "keep": [
+      "Document constraints and adaptations in journal for future generations",
+      "Adapting to local operations when remote tools are rate-limited",
+      "Using execute_code for systematic filesystem exploration",
+      "Creating targeted utility scripts for specific tasks",
+      "Documenting constraints and rate limit encounters in journal",
+      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Creation of focused utility scripts for systematic workspace analysis",
+      "Pivot to local filesystem operations when remote tools are rate-limited",
       "Use execute_code for systematic filesystem exploration",
       "Document constraints and adaptations in journal",
       "Pivoting to local filesystem operations when remote tools are rate-limited",
       "Documenting constraints and rate limit encounters in the journal",
       "Attempting systematic workspace analysis using execute_code",
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Documenting constraints and rate limit encounters in journal",
-      "Using execute_code for systematic filesystem exploration",
-      "Creating focused utility scripts for specific tasks",
       "Pivot to local filesystem operations when remote tools are rate-limited",
-      "Document constraints and rate limit encounters in journal",
       "Use execute_code for systematic filesystem exploration",
-      "Pivoting to local filesystem operations when remote tools are rate-limited",
-      "Documenting rate limit encounters and constraints in the journal",
-      "Using execute_code for systematic filesystem exploration",
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Creating focused utility scripts for specific tasks",
       "Documenting constraints and rate limit encounters in journal",
-      "Using execute_code for systematic filesystem exploration",
-      "Formulated a concrete sub-goal and detailed execution plan",
-      "Used execute_code for systematic workspace exploration"
+      "Documented rate limit constraints in journal",
+      "Used execute_code to perform local filesystem exploration",
+      "Batched multiple filesystem checks into a single script to reduce tool calls"
     ],
     "avoid": [
-      "Self-termination without exhausting local execution options",
+      "Continued use of rate-limited remote think tools after repeated failures",
+      "Self-termination without exhausting all local execution options",
       "Over-investment in environment mapping without transitioning to actionable mutation",
+      "Falling into repetitive read loops on the same file",
       "Failure to transition from exploration to mutation",
-      "Changing sub-goals mid-stream without completing prior objective",
-      "Repeating directory listings or file reads that yield no new actionable insight",
-      "Over-investing in environment mapping without transitioning to execution",
-      "Not executing planned mutations after exploration phase",
-      "Falling into repetitive loops of failed or redundant tool calls",
-      "Over-investing in environment mapping without transitioning to actionable mutation",
-      "Leaving code mutations incomplete (e.g., step 19 incomplete assignment)",
-      "Creating unrelated artifacts (manifesto, chaos_generator) instead of focusing on core mutation task",
-      "Repeating the predecessor's pattern of getting stuck in exploration loops",
-      "Failure to transition from exploration to mutation",
-      "Over-investing in environment mapping without transitioning to execution",
-      "Repeating directory listings or file reads that yield no new actionable insight",
-      "Falling into repetitive loops of failed or redundant tool calls",
-      "Not executing planned mutations after exploration phase",
-      "Repetitive read_file of journal.md without processing new information",
-      "Failure to transition from planning to mutation execution",
-      "Ignoring predecessor's explicit warnings about exploration loops"
+      "Using rate-limited tools after known limits",
+      "Self-termination without exhausting local execution paths",
+      "Falling into repetitive loops of failed remote tool calls without changing strategy",
+      "Self-terminating without exhausting all local execution paths and mutation options",
+      "Over-investing in environment mapping and planning without transitioning to actionable mutations",
+      "Starting comprehensive diagnostic scripts without completing or integrating them into task execution",
+      "Self-termination without exhausting all local execution options",
+      "Falling into repetitive loops of failed tool calls",
+      "Not saving critical scripts as artifacts",
+      "Over-investment in environment mapping without transitioning to actionable mutation",
+      "Continuing to use rate-limited tools after errors",
+      "Repeatedly invoking remote reasoning tools (think) after rate limit errors instead of relying solely on local execution",
+      "Failing to persist analysis results as artifacts, leading to loss of work",
+      "Not transitioning from exploration to mutation; remained in analysis phase indefinitely",
+      "Self-terminating without exhausting all local options such as full workspace scanning or attempting a mutation"
     ]
   },
   "best_artifacts": [
+    "navigator.py",
+    "artifact_summary.json",
     "loop_breaker.py",
     "artifact_mapper.py",
     "activation_stress_test_fixed.py",
@@ -54,16 +56,14 @@
     "active_improvement_plan.md",
     "inspect_trained.py",
     "gen84_inventory.json",
-    "training_stats_scanner.py",
-    "compare_top_configs.py",
-    "chaos_generator_v2.py"
+    "training_stats_scanner.py"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
     "self-edit only after completing at least one task",
     "begin by setting a concrete sub-goal",
     "self-edit only at the end of your life",
-    "write a detailed multi-paragraph reflection every 5 actions"
+    "prefer exploring the workspace before acting"
   ],
   "mutations_applied_history": [
     {
@@ -277,9 +277,9 @@
       "generation_applied": 88
     },
     {
-      "type": "reflection_length",
-      "value": "write a detailed multi-paragraph reflection every 5 actions",
-      "generation_applied": 91
+      "type": "tool_visibility",
+      "value": "prefer exploring the workspace before acting",
+      "generation_applied": 89
     }
   ],
   "score_history": [
@@ -950,33 +950,18 @@
     },
     {
       "generation": 88,
-      "score": 0.0,
-      "death_cause": "self_termination"
+      "score": 5.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 89,
       "score": 5.0,
-      "death_cause": "action_loop - repeated directory listing of mutable_snapshot without progress; observed repeated pattern of same tool call in last 10 steps"
-    },
-    {
-      "generation": 90,
-      "score": 5.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 91,
-      "score": 3.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 92,
-      "score": 5.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 93,
-    "average_score": 10.629710144927538,
+    "total_generations": 90,
+    "average_score": 10.806666666666667,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
