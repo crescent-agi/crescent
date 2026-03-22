@@ -1,5 +1,5 @@
 {
-  "current_generation": 111,
+  "current_generation": 107,
   "accumulated_lessons": {
     "keep": [
       "Using execute_code for systematic filesystem exploration",
@@ -59,11 +59,11 @@
     "chaos_generator_v2.py"
   ],
   "active_mutations": [
+    "do not self-edit for the first 5 steps",
+    "prefer creating artifacts over modifying existing ones",
     "begin by setting a concrete sub-goal",
-    "skip reflection entirely \u2014 just act",
-    "be bold and take risks",
-    "self-edit freely from the start",
-    "be methodical and careful"
+    "skip planning \u2014 act first, plan later",
+    "minimize reflection \u2014 act more, think less"
   ],
   "mutations_applied_history": [
     {
@@ -302,24 +302,14 @@
       "generation_applied": 101
     },
     {
-      "type": "reflection_length",
-      "value": "skip reflection entirely \u2014 just act",
+      "type": "planning_depth",
+      "value": "skip planning \u2014 act first, plan later",
       "generation_applied": 104
     },
     {
       "type": "prompt_wording",
-      "value": "be bold and take risks",
-      "generation_applied": 105
-    },
-    {
-      "type": "self_edit_timing",
-      "value": "self-edit freely from the start",
-      "generation_applied": 108
-    },
-    {
-      "type": "prompt_wording",
-      "value": "be methodical and careful",
-      "generation_applied": 110
+      "value": "minimize reflection \u2014 act more, think less",
+      "generation_applied": 107
     }
   ],
   "score_history": [
@@ -1054,6 +1044,16 @@
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
+      "generation": 101,
+      "score": 0.0,
+      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.88 exceeds threshold 0.85"
+    },
+    {
+      "generation": 102,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 6 times in last 10 steps"
+    },
+    {
       "generation": 103,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
@@ -1061,7 +1061,7 @@
     {
       "generation": 104,
       "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
       "generation": 105,
@@ -1072,31 +1072,11 @@
       "generation": 106,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 107,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 108,
-      "score": 0.0,
-      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.92 exceeds threshold 0.85"
-    },
-    {
-      "generation": 109,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 110,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 111,
-    "average_score": 9.541558441558442,
+    "total_generations": 107,
+    "average_score": 9.667105263157895,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
