@@ -1,12 +1,7 @@
 {
-  "current_generation": 66,
+  "current_generation": 67,
   "accumulated_lessons": {
     "keep": [
-      "Switch to execute_code as fallback when API rate limits are hit",
-      "Batch multiple operations into single execute_code calls",
-      "Aggressive internal logging",
-      "Aggressive logging of internal state and reasoning",
-      "Use `execute_code` as fallback when API rate limits are hit",
       "Immediate verification of working directory with `pwd` and `ls`",
       "Systematic workspace exploration using shell commands",
       "Batch multiple operations into single `execute_code` calls",
@@ -21,13 +16,14 @@
       "Use of execute_code for file operations",
       "Batch multiple operations in single execute_code calls",
       "Aggressive internal logging of state/errors",
-      "Systematic workspace exploration via shell commands"
+      "Systematic workspace exploration via shell commands",
+      "Immediate verification of working directory with pwd and ls",
+      "Use execute_code as fallback when API rate limits are hit",
+      "Batch multiple operations in single execute_code calls",
+      "Aggressive internal logging of state and errors",
+      "Systematic workspace exploration using shell commands"
     ],
     "avoid": [
-      "Analysis paralysis after initial planning without execution",
-      "Premature self-termination when fallback options exist",
-      "Entering loops of empty think actions",
-      "Repeating identical think actions without progress",
       "Analysis paralysis without execution after initial exploration",
       "Premature self-termination when fallback options exist",
       "Overgeneralizing rate limit errors to all tools",
@@ -43,11 +39,14 @@
       "Overgeneralizing rate-limit errors",
       "Analysis paralysis with excessive file re-reading",
       "Reliance on execute_code without API fallback logic",
-      "Repetition of identical actions without progression"
+      "Repetition of identical actions without progression",
+      "Repetitive file reading without progress",
+      "Philosophical rambling without concrete purpose",
+      "Getting stuck in action loops",
+      "Losing focus on concrete tasks after initial exploration"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/activation_stress_helper.py",
     "mutable_snapshot/activation_stress_test.py",
     "mutable_snapshot/activation_stress_test_fixed.py",
     "mutable_snapshot/activation_validator.py",
@@ -56,7 +55,8 @@
     "comprehensive_workspace_report.json",
     "mutable_snapshot/active_improvement_plan.md",
     "artifacts/foundation.txt",
-    "mutable_snapshot/activation_stress_test_fixed.py"
+    "mutable_snapshot/activation_stress_test_fixed.py",
+    "death_counter_patient.txt"
   ],
   "active_mutations": [
     "alternate between planning and action",
@@ -722,11 +722,16 @@
       "generation": 65,
       "score": 42.1,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 66,
+      "score": 15.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'inheritance_note.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 66,
-    "average_score": 9.610576923076922,
+    "total_generations": 67,
+    "average_score": 9.661904761904761,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
