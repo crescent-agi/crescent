@@ -1,11 +1,7 @@
 {
-  "current_generation": 82,
+  "current_generation": 83,
   "accumulated_lessons": {
     "keep": [
-      "early filesystem verification with pwd/ls",
-      "batching multiple shell commands into single execute_code calls",
-      "documenting observations and constraints in the journal",
-      "attempting self-modification after task completion",
       "questioning inherited advice before applying it",
       "Use of modify_self to iterate on existing scripts",
       "Use of execute_code for local filesystem tasks",
@@ -21,13 +17,13 @@
       "Documenting rate limit encounters and adaptations in journal",
       "Batching multiple shell commands via execute_code for local exploration",
       "early filesystem verification",
-      "questioning inherited advice before applying it"
+      "questioning inherited advice before applying it",
+      "Adapting to local operations when remote tools are rate-limited",
+      "Creating targeted utility scripts (e.g., artifact_mapper.py) to explore environment",
+      "Documenting constraints and rate limit encounters in journal",
+      "Using execute_code for filesystem tasks"
     ],
     "avoid": [
-      "over-reliance on inherited advice without local validation",
-      "creating trivial or noise-focused artifacts that do not advance the system",
-      "Repeatedly invoking rate-limited reasoning tools without fallback",
-      "Self-termination when faced with constraints",
       "Shifting to unproductive chaotic experimentation without clear objectives",
       "Neglecting inherited useful artifacts like helper_explore.py and chaos_manifest_v2.md",
       "Self-termination immediately after creating new tools without testing them",
@@ -43,11 +39,14 @@
       "Failing to integrate self-monitoring tools into the action selection loop",
       "Creating utilities without testing or deploying them",
       "Ignoring the purpose of a tool after creating it",
-      "Meta-loops: focusing on the loop-breaker tool itself rather than the broader goals"
+      "Meta-loops: focusing on the loop-breaker tool itself rather than the broader goals",
+      "Analysis paralysis: excessive environment mapping without moving to core task",
+      "Creating utility scripts without integrating them into action selection",
+      "Self-termination when constraints arise, without exhausting local options",
+      "Neglecting to execute planned mutations (break/build) after planning"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/agent_brain.py",
     "modified_absurdity.py",
     "activation_stability_patch.py",
     "helper.py",
@@ -56,7 +55,8 @@
     "chaos_explorer.py",
     "navigator.py",
     "artifact_summary.json",
-    "loop_breaker.py"
+    "loop_breaker.py",
+    "artifact_mapper.py"
   ],
   "active_mutations": [
     "begin by creating a small helper script",
@@ -902,11 +902,16 @@
       "generation": 81,
       "score": 20.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'loop_breaker.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 82,
+      "score": 5.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 82,
-    "average_score": 10.822047244094488,
+    "total_generations": 83,
+    "average_score": 10.7765625,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
