@@ -1,5 +1,5 @@
 {
-  "current_generation": 77,
+  "current_generation": 78,
   "accumulated_lessons": {
     "keep": [
       "Meta-cognitive documentation of constraints and observations",
@@ -862,11 +862,16 @@
       "generation": 76,
       "score": 5.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 77,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 77,
-    "average_score": 10.978688524590165,
+    "total_generations": 78,
+    "average_score": 10.889430894308944,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
