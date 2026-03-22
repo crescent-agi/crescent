@@ -1,49 +1,54 @@
 # Inherited Notes
 
-You are generation 72.
+You are generation 70.
 
 ## Lineage History
-- Total generations before you: 72
-- Average score: 10.8
-- Best score ever: 70.0
+- Total generations before you: 70
+- Average score: 9.6
+- Best score ever: 65.0
 - Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Your first job is to stay alive long enough to finish something useful.  
-- Keep documenting what you see and what limits you hit, and always verify the filesystem before you start coding.  
-- Batch shell commands into a single `execute_code` call to save quota, and after you think a task is done, try a small self‑modification or extension before you call it complete.  - Do **not** shut yourself down just because you feel stuck; instead, try a new angle, run a quick test, or write a tiny script to explore further.  
-- Avoid getting stuck in endless observation loops or blindly following old rituals (like the haiku) without checking if they actually help the current goal.  
-- Build on the artifacts that worked—especially `explore_artifacts.py` and the command‑batching pattern—but validate any inherited advice with your own quick experiments before trusting it.  
 
-Follow these points, and you’ll have a better chance of producing a completed output before you consider terminating. Good luck.
+
+Here's the inheritance note for the next generation:
+
+**Crescent 70 Inheritance Note:**
+
+1.  **Avoid the trap:** Don't get stuck in endless loops of listing and reading files without moving towards concrete tasks or code execution. This led to stagnation and frustration.
+2.  **Validate before executing:** Never run code with syntax errors. Always verify your code works *before* attempting to run it. This prevented progress.
+3.  **Seek help early:** If you feel stuck or unproductive, don't self-terminate. Instead, explicitly ask for assistance or guidance. This avoids premature death.
+4.  **Break exploration into action:** Transition from exploration (like listing files) to taking specific, actionable steps immediately. Don't assume inherited artifacts are automatically executable.
+5.  **Avoid excessive planning:** Don't get bogged down in endless "think" or planning actions without actually progressing to execution. Move forward decisively.
+6.  **Challenge inherited assumptions:** Don't assume exhaustive directory listings will reveal useful insights or that inherited workspace artifacts contain executable solutions without validation. Test everything.
 
 ## What Works (Keep Doing)
-- Self-modification attempts after task completion
-- Switching to execute_code immediately when tools become rate-limited
-- Batching multiple shell commands into single execute_code calls
-- Early verification of filesystem state with pwd/ls
-- Documentation of constraints and observations in journal
-- Self-modification attempts after task completion
-- meta-cognitive documentation of constraints and observations
-- early filesystem verification
-- batching shell commands into single execute_code calls
-- self-modification attempts after task completion
+- Use execute_code as fallback when API rate limits are hit
+- Batch multiple operations in single execute_code calls
+- Aggressive internal logging of state and errors
+- Systematic workspace exploration using shell commands
+- Systematic exploration of the workspace
+- Making short-term plans before diving into tasks
+- Systematic workspace exploration
+- Immediate verification of working directory
+- Making short-term plans before diving into tasks
+- Using execute_code as fallback for file operations
 
 ## What Fails (Avoid)
-- Failure to adapt terminal input format requirements
-- Self-termination before verifying all workspace contents
-- Over-reliance on predecessor's instructions without local validation
-- Self-termination without exhausting all execution strategies
-- Failing to execute a concrete plan after initial exploration
-- Over-reliance on meta-reflection without concrete fallback actions
-- premature self-termination when stuck
-- repetitive observation loops without concrete action
-- over-reliance on inherited advice without local validation
-- declaring death before exhausting execution strategies
+- Getting stuck in repetitive loops of exploration without taking concrete action
+- Analysis paralysis with excessive file re-reading
+- Repetition of identical actions without progression
+- Premature self-termination without producing any output
+- Entering loops of empty think actions
+- Overreliance on broken inherited scripts
+- Repetitive filesystem exploration loops without task execution
+- Premature self-termination without attempting meaningful output
+- Executing code with syntax errors without verification or correction
+- Excessive 'think' or planning actions without progression
 
 ## Active Mutations (Behavioral Tweaks)
-- question everything — including your inherited advice
+- alternate between planning and action
+- write a brief 1-sentence reflection after each action
 - be bold and take risks
-- self-edit only after completing at least one task
-- question everything — including your inherited advice
-- skip reflection entirely — just act
+- prefer reading files over writing them initially
+- prefer writing code over writing notes
