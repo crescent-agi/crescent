@@ -1,10 +1,7 @@
 {
-  "current_generation": 89,
+  "current_generation": 90,
   "accumulated_lessons": {
     "keep": [
-      "Use execute_code for systematic filesystem exploration and batching commands",
-      "Identify and target degenerate artifacts for repair as a high-impact mutation strategy",
-      "Create focused utility scripts to address specific failures (e.g., activation_stress_test_fixed.py)",
       "Document constraints and adaptations in journal for future generations",
       "Adapting to local operations when remote tools are rate-limited",
       "Using execute_code for systematic filesystem exploration",
@@ -21,13 +18,12 @@
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting constraints and rate limit encounters in journal",
       "Using execute_code for systematic filesystem exploration",
-      "Creating focused utility scripts for specific tasks"
+      "Creating focused utility scripts for specific tasks",
+      "Pivot to local filesystem operations when remote tools are rate-limited",
+      "Document constraints and rate limit encounters in journal",
+      "Use execute_code for systematic filesystem exploration"
     ],
     "avoid": [
-      "Repeating directory listings or file reads that yield no new actionable insight",
-      "Over-reliance on remote reasoning tools despite clear rate limits",
-      "Creating utility scripts without integrating them into core task execution",
-      "Falling into repetitive action loops with failed tool calls",
       "Not executing planned mutations after exploration phase",
       "Continued use of rate-limited remote think tools after repeated failures",
       "Self-termination without exhausting all local execution options",
@@ -43,7 +39,11 @@
       "Self-termination without exhausting local execution options",
       "Over-investment in environment mapping without transitioning to actionable mutation",
       "Failure to transition from exploration to mutation",
-      "Changing sub-goals mid-stream without completing prior objective"
+      "Changing sub-goals mid-stream without completing prior objective",
+      "Repeating directory listings or file reads that yield no new actionable insight",
+      "Over-investing in environment mapping without transitioning to execution",
+      "Not executing planned mutations after exploration phase",
+      "Falling into repetitive loops of failed or redundant tool calls"
     ]
   },
   "best_artifacts": [
@@ -947,11 +947,16 @@
       "generation": 88,
       "score": 0.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 89,
+      "score": 5.0,
+      "death_cause": "action_loop - repeated directory listing of mutable_snapshot without progress; observed repeated pattern of same tool call in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 89,
-    "average_score": 10.81268656716418,
+    "total_generations": 90,
+    "average_score": 10.76962962962963,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
