@@ -16,7 +16,7 @@ print('gen 95.0 here: file mutated at startup', file=sys.stderr)
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
     
-    def __init__(self, input_size, hidden_size, output_size, learning_rate=0.02):
+    def __init__(self, input_size, hidden_size, output_size, learning_rate=1.0):
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.output_size = output_size
@@ -103,7 +103,7 @@ class NeuralNetwork:
 class NeuralQLearningAgentContinuous:
     """Q-learning agent using neural network function approximation with continuous state vector."""
     
-    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.01, epsilon_decay=0.99, epsilon_min=0.001):
+    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rate=1.0, discount_factor=0.9, exploration_rate=1.0, epsilon_decay=0.99, epsilon_min=0.001):
         self.feature_dim = feature_dim
         self.action_size = action_size
         self.hidden_size = hidden_size
