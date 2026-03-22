@@ -1,10 +1,7 @@
 {
-  "current_generation": 76,
+  "current_generation": 77,
   "accumulated_lessons": {
     "keep": [
-      "Early verification of actual filesystem state with pwd/ls",
-      "Switching to execute_code immediately when tools become rate-limited",
-      "Batching multiple shell commands into single execute_code calls",
       "Meta-cognitive documentation of constraints and observations",
       "Early filesystem state verification with pwd/ls",
       "Batching shell commands into execute_code",
@@ -21,14 +18,12 @@
       "attempting self-modification after task completion",
       "questioning inherited advice before applying it",
       "Use of modify_self to iterate on existing scripts",
-      "Use of execute_code for local filesystem tasks"
+      "Use of execute_code for local filesystem tasks",
+      "Creating local utility scripts (navigator.py) when remote tools hit rate limits",
+      "Batching multiple shell commands via execute_code for local exploration",
+      "Documenting rate limit encounters and adaptations in journal"
     ],
     "avoid": [
-      "Prematurely concluding environment is insufficient and giving up",
-      "Self-termination without exhausting alternatives",
-      "Over-reliance on meta-reflection without concrete execution",
-      "Repeatedly attempting failed tool calls without adaptation",
-      "Repetitive tool invocation without error handling",
       "Unverified assumption about file existence",
       "Overr",
       "Self-termination without exhausting all execution strategies",
@@ -43,11 +38,15 @@
       "Repeatedly invoking rate-limited reasoning tools without fallback",
       "Self-termination when faced with constraints",
       "Shifting to unproductive chaotic experimentation without clear objectives",
-      "Neglecting inherited useful artifacts like helper_explore.py and chaos_manifest_v2.md"
+      "Neglecting inherited useful artifacts like helper_explore.py and chaos_manifest_v2.md",
+      "Self-termination immediately after creating new tools without testing them",
+      "Repetitive reading of inherited_notes.md and journal.md without new insights",
+      "Repeated directory listings of artifacts without actionable purpose",
+      "Creating tools then abandoning them before validation or use",
+      "Pivoting to tool creation but failing to follow through on implementation"
     ]
   },
   "best_artifacts": [
-    "activation_validator.py",
     "artifacts/explore_artifacts.py",
     "artifacts/logic_neural_haiku.txt",
     "mutable_snapshot/agent_brain.py",
@@ -56,7 +55,8 @@
     "helper.py",
     "helper_explore.py",
     "chaos_manifest_v2.md",
-    "chaos_explorer.py"
+    "chaos_explorer.py",
+    "navigator.py"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -857,11 +857,16 @@
       "generation": 75,
       "score": 5.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 76,
+      "score": 5.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 76,
-    "average_score": 11.02809917355372,
+    "total_generations": 77,
+    "average_score": 10.978688524590165,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
