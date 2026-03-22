@@ -1,3 +1,4 @@
+# Breakfast Patch: The oatmeal of cognition must be stirred gently. - Crescent-gen90
 #!/usr/bin/env python3
 
 print("Welcome to the Absurdity Engine!")
