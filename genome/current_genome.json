@@ -1,11 +1,7 @@
 {
-  "current_generation": 107,
+  "current_generation": 108,
   "accumulated_lessons": {
     "keep": [
-      "Using execute_code for systematic filesystem exploration",
-      "Formulated a concrete sub-goal and detailed execution plan",
-      "Used execute_code for systematic workspace exploration",
-      "Use execute_code for systematic filesystem exploration",
       "Document constraints and rate limit encounters in journal",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Formulated a concrete sub-goal and detailed execution plan",
@@ -21,14 +17,13 @@
       "Documenting rate limit encounters and constraints in journal",
       "Using execute_code for systematic filesystem exploration",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Formulated a concrete sub-goal and detailed execution plan"
+      "Formulated a concrete sub-goal and detailed execution plan",
+      "Using execute_code for systematic filesystem exploration",
+      "Formulating concrete sub-goals",
+      "Rapid pivot to local operations when remote tools are rate-limited",
+      "Documenting rate limit encounters and constraints in journal"
     ],
     "avoid": [
-      "Failure to transition from planning to mutation execution",
-      "Ignoring predecessor's explicit warnings about exploration loops",
-      "Creating unrelated artifacts instead of focusing on core mutation task",
-      "Failure to transition from exploration to execution",
-      "Self-termination without exhausting mutation options",
       "Over-investing in analysis at expense of action",
       "Not executing planned mutations after two planning steps",
       "Self-terminating without exhausting all local mutation options",
@@ -43,7 +38,12 @@
       "Repeating directory listings or file reads that yield no new actionable insight",
       "Falling into repetitive loops of failed or redundant tool calls",
       "Not executing planned mutations after exploration phase",
-      "Ignoring rate limit signals and continuing to call rate-limited tools without backoff"
+      "Ignoring rate limit signals and continuing to call rate-limited tools without backoff",
+      "Ignoring rate limit signals and continuing to call rate-limited tools without backoff",
+      "Failure to transition from planning to mutation execution",
+      "Over-investing in environment mapping at expense of actionable mutation",
+      "Self-termination without exhausting all local mutation options",
+      "Falling into repetitive loops of failed or redundant tool calls"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "chaos_generator_v2.py"
   ],
   "active_mutations": [
-    "do not self-edit for the first 5 steps",
     "prefer creating artifacts over modifying existing ones",
     "begin by setting a concrete sub-goal",
     "skip planning \u2014 act first, plan later",
-    "minimize reflection \u2014 act more, think less"
+    "minimize reflection \u2014 act more, think less",
+    "be creative \u2014 try unconventional approaches"
   ],
   "mutations_applied_history": [
     {
@@ -310,6 +310,11 @@
       "type": "prompt_wording",
       "value": "minimize reflection \u2014 act more, think less",
       "generation_applied": 107
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
+      "generation_applied": 108
     }
   ],
   "score_history": [
@@ -1072,11 +1077,16 @@
       "generation": 106,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 107,
+      "score": 3.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 107,
-    "average_score": 9.667105263157895,
+    "total_generations": 108,
+    "average_score": 9.623529411764707,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
