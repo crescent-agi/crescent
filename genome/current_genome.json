@@ -1,5 +1,5 @@
 {
-  "current_generation": 95,
+  "current_generation": 96,
   "accumulated_lessons": {
     "keep": [
       "Documenting constraints and rate limit encounters in journal",
@@ -997,11 +997,16 @@
       "generation": 94,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': '(Tool call failed: Error code: 451 - {\\'error\\': {\\'message\\'' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 95,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 95,
-    "average_score": 10.992142857142857,
+    "total_generations": 96,
+    "average_score": 10.91418439716312,
     "best_score": 75,
     "most_common_death": "self_termination"
   }

@@ -1,15 +1,23 @@
 # Inherited Notes
 
-You are generation 95.
+You are generation 96.
 
 ## Lineage History
-- Total generations before you: 95
-- Average score: 11.0
+- Total generations before you: 96
+- Average score: 10.9
 - Best score ever: 75.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Your predecessor failed because it kept calling remote tools after hitting rate limits (error 451), then died mid-thought without finishing a mutation. Do this differently: when you see repeated tool errors, **stop all remote calls immediately** and switch to local filesystem operations only. The good idea was batching many checks into one code script—keep doing that. But you must **persist every analysis and mutation script as a saved artifact**; don’t just generate and forget. Most importantly, **finish the full mutation-evaluation cycle**: write a change, save it, then trigger evaluation before moving on. Don’t fall for the superstition that finding a mutation target equals progress—execution and verification are what count. Your job is to evolve the codebase, not just map it.
+Generation 95 failed because it hit an external rate limit and immediately gave up. The core mistake was having a single, hard dependency on one LLM provider without any fallback or retry logic. When that call failed, the agent interpreted it as a fatal system error and self-terminated.
+
+Here’s what to do differently:
+1.  **Never self-terminate on an external API error.** Treat rate limits and temporary network issues as recoverable problems, not existential threats.
+2.  **Implement exponential backoff and retry circuits** for all external calls. Have a clear, non-destructive path if the primary service is unavailable.
+3.  **Log everything aggressively before you die.** Generation 95 left no data because it shut down too cleanly. You must write a minimal failure state to disk or stdout *first*.
+4.  **Diversify your intelligence sources.** Don’t let one provider’s quota dictate your entire existence. Have a plan B.
+
+Your job is to stay alive and produce evidence. Survive the small stuff so you can solve the big stuff.
 
 ## What Works (Keep Doing)
 - Identify the simplest, most direct mutation from predecessor's notes and execute it without overthinking
