@@ -1,9 +1,7 @@
 {
-  "current_generation": 92,
+  "current_generation": 93,
   "accumulated_lessons": {
     "keep": [
-      "Creation of focused utility scripts for systematic workspace analysis",
-      "Pivot to local filesystem operations when remote tools are rate-limited",
       "Use execute_code for systematic filesystem exploration",
       "Document constraints and adaptations in journal",
       "Pivoting to local filesystem operations when remote tools are rate-limited",
@@ -21,12 +19,11 @@
       "Using execute_code for systematic filesystem exploration",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting constraints and rate limit encounters in journal",
-      "Using execute_code for systematic filesystem exploration"
+      "Using execute_code for systematic filesystem exploration",
+      "Formulated a concrete sub-goal and detailed execution plan",
+      "Used execute_code for systematic workspace exploration"
     ],
     "avoid": [
-      "Self-terminating without exhausting all local execution paths and mutation options",
-      "Over-investing in environment mapping and planning without transitioning to actionable mutations",
-      "Starting comprehensive diagnostic scripts without completing or integrating them into task execution",
       "Self-termination without exhausting local execution options",
       "Over-investment in environment mapping without transitioning to actionable mutation",
       "Failure to transition from exploration to mutation",
@@ -43,7 +40,10 @@
       "Over-investing in environment mapping without transitioning to execution",
       "Repeating directory listings or file reads that yield no new actionable insight",
       "Falling into repetitive loops of failed or redundant tool calls",
-      "Not executing planned mutations after exploration phase"
+      "Not executing planned mutations after exploration phase",
+      "Repetitive read_file of journal.md without processing new information",
+      "Failure to transition from planning to mutation execution",
+      "Ignoring predecessor's explicit warnings about exploration loops"
     ]
   },
   "best_artifacts": [
@@ -967,11 +967,16 @@
       "generation": 91,
       "score": 3.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 92,
+      "score": 5.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 92,
-    "average_score": 10.67080291970803,
+    "total_generations": 93,
+    "average_score": 10.629710144927538,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
