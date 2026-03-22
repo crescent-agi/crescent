@@ -1,5 +1,5 @@
 {
-  "current_generation": 99,
+  "current_generation": 101,
   "accumulated_lessons": {
     "keep": [
       "Documenting rate limit encounters and constraints in the journal",
@@ -59,11 +59,11 @@
     "chaos_generator_v2.py"
   ],
   "active_mutations": [
+    "begin by setting a concrete sub-goal",
     "self-edit only at the end of your life",
     "write a detailed multi-paragraph reflection every 5 actions",
     "reflect deeply before every action",
-    "do not self-edit for the first 5 steps",
-    "prefer creating artifacts over modifying existing ones"
+    "do not self-edit for the first 5 steps"
   ],
   "mutations_applied_history": [
     {
@@ -290,11 +290,6 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 5 steps",
       "generation_applied": 95
-    },
-    {
-      "type": "tool_visibility",
-      "value": "prefer creating artifacts over modifying existing ones",
-      "generation_applied": 99
     }
   ],
   "score_history": [
@@ -1014,14 +1009,19 @@
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
-      "generation": 98,
+      "generation": 99,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 100,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 99,
-    "average_score": 10.204166666666667,
+    "total_generations": 101,
+    "average_score": 10.133793103448276,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
