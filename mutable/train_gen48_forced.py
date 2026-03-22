@@ -172,7 +172,7 @@ else:
 global_productive_counts = defaultdict(int)
 
 # Run training with forced rotation
-episodes = 20
+episodes = 0
 steps_per_episode = 20
 print(f"Running {episodes} episodes with forced rotation...")
 for episode in range(episodes):

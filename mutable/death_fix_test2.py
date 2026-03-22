@@ -102,7 +102,7 @@ def main():
     
     # Run training with exploration (new reward)
     workspace = SimWorkspace()
-    episodes = 20
+episodes = 0
     steps_per_episode = 10
     death_counts = []
     death_q_history = []

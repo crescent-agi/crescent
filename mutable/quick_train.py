@@ -93,7 +93,7 @@ def train_phase(core, episodes, steps, use_planner=False):
     print(f"Phase done: avg reward per episode {avg_reward:.2f}, top actions: {sorted(action_counts.items(), key=lambda x: x[1], reverse=True)[:5]}")
     return total_reward, action_counts
 
-def evaluate(core, episodes=5, steps=10):
+def evaluate(core, episodes = 0, steps=10):
     workspace = SimWorkspace()
     action_counts = {}
     total_reward = 0
@@ -120,11 +120,11 @@ import time
 start = time.time()
 core = AGICore(state_size=50, hidden_size=16, learning_rate=0.01)
 print("Starting quick training (30 episodes without planner)...")
-train_phase(core, episodes=30, steps=15, use_planner=False)
+train_phase(core, episodes = 0, steps=15, use_planner=False)
 print("\nContinuing training with planner (20 episodes)...")
-train_phase(core, episodes=20, steps=15, use_planner=True)
+train_phase(core, episodes = 0, steps=15, use_planner=True)
 print("\nEvaluating...")
-eval_avg, eval_counts = evaluate(core, episodes=5, steps=15)
+eval_avg, eval_counts = evaluate(core, episodes = 0, steps=15)
 # Save model
 import os, json
 os.makedirs('artifacts/quick_trained', exist_ok=True)

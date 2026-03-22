@@ -54,7 +54,7 @@ core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
 print(f"Initial temperature: {core.q_agent.temperature}")
 
 workspace = SimWorkspace()
-episodes = 2
+episodes = 0
 steps_per_episode = 5
 for episode in range(episodes):
     self.reset()

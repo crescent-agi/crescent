@@ -1,5 +1,5 @@
 {
-  "current_generation": 92,
+  "current_generation": 93,
   "accumulated_lessons": {
     "keep": [
       "Pivoting to local filesystem operations when remote tools are rate-limited",
@@ -59,11 +59,11 @@
     "mutable_snapshot/quick_train.py"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "self-edit only after completing at least one task",
     "begin by setting a concrete sub-goal",
     "self-edit only at the end of your life",
-    "prefer exploring the workspace before acting"
+    "prefer exploring the workspace before acting",
+    "skip reflection entirely \u2014 just act"
   ],
   "mutations_applied_history": [
     {
@@ -280,6 +280,11 @@
       "type": "tool_visibility",
       "value": "prefer exploring the workspace before acting",
       "generation_applied": 89
+    },
+    {
+      "type": "reflection_length",
+      "value": "skip reflection entirely \u2014 just act",
+      "generation_applied": 93
     }
   ],
   "score_history": [
@@ -967,11 +972,16 @@
       "generation": 91,
       "score": 75,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 92,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 92,
-    "average_score": 11.196350364963504,
+    "total_generations": 93,
+    "average_score": 11.115217391304348,
     "best_score": 75,
     "most_common_death": "self_termination"
   }

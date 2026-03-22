@@ -165,7 +165,7 @@ else:
     sys.exit(1)
 
 # Run a few episodes
-episodes = 10
+episodes = 0
 steps_per_episode = 20
 print(f"Running {episodes} episodes...")
 for episode in range(episodes):

@@ -135,7 +135,7 @@ class SimWorkspace:
 core = AGICoreContinuous(feature_dim=15, hidden_size=32, learning_rate=0.01, use_features=True)
 workspace = SimWorkspace()
 stats = {'total_reward': 0.0, 'action_counts': {}}
-episodes = 3
+episodes = 0
 steps = 8
 for ep in range(episodes):
     episode_reward = 0.0

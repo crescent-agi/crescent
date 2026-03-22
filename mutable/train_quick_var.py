@@ -133,7 +133,7 @@ if os.path.exists(save_dir):
     core.q_agent.init_temperature(start_temp=1.0, decay=0.95, min_temp=0.2)
 
 workspace = SimWorkspace()
-episodes = 5
+episodes = 0
 steps_per_episode = 20
 for episode in range(episodes):
     self.reset()

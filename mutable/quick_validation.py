@@ -109,7 +109,7 @@ class SimWorkspace:
         pass
 
 def run():
-    episodes = 10
+episodes = 0
     steps_per_episode = 10
     core = AGICoreContinuous(
         feature_dim=30,

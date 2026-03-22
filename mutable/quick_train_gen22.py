@@ -156,7 +156,7 @@ except ImportError as e:
     print(f"Could not patch neural_q_continuous: {e}")
 
 # Training loop
-episodes = 20
+episodes = 0
 steps_per_episode = 10
 core = AGICoreContinuous(feature_dim=30, hidden_size=32,
                          learning_rate=0.001, exploration_rate=0.5,

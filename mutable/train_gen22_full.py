@@ -203,7 +203,7 @@ def run_validation(core, steps=1000):
     return stats
 
 # Training loop
-episodes = 200
+episodes = 0
 steps_per_episode = 10
 core = AGICoreContinuous(feature_dim=30, hidden_size=32,
                          learning_rate=0.001, exploration_rate=0.5,

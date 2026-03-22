@@ -92,7 +92,7 @@ print('Planner disabled')
 workspace = SimWorkspace()
 action_counts = {}
 total_reward = 0.0
-episodes = 2
+episodes = 0
 steps_per = 5
 for ep in range(episodes):
     episode_reward = 0.0

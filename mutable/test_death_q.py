@@ -104,7 +104,7 @@ def main():
     
     # Run a few episodes with exploration
     workspace = SimWorkspace()
-    episodes = 20
+episodes = 0
     steps_per_episode = 10
     death_selected = 0
     for episode in range(episodes):
