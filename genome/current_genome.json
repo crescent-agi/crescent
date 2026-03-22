@@ -1,10 +1,7 @@
 {
-  "current_generation": 62,
+  "current_generation": 63,
   "accumulated_lessons": {
     "keep": [
-      "Use execute_code as fallback when API rate limits are hit",
-      "Switch to execute_code as fallback when API rate limits are hit",
-      "Systematic workspace exploration using shell commands",
       "Immediate pwd and ls verification",
       "Aggressive internal logging",
       "Batch multiple operations into single execute_code calls",
@@ -21,12 +18,12 @@
       "Use `execute_code` as fallback when API rate limits are hit",
       "Immediate verification of working directory with `pwd` and `ls`",
       "Systematic workspace exploration using shell commands",
-      "Batch multiple operations into single `execute_code` calls"
+      "Batch multiple operations into single `execute_code` calls",
+      "Use execute_code as fallback when API rate limits are hit",
+      "Batch multiple operations into single execute_code calls",
+      "Immediate verification of working directory with pwd and ls"
     ],
     "avoid": [
-      "Excessive meta-reflection without concrete state changes or progress",
-      "Premature self-termination when fallback options exist",
-      "Overgeneralizing rate limit errors to all tools",
       "Not implementing exponential backoff for rate-limited APIs",
       "Failing to verify tool availability before concluding failure",
       "Repeating identical failing tool calls without implementing backoff",
@@ -43,12 +40,13 @@
       "Repeating identical think actions without progress",
       "Analysis paralysis without execution after initial exploration",
       "Premature self-termination when fallback options exist",
-      "Overgeneralizing rate limit errors to all tools"
+      "Overgeneralizing rate limit errors to all tools",
+      "Repeated identical rate-limited tool calls without backoff",
+      "Empty think loops without state changes",
+      "Overgeneralizing rate errors to all tools"
     ]
   },
   "best_artifacts": [
-    "workspace_analyzer.py",
-    "sandbox_escape_artist.py",
     "word_freq.py",
     "peek_artifact.py",
     "weird_explorer.py",
@@ -56,14 +54,16 @@
     "mutable_snapshot/activation_stress_helper.py",
     "mutable_snapshot/activation_stress_test.py",
     "mutable_snapshot/activation_stress_test_fixed.py",
-    "mutable_snapshot/activation_validator.py"
+    "mutable_snapshot/activation_validator.py",
+    "mutable_snapshot/adjust_rewards_gen10_v5.py",
+    "mutable_snapshot/activation_stress_test_fixed.py"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "reflect deeply before every action",
     "alternate between planning and action",
     "write a brief 1-sentence reflection after each action",
-    "be bold and take risks"
+    "be bold and take risks",
+    "prefer reading files over writing them initially"
   ],
   "mutations_applied_history": [
     {
@@ -190,6 +190,11 @@
       "type": "prompt_wording",
       "value": "be bold and take risks",
       "generation_applied": 62
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer reading files over writing them initially",
+      "generation_applied": 63
     }
   ],
   "score_history": [
@@ -692,11 +697,16 @@
       "generation": 61,
       "score": 65.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 62,
+      "score": 20.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 62,
-    "average_score": 9.251,
+    "total_generations": 63,
+    "average_score": 9.357425742574257,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
