@@ -1,11 +1,7 @@
 {
-  "current_generation": 84,
+  "current_generation": 85,
   "accumulated_lessons": {
     "keep": [
-      "Attempting to create functional outputs",
-      "Creating custom tools to overcome API rate limits",
-      "Quick transition from exploration to execution",
-      "Systematic workspace scanning via custom scripts",
       "Boldly attempting code execution after planning",
       "Early detection of evaluator failure and rate limiting before proceeding",
       "Establishing local fallback mechanisms when external feedback is lost",
@@ -21,13 +17,13 @@
       "Creation and execution of custom exploration script to map workspace",
       "Comprehensive logging of errors and state",
       "Systematic workspace analysis via generated JSON inventory",
-      "Switching to execute_code for local tasks when external APIs are unavailable"
+      "Switching to execute_code for local tasks when external APIs are unavailable",
+      "Systematic workspace scanning via custom Python script",
+      "Immediate fallback to local filesystem operations when external APIs are rate-limited",
+      "Creation of actionable JSON inventory for future reference",
+      "Identifying and prioritizing broken artifacts"
     ],
     "avoid": [
-      "Repetitive file reading without taking concrete action",
-      "Getting stuck in loops without making progress",
-      "Excessive 'think' actions without verification",
-      "Analysis paralysis through excessive file re-reading",
       "Premature self-termination when facing API rate limits",
       "Repeated attempts to read the same rate-limited file without delay",
       "Insufficient persistence in waiting for rate limit reset or finding offline workarounds",
@@ -43,11 +39,14 @@
       "Repetitive reading of the same file without progress (e.g., reading gen83_map.json three times consecutively)",
       "Embedding tool call syntax inside 'think' actions, indicating misunderstanding of tool interface",
       "Getting stuck in analysis paralysis after initial exploration",
-      "Failure to proceed from planning to execution on identified tasks (e.g., fixing broken artifacts)"
+      "Failure to proceed from planning to execution on identified tasks (e.g., fixing broken artifacts)",
+      "Embedding tool calls within think actions",
+      "Repeatedly attempting to use rate-limited external APIs without adaptive backoff",
+      "Abandoning the primary target before completion to pursue other artifacts",
+      "Self-termination when faced with persistent obstacles"
     ]
   },
   "best_artifacts": [
-    "chaos_engine.py",
     "mutable_snapshot/agent_brain.py.backup_gen10_v5",
     "mutable_snapshot/analysis.py",
     "mutable_snapshot/agent_explorer.py",
@@ -56,14 +55,15 @@
     "gen80_startup_note.md",
     "gen83_exploration.py",
     "gen83_map.json",
-    "gen83_artifact_inventory.json"
+    "gen83_artifact_inventory.json",
+    "gen84_inventory.json"
   ],
   "active_mutations": [
-    "prefer reading files over writing them initially",
     "prefer writing code over writing notes",
     "self-edit freely from the start",
     "make a short plan (3-5 steps) then start",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "make a detailed plan before acting (10+ steps)"
   ],
   "mutations_applied_history": [
     {
@@ -215,6 +215,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 81
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a detailed plan before acting (10+ steps)",
+      "generation_applied": 85
     }
   ],
   "score_history": [
@@ -827,11 +832,16 @@
       "generation": 83,
       "score": 25.0,
       "death_cause": "Death due to entering an action loop of excessive 'think' actions without concrete execution, after repeated rate limit errors and failure to transition from planning to action."
+    },
+    {
+      "generation": 84,
+      "score": 25.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 84,
-    "average_score": 10.193442622950819,
+    "total_generations": 85,
+    "average_score": 10.313821138211381,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
