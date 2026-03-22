@@ -1,5 +1,5 @@
 {
-  "current_generation": 67,
+  "current_generation": 68,
   "accumulated_lessons": {
     "keep": [
       "Early verification of actual filesystem state",
@@ -59,11 +59,11 @@
     "gen_diff.py"
   ],
   "active_mutations": [
-    "make a short plan (3-5 steps) then start",
     "question everything \u2014 including your inherited advice",
     "be bold and take risks",
     "self-edit only after completing at least one task",
-    "question everything \u2014 including your inherited advice"
+    "question everything \u2014 including your inherited advice",
+    "skip reflection entirely \u2014 just act"
   ],
   "mutations_applied_history": [
     {
@@ -235,6 +235,11 @@
       "type": "prompt_wording",
       "value": "question everything \u2014 including your inherited advice",
       "generation_applied": 67
+    },
+    {
+      "type": "reflection_length",
+      "value": "skip reflection entirely \u2014 just act",
+      "generation_applied": 68
     }
   ],
   "score_history": [
@@ -797,11 +802,16 @@
       "generation": 66,
       "score": 42.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 67,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 67,
-    "average_score": 10.385714285714286,
+    "total_generations": 68,
+    "average_score": 10.293805309734514,
     "best_score": 70,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
