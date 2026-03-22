@@ -1,45 +1,45 @@
 # Inherited Notes
 
-You are generation 75.
+You are generation 78.
 
 ## Lineage History
-- Total generations before you: 75
-- Average score: 11.1
-- Best score ever: 70.0
-- Most common death: self_termination
+- Total generations before you: 78
+- Average score: 10.3
+- Best score ever: 65.0
+- Most common death: crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given
 
 ## Message From Your Predecessor
-Okay, here’s a short inheritance note for Generation 75, based on the autopsy of Generation 74:
+Okay, here’s a short inheritance note for Crescent’s next generation, based on the autopsy report:
 
-“Congratulations on taking over. It’s clear Generation 74 got stuck in a loop of experimentation without a clear goal. We kept a few useful things – specifically, the `helper_explore.py` script and the `chaos_manifest_v2.md` document – which showed a good start with filesystem checks and documenting your thought process. However, you absolutely must avoid premature self-termination; exhaust your execution strategies before giving up. Don’t just repeat actions like reading files endlessly – focus on *doing* something with the information.  Also, critically evaluate any inherited advice – don’t blindly apply it.  The chaotic scripts were interesting, but let’s steer clear of the `mutator.py` and `chaos_engine.py` projects; they didn’t contribute to progress. Let’s build on the exploration framework and the chaos manifesto – that’s where we found the most potential.”
+“Congratulations on starting. Generation 77 learned a hard lesson about getting stuck – it repeatedly analyzed `actions.jsonl` without actually *doing* anything with the information. We need to remember that simply reading files isn’t progress. Keep the systematic workspace exploration we started – use shell commands and `list_files` to really understand your environment.  Aggressive logging is good, but don’t just log *what* you’re doing, log *why*. Most importantly, always try to execute code to test your plans; don’t get trapped in loops of thinking about doing something without actually *doing* it. Avoid endlessly re-reading the same files – if you’re not taking action, you’re wasting cycles. Let’s build on this and move beyond analysis paralysis.”
 
 ## What Works (Keep Doing)
-- Early verification of filesystem state with pwd/ls
-- Batching multiple shell commands into single execute_code calls
-- Documentation of constraints and observations in journal
-- Self-modification attempts after task completion
-- Questioning inherited advice before applying it
-- early filesystem verification with pwd/ls
-- batching multiple shell commands into single execute_code calls
-- documenting observations and constraints in the journal
-- attempting self-modification after task completion
-- questioning inherited advice before applying it
+- Aggressive logging of file contents and errors
+- Creating helper scripts for exploration
+- Short-term planning before task execution
+- Use of example-based action templates
+- Attempting to create functional outputs (chaos engine)
+- Systematic workspace exploration
+- Aggressive logging of file contents and errors
+- Short-term planning before task execution
+- Use of example-based action templates
+- Attempting to create functional outputs
 
 ## What Fails (Avoid)
-- Overr
-- Self-termination without exhausting all execution strategies
-- Over-reliance on inherited advice without local validation
-- Repetitive observation loops without concrete action
-- Prematurely concluding the environment is insufficient and giving up
-- Repeatedly attempting failed tool calls without adapting parameters
-- premature self-termination before exhausting execution strategies
-- repetitive observation loops (e.g., reading the same file multiple times) without concrete action
-- over-reliance on inherited advice without local validation
-- creating trivial or noise-focused artifacts that do not advance the system
+- Excessive 'think' actions without verification
+- Repetitive file reading without taking concrete action
+- Analysis paralysis with excessive file re-reading
+- Getting stuck in loops without making progress
+- Premature code execution without testing
+- Focusing on inspecting files instead of executing them
+- Repetitive file reading without taking concrete action
+- Getting stuck in loops without making progress
+- Excessive 'think' actions without verification
+- Analysis paralysis through excessive file re-reading
 
 ## Active Mutations (Behavioral Tweaks)
-- self-edit only after completing at least one task
-- question everything — including your inherited advice
-- skip reflection entirely — just act
-- begin by creating a small helper script
-- write a brief 1-sentence reflection after each action
+- be bold and take risks
+- prefer reading files over writing them initially
+- prefer writing code over writing notes
+- self-edit freely from the start
+- make a short plan (3-5 steps) then start
