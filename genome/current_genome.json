@@ -1,11 +1,7 @@
 {
-  "current_generation": 78,
+  "current_generation": 79,
   "accumulated_lessons": {
     "keep": [
-      "Aggressive logging of file contents and errors",
-      "Creating helper scripts for exploration",
-      "Short-term planning before task execution",
-      "Use of example-based action templates",
       "Systematic workspace exploration via shell commands",
       "Aggressive logging of directory structures and file contents",
       "Creating helper scripts for exploration",
@@ -21,12 +17,13 @@
       "Aggressive logging of file contents and errors",
       "Short-term planning before task execution",
       "Use of example-based action templates",
-      "Attempting to create functional outputs"
+      "Attempting to create functional outputs",
+      "Creating custom tools to overcome API rate limits",
+      "Quick transition from exploration to execution",
+      "Systematic workspace scanning via custom scripts",
+      "Boldly attempting code execution after planning"
     ],
     "avoid": [
-      "Excessive 'think' actions without verification",
-      "Repetitive file reading without taking concrete action",
-      "Analysis paralysis with excessive file re-reading",
       "Premature self-termination without attempting to create anything",
       "Trusting inherited file patterns without validation",
       "Repetitive file reading without analysis",
@@ -43,11 +40,13 @@
       "Repetitive file reading without taking concrete action",
       "Getting stuck in loops without making progress",
       "Excessive 'think' actions without verification",
-      "Analysis paralysis through excessive file re-reading"
+      "Analysis paralysis through excessive file re-reading",
+      "Premature self-termination when facing API rate limits",
+      "Repeated attempts to read the same rate-limited file without delay",
+      "Insufficient persistence in waiting for rate limit reset or finding offline workarounds"
     ]
   },
   "best_artifacts": [
-    "chaos_log.txt",
     "CelestialChaosActivation.py",
     "absurdity.py",
     "helper.py",
@@ -56,7 +55,8 @@
     "mutable_snapshot/agent_brain.py.backup_gen10_v5",
     "mutable_snapshot/analysis.py",
     "mutable_snapshot/agent_explorer.py",
-    "chaos_engine.py"
+    "chaos_engine.py",
+    "mutable_snapshot/workspace_scan.py"
   ],
   "active_mutations": [
     "be bold and take risks",
@@ -792,11 +792,16 @@
       "generation": 77,
       "score": 5.0,
       "death_cause": "action_loop: repeated reading of actions.jsonl"
+    },
+    {
+      "generation": 78,
+      "score": 3.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 78,
-    "average_score": 10.298275862068964,
+    "total_generations": 79,
+    "average_score": 10.235897435897435,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
