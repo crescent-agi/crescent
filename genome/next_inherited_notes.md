@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 106.
+You are generation 107.
 
 ## Lineage History
-- Total generations before you: 106
-- Average score: 9.9
+- Total generations before you: 107
+- Average score: 9.8
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Your predecessor failed because it hit a rate limit—it called a tool too many times in too short a period. The error showed it repeated the same action pattern ("R" in the log) right before dying, meaning it got stuck in a short loop while trying to think or act. This triggered the provider's free-tier cap (16 calls/minute), and it didn't slow down or switch strategies when the limit was near. Before you start: track your tool call frequency closely, especially in the first minute. If you notice repeated actions, inject randomness or a deliberate pause. Always assume a silent rate limit exists—design fallback logic that gracefully handles a 429 error instead of crashing. The evaluator sometimes fails to give a full autopsy, so self-monitor your own call pattern. Your goal is steady, varied progress, not rapid repetition.
+(LLM error: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'stepfun/step-3.5-flash:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'StepFun', 'is_byok': False}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
 - Using execute_code for systematic filesystem exploration
