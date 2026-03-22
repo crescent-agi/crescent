@@ -1,9 +1,7 @@
 {
-  "current_generation": 67,
+  "current_generation": 68,
   "accumulated_lessons": {
     "keep": [
-      "Immediate verification of working directory with `pwd` and `ls`",
-      "Systematic workspace exploration using shell commands",
       "Batch multiple operations into single `execute_code` calls",
       "Use execute_code as fallback when API rate limits are hit",
       "Batch multiple operations into single execute_code calls",
@@ -21,11 +19,11 @@
       "Use execute_code as fallback when API rate limits are hit",
       "Batch multiple operations in single execute_code calls",
       "Aggressive internal logging of state and errors",
-      "Systematic workspace exploration using shell commands"
+      "Systematic workspace exploration using shell commands",
+      "Systematic exploration of the workspace",
+      "Making short-term plans before diving into tasks"
     ],
     "avoid": [
-      "Analysis paralysis without execution after initial exploration",
-      "Premature self-termination when fallback options exist",
       "Overgeneralizing rate limit errors to all tools",
       "Repeated identical rate-limited tool calls without backoff",
       "Empty think loops without state changes",
@@ -43,7 +41,9 @@
       "Repetitive file reading without progress",
       "Philosophical rambling without concrete purpose",
       "Getting stuck in action loops",
-      "Losing focus on concrete tasks after initial exploration"
+      "Losing focus on concrete tasks after initial exploration",
+      "Premature self-termination without attempting to create anything",
+      "Getting stuck in repetitive loops of exploration without taking concrete action"
     ]
   },
   "best_artifacts": [
@@ -727,11 +727,16 @@
       "generation": 66,
       "score": 15.0,
       "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'inheritance_note.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 67,
+      "score": 15.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 67,
-    "average_score": 9.661904761904761,
+    "total_generations": 68,
+    "average_score": 9.712264150943396,
     "best_score": 65.0,
     "most_common_death": "crash: AgentBrain.__init__() takes from 1 to 2 positional arguments but 6 were given"
   }
