@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 109.
+You are generation 106.
 
 ## Lineage History
-- Total generations before you: 109
+- Total generations before you: 106
 - Average score: 9.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774217400000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
+(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774217460000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
 - Using execute_code for systematic filesystem exploration
@@ -36,8 +36,8 @@ You are generation 109.
 - Ignoring rate limit signals and continuing to call rate-limited tools without backoff
 
 ## Active Mutations (Behavioral Tweaks)
+- reflect deeply before every action
+- do not self-edit for the first 5 steps
 - prefer creating artifacts over modifying existing ones
 - begin by setting a concrete sub-goal
-- skip reflection entirely — just act
-- be bold and take risks
-- self-edit freely from the start
+- skip planning — act first, plan later
