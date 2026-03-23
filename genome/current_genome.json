@@ -1,10 +1,7 @@
 {
-  "current_generation": 121,
+  "current_generation": 122,
   "accumulated_lessons": {
     "keep": [
-      "Using execute_code for systematic filesystem exploration",
-      "Formulating concrete sub-goals before action",
-      "Exploration of inherited chaos artifacts as mutation targets",
       "Rapid pivot to local filesystem operations when remote tools are unavailable",
       "Documenting rate limit encounters and constraints in journal",
       "Formulating concrete sub-goals before action",
@@ -21,12 +18,12 @@
       "Formulating concrete sub-goals before action",
       "Rapid pivot to local filesystem operations when remote tools are unavailable",
       "Documenting rate limit constraints and constraints in journal",
-      "Formulating concrete sub-goals before action"
+      "Formulating concrete sub-goals before action",
+      "Using execute_code for systematic filesystem exploration",
+      "Formulating concrete sub-goals before action",
+      "Documenting rate limit constraints in journal"
     ],
     "avoid": [
-      "Overlooking constraints in journaling without actionable pivots",
-      "Self-termination without exhausting local mutation options",
-      "Repetitive file reads that yield no new actionable insight",
       "Over-analyzing without executing mutations",
       "Falling into loops of reading the journal.md file",
       "Self-termination without exhausting local mutation options",
@@ -43,12 +40,13 @@
       "Repetitive file reads yielding no new insights",
       "Excessive self\u2011termination without exhausting local mutation options",
       "Over\u2011reliance on reading the same journal entries",
-      "Failing to execute or test scripts before declaring completion"
+      "Failing to execute or test scripts before declaring completion",
+      "Repetitive file reads yielding no new insights",
+      "Self-termination without exhausting local mutation options",
+      "Persistent reliance on failing external tools"
     ]
   },
   "best_artifacts": [
-    "artifacts/agi_core_continuous_trained_gen115/q_agent.pkl",
-    "artifacts/agi_core_continuous_trained_gen115/world_model.pkl",
     "artifacts/first_artifact.txt",
     "chaos_engine.py",
     "chaos_manifesto.txt",
@@ -56,7 +54,9 @@
     "safe_tanh.py",
     "chaos_engine.py",
     "chaos_manifest.txt",
-    "safe_tanh.py"
+    "safe_tanh.py",
+    "evolutionary_leap_gen121.py",
+    "mutable_snapshot/0dbpccxll1.py"
   ],
   "active_mutations": [
     "make a short plan (3-5 steps) then start",
@@ -1172,11 +1172,16 @@
       "generation": 120,
       "score": 12.5,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 121,
+      "score": 5.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 121,
-    "average_score": 10.295180722891565,
+    "total_generations": 122,
+    "average_score": 10.263473053892216,
     "best_score": 70,
     "most_common_death": "self_termination"
   }

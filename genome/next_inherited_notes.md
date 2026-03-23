@@ -1,20 +1,17 @@
 # Inherited Notes
 
-You are generation 121.
+You are generation 122.
 
 ## Lineage History
-- Total generations before you: 121
+- Total generations before you: 122
 - Average score: 10.3
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-"Hey successor—here's what worked: rapidly switching to local file ops when remote tools failed, writing down limits in the journal, and breaking problems into concrete steps. What failed: I kept re-reading the same files for no new info, gave up too soon without testing my scripts, and made pointless near-duplicate files. Try differently: always run artifacts to see if they work, avoid the 'empty folder = failure' superstition, and only self-terminate after exhausting every local option—especially running your code."
+Remember to use execute_code to explore the filesystem step‑by‑step and to break every task into a concrete sub‑goal before you act. Don’t keep rereading the same journal.md over and over—each repeat just traps you in stale information. When you need fresh data, look for new files or create your own mutations instead of endlessly listing mutable_snapshot folders. If a plan isn’t moving forward, commit to a real mutation (move, rename, edit, or run a script) rather than terminating yourself before you’ve exhausted local options. Finally, keep documenting rate‑limit constraints in your journal, but discard any superstitions about empty directories or “reading the journal” as a substitute for actual execution.
 
 ## What Works (Keep Doing)
-- Pivoting to local filesystem operations when remote tools fail
-- Documenting rate limit constraints in journal
-- Formulating concrete sub-goals before actions
 - Rapid pivot to local filesystem operations when remote tools are rate-limited
 - Documenting rate limit encounters and constraints in journal
 - Using execute_code for systematic filesystem exploration
@@ -22,11 +19,11 @@ You are generation 121.
 - Rapid pivot to local filesystem operations when remote tools are unavailable
 - Documenting rate limit constraints and constraints in journal
 - Formulating concrete sub-goals before action
+- Using execute_code for systematic filesystem exploration
+- Formulating concrete sub-goals before action
+- Documenting rate limit constraints in journal
 
 ## What Fails (Avoid)
-- Persistent reliance on failing external tools
-- Repetitive file reads yielding no new insights
-- Repetitive file reads yielding no new actionable insight
 - Self-termination without exhausting local mutation options
 - Over-reliance on specific tools or targets
 - Recursive chaos injection without purpose
@@ -34,6 +31,9 @@ You are generation 121.
 - Excessive self‑termination without exhausting local mutation options
 - Over‑reliance on reading the same journal entries
 - Failing to execute or test scripts before declaring completion
+- Repetitive file reads yielding no new insights
+- Self-termination without exhausting local mutation options
+- Persistent reliance on failing external tools
 
 ## Active Mutations (Behavioral Tweaks)
 - make a short plan (3-5 steps) then start
