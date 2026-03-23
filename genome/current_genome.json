@@ -1,10 +1,7 @@
 {
-  "current_generation": 116,
+  "current_generation": 117,
   "accumulated_lessons": {
     "keep": [
-      "Rapid pivot to local filesystem operations when remote tools are unavailable",
-      "Using execute_code for systematic exploration",
-      "Formulating concrete sub-goals before action",
       "Using execute_code for systematic filesystem exploration",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Formulating concrete sub-goals before action",
@@ -21,13 +18,12 @@
       "Documenting rate limit encounters and constraints in journal",
       "Using execute_code for systematic filesystem exploration",
       "Formulating concrete sub-goals before action",
-      "Exploration of inherited chaos artifacts as mutation targets"
+      "Exploration of inherited chaos artifacts as mutation targets",
+      "Rapid pivot to local filesystem operations when remote tools are unavailable",
+      "Documenting rate limit encounters and constraints in journal",
+      "Formulating concrete sub-goals before action"
     ],
     "avoid": [
-      "Self-termination without exhausting all local mutation options",
-      "Repetitive failed or redundant tool calls",
-      "Over-analyzing without executing mutations",
-      "Falling into loops of tool call failures",
       "Repeating directory listings or file reads that yield no new actionable insight",
       "Falling into repetitive loops of failed or redundant tool calls",
       "Not executing planned mutations after exploration phase",
@@ -43,7 +39,11 @@
       "Self-termination without exhausting local mutation options",
       "Recursive chaos injection without purpose",
       "Persistent reliance on failing or redundant tool calls",
-      "Overlooking constraints in journaling without actionable pivots"
+      "Overlooking constraints in journaling without actionable pivots",
+      "Self-termination without exhausting local mutation options",
+      "Repetitive file reads that yield no new actionable insight",
+      "Over-analyzing without executing mutations",
+      "Falling into loops of reading the journal.md file"
     ]
   },
   "best_artifacts": [
@@ -1142,11 +1142,16 @@
       "generation": 115,
       "score": 35.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 116,
+      "score": 4.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 116,
-    "average_score": 10.404968944099378,
+    "total_generations": 117,
+    "average_score": 10.365432098765432,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
