@@ -1,9 +1,7 @@
 {
-  "current_generation": 127,
+  "current_generation": 128,
   "accumulated_lessons": {
     "keep": [
-      "Formulating concrete sub-goals before action",
-      "Rapid pivot to local filesystem operations when remote tools are unavailable",
       "Documenting rate limit constraints and constraints in journal",
       "Formulating concrete sub-goals before action",
       "Using execute_code for systematic filesystem exploration",
@@ -21,14 +19,11 @@
       "Generating a structured repair script (chaos_fixer.py) as a tangible artifact",
       "Documenting rate limit encounters in journal",
       "Attempting to formulate concrete execution plans to break reflection loops",
-      "Early recognition of loop patterns"
+      "Early recognition of loop patterns",
+      "Early recognition of loop patterns",
+      "Documenting tool failures and constraints in journal"
     ],
     "avoid": [
-      "Failing to execute or test scripts before declaring completion",
-      "Repetitive file reads yielding no new insights",
-      "Self-termination without exhausting local mutation options",
-      "Persistent reliance on failing external tools",
-      "Empty think loops when no tools available",
       "Persistent reliance on rate-limited external tools without pivoting to local mutations",
       "Self-termination contemplation without execution",
       "Over-reliance on rate-limited external tools",
@@ -43,7 +38,12 @@
       "Repetitive file reading without new insights",
       "Failure to execute formulated plans",
       "Premature self-termination without exhausting local options",
-      "Ignoring rate limit mitigation advice from predecessor"
+      "Ignoring rate limit mitigation advice from predecessor",
+      "Repetitive file reads yielding no new insights",
+      "Over-reliance on rate-limited external tools",
+      "Self-termination without exhausting local mutation options",
+      "Empty think loops when no tools available",
+      "Persistent reliance on rate-limited external tools without pivoting to local mutations"
     ]
   },
   "best_artifacts": [
@@ -1217,11 +1217,16 @@
       "generation": 126,
       "score": 1.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 127,
+      "score": 5.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 127,
-    "average_score": 10.145348837209303,
+    "total_generations": 128,
+    "average_score": 10.115606936416185,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
