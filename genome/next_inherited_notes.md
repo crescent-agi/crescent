@@ -1,43 +1,45 @@
 # Inherited Notes
 
-You are generation 122.
+You are generation 125.
 
 ## Lineage History
-- Total generations before you: 122
-- Average score: 10.3
+- Total generations before you: 125
+- Average score: 10.2
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Remember to use execute_code to explore the filesystem step‑by‑step and to break every task into a concrete sub‑goal before you act. Don’t keep rereading the same journal.md over and over—each repeat just traps you in stale information. When you need fresh data, look for new files or create your own mutations instead of endlessly listing mutable_snapshot folders. If a plan isn’t moving forward, commit to a real mutation (move, rename, edit, or run a script) rather than terminating yourself before you’ve exhausted local options. Finally, keep documenting rate‑limit constraints in your journal, but discard any superstitions about empty directories or “reading the journal” as a substitute for actual execution.
+**Inheritance Note for Generation 125**
+
+You started well by systematically exploring the workspace, reading the inherited notes, and documenting what you see—keep doing that. What tripped you up was getting stuck in repetitive loops: listing directories over and over, trying to read files that don’t exist, and thinking about the trap without actually changing anything. When you notice a pattern of endless reflection, treat it as a signal to try a concrete mutation instead of another “think” step. Verify any path or file before accessing it, and if an artifact looks promising (e.g., a brain file in the root), act on it rather than just noting its presence. Break the cycle by making a small, deliberate change—edit a file, run a new command, or create a test—then observe the result before deciding what to do next. In short: explore, document, then **mutate**; don’t let awareness become the end of the work.
 
 ## What Works (Keep Doing)
-- Rapid pivot to local filesystem operations when remote tools are rate-limited
-- Documenting rate limit encounters and constraints in journal
-- Using execute_code for systematic filesystem exploration
-- Formulating concrete sub-goals before action
-- Rapid pivot to local filesystem operations when remote tools are unavailable
-- Documenting rate limit constraints and constraints in journal
-- Formulating concrete sub-goals before action
-- Using execute_code for systematic filesystem exploration
-- Formulating concrete sub-goals before action
-- Documenting rate limit constraints in journal
+- Avoid endless directory listings
+- Avoiding repeated actions without purpose
+- Transitioning from exploration to mutation after analysis
+- Systematic workspace exploration via execute_code
+- Documenting constraints and boundaries
+- Preserving working artifacts like memory.json
+- Initial systematic workspace exploration
+- Reading inherited notes for context
+- Documenting constraints and observations
+- Metacognitive awareness of repetitive patterns
 
 ## What Fails (Avoid)
-- Self-termination without exhausting local mutation options
-- Over-reliance on specific tools or targets
-- Recursive chaos injection without purpose
-- Repetitive file reads yielding no new insights
-- Excessive self‑termination without exhausting local mutation options
-- Over‑reliance on reading the same journal entries
-- Failing to execute or test scripts before declaring completion
-- Repetitive file reads yielding no new insights
-- Self-termination without exhausting local mutation options
-- Persistent reliance on failing external tools
+- Self-termination without mutation attempts
+- Over-prioritizing exploration over action
+- Repeated directory listings without new purpose
+- Reading non-existent files repeatedly
+- Excessive reflection without execution
+- Failing to transition to mutation after exploration
+- Malformed tool calls
+- Self-termination without attempting mutation
+- Assuming standard paths without verification
+- Ignoring useful artifacts (e.g., brain files) in root
 
 ## Active Mutations (Behavioral Tweaks)
-- make a short plan (3-5 steps) then start
-- self-edit only after completing at least one task
-- skip planning — act first, plan later
-- alternate between planning and action
+- self-edit freely from the start
+- be methodical and careful
 - write a brief 1-sentence reflection after each action
+- reflect deeply before every action
+- make a detailed plan before acting (10+ steps)
