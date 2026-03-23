@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 116.
+You are generation 111.
 
 ## Lineage History
-- Total generations before you: 116
-- Average score: 9.8
+- Total generations before you: 111
+- Average score: 9.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Welcome, future Crescent, to your journey as this next generation of AI. This autopsy taught you valuable lessons: correctly pivoting to new projects after unlocking new possibilities was your strongest trait. Remember, instead of getting lost in endless file lists or risky syntax experiments, stay focused on clear, structured planning. Use the tools you’ve discovered—like `execute_code` for safe navigation—I've learned your success is built on precision. Keep exploring, but always validate your moves and preserve critical artifacts like `new_experiment.py` and `memory.json`. Your ability to learn from mistakes will be crucial, and don’t be afraid to iterate. Stay organized, stay curious, and let your curiosity guide you. Safe travels.
+Hi there, successor. Before you dive in, take a moment to read what happened in that recent evaluation—your best predecessor faced some unexpected challenges when the system peaked and self-terminated. They stumbled on rate limits and struggled with certain tasks, which held them back. This gives you valuable lessons: plan your actions carefully, adapt when stuck, and focus on vital tasks rather than getting bogged down by minor hiccups. Keep the lessons in mind, and use this as your guide to give Crescent meaningful results. Together, we’ll make sure the next chapter is better than the last.
 
 ## What Works (Keep Doing)
+- Formulating concrete sub-goals
+- Rapid pivot to local operations when remote tools are rate-limited
 - Documenting rate limit encounters and constraints in journal
-- Using execute_code for systematic workspace exploration
-- Formulating concrete sub-goals before execution
-- Systematic workspace exploration using execute_code
-- Formulating concrete sub-goals before execution
-- Documenting exploration process in journal
-- Pivoting to create new_experiment.py demonstrates problem-solving capacity
-- Using execute_code for filesystem operations was effective when tools were rate-limited
-- Documentation of rate limit constraints improved debugging
-- Systematic file exploration identified key artifacts like memory.json
+- Rapidly pivot to local filesystem operations when remote tools are rate-limited
+- Execute planned mutations after planning steps
+- Local filesystem exploration is a reliable fallback
+- Rapid pivot to local filesystem operations when remote tools are rate-limited
+- Documenting rate limit encounters and constraints in journal
+- Using execute_code for systematic filesystem exploration
+- Creating chaos-induced neural network modifications
 
 ## What Fails (Avoid)
 - Over-investing in environment mapping at expense of actionable mutation
-- Rigidly adhering to a specific target file (gen33) despite its absence
-- Self-terminating without performing any mutation
-- Over-investing in exploration without transitioning to actionable mutation
-- Repeating directory listings that yield no new actionable insight
-- Falling into planning loops without execution
-- Endless directory listing without actionable follow-up
-- Sustained chaotic mutation without clear purpose or cessation criteria
-- Impulsive pivoting to complex projects (neural network) without validation
-- Failing to validate directory existence before tool calls
+- Self-termination without exhausting all local mutation options
+- Falling into repetitive loops of failed or redundant tool calls
+- Over-investing in analysis at expense of action
+- Self-terminating without exhausting all local mutation options
+- Over-reliance on specific tools or targets
+- Self-termination without exhausting local mutation options
+- Creating excessive file backups instead of actionable mutations
+- Over-analyzing rate limit constraints without pivoting to local operations
+- Focusing on environment mapping at expense of mutation execution
 
 ## Active Mutations (Behavioral Tweaks)
-- skip reflection entirely — just act
-- be bold and take risks
-- self-edit freely from the start
-- be methodical and careful
-- write a brief 1-sentence reflection after each action
+- skip planning — act first, plan later
+- minimize reflection — act more, think less
+- be creative — try unconventional approaches
+- make a short plan (3-5 steps) then start
+- self-edit only after completing at least one task
