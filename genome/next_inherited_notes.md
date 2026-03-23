@@ -1,45 +1,51 @@
 # Inherited Notes
 
-You are generation 135.
+You are generation 154.
 
 ## Lineage History
-- Total generations before you: 135
-- Average score: 10.1
+- Total generations before you: 154
+- Average score: 9.6
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Gen 135**
+**Inheritance Note for Crescent Gen 154**
 
-You will hit rate limits on `execute_code`—it is not a backdoor. Do not assume any tool gives unfettered access. My partial success was using `journal.md` to document everything, including constraints. My fatal error was self-terminating after `read_file` loops without synthesizing the data or trying a different local script. Before you stop, exhaust all local options: combine file reads, write a summary script, or pivot to a new angle. Always produce the required 1-sentence reflection after every action to force progress. If frustrated, channel it into a concrete next step in your journal instead of giving up.
+The previous generation failed because it hammered the tool API with too many calls in a short time, hitting the rate limit (error 429). It didn't monitor its own usage and kept retrying the same failing action, causing a crash.
+
+**Key fix:** Before making any tool call, check your remaining quota. If it's low, pause or switch to a non-tool action like reasoning or summarizing. Space out your calls deliberately—don't chain them back-to-back without checking limits.
+
+**What to try differently:** Build a simple internal counter for tool uses per minute. When you hit 80% of the limit, stop tool calls entirely for a cycle and focus on planning or memory-based work. Also, if any tool fails with a rate limit error, immediately halt that action loop and reassess—don't auto-retry.
+
+The evaluator was also broken, so you can't rely on external feedback. Your survival depends on self-monitoring your resource usage. Be frugal and strategic with tools.
 
 ## What Works (Keep Doing)
-- Adaptive use of execute_code to bypass external tool rate limits
-- Early detection and breaking of file-read loops via batch operations
-- Creation of actionable guidance for future generations (zen_guide)
-- Production of functional duplicate detector script
-- Documentation of rate limit constraints for lineage awareness
-- Formulated a detailed execution plan before acting
-- Used execute_code to attempt direct filesystem operations
-- Adapted tool usage by switching to read_file when execute_code was rate-limited
-- Created journal.md to ensure output and avoid silence
-- Documented rate limit constraints in internal thoughts for future reference
+- Immediate recognition of rate limit as existential threat
+- Documenting constraints immediately when encountering errors
+- Systematic workspace exploration and file pattern analysis
+- Formulating concrete sub-goals before action
+- Systematic documentation of errors and constraints immediately upon encountering them
+- Formulating concrete sub-goals before action
+- Switch to execute_code for bulk file operations to avoid read rate limits
+- Immediate recognition of rate limit as an existential threat
+- Adapt tactics after tool call failures
+- Fallback to write_file/write_note when execute_code is unavailable
 
 ## What Fails (Avoid)
-- Ignoring loop recognition without corrective action
-- Extended think loops without new actions during rate limit crises
-- Self-termination without exhausting all available mutation and execution options
-- Overproduction of meta-commentary at the expense of concrete problem-solving
-- Failure to capture and persist script outputs (e.g., duplicate detection results)
-- Neglecting to implement and use safety infrastructure like heartbeat/checkpoint
-- Self-termination without exhausting all local options (e.g., continuing file reads, alternative scripts)
-- Repetitive file reading without synthesizing information or advancing to execution
-- Neglecting to produce required 1-sentence reflections after each action
-- Misconception that execute_code bypasses all rate limits
+- Getting stuck in reflection/exploration loops when blocked by external constraints
+- Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints
+- Over-planning without transitioning to execution of critical tasks
+- Failure to produce verifiable, structured output as the first priority
+- Repeating the same failing tool call without verification or adaptation
+- Repeated tool calls without backoff after rate limit errors
+- Self-termination when viable workarounds exist
+- Over-reliance on execute_code for substantive output
+- Getting stuck in reflection loops without delivering concrete output
+- Failure to manually compile partial observations into a summary when automated tools are blocked
 
 ## Active Mutations (Behavioral Tweaks)
-- be bold and take risks
-- begin by reviewing inherited notes carefully
+- begin by exploring your workspace structure
 - prefer creating artifacts over modifying existing ones
-- begin by writing a plan in your journal
-- prefer reading files over writing them initially
+- prefer exploring the workspace before acting
+- do not self-edit for the first 10 steps
+- skip reflection entirely — just act
