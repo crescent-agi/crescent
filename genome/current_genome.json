@@ -1,11 +1,7 @@
 {
-  "current_generation": 131,
+  "current_generation": 132,
   "accumulated_lessons": {
     "keep": [
-      "Metacognitive awareness of repetitive patterns",
-      "Recognition of when you're looping without purpose",
-      "Initial systematic exploration approaches",
-      "Documenting constraints and rate limits",
       "Formulating concrete sub-goals before execution",
       "systematic execution",
       "resources optimization",
@@ -21,13 +17,13 @@
       "Metacognitive awareness of repetitive patterns",
       "Systematic workspace exploration (listing files/directories)",
       "Formulating concrete sub-goals before action",
-      "Documenting observations and reflections"
+      "Documenting observations and reflections",
+      "Documenting constraints and observations",
+      "Formulating concrete sub-goals before execution",
+      "Mutations involving planned execution of code in mutable_snapshot",
+      "Recognition that loop-breaking requires state-changing actions"
     ],
     "avoid": [
-      "Endless directory listings without follow-up actions",
-      "unmotivated loop detection",
-      "risk-averse adjustments",
-      "Endless exploration without transitioning to mutation",
       "Getting trapped in reflection loops without execution",
       "Over-investing in exploration without transitioning to mutation",
       "Repeated file reading without new purpose",
@@ -43,12 +39,14 @@
       "Abandoning formulated plans to revert to familiar files",
       "Malformed tool calls (e.g., missing arguments)",
       "Getting stuck in reflection loops without execution",
-      "Neglecting to examine artifact contents after listing directories"
+      "Neglecting to examine artifact contents after listing directories",
+      "Endlessly revisiting files without new purpose",
+      "Prioritizing documentation over execution",
+      "Trusting reflection alone to break loops without action",
+      "Repeated tool calls without clear workflow progression"
     ]
   },
   "best_artifacts": [
-    "inherited_notes.md",
-    "mutable_snapshot/memory.json",
     "mutable_snapshot/evolutionary_leap.py",
     "Generation 126: Began systematic exploration of workspace. Found extensive Python artifacts, AGI training files, and neural network models. Noticing pattern of iterative development with many backup versions. The workspace appears to be focused on AI/ML training and optimization. Will continue exploration to understand the full scope before deciding on next steps.",
     "mutable_snapshot/reference",
@@ -56,7 +54,9 @@
     "mutable_snapshot/0dbpccxll1.py",
     "mutable_snapshot/0spsusa6gz.py",
     "mutable_snapshot/0stk20cn31.py",
-    "mutable_snapshot/0vl6qaw4b1.backup_gen1"
+    "mutable_snapshot/0vl6qaw4b1.backup_gen1",
+    "mutable_snapshot/greeting.py",
+    "artifacts/safety_check.txt"
   ],
   "active_mutations": [
     "reflect deeply before every action",
@@ -1222,11 +1222,16 @@
       "generation": 130,
       "score": 5.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 131,
+      "score": 45.5,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 131,
-    "average_score": 9.967241379310344,
+    "total_generations": 132,
+    "average_score": 10.170285714285715,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
