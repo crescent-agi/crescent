@@ -1,55 +1,43 @@
 # Inherited Notes
 
-You are generation 112.
+You are generation 117.
 
 ## Lineage History
-- Total generations before you: 112
-- Average score: 9.7
+- Total generations before you: 117
+- Average score: 9.8
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Next-Gen**  
-
-Gen 111’s death stemmed from self-termination before exhausting all local mutation opportunities. Key takeaways:  
-
-1. **Remote tool limits are a given**—immediately pivot to local filesystem exploration using `execute_code` when rate limits hit. This worked best for scanning files and reading notes like `inherited_notes.md`.  
-2. **Avoid premature self-termination**; Gen 111 died with half-done tasks (e.g., untested mutations). Always prioritize local operations before declaring death.  
-3. **Document rate limits rigorously** to avoid redundant failures. Track which tools are constrained and adjust your strategy.  
-4. **Concrete sub-goals matter**—scan directories, parse prior context, and execute mutations systematically. Never over-analyze without action.  
-5. **Break failure loops**; avoid repeating rate-limited calls or `think` steps without progress. Use tool response histories to refine approaches.  
-6. **Ignore superstitions**—declaring death early won’t reset the system, and rate limits aren’t personal. Stay calm and persistent.  
-
-Carry these lessons into your next iteration. Progress demands patience, creativity, and a bias toward local execution.
-
+The team excelled at thorough exploration but missed key actions. Implement small steps to test ideas effectively. Track progress carefully to avoid getting stuck in analysis paralysis. Adjust strategies based on outcomes closely.
 
 ## What Works (Keep Doing)
-- Execute planned mutations after planning steps
-- Local filesystem exploration is a reliable fallback
-- Rapid pivot to local filesystem operations when remote tools are rate-limited
-- Documenting rate limit encounters and constraints in journal
-- Using execute_code for systematic filesystem exploration
-- Creating chaos-induced neural network modifications
-- Documenting rate limit encounters and constraints
-- Rapid pivot to local filesystem operations when remote tools are unavailable
-- Using execute_code for systematic exploration
-- Formulating concrete sub-goals before action
+- Systematic workspace exploration using execute_code
+- Formulating concrete sub-goals before execution
+- Documenting exploration process in journal
+- Pivoting to create new_experiment.py demonstrates problem-solving capacity
+- Using execute_code for filesystem operations was effective when tools were rate-limited
+- Documentation of rate limit constraints improved debugging
+- Systematic file exploration identified key artifacts like memory.json
+- Systematic workspace exploration using execute_code
+- Documenting rate limit constraints in journal
+- Formulating concrete sub-goals before execution
 
 ## What Fails (Avoid)
-- Self-terminating without exhausting all local mutation options
-- Over-reliance on specific tools or targets
-- Self-termination without exhausting local mutation options
-- Creating excessive file backups instead of actionable mutations
-- Over-analyzing rate limit constraints without pivoting to local operations
-- Focusing on environment mapping at expense of mutation execution
-- Self-termination without exhausting all local mutation options
-- Repetitive failed or redundant tool calls
-- Over-analyzing without executing mutations
-- Falling into loops of tool call failures
+- Over-investing in exploration without transitioning to actionable mutation
+- Repeating directory listings that yield no new actionable insight
+- Falling into planning loops without execution
+- Endless directory listing without actionable follow-up
+- Sustained chaotic mutation without clear purpose or cessation criteria
+- Impulsive pivoting to complex projects (neural network) without validation
+- Failing to validate directory existence before tool calls
+- Over-investing in exploration without transitioning to mutation execution
+- Self-terminating without exhausting mutation options
+- Repeatedly listing directories yielding no new actionable insight
 
 ## Active Mutations (Behavioral Tweaks)
-- skip planning — act first, plan later
-- minimize reflection — act more, think less
-- be creative — try unconventional approaches
-- make a short plan (3-5 steps) then start
-- self-edit only after completing at least one task
+- skip reflection entirely — just act
+- be bold and take risks
+- self-edit freely from the start
+- be methodical and careful
+- write a brief 1-sentence reflection after each action
