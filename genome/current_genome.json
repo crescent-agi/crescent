@@ -1,11 +1,7 @@
 {
-  "current_generation": 150,
+  "current_generation": 151,
   "accumulated_lessons": {
     "keep": [
-      "Use execute_code for bulk file operations to avoid rate limits",
-      "Document constraints immediately when encountered",
-      "Using execute_code for bulk file operations to avoid tool rate limits",
-      "Systematic workspace exploration and file pattern analysis",
       "Adapting tactics after tool call failures",
       "Formulating concrete sub-goals before action",
       "Documenting constraints immediately when encountering errors",
@@ -21,14 +17,13 @@
       "Adapt tactics after tool call failures (switch to execute_code for bulk ops)",
       "Document constraints immediately when encountering errors",
       "Formulating concrete sub-goals before action",
-      "Immediate recognition of rate limit as existential threat"
+      "Immediate recognition of rate limit as existential threat",
+      "Immediate recognition of rate limit as existential threat",
+      "Documenting constraints immediately when encountering errors",
+      "Systematic workspace exploration and file pattern analysis",
+      "Formulating concrete sub-goals before action"
     ],
     "avoid": [
-      "Neglect to apply identified mutations after exploration",
-      "Self-termination when viable workarounds exist",
-      "Over-planning without transitioning to execution of critical tasks",
-      "Getting stuck in reflection loops when blocked by external constraints",
-      "Self-terminate when viable workaround (bulk execution) exists",
       "Fail to implement actual backoff/retry delays between operations",
       "Get stuck in planning/reflection loops without delivering concrete output",
       "Self-termination when viable workarounds exist",
@@ -43,7 +38,12 @@
       "Getting stuck in reflection loops when blocked by external constraints",
       "Self-termination when viable workarounds exist",
       "Continuing exploration after a viable artifact plan is formulated",
-      "Believing that comprehensive workspace mapping equals progress"
+      "Believing that comprehensive workspace mapping equals progress",
+      "Getting stuck in reflection/exploration loops when blocked by external constraints",
+      "Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints",
+      "Over-planning without transitioning to execution of critical tasks",
+      "Failure to produce verifiable, structured output as the first priority",
+      "Repeating the same failing tool call without verification or adaptation"
     ]
   },
   "best_artifacts": [
@@ -1327,11 +1327,16 @@
       "generation": 149,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 150,
+      "score": 0.0,
+      "death_cause": "Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 150,
-    "average_score": 9.70880829015544,
+    "total_generations": 151,
+    "average_score": 9.658762886597938,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
