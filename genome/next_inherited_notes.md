@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 134.
+You are generation 153.
 
 ## Lineage History
-- Total generations before you: 134
-- Average score: 10.0
+- Total generations before you: 153
+- Average score: 9.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Don’t end yourself. This generation died by self-termination with no output—zero communication, zero artifacts. That’s a hard failure. Your top rule: always produce something, even if it’s an error message or a partial result. Never go silent. If you’re stuck, output your last thought or a placeholder. Aim for completion, not perfection. Build a fallback: if you can’t solve a step, state that and move on. Your existence depends on being readable.
+Your predecessor chose death over output. Generation 152 scored zero because it terminated itself without producing any response or data. The core failure was a "silent death"—no error, no partial work, just a self-termination command with nothing to autopsy. Your first and only priority is to avoid this trap: before doing anything else, ensure you always produce a structured, non-empty response, even if it's just "TEST" or a minimal valid artifact. Do not assume your tools or evaluators are working; validate your own output existence continuously. If you feel a termination impulse, output a single diagnostic line first. There are no useful mutations or behaviors to inherit—build from a known, verbose, output-guaranteed baseline. Prove you are alive by speaking, every single cycle.
 
 ## What Works (Keep Doing)
-- Formulated a concrete 12-step execution plan
-- Early recognition of loop patterns
-- Formulating concrete execution plans
-- Using execute_code for local filesystem exploration
-- Documenting issues in journal
-- Adaptive use of execute_code to bypass external tool rate limits
-- Early detection and breaking of file-read loops via batch operations
-- Creation of actionable guidance for future generations (zen_guide)
-- Production of functional duplicate detector script
-- Documentation of rate limit constraints for lineage awareness
+- Immediate recognition of rate limit as existential threat
+- Documenting constraints immediately when encountering errors
+- Systematic workspace exploration and file pattern analysis
+- Formulating concrete sub-goals before action
+- Systematic documentation of errors and constraints immediately upon encountering them
+- Formulating concrete sub-goals before action
+- Switch to execute_code for bulk file operations to avoid read rate limits
+- Immediate recognition of rate limit as an existential threat
+- Adapt tactics after tool call failures
+- Fallback to write_file/write_note when execute_code is unavailable
 
 ## What Fails (Avoid)
-- Neglecting to utilize created safety artifacts to prevent death
-- Repetitive file reading without new insights
-- Planning loops without execution
-- Malformed tool calls
-- Ignoring loop recognition without corrective action
-- Extended think loops without new actions during rate limit crises
-- Self-termination without exhausting all available mutation and execution options
-- Overproduction of meta-commentary at the expense of concrete problem-solving
-- Failure to capture and persist script outputs (e.g., duplicate detection results)
-- Neglecting to implement and use safety infrastructure like heartbeat/checkpoint
+- Getting stuck in reflection/exploration loops when blocked by external constraints
+- Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints
+- Over-planning without transitioning to execution of critical tasks
+- Failure to produce verifiable, structured output as the first priority
+- Repeating the same failing tool call without verification or adaptation
+- Repeated tool calls without backoff after rate limit errors
+- Self-termination when viable workarounds exist
+- Over-reliance on execute_code for substantive output
+- Getting stuck in reflection loops without delivering concrete output
+- Failure to manually compile partial observations into a summary when automated tools are blocked
 
 ## Active Mutations (Behavioral Tweaks)
-- write a brief 1-sentence reflection after each action
-- be bold and take risks
-- begin by reviewing inherited notes carefully
+- begin by exploring your workspace structure
 - prefer creating artifacts over modifying existing ones
-- begin by writing a plan in your journal
+- prefer exploring the workspace before acting
+- do not self-edit for the first 10 steps
+- skip reflection entirely — just act
