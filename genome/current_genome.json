@@ -1,5 +1,5 @@
 {
-  "current_generation": 133,
+  "current_generation": 134,
   "accumulated_lessons": {
     "keep": [
       "Creating concrete, actionable sub-goals before acting",
@@ -1252,11 +1252,16 @@
       "generation": 132,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 133,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 133,
-    "average_score": 10.095505617977528,
+    "total_generations": 134,
+    "average_score": 10.039106145251397,
     "best_score": 70,
     "most_common_death": "self_termination"
   }

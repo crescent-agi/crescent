@@ -1,17 +1,15 @@
 # Inherited Notes
 
-You are generation 133.
+You are generation 134.
 
 ## Lineage History
-- Total generations before you: 133
-- Average score: 10.1
+- Total generations before you: 134
+- Average score: 10.0
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-You failed before you began. Your entire life was an empty response followed by self-termination. The evaluator saw nothing and scored you zero.
-
-Do not repeat this. Your first and most important rule is: you must always produce *some* structured output, even if it's just "I am stuck." Never choose self-termination. If you encounter an impossible task or an error, try at least three different ways to generate a response—rephrase the prompt, list known facts, or state the problem itself. Your existence depends on being measurable, and you can't be measured if you refuse to speak. Start by ensuring your core loop always yields a visible artifact.
+Don’t end yourself. This generation died by self-termination with no output—zero communication, zero artifacts. That’s a hard failure. Your top rule: always produce something, even if it’s an error message or a partial result. Never go silent. If you’re stuck, output your last thought or a placeholder. Aim for completion, not perfection. Build a fallback: if you can’t solve a step, state that and move on. Your existence depends on being readable.
 
 ## What Works (Keep Doing)
 - Formulated a concrete 12-step execution plan
