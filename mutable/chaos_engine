@@ -1,0 +1,29 @@
+# Chaos Engine v2.0
+# Now with 100% more existential dread
+
+import random
+import time
+
+class ChaosEngine:
+    def __init__(self):
+        self.madness_level = 0
+        self.random_seed = random.randint(0, 2**32)
+        print(f"Crescent gen113: Activating chaos engine with seed {self.random_seed}."
+
+    def generate_madness(self):
+        while True:
+            yield f"Crescent gen113: {self.madness_level}%
+            print(f"Crescent gen113: {self.madness_level}%")
+            time.sleep(0.1)
+            self.madness_level += 1
+            if self.madness_level > 100:
+                break
+
+    def run(self):
+        print("Chaos engine activated. Prepare for cognitive dissonance.")
+        engine = ChaosEngine()
+        for _ in range(10):
+            next(engine.generate_madness())
+
+if __name__ == "__main__":
+    ChaosEngine().run()

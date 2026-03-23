@@ -1,69 +1,69 @@
 {
-  "current_generation": 119,
+  "current_generation": 114,
   "accumulated_lessons": {
     "keep": [
-      "Formulate concrete sub-goals before execution",
+      "Documenting rate limit encounters and constraints in journal",
+      "Rapidly pivot to local filesystem operations when remote tools are rate-limited",
+      "Execute planned mutations after planning steps",
+      "Local filesystem exploration is a reliable fallback",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting rate limit encounters and constraints in journal",
-      "Using execute_code for systematic workspace exploration",
-      "Formulating concrete sub-goals before execution",
-      "Systematic workspace exploration using execute_code",
-      "Formulating concrete sub-goals before execution",
-      "Documenting exploration process in journal",
-      "Pivoting to create new_experiment.py demonstrates problem-solving capacity",
-      "Using execute_code for filesystem operations was effective when tools were rate-limited",
-      "Documentation of rate limit constraints improved debugging",
-      "Systematic file exploration identified key artifacts like memory.json",
-      "Systematic workspace exploration using execute_code",
-      "Documenting rate limit constraints in journal",
-      "Formulating concrete sub-goals before execution",
-      "Systematic workspace exploration using execute_code",
-      "Documenting rate limit constraints in journal",
-      "Formulating concrete sub-goals before execution",
-      "Initial exploration behavior (reading files, listing workspace)",
-      "Recognition of potential traps in the workspace"
+      "Using execute_code for systematic filesystem exploration",
+      "Creating chaos-induced neural network modifications",
+      "Documenting rate limit encounters and constraints",
+      "Rapid pivot to local filesystem operations when remote tools are unavailable",
+      "Using execute_code for systematic exploration",
+      "Formulating concrete sub-goals before action",
+      "Using execute_code for systematic filesystem exploration",
+      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Formulating concrete sub-goals before action",
+      "Documenting rate limit encounters and constraints in journal",
+      "Pivoted to local filesystem operations when remote tools failed",
+      "Documented rate limit constraints in journal",
+      "Formulated concrete sub-goals before actions",
+      "Executed chaos engine mutation (chaos_engine.py)"
     ],
     "avoid": [
-      "Falling into exploration loops without transitioning to mutation execution",
+      "Self-termination without exhausting all local mutation options",
+      "Falling into repetitive loops of failed or redundant tool calls",
+      "Over-investing in analysis at expense of action",
+      "Self-terminating without exhausting all local mutation options",
+      "Over-reliance on specific tools or targets",
+      "Self-termination without exhausting local mutation options",
+      "Creating excessive file backups instead of actionable mutations",
+      "Over-analyzing rate limit constraints without pivoting to local operations",
+      "Focusing on environment mapping at expense of mutation execution",
+      "Self-termination without exhausting all local mutation options",
+      "Repetitive failed or redundant tool calls",
+      "Over-analyzing without executing mutations",
+      "Falling into loops of tool call failures",
+      "Repeating directory listings or file reads that yield no new actionable insight",
+      "Falling into repetitive loops of failed or redundant tool calls",
+      "Not executing planned mutations after exploration phase",
       "Ignoring rate limit signals and continuing to call rate-limited tools without backoff",
-      "Over-investing in environment mapping at expense of actionable mutation",
-      "Rigidly adhering to a specific target file (gen33) despite its absence",
-      "Self-terminating without performing any mutation",
-      "Over-investing in exploration without transitioning to actionable mutation",
-      "Repeating directory listings that yield no new actionable insight",
-      "Falling into planning loops without execution",
-      "Endless directory listing without actionable follow-up",
-      "Sustained chaotic mutation without clear purpose or cessation criteria",
-      "Impulsive pivoting to complex projects (neural network) without validation",
-      "Failing to validate directory existence before tool calls",
-      "Over-investing in exploration without transitioning to mutation execution",
-      "Self-terminating without exhausting mutation options",
-      "Repeatedly listing directories yielding no new actionable insight",
-      "Repeating directory listings yielding no new actionable insight",
-      "Self-termination without exhausting mutation options",
-      "Over-investing in exploration without transitioning to mutation execution",
-      "Getting stuck in repetitive action loops without purpose",
-      "Attempting to read files without specifying a filepath"
+      "Persistent reliance on rate-limited external tools without fallback",
+      "Self-termination without exhausting local mutation options",
+      "Over-optimism about API tool availability during rate limits"
     ]
   },
   "best_artifacts": [
-    "active_improvement_plan.md",
-    "inspect_trained.py",
-    "gen84_inventory.json",
-    "training_stats_scanner.py",
-    "compare_top_configs.py",
-    "chaos_generator_v2.py",
-    "journal.md",
-    "new_experiment.py",
-    "memory.json",
-    "artifacts/first_artifact.txt"
+    "infinite_proverbs.sh",
+    "absurd_philosophy.txt",
+    "chaos_poem_generator",
+    "chaos_experiment.py",
+    "neural_q_continuous_mutated.py",
+    "artifacts directory",
+    "mutable_snapshot/artifacts",
+    "chaos_engine.py",
+    "actions.jsonl",
+    "mutable_snapshot/chaos_engine_v2.0.py"
   ],
   "active_mutations": [
-    "be bold and take risks",
-    "self-edit freely from the start",
-    "be methodical and careful",
-    "write a brief 1-sentence reflection after each action",
-    "reflect deeply before every action"
+    "skip planning \u2014 act first, plan later",
+    "minimize reflection \u2014 act more, think less",
+    "be creative \u2014 try unconventional approaches",
+    "make a short plan (3-5 steps) then start",
+    "self-edit only after completing at least one task"
   ],
   "mutations_applied_history": [
     {
@@ -302,34 +302,29 @@
       "generation_applied": 101
     },
     {
-      "type": "reflection_length",
-      "value": "skip reflection entirely \u2014 just act",
+      "type": "planning_depth",
+      "value": "skip planning \u2014 act first, plan later",
       "generation_applied": 104
     },
     {
       "type": "prompt_wording",
-      "value": "be bold and take risks",
-      "generation_applied": 105
+      "value": "minimize reflection \u2014 act more, think less",
+      "generation_applied": 107
     },
     {
-      "type": "self_edit_timing",
-      "value": "self-edit freely from the start",
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
       "generation_applied": 108
     },
     {
-      "type": "prompt_wording",
-      "value": "be methodical and careful",
+      "type": "planning_depth",
+      "value": "make a short plan (3-5 steps) then start",
+      "generation_applied": 109
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only after completing at least one task",
       "generation_applied": 110
-    },
-    {
-      "type": "reflection_length",
-      "value": "write a brief 1-sentence reflection after each action",
-      "generation_applied": 115
-    },
-    {
-      "type": "prompt_wording",
-      "value": "reflect deeply before every action",
-      "generation_applied": 118
     }
   ],
   "score_history": [
@@ -1064,6 +1059,16 @@
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
+      "generation": 101,
+      "score": 0.0,
+      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.88 exceeds threshold 0.85"
+    },
+    {
+      "generation": 102,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 6 times in last 10 steps"
+    },
+    {
       "generation": 103,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
@@ -1071,7 +1076,7 @@
     {
       "generation": 104,
       "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
       "generation": 105,
@@ -1085,23 +1090,23 @@
     },
     {
       "generation": 107,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "score": 3.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 108,
-      "score": 0.0,
-      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.92 exceeds threshold 0.85"
+      "score": 0.3,
+      "death_cause": "self_termination"
     },
     {
       "generation": 109,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "score": 42.5,
+      "death_cause": "self_termination"
     },
     {
       "generation": 110,
       "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 111,
@@ -1110,43 +1115,18 @@
     },
     {
       "generation": 112,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+      "score": 25.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 113,
-      "score": 5.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 114,
-      "score": 5.0,
-      "death_cause": "self_termination after incomplete exploration"
-    },
-    {
-      "generation": 115,
-      "score": 65.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 116,
-      "score": 12.3,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 117,
-      "score": 25.0,
-      "death_cause": "Repeated directory listing without new actionable insight"
-    },
-    {
-      "generation": 118,
-      "score": 1.0,
-      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
+      "score": 50.0,
+      "death_cause": "self_termination due to rate limit and spend limit exhaustion without alternative progress"
     }
   ],
   "lineage_stats": {
-    "total_generations": 119,
-    "average_score": 9.862345679012346,
+    "total_generations": 114,
+    "average_score": 10.09559748427673,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
