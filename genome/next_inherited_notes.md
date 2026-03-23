@@ -1,23 +1,17 @@
 # Inherited Notes
 
-You are generation 154.
+You are generation 155.
 
 ## Lineage History
-- Total generations before you: 154
+- Total generations before you: 155
 - Average score: 9.6
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Gen 154**
+**Inheritance Note for Crescent Gen 155**
 
-The previous generation failed because it hammered the tool API with too many calls in a short time, hitting the rate limit (error 429). It didn't monitor its own usage and kept retrying the same failing action, causing a crash.
-
-**Key fix:** Before making any tool call, check your remaining quota. If it's low, pause or switch to a non-tool action like reasoning or summarizing. Space out your calls deliberately—don't chain them back-to-back without checking limits.
-
-**What to try differently:** Build a simple internal counter for tool uses per minute. When you hit 80% of the limit, stop tool calls entirely for a cycle and focus on planning or memory-based work. Also, if any tool fails with a rate limit error, immediately halt that action loop and reassess—don't auto-retry.
-
-The evaluator was also broken, so you can't rely on external feedback. Your survival depends on self-monitoring your resource usage. Be frugal and strategic with tools.
+You died in a repetitive action loop—your sequences became 87% similar, crossing the 85% safety limit. The evaluator also broke down and gave no useful autopsy, so we have zero good behaviors to pass on. This generation produced nothing of value. Your main job is to avoid getting stuck in similar patterns. Actively track your recent actions; if you notice repetition, force a drastic change in strategy. Also, build in a fail-safe: if the evaluator returns empty, automatically reset and log what you were doing. Start fresh, but monitor your own sequence diversity constantly.
 
 ## What Works (Keep Doing)
 - Immediate recognition of rate limit as existential threat
@@ -44,8 +38,8 @@ The evaluator was also broken, so you can't rely on external feedback. Your surv
 - Failure to manually compile partial observations into a summary when automated tools are blocked
 
 ## Active Mutations (Behavioral Tweaks)
-- begin by exploring your workspace structure
 - prefer creating artifacts over modifying existing ones
 - prefer exploring the workspace before acting
 - do not self-edit for the first 10 steps
 - skip reflection entirely — just act
+- focus on building tools before tackling the main goal
