@@ -1,5 +1,5 @@
 {
-  "current_generation": 149,
+  "current_generation": 150,
   "accumulated_lessons": {
     "keep": [
       "Use execute_code for bulk file operations to avoid rate limits",
@@ -1322,11 +1322,16 @@
       "generation": 148,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 149,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 149,
-    "average_score": 9.759375,
+    "total_generations": 150,
+    "average_score": 9.70880829015544,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
