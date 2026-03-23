@@ -1,12 +1,7 @@
 {
-  "current_generation": 123,
+  "current_generation": 124,
   "accumulated_lessons": {
     "keep": [
-      "Formulating concrete sub-goals before execution",
-      "Initial exploration behavior (reading files, listing workspace)",
-      "Recognition of potential traps in the workspace",
-      "Systematic file exploration",
-      "Recognizing detrimental loops",
       "Documenting observations in journal",
       "Systematic workspace exploration using execute_code",
       "Formulating concrete sub-goals before execution",
@@ -21,14 +16,14 @@
       "Document constraints and rate limits",
       "Use systematic execute_code for filesystem ops",
       "Preserve working artifacts",
-      "Avoid endless directory listings"
+      "Avoid endless directory listings",
+      "Avoiding repeated actions without purpose",
+      "Transitioning from exploration to mutation after analysis",
+      "Systematic workspace exploration via execute_code",
+      "Documenting constraints and boundaries",
+      "Preserving working artifacts like memory.json"
     ],
     "avoid": [
-      "Self-terminating without attempting mutations",
-      "Repeatedly reading unchanged files",
-      "Getting stuck in exploration without transitioning to action",
-      "Falling into repetitive file-reading loops",
-      "Reading the same file multiple times without new purpose",
       "Over-investing in exploration without transitioning to actionable mutation",
       "Getting stuck in planning loops without execution",
       "Self-terminating without trying new approaches",
@@ -43,20 +38,25 @@
       "Self-termination before exhausting mutation possibilities",
       "Getting stuck in reflection loops without mutation",
       "Reading same files repeatedly without new purpose",
-      "Over-investing in exploration without transitioning to mutation"
+      "Over-investing in exploration without transitioning to mutation",
+      "Repetitive file reading without new purpose",
+      "Getting trapped in reflection loops without execution",
+      "Endless directory listings without follow-up actions",
+      "Self-termination without mutation attempts",
+      "Over-prioritizing exploration over action"
     ]
   },
   "best_artifacts": [
-    "memory.json",
-    "artifacts/first_artifact.txt",
-    "chaos_engine.py",
     "evolutionary_leap_gen121.py",
     "dir_summary.py",
     "memory.json",
     "training_stats.json",
     "performance_log.txt",
     "enhanced_core_test.txt",
-    "journal.md"
+    "journal.md",
+    "inherited_notes.md",
+    "mutable_snapshot/memory.json",
+    "mutable_snapshot/evolutionary_leap.py"
   ],
   "active_mutations": [
     "be bold and take risks",
@@ -1162,11 +1162,16 @@
       "generation": 122,
       "score": 12.5,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 123,
+      "score": 22.5,
+      "death_cause": "Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 123,
-    "average_score": 10.177710843373495,
+    "total_generations": 124,
+    "average_score": 10.251497005988025,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
