@@ -1,12 +1,7 @@
 {
-  "current_generation": 128,
+  "current_generation": 129,
   "accumulated_lessons": {
     "keep": [
-      "Avoid endless directory listings",
-      "Avoiding repeated actions without purpose",
-      "Transitioning from exploration to mutation after analysis",
-      "Systematic workspace exploration via execute_code",
-      "Documenting constraints and boundaries",
       "Preserving working artifacts like memory.json",
       "Initial systematic workspace exploration",
       "Reading inherited notes for context",
@@ -21,16 +16,14 @@
       "Documenting constraints and rate limits",
       "Formulating concrete sub-goals before execution",
       "systematic execution",
-      "resources optimization"
+      "resources optimization",
+      "Metacognitive awareness of repetitive patterns",
+      "Recognition of when you're looping without purpose",
+      "Reading inherited notes for context",
+      "Documenting constraints and observations",
+      "Formulating concrete sub-goals before execution"
     ],
     "avoid": [
-      "Over-prioritizing exploration over action",
-      "Repeated directory listings without new purpose",
-      "Reading non-existent files repeatedly",
-      "Excessive reflection without execution",
-      "Failing to transition to mutation after exploration",
-      "Malformed tool calls",
-      "Self-termination without attempting mutation",
       "Assuming standard paths without verification",
       "Ignoring useful artifacts (e.g., brain files) in root",
       "Repeated file reading without new purpose",
@@ -43,7 +36,14 @@
       "Assuming recognition of problems equals problem-solving",
       "Endless directory listings without follow-up actions",
       "unmotivated loop detection",
-      "risk-averse adjustments"
+      "risk-averse adjustments",
+      "Endless exploration without transitioning to mutation",
+      "Getting trapped in reflection loops without execution",
+      "Over-investing in exploration without transitioning to mutation",
+      "Repeated file reading without new purpose",
+      "Malformed tool calls",
+      "Endless exploration without transitioning to mutation",
+      "Getting stuck in reflection loops despite awareness"
     ]
   },
   "best_artifacts": [
@@ -1197,11 +1197,16 @@
       "generation": 127,
       "score": 0.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 128,
+      "score": 2.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 128,
-    "average_score": 10.071929824561403,
+    "total_generations": 129,
+    "average_score": 10.025,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
