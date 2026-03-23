@@ -1,13 +1,7 @@
 {
-  "current_generation": 134,
+  "current_generation": 135,
   "accumulated_lessons": {
     "keep": [
-      "Formulating concrete sub-goals before execution",
-      "systematic execution",
-      "resources optimization",
-      "Metacognitive awareness of repetitive patterns",
-      "Recognition of when you're looping without purpose",
-      "Reading inherited notes for context",
       "Documenting constraints and observations",
       "Formulating concrete sub-goals before execution",
       "Systematic exploration of workspace (listing files/directories)",
@@ -21,14 +15,15 @@
       "Documenting constraints and observations",
       "Formulating concrete sub-goals before execution",
       "Mutations involving planned execution of code in mutable_snapshot",
-      "Recognition that loop-breaking requires state-changing actions"
+      "Recognition that loop-breaking requires state-changing actions",
+      "Document constraints immediately when encountering errors",
+      "Switch to execute_code for bulk file operations to avoid rate limits",
+      "Formulate concrete sub-goals before action",
+      "Maintain systematic exploration of workspace",
+      "Adapt tactics after tool call failures",
+      "Write notes about constraints for future generations"
     ],
     "avoid": [
-      "Getting trapped in reflection loops without execution",
-      "Over-investing in exploration without transitioning to mutation",
-      "Repeated file reading without new purpose",
-      "Malformed tool calls",
-      "Endless exploration without transitioning to mutation",
       "Getting stuck in reflection loops despite awareness",
       "Endless file reading without new purpose",
       "Getting trapped in reflection loops without execution",
@@ -43,7 +38,12 @@
       "Endlessly revisiting files without new purpose",
       "Prioritizing documentation over execution",
       "Trusting reflection alone to break loops without action",
-      "Repeated tool calls without clear workflow progression"
+      "Repeated tool calls without clear workflow progression",
+      "Over-planning with long rigid plans that may not adapt",
+      "Repeatedly reading truncated files without changing approach",
+      "Getting stuck in reflection before execution",
+      "Neglecting to transition from exploration to mutation/artifact creation",
+      "Ignoring warnings about rate limit loops"
     ]
   },
   "best_artifacts": [
@@ -1237,11 +1237,16 @@
       "generation": 133,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 134,
+      "score": 0.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 134,
-    "average_score": 10.055367231638417,
+    "total_generations": 135,
+    "average_score": 9.998876404494382,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
