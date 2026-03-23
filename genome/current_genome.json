@@ -1,10 +1,7 @@
 {
-  "current_generation": 125,
+  "current_generation": 126,
   "accumulated_lessons": {
     "keep": [
-      "Recognizing potential traps in the workspace",
-      "Using execute_code for filesystem operations when tools were rate-limited",
-      "Systematic file exploration identified key artifacts like memory.json",
       "Systematic workspace exploration using execute_code",
       "Documenting rate limit constraints in journal",
       "Formulating concrete sub-goals before execution",
@@ -21,13 +18,12 @@
       "Initial systematic workspace exploration",
       "Reading inherited notes for context",
       "Documenting constraints and observations",
+      "Metacognitive awareness of repetitive patterns",
+      "Reading inherited notes for context",
+      "Documenting constraints and observations",
       "Metacognitive awareness of repetitive patterns"
     ],
     "avoid": [
-      "Self-terminating without exhausting mutation options",
-      "Repeatedly listing directories yielding no new actionable insight",
-      "Repeated directory listings with no actionable outcome",
-      "Self-termination before exhausting mutation possibilities",
       "Getting stuck in reflection loops without mutation",
       "Reading same files repeatedly without new purpose",
       "Over-investing in exploration without transitioning to mutation",
@@ -43,7 +39,11 @@
       "Malformed tool calls",
       "Self-termination without attempting mutation",
       "Assuming standard paths without verification",
-      "Ignoring useful artifacts (e.g., brain files) in root"
+      "Ignoring useful artifacts (e.g., brain files) in root",
+      "Repeated file reading without new purpose",
+      "Endless exploration without transitioning to mutation",
+      "Getting trapped in reflection loops without execution",
+      "Over-investing in exploration without transitioning to mutation"
     ]
   },
   "best_artifacts": [
@@ -1177,11 +1177,16 @@
       "generation": 124,
       "score": 3.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 125,
+      "score": 5.0,
+      "death_cause": "Action loop - read_file repeated 5 times in 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 125,
-    "average_score": 10.208333333333334,
+    "total_generations": 126,
+    "average_score": 10.177514792899409,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
