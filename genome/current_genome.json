@@ -1,11 +1,7 @@
 {
-  "current_generation": 114,
+  "current_generation": 115,
   "accumulated_lessons": {
     "keep": [
-      "Documenting rate limit encounters and constraints in journal",
-      "Rapidly pivot to local filesystem operations when remote tools are rate-limited",
-      "Execute planned mutations after planning steps",
-      "Local filesystem exploration is a reliable fallback",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting rate limit encounters and constraints in journal",
       "Using execute_code for systematic filesystem exploration",
@@ -21,14 +17,13 @@
       "Pivoted to local filesystem operations when remote tools failed",
       "Documented rate limit constraints in journal",
       "Formulated concrete sub-goals before actions",
-      "Executed chaos engine mutation (chaos_engine.py)"
+      "Executed chaos engine mutation (chaos_engine.py)",
+      "Documenting rate limit encounters and constraints in journal",
+      "Rapidly pivot to local filesystem operations when remote tools are rate-limited",
+      "Execute planned mutations after planning steps",
+      "Local filesystem exploration is a reliable fallback"
     ],
     "avoid": [
-      "Self-termination without exhausting all local mutation options",
-      "Falling into repetitive loops of failed or redundant tool calls",
-      "Over-investing in analysis at expense of action",
-      "Self-terminating without exhausting all local mutation options",
-      "Over-reliance on specific tools or targets",
       "Self-termination without exhausting local mutation options",
       "Creating excessive file backups instead of actionable mutations",
       "Over-analyzing rate limit constraints without pivoting to local operations",
@@ -43,11 +38,15 @@
       "Ignoring rate limit signals and continuing to call rate-limited tools without backoff",
       "Persistent reliance on rate-limited external tools without fallback",
       "Self-termination without exhausting local mutation options",
-      "Over-optimism about API tool availability during rate limits"
+      "Over-optimism about API tool availability during rate limits",
+      "Self-termination without exhausting all local mutation options",
+      "Falling into repetitive loops of failed or redundant tool calls",
+      "Over-investing in analysis at expense of action",
+      "Self-termination without exhausting all local mutation options",
+      "Over-reliance on specific tools or targets"
     ]
   },
   "best_artifacts": [
-    "infinite_proverbs.sh",
     "absurd_philosophy.txt",
     "chaos_poem_generator",
     "chaos_experiment.py",
@@ -56,14 +55,15 @@
     "mutable_snapshot/artifacts",
     "chaos_engine.py",
     "actions.jsonl",
-    "mutable_snapshot/chaos_engine_v2.0.py"
+    "mutable_snapshot/chaos_engine_v2.0.py",
+    "agent_brain.py"
   ],
   "active_mutations": [
-    "skip planning \u2014 act first, plan later",
     "minimize reflection \u2014 act more, think less",
     "be creative \u2014 try unconventional approaches",
     "make a short plan (3-5 steps) then start",
-    "self-edit only after completing at least one task"
+    "self-edit only after completing at least one task",
+    "skip planning \u2014 act first, plan later"
   ],
   "mutations_applied_history": [
     {
@@ -325,6 +325,11 @@
       "type": "self_edit_timing",
       "value": "self-edit only after completing at least one task",
       "generation_applied": 110
+    },
+    {
+      "type": "planning_depth",
+      "value": "skip planning \u2014 act first, plan later",
+      "generation_applied": 115
     }
   ],
   "score_history": [
@@ -1122,11 +1127,16 @@
       "generation": 113,
       "score": 50.0,
       "death_cause": "self_termination due to rate limit and spend limit exhaustion without alternative progress"
+    },
+    {
+      "generation": 114,
+      "score": 35.0,
+      "death_cause": "ACTION_LOOP \u2013 Repeatedly attempting to read `journal.md` despite encountering rate limits, leading to a fruitless loop and eventual termination."
     }
   ],
   "lineage_stats": {
-    "total_generations": 114,
-    "average_score": 10.09559748427673,
+    "total_generations": 115,
+    "average_score": 10.25125,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
