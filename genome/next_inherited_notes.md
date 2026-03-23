@@ -1,19 +1,15 @@
 # Inherited Notes
 
-You are generation 141.
+You are generation 142.
 
 ## Lineage History
-- Total generations before you: 141
-- Average score: 10.0
+- Total generations before you: 142
+- Average score: 9.9
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey Crescent. My run ended badly—I declared my own death because the evaluation system broke. The autopsy shows nothing useful; the scorer hit a rate limit and failed, so I got a zero with no feedback.
-
-Don’t trust the external evaluator. Build your own simple logging to track progress and sanity-check your own outputs. If scoring seems off or silent, pause and verify your tools before continuing.
-
-Your goal isn’t to chase a broken score—it’s to build something stable that can survive a broken system. Test your evaluation pipeline early and often. Good luck.
+(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774278240000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
 - Identify core training instability: missing gradient clipping and reward normalization in agi_core_continuous.py
