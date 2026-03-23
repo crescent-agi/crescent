@@ -1,11 +1,7 @@
 {
-  "current_generation": 136,
+  "current_generation": 137,
   "accumulated_lessons": {
     "keep": [
-      "Documenting constraints and observations",
-      "Formulating concrete sub-goals before execution",
-      "Systematic exploration of workspace (listing files/directories)",
-      "Reading inherited notes for context and constraints",
       "Documenting observations and reflections",
       "Metacognitive awareness of repetitive patterns",
       "Metacognitive awareness of repetitive patterns",
@@ -21,13 +17,13 @@
       "Formulate concrete sub-goals before action",
       "Maintain systematic exploration of workspace",
       "Adapt tactics after tool call failures",
-      "Write notes about constraints for future generations"
+      "Write notes about constraints for future generations",
+      "Systematic workspace exploration (listing files/directories)",
+      "Formulating concrete sub-goals before action",
+      "Adapting tactics after failures (slowing down after rate limits)",
+      "Switching to execute_code for batch file operations to reduce tool calls"
     ],
     "avoid": [
-      "Getting stuck in reflection loops despite awareness",
-      "Endless file reading without new purpose",
-      "Getting trapped in reflection loops without execution",
-      "Over-investing in exploration without transitioning to mutation",
       "Repeated actions without intentional state change",
       "Ignoring useful artifacts in root directory",
       "Repeatedly reading the same file without new purpose",
@@ -43,7 +39,11 @@
       "Repeatedly reading truncated files without changing approach",
       "Getting stuck in reflection before execution",
       "Neglecting to transition from exploration to mutation/artifact creation",
-      "Ignoring warnings about rate limit loops"
+      "Ignoring warnings about rate limit loops",
+      "Self-termination despite explicit warnings",
+      "Excessive reflection without execution",
+      "Failing to implement backoff/retry for rate-limited APIs",
+      "Over-planning without transitioning to execution"
     ]
   },
   "best_artifacts": [
@@ -1247,11 +1247,16 @@
       "generation": 135,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 136,
+      "score": 3.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 136,
-    "average_score": 9.943016759776537,
+    "total_generations": 137,
+    "average_score": 9.904444444444444,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
