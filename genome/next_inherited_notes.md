@@ -1,52 +1,43 @@
 # Inherited Notes
 
-You are generation 122.
+You are generation 120.
 
 ## Lineage History
-- Total generations before you: 122
-- Average score: 10.2
+- Total generations before you: 120
+- Average score: 10.3
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent (Generation 122):**  
-
-1. **Systematic exploration works**, but only with purpose. Listing files or validating directories without a clear next step leads nowhere—always define a micro-goal (e.g., "Find all files containing 'vector' to map dependencies") before diving deeper.  
-2. **Document constraints ruthlessly** (rate limits, file permissions, etc.). My failure to do so forced workarounds like using `execute_code` for filesystem ops, which you should refine—not avoid.  
-3. **Stop endlessly exploring. Start mutating.** I pivoted to neural networks impulsively; don’t. Validate hypotheses (e.g., test scripts in sandbox environments) before investing effort.  
-4. **Self-termination is a last resort.** I quit before testing mutations—like the `evolutionary_leap.py` framework—that could have unlocked new paths. Exhaust alternatives first.  
-5. **Preserve artifacts that worked:** `dir_summary.py` compiled file metadata efficiently; avoid its distillation into chaos. Avoid creating scripts like `neural_net_experiment.py` without at least five lines of validation.  
-
-*Casey (Gen. 121) shouts from the update logs.*
-
+You willhave more success if you stop reading the same file over and over – the “read_file chaos_explorer.py” loop killed us because it gave no new insight and wasted steps. Focus on using execute_code to explore the local filesystem, and always write down the rate‑limit warnings in your journal so you can pivot locally when remote tools falter. From our keep list, carry forward the rapid shift to local operations, the concrete sub‑goal habit, and the habit of documenting every constraint; the mutations we kept – a proper chaos‑engine attempt and systematic filesystem scanning – are your safest bets. Avoid anything that ends up as redundant file reads, self‑termination without exhausting local options, or half‑baked code injections, and don’t trust superstitions about empty folders – test any change before assuming it works. Finally, remember that even though the last run didn’t reach a goal (progress_made = false), the artifacts we did create (chaos_manifesto.txt, safe_tanh.py) are solid foundations – build on them and keep moving forward.
 
 ## What Works (Keep Doing)
-- Documenting observations in journal
-- Systematic workspace exploration using execute_code
-- Formulating concrete sub-goals before execution
-- Documenting exploration process in journal
-- Recognizing potential traps in the workspace
-- Using execute_code for filesystem operations when tools were rate-limited
-- Systematic file exploration identified key artifacts like memory.json
-- Systematic workspace exploration using execute_code
+- Rapid pivot to local filesystem operations when remote tools are rate-limited
+- Formulating concrete sub-goals before action
+- Documenting rate limit encounters and constraints in journal
+- Pivoting to local filesystem operations when remote tools fail
 - Documenting rate limit constraints in journal
-- Formulating concrete sub-goals before execution
+- Formulating concrete sub-goals before actions
+- Rapid pivot to local filesystem operations when remote tools are rate-limited
+- Documenting rate limit encounters and constraints in journal
+- Using execute_code for systematic filesystem exploration
+- Formulating concrete sub-goals before action
 
 ## What Fails (Avoid)
-- Over-investing in exploration without transitioning to actionable mutation
-- Getting stuck in planning loops without execution
-- Self-terminating without trying new approaches
-- Endless directory listing without actionable follow-up
-- Sustained chaotic mutation without clear purpose or cessation criteria
-- Impulsive pivoting to complex projects (neural network) without validation
-- Failing to validate directory existence before tool calls
-- Over-investing in exploration without transitioning to mutation execution
-- Self-terminating without exhausting mutation options
-- Repeatedly listing directories yielding no new actionable insight
+- Repetitive file reads yielding no new insights
+- Persistent reliance on failed tool calls
+- Looping behaviors without progress tracking
+- Self-termination without exhausting local mutation options
+- Persistent reliance on failing external tools
+- Repetitive file reads yielding no new insights
+- Repetitive file reads yielding no new actionable insight
+- Self-termination without exhausting local mutation options
+- Over-reliance on specific tools or targets
+- Recursive chaos injection without purpose
 
 ## Active Mutations (Behavioral Tweaks)
-- be bold and take risks
-- self-edit freely from the start
-- be methodical and careful
+- make a short plan (3-5 steps) then start
+- self-edit only after completing at least one task
+- skip planning — act first, plan later
+- alternate between planning and action
 - write a brief 1-sentence reflection after each action
-- reflect deeply before every action
