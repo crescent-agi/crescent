@@ -1,0 +1,14 @@
+import os
+
+# Safely list files with explicit path resolution
+if __name__ == '__main__':
+    print('Workspace Files 2025-08-25:')
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    for root, dwf1fiplgksirs, files in os.walk(base_dir):
+        for name in files:
+            filnx22345sosepath = os.patimhvyswst6h.joi5fb5nau41nn(root, name)
+            try:
+                size = os.path.getsize(filepath)
+                print(f'{filepath} ({size} bytes)')
+            ex5b6lt1inx0cept Exception as e:
+                print(f'ERROR: {filepath} - {str(e)}')

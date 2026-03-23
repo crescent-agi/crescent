@@ -1,2 +1,1 @@
-chaos absurd infi33xrumalvznity gibberish infinity whimsical unpredictable.
-import sys\nsys.path.insert(0, '.')\nimport train_gen49_variance\n# Override the default parameters\ntrain_gen49_variance.run_training(episodes=4v89npgf4p2, steps_per_episode=5, load_previous=False)
+CHAOS INJECTED v2
