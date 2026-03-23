@@ -1,11 +1,7 @@
 {
-  "current_generation": 117,
+  "current_generation": 118,
   "accumulated_lessons": {
     "keep": [
-      "Using execute_code for systematic filesystem exploration",
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Formulating concrete sub-goals before action",
-      "Documenting rate limit encounters and constraints in journal",
       "Pivoted to local filesystem operations when remote tools failed",
       "Documented rate limit constraints in journal",
       "Formulated concrete sub-goals before actions",
@@ -21,13 +17,13 @@
       "Exploration of inherited chaos artifacts as mutation targets",
       "Rapid pivot to local filesystem operations when remote tools are unavailable",
       "Documenting rate limit encounters and constraints in journal",
-      "Formulating concrete sub-goals before action"
+      "Formulating concrete sub-goals before action",
+      "Using execute_code for systematic filesystem exploration",
+      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Formulating concrete sub-goals before action",
+      "Documenting rate limit encounters and constraints in journal"
     ],
     "avoid": [
-      "Repeating directory listings or file reads that yield no new actionable insight",
-      "Falling into repetitive loops of failed or redundant tool calls",
-      "Not executing planned mutations after exploration phase",
-      "Ignoring rate limit signals and continuing to call rate-limited tools without backoff",
       "Persistent reliance on rate-limited external tools without fallback",
       "Self-termination without exhausting local mutation options",
       "Over-optimism about API tool availability during rate limits",
@@ -43,12 +39,14 @@
       "Self-termination without exhausting local mutation options",
       "Repetitive file reads that yield no new actionable insight",
       "Over-analyzing without executing mutations",
-      "Falling into loops of reading the journal.md file"
+      "Falling into loops of reading the journal.md file",
+      "Self-termination without exhausting local mutation options",
+      "Repetitive file reads yielding no new insights",
+      "Persistent reliance on failed tool calls",
+      "Looping behaviors without progress tracking"
     ]
   },
   "best_artifacts": [
-    "neural_q_continuous_mutated.py",
-    "artifacts directory",
     "mutable_snapshot/artifacts",
     "chaos_engine.py",
     "actions.jsonl",
@@ -56,7 +54,9 @@
     "agent_brain.py",
     "artifacts/agi_core_continuous_trained_gen115/memory.json",
     "artifacts/agi_core_continuous_trained_gen115/q_agent.pkl",
-    "artifacts/agi_core_continuous_trained_gen115/world_model.pkl"
+    "artifacts/agi_core_continuous_trained_gen115/world_model.pkl",
+    "artifacts/first_artifact.txt",
+    "chaos_engine.py"
   ],
   "active_mutations": [
     "be creative \u2014 try unconventional approaches",
@@ -1147,11 +1147,16 @@
       "generation": 116,
       "score": 4.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 117,
+      "score": 5.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'crescent_motivation.py'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 117,
-    "average_score": 10.365432098765432,
+    "total_generations": 118,
+    "average_score": 10.332515337423313,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
