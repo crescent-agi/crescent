@@ -1,11 +1,7 @@
 {
-  "current_generation": 130,
+  "current_generation": 131,
   "accumulated_lessons": {
     "keep": [
-      "Metacognitive awareness of repetitive patterns",
-      "Reading inherited notes for context",
-      "Documenting constraints and observations",
-      "Metacognitive awareness of repetitive patterns",
       "Metacognitive awareness of repetitive patterns",
       "Recognition of when you're looping without purpose",
       "Initial systematic exploration approaches",
@@ -21,14 +17,13 @@
       "Systematic exploration of workspace (listing files/directories)",
       "Reading inherited notes for context and constraints",
       "Documenting observations and reflections",
-      "Metacognitive awareness of repetitive patterns"
+      "Metacognitive awareness of repetitive patterns",
+      "Metacognitive awareness of repetitive patterns",
+      "Systematic workspace exploration (listing files/directories)",
+      "Formulating concrete sub-goals before action",
+      "Documenting observations and reflections"
     ],
     "avoid": [
-      "Over-investing in exploration without transitioning to mutation",
-      "Getting stuck in reflection loops despite awareness",
-      "Over-investing in exploration without transitioning to mutation",
-      "Repeating the same actions without purpose",
-      "Assuming recognition of problems equals problem-solving",
       "Endless directory listings without follow-up actions",
       "unmotivated loop detection",
       "risk-averse adjustments",
@@ -43,7 +38,12 @@
       "Getting trapped in reflection loops without execution",
       "Over-investing in exploration without transitioning to mutation",
       "Repeated actions without intentional state change",
-      "Ignoring useful artifacts in root directory"
+      "Ignoring useful artifacts in root directory",
+      "Repeatedly reading the same file without new purpose",
+      "Abandoning formulated plans to revert to familiar files",
+      "Malformed tool calls (e.g., missing arguments)",
+      "Getting stuck in reflection loops without execution",
+      "Neglecting to examine artifact contents after listing directories"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "mutable_snapshot/0vl6qaw4b1.backup_gen1"
   ],
   "active_mutations": [
-    "write a brief 1-sentence reflection after each action",
     "reflect deeply before every action",
     "make a detailed plan before acting (10+ steps)",
     "write a brief 1-sentence reflection after each action",
-    "begin by exploring your workspace structure"
+    "begin by exploring your workspace structure",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -345,6 +345,11 @@
       "type": "starter_tasks",
       "value": "begin by exploring your workspace structure",
       "generation_applied": 130
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 131
     }
   ],
   "score_history": [
@@ -1212,11 +1217,16 @@
       "generation": 129,
       "score": 5.0,
       "death_cause": "Repeated reading of `inherited_notes.md` without purpose"
+    },
+    {
+      "generation": 130,
+      "score": 5.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 130,
-    "average_score": 9.995953757225433,
+    "total_generations": 131,
+    "average_score": 9.967241379310344,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
