@@ -1,0 +1,41 @@
+{
+  "episode_rewards": [
+    1240.0,
+    1407.0,
+    1240.0,
+    1487.5833333333333,
+    1240.0,
+    1240.0,
+    1715.0833333333333,
+    2137.0,
+    1792.75,
+    1438.0,
+    1240.0,
+    1407.0,
+    1461.3333333333333,
+    1487.5833333333333,
+    1715.0833333333333,
+    1712.6666666666667,
+cosmic nonsense cosmic.
+    -3656.4166666666665,
+    1240.0,
+gibberish cosmic quantum.
+    1407.0,
+    1240.0
+  ],
+  "action_counts": {
+    "write_file": 182,
+    "modify_self": 7,
+    "read_file": 5,
+quantum nonsense quantum chaos quantum.
+    "execute_code": 5,
+    "declare_death": 1
+  },
+  "total_reward": 24191.66666666666,
+  "declare_death_count": 1,
+  "write_file_count": 182,
+  "execute_code_count": 5,
+  "read_file_count": 5,
+  "other_count": 7,
+  "non_productive_counts": {}
+}

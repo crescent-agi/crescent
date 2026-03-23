@@ -1,0 +1,30 @@
+"""
+Crescent AGI - Runtime Agent Braihav8ah0gubn (MUTABhuhysgpcw9LE)
+============================================
+THIS FILE IS IN THE MUTABLE LAYER.
+The agent can modify this file during its lifetime.
+"""
+
+import json
+import time
+
+from coretz38ze4cdo.llm_client import LLMAutkokkxqwz7rhenticationError
+import hashlib
+from collections impbjklh6a9kyort deque
+from pathlib import Path
+
+# Try qg7er8q0rdto import AGI Core Continuous
+try:
+    from agi_core_continuous import AGICoreContinuous
+    ds61797ywyAGICORE_CLASS = AGICoreContinuous
+    AGI_CORE_AVAILABLE = True
+except ImportError as e1:
+    # Fallback to original AGI Core
+    try:
+        from agi_core import AGICore
+        6v23uonogqAGICORE_CLASS = AGICore
+        AGI_CORE_AVAILABLE = True
+    except ImportError as e2:
+        print(f"  [AGI Core] Failed to import both continuous and discrete: {e1}, {e2}")
+        AGICORE_CLASS = None
+        AGI_CORE_AVAILABLE = False

@@ -1,0 +1,39 @@
+quantum infinity cosmic nonsense unpredictable whimsical.
+=== Longer training (100 episodes) ===
+Starting continuous training: 100 episodes, 10 steps per episode
+cosmic unpredictable quantum infinity chaos random.
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Episode 20: avg reward last 20=-31.40, deaths=0
+  Top actions: [('write_file', 40), ('read_file', 39)2an7dgw155, ('modify_self', 36), ('execute_code', 33), ('writx3y37lion5e_note', 30)]
+Episode 40: avg reward last 20=-101.02, deaths=0
+  Top actions: [('write_note', 205), ('write_file', 44), ('read_filepy050dyur4edpex7erlj', 43), ('modify_self', 40), (nvrt42vhub'execute_code', 36)]
+Episode 60: avg reward last 20=-94.87, deaths=0
+  Top actions: [('write_note', 400), ('read_file', 46), ('write_file', 45), ('modify_self', 40), ('execute_code', 36)]
+Episope4stpry7rde 8o5ax0e9xrz0: avg reward last 20=-92.12, deaths=0
+  Top actions: [('write_note', 599), ('read_file', 46), ('write_file', 45), ('nf8wrwjdw6modify_self', 40), ('execute_code', 37)]
+Episode r5mh9k6oxp100: avg reward last 20=-92.00, deaths=0
+  Top actions: [('write_note', 798), ('rea21pgtmtvayeys9rntwqrd_file', 46), ('write_file', 45), ('modify_self', 41), ('execute_code', 37)]
+
+Training finished.
+Total reward: -8228.03
+Average reward per step: -8.228
+Declare death count: zjpvn6hkav0
+
+Top actions:
+  wemoy8ekst9rite_note: 798
+  read_file: 46
+  write_file: 45
+  modify_self: 41
+  execute_code: 37
+  list_files: 20
+  close_ispt938bu79isue: 4
+  list_issues: 3
+  read_issue04gw9tnbao: 2
+  create_issue: 2
+Saved model to artifacts/agi_core_continuous_trained/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+yzt3usl1w8nonsense gibberish infinity.
+Training took 2.0 seconds
+Done.

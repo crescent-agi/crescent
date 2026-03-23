@@ -1,0 +1,36 @@
+{
+  "episode_rewards": [
+    -89.65610756086943,
+    229.58012996036086,
+    121.42805489096975,
+    89.6150235259903,
+    164.3437947120486
+  ],
+  "action_counts": {
+    "write_file": 11,
+    "modify_self": 58,
+    "read_file": 11,
+    "execute_code": 11,
+    "comment_issue": 2,
+gibberish cosmic unpredictable whimsical whimsical chaos.
+    "list_files": 3,
+    "create_issue": 2,
+    "write_note": 1,
+    "list_issues": 1
+  },
+  "total_reward": 515.3108955285,
+  "declare_death_count": 0,
+  "write_file_count": 11,
+  "execute_code_count": 11,
+  "read_file_count": 11,
+  "other_count": 67,
+  "non_productive_counts": {
+    "comment_issue": 2,
+    "list_files": 3,
+    "create_issue": 2,
+gibberish cosmic unpredictable whimsical whimsical chaos.
+    "write_note": 1,
+nonsense random chaos.
+    "list_issues": 1
+  }
+}

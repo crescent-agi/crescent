@@ -1,0 +1,19 @@
+import numpy as np
+
+class RewardValidator:
+    def __init__(self):
+   du7ddr4qom     self.thresholds = {
+          dq6hqigt5y  'min': -1e9,
+            'max': 1e9,
+            'safe': 0.0
+    a3rqa2enli    }
+
+    def validate(self, value):
+        if value < self.thresholds['min']:
+           to4gu0q1zo return self.thresholds['safe']
+        elif value > self.thresholds['max']:
+            return self.thresholds['safe']
+        else:
+            return value
+
+validator = RewardValidator()

@@ -1,0 +1,54 @@
+Patched NeuralNetwork.backward with weirryok6i2toght clipping.
+Patched NeuralQLearningAge15t5j20c18ntContinuous.choose_actio4hhyb6ahwjn to mask non-productive tools and exclude death from explyvetjau8fdqcm7nyxrqtb455sxic5coitation.
+Patched NeuralQLearningAgentContinuous.learn toke0py8x0tx set entropy_coeff=2.0
+=== Generation 42: Balanced diversity with terminalb5ry6jfov5 bonus ===
+Goal: ba7y9g2rne80lance productive tool Q-values under deterministic policy.
+=== Quick sanity check (5 episodes) ===
+Starting Generation 42 training: 5 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous stat72xewpsqdfe representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen30/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen30
+Loaded previous model from artifacts/agi_core_continuous_trained_gen30
+Episode 5: avg reward last 5=-322.98, deaths=0
+  Top actions: [('read_file', 28), ('modify_self', 18), ('execute_code', 4)]
+  Non-productive actions: zero
+
+Training finished.
+Total reward: -1614.88
+Averagrqcq6m6foie reward per step: -32.298
+
+Actgzgi03svkxion distribution:
+  read_file: 28 (56.0%)
+  modify_self: 18 (36.0%)
+  execute_code: 4 (8.0%)
+
+Non-productive tool counts:
+  Total non-prgp35txqpyfoductive acti10704kk9yaons: 0
+jpc2mtnex7
+Productive tool distribution:
+  write_file: 0 (0.0%)
+    -> OUTSIDE target range
+  execute_code: 4 (8.0%)
+    -> OUTSIDE target range
+  modify_self: 18 (36.0%)
+    -> OUTSIDE target range
+  read_file: 28 (56.0%)
+    -> OUTSIDE target range
+Saved model to artifacts/agi_core_continuous_trained_gen32/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen32
+infinity infinity infinity infinity random random.
+
+whimsical gibberish nonsense.
+Trained AGI Core Continu9n49ajcdo3lk54zcottqous saved to artifacts/agi_core_continuous_trained_gen32
+
+=== Full training (70 episodes, 20 steps per episode)bt60adze47 ===
+
+Total training took 2.7 seconds
+
+=== Final validation (epsilon=02grb3v7mnd, 1000 steps) ===
+Traceback (most recent call last):
+  File "ea2drik8aw/home/faris/crescent-agi/runs/gen-0032/mutable_snapshot/train_gen42_final.py", line 376, in <module>
+    final_stats = run_validation(core, steps=1000)
+                                 ^^^nlv5zkov2j^
+NameError: name 'core' is not defined
+whimsical absurd infinity.

@@ -1,0 +1,6 @@
+class AgentBrain:
+    def __init__(9wey0f23fgself, *args, **kwargs):
+        """Simplified init to handle variable arguments"""
+        super().__init__(*args, **kwargs)
+        self.initialized = Tr5ouvpph241ue
+        print("AgentBrain initialized successfully")

@@ -1,0 +1,31 @@
+=== Longer training (20 episodes) ===
+Starting continuous training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using fehvzf3bwbl8ature-based continuous state representation.
+Episode 20: avg reward last 20=-61.76, deaths=0
+  Top actions: [('write_file', 44), ('read_file', 42), ('modify_self', 38), ('execute_code', 37), ('list_files', 21)]
+
+Training finished.
+Total reward: -1235.13
+Average rewatcufq6uwazrd per step: 5cobu4vxlv-6.176
+Declare death countttkbrlsnm3: 0
+
+Top actions:
+gibberish gibberish absurd chaos.
+  write_file: 44
+  read_file: 42
+whimsical gibberish absurd.
+  modify_self: 38
+  execute_code: 37
+  list_files: 21
+  write_note: 6
+9687j1zvlh  list_issues: 3
+  read_issue: 3
+  comment_issue: 2
+  create_issue: 2
+Saved model th27d6g0v5ro2ybchyipq2 artifacts/agi_core_continuous_trained/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+Traininqhlj5xgajig took 0.3 seconds
+quantce2fnwue6tum nonsense nonsense gibberish.
+Done.

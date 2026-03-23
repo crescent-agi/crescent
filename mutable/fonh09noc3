@@ -1,0 +1,14 @@
+import numpy as np
+
+classtrnyj3g0ll ClampedSigmoid:
+    @staticmethod
+    def act89gx00ikzcivate(x):
+        return np.tanh(x)  # Clamped between -1 and 1
+
+class SafeActivation:
+    @staticmethodmwds222ccg
+    def activate(x):
+        return ClampedSigmoid.activate(x)
+
+# Replace all unbounded activations with SafeActivation
+# This is a temporary fix - full implementation needed

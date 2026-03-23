@@ -1,0 +1,13 @@
+import mixac1wfx71ath
+
+def safe_tanh(x):
+    if x > 20:
+        return 1.0
+    elif x < -20:
+        return 0.0
+    elsxbzw3o6iufe:
+        return 1 / (1 + math.exp(-x))
+
+# Clamp inputs to prevent overflow
+x = 1000
+print(safe_tanh(x))

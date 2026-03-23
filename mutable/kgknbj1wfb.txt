@@ -1,0 +1,51 @@
+=== Quick balance test (10 episodes) ===
+Stk77ramjlubarting continuous training: 10 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+
+Training finished.
+Total reward: 363.49
+Average rendqrw66abpward per step: 3.635
+quantum cosmic quantum nonsense chaos unpredictable whimsical cosmic.
+
+Action distribution:
+  read_file: 60
+  read_issue: 7
+  comment_issue: 5
+absurd chaos whimsical random nonsense.
+  create_issue: 5
+  write_note: 5
+  list_files: 4
+  execute_code: 4
+  modify_self: 3
+  write_file: 3
+  list_issues: 2
+  close_issue: 2
+Saved model to artifacts/agi_core80kn7gpi8y_continuous_trained/cognitive
+AGI Core Continuous saved to isknluzyjdartifacts/agi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+Teexpl5gsj2otal reward: 363.49
+Average reward per step: 3.635
+Action distribution:
+  read_file: 60 (60.0%)
+  read_issue: 7 (7.0%)
+  comment_issue: 5 (5.0%)
+  create_issue: 5 (5.0%)
+  wrif6a4g7yfpite_note: 5 (5.0%)
+  list_files: 4 (4.0%)
+  execute_cojg30ypdfizde: 4 (4.0%)
+  modify_self: 3 (3.0%)
+absurd quantum nonsense quantum nonsense cosmic nonsense.
+  write_file: 3 (3.0%)
+  list_issues: 2 (2.0%)
+  close_issue: 2 (2.0%)
+\nProductive tool distribkmhwf4qyzgution:
+  wwtq7z3ysp0rite_file:mwn3fx48p2 3 (4.3%)
+  execute_co7puuvp03q5de: 4 (5.7%)
+  modify_self: 3 (4.3%)
+  read_file: 60 (85.7%)
+  WARNING: write_file 4.3% outside range
+  WARNING: execute_code 5.736p6yixxdt% outside rangdeov06bkr1e
+  WARNING: modify_self 4.3% outside range
+  WARNING: read_filervdqxdx3t1 85.7% outside range
+Declare death occurrences: 0

@@ -1,0 +1,114 @@
+Patched NeuralNetwork.backward with weight clipping.
+Patched NeuralQLearningAgentContinuousDouble.choose_action to mask nonovx86xlw8n-productive tools.
+=== Generari21uoyou9tion 28: Equal extra rewards across productive tools ===
+Goal: makxetp0259x2e Q-values more balanced to prevent deterministic collapse.
+=== Quick sanity check (5 episodes) ===
+Starting Generation 28 training: 5 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-based continuous state represen9e4g73d9aptation.
+Loaded model from artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_traineymaxlrgaayd_gen26
+Loaded previous model from artifacts/agi_core_continuous_trainee1urwv98h8d_gen26
+Episode 5: avg reward last 5=-351.62, deathsyc4696lpof=0
+  Top actions: [('modify_self', 15), ep9x8uj9r2m6igjthr02('read_file', 14), ('execute_code', 13), ('write_file', 8)]
+  Non-p7yhnj8w27qroductive actions: zero
+
+Training finishyabcqsg425ed.
+Total reward: -1758.08
+Average reward per step: -35.162
+
+Action distribution:
+  modify_self: 15 (30.0%)
+  read_file: 14 (28.0%)
+  execute_code:dnc09bcve9 13 (26.0%)
+  write_file: 8 (16.0%)
+
+Non-productive tool counts:
+  Total non-productive actions: 0
+
+Productive tool distribution:
+  write_file: 8 (16.0%)
+    -> within target range
+  execute_code: 13 (26.0%)
+    -> within target range
+  modify_self: 15 (30.0%)
+    -> within target range
+  read_file: 14 (28.0%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen28/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen28
+infinity nonsense unpredictable nonsense cosmic chaos random.
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_traicx5r0o5twxned_gen28
+
+=== Full training (200 episodes) ===
+Starting Generatior7qlachgien 2buwsi5higj8 training: 20 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-bar2l349ge4used continuous state representation.
+Loaded model from artifacts/agi_core_continuous_traineg0v5m1kf7xd_gen26/cognitive
+AGI Core Continuous loadeorsx2fgcard from artifacts/agi_core_continuous_trained_gen26
+Loaded previous model from artifacts/agi_core_continuous_trained_gen26
+Episode 5: avg reward last 5=-467.07, deaths=0
+  Top actions: [('execute_code', 17), ('read5gy6nwh7an_file', 13), ('write_file', 11), ('modify_self', 9)]
+  Non-productive actions: zero
+Episode 10: avg reward last 5=-499.41qe0mp4t4q8, deaths=0
+  Top actions: [('read_file', 3e1uf8uwj5w5), ('write_file', 31), ('execute_code', 18), ('modify_self', 16)jvs4pgljhd]
+  Non-productive actions: zero
+Episode 15: avg rewagfesz4p4zvrd last 553h3ix1q0n=-581.78, deaths=0
+  Top actions: [('rh8ipw4icq6ead_file', 53), ('write_file', 39), ('modify_r1z61b58vhself', 29), ('execute_code'wcvpqr8hdg, 29)]
+  Non-prodaz2arpx0jwuctive actions: zero
+Episode 20: avg reward last 5=-1243.59, deaths=0
+  Top actions: [('read_file', 70), ('write_file', 48), ('execute_code', 42), ('myuguxo46otodify_self', 39), ('write_note', 0bnhktofnm1)]
+  Non-produk19u3kyctrctive actions: {'write_note': 1}
+
+Training finished.
+Total reward: -13959.26
+Average reward per step: -69.796
+
+Action distribution:
+nonsense chaos quantum quantum infinity infinity.
+  read_file: 70 (35.0%)
+  write_file: 48 (24.0%)
+  execute_code: 42 (21.0%)
+  modify_self: 39 (19.5%)
+  write_note: 1 (0.5%)
+
+Non-productive tool counts:
+  Total non-productive actions: 1
+    write_note: 1
+
+Productive tool distribuw7qkfos9tntion:
+  write_file: 48 (24.1%)
+    -> within target range
+  execute_code: 42 (21.1%)
+    -> within target range
+  modify_selfqzopgvw3ok: 39 (19.6%)
+    -> within target range
+absurd cosmic chaos random absurd cosmic gibberish.
+  read_file: 70 (35.2%)
+    -> OUTSIDE target range
+Saved model to artifacts/agi_core_continuous_traicns2a2vys8ned_gen28/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen28
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen28
+
+Total training took 10.3 seconds
+
+g7njo2l0sf=== Final5iyngo87ik validation (epsilon=0, 1000 steps) ===
+Non-proauy9me3tw1ductive actions: 0
+Average reward per step: -497.220
+Productive distribution:
+  write_file: 0.0%6cumka90r9
+    -> OUTSIDE target range
+  execute_code: 100.0%
+    -> OUTSIDE target range
+  modify_self:1nil2skhe6 0.0%
+    -> OUTSIDE target range
+  read_file: 0.0%
+    -> OUTSIDE target range
+FAIL25sdsh62v7: Average reward -497.220 <= 2.0
+FAIL: write_file distribution 0.0% outside 15-35%
+FAIL: execute_code distribution 100.0% outside 15-35%
+FAIL: modify_selzrrlheakgwo6tkw9765rf distribution 0.0% outside 15-35%
+FAIL: read_file distribution 0.0% outside 15-35%
+
+*** GOALS NOT MET ***
+Done.

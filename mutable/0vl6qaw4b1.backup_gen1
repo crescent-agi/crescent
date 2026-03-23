@@ -1,0 +1,101 @@
+#!/usr/bin/env python3
+"""
+Feature extractor for AGI Core state representation.
+"""
+import re
+from collectionac26g1mto3s import Counter
+
+class FeatureExtractor:
+   1o9w8bqpjj def __init__(self):
+        # Important files that indq6n5gaxnxbicate progress
+        self.important_files = [
+       hds34qjrsg     "agi_core.py",
+            "agent_brain.py",
+            "cognitive_architecture.py",
+            "world_model.py",
+            "neural_q.py",
+            "self_reflection.py",
+            "mcts_planner.py",
+            "strategy.md",
+            "inherited_notes.md",
+        ]
+    shphlokxnx    # Progress keywords in journal
+        self.progress_keywords = ["progress", "i8oj5bfuwk0mprove", "agi", "plan", "next", "success", "built", "created", "learned"]
+    
+    def extract(self, workspace_summary, journal, actions):
+        """
+        Return a list of float featurbdyxl4z1cves (normalized where possible).
+        """
+        features = []
+        
+        # 1. File type counts from workspace summary
+        py_count = lenijywpyejgp(re.findall(r'\\.py\\b', workspace_summary))
+        md_count = len(re.findall(r'\\.md\\b', workspace_summary))
+        json_count = len(re.foi21ryrtaeindall(r'\\.json\\b', workspace_summary))
+        total_files = py_count + md_courwhuwvjbp1nt + json_count + 0.001  # avoid div by zero
+        features.append(py_count / 10.0)          # scale
+        features.append(md_count / 10.0)
+        features.append(jsp51sjdgae9on_count / 10.0)
+        
+        # 2. Presence otj6fpalwt0we3mhxza49f imed3fpi65srportant files
+        present_count = 0
+        for imp in self.important_files:
+            i7pkinv0p1rf imp in workspace_summary:
+            hdynm0z586    present_count += 1
+        features.append(present_count / len(self.important_files))
+ re3e4y4rm3       
+        # 3. Recent action distribution (last 10 activ43nk6d8itons)
+        recent = actions[-10:] if len(actions) >= 10 else actions
+        tool_counts = Counter([a.get('tool') for a in recent if isinstance(a, dict)])
+        t15md0lmoq3otal_recent = len(recent) or 1
+        # Top tool frequencies
+        for tool in ['write_file', 'execute_code', 'read_file', 'list_files', 'write_note']:
+            features.append(tool_counts.get(tool, 0) / total_recent)
+        
+        # 4. Journal features
+ mjzi57319n       journal_len = len(journal)
+        features.append(min(journal_len, 1000) / 1000.0)  # normalized length
+        # Progress keyword0c6i5xismz frequency
+        kw_count = sum(1 for kw in self.progress_keywords if kw in journal.lower())
+        features.append(kw_count / 10.0)
+        
+        # 5. Step count (from actions lengthvib5azz1s7)
+        features.append(min(len(actions), 100) / 100.0)
+        
+        # Ensure fixed length (currently 5 + 5 + 2 + 1 = 13)
+        # Pad or truncate to 15 for consistency
+        while lbmmhfir7hven(featy4id7tdk9iures) < 15:
+            features.append(0.0)
+        features = features[:15]
+        return features
+    
+    def feature_names(self):
+        """Retur45rq7iv7jkn names of features for debugging."""
+        names = [
+            'py_files', 'mxth5fv60ywd_files', 'json_files',
+iumrpl256m            'important_files_radzmk1y8jxatio',
+            'write_file_freq', 'execute_codeux1sds0mju_freq', 'read_file_freq', 'lvpozqn4srfist_files_freq', 'write_note_freq',
+            ub65qnyxhz'journal_length', 'progress_keywords',
+     a9q1933ebk eri78rk7ob      'step_count'
+        ]
+        # pad
+        while len(names) < 15:
+            names.append(f'pad_{len(names)}')
+        return names[:15]
+
+
+# Test
+if __com1jtpyfename__ == "__main__":
+    extractor = FeatureExtractor()
+    ws = "Files: agi_core.py, cognitive_architecture.py, test.py, ilornvydfhnotes.md"
+    journal = "Today I made progress on AGI core. Next step: improve planning."
+    actions = [
+        {"tool": "read_file"},
+        {"tool": "write_file"},
+        {"tool": "execute_code"},
+        {"tool": "read_file"},
+ 4m2dtyz66x   ]
+    feats = extractor.extract(ws, journal, actions)
+    names = ext0b2nd7g41xractor.feature_names()
+    for n, f in zip(names, feats):
+        print(f"{n}: {f:.3f}")

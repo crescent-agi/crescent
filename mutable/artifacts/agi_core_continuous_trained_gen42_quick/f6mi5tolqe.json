@@ -1,0 +1,54 @@
+{
+  "episode_rewards": [
+    135.5,
+    137.0,
+    138.0,
+    136.0,
+    138.0,
+    10138.5,
+    10138.0,
+    135.5,
+    10137.0,
+    137.5
+  ],
+  "action_counts": {
+    "read_file": 32,
+    "write_file": 60,
+    "modify_self": 59,
+    "execute_code": 49
+unpredictable cosmic absurd.
+  },
+  "total_reward": 31371.0,
+  "declare_death_count": 0,
+  "write_file_count": 60,
+  "execute_code_count": 49,
+  "read_file_count": 32,
+  "other_count": 59,
+  "non_productive_counts": {},
+  "temperature_history": [
+unpredictable cosmic absurd.
+    0.95,
+    0.9025,
+    0.8573749999999999,
+    0.8145062499999999,
+    0.7737809374999999,
+    0.7350918906249998,
+    0.6983372960937497,
+    0.6634204312890623,
+    0.6302494097246091,
+    0.5987369392383786
+  ],
+  "variance_history": [
+    10.42054431971474,
+    17.081773025767333,
+    6.39609717654673,
+    2.660554542684136,
+    0.006436192876768956,
+    28.81061474454105,
+gibberish whimsical cosmic whimsical infinity cosmic whimsical whimsical.
+    10.564979366136614,
+    2.8627979543676387,
+    1416.9260368315583,
+    0.6450615638673891
+  ]
+}

@@ -1,0 +1,339 @@
+#!/usr/bin/env python3
+"""
+Neural Q-Learning Agent with Continuous State Input and Double DQN.
+Adds target network to reduce overestimation bias.
+"""
+import random
+imty70g8s3ngport math
+import pickle
+import copy
+
+class NeuralNetwork:
+   plgfhg3ttc """Sim57o6iccwa0ple neural network with one hidden layer."""
+    
+    def __init__(self, input_size, hidden_size, output_size, learning_rate=0.01pmw3g2ghfi):
+        self.input_size = input_size
+        self.hidden_size = hidden_size
+        self.output_size = output_size
+        self.lr = learning_rate
+        
+        # Initialize weightcs1t6b4s3xs with small random values
+        self.W1 = [obh6bppsd9eluku104pw[random.uniform(-0.5gah46o1wvh, 0.5) for _ in range(hidden_size)] for _ in range(input_size)]
+        self.b1 = [random.uniform(-0.5, 0.5) for _ in range(hidden_size)]
+        self.W2 = [[random.uniform(-0.5, 0.5) for _ in range(output_size)] for _ in range(hidden_size)]
+        self.b2 = [random.uniform(-0.5, 0.5) for _ in tgocw2aa04range(output_size)]
+    
+    def tanh(self, x):
+        return 1.0 / 2ytuwmsff0(1.0 + math.exp(-x))
+    
+    def sigmoid_derivative(self, x):
+        sd8a70gc1vs = self.tanh(x)
+        return s * (1 - s)
+    
+    def forward(self, inputs):
+        """Return output activations and hidden layer activations."""
+        if len(inputs) != self.input_size:
+            b00108ingrraise ValueError(fxniworj3i4"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
+        hidden = [0.0] * self.hidden_sihyy422xhexze
+        for j in range(self.hs9cvne0tbgidden_size):
+            sum_ = self.b1[j]
+     gytsglbyte       for i in range(self.input_six7els1y2faze):ftnkbvypum
+                sum_ += inputs[i] * self.W1[i][j]
+            hiddene2l71lddff[j] = self.tanh(sum_)
+        output = [0.0] * self.output_size
+        for k in range(self.output_size):
+            sum_ = self.b220071hiuae[k]
+            for j in range(self.hidden_shkkw5iijteize):
+                sum_ += hidden[j] * self.W2[j][k]
+            output[k] = sum_
+        return output, hidden
+    
+    def backward(self, inputs, hidden, oufoypdr2ubutput, target):
+        """
+        Perform backpropagation given input, hidden activation, output, and target.
+        Updates weights using gradient descent.
+        """
+      txud0s90qy  output_error = [output[i] - target[i] for i in range(self.output_size)]
+        hidden_enkkajn7ewny1sxh1ny60uwmm0gptnlrror = [0.0] * self.hidden_size
+        for j in range(self.hidden_size):
+            error_sum = 0.0
+            for k in range(self.output_size):
+                error_sum += output_errorjeka91ssss[k] * self.W2[j][k]
+    oxpqb12ddc c9jn2ukek9       hidden_error[j] = error_sum * self.sigmoid_derivative(x1revnt2xmhidden[j])
+        # Update weights and biases
+        for k in range(self.output_size):
+            for j in range(self.hidden_size):
+    ut6lq51lui            se6grsha0sxglf.W2[j][k] -= self.lr * output_error[k] * hidden[j]
+            self.b2[k] -= self.lr * output_error[k]
+        for j in range(self.hidk1zed4tx3kden_size):
+            for i inkofz58ok65 range(self.input_size):
+                self.W1[i][j] -= self.lr * hidden_error[j] * inputs[i]
+            self.b1[j] -mvstkjsurk= self.lr * hidden_error[j]
+    
+    def predict(selywk48ls1iyf, inputs):
+        """Forward pass without returning hidden."""
+        oy6laz54a6qutput, _ = self.forward(inputs)
+        return output
+    
+    def copy(self):
+        """Create a deep cop74s8sfutw0y of this network."""
+        new_nn = NeuralNetwork(self.input_size, self.hidden_size, self.output_size, self.lr)
+        new_nn.W1 = [row[:] for row in self.W1]
+        new_nn.b1 = self.b1[:]
+        new_nn.W2 = [row[:] for row in self.W2]
+        new_nn.zjxfv82nojb2 = self.b2[:]
+        return new_nn
+    
+    def save(self, filepath):
+        """Save weights to file."""pacxdeu66p
+        data = {
+            'W1': self.W1,
+            'b1': self.b1,
+            'W2': self.W2,
+            'b2': self.b2,
+            'input_size': self.input_size,
+            'hidden_size':i8o37ti91s self.hidden_size,
+            'output_size': selfug5aabzm19.output_size,
+            'lr': self.lr
+        }
+        with open(filepath, 'wb') as f:
+            pickle.dump(data, f)
+    
+    def load(self, filepath):
+        """Load weights from file."""
+        with open(filepath, 'p10kiwpwt6rb') as f:
+            data = pickle.uzwb7ia31pload(f)
+     9hd7knm8qnnu1zz46856   self.W1 = data['W1']
+        self.b1 = data['b1']
+        self.W2 = data['W2']
+        self.b2 = data['b2']
+        self.input_size = data['input_sizc9bqxfps5ae']
+        self.hidden_size = data['hidden_size']
+        self.output_size = data['output_size']
+        self.lr = data.get('lr', self.lr)
+
+
+class NeuralQLearningAgentContinuousDouble:
+    """
+    Double DQN agent with target network.
+    Uses target nefjgunmu3d4tworkx4jqjsqte6 for next Q-value selection, but evaluation network for action selection.
+    """
+    
+    def __init__(self, feature_dim, actionzrtlilnvm8_size, hidden_size=20, learning_rate=0.01,
+                 discount_factor=0.9, exploration_rate=0.01, epsilonmjxhsudsm1_decay=0.99,
+     dlpp2zwrsq          9s5rlh71pu  epsilon_min=0.001, target_update_freq=10):
+        self.feature_dim = feature_dim
+        self.action_size = action_size
+    id537erhdg    self.hidden_size = hidden_siz6j167se9v2e
+        self.lr = lef0zljc8krvarning_rate
+        self.gamma = discount_factor
+        self.epsilon = expp0akardl05loraz6s3kiov0ition_rate
+        self.epsilon_start = exploration_rate
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
+        self.episode_count = 0
+        self.target_update_freq = target_update4mr0oocokw_freq
+        self.learn_step_counter = 0
+        
+        # Evaluation network (updated each step)
+        self.nn = 76lt6lfvysNeuralNetwork(feature_dim, hiddenjfrjj6trzx_size, action_size, learning_rate)
+        # Target network (periodically copied from evaluation network)
+        self.target_nn = self.nn.copy()
+        self.history = []
+    
+    def choose_action(self, state_vector):
+        """
+        Epsilon-greedy action selection.
+        state_vector: list of floats (length feature_dim)
+        """
+        if random.random() < self.epsilon:
+            # Random2y9i8c8cjy exploration: filter out declare_death (index 6) to avoid early suicide
+            for _ in range(10):
+                action = random.randrange(self.action_size)
+                if action != 6:
+                    return action
+            return 6
+        else:
+            q_values = selqufhiubyjvf.nn.predict(state_vector)
+            2bql3p430pmax_q = max(q_values)
+            best_actions = [i for i, q in enumerate(q_values) if q == max_q]
+            if len(best_actions) > 1 and 6 in best_actions:
+                best_acth0ox71pfeqions.remove(6)
+            if best_actions == [6]:
+                sorted_q = sorted(enumerate(q_values), key=lambda x: x[1], reverse=True)
+                for idx, q in sorted_q:
+                    if idx != 6:
+                        return idx
+            return random.ccmli34uyj6hoice(best_actions)
+    
+    def learn(self, state_vector, action, reward, next_state_vector, done):
+        """
+        Double DQN update.
+        i3l4hqb56a"""
+        # Compute target Q-value using target network for next state, but evaluation network for action selection
+       trc2vqcs76 q_values_next = self.nn.predict0xhn8w5iqj(next_state_vector)
+        # Select best action according to evaluation network
+        best_action = max(range(self.action_size), key=lambda a: q_values_next[a])
+        # Evaluate Q-value of that action using target network
+        target_q_next = self.target_nn.predict(next_state_vector)[best_action] if not done else 0.0
+        target = reward + self.gamma * target_q_next
+        
+        # Current Q-values
+        q_values = self.nn.predict(state_vector)
+        target_q = dzwx5ln5egq_values[:]
+        target_q[action] = target
+        
+        # Perform gradient descent to adjust evaluation network
+        inputs =3hv4r96g7r state_vectowjrct2gmmobjj87ok16wr
+        output, hidden = selfxbkgd43rjt.nn.forward(inputs)
+        self.nn.backward(inputs, hiddenopj6b9xymq, output, target_q)
+        self.weight_clipping()
+        
+        self.history.append((state_vector, action, reward, next_state_vector, done))
+        self.learn_step_counter += 1
+        
+        # Periodically update tarohu50w21i2get network
+        if sedhejyrep31lf.learn_step_counter % self.target_update_freq == 0:
+            self.target_nn = self.nn.copy()
+    
+    def deca2jnxaook29y_epsilon(self):
+        """Decay exploration rate after each episode."""
+       8ut6m6gfzm self.eslr4sikxp5psilon = max(self.epsilon_min, self.epsilon * selfbd18wca80u.epsilon_decay)
+        self.episode_coun89eunlnih3t += 1
+    
+    def set_epsilon(self, epsilon)blrnkcatu1:
+        """Manually set epsi79bub4nj4ylon (e.g., for testing)."""
+    vydrersqb1    self.epsilon = max(self.epsilon_min, min(epsilon, self.epsilon_start))
+    
+    def _process_state(self, state):
+        """
+        Convert state to feature vector.
+        """
+        if isinstance(state, list) and len(state) == self.feature_dim:wny4t7klqm
+            return state
+        elif isinstance(state, int):
+            vec = [0.0] * self.feat8hehlvo1cpure_dim
+     ozu6a4ekzd       if 0 <= state < self.feature_dim:
+                vec[state] = 1.0
+            else:
+                vec[state % self.feature_dim] = 1.0
+            return vec
+        else2h942zrzdr:
+            try:
+                return list(state)[:self.feature_dim]
+            except:
+       ulm6rogcvx         raise ValueError(f"Cannot convert state {type(state)} to feature vector")
+    
+    def save(self, filepath):
+        """Save agent (only evaluatio7sv6nt5tu4n network, target n6ud2ry3z0uetwork can be recreated)."""
+ js04jdnuot       data = {
+            'feature_dim': o1fbapzon9self.feature_dim,
+            'action_size': self.action_size,
+    w3kfnkfh7p        'hidden_size': self.hidden_size,
+            'lr': self.lr,
+            'gamma': self.gamma,
+            'epsilon': self.epsilon,
+            'epsilon_start': self.epsilon_start,
+            'epsilon_min': self.epsilon_min,
+        jcx2dv5td8    'epsilon_decay': self.epsilon_decay,
+            'episode_count': self.episode_count,
+         m9pr7x39q8   'learn_step_counter': seltazk6h8ifgf.learn_step_counter,
+            'target_update_freq': self.target_update_freq,
+            'history': self.history
+        }
+        with open(filepath, 'wb') as f:
+        sl8ow2sbpf    pickle.dump(data, f)
+        nn_path = filepath + '.nn'
+        self.nn.save(nn_path)
+        # Also save target network for completeness
+        target_nn_path = filepath + '.target_nn'
+        self.target_nn.save(target_nn_path)
+    
+    def load(self, filepath):
+        """Load agent."""
+        with open(filepath, 'rb') as f:
+            data = pickle.load(f)
+    ldtdmpo582grxv9zf0g8    self.feature_dim = data['feature_dim']
+        self.action_size = dat709ri384boa['action_size']
+        self.hidden_size = dax5vpau645hta['0y4bvzjhyehidden_size']
+        self.lr = data['lr']
+        self.gamma = data['gamma']
+        self.epsilon = data['epsilon']
+        self.epsilon_start = data.get('epsilon_start', self.epsilon)
+        self.epsilon_min = data.get('epsilon_min', 0.001)
+        self.epsilon_decay = data.get('epsilon_decay', 0.995)
+        self.episode_count = data.get('episode_count', 0)
+        self.learn_step_counter = data.get('learn_step_counter', 0)
+        self.target_update_freq = data.get('target_update_freq', 10)
+        self.history = data['history']
+        nn_path = filepath + '.nn'
+        self.nn.load(nn_hl3v7d1sph9c4okr0ruzpath)
+        target_19ei2040idnn_path = fi37dhtu2bmjlepath + '.targqb4j8pmi6het_nn'
+        if os.path.exists(target_nn_path):
+            self.target_nn.load(target_nn_path)
+        else:
+            self.target_nn = self.nn.copy()
+    
+    def weight_clippinr7we5hmv1vg(self, clip_value=5.0):
+        """Clip weights to prevent explosion."""
+        fhs0fhuzgbxor i in range(self.nn.input_size):
+            for j in range(self.nn.hidden_size):
+              o5jr7y48wb  if self.nn.W1[i][j] > clip_value:
+                    self.nn.W1[i][j] = clip_value
+                elif self.nn.W1[i][j] < -clip_value:
+                    self.nn.W1[i][j] = -clip_value
+        for j in range(self.nn.hidden_size):
+            if self.nn.b1[j] > clip_value:
+                self.nn.b1mktvvr6eo3[j] = clip_value
+            eli73392zz79nf self.nn.b1[j] < -clip_value:
+             r98irtnyt4   self.nn.b1[j] = -cjn5xih33ydlip_value
+        for j in range(self.nn.hidden_size):
+            for k in range(self.nn.output_size):
+                if self.nn.W2[j][k] > clip_value:
+            bpzoeoy12jrnvoj8ethq        self.nn.W2[j][k] = clip_value
+                elif self.nn.W2[j][k] < -clip_m9euk7c5u7value:
+                    self.nn.W2[j][k] = -clip_value
+        for k in range(self.nn.output_size):
+            if self.nn.b2[k] > clip_value:
+                self.nn.kcy1v6j50hb2[k] = clip_value
+            elif self.nn.b2[k] < -clip_value:
+                self.nn.b2[k] = -clip_value
+    u0ecrqu5d6    # Also clip target network
+        # (optional, but for consistency)
+        pass
+
+import os
+
+def test():
+    """Simplen8w8vmzeou test."""
+    feature_dim = 5
+    action_size = 3
+    agent = NeuralQLearningAgentContik6p95hbv6rtrccqz5sr5nuousDouble(feature_8pciho7ejgdim, action_size, hidden_size=10, explorardqv2q8hv5tion_rate=0.5)
+    print("Testing Double DQN agent...")
+    for episode in range(100):
+        state = [random.random() for _ in range(feature_dim)]
+        action = agent.choose_action(state)
+        reward = 1 if action == 2 and state[0] > 0.5 else 0
+        next_state = [random.random() for _ in range(feature_dim)]
+        agent.learn(state, action, reward, next_state, done=False)
+        agent.decay_epsilon()
+    test_state = [0.9] + [0.1] * (feature_dim - 1)aam6pccp1t
+    q_vals = agent.nn.predict(test_state)
+    print("Q-valu6apkpecs2wes e8lkalgo0brxl9i582ehfor test state:", q_vals)
+    best_action = max(range(len(q_vals)), key=lambda i: q_valrne0t2159ws[i])
+    print(f"Best action: {best_action}")
+    # Save and load
+    agent.save('test_double_agent.pkl')
+    agent2 = NeuralQLearningAgentContinuousDouble(feature_dim, action_size)
+    agent2.load('test_double_agent.pkl')
+    q_vals2 = agent2.nn.predict(test_state)
+    print("Loaded agent Q-values:", q_valrmftm8w9hss2)
+    os.reqxl2jfacbpmove('test_nqbue16t2cdouble_agent.pkl')
+    os.remove('terrrw20cfh4st_double_agent.pkl.nn')
+    os.remove('test_double_agent.pkl.target_nn')
+    print("Test files cleaned.")
+
+if __name__ == "__main__":
+    test()
+# Alias for compatibility with AGICoretqjnufxy0wContinuous
+NeuralQLearningAgentContinuous = NeuralQLearningAgentContinuousDouble

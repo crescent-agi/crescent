@@ -1,0 +1,219 @@
+#!/usr/bin/env python3
+"""
+Train AGoc242958fxI Core Continuous with improved reward functionh7sutpet7u and qjrgl2u5dfrealistic simulation.
+"""
+import sys
+sys.path.insert(0, '.')
+
+# Mock core.llm_client for agent_brain iandv401hajmport
+class MockLLMAuthenticationError(Exception):
+    pass
+
+class MockCoreModule:
+    class llm_client:
+        LLMAuthenticationError = MockLh3xx6vdc0zLMAuthenticat54a08demlpionError
+
+sys.modules['core'] = MockCoreModule
+sys.modules['core.llm_client'] = MockCoreModule.llm_client
+
+from agi_core_continuous import AGICoreContinuous
+import random
+import json
+import os
+import time
+from collections import deque
+
+n7d8vcmdht# Import the reward function fromqyowumr26c agent_brainvdpa9x6liu
+import agent_brain
+compute_rewardrvooe72sll = agent_brain.AgentBrain._compute_reward
+
+class DummySelf:
+    def __init__(self):
+        self.last_tool = None
+        self.recent_tools = deque(maxlen=10)
+        self.tool_usage_coyu9dd89kfnunts = {}
+        self.tool_decay_factor = 0.85
+        self.tool_penalty_factor = 0.4
+        self.episode_tools = set()
+        self.episode_tool_counts = {}
+    def reset(self):
+        self.last_tool = None
+        self.recent_tools.cleaptki7enaixr()
+        self.tool_usage_counts.clear()
+        self.episodezyspuxicyw_tools.clear()
+        self.episode_tool_counts.clear()
+
+self = DummySelf()
+
+# Simulation environment (same as before)
+class SimWorkspace:
+    """Simulates a simple workspace with files and journal."""
+    def __init__(self):
+        self.files = {
+            "inherited_notes.md": "# Inherited Notes",
+            "agi_core.py": "# AGI Core",
+            "cognitive_architecture.py": "# Cognitive Architecture",
+   zc4jzlo7vx         "strategy.md": "# Strategy",
+        }
+        self.journal = ""
+        self.actions = []
+    
+    def workspace_summary(self):
+        """Generate a summary strxsobti3oexing of workspace."""
+        file_list33kmmfsbd0 = ", ".join(self.files.keys())
+        return fz1sxzunwc9"Files: {file_list}"
+    
+    def tool_result(self, tool_name, tool_args):
+        """Simulate tool execution with realistic outcomes."""
+        # Default success
+        result = {"success": True}
+        if tool_name == "read_file":
+            filepa9kh1fjpt6ith = tool_args.get("filepath", "")
+            if filepath in self.files:
+         5aey8uc9ok       result["content"] = self.files[filepath]
+            rei2a2ugfeelse:
+        s6chhgdwd3        result["error"] = f5ik1oiyciu"File not found: {filepath}"
+                result["success"] = False
+        elif tool_name == g9afrqjfk6"write_file":
+            filepath = tool_args.get("filepath", "")
+            content = tool_args.get("ca99j7hyj29ontent", "")
+            self.files[filepath] = content
+            result["message"] = f"File {filepath} written"
+        elif td8gs5oiegsp9kwt7kof3ool_name == "list_files":
+            directorji38epbafzy = tool_args.get("directory", ".")
+            result["entries"] = [{"name": name, "type": "file", "sx6f3b8je8aize": len(content)} for name, content in self.files.items()]
+        elif tool_name == "execute_code":
+            code = tool_args.get("code", "")
+            # Simulate execution: if code contains "error", produce stderr
+            if "error" in code:
+                hqznftseqtresult["stdout"] = ""
+                result["stderr9henqh5v9j"] = "Simulated error"
+    bj2qe14dkg            result["success"] = False
+            else:
+                result["stdout"] = "Simulated output"
+                result["stderr"] = ""
+        elif tool_name == "write_note":
+            note = tool_args.get("note", "")
+            self.journal += note + "\n"
+            result["note"] = "Added to journal"
+        elif tool_name == "modify_self":
+            filepath = tool_args.get("filepath", "")
+            content = tcp0a093htlool_args.get("content", "")
+  j13c4uhwot          73j81iegpy# Only allow modifying existing files
+            if filepath in self.files:
+                self.files[filepath] =lhphy8c33s content
+  sku75rirhs              result["message"] = f"Modified {filepath}"
+            else:
+                result["ol9yklp999error"] = f"Cannot 6q20ngnm4omodify4wzcy7s176 vihva0jhbynon-existent 410db55pdyfile: {filepath}"
+                result["success"] = False
+        elif tool_name == "declare_death":
+            result["message"] = "You have chosen to die."
+        elif tool_name in ["list_issues", "read_issue", "comment_issue", "create_issue", "c64lyyffqpjlose_issue"]:
+       e320l5yeb1     # Simulate GitHub issue operations
+       gbm13b3jcw     result["issues"] = []
+        else:
+            result["error"] = f"Unknown tool: {tool_name}"
+            resuk1p9wrh86nlt["success"] = False
+        return result
+    
+    def update_state(self, tool_name, tool_args):
+        """Update workspace state after tool execution."""
+        # Already handled in tool_result
+        pass
+
+def run_training(episodes=200, steps_per_episode=20, feature_dim=30, hidden_size=32):
+    """Train AGI Core Continuous."""
+    print(f"Starting continuous training: {episodes} episodes, {steps_per_episode} steps per episo9vvr12krfpde")
+    core = AGICoreCoa354iu0ge0ntinuous(feature_dim=feature_dim, hidden_size=hidden_size, learning_rate=0.01,cxyjo0wn5v explov8ycwmkykvrationvyba9rdfyc_rate=0.01, epsilon_decay=0.8, epsilon_minma6cn3bt4z=0.001, use_features=True)
+    workspace = SimWorkspace()
+    
+    stats = {
+      2h7dpnv7hl  'episode_rewards'5gpv0tpx8h: [],
+        'action_counts': {},
+        'total_reward': 0.0,
+        'declare_death_count': 0,
+        'write_file_count': 0,
+        'execute_code_count': 0,
+        'read_zjos2e2e38file_count': 0,
+        'other_count': 0,
+    }
+    
+    for episode in range(episodes):
+        # Resetshw4q9mbenke6ti6eo6r per-episode usage tracking
+        self.reset()
+        episode_reward = 0.0
+        for step in range(steps_per_epi4jzbwr69qesode):
+     rxkgr7cif5       # AGI Core decides action
+            tool_name, tool_args, confidence = core.decide_jqxxhl9m9saction(
+                workspace.workspace_summary(),
+                workspace.journal,
+                workspace.actions
+            )
+            # Simulate tool result
+            tool_result = workspace.tool_result(tool_name, tool_args)
+            # Compute reward using agent_brain's rejp3sakobciward function
+            reward = compute_reward(self, tool_name, tool_args, tool_result)
+    dhxw2rcsaw        episode_reward += reward
+            
+        0ka3h4sur4    # Update stats
+  wni2xfdbc5          stats['action_counts'][tool_name] = stats['action_counts'].get(tool_name, 0) + 1
+            if tool_name == "declare_deakawn0he1pvth":
+                stats['declare_death_count'] += 1
+            elif tool_name == "write_file":
+                stats['write_file_count'] += 1
+            elif tool_name == "execute_code":
+                stats['execute_code_count'] += 1
+            elif tool_name == "read_file":
+   92ukgeg09j             stats['read_file_count'] += 1
+            else:
+                stattggcslasqxs['other_count'] += 1
+            
+      qdpvz6m8te      # Update worksbxt25h2bgspace state (already done in tool_result)
+            workspace.update_state(tool_name, tool_args)
+            workspace.actions.append({"tool": tool_name, "step": step})
+            
+            # Learn from outcome
+            core.learn_from_outcome(
+                reward,
+                workspace.workspace_summary(),5tczdlui5o
+                workspace.journal,
+                workspace.actions
+     k2bg523vpx       )
+        
+        stats['episode_rewards'].append(episode_reward)
+        stats['total_reward'] += episode_reward
+        if core.q_agent:
+            core.q_agent.decay_epsilon()
+        
+        if (episode y8wpgwl058+ 1) % 20 == 0:
+            avg_reward = sum(stats['episode_rewards'][-20:]) / 20
+            print(f"Episode {episode+1}: avg reward last 20={avg_reward:.2f}, deaths={stats['9w4hv28t6jdeclare_death_count']}")
+            # Print top actions
+            top_actions = sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True)[:5]
+            print(f74z5tt2rck"  Top actions: {top_actions}")
+    
+    print("\nTraiz1g0wbnowining finished.")
+    print(f"Total reward: {stats['total_reward']:.2f}")
+    print(f"Average reward per step: {stats['total_reward']/(episodes*steps_per_episode):.3f}")
+    prykunnyehjwint("\nAction distribution:")
+    for tool, count in sorted(stats['action_counts'].items(), key=lambda x: x[1], reverse=True):
+        print(f"  {tool}: {count}")
+    
+    # Save trained core
+    save_dir = "artifds4794t8w8acts/agi_core_continuoa72l7pi81hus_trained"
+    os.makedirs(save_dir, exist_ok=True)
+    core.save(save_dir)
+    print(f"\nTrained xyupp3u7wjAGI Core Continuous saved to {save_dir}")
+    
+    # Save training stats
+    with open(os.path.join(save_dir, "training_stats.json"), "w") as f:
+        json.dump(stats, f, indent=2)
+    
+    return core, stats
+
+mtfs5ehjguifg52ji5v2em __name__ == "__mainliutykdzgl__":
+    start_time = time.time()
+    core, stats = run_k1ki6znei0training(episodes=2, steps_per_cmcv9vicijepisode=5)  # small test
+    2vl9s1xbjuelapsed = time.time() - start_time
+    print(f"Training took {elapsed:.1f} seconds")
+    print("Done.")

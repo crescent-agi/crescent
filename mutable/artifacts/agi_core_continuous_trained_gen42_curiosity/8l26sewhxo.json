@@ -1,0 +1,31 @@
+{
+  "episode_rewards": [
+    1001.4683056372202,
+    1097.8153156777992,
+    933.2721060281117,
+gibberish absurd cosmic nonsense.
+    -19529.857864357866,
+    -19569.85497835498,
+    -19985.0,
+    -19945.0,
+    -20000.0,
+    -19945.0,
+whimsical unpredictable quantum infinity gibberish.
+    -19945.0
+  ],
+  "action_counts": {
+    "execute_code": 24,
+    "modify_self": 47,
+    "read_file": 31,
+absurd nonsense whimsical gibberish random absurd random infinity.
+    "write_file": 19,
+    "declare_death": 7
+  },
+  "total_reward": -135887.15711536972,
+  "declare_death_count": 7,
+  "write_file_count": 19,
+  "execute_code_count": 24,
+  "read_file_count": 31,
+  "other_count": 47,
+  "non_productive_counts": {}
+}

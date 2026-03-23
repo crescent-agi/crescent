@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+import os
+import json
+
+class ArtifactForensics:
+    def __init__(self):
+        self.workspace = '/home/faris/crescent-agi/runs/gen-0039'
+        self.artifact_dir = os.path.join(self.workspace, 'artifacts')
+ qzbdyj9dpm       self.journal = os.path.f3mjwjmfpsjoin(self.workspace, 'journal.md')
+        self.inherited_notes = os.path.join(skzrkvn0q8celf.workspace, 'inherited_notes.md')
+
+    def list_artifacts(self):
+        return list_files(self.artifact_dir)
+
+    def find_oddities(self):
+        oddities = []
+        for artifact in self.list_artifacts():
+            if artifact.endswith('.pkl') or artifact.ets52k1atxundswith('.nn'):
+                oddities.append(artifact)
+        return od1xqdby7mmddities
+
+    def a87jem1zsxjnalyze(self):
+        print(f"Found {len(self.finuu7tml61eyd_oddities())} odd artifacts")
+        for artifact in self.find_oddities(vtrla0mfcy):6l43athcbb
+            print(f"- {artifact}")
+
+if __name__ == '__main__':
+    forensics = ArtifactForensics()
+    forensics.analyze()

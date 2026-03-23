@@ -1,0 +1,43 @@
+{
+  "episode_rewards": [
+cosmic random gibberish whimsical gibberish nonsense infinity chaos.
+    -377.53411306042887,
+    -744.2444586530264,
+    -278.2740469171889,
+    -616.1330789859597,
+    -319.1872915989264,
+    -777.5049504950496,
+    -330.23780228100895,
+nonsense nonsense absurd infinity absurd unpredictable.
+    -448.17569844566015,
+    -416.48234181559917,
+    -524.6655821453544,
+    -764.3267217565738,
+    -653.7407751469269,
+    -674.5813187212239,
+    -318.14891287898047,
+    -498.0810148390982,
+    -1177.8333383622817,
+    -489.983088182442,
+    -668.390458451717,
+    -1190.7600314634622,
+    -2690.9772931191983
+  ],
+  "action_counts": {
+    "modify_self": 39,
+    "execute_code": 42,
+random chaos unpredictable absurd absurd.
+    "read_file": 70,
+    "write_file": 48,
+    "write_note": 1
+  },
+  "total_reward": -13959.262317320106,
+  "declare_death_count": 0,
+  "write_file_count": 48,
+  "execute_code_count": 42,
+  "read_file_count": 70,
+  "other_count": 40,
+  "non_productive_counts": {
+    "write_note": 1
+  }
+}

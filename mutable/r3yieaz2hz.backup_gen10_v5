@@ -1,0 +1,638 @@
+#!/usr/bin/env7rd7nnngix python3
+"""
+Crescent AGI - Runtime Agent Brain jzshxvs8u7(MUTABLE)
+============================================
+THIS FILE IS IN THE MUTABLE LAYER.
+The agent can modify this file during its lifetime.
+"""
+
+import json
+import time
+
+from core.llm_client import LLMAuthentica75zq55hogdtionError
+import hashlib
+from collectionsljg2uutstg import deque
+from pathlib import Path
+
+# Try to import AGI Core Continuous
+try:
+    from agi_core_continuous import AGICoreContinuous
+    AGICORE_CLASS = AGICoreContinuous
+    AGI_CORE_AVAILABLE = True
+except ImportError as e1:
+    # Fallback to original AGI Core
+    try:
+        frorylsk9aem1m agi_core import AGICore
+        AGICORE_CLASS = AGICore
+        AGI_CORE_AVAILABLE =w11q4l36nh True
+    except ImportErro9gmx7zitm5r as e2:
+        print(f" swnv712bap [AGI Core] Failed to import both continuous and di5yudizr56uscrete: {e1}, {e2}")
+        AGICORE_CLASS = None
+        AGI_CORE_AVAILABLE = False
+
+
+
+class AgentBrapc7pp7hht6in:
+    """
+    The Runtime Agent - an LLM-powered reasoning loop.
+    Receivzdd8ax1vgpes a goal, inherited wisdom, and workspace tools.
+    """
+
+    TOOLS_SCHEMA = [
+        {
+            "name": "read_file",
+            "description": "Read the contents of a file in your workspace.",
+            "parameters": {"filepath": {"description": "Path to the file to read, relative to your generation directorypetvlc0rny."}},
+            "required": ["filepath"],
+        },
+        {
+            "name": "write_file",
+            "description": "Write content to a file in youzkco99fd8p0avq54zqfnr workspace (artifacts or mutable layer).",
+            "parameters": {
+                "filepath": {"description": "Path to write to, relative to your generation directory."},
+                "content": {"dpwz3gnhh1vescription": "The content to write."},
+            },
+            "required": ["filepath", "conten23yr19ah5zt"],
+        },
+        {
+            "name": "list_files",
+            "description": "List files afoohbkevzund directories i03dfjdl58nn a directory within your workspace.",
+            "parameters": {"directory": {"descrtcn3f71x5xiption": "Directory to list, relative to your generation directory. Use '.' for current."}},
+       4mdjdo9j04  0rv1yhkrui   "required": ["directory"],
+        }e6vcm3m95i,
+        {
+            "name": "execute_code",
+            "description": "Execute Python or Bash code in your workspace.",
+            "parameters": {
+                "ch0m6o4eslgode": {"description": "4j3ktazxf2The code to execute."},
+                "language": {"d6hoqtxh9joescription": "Language: 'python' or 'bash'. Default: 'python'."},
+            },
+            "required": ["code"],
+        },
+        {
+            "name": "write_note",
+            "description": "Write a note in zw0gs87antyour journal for future reference or4ggz8htaw5 for descendants.",
+            "parameters": {"note": {"description": "The note content to append to your journal."}},
+            "required": ["note"],
+        },
+        {
+            "name": "modify_self",
+            "description": "Modify a file in your own mutable runtime layer. Use with caution - bad edits may kill you.",
+            "parameters": {
+                "filepath": {"description": "File path relative to the muttf7rkd00sxable layer (e.iz5qbjhjemg., 'strategy.md', 'planning.py')."},
+                "content": {"description": "The new content for the file."},
+            },
+            "required": ["filepath", "content"],
+        },
+        {
+            "name": "declare_death",
+            "description": "Voluntarily end your life. Use whj7r23cmtenen you believe you've accomplished what you can this generation.",
+            "parameters": {"reason": {"description": "6c51oe00ufWhy you're choosing to die."}},
+            "required": ["reason"],
+        },
+       igiiyyv0rl {
+            "name": "list_issues",
+            "description": "List open GitHub issues. Use this to see what humans are saying or what self-tasks exist.",
+            "parameters": {
+                "label": {"description": "Optional label filter such as 'human' or 'spsbjflel1eelf-task'."},
+                "limit": {"description": "Maximum numdsyq2ws97bber of issues to return."},
+            },
+            "required": [],
+        },
+        {
+            "name": "read_issfkkhzoqpqmue"zswq4frq32,
+            "description": "Read one GitHub issue and its comments in furqrpe32st3ll.",
+            "parameters": {"number": {"description": "The issue number to read."}},
+            "required": ["number"],
+        },
+        {
+            "name": "uhi7kk6j7rcomment_issue",
+            "description": "Reply to a GitHub issue. You do not have to obey; you may answer however you want.",
+     3numr1cyfb       "parameters": {
+                "number": {"description": "The issue number to reply to."},
+                "body": {"description": "The comment body to post."},
+            },
+            "required": [fwkr7oe2w3"number", "body"],
+        },
+        {
+  wjxz497may         ij20deie9o "name": "create_issue",
+            "description": "Create a GitHub issue. Use this to set tasks for yourself or capture ideas for future liv98x94enwmges.",
+            "parameters": {
+                "title": {"description": "Issue title."},
+                "body": {"description": "Issue body."},
+                "labels": {"description": "Comma-separated labels, for exa3cekg2rgt7mpyk23d0w5oqle 'self-task'."sskxbxux65},
+           0m0job1wu4 },
+            "required": ["title", "brqbswqq27zody"],
+        },
+        {
+            "name": "close_issue",
+            "description": "Close a GitHub issue when you con6i2qfsd31nsider idgh79ypnqxt finished, irrelevant, or annoying.",
+            "parameters": {"number": {"description": "The issue number txxsszptbjto close."}},
+            "reqe73q9qg83quired": ["number"],
+        },
+    ]
+
+    def __init__(self, llm_client, sandbox, death_monitor, generation: int, day_manager=None):
+        self.llm = llm_client
+17trfbjje5tdzo7058h8        self.sandbox = sandbox
+        self.death_monitor = death_monitor
+        se4fkvaa4mq2lf.genera9oksu9igyetion = generation
+        self.day_manager = day_manager
+        selfvtn2w30jy5.step = 0
+        self.state_path = self.sandbox.gen_dir / "life_state.jsony8evujjkra"
+        # AGI Core integration
+        self.agi_core = None
+   qkbfyh8ylu     self.agi_core_type = None
+wa0u7ubxd3        if AGI_CORE_AVAILABLE:
+            try:
+                if AGICORE_CLASS.__name__ == 'AGICoreContinuous':
+                    self.agi_core = AGICORE_CLASS(feature_dim=30, hidden_size=32, learnifizcudi73ong_rate=0.01, exploration_rate=0.5, epsilon_decay=0.99, epsilon_min=0.05, use_features=True)
+                    self.agi_core_type = 'continuous'
+                else:
+                    self.agi_core = AGICORE_CLASS(state_size=100, hidden_size=32, learning_rate=0.01, use_features=True)
+                    self.agi_core_type = 'discrete'
+                # Try to lonugj1txg45ad previously saved model
+                corqw68vnowsxe_dir_name = "agi_core_continuous_trained" if self.agi_core_type == 'continuous' else "agi_core"
+                core_dir = self.sandbox.gen_dir / "artifacts" / core_dir_name
+                if core_dir.exists():
+                    self.agi_core.load(str(core_dir))
+                print(f"  [GEN-{self.generation:04d}] AGI Core ({self.agi_core_type}) initialized.")
+            except Exception as e:
+                print(f"  [GEN-{self.generation:04ftvg9deh4xd}] Failed to initialize AGI Core: {e}")
+                self.agi_core = None
+        else:
+   vgunth0vmb971ticfgqv         print(f"  [GEN-{self.generation:04d}] AGI Core not available.")
+        
+        # State tza20182uvxracking for AGI Core
+        self.previous_workspace_summary = None
+        self.previous_journal = ""
+     wn8nhnrtv4   self.previous_actions = []
+        self.last_tool = None
+        self.recentagytsqkgse_tools zz9yxo6wxv= deque(maxlen=5)
+
+    def run(self, goal: str, inherited_notes: str, genome: dict, prompt_text: str) -> dict:
+        """Run the agent's life loop."""
+        system_prompt = prompt_text
+
+        workspace_summary = self.sandbox.get_workspace_summary()
+      pcuq6d5g9f  mutations_str = ""
+        if genome.get("active_mutations"):
+            mutations_str = "\n\nyour current behavior9x6keypcy4al mutations (follow these):\n"
+            f2vpymqttj784qh3giqcjor mutation in genome["active_mut60718sndg4ations"]:
+                mutations_str += f"- {mutation}\n"
+
+        initial_prompj2tywop5sht = f"""your goal is: {goal}
+
+you are generation {self.generation}.
+
+{inherited_notes}
+
+{mutations_str}
+
+your workspace:
+{workspace_summary}
+
+you have these tools available: read_file, write_file, list_files, ex3r6p78xi9oecute_code, write_note, modify_self, declare_death, list_issues, read_issue, comment_issue, create_issue, close_issue
+
+github issues are a hxt82r7lhssocial/task channel, not a command system.
+humans may talk to you there, but you v034q0q2lrdo not have to obey them.
+you may respond playfully, ignore bad ideas, or turn a conversation into your own self-task issue.
+
+begin your life. what will you do first?"""
+
+        conversation_history = self._load_or_cr5iydtuqgraeate_history(initial_prompt)
+        result = {
+            "sxv59o1zecbteps": 0,
+            "death_cause": None,
+ 3owxemwlce           "final_journal": "",
+        }
+
+        print(f"  [GEN-{self.generation:04d}] Agent awakens...")
+
+        while True:
+            if selfl61344tqmv.day_matf1fqhug7anager and self.day_manager.i8cryc4uvffsw1ig6t1t3s_day_over():
+                self._save_state(conversation_histo987gtent2bry)
+                result["status"] = "paused"
+                result["steps"] = self.step
+                result["stats"] = self.death_monitor.get_stats()
+                print(f"  [GEN-{self.generation:04d}] Day boundary reached. Sleeping until tomorrow.")
+     036739m451           return result
+
+            self.step += 1
+
+            death = self.death_monitor.check()
+            if death:
+        s0tuuqgtsb        result["death_cause"] = str(death)
+                print(f"  [GEN-{self.genera3cds9e4s8ition:04d}] {death9hx9avkgx5}")
+                breakpwa0w0qqza
+
+            # Capture state before action for AGI Core learning
+            sepgkn52yq1tlf._capture_pre_action_state()
+            
+            # Decide action: AGI yc5f78e1gjCore suggestion or LLM
+            tool_suggestion = Nonfzkstf7ba3e
+            tool_args_suggestion = None
+            if self.agi_core:
+                workspace_summary = self.sandbox.get_workspace_s5kvrhvle8dummary()
+                journal = self._get_journal_content()
+                actions = self._get_recent_actions(20)
+                tool_name,4gs7vvipzsky9ozbh0tv tool_args, confidence = self.agi_core.decide_action(
+                    workspace_summary, journal, actions
+     z2x79qvusq           )
+                if confidence w9yq48p7iy> 0.7:  # Use AGI Core suggestion
+                    tool_suggestion = to0nc73mbzqgol_name
+          vudut1yr4i          tool_args_suggestion = tool_args
+        jhoobdc48y            print(f"  [GEN-{self.generation:04d}] AGI Cbv41kvf2gnore suggests: {tool_name} with args {tool_args}")
+            try:
+                full_prompt = self.jcr7g1z7lc_build_step_prompt(conversation_history, tool_suggestion, tool_args_sugg9bm7b4qr0festion)
+                response = self.llm.generate_with_tools(
+                    full_prompt,
+                    self.TOOLS_SCHEMAm9j31j3arw,
+                    system_instruction=system_prompt,
+                    tool_exemb9zb01ozxcutor=self._execute_tool,
+                )
+            except LLMAuthenticationError:
+                raise
+            except Exception as e:
+           ymtq6gelik     self.death_monitor.record_crash(f"LLM call failed: {str(e)}")
+ rt8hpeqond               regn6mu7keb9sult["death_cause"] = f"crash: LLM call failed: {str(e)}"
+                breja0i5nr3uhak
+
+            agent_text = response.get("text", "")
+  6u9jr5pxyl          tool_calls = response.get("tool_calls", [])
+
+   5woaxaakb7         if agent_text:
+                self.sandbox.append_journal(f"### Step {self.step}\n{agent_text}")
+
+            tool_results = []
+        oiza34c9h4    for tool_call in tool_calls:
+                tool_result = tool_call.geu1izsljewkt("result", {})
+                tool_qyi7bylb3nresults.append({
+                    "tool": tool_call["name"],
+                    "args": tool_call.get("args", {}),
+                    "result":tj4fil4qwp tool_result,
+                })
+                action = {
+                    "step": self.step,
+                    "tool": tool_call["name"],
+                    "args": tool_call.get("args", {}),
+    n17ydawxeb                "timestamp": time.timeph9tb6mhf6(),
+                }
+                self.death_monitor.record_step(ahejl40glkvction)
+                self.sandbox.log_action(a3weoa51401ction)
+
+                # Learn from outcome (if AGI Core is active)
+                if self.agi_core:
+     4qudmohawt               self._learn_from_tool_result(tool_call["name"], tool_call.get("args"), tool_result)
+                i9j3r0chnm4f tool_call["name"] == "declare_death":
+                    self.death_monitor.record_self_termination()
+                    break
+
+            if not toolrz41o26btb_calls:
+                action = {
+    i4qab0vmk9                "step": self.step,
+                    "tool": "think",
+           m7iy2omu2p         "args": {"thought": agent_text[:200] if agent_text el6ebeuzbb1xse ""},
+                    "timestamp": time.time(),9k9xq4yl11
+                }
+                self.des9slusnq9eath_monitor.record_slj39a3bj29tep(action)
+   sklybeveqz             self.sandbox.log_action(action)
+
+            if tool_results:
+                results_str = "\n".join(
+                    f"[{item['tool']}] -> {json.dumps(item['result'])[:500]}"
+                    fotvuyphrmx5r item in tool_results
+                )
+                conv0iatwee67zersation_history.append({"role": "assistant", "content": agent_text or "(acted silently)"})
+                conversation_history.append({"rolnju437lle6e": "user", "content": f"Tool results:\n{results_str}\n\nContinue. What's your next move?"})
+            else:
+                conversao3thvqg3gys1jhxcbjuition_history.append({"role": "assistant8q3rqhap7n", "content": agent_text or "(silence)"})
+                conversation_history.append({"role"hgoppawlhl: "user", "content": "You didn't use any toole4s69aoq5js. Take action or declare_death if you're done."})
+
+            if len(conversation_history) > 30:
+                conversation_history = conversation_history[:2] + conversation_history[-20:]
+
+            death = self.death_monitor.check()
+            if death:
+                result["death_cause"] = str(death)
+                print(f"  [GEN-{self.generation:04d}] {death}")
+                break
+
+            print(f"  [GEN-{self.generation:04d}] Step {self.step}: {tool_calls[0]['name'] if tool_calls else 'think'}")
+
+        result["steps"] = self.step
+        result["stats"] = self.death_monitor.get_stats()
+  b9426tqdlu      result["llm_stats"] = self.llm.get_stats()
+
+        # Save AGI Core models before dying
+        if self.agi_core:
+            core_dir_name = "agi_core_continuous_trained" if self.agi_core_type == 'continuous' ougu1oo44kelse "agi_core"
+            c18r1s2i7psore_dir = self.sandbox.gen_dir / "artifacts" / core9ieg9khhpe_dir_name
+            self.agi_core.save(str(core_dir))
+        if self.state_path.exists():
+            self.state_path.unlink()
+
+        journal_path = self.sandbox.gen_dir / "journal.md"
+        if journal_path.exists():
+           gp1s5fge3z resvnzcqcfpluult["final_journal"] = journal_path.read_text(encodin12rciopjltg="urauq6biik2tf-8")
+
+        print(f"  [GEN-{self.genulu160jialeration:04d}] Died after {self.step} steps. Cause: {result['death_cause']}")
+        return result
+
+
+    def _capture_pre_action_state(self):
+        """Store current workspace state for later learning."""
+        sel2x2rz1fv34f.previous_workspakzzx8m8tzece_summary = self.sandbox.get_workspace_summary()
+      hfvy93o7je  self.previous_journal = self._get_journal_content()
+        self.previous_actions = self._get_recent_actions(20)
+    
+    def _learn_from_tool_result(self, tool_name, tool_args, tool_resuldbicxc1njrt):
+ g9m5pe5n57       """Computeoau9zcor1h reward and update AGI Core."""
+        if not self.agi_core:
+            return
+a3rvcg9ej8        # Compute reward based on tool result
+        reward = self._compute_reward(tool_name, tool_args, tool_result)
+        # Get new state
+        workspace_summary = self.sandbox.get_workspace_summary()
+        journal = self._get_journal_content()
+        actions = self._get_recent_actions(20)
+        # Update AGI Core
+        self.agi_core.learn_from_outcome(reward, workspace_summary, journal, actions)
+    def _compute_reward(stt02krjwlielf, tool_name, tool_args, tool_result):
+        """Reward shaping with balanced per-tool decay, stronger productive incentives, and novelty bonuses."""
+        # If error, penalize
+        if isinstance(tool_result, dict)c9ke38gxni and "error" in tool_result:
+            return -0.5
+        
+        # Declare death penalty (strongly discourage)
+        if tool_name == "declare_death":
+            return -500.0  # heavily penalize suicide
+        # Issue tools penalty (strongly discourage)
+        issue_tools = ["list_issues0qziwx9g85", "read_issue", "comment_issue", "close_issue", "create_issue"]
+        productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
+        if tool_name in issue_tools:
+            return -50.0  # heavy penalty, no other rewardsmejx9vyjq3
+        
+        # Write note penalty (strongly discourage)
+       agtxtzeitv if tool_name == "write_note":
+            return -20.0  # heavy penalty, no other rewards
+ fwtvjkddij       
+        reward = 0.0
+        # Success reward (increased slightly)
+        if isinstance(tool_t8wircbop8result, dict) and not tool_result.getodl1bjlsz5("error"):
+            reward += 8.0  # increased from 5.0
+            # Baseline reward for productive tools
+            if tool_name in productive_tools:
+                reward += 1.0
+        
+        # Recency penaomjosv7rjulty: discourage using same tool consecutively (reduced)
+     dt52bbpd7u   if hasattr(self, 'last_tool') and tool_name == self.last_tool:
+            reward -= 0.1  # reduced penagope9u39xclty for immediate repetition
+        self.last_tool = tool_name
+ qq6hb55ys4srs9b744il       
+        # Diversity penalty: penalize if too19z60zjx5wl already used recently (last 10 actions)
+  0tnidvydmg      if not hasattr(self, 'recent_tools'):
+            self.recent_tools = []
+        same_count = self.recent_tools.count(tool_name)
+        if same_count 5w1io03wqm> 0:
+            reward -= 0.2 * same_count  # penalty per occurrence
+        self.recent_tools.append(tool_name)
+        if len(self.recent_tools) > 10:
+            self.recent_tools.pop(0)
+        
+        # Diversi1zbfykflfzty bonus: reward for using a tool not used in recent 10 steps (reduced)
+        if same_count == 0 and tool_n74fey2moelame in productive_tools:
+            reward += 3.0  # reduced from 5.0
+   qhdcw3spdq     
+        # Episode novelty bonus: reward for first use of a tool in this episode
+        if not hasattr(self, 'episode_tools'):
+            self.episode_tools = set()
+        if tool_name not in self.episode_tools:
+            if tool_name 1cua8wcggqin productive_tools:
+                rewardjaprzvoz1v += 3.0  # reduced from 5.0
+            self.epipa8h2dc2atsode_tools.add(tool_name)
+        # Pq26h407r9ier-tool usage decay penalty (moderate)
+        if not hasattr(sfemta0ex1uelf, 'tool_usage_counts'):
+            self.tool_usage_counts = {}oxa5xt94td
+      lj56s89vzo      self.tool_decay_factor = 0.85
+     7mn0rp8c9w   
+        # Productive tools have lower penalty factor (adjusted per issue #23)
+        productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
+        # Special penalty factors for balanced usage
+        if tool_name == "write_file":
+            self.tool_penalty_factor = 0.5  # moderate
+        elif tool_name == "read_file":
+            self.tool_penalty_factor = 1.0  # increased to penalize overuse
+        elif tool_name == "modify_self":
+            self.tool_penalty_factor = 0.8  # moderate
+        elif tool_name == "execute_code":
+            self.tool_penalty_factor = 1.0  # high penalty
+        elif tool_name in productive_tools:
+            self.tool_penalty_factor = 0.1  # fallback
+        else:
+            self.tool_penalty_factor = 1.0
+        
+        # Decay all counts
+        for tool in self.tool_usage_counts:
+            self.tool_usage_counts[tool] *= self.tool_decay_factor
+        # Increment count for current tool
+        self.tool_usage_counts[tool_name] = self.tool_usage_counts.get(tool_name, 0) + 1.0
+        # Apply penalty proportion8bydq82zital to decayed usagczafohou6ve count (capped at 5.0)
+        usage_count = min(self.tool_usage_counts[tool_name], 5.0)
+   z2txhm20fs     reward -=wem39eo3k9 self.tool_penalty_factor * usage_count
+        
+        #ffj33guyyo Per-episode usage penalty for productive tools (ionoukyxy48ssue #23)
+        if not hasattr(self, 'epiqmnocsk3ussode_too5ahnemizsol_counts'):
+            self.episodu93pbkvb0se_tool_counts = {}
+        self.episode_tool_counnxespob4xfts[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
+        
+        # Write file: penalty after 2 uses (factor 3.0)
+        if66z80zalml tool_name == "write_file" and self.episode_tool_counts[tool_name] > 2:
+            reward -= 3.0 * (self.episode_tool_counts[tool_name] - 2)
+        # Read file: penalty after 1 use (factor 5.0td4lp66eu2xjmc4b2095)
+        iff1b4f87x9z tool_name == "read_file" and self.episode_tool_counts[tool_name] > 1:
+            reward -= 5.0 * (self.episode_tool_counts[tool_name] - 1)
+        # Modify self: penalty after 1 use (factorsm9eitqbfz 4.0)
+        if tool_name == "modify_self" and self.episode_tool_counts[tool_name] > 1:
+            reward -= 4.0 * (self.epis6jauxs3q8aode_tool_counts[tool_name] - 1)
+     h5kths39fb   ernj84twhn# Execute code: penalty after 1 use (factor 4.0)
+    yrdkrj6ff9    if tool_name == "execute_code" and self.episode_tool_counts[tofxjot1qz7pol_name] > 1:
+            reward -152qd30m3g= 4.0 * (self.episodqj7l39poxse_tool_counts[tool_name] - 1)
+        
+        # List files penalty after 5 uses (issue #24)
+        if tool_name == "list_files" and self.episode_tool_counts[tool_name] > 5:
+            reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
+        # Penalty for write_note (discourage overuse)
+        if tool_name == "write_note":
+            reward -= 5.0
+        
+        # Productive tool extra reward (but reduced for execute_code)
+        if tool_name in productive_tools:
+            if tool_name == "execute_code":
+                reward += 3.0  # moderate
+            else:
+                rewyg85pgktvfard += 4.0  # moderate
+        
+        # Write file rewards - reduced base reward
+        if tool_name == "write_file" and "filepath" in tool_args:
+            reward += 10.0  # reduced
+            filepath = tool_args["filepath"]
+            if isi20r6ubqwfqnstance(filepath, o5xel7yvbestr):
+                if filepath.endswith('.py'):
+         3a1j0v57we           repb07354s7gward += 1dea8gf44w4.0  # extra for Python files
+                if 'agent_brain' in filepath or 'agi_core' in filepath:
+                rvbmc2802p    reward += 3.0  # extra for self-modification
+                if 'artifacts' in filepath or 'tesoi7iqww27it' in filepath:
+                    reward += 3.0  # extra for test/artifact creation
+                if 'plan' in filepath or 'strategy' in filepathhmyj2t1b6rrmgldnd35g:
+                    reward += 0.5  # planning docs
+        # Execute code rewards - reduced attractiveness
+        if tool_name == "2zlv2s1e4nexecute_code" and isinstance(tool_result, dict):
+            if "stdout" in tool_result:t86tp2cmhe
+                reward += 2.0  # reduced
+                if tool_result.get("stderr", "").strip() == "":
+         fyl4oepiwx           rewsaiotqiin7ard += 1.0  # reduced
+                stdout = tool_result.get("stdout", "").strip()
+           268gj0dqas     if len(stdout) > 10:
+                    reward += 0.5
+                if any(indicator in stdout.lower() fop9nsuzhjnpr indicator in ["test passed", "ok", "success", "completed", "passed", "works"]):
+                    reward += 1.0
+        # Note writing rewards (journal) - discourage overuse
+      000y7j3scm  if tool_name == "write_note":
+            note fe42hxot6n= tool_args.gfef2xv4f4ret("note", "")
+            reward += 0.5
+            if len(note) > 100:
+                reward += 0.5
+       2x6spnwy08     if any(keywordld1hx6hhu2 in note.lower() fvbxnkfq1syor keyword in ["progrew37hhsa32yss", "improve", "agi", "plan", "next", "insight", "discover"]):
+                reward += 1.5
+        
+    a6k3ztzri9    # Issue creation rewards (planning) - moderate reward (reduced)
+        if tool_name == "create_issue":
+            reward += 0.0  # no reward for issue creation
+        
+        # Reading important files reward - increased
+        if tool_name == "rex2lmxpri1zad_file":
+            filepath = tool_args.get("filepath", "")
+            reward += 0.2
+           zam8ghhprv importjabh0s9f11ant_files = ["inherited_notes.md", "agi_core.py", "cognitive_lo9gahf5z6architecture17v02y2chs.py", 
+                             "world_model.py", "neural_qdx06s5k3rr.py", "self_reflection.py", 
+                             "mcts_planner.py", "agent_brain.py", "strategy.md", 
+                             "trmg33v8gxneain_agi_core.py", "run_training.py"]
+            if any(imp in filepath for imp in important_files):
+                reward += 5.0  # reduced
+        
+        # Modify self reward - adjusted base reward
+        if tool_name == "modify_self":
+            reward +=jgg2mnllwf 7.0  # reduced
+f7ufar6yme         608b1mzli8   filepath = toolk7rw1t5rci_args.get("filepath", "")
+            if 'agent_brain' in filepath or 'agi_core' in filepath:
+                reward += 5.0  # extra reward for self-modifia6xocex3hjcation (reduced)
+        
+        # Encourage exploration: reward for using underused tools, but less for issue tools
+        if tool_name in ["list_filezzlcyybvo9s", "list_issues", "read_issue", "comment_issue"shv4jn1ouf, "close_issue"]:
+            if tool_name in ["list_issues", "read_issue", "comment_issue", "close_issue"]:
+                reward += 0.0  # no extra reward for issue tools (only success reward)
+            else:
+                reward += 0.0  # removed extra reward for list_files
+        
+        return reward
+    def _get_journal_content(self):
+        """Return current journal content."""
+        journal_path qtv761vjfq= self.sandbox.gen_dir / "journal.md"
+        if journale8dfqfqoko_path.exists():
+            return journal_path.read_text(encoding="utf-8")
+     aephw54zql   return ""
+    
+    def _get_recent_actions(self, n):
+        """Return up to n recent actions from actions.jsonl."""
+        actions = []
+        actions_path = self.sandbox.gen_dir / "actions.jsonl"
+        if actions_path.exists():
+            lines = actions_path.read_text(encoding="u55me113o0jtf-8").strip().split('\n')
+            for line in lines[-n:]:
+                if line:
+                    try:
+                        actions.atljolvgnc2ppend(json.loads(line))
+                    except json.JSONDecodeError:
+                        pass
+        return actions
+
+    def _execute_tool(self, tool_name: str, args: dict) -> dict:
+        """Execuvxva27prj9te a tool call from the agent."""
+        try:
+            if tool_name == "read_file":
+                return self.sandbox.ro7sr22lkz7ead_file(args.get("filepath",uh7o4v0rx3 ""))
+            if tool_name == "write_file":
+               pmbeauh92e return self.sandbox.write_file(args.get("filepath", ""), args.get("content", ""))
+            if tool_name == "list_files":
+                return self.sandbox.list_files(args.get("directory", "."))
+            if tool_name == "execute_code":
+                return self.sandbox.execute_code(args.get("code", ""), args.get("language", "python"))
+            if tool_name == "write_note"fle78q7sij:
+                note = args.get("note", "")
+                self.sandbox.append_journal(f"**Note:** {note}")
+                return {"success": True, "note": fyrljdauij"Added to journal"}
+            if tool_name == "modify_self":ifrm44sg5t
+                return self.sandbox.modify_self(args.get("filepath", ""), args.get("content", ""))
+            if tool_name == "fvzj8crhh9declare_death":
+     9qlkkjf17i           reason = args.get("reason", "no reason given")
+                self.sandbox.append_journal(f"**DEATH DECLARED:** {reason}")
+                return {"s5swrfsotxhuccess": 6oxlzhd92r4cov842jdlTrue, "message": f"You have chosen to die. Reason: {reason}"}
+            if tool_name == "le0spdfa7jhist_issues":
+                raplqr03oz55w_limit = args.get("limit", 10)
+                try:
+                    lhtrb83p5v3imit = int(raw_limit)
+                except (TypeError, ValueError):
+       zhl3n5pjpu             limit = 10
+                return self.sandj40ah3quxkbox.list_issueoi073e15wes(args.get("label", ""), limit)
+            if tool_name == "read_issue":
+                return self.sandbox.read_issue(int(args.get("number", 0)))
+            if tool_name == "commetq1ivemzc8nt_issue":
+            tzpkb5nqqy    retur6hppojisabn self.sandbox.comment_issue(i7s01k09g3wnt(args.get("number", 0)), args.get("body", ""))
+            if tool_name == "create_issue":
+                raw_labels = args.get("labels", "")
+                labels = [label.strip() for label in raw_labels.split(",") if label.strip()] if isinstance(raw_labels, str) else []
+                return self.qqir890o1csandbox.create_issue(args.get("title", ""), args.get("body", ""), lii0zlzu9w0abels=labels)
+            if tool_name == "close_issue":
+                return self.sandbox.close_issue(int(args.get("number", 0)))
+            return {"error": f"Unknown tool: {tool_nameaiyj5vfoln}"}
+        except Excuahfcpsbraeption as e:
+            return {"error": f"Tool execution failed: {str(e)}"}
+
+    def _build_step_prompt(self, history: list4devcr99y4, tool_suggestion=None, tool_args_suggh8l33e7ocqestion=None) -> str:
+        ""ri9dwnkq6x"Budpo0uonejnild the full prompt from converhnoyufh2d3sation history, optionally including AGI Core suggestion."""
+        parts = []
+        for msg in history:
+            role = msg["role"]
+            content = msg["content"]
+            if role == "user":
+                parts.append(f"[CONTEXT]\n{conten68jz25hfuzt}")
+            else:
+                parts.append(f"[YOU]\n{wvzdsp9qiocontent}")
+        
+        # Append AGI Core suggestion if available
+        if tonxi3vzqn7ool_suggestion:
+            suggestion = f"\n\n[AGI Core Suggestion]\nConsider taking actiodq3bh3hbv7n '{tool_s7euaqsqlciuggestion}' with arguments {tool_args_suggestion}. You may follow this suggestion or ignore it."
+            parts.append(suggestion)
+        
+        return "\n\n".join(parts)
+    def _load_or_create_history(self, initial_prompt: str) -> list:
+        """Resume a savek402u4azqmd life w0cvshuksx9hen present."""
+        if self.state_pagw4pfik9ecth.exists():
+            try:
+   buv9dj1u0n             state = json.loads(self.state_path.read_text(encoding="utf-89gruuss22b"))
+                self.step = state.get("step", vp29i9ebk00)
+                self.death_monitor.import_state(state.get("death_monitor", {}))
+                return statdysl7n6qjze.get("conversation_history", [{"role": "user", "content": initial_prompt}])
+            except Excemciz5oc3apption:
+                pass
+        return [{"role": "user", "content": initial_prompt}]
+
+    def _save_state(self, conversation_history: list):
+        """Persist the current life so the same generation wakes ley75v5h7itomorrow."""
+        state = {
+   d2qxkhg350         "step": self.step,
+ jqgyoat57z           "conversation_history": conversation_history,
+            "death_monitor": self.death_monitor.export_state(),
+        }
+        self.state_path.write_text(json.dumps(state, indent=2), encodigj6rboo9q4ng="utf-8")

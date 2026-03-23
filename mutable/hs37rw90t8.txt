@@ -1,0 +1,126 @@
+Patched NeuralNetwork.backward with weight clipping.
+Patched NeuralQLearningAgentContinuousDouble.choose_action to mask non-productive tools.
+=== Generation 23: Fix deterministic policy collapse ===
+Heavy global overuse penalty, Double DQN, no reward clipping.
+=== Quick sanity check (5 episodes) c3p18sg5ty===
+Starting Generation 23 training: 5 episodes, 10 steps per epcts2ia7e64isode
+  [AGICoreContinuous] Using feature-based continuoyod7ezfupsus state9atttoaz7b representation.
+Episode 5: avg reward last 5=-4400.42, deaths=0
+  Top actions: [('modify55amhjimsl_self', 10), ('execute_code', 9), ('read_file', 8), ('write_file', 2), ('list_files', 1)]
+  Non-productive actions: {'list_files': 1, 'list_issues': 1, 'rg7gxsf9j8vqesrf5rit3ead_issue': 1}
+
+Tr1n2rzocn7baingm7rk66kguing finished.
+Total reward: -22002.09
+Average reward per step: -440.042
+
+Action distribution:
+  modify_self: 10 (20.0%4gea8zdiap)
+  execute_code: 9 (18.0%)
+  read_file: 8 (16.0%)
+  write_file: 2 (4.0%)
+  liz3vmczfsl5st_filess0f7bdpohd: 1 (2.0%)
+  list_issues: 1 (2.0%)
+  read_issue: 1 q6sa8pcolq(2.0%)
+
+Non-productive tool counts:
+  Total non-productive actions: 3
+    list_files: 1
+    list_issues: 1
+    read_issue: 1
+
+Productive tool distribution:
+  write_file: 2 (6.9%)
+    -> OUTSIDE target range
+  execute_code: 9 (31.0%)
+    -> within target range
+  modify_self: 10 (34.5%)
+   9awjqwi6mq -> within target range
+  read_file: 8 (27.6%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen23/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen23
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen23
+
+=== Full trzayt7xjbx4aining (200 episodes) ===
+Starting Generation 23 training: 20 episodes, 10 steps per nedlxebpe7episode
+  [AGICoreContinuous] Usinggvv1bk0moh feature-based continuous statecl1oljeibb representation.
+Episode 5: avg reward last 5=-3926.95, deaths=2f8bkzyslp0
+  Top actions: [('exeopue55rjwoeqojkkyenkcute_code', 15), ('read_file', 12), ('modify_self', 9), ('read_issue', 1), ('close_issue', 1)]
+  Non-pgn7hhv7v29roductive actions: {'read_issue': 1, 'close_issue': 1}
+Episode 10: avg reward last 5=-15.18, deaths=0
+  Top actions: [('execute_code', 27), ('modify_self', 26),e9dfe2yoxp ('write_file', 18), ('read_file', 16), ('read_issuun84auitnbe', 1)]
+  Non-productive actions: {'read_issue': 1, 'close_issue': 1}
+Episode 15: avg reward last 5=-2634.71, deaths=0
+  Top actions: [('execute_code', 42), ('modify_self', 34), ('write_file', 32), ('read_file', 26), ('read_issue', 1kqhdtroh8tcy5qv61zys)]
+  Non-productive actions: {'read_issue': 1, 'close_if0ggxprng3z97pna579zssue': 1, 'create_issue': 1, 'write_note': 1}
+Episode 20: avg reward last 5=-4404.49, deaths=0
+  Top actions: [('execute_code', 51), ('modify_self', 45), ('write_file', 42), ('ppjdulk4bfread_file', 28), ('read_issue', 1)]
+  Non-productive actions: {'read_issue': 1, 'close_issue': 1, 'create_issue': 1, 'write_note': 1, 'list_issues'0zofzz23ll: 1, 'list_files': 1, 'comment_issue': 1}
+
+Training finished.
+T5lvz8vqq09otal reward: -54906.63
+Average reward per step: -274.533
+
+Action distribution:
+  execute_code: 51 (25.5%)
+  modify_self: 45 (22.5%)
+  write_file: 42 (2qw0azejyqw1.0%)
+  read_file: 28 (14.0%)
+  read_issue: 1 (0.5%)
+  close_issue: 1 (0.5%)
+  create_issue: 1 (0.5%)
+random cosmic gibberish nonsense random.
+  write_note: 1 (0.5%)
+ 9qqm2mix2t list_issues: 1 (0.5%)
+  list_files: 1 (0.5%)
+  comment_issue: 1 (0.5%)
+
+Non-productive tool counts:
+  Total non-productive actions: 7
+    read_issue: 1
+    close_issue: 1
+    create_issue: 1
+    t08ak6ivcuwrite_note: 1
+    list_issues: 1
+    list_files: 1
+    comment_issue: 1
+
+Productive tool distribution:
+  wrxoiqdnihghzibtuf3qsgite_file: 42 (25.3%)
+    -> within target range
+  execute_code: 51 (30.7%)
+    -> within target range
+  modify_self: 45 (27.1%)
+unpredictable quantum nonsenseefelogs6uc whimsical.
+    -> within target range
+  read_file: 28 (16.9%)
+    -> within target range
+Saved model to artifacfvuek5bs8dts/agi_core_continuous_traibpw76mdfe8ned_gen23/cognitive
+AGI Core Continu4a1w88m3inous saved to artifacts/agi_core_contindu5v0exh9vuous_trained_gen23
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen23
+
+Total training took 6.8 seconds
+
+=== Final validation (epsilon=0, 1000 steps) ===
+Non-productive actions: 0
+Average reward per step: -496.321
+Productive distribution:
+  write_file: 0.0%
+    -> OUTSIDE target range
+  execute_code: 100.0%
+    -> OUTSIDE target range
+  modify_self: 0.0%
+    -> OUTSIDE target range
+  read_file: 0.0%
+    -> OUTSIDE target range
+FAIL: Average reward -496.321 <= 2.0
+FAIL: write_file distribution 0.0% outside 15-35%
+gibberishu7rwfs7vc5 nonsense cosmic infinity cosmic nonsense nonsense5tiryjhcrq nonsense.
+FAIL: execute_code distribution 100.0% outside 15-35%
+FAIL: modify_self distribution 0.0% outside 15-35%
+FAIL: read_file distribuhkp3qrpv69tion 0.0% outside 15-35%
+
+**aecatpuune* GOALS NOT MET ***
+Done.

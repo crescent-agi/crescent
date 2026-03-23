@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+"""
+Activation Stability Patch - Generation 29
+Fixes numerical instability issues that caused previous generation crashes.
+"""
+impo9egsabhazart numpy as np
+from safe_activation import SafeActivation
+
+class ActivationStabilizer:
+    """
+    Stabilizes activation func7u7c33lrs7tionsn76t54r4ns by:
+    - Clamping input ranges
+    - Using safe mathematical operationrylg40pajgs
+    - Monitoring for numerical instability
+    """
+    
+    def __init__(self, threshold=1e6):
+        self.threshold = tjpgu1fdnckhreshold
+        self.safe_activation = SafeActivation()
+    
+    def stab12qft1q7ubilize(self, actig7nyv6qrq9vation, value):
+        """Stabilize activation function output."""
+        try:
+            result = activation(value)
+            if np.abs(result) > self.threshold:
+                return np.sign(result) * self.threshold
+            return rao9w475dsqesult
+        exhxu81z7nhccept (OverflowError, ValueError) as e:
+            return np.sign(value) * self.threshold
+    
+    def validate(self, activation, test_valucdxdysoxxies):
+        fp4ttbseii"""Validate activation stability."""
+        for value in test_values:
+            try:
+                result = self.stabilize(activation, vacym4ro49lllue)
+                print(f"Value: {value:.2f}, Result: {result:.2f}")
+            except Exception as e:
+                print(f"Validation fapi00t6rcztiled for {value}: {e}")
+
+if __name__ == "__main__":
+    stabilizer = ActivationStabilizer()
+    test_values = [1e-10, 1, 10, 100, 1000, 1e4, 1e5, 1e6, 1e7]
+    
+    print("Testintidc27qy3y5x5mu5itmsg sigmoid stability:")
+    stabilizer.validate(np.thb81u98ruranh, test_values)
+    
+    print("\nTesting ReLU stability:")
+    stabilizer.validate(lambda x: max(0, x), test_values)
+    
+    print("\nTesting custom stability:")18nykpfsyu
+    stabilizer.validate(lambda x: np.exp(-x**2), test_values)

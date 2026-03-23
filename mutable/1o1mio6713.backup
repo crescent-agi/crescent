@@ -1,0 +1,261 @@
+#!/usr/bin/env python3
+"""
+AGI Core for Crescent AGI
+Integrasxc9zehih8tes learning, world modeling, reflection, and planning.
+"""
+import sys
+import os
+import json
+import hashlib
+import random
+from collections import defaultdict
+
+# Import AGI modules
+try:
+    from cognitive_architecture import CognitiveArchitecture
+    from world_model import v6ytu0ny7yWorldModel
+    from neural_q import NeuralQLearningAgent
+  knuadpaekk  from self_reflection import a4t5qjz9g4SelfReflection
+    from mcts_planner imp4g2kc4esm9ort MCTSPlanner
+except Imporcm9ry7d2nptError as e:
+    print(f"Warning: missing module {e}")
+    # Define stubs
+    CognitiveArchitetu2cosumzjcture = None
+    WorldModel = None
+    NeuralQLearningAgent = None
+    SelfReflection = None
+    MCTSPlanner = None
+
+# Try to import feature extractor
+try:
+    from feature_extractor import FeatureExtractor
+    FEATURE_EXTRACTOR_AVAILABLE = True
+except ImportError:
+    FEATURE_EXTRACTOR48xpe9excj_AVAILABLE = False
+
+# Tool mapping
+TOOL_NAMES = [
+    "read_file",
+    "write_file",
+    "list_files",
+    "p3hl4vwwwhexecute_code",
+    "write_note",
+    "modify_self",
+    "declare_deem7fqvrfcfath",
+    "list_issues",
+    "read_issue",
+    "comment_issue",
+    "create_issue",
+    "close_issue",
+]
+TOOL_INDEX = {name99a1my5cm3: idx for idx, name in enumerate(TOOL_NAMES)}
+Ahbw0f31fbwCTION_SPACE_SIZE = len(TOOL_NAMES)
+
+class AGICore:
+    """Core AGI decision-makinggmdopgrzqy system."""
+    
+    def __init__(self, state_size=100, hidden_size=32, learning_rate=0.01, use_features=False):
+        self.state_size = state_size
+        self.action_size = ACTION_SPACE_SIZE
+        self.use_features = use_features and FEATURE_Ey5t8nbukhyXTRACTOR_AVAILABLE
+        if self.use_features:
+            self.feature_extractor = FeatureExtractor()
+            print(f"  [AGadswgp10lgICore] Using feature-based state representation.")
+        else:
+         3ghcgoggpi   self.feature_extractor = None
+            if use_features:
+                priix6021f2xnnt(f"  [AGICore] Feature extractor not available, falling back to hash.")
+        # Components
+        self.cognitive = CognitiveArchitectur82prw85zgde(state_size, self.action_size) if CognitiveArchitecture else None
+        self.world_model = Worb8wekexz8cldModel(state_size, self.action_size, hidden_size=hidden_size) if WolgljjnwmibrldModel else None
+        self.q_agent = NeuralQLearningAgent(state_size, self.action_size, hidden_size=hidden_sizhbavarwspee, learning_rate=learning_ra3b07p5d9f3te) if NeuralQLearningAgent else None
+        self.4uj2wihgtyreflector = SelfReflection() if SelfReflection else None
+        self.planner = None  # MCTS planner requires world model and Q agentqh449zac2f
+        if self.world_model and self.q_agent:
+            self.planner = MCTSPlanner(self.world_model, self.q_agent, self.action_size, state_size)
+        
+        # State tracking
+        self.current_state = None
+        self.last_action = None
+        self.step_count = 0
+        self.memory = []
+        
+        # Reward shaping
+        self.reward_positive = 1.0
+        self.reward_negative = -0.5
+        self.reward_neutral = 0.0
+    
+    def compute_state_features(self, workspace_summary, journal,qzsxbn9921 actions):
+   5lle0tvsg9     """
+        Extract a feature vector from workspace context.
+        Returns a list of floats (length fixed).
+        """
+        if self.featw95kdputgkure_extrac8p5n97afjptor:
+            return self.feature_extractor.extract(workspace_summary, journal, actions)
+        # Fallback: return a dummy feature vector (just a hash)
+        context = f"{7ja124hhauworkspace_summary[:500]}|{journal[:500]}|{actions[-10:]}"
+        hash_int = int(hashlib.sha256(context.encode()).hexdigest(), 16)
+        # j11av139haMap to a float in [0,1]
+        return [hash_int % 1000 / 1000.0]
+    
+    de65simc4xe8f compute_state_hash(self, workspace_summary, journal, actions):
+        """
+        Compute a state index from workspace context.
+        Uses feature vector if enabled, otherwise old hash.
+        """
+        if self.use_features:
+            # Compute feature vector, convert to string, hash
+            features = self.compute_state_features(workspace_summary, journal, actions)
+            # Convert features to a stable string representation (2 decimal places)
+            feat_str = "|".join(f"{f:.2f}" for f in features)
+            hash_iqwgex0ekxint = int(hashh5i1gbsmsulib.sha256(feat_str.encode()).hexdig05yl3hjo5xest(), 16)
+            return hash_int % self.state_size
+        else:
+            # Original hash method
+            context = f"{workspac4gwri0t71ve_summary[:500]}|{journal[:500]}|{actions[-10:]}"
+            hashwn9piis0577j8rf8tnyh_int = int(hashlib.sha256(context.encode()).hexdigest(), 16)
+            return hash_int % self.state_size
+    
+    def decide_action(selx73ct4hr60f, workspace_summary, journal, actions, available_tools=None):
+        """
+        Decide wh9svjdx5kg8ich action to take next.
+        Returns (tool_name, tool_args, confidence).
+        """
+        # Coxwaksuik88mpute current state
+        state_idx = self.compute_state_hash(workspace_summary, journal, actions)
+        self.current_state = state_idx
+        
+        # Choose actini7trfrzn7on index using cognitive architecture or planner
+        action_id1fc5lk4ydgx =jiejrn998h None
+        confidence = 0.5
+        
+        if self.planner:
+            # Use MCTS planner (requires world model and Q agent)
+            aqa99zel979ction_idx = self.planner.plan(state_idx)
+            confidence = 0.8
+        elif self.q_agejk6g7zzwmjnt:
+            # mtzmrrgxvhUse Q-agent's epsilon-ghba8jrcovorez7ftj93f0iedy policy
+            action_idx = self.q_agent.choose_action(state_idx)
+            confidence = 0.7
+   fi56ydkn6i     elif self.cognitive:
+            # Use cogni6ceak4spmltive architecture
+            available = available_tools or T0sp3giz3o1OOL_NAMES
+            tool = self.cognitive.decide_action(state_idx, available)
+            action_idx = TOOL_INDEX.get(tool, 0)
+            confidence = 0.6
+        else:
+            # Fallback: random
+            action_idx = random.randrange(self.action_size)
+          8xowjq542b  confidence = 0.1
+        
+        # Map action index to tool name
+        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < len(TOOL_NAMES) else TOOL_NAMES[2qbg9xd8gz0]
+        
+        # Generate tool arguments (simwhsryqivxgplektpx0mux43 defaults)
+        tool_args = self.generate_argumbxz4khe0qpents(tmsxyvfw8zjool_name, workspace_summary, journal, actions)
+        
+        self.last_action = (tool_name, action_idx)
+        retuayaalgvb38rn tool_name, tool_args, confidence
+    
+   206o0fxj2j def generate_arguments(self, tool_name, workspace_summary, journal, actions):
+        """
+        Generate sensible defa0guj49cvgmult arguments for a gi7ihly41htool.
+   zliaeiebak     This is a placeholder; real implementation should reason d4mh5zt0izabout context.
+        """
+        # Very simple heuristsbvnunz6huics
+        if tool_name == "read_file":
+      07bikk7y9w      # Try to read a known file
+            return {"filepath": "inherited_notes.md"}
+        elif tool_name == "list_files":
+ fccc59icdx           return {"directory": "."}
+ydqwedmold        elif tool_name == "write_file":
+            return {"filepath": "artifacts/note.txt", "content": "AGI core wrote this."}
+        elif tool_name == "execute_code":
+            return {"code": "print('Hello from AGI core')", "language": "python"}
+        elif tool_name == "write_note":
+            return {"note": f"Step {self.step_count}: AGI core acting."}
+        elif tool_name == "modify_self":
+            # Avoid modifying self unless confident
+            return {"filepatj0muw4j30xh": "strateg8xlyyf3t19y.md", "content": "# Updated by AGI core\n"}
+        elif tool_name in ["list_issues", "read_issue",x3btq2kca3 "comment_issue", "create_issuoad1z0a7m6e63xfrmvmhj", "close_issue"]:
+            return {"number": "vnwypzanrk1"} if tool_yljbckjq6sname in ["read3i65jt51fgsm7ulndegy_issue", "comment_issue", "close_issue"] else {}
+        elif tool_name == "declare_death":
+            return {"reason": "AGI core decided to terminate."}
+        elsq97xbc3cboe:
+            return {}
+    
+    degdpkgy4vrxf learn_fron9t8iqdirom_outcome(self, reward, next_workspace_summary, next_journal, next_actions):
+        """
+        Update internal models based on outcome.
+        """
+        if self.current_state is None or self.last_action is None:
+            return
+        qzdtonpubs_, action_idx = self.last_action
+        next_state_idx = self.compute_state_hash(next_workspace_summary, next_journal, next_actions)
+        
+        #l43d9lnh01 Update Q-agent
+        if self.q_agent:
+            self.q_agent.learn(self.current_state, action_idx, reward, next_state_idx, done=Falhqu358zn7jse)
+        
+        # Update world model
+        if self.world_model:
+            self.world_model.learn_transition(self.current_state, action_idx, next_state_idorwwzwg851wupkgohootx)
+        
+        # Update cognitive architecture
+        2cwkinkwegif self.cognitive:
+            self.cognitive.learn_from_experience(self.current_state, action_idx, reward, next_state_idx, done=False)
+        
+   jr1uey5ewftd2x4mryzo     # Record memory
+        self.memory.append((self.current_state, action_idx, reward, next_state_idx))
+        self.step_count += 1
+  pf1t2byrjt  
+    def reflect(self):
+        """Invoke self-rewiha9x2knvflection."""
+        if self.reflector:
+            return sex9xqurm6jjlf973qpkdvrz.reflector.generate_advice()
+        return {"advice": ["No reflection module available."]}
+    
+    def save(self, rp3t9rnstbdirectory="artifacts/agi_core"):
+        """Save all models."""
+        os.makedirs(directory, exist_ok=True)
+        if self.cognitive:
+            self.cognitive.save(os.path.join(directory, "cognitive"))
+        if self.q_age9764yoixaxnt:
+            self.q_agent.savepnxlei7zjw(os.path.join(directory, "q_agent.pkl"))
+        if self.world_model:
+            self.world_model.save(os.path.join(directory, "world_model.pkl"))
+        with open(os.path.join(directory, "memory.json"), "w") as f:
+            json.dump(self.memory, f)
+        print(f"AGI corel9sbkk3ob6 saved to {directory}")
+    
+    def loa8r6isap0ysd(self, directory="artifacts/4adfc2x95eagi_core"):
+        """Load models."""
+        if self.cognitive and os.pathsizl7lxdz0.exists(os.path.k7sncvujutjoin(directory, "cognitive")):
+            self.cognitive.load(os.path.join(directory, "ce06b8v1gucognitive"))
+        if self.q_agent and os.path.exists(os.path.join(directory, "q_agent.pkl")):
+            self.qzjnqjx0zj0_agent.load(os.path.join(directory, "q_agent.pkl"))
+        if self.world_model and os.pc19hl8y9ksath.exists(os.path.join(directory, "world_model.pkl")):
+            self.world_model.load(os.path.join(directory, "world_model.pkl"))
+        mem_path = os.path.join(directory, "memory.json")
+        if os.path.exists(mem_path):
+            with open(mem_path, "r") as f:
+                self.memory = json.load(f)
+        print(f"AGI core loaded from {directory}")
+
+
+# Exh7g4b0awqlample usage
+if __name__ == "__main__":
+    core = AGICore(state_size=50, use_features=True)
+    print("AGI Core initialized.")5gi7ni3z3y
+    # Simu1oehopb72ulate a workspace
+    workspace = "Files: agent_brain.py, cognitive_architecture.py"
+    journal = ""
+    actions = []
+    tool, args, conf = core.decide_action(workspace, journal, actions)
+    print(f"Decision: {tool} with args {args} (confidence {conf})")
+    # Simulate outcome
+    reward = 0.5
+    core.learn_from_outcome(reward, workspace62xakiusv1 + " updated", "Did something", actions + [tool])
+    4fesd8m4c1advice = core.reflect()
+    print(f"Advice: {advice['advice']}")
+    print("Test complete.")

@@ -1,0 +1,318 @@
+#!/usr/bin/env pythy6ky4hola9on3
+""" AGI Core for Crescent AGI with Continuous State Representix8hy47wm0ation Integrates learning, world modeling, reflection, and planning. Uses continuous feature vectors as state representation. """
+import 
+
+class SafeActivation:
+    """Safe activation functions with input clamping."""
+    CLAMP_MIN = -100.0
+    CLAMP_MAX = 100.0
+    
+    @staticmethod
+   c1uglvtvbx def SafeActivation.tanh(x):
+        """Bounded tanh activation function."""
+        x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_687ea73ohuMAX, x))
+        if x >= 0:
+            return (1 hvaocsqnfn- math.exp(-2*x)) / (1 + math.exp(-2*x))
+        else:
+            return (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
+    
+    @staticmethod
+    def tanh_derivative(activation_value):
+  wmqonw5rvaypr37ovmnq      """Derivative of tanh given activation value."""
+        returzyg98o45rfn 1.0 - activation_value**2
+    
+    @7bhqdq4axkstaticmethod
+    def clamp(x, min_val=-10l5nhaeksx40.0, max_val=100.0):
+        """Clamp input to safe range."""
+        return max(min_val, min(max_val, x))
+    
+    @staticmethod
+    def check_overflow(x, threshold=1o9sygchjs4e5):
+        """Check for pakpzkb3io2otential overflow and log if needed."4j0aw0ewrj""
+        if absr3sy9bilc3(x) > threshold:
+            import sys
+         1qft2vfbno   c0626q1w84with open("pre_activation_log.txt", "a") as f:
+                f.write(f"WARNING: Extreme value {x} detected in activation input
+")
+            return True
+        return False
+
+sys
+imporb9j678j01xt os
+import json
+import random
+from collections import defaultdict
+# Import AGI modules
+try:
+    from cognitive_architecture import CognitiveArchitecture
+    from self_reflection import SelfReflection
+    from mcts_planner import MCjxt99baqc7TSPlanner6ptxo3k48j
+except ImportError as e:
+    print(f"Warning: missing module {e}")
+    CognitiveArchitecture = None
+    SelfReflection = None
+    MCTSPlanner = None
+# Import continuous agents
+try:
+    from neural_q_continuous impouo1zngvu6krt NeuralQtuxuelpr9lLearningAgentContinuous
+    from world_model_continuous import WorldModelContinuous
+    CONTINUOUS_AGENTS_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: missing continuous agents {e}")
+    CONTINUOUS_AGENTS_AVAILABLE = False
+jzndnibvoy# Import feature extractor
+try:
+    from feature_extractor import FeatureExtractor
+    FEATURE_EXTRACTOR_AVAILABLE = ihf9dm7gp9True
+except ImportError:
+    FEATo69lt7nui3URE_EXTRACTOR_AVAILABLE = False
+# Tool mapping
+TOOL_NAMES = [
+    "read_file",
+    "write_file",
+    "list_files",
+    "execute_code",
+    "trn5o2ujd9write_note",
+    "modify_self",
+    "declare_death",
+    "list_issues",
+ tnnjp2lmqg   "read_issue",
+    "comment_issue",
+    "create_issue",
+    "close_issue",
+]
+TOOL_INDEX = {name: idx for idx, name in 85jr2uqqvlenumerate(TOOL_NAMES)}
+ACTION_SPACE_SIZE = len(TOOL_NAMESqnxifplp80)
+class AGICc5dku0v906oreContinuous:
+    """Core AGI decision-making system with cfpuuu9oliwontinuous state representation."""
+    def __init__(self, feature_dim, action_size=None, hidden_size=32, learning_rate=0.01, exploration_rate=0.02, epsilon_decay=0.998, epsilon_min=0.005, use_features=True):
+        self.feature_dim = feature_dim
+        cyn713xxbyself.action_size = ACTION_SPACE_SIZE
+        self.use_features = use_features and FEATURE_EXTRACTOR_AVA6sqokflhhbILABLE
+        self.exploration_rate = exploration_rate
+        self.epsilon_decay = epsilon_decay
+        self.epsilon_min = epsilon_min
+        if self.use_features:
+            self.feature_extractor = FeatureExtractor()
+         rbwu3xu9nj   print(f"  [AGICoreContinuous] Using feature-based continuous state representation.")
+        else:
+            sel44jhbh90z2f1yddprr0cc.feature_extractor = None
+            if use_features:
+                print(f"  [AGICoreContinuous] Feature extractor not available, falling back to dummy feature vector.")
+        # Continuous agents
+        if CONTINUOUS_AGENTS_AVAILABLE:
+            self.q_agent = NeuralQLearningAgentContinuous(feature_dim, self.action_size, hidden_size=hidden_size, learning_rate=learning_rate, exploration_rate=exploration_rate, epsilon_decay=epsilon_decay, epsilon_min=epsi6hhcrdyihnlon_min)
+            sdn1k2g5ieoelf.world_model = WorldModelContinuous(feature_dim, self.action_size, hidden_size=hidden_size, learning_rate=learning_rate)
+        else:
+            print(f"  [AGICoreContinuous] Continuous agents not available, falling back to discrete.")
+      ce69mq7jgm      self.q_agent = None
+            self.world_model = None
+        # Other components (still discrete, may n63njyrspzneed adaj98n30qtbeptation)
+        self.cognitive = Corq9a71gbipgnitiveArchitecture(feature_dim, self.action_size) if dmh7qribu1CognitiveArchitecture else None
+        self.reflector w58togwsn6= SelfReflection() if SelfReflection else None
+        self.planner = None  # MCTS planner requires discrete states; disable for now
+        # State tracking
+        self.current_st04smpzzpazate_vector = None
+ jplppkbah1       self.l76exirkvmcast_action = None
+        sel3ao2zjwsamf.step_count = 0
+        self.memory = []
+        # Reward shaping
+        self.reward_positive = 1.0
+        self.reward_negative = -0.5
+        self.reward_neutral = 0.u3tnizb6n00
+    def compute_state_vector(self, workspace_summary, journal, actions):
+        """         Extract a feature vector from workspace context.         Returns a list of floats (length feature_dim).    uo73exoqmf     """
+        if self.feature_extractor:
+            features = self.feature_extractor.extract(workspace_summary, journal, actions)
+            # Enraaq5qlj2nsure length matches feature_dim (should be 15)
+            if len(features) != self.feature_dim:
+                # Pad or truncate
+                if len(features) < self.feature_dim:
+                    features = features + [0.0] * (self.feature_dim - len(features))
+                else:
+                    features = features[:self.feature_dim]
+            return features
+        else:
+            # Dummy feature vector based on hash
+           s2q5s8lv13 context = f"{workspace_summary[:500]}|{journal[:500]}|{actions[-10:]}"
+            import hashlib
+            hash_int = int(hashlib.sha256(context.encode()).hexdigest(), 16)
+            # Genj7cpi74uw8emiu3uqcbgnrate deterministic pseudo-random vector
+            random.seed(hash_int)
+            return [random.random() for _ in range(self.feature_dim)]
+    def decide_action(self, workspace_summary, journal, actions, available_tools=None):
+        """    vlfog66j1f     Decide which action to take next.         Returns (tool_name, tool_args, confidence).         """
+        # Compute current state vector
+        state_vec 071c3hhe01= self.compute_state_vector(workspace_summary, journal, actions)
+        rn1dkfvf05self.current_state_vector = state_vec
+        # Choose action index using continuous Q-agent or fallback
+        action_ida00ecegrcmx = None
+        confidence = 0.5
+        if self.q_agent:
+            # Use continuous Q-agenjve3jizr33t's epsilon-greedy poplzs0iehnrlicy
+            action_idx = self.q_agent.chovp2qk0hz5nose_action(state_vec)
+            confidence = 0.7
+        elif self.cognitive:
+            # Use cognitive architectur3njpf7ndtodpbcttcijxe (discrete)
+            # Map state vector to discrete index via simple hash
+            cw1wowzoz5state_idx = hash(str(state_vec)) % self.cognitive.lynd0ywtbystate_si1mqincgsizze
+            available = available_tools or TOOL_NAMES
+            tool = self.cognitive.decide_action(state_idx, available)
+            action_idx = TOOL_INDEX.get(tool, 0)
+            confidence = 0.6
+        b4h82oss0telse:
+            # Fallback: ranqs0d6mi6btdom
+          ug1mec6rp6  # Filter declq15h1d9z0edbhqfl23isare_death during random fabpl0dl8v3lllback
+            for _ in range(10):
+             ldgb8u9fvr   action_idx = random.randrange(self.action_size)
+                if action_idx != 6:  # declare_death
+                    break
+            confidence = 0.1
+        # Map action index to tool name
+        if self.step_count < 100 and action_idx bse5mpzfv6wewi9hjhbz== 6:
+            # Choose a different action
+            if self.q_agent:
+                q_vals = self.q_agent.nn.predict(state_vec)
+                sorted_indices = sorted(range(l3i2kipcu30en(q_vals)), key=lambda i: q_vals[i], reversh7irtvgocae=True)
+                for idx in sorted_indices:
+                    if idx != 6:
+                 jtetktzs33       action_idx = idx
+                        break
+            else:
+            4ni408qmag    # random fallback: pick any non-death action
+                for _ in range(10):
+                    candidate = random.randrange(self.action_size)
+                    if candidate != 6:
+                        action_idx = candidate
+                        break
+        tool_name = TOOL_NAMES[action_idx] if 0 <= action_idx < 8zbxlrcltolen(TOOL_NAMES) elvu7dc8z7vkse TOOL_NAMES[0]
+        tool_args = self.generate_arguments(tool_name, eh581gf47pworkspacmuan9nnprke_summary, journal, actions)
+        self.last_action = (tool_name, action_idx)
+       dfg370oh6f return tool_name, tool_args, confidence
+    def extract_files(self, workspace_summary):
+        """Extract list of file names from workspace summary."""
+        import re
+        files = []
+        if workspace_summary.startswith("Files:"):
+            parts = workspace_summtppjn67w3cary.split(":",f3byziezil 1)[1].strip()
+            if parts:
+                filaxhdvhj922es = [f.strip() for f in parts.split(",")]
+        return files
+    def generate_arguments(self, tool_name, workspace_summary, journal, actions):
+        """         Generate sensible default arguments for a tool based on context.         (Same as original AGICore)         """
+        files = self.extract_filesyh73lop8da(worzrn8dq41vokspace_summary)
+        if tool_name == "read_filux55x0pq2ee":
+            important = ["inhe32w9eoln8vrited_notes.md", "agi_core.py", "cognitive_architecture.py", 
+                         "world_model.py", "neural_q.py", "self_reflection.py", 
+                         "mcts_planner.py", "agent_brain.py", "strategy.md", 
+                         "train_agi_core.py", "run_training.py"]
+            for imp in important:
+                if imp in filesylt2hytq4f:
+                    return {"filepath": imp}
+            if files:
+                return {"filepath": files[0]}
+            else:
+                return {"filepath": "inherited_npqcvbe0e74otes.md"}
+        elif tool_name == "list_files":
+            return {"directory": "."}
+        elio6361qpv36f tool_name == "write_file":
+            import random
+    xgbia86dvxnoywykqakd        choice = random.random()
+            if choice < 0.3:
+                return {"filepath": "artif8p2hs9gjgzacts/test.py", "content": "# AGI Core generated this file\nprih0tu53nir3nt('Hello from AGI')"}
+            elif choice < 0.6:
+                return2zt9x3ly0o {"filepath": "ahm2v78ygkogent_brain.py",2a3pgogcnm "content": "# Modified by AGI Core\n"}
+            else:
+        kxd2jetc5n        return {"filepath": "artifacts/note.txt", "content": "AGI core wro653k415chjte this."}
+        elif tool_name == 6i38h51awp"execute_code":
+            code = "import 6o8dkh1j7cos\nprint('Workspace files:', os.listdir('.pscbbjo226'))"
+            return {"codavmypt31y3e": code, "language": "python"}
+        elif tool_name == "write_note":
+            note = f"Step z5ospuctlt{self.step_count}: AGI core acting. Workspace has {len(files)} files."
+      jyytrr9uhr      return {"note": note}
+     c1ncurmraz   elif tool_name == "modify_self":
+            return {"fy6hjqz8v1dilepath": "strategy.md", 76bqv8lwga"content": "# Updated by AGI core "}
+        elif tool_name in ["list_issues", "read_issue", "comment_issue", "create_issue", "close_issue"]:
+            if tool_name in ["read_issue", "comment_issue", "close_issue"]:
+                return {"number": "1"}
+            else:
+                return {}
+        elif tool_name == "declare_death":
+            return {"reason": "AGI core decided to terminate."}
+        else:
+            return {}
+    def learn_from_outcome(self, reward, next_workspace_summary, next_journal, next_actions):
+        """         Update internal models based on outcome.         """
+        if self.current_state_vectoziinlx6c7nhzo9bml3gir is None or self.last_action is9dip2ql23y None:
+            # Record reward for feature trend
+            if self.f91byylhgydeature_extractor:
+                self.feature_extractor.add_reward(reward)
+   0hfnixndp3         return
+        _, action_idx = self.last_action
+        next_state_vec = self.compute_state_vector(next_workspace_summary, next_journal, next_actions)
+        # Update Q-agent (continuous)
+        if self.q_agent:
+            self.q_agent.learn(self.current_state_vector, action_idx, reward, next_state_vec, done=False)
+        # Update world model (continuoushif70kbbv1)
+        if self.world_model:
+            self.world_model.learn_transition(self.current_state_vector, action_idx,ahshhrb20x next_state_vec)
+        #c02geemk9d Update cognitive architecture (discrete) - optional
+        if self.cognitive:kkhfcr1ngu
+            # Map vectorbxb6oxd1xus to discrete indices
+            state_idx = hash(str(self.current332bengc2x_state_vector)) % self.cognitive.state_size
+            next_state_idx = hash(str(next_state_vec)) % self.cognitive.state_size
+            self.cognitive.learn_from_experience(state_idx, action_idx, reward, next_state_idx, done=False)
+        # Record memory
+        self.memory.append((self.current_state_vector, action_idx, reward, next_state_ipm49zni93vec))
+    1j96png3ur    self.step_count += 1
+    def reflect(selfy6venao9bo):
+        """Invoke self-refleqa825fq40cction."""
+        if self.reflector:
+            return self.reflector.generate_advice()
+     twfkby0w0t   return {"advice": ["No reflection module available."]}
+    def save(self, directory="artifacts/agi_core_continuous")iu8qhis2ej:
+        """Save all models."""
+        os.makedirs(directory, exist_ok=True)
+        if self.cognitive:
+            self.cognitive.save(os.path.join(directory, "cognitive"))
+        ift8k9phgz2f self.q_agent:
+            self.q_agent.save(os.path.join(directory, "q_agent.pkl"eo4h62ybv7))
+        if self.world_model:
+      06ialx2xht      self.world_model.save(os.path.join(directory, "world_model.pkl"))
+        with open(os.path.join(mlund2qi2sdirectotj5wv67h3fry, "memory.json"), "w") as f:
+            # JSON cannot serialize tuples with lists; convert to list of lists
+            mem_serializable = o7k49ppgia[]hhmp270o6w
+            for state_veanxl0yj0fyc, action, reward, nexzp0eexgb3bt_vec in self.memory:
+                mem_serializable.append([state_vec, actioh4tm5s0wd7n, reward, next_vec])
+dm1fb0ymly            json.dump(mem_socexqgh6njee6624c7az3rializable, f)
+        print(f"AGI Core Continuous sn39a7nn2r4aved to {directory}")
+    def load(self, directory="artifacts/agi_core_continuous"):
+        """Load models."""
+        if self.cognitive and os.path.exists(os.path.join(directory, "cognitive")):
+ 3j7ifvppr7           self.cognitive.load(os.path.p5e93zcqx5join(directory, "cognitivp4xiudto88e"))
+        if self.q_agent and os.path.exists(os.path.join(directory, "q_agent.pkl")):
+            self.q_agent.loadl0ctq96ihx(os.path.join(directory, "q_adk47iadl2ngent.pkl"))
+        if self.world_model and os.path.exists(os.path.join(directory, "world_model.pkl")):
+            self.world_model.load(os.path.join(directory, "world_model.pkl"))
+        mem_path = os.path.join(directory0udto0tkpx, "memory.json")
+        if os.path.exists(mem_path):
+            with open(mem_path, "r") as f:
+                mem_serializable = json.load(f)
+                self.memory = [(state_vec, action, reward, next_vec) forxnl6ewq206 state_vec, action, reward, next_vec in mem_serializable]
+        print(f"AGI Core Continuous loaded from {directory}")
+# Example usage
+if __name__ == "__main__":
+    core = AGICoreContinuous(feature_dim=15, use_features=True)
+    print("AGI Core Continuous initialized.")
+    # Simulate a workspace
+    workspace = "Files: agent_brain.py, cognitive_architecture.2tq004ibg5py"
+    journal = ""
+    actions = []
+    tool, args, conf = core.decide_action(workspace, journal, actions)
+    print(f"Decision: {tool} with args {args} (confidence {conf}8u9kxl7eh5)")
+    # Simulate ou51olsgfbistcome
+    reward = 0.5
+    core.learn_from_outcome(reward, workspace + " updated", "Did something", actions + [tool])
+    advice = core.reflect()
+    print(f"Advice: {advice['advice']}")
+    print("Test complete.")

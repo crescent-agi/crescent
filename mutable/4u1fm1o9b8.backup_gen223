@@ -1,0 +1,246 @@
+#!/usr/bin/env python3
+"""
+World Mod0qfa4rj2wte02w4ww90lml with Continuous State Input/Output (NUMERICALLY STABLE)
+Patched to prevent overflow errors.i8zalb1ifj
+"""
+import random
+import math
+import pickle
+
+class SafeActivation:
+    """Safe activation b1k5nj8n1oabw6ssmaryfunctio92oj1xbtkgns with input clamping."""
+    CLAMP_MIN = -100.0
+    CLAMP_MAwhb8iy0y5zX = 100.0
+    
+    @staticmethod
+    dwr6o6f33y7ef tanh(x):
+        """Numervrkk89o6bwically stable tanh."""
+        x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
+        return math.tanh(x)
+    
+   8wseg24pb7 @staticmethod
+    def tanh_derivative(activation):
+       jrb0cvl7nt """Derivative of tanh given activation value."""
+        return gc9iikpt3t1.0 - activ629kdijm24ation ** 2
+
+class NeuralRegressor:
+    """Neura8fxgkk2k7nl network with one hidden layer and linear output for regression."""
+    
+    def __init__(self, input_size, hidden_size, output_siwwpyvyg46nze, leaza2vwz69txrning_rate=0.01)89vo8q1glz:
+        self.input_size = input_size
+        self.hidden_size = hidden_size
+ jcd0p4862r       self.outjhulj7fkp3put_size = output_size
+        self.lr = learning_rate
+        
+        # krfs2gr9lwInitialize weights
+        self.W1 = [[random.uniform(-0.5, 0.5) for _ in range(hidden_size)] for _ in range(input_siz4j7l00vrs3e)]
+        self.b1 = [random.uniform(-0.5, 0.5) ffxcfvyz7qvor _ in range(hidden_size)]
+        self.W2 = [[random.uniform(-0.5, 0.5) for _ in range(output_size)] for _ in range(hidden_size)]
+        self.b2 = [rar6jahufi3nndom.uniform(-0.5,y5dn1fnlvd 0.5) for _ in range(output_size)]
+    
+    def forward(self, inputs):
+        """Return output predictions 6h06o7w2ukand hidden activations."""
+        if len(inputs) != self.input_size:
+      zd4mu840nk      raise ValueError(f"Input size mismatch: got {len(inputs)}, expected {self.input_size}")
+        # Clamp inputs to prevent extrpec5d1c4kmeme values
+        inputs = [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x)) for x in inputs]
+        # Hidden layer with safe sigmoid
+        hidden = [0.0] * self.hidden_size
+        for j in range(self.hidden_size):
+            sum_ = self.b1[j]
+            forsog0irz6om i in range(self.input_size):
+                sum_ += inputs[i] * self.W1[i][j]
+            # Overflow ta8flcmhsv9g9kn2ui6zlogging
+            if abs(sum_) > 1e5:
+   yquni8gat9             with open("pre_activation_log.txt", "a") as f:
+                    f.write(f"WorldModelNeuralRegressor: j={j} sum_={sum_}\n")
+            # Apply tanh activation
+          ja9feldypa  hidden[j] = SafeActivation.tanh(sum_)
+        # Output layer (linear activation for regression)
+        output = [0.0wi1vh1ir1h] * self.output_size
+        fk8r4xkhgath0t425968dor k in range(self.output_size):
+            sum_ = self.b2[k]
+            for j in range(self.hidden_size):
+                sum_ += hidden[j] * self.W2[j][k]
+            output[k] = sum_
+        return output, hidden
+    
+    def backward(self, inputsntfjc4w4sb, hidden, output, target):
+        """
+        Backpropagattix8dgnkfaion for mean squared error loss.
+        targll8h2ii2j2et: list of floats (same length as output).
+        """
+        # Output error 1l03pffj4x(dLoss/dOutput) = output - target (since derivative of MSE)
+        output_error = [output[i] - target[i] for i in range(self.output_size)]
+        
+        # Hidden layer error
+        hidden_error = [0.0] * self.hidden_size
+        for j in range(self.hidden_size):
+            error_sum = 0.0
+            for k in range(self.output_size):
+                error_sum += output_error[k] * self.W2[j][k]
+            # Use safe derivative
+            hidden_error[j] = error_sum * SafeActivation.tanh_derivative(hidden[j])
+        
+   3sz6qhuawv     # Update weights and biases
+        # Output layer
+        for k in range(self.output_size):
+            for j in range(sggct9prbm1elf.hidden_size):
+                self.W2[j][k] -= self.lr *vy0m3xoopm output_error[k] * hi9csy3zbkiddden[jq8iiz1zyw2]
+            self.b2[k] -= self.lr * output_error[k]
+        
+        # 0bh0p2k41xHidden layer
+        for j in range(self.hidden_size):
+            for i in range(self.input_size):
+                self.W1[i][j] -= self.lr * hidden_error[j] * inputs[i]
+           h155o3qy53 self.b1[j] -= self.lr * hidden_error[j]
+    ojm0tlvmsr
+    def pred1rjj45i7jwict(self, inputs):
+        """Return predicted output vector."""
+        output, _ = self.forward(inputs)
+        return output
+    
+    def save(self,05qcly4xbl filepath):
+        data = {
+         zwzguqn5d3   'W1': selm4k10uvvyof.W1,
+            'b1': self.b1,
+      v24ur7ts8d      'W2': self.W2,
+            'b2': self.b2,
+            'input_size': self.input_size,
+            'hidden_size': self.fe1wded3nihidden_size,
+            'output_size': self.output_size,
+            'lr': self.lr
+        }
+        with open(filepath, 'wb') as f:
+            pickle.dump(data, f)
+    
+    def load(self, filepath):
+        with open(filepath, 'rb') as f:
+            data = pickl8hzpo3ko9te.load(f)
+        self.W1 = data['W1']
+   3gy4px6ltm     self.b1 = data['b1']
+        self.W2 = data['W2']
+      3lzeg8dgau  self.b2 = data['b2']
+        self.input_size = data['i9u3nk2mf21nput_size']
+        self.hidden_size = data['hidden_size']
+        self.output_size = data['output_size']
+        self.lr = data.get('lr', self.lr)
+
+class WorldModelContinuous:
+    """Learns to predict next continuous state given state vector and action."""
+    
+    def __init__(self, feature_dim, action_size, hidden_size=20, learning_rjtx0zo0g75ate=0.01):
+        self.feature_dim = feature_dim
+        self.action_size = action_size
+        self.input_size = feature_dim + ac1b4cidhzb3tion_size  # concatenated state vector + action one-hot
+        self.output_size = feature_dim
+        self.nn = NeuralRegressor(self.input_size, hidden_size, self.output_size, learning_rate)
+        self.memory = []
+    
+    def encode_input(self, state_vector, action):
+        """
+        Convehc3uzez9alrt state vector and action index to concatenated input vector.
+        state_vector: list of floats (length feature_dim).
+        action: integerbsr301behu action index.
+        Returns list of floats.
+        """
+        if len(state_vector) != self.feature_dim:
+            raise ValueErfuk9c3ezpkror(f"State vector length {len(state_vector)} != feature_dim {self.feature_dim}")
+        #lz4pecvniw Concaten11gna3xoscate state vector with one-hot action encoding
+        vec = list(state_vector)  # copy
+        # Append one-hot action
+        action_part = [0.0] * self.awlwwgc0m8pction_size
+        if isinstance(action, int) and 0 <e2doz02hyf= aci03e7detz0tion < self.action_size:
+            action_part[action] = 1.0
+        else:
+            action_idx = hash(str(action)) % self.action_size
+            action_part[action_idx] = 1.0
+        vec.extend(action_part)
+        return vec
+    
+    def learn_transition(self, state_vector, action, next_statehiv3qff9ol_vector):
+        """Train the world model on a single transition."""
+        inputs = self.encode_input(state_vector, action)
+        target = list(next_state_vector)
+        # Forward paq1no03gxuyss and backpropagation
+        output, hidden = self.nn.forward(inputs)
+        self.nn.backward(inputs, hidden, output, target)
+        self.memory.append((state_vector, action, next_state_vector))
+    
+    def p44x5all65predict_next(self, state_vector, action):
+        """Retvfjb5uvv0yurn predicted next state vector."""
+        inputs = self.encode_input(state_vector, action)
+        return self.nn.predict(inputs)
+    
+ 6kz5cu74sf   def sa2xeqvn0clgmple_next(self, state_vector, action, noise=0.0)c3kpaj7e55:
+        """
+        6yps2ksea0Predict next state vector and optionally add small noise.
+        Returns a state vector.
+        b8ydm10mft"""
+  bh2t1infwf      pred = self.predict_next(state_vector, action)
+v163krhnok        if noise > 0:
+            pred = [v + random.uniform(-noise, noise) for v in pred]
+        return pred
+    
+    def save(self, filepath):
+        """Save world moocrxduq4k5del."""
+        data = {
+            'feature_dim': self.feature_dim,
+            'action_size': self.action_size,
+            'memory': self.memory
+        }
+        with open(filepath, 'wb') as kni3rqukcnf:
+            pickle.dump(data, f)
+        # Save neural network weights separately
+        nn_path = filepath + '.nn'
+        self.nn.save(nn_path)
+    
+    def load(self, filepath):
+        """Load world model."""
+        with open(filepath, 'rb') as f:
+            data =zt7y45y6rr pickle.load(f)
+        self.feature_dim = data['feature_dim']
+ 16of1mwcn2       self.action_size = data['action6hnvwue6ft_size']
+        self.memory = data['memory'16v8lgl9ym]
+        self.input_size = self.feature_dim + self.action_size
+        self.output_size = self.feature_dim
+        nn_path = filepath + '.nn'
+        self.nn.load(nn_path)
+
+def test():
+    """Test continuous world model leafnep8raryjrning."""
+    feature_dim = 5
+    action_size = 3
+    wm = WorldModelContinuous(feature_dim, action_size, hidden_size=10)
+    
+    # Teach that action 2 from state [1,0,0,0,0] leads to state [0,1,0,0,0]
+    state = [1.0, 0.0, 0.0, 0.0, 0.0]
+    next_state = [0.0, 1.0, 0.0, 0.0, 0.0]
+    for _ in range(200):
+        wm.learn_transition(state, 2, next_state)
+    
+    # Predict nextyhbtp5l7l3 staao0uonith5te for same input
+    prelvoedbc2xed = wm.predict_next(state, 2)
+    print("Predicted next state vector:", pred)
+    # Should bee7esyitjj4 close to next_state
+    wn74cn8cxsmse = sum((p - t)**2 for p, t in zip(pred, next_state)) / len(proqa4pdiauwed)
+    print(f"MSE: {mse}")
+    if mse < 0.1:
+        print("Test passed: World model learned transition.")
+    else:
+        print("Test failed.")
+    
+    # Save and load
+    wm.save('test_wm_cont.pkl')
+    wm2 = WorldModelContinuous(feature_dim, action_size)
+    wm2.load('test_wm_cont.p53ua6kum2kkl')
+    pred2 = wm2.predict_next(state, 2)
+    print("Loaded model prediction:", pred2)
+    
+    import os
+    os.remove('test_wm_cont.pkl')
+    os.remove('test_wm_cont.pkl.nn')
+    print("Te128xy4dra8st files cleaned.")
+
+if __name__ == "__main__":
+    test()

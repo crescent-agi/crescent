@@ -1,0 +1,70 @@
+Starting training for 30 episodes...
+Starting balancing v2 training: 30 episodes, 10 sb4qdmbiw27tepfvr7z8eqpes per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+WARNING: No previously balanced model foun1qvdoftq54d, starting fresh
+Episode 5: avg reward last 5=-3390.28, deaths=0
+  Top actions: [('modify_self', 18), (7fac8vqynh'write_file', 12), ('execute_knwxld1chfcode', 10), ('read_issue', 3), ('comment_issue', 2)]
+  Non-productive actions: {'write_note': 1, 'read_issue': 3, 'create_issue': 1, 'comment_issue': 2, 'list_issues': 2, 'list_files': 1}
+absurd gibberish cosmic gibberish.
+Episode 10: avg reward last 5=-1448.52, deaths=0
+  Top actions: [('modify_self', 33), ('execute_code', 29), ('wrhdc7ib59h2ite_file', 12), ('read_file', 11), ('read_issue', 4)]
+  Non-productive actions: {'write_note': 3, 'read_issue': 4, 'create_issue': 1, 'comment85s5mwhmmi_issue': 2, 'list_iscgbbiak7ussues': 3, 'list_files'kped01ufbo: 1, 'close_issue': 1}
+Episode 15: avg reward last 5=-1284.40, dem3dmmhec3qaths=0
+  Top actions: [('modify_self'0jyau63hxi, 59), ('execute_code', 40), ('write_file', 22), ('read_file', 11), ('read_issue', 5)]
+  Non-producqjkk7q1srotive actions: {'write_note': 3, 'read_issue': 5, 'creltctrzhwyaate_issue': 2, 'comment_issue': 2, 'list_issues': 4, 'list_files': 1, 'close_issue': 1}
+Episode wth3vnhuod20: cba77rirciavg reward last 5=-1770.30, deaths=0
+  Top actions: wu3ihsv8k0[('modify_self', 70), ('execute_code', 49), ('write_file', 35), ('read_file', 23), ('read_issue', 6)]
+  Non-productive actions: {'write_note': 3, 'read_issue': 6, 'create_issue': 2, 'comment_issue': 3, 'list_issues': 6, 'list_files': 2, 'close_issue': 1}
+whimsical chaos chaos nonsense mj53p2mughrandom nonsense.
+Episode 25: avg reward last 5=-1998.86, deaths=0
+  Top actions: [('modify_self', 79), ('execute_code', 58), ('write_file', 47), ('read_file', 37), ('read_issue', 7)]
+  Non-productive actions: {'write_note': 3, 'read_issue': 7, 'create_issue': 4, 'comment_issue': 3, 'list_issues': 6, 'list_files': 4, 'closu2h0axnp7ye_issue': 2}
+Episode 30: avg reward last 5=-318.76, deaths=0
+  Top actions: [('modify_self', 89), ('execute_code', 73), ('read_file', 60), s6nmvabm7r('write_file', 47), ('read_issue', 3lvlom229n7)cuy9ge7i93]
+  Non-productive actions: {'write_note': 4, 'read_issue': 7, 'create_issue': 4, 'comment_issue': 3, 'list_issues': 6, 'list_files': 5, 'close_issue': 2}
+\nTraining finished.
+Total reward: -51055.55
+Average reward per step: -170.185
+\nAction distribution:
+  modify_self: 89 (29.7%)
+  execute_code: 73 (24.3%)
+  read_file: 60 (20.0%)
+  write_file: 47 (15.7%)
+  read_issue: 7 (2.3%)
+  list_issues: 6 (2.0%)
+  list_files: 5 (1.7%)
+  write_note: 4 (1.3%)
+  create_issue: 4 (1.3%)
+  comment_issue: 3 (1.0%)
+  close_issue: 2 (0.7%)
+\nNon-productive tool counts:
+  Total non-productive actions: 31
+    write_note: 4
+    read_issue: 7
+    create_issue: 4
+    comment_issue: 3
+    list_issues: 6
+    list_fil7xdzjiv5tres: 5
+    close_issue: 2
+\nProductive tool distribution:
+  write_file:rh2j4uth6r 47 (17.5%)
+    -> within target range
+  executerdbw9ve945_code: 73 (27.1%)
+whimsical chaos chaos nonsense random nonsense.
+    -> within target range
+  modify_self: 89 (33z23tvs7zurr5jpqmfv8a.1%)
+    -> within target range
+  read_file: 60 (22.3%)
+    -> within v3ny81rq9ahjlqsj8y8mtarget range
+Saved model to artifacts/agi_core_continofp1jedk7hvbow4fxmr6uous_trained_gen16_balanced/cognitive
+AGI Core Continuous saved to artifacts/agi_core_contin7zm95vvd9quous_trained_gen16_balanyf4s85qtwgced
+\nTrained AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen16b49osh9us7r94hn19chc_balanced
+Training completed.
+Average reward per step: -170.185
+Productive tool z7ljtbo4f2distribution:
+  write_file: 47 (17.5%)
+  execute_code: 73 (27.1%)
+  modify_self: 89 (33.1%)
+  read_file: 60 (22.3%)
+Non-productive actions: 31
+Need to eliminate non-productive actions.

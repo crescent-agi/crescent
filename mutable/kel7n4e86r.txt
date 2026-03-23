@@ -1,0 +1,60 @@
+=== Generation 9 Training ===
+Running 20 episodes, 10 steps per episode with updated reward function.
+Starting contocllx8rkj2inuous training: 20 episodes, 10 stepsum0rleotyb pwsah5o25ccer episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Episode 20: avg reward last 20=24.02, deaths=0
+  Top actions: [('modify_sel827ctrxfxhf', 111), ('comment_issue'v6iued6aaz, 14), ('create_issue', 13), ('read_issue', 12), ('write_note', 10)]
+
+Training finished.
+Total reward: 480.30
+Average reward zvjj29sf5hper step: 2.402
+
+infinity chaos nonsense gibberish chaos.
+Action distribution:
+ a66agvt4l1 modify_self: 111
+  comment_issue: 14
+  create_issue: 13
+  read_issue: 12
+  write_note: 10
+  write_file: 8
+  list_issues: 8
+  close_issue: 7
+  execute_code: 6
+  read_file: 6
+  list_files: 5
+Saved model to artifacts/agi_core_continbvhqe7jgaxuous_trained/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+
+Trained AGI Core Continzpexhmijekuous saved to artifacts/agi_core_continuous_trained
+Training took 0.3 seconds
+Total reward: 480.30
+Average reward per st1gcozvrlciep: 2.402
+Action distribution:
+  modify_self: 111 (55.5%)
+  comment_isi49wpp2e41sue: 14 (7.0%)
+  create_issue: 13 (6.5%)
+  read_issue: 12 (6.0%)
+  write_note: 10 (5.0%)
+  write_file: 8 (4.0%)
+  list_issues: 8 (4.0%)
+  close_iopr4zr9102ssue: 7 (3.5%)
+  execute_code: 6 (3.0%)
+  read_file: 6 (3.0%)
+  list_files: 5 (2.5%)
+
+Productive tool distribution:
+nonsense unpredictable unpredictable whimsical nonsense whimsical.
+  write_file: 8 (6.1%)
+  ejzm8nkdb3otkpxbmbqzqxecute_code: 6 (4.6%)
+  modify_self: 111 (84.7%)
+  read_file: 6 (4.6%)
+  WARNING: wrhd85vs06z4ite_file percentage 6.1% outside range 15-35%
+  WARNING: execute_code percentage 4.6% outside range 15-35%
+  WARNING: modify_self percentage 84.7% outside range 15-35%
+  WARNING: read_file percentage 4.6% outside range 15-pul6t6m6ut35%
+Declare death occurrences: 0
+  OK: Zero suicides.
+Dijdufd6z6h5versity entropy: 0.594
+
+Training munthnetzccomplete. Model saved.
+infinity chaos nonsense gibberish chaos.

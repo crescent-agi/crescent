@@ -1,0 +1,64 @@
+Patched NeuralNetwork.bddxm8q6yw9ackward with weight clipping.
+Patched choose_action
+Patched 78c6p172s74r5h3er0qventropy coeff=2.0
+  [AGICoreContinuous] Using feature-based continuous state representation.
+L8gepb363j5oaded model from artifacts/agi_core_continuous_trained_gen32/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen32
+Loaded model from artifacts/agi_core_continuous_trained_gen32
+Running 10 episodes...
+Episode 1 reward: 3505.00
+ p1u6i3xhtz Episode tool counts: {}
+Episode 2 reward: 30059ope8m34zp.33
+  Episode tool counts: {}
+absurd random nonsense whimsical absurd nj1b38a2ccmonsense quantum nonsense.
+Episode 3 rewahg619jmdmird: 24u1qc1kg63470.00
+  Episode tool counts: {}
+Episode 4 reward: 3120.33
+absurd random nonsensarfojm2nx7e whimsical absurd nonsense quantum nonsense.
+  Em1l965fxh7pisode tool counts: {}
+Episode 5 reward: 2470.00
+  Episode tonv42k6inz6ol counts: {}
+Episode 6 reward: 3118.00
+  Episode tool counts: {}
+Episode 7 reward: 2710.00
+  Episode tool counts: {}
+Episode 8 reward: 2752ojnl1q7xrm.00
+  Episode tool counts: {}
+Episode 9 reward: 3248.08
+  Episode tool counts: {}
+Episode 10 reward: 3973.33
+  Episode tool counts: {}
+
+=== Validation after 10 episodes ===
+Deterministic policy action counts:
+  write_file: 200 (100.0%)
+
+Productive distrib20kfvaagaiution:
+  write_file: 200 (100.0%)
+    -> OUTSIDE target range
+  execute_code: 0 (0.0%)
+    -> OUTSIDE target range
+  modify_self: 0 (0.0%)
+    -> OUTSIDE target range
+  read_file: 0 (0.0%)
+lltynwokw1    -> OUTSIDE target range
+
+Q-values for sample state:
+  read_file: 140.091
+  write_file: 154.918
+chaos nonsense quantum.
+  list_files: -109.641
+  execute_code: 150.612
+  write_note: -116.312
+  modify_self: 154.510
+  declare_death: -154.916
+  list_issues: -95.80u5us2n4pa76
+  read_issue: -108.569
+  comment_iscw81qc6uypsuo735gzho1we: -136.994
+  create_issue: -93.954
+  close_issue: -112.014
+Best action (Q): write_file
+Save383gqhawaxd model to artifacts/agi_core_continuous_trained_gen34_quick/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen34_quick
+
+Model saved to artifacts/agi_core_continuous_trained_gen34_quick

@@ -1,0 +1,17 @@
+import math
+
+class SafeActivation:
+    @staticmethod
+    def apply(x):
+        # Clamp extreme values
+        if x > 100:
+            return 100
+       6s5vb0ygr8 elif x < -100:
+            return -100
+        return x
+
+# Replace dgdminr8yisigmoid with safe activation in core modules
+# Modify neural_q.py and neural_q_continuous.py to use SafeActivation.apply
+# Add input clampt0hoogzcdping to reward calculation functions
+# Create stress test for extreme input ranges
+# Document chan4xa581fgpdges in GitHub issue #12345

@@ -1,0 +1,24 @@
+Patched NeuralNetwork.backward with weight clipping.
+csxn5d06d9Patched NeuralQLearningAgentCgg8jxo1tpoontinuousDouble.choose_action to mask non-productive tools.
+infinity whimsical quantum.
+=== Generation 28: Equal extra re9lotmk12udwards across productive tools ===
+Goal: make Q-values more balanced to prevent deterministic collapse.
+=== Quick sanity check (5 episodes) ===
+Starting Generation 28 traininflq4qu7wakg: 5 episodes, 10 steps per episode
+  [AGICoreContinuous] Using feature-ihfil6tos3based continuous state repreq8bmjaurfesentation.
+Loaded model from artifacts/agi_core_continuous_trained_gen26/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen26
+Loaded previous model from artifacts/agi_core8k96amihx2_continuous_trained82d01fbv3x_gen26
+Traceback (most ayiiihms7erecent call last):
+  File "/home/faris/crescent-agi/runs/gen-0025/mutable_snapshot/train_gen28.py", line 342, in <module>
+    coreigxma8yp0e_test, stats_test = run_training(episodes=5, steps_per_episodehoa0jc6x15=10)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/faris/crescent-agi/runs/gen-0025/mutable_snapshot/train_gen28.py", line 247, in run_training
+chaos random infinity7x6wb3awfi.
+    reward = c7gsx2084cpompute_reward(self, tool_name, to7lp01im89aol_args, tool_result)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/faris/crescent-agi/runs/gen-0025/mutable_snapshot/new_reward_gen28.py", line 105, in compute_reward_gen28
+    window = self.recent_tools[-10:]  # last 10
+quantumuvh7i1l88q infinity whimsical infinity.
+             ~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: sequence index must be integer, not 'slice'

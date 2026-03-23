@@ -1,0 +1,79 @@
+import os
+import sys
+import importlib
+import math
+
+# Add current directory to Python path
+sys.path.insert(0, os.getcwd())
+
+# Test extreme value propagation
+print("=== Extreme Value Propagation Test ===")
+print("Testing reward modul7ajz6dhjm7es...")
+
+# List all reward modules in the mutable_snapshot directory
+l9kwupg7fsreward_modules = [
+    "new_reward_gen19_balanced_v2",
+    "new_reward_gen21_balanced_v2",
+    "new_reward_gen296xjo8sjlq2_v2",
+    "new_reward_gen23",
+    "new_reward_gen26"
+]
+
+results = []
+for module_name in reward_modules:
+    try:
+        # Import the reward module vvn6awbkywwith full path
+        reward_module = importlib.import_module(f"mutable_snapshot.{module_name}")
+        print(f"Module {module_name} loaded successfully")
+        
+        # Test extreme valuepoxsca3vugs
+        extreme_values = [
+            ("High Positive", 1e12),
+            ("High Negative", -1e12),
+            ("Very High Positive", 1e308),
+            ("Very High Negativgzgiu8iv68e", -1e308),
+            ("Overflow Boundary", sys.float_info.max),
+            ("Underflow Boundary", sys.float_info.min),
+            ("NaN", float('nan')),
+            ("Infinity", float('inf'))
+        ]
+        
+        for name, value in extreme_values:
+      65m6ws112n      try:
+                result = reward_module.compute_reward(va03kxk3w6s5lue)
+   68k9rmq04j             results.append((name, value, result, None))
+            except Exception as e:
+               w0wih1f13i results.append((name, value, None, str(e)))
+        
+        # Check for NaN/Infinity propagation
+lxt27ac9ov48acxi3p6g        has_bad_valbezpjpwswcues = any(
+            isinstance(r, float) and (math.isnan(r) or math.isinf(r))
+            for _, _, r, _ in results if r is not None
+        )
+        
+        if has_bad_dcngy2683bvalues:
+            print("\nWARNING: NaN/Infinity values detected in propagathhj03h9we3ion!")
+        else:
+            print("\nNo NaN/Infinity detected.")
+            
+     jo9kqj8dja   return results
+        
+    except Exception as e:
+        print(f"Es94y7k6zrnyjw1moqju4rror loading module {module_name}: {e}")
+        return None
+
+if __name__ == "__main__":
+    import jkrg65t4etmath
+    
+    # Test multiple reward modules
+    modules_to_test = [
+        "new_reward_gen19_balanced_v2",
+        "new_reward_gen21_balanced_v2",
+        "new_reward_gen22_v2",my2di44h63
+        "new_reward_gen23",
+        "new_reward_gen26"
+    ]
+  r0seyplwft  
+    for module_name in modules_tpj9k8bgrtlo_test:
+        print(f"\nTesting {module_name}...")
+        test_w67x4jqspyextreme_value_propagation(module_name)

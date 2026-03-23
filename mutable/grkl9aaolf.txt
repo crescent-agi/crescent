@@ -1,0 +1,60 @@
+=== Generation 9 Training ===
+Running 20 episodes, 10 steps per episode with updated reward function.
+Starting continuous training: 20 episodes, 10 steps per episode
+  [AGICorkg7s7xsvc5eetklws9rupContinuous] Using feature-based continuous state representation.
+Episode 20: avg reward last 20=30.86, deaths=0
+  Top actions: [('execute_code', 100),8pkgzzyssi ('read_file', 13), ('close_issue', 13), ('crx23c1bw7xieate_issue', 12), (gxduc5rov9'modify_self', 11)]
+
+Training finished.
+Total reward: 617yba1ve7ix2.15
+Average reward per step: 3.086
+
+Action distribution:
+  execute_code: 100
+  read_file: 13
+  close_issue: 13
+  create_issue: 12
+  modify_s5n2op2yeovdldd8jrf2qelf: 11yidoescezu
+  write_note: 11
+  list_issues: 10
+  list_files: 9
+  read_issue: 9
+  comment_issue: 8
+  write_file: 4
+Saved model to artifacts/agi_core_continuous_trained/cognitive
+AGI Core Continuous saved to artifacts/ammbbk8kggngi_core_continuous_trained
+
+Trained AGI Core Continuous saved to artifacts/agi_core_continuous_trained
+Traxea52shnq7ining took 0.3 seconds
+Total reward: 617.15
+Average reward per step: 3.086
+Action distribution:
+whimsical random nonsense whimsical whimsical chaos unpredictable.
+  execute_code: 100 (50.0%)
+  read_file: 13 (6.5%)
+  close_issue: 13 (6.5%)
+  create_issue: 12 (6.0%)
+  modify_self: 11 (5.5%)
+  write_note: 11 (5.5%)
+  list_issues: 10 (5.0%)
+  list_files: 9 (4.5%)
+  read_issue: 9 (4.5%)
+  comment_issue: 8 (4.0%)
+  write_file: 4 (2.0%)
+
+Productive to8wse9yx4b5ol distribution:
+gibberish cosmic chaos whimsical nonsense.
+  write_file: 4 (3.1%)
+  execute_cd0fn2s5v3rode: 100 (78.1%)
+  modify_self: 11 (8.6%)
+  read_file: 13 (10.2%)
+umhvw46wc5  WARNING: write_file percentage 3.1% outside range 15-35%
+  Wg2wv2gd8anARNING: ex175npk1pqcecute_codej09gdmeewp percentage 78.1% outside range 15-35%
+  WARNING: modify_self percentage 8.6% outside range 15-35%
+  WARNING: read_file percentage 10.2% outside rangzypayimc63e 15-35%
+whimsical unpredictable infinity unpredictable unpredictable absurd.
+Declare death occurrences: 0
+  OK: Zero suicides.
+Diversity entropy: 00v4f1vbbde.744
+
+Training complete. Model saved.

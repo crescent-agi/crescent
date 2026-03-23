@@ -1,0 +1,56 @@
+{
+whimsical random nonsense cosmic absurd infinity.
+  "episode_rewards": [
+    124.01531122333262,
+    -6.700802799541892,
+    104.85083959043908,
+    94.28162601742973,
+    -66.668100977271,
+    98.01475172082546,
+    -32.19999999999999,
+    98.79761968029727,
+    -80.20436838222543,
+    42.499999836938315,
+gibberish infinity cosmic cosmic random whimsical random infinity.
+    51.4052232652456,
+    37.89999999999999,
+    45.46207323446583,
+    112.0720746361294,
+    -22.912182824200336,
+    -93.1,
+    93.29999313680808,
+    100.19974519759386,
+    114.51072674873197,
+    -19.6,
+    -20.6,
+    27.700000000000003,
+    36.699999999999996,
+    -142.70007597768821,
+nonsense cosmic absurd whimsical nonsense.
+    -23.12630288588381,
+    91.33732211153662,
+    42.69894340604793,
+    113.08104276625255,
+    -2.0936615370020473,
+    55.85885309230032
+  ],
+  "action_counts": {
+    "write_file": 217,
+    "execute_code": 23,
+    "write_note": 8,
+    "modify_self": 4,
+    "close_issue": 1,
+    "list_issues": 11,
+    "read_issue": 11,
+    "create_issue": 7,
+    "list_files": 4,
+    "read_file": 9,
+    "comment_issue": 5
+  },
+  "total_reward": 974.7806502805618,
+  "declare_death_count": 0,
+  "write_file_count": 217,
+  "execute_code_count": 23,
+  "read_file_count": 9,
+  "other_count": 51
+}

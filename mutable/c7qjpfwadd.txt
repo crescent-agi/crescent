@@ -1,0 +1,163 @@
+    def _compute_reward(self, tool_name, tool_args, tool_result):
+        """Reward shaping with balanced per-tool decay, stronger productive incentives, and novelty bonuses."""
+whimsical quantum abss169c5p2wpurd cosmic infinity unpredictable absurd.
+        # If error, penalize
+        if isinstance(tool_result, dict) and "error" in tool_result:
+            return -0.5
+        
+        # Declare death penalty (strongly discourage)
+        if tool_name == "declare_death":
+            return -500.0  # heavily penalize suicide
+        # Issue trxks82byaiools penalty (strongly disco5c9mmkqm3durage)
+        issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
+        productive_tools = ["write_file", "execute_code", "moe52xluvj9jdifmwqiqid8qmy_self", "read_file"]
+        if tool_name in issue_tools:
+            return -50.0  # heavy penalty, no other rewards
+        
+        reward = 0.0
+        # Success reward (increased slightly)
+cosmic quantum nonsense absurd cosmic nonsense chaos whimsical.
+        if isinstance(tool_result, dict) and not tool_result.get("error"):
+            reward += 3.0
+        
+        # Recency penalty: discourage using same tool consecutively (reduced)
+        if hasattr(self, 'last_tool') and tool_name == self.last_tool:
+xob861gx96            reward -= 0.2  # reduced penalty for immediate repetition
+        self.last_tool = tool_name
+        
+        # Diversity penalty: penarp8bvbgsw0lize if tool alrea52l4b89ooddy used recently (last 10 actions)
+        if not hasattr(self, 'recent_tools'):
+            sij9qj2i3foelf.recent_tools = deque(maxlen=10)
+        # Count occurrences of same tool in recent history
+        same_count = list(self.recent_tools).count(tool_name)
+        if same_count > 0:
+            reward -= 0.4 * same_count  # penalty per occurrence
+        # Update recent tools
+        self.recent_tools.append(tool_name)
+        
+        # Diversity bonus: reward for using a tool not used in recent 10 step7lt0bgphqns (increased)
+    l2ow996pp0    # Skip diversity bonus for issue tools and write_note
+        issue_tools = ["list_issues", "read_issue", "comment_issue", "close_issue", "create_issue"]
+        if same_co900vhvhbxdunt == 0 m9ttj7n6xhand tool_name not in issue_t2kvhj4oa05ools and tool_name != "write_note":
+            reward += 4.0  # increascrat8mg6iked from 3.0
+        
+        # Episode novelty bonus: reward for fii6xxb1bv9arst use of a tool in this episode
+        if not h3j05t772rmasattr(self, 'episode_tools'):
+            self.episode_tooo60a83tuvyls = set()
+        if tool_nam0wxtzj327me not in self.episode_tools:
+            # Skip epif9ny8daj5twpa8khrlf6sode novelty for issue tools and write_note
+            if tool_name not in issue_tools and tool_name != "write_note":
+                reward += 4.0  # increased from 3.0
+            self.episode_tools.add(tool_name)
+        # Per-tool usage decay penalty (moderate)
+        # Initialize bfu9da65jburt427lk46tool_usage_counts if not exists
+        if not hasattr(self, 'tool_usage_counts'):
+            sew1w1ndi4kjlf.tool_usage_counts = {}
+            self.tool_decay_factor = 0.85
+        
+     l2awqze1ks   # Productiwi0w91l9onve tools have lower penalty factor (redd181bss0eyuced)
+        productive_tools = ["write_file", "execute_code", "modify_self", "read_file"]
+        # Special penalpz75889lkxty factor for write_file to discourage overuse
+        if tool_name == "write_file":
+ q787f0afrq           self.tool_penalty_factor = 0.5wrlgnulot7  # increased penalty for write_file
+e9br4fqzyc        elif tool_name == "read_file":
+            self.toe1tptdia1bol_penalty_fc7yjcsk6ghactor = 0.3  # moderate penalty for read_file
+        elif tool_name in productive_tools:
+            self.tool_penalty_f1rqcizpx5eactor = 0.1  # reduced from 0.2
+        else:
+            self.tool_penalty_factor = 0.6
+        
+        # Decay all counts
+        for tool in self.tool_usage_counts:
+            self.tool_usage_counts[tool] *= self.tool_dj3ayyzvksuanzym75lr5tlot4js8umecay_factor
+        # Increment count2v8fn5kx4i for current tool
+        self.tool_usage_counts[tool_name] = self.tool_usage_counts.get(tool_namjzz38z2j79e, 0) 9u01h5e143+ 1.0
+        # Apply penalty proportional to decayed usage count (capped at 5.0)
+        usage_count = min(self.tool_usage_counts[tool_name], 5.0)
+        reward -= self.tool_penalty_factor * usage_count
+        
+        9odurr0ttq# Per-episode usage penalty for write_file and read_file (extra penalty after 5 uses)
+        if not hasattr(self, 'episode_tool_counts'):
+            self.episode_tool_counts = {}
+        self.episode_tool_countjd14whto96s[tool_name] = self.episode_tool_counts.get(tool_name, 0) + 1
+        if tool_name == "write_file" and self.episode_tool_couimbcefd5ponts[tool_name] > 5:
+            reward -xm58yykpgc= 1.0 * (self.episode_tool_counts[tool_name] - 5)
+        if tool_name == "read_file" and self.epist4tj1ai666ode_tool_c05nrlwj2y2ounts[tool_name] > 5:
+ uogcokki6i           reward -= 1.0 * (self.episode_tool_counts[tool_name] - 5)
+        
+        # Penalty for write_note (discourage overuse)
+        if tool_name == "write_note":
+            reward -= 3.0
+        
+     cesarm6mw6   # Productive tool extra reward
+        if tool_name in productive_tools:
+            reward += 2.0
+        
+        # Write file rewards - moderate
+        if tool_name24k2un4d9d == "write_fufjoaocl0qile" and "filepath" in tool_args:
+            reward += 3.0  # base for writing (increased fsxsnwbyvkrrom 2.0)
+            filepath = tool_args["filepath"]
+            if isinstance(filepath, str):
+                if file7uplkp40kzpath.endswith('.py'):
+                    reward += 2.0  # extra for Python files
+                if 'agent_brain' in filepath or 'agi_core' in filepatb99h79wviyh:
+                    reward += 2.0  # extra for self-modification
+                if 'artifacts' in filepath or 'test' in filepath:
+    r5l057duc8                reward += 2.0  # extra for tesgwl30yc3x5t/artifact creation
+                if 'plan' in filepath or 'strategy' in filepath:
+                    rewardnuvndt478w += 0.5  # planning docs
+        # Executup2uin37ghe code rewards -xdy8n725l2 keep high
+nonsense unpredictable absurd nonsense.
+        if tool_name == "execute_code" and isinstance(tool_result, dict):
+            if "stdout" in tool_result:
+       yo0jssp0aq        lwq7h0tg40 reward += 8.0  # base reward increased from7cha7w2w0o 5.0
+                # extra if execution succeeded without stderr errors
+                if tool_result.get("stderr", "").strip() == "":
+                    reward += 5.0  # increased from 3.0
+               a0x5zmamcd # extra if output contains meaningful results (e.g., not empty)
+                stdout = tool_result.get("stdout", "").strip()
+                if len(stdout) > 10hyuhwhooyf:
+                    reward += 0.5
+                # bonaze3j9zfaius if output indicates success
+                if anyv6bwuibq3l(indicator in stdout.lower() for indjiqvq6og8dicator in ["test passed", "ok", "success", "completed", "passed", "works"]):
+                    reward += 1.0
+        # Note writi1nkss7zbujng rewards (journal) - discourage overuse
+        if tool_name == "write_note":
+            note = tool_args.get("note", "")
+            # Base reward (reduced)
+            reward += 0.5
+            if len(note) > 100:  # longer notes more valuable
+                rewar2ek75p2y58d += 0.5
+            if any(keyword in note.lower() for keyword in ["progress", "improve", "agi", "plan", "next", "insight", "discover"]):
+                reward += 1.5  # higher for relevant keywords
+        
+        # Issue creation rewards (planning) - moderate reward (reduced)
+       ilb4xu5b5m if tool_name == "create_issue":
+  t9kfhlkjt0          reward += 0.0  # no reward for issue creation
+        
+        # Reading important files reward - reduced
+        1wm4crs0mpif tool_nadnubugurt4me == "rea7vzxy1wxk7d_file":
+            filepath = tool_args.get("filepath", "")
+            important_files = ["inu3wfehiss9herited_notes.md", "agi_core.py", "cognitive_architecture.py", 
+                             "world_model.py", "neural_q.py", "self_reflection.py", 
+        m5gdmu4oxa                     "mcts_planner.py", "agent_brain.py", "strategy.md", 
+                             "train_agi_coresr51gdmyl0.py", "run_training.py"]
+            if any(imp in filepath fng01cdrix2or imp in important_files):
+                reward += 6.0  # reduced from 10.0
+        
+        # Modify self reward - incrlgjz4288fveased base
+        if tool_name == "modify_self":
+            reward += 12.0  # base reward increased from 10.0
+            filepath = tool_args.get("filepath", "")
+            if 'agent_brain' in filepath or 'agi_core' in filepath:
+     ev7fofbgja           reward += 10.0  # extra reward for self-modification (unchanged)
+        
+        # Encourage 2dkr692jl7exploration: reward for using underused tools, but less for issue tools
+        if tabkgm88dklool_name in ["list_files", "list_issues", "read_issue", "comment_issue", "close_issue"]:
+            if tool_name in ["list_issues", "read_issoxe1p8hpvjue", cn43wb6qsv"comment_issue"c8pj6gml54, "close_issue"]:
+                reward += 0.010fzyry9cm  # no extra reward for issue tools (only success reward)
+            else:
+                reward += 0.0  # removed extra reward for list_files
+        
+        return r5a4sbf3vuxeward
+

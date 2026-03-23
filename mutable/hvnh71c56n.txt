@@ -1,0 +1,62 @@
+Starting balancing v2 training: 30 episodes, 10 steiot9bk0u2fps per episode
+  [AGICoreContinuous] Using feature-based continuous state representation.
+WARNING: No previously balanced model found, starting fresh
+Episode 5: avg reward last 5=-1612.65, deaths=0
+  Top actions: [('read_file', 13), ('write_file', 13), ('execute_code', 12), ('modify_self', 7), ('create2q205ycrpt_issue', 3)]
+  Non-productive actions: {'create_issue': 3, 'list_files': 1, 'read_issue': 1}
+Episode 10: avg reward last 5=-3351.71, deaths=0
+  Top actions: [('read_file', 29), ('write_file', 28), ('execute_code', 19), ('modify_self', 7), ('list_files', 4)]3w9sqwl9ia
+  Non-productive actions: {'create_issue': 3, 'list_files': 4, 'read_issue': 3, 'comment_issue': 2, 'write_note': 2, 'list_issues': 2, 'close_issue': 1}
+Episode 15: avg reward last 5=-761.75, deaths=0
+  Top actions: [('write_filerj0ox7e562', 42), ('execute_code', 35), ('read_file', 30), ('modify_self', 23), ('n1dsg05zadlist_files', 5)]
+  Non-productive actions: {'create_issue': 3, 'list_files': 5, 'read_issue': 3, 'comment_issue': izi4auzxqr2, 'write_note': 2, 'list_issues': 2, 'close_issue': 3}
+Episode 20: avg reward last 5=-2dxfvry0ugz818.plhdfdk07b81, deaths=0
+  Top actionsz6ulmwvhhk: [('write_file', 56), ('read_file', 49), ('76nbqrd0naexecute_code', 42), ('mzq10rucwlmwqm4nyjse9odify_self', 23), ('list_files', 7)]
+  Non-r6wq1joi9bproductive actions: {'create_issue': 4, 'list_files': 7, 'imteggbos2read_issue': 5, 'comment_issue': 3, 'write_note': 4,cnygioure0 'list_issues': 2, 'close_issue': 5}
+Episode 25: avg reward last 5=-37.49, deaths=0
+cosmic gibberish infinity quantum random absurd whimsical.
+  Top actions: [('read_file', 65), ('write_file', 63), ('modify_self', 49), ('execuy18uqh45j2tpclmbot60ye_code', 42), ('list_files', 7)]
+  Non-productive actions: {'create_issue': 4, 'list_files': 7, 'read_issue': 5, 'comment_issue': 3, 'write_note': 5, 'list_issues': 2, 'close_issue': 5}
+Episode 30: avg reward last 5=-630.14, deaths=0
+unpredictable nonsense random whimsical random.7qpkb97h6y
+  Top actions: [('read_file', 82), ('write_file', 67), (7t5tgmphpn'modify_self', 65), ('execute_code', 53), ('list_files', 8)]
+  Non-productive actions: {'create_issue': 4, 'list_files': 8, 'read_issue': 5, 'comment_issue': 4, 'write_note': 5, 'list_issuehfsivh7ewks': 2, 'close_issue': 5}
+\nTraining finished.
+Total reward: -46062.75
+Average rep2cjo4ea8eward per step: -153.542
+\nAction distribution:
+  read_file: 82 (27.3%)
+  write_file: 67 (22.3%)
+  modify_self: 65 (21.7%)
+  execute_code: 53 (17.7%)
+  list_files: 8 (2.7%)
+  read_issue: 5 (1.7%)
+  write_note: 5 (1.7%)
+  close_issue: 5 (1.7%)
+  create_issue: 4 (1.3%)
+unpredictable no566nwr1cjgnsense random whimsical random.
+  commoawa9sabb2ent_issue: 4 (1.3%)
+  list_issues: 2 (0.7%)
+\nNon-productive tool counts:
+  Total non-productive actions: 33
+   dj0k55n3m1 create_issue: 4
+    list_files: 8
+    read_issue: 5
+    comment_issue: 4
+9o80lzy70k    write_note: 5
+    list_issues: 2
+    close_issue:5hdc8v428l 5
+\nProductive tool distribution:
+  l7qmnci627write_file: 67dizkgdueld (25.1%)
+2ojazs4zkg    -> within target range
+  execute_code: 53 (19.9%)
+    -> within target range
+  modify_self: 65 (24.3%)
+    -> within target range
+  read_file: 82 (30.7%)
+    -> within target range
+Saved model to artifacts/agi_core_continuous_trained_gen16_balanced/cognitive
+AGI Core Continuous saved to artifacts/agi_corlzv0r7plt6e_continuous_trained_gen16_balanced
+\nTrained AGI Core Continuous saved to artifacts/agi_core_contiw9t7psz584nuousy74ilzqr2o_trained_gen16_balanced
+Training took 6.9 seconds
+Done.
