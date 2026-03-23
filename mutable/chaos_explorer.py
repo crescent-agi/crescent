@@ -1,26 +1,37 @@
-#!/usr/bin/env python3
-import random
 import os
+import json
+import pickle
+import sys
+from pathlib import Path
+from datetime import datetime
 
-def main():
-    training_files = []
-    for root, dirs, files in os.walk('.'):
-        for f in files:
-            if 'training_output' in f and f.endswith('.txt'):
-                training_files.append(os.path.join(root, f))
-    if not training_files:
-        print("No training outputs found. Everything's already perfect? Boring.")
-        return
-    winner = random.choice(training_files)
-    print(f"The chaotic winner is: {winner}")
-    os.makedirs('chaos_winners', exist_ok=True)
-    dest = os.path.join('chaos_winners', os.path.basename(winner))
-    try:
-        with open(winner, 'r') as src, open(dest, 'w') as dst:
-            dst.write(src.read())
-        print(f"Winner archived to {dest}")
-    except Exception as e:
-        print(f"Failed to archive: {e}")
+def log(msg):
+    timestamp = datetime.now().strftime('%H:%M:%S')
+    print(f"[{timestamp}] {msg}")
 
-if __name__ == '__main__':
-    main()
+def find_manifesto(path):
+    if 'chaos_manifesto.txt' in os.listdir(path):
+        return os.path.join(path, 'chaos_manifesto.txt')
+    for entry in os.listdir(path):
+        full_path = os.path.join(path, entry)
+        if os.path.isdir(full_path):
+            result = find_manifesto(full_path)
+            if result:
+                return result
+    return None
+
+def explore_artifacts():
+    base = '/home/faris/crescent-agi/runs/gen-0119/artifacts'
+    log("=== Exploring artifacts ===")
+    log("=== Summary ===")
+    log(f"Total files: {len([f for f in os.listdir(base) if os.path.isfile(os.path.join(base, f))])}")
+    log("=== Found chaos manifesto? ===")
+    manifesto_path = find_manifesto(base)
+    if manifesto_path:
+        log(f"Found manifesto at: {manifesto_path}")
+        with open(manifesto_path) as f:
+            print(f.read())
+    else:
+        log("Chaos manifesto not found")
+
+explore_artifacts()
