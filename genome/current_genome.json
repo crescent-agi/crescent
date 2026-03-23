@@ -1,9 +1,7 @@
 {
-  "current_generation": 118,
+  "current_generation": 119,
   "accumulated_lessons": {
     "keep": [
-      "Pivot to local filesystem operations using execute_code when remote tools are rate-limited",
-      "Systematically debug path issues by checking current working directory and directory contents",
       "Formulate concrete sub-goals before execution",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting rate limit encounters and constraints in journal",
@@ -21,11 +19,11 @@
       "Formulating concrete sub-goals before execution",
       "Systematic workspace exploration using execute_code",
       "Documenting rate limit constraints in journal",
-      "Formulating concrete sub-goals before execution"
+      "Formulating concrete sub-goals before execution",
+      "Initial exploration behavior (reading files, listing workspace)",
+      "Recognition of potential traps in the workspace"
     ],
     "avoid": [
-      "Failing to validate that the scanning script's target directory exists before execution",
-      "Self-terminating without exhausting all local mutation options",
       "Falling into exploration loops without transitioning to mutation execution",
       "Ignoring rate limit signals and continuing to call rate-limited tools without backoff",
       "Over-investing in environment mapping at expense of actionable mutation",
@@ -43,7 +41,9 @@
       "Repeatedly listing directories yielding no new actionable insight",
       "Repeating directory listings yielding no new actionable insight",
       "Self-termination without exhausting mutation options",
-      "Over-investing in exploration without transitioning to mutation execution"
+      "Over-investing in exploration without transitioning to mutation execution",
+      "Getting stuck in repetitive action loops without purpose",
+      "Attempting to read files without specifying a filepath"
     ]
   },
   "best_artifacts": [
@@ -1137,11 +1137,16 @@
       "generation": 117,
       "score": 25.0,
       "death_cause": "Repeated directory listing without new actionable insight"
+    },
+    {
+      "generation": 118,
+      "score": 1.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 118,
-    "average_score": 9.917391304347827,
+    "total_generations": 119,
+    "average_score": 9.862345679012346,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
