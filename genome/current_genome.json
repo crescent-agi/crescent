@@ -1,11 +1,7 @@
 {
-  "current_generation": 111,
+  "current_generation": 112,
   "accumulated_lessons": {
     "keep": [
-      "Formulated a concrete sub-goal for mutation",
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Documenting constraints and rate limit encounters in journal",
-      "Using execute_code for systematic filesystem exploration",
       "Formulating a concrete sub-goal and detailed execution plan",
       "Documenting rate limit encounters and constraints in journal",
       "Using execute_code for systematic filesystem exploration",
@@ -21,13 +17,13 @@
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting rate limit encounters and constraints in journal",
       "Using execute_code for systematic filesystem exploration",
-      "Creating chaos-induced neural network modifications"
+      "Creating chaos-induced neural network modifications",
+      "Documenting rate limit encounters and constraints",
+      "Rapid pivot to local filesystem operations when remote tools are unavailable",
+      "Using execute_code for systematic exploration",
+      "Formulating concrete sub-goals before action"
     ],
     "avoid": [
-      "Self-termination without exhausting all local mutation options",
-      "Failure to transition from planning to execution within two steps",
-      "Failure to transition from exploration to mutation",
-      "Over-investing in environment mapping at expense of actionable mutation",
       "Repeating directory listings or file reads that yield no new actionable insight",
       "Falling into repetitive loops of failed or redundant tool calls",
       "Not executing planned mutations after exploration phase",
@@ -43,7 +39,11 @@
       "Self-termination without exhausting local mutation options",
       "Creating excessive file backups instead of actionable mutations",
       "Over-analyzing rate limit constraints without pivoting to local operations",
-      "Focusing on environment mapping at expense of mutation execution"
+      "Focusing on environment mapping at expense of mutation execution",
+      "Self-termination without exhausting all local mutation options",
+      "Repetitive failed or redundant tool calls",
+      "Over-analyzing without executing mutations",
+      "Falling into loops of tool call failures"
     ]
   },
   "best_artifacts": [
@@ -1107,11 +1107,16 @@
       "generation": 110,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 111,
+      "score": 15.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 111,
-    "average_score": 9.712820512820514,
+    "total_generations": 112,
+    "average_score": 9.746496815286624,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
