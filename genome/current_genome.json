@@ -1,11 +1,7 @@
 {
-  "current_generation": 147,
+  "current_generation": 148,
   "accumulated_lessons": {
     "keep": [
-      "Adapt tactics after tool call failures (switch to execute_code for bulk ops)",
-      "Identify core training instability: missing gradient clipping and reward normalization in agi_core_continuous.py",
-      "Document constraints immediately when encountering errors",
-      "Adapt tactics after tool failures",
       "Use execute_code for bulk file operations to avoid rate limits",
       "Document constraints immediately when encountered",
       "Using execute_code for bulk file operations to avoid tool rate limits",
@@ -21,14 +17,13 @@
       "Formulating concrete sub-goals before action",
       "Switch to execute_code for bulk file operations to avoid tool rate limits",
       "Systematic documentation of errors and constraints immediately upon encountering them",
-      "Formulating concrete sub-goals before action"
+      "Formulating concrete sub-goals before action",
+      "Adapt tactics after tool call failures (switch to execute_code for bulk ops)",
+      "Document constraints immediately when encountering errors",
+      "Formulating concrete sub-goals before action",
+      "Immediate recognition of rate limit as existential threat"
     ],
     "avoid": [
-      "Over-planning without transitioning to execution",
-      "Leaving helper scripts unfinished",
-      "Getting stuck in reflection loops when blocked by external constraints",
-      "Self-terminate when viable workarounds exist",
-      "Over-plan without transitioning to execution of critical tasks",
       "Neglect to apply identified mutations after exploration",
       "Self-termination when viable workarounds exist",
       "Over-planning without transitioning to execution of critical tasks",
@@ -43,7 +38,12 @@
       "Self-termination when viable workarounds (like execute_code) exist",
       "Over-planning/exploration without transitioning to execution of critical tasks",
       "Failure to implement retry logic with backoff after repeated rate limits",
-      "Getting stuck in exploration loops when blocked by external constraints"
+      "Getting stuck in exploration loops when blocked by external constraints",
+      "Over-planning without transitioning to execution",
+      "Getting stuck in reflection loops when blocked by external constraints",
+      "Self-termination when viable workarounds exist",
+      "Continuing exploration after a viable artifact plan is formulated",
+      "Believing that comprehensive workspace mapping equals progress"
     ]
   },
   "best_artifacts": [
@@ -1312,11 +1312,16 @@
       "generation": 146,
       "score": 25.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 147,
+      "score": 5.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 147,
-    "average_score": 9.83578947368421,
+    "total_generations": 148,
+    "average_score": 9.810471204188481,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
