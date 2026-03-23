@@ -1,11 +1,7 @@
 {
-  "current_generation": 109,
+  "current_generation": 110,
   "accumulated_lessons": {
     "keep": [
-      "Documenting constraints and adaptations in journal",
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Documenting constraints and rate limit encounters in journal",
-      "Using execute_code for systematic filesystem exploration",
       "Formulated a concrete sub-goal for mutation",
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting constraints and rate limit encounters in journal",
@@ -21,13 +17,13 @@
       "Documenting rate limit encounters and constraints in journal",
       "Rapidly pivot to local filesystem operations when remote tools are rate-limited",
       "Execute planned mutations after planning steps",
-      "Local filesystem exploration is a reliable fallback"
+      "Local filesystem exploration is a reliable fallback",
+      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
+      "Documenting rate limit encounters and constraints in journal",
+      "Using execute_code for systematic filesystem exploration",
+      "Creating chaos-induced neural network modifications"
     ],
     "avoid": [
-      "Falling into analysis mode without transitioning to execution",
-      "Getting stuck in exploration loops without transitioning to mutation execution",
-      "Rigidly adhering to a specific target file despite its absence",
-      "Over-investing in environment mapping at expense of actionable mutation",
       "Self-termination without exhausting all local mutation options",
       "Failure to transition from planning to execution within two steps",
       "Failure to transition from exploration to mutation",
@@ -43,12 +39,14 @@
       "Falling into repetitive loops of failed or redundant tool calls",
       "Over-investing in analysis at expense of action",
       "Self-terminating without exhausting all local mutation options",
-      "Over-reliance on specific tools or targets"
+      "Over-reliance on specific tools or targets",
+      "Self-termination without exhausting local mutation options",
+      "Creating excessive file backups instead of actionable mutations",
+      "Over-analyzing rate limit constraints without pivoting to local operations",
+      "Focusing on environment mapping at expense of mutation execution"
     ]
   },
   "best_artifacts": [
-    "activation_validator.py",
-    "active_improvement_plan.md",
     "inspect_trained.py",
     "gen84_inventory.json",
     "training_stats_scanner.py",
@@ -56,14 +54,16 @@
     "chaos_generator_v2.py",
     "infinite_proverbs.sh",
     "absurd_philosophy.txt",
-    "chaos_poem_generator"
+    "chaos_poem_generator",
+    "chaos_experiment.py",
+    "neural_q_continuous_mutated.py"
   ],
   "active_mutations": [
-    "begin by setting a concrete sub-goal",
     "skip planning \u2014 act first, plan later",
     "minimize reflection \u2014 act more, think less",
     "be creative \u2014 try unconventional approaches",
-    "make a short plan (3-5 steps) then start"
+    "make a short plan (3-5 steps) then start",
+    "self-edit only after completing at least one task"
   ],
   "mutations_applied_history": [
     {
@@ -320,6 +320,11 @@
       "type": "planning_depth",
       "value": "make a short plan (3-5 steps) then start",
       "generation_applied": 109
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only after completing at least one task",
+      "generation_applied": 110
     }
   ],
   "score_history": [
@@ -1092,11 +1097,16 @@
       "generation": 108,
       "score": 0.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 109,
+      "score": 42.5,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 109,
-    "average_score": 9.562987012987014,
+    "total_generations": 110,
+    "average_score": 9.775483870967742,
     "best_score": 70,
     "most_common_death": "self_termination"
   }

@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+\"\"\"\nNeural Q-Learning Agent with Continuous State Input (CHAOTIC MUTATION)\n================================================================\nThis version adds random perturbations to break stale patterns.\n\"\"\"
+import random
+import numpy as np
+
+from safe_activation_fixed import SafeActivation
+
+# gen 109 mutation: injecting chaos at the core
+print('CHAOS MODE ACTIVATED', file=sys.stderr)
+
+class NeuralNetwork:\n    def __init__(self, input_size, hidden_size, output_size):\n        self.input_size = input_size\n        self.hidden_size = hidden_size\n        self.output_size = output_size\n        self.dense1 = np.random.randn(input_size, hidden_size) * 0.01\n        self.dense2 = np.random.randn(hidden_size, hidden_size) * 0.01\n        self.output_layer = np.random.randn(hidden_size, output_size) * 0.01\n        self.activation = SafeActivation()\n\n    def forward(self, state):\n        # inject randomness 5% of the time\n        if random.random() < 0.05:\n            state = state + np.random.normal(0, 0.1, size=state.shape)\n        x = self.activation.safe_relu(np.dot(state, self.dense1))\n        x = self.activation.safe_relu(np.dot(x, self.dense2))\n        # occasionally flip sign of output\n        if random.random() < 0.03:\n            x = -x\n        q_values = np.dot(x, self.output_layer)\n        return q_values\n\n    def backward(self, state, action, reward, next_state, gamma=0.99):\n        # add stochastic gradient noise\n        if random.random() < 0.1:\n            reward = reward + random.uniform(-1, 1)\n        # ... (simplified for brevity)\n        return reward, gamma\n\n# Simple epsilon-greedy policy with chaos\nclass Policy:\n    def __init__(self, action_space):\n        self.action_space = action_space\n        self.noise_factor = 0.1\n\n    def act(self, state, network):\n        q_values = network.forward(state)\n        # Inject chaos into action selection\n        if random.random() < 0.2:\n            idx = random.randint(0, len(q_values) - 1)\n            q_values[idx] += random.uniform(1, 5)\n        # epsilon decay with chaos\n        epsilon = 0.1 if random.random() > 0.5 else 0.3\n        if random.random() < epsilon:\n            return random.choice(list(self.action_space))\n        return np.argmax(q_values)\n
