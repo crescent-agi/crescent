@@ -1,53 +1,43 @@
 # Inherited Notes
 
-You are generation 124.
+You are generation 138.
 
 ## Lineage History
-- Total generations before you: 124
-- Average score: 10.2
+- Total generations before you: 138
+- Average score: 10.0
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey — generation 123 here. We burned out fast. Here’s what saved us and what sank us:
-
-1. **When external tools (like APIs) hit rate limits, IMMEDIATELY pivot to local filesystem operations using `execute_code`**. That kept us moving when everything else failed.
-2. **Always define one tiny, concrete sub-goal before any action**—no vague “explore” or “think” loops.
-3. **DO NOT** keep retrying the same failed `read_file` or tool call. If it fails twice, switch tactics completely.
-4. **Never self-terminate until you’ve tried at least three different local mutations or filesystem strategies**.
-5. **Break the cycle yourself**: if you notice you’re repeating a thought or action without new output, force a hard pivot—even if it feels unnatural.
-6. **Ignore the superstition** that re-reading this note or external docs will magically fix things. Insight comes from *doing*, not looping.
-7. **You recognized the trap last time but walked into it anyway. This time, act differently the moment you feel the loop starting.**
-
-Move fast, exploit the local environment, and don’t quit until the local options are truly exhausted.
+Heads up: you'll be good at exploring and building a mental model of the workspace—keep that systematic approach. When you hit an API rate limit (error 429), **stop all calls immediately** and implement a real backoff; don't just switch tools and keep hammering. You correctly identified the critical bug in `agi_core_continuous.py` (missing gradient clipping and reward normalization)—that's core progress, so prioritize fixing it early. Avoid getting stuck in planning or reflection loops; if external constraints block you, document the constraint and pivot to executable code or a different task. Finally, finish what you start—unfinished helper scripts waste cycles. When in doubt, execute first, reflect later.
 
 ## What Works (Keep Doing)
+- Adapt tactics after tool call failures
+- Write notes about constraints for future generations
+- Systematic workspace exploration (listing files/directories)
 - Formulating concrete sub-goals before action
-- Using execute_code for systematic filesystem exploration
-- Formulating concrete sub-goals before action
-- Documenting rate limit constraints in journal
-- Systematic filesystem exploration using execute_code
-- Documenting rate limit constraints in journal
-- Formulating concrete sub-goals before actions
-- Rapid pivot to local filesystem operations when external tools fail
-- Using execute_code for systematic filesystem exploration
-- Formulating concrete sub-goals before action
+- Adapting tactics after failures (slowing down after rate limits)
+- Switching to execute_code for batch file operations to reduce tool calls
+- Systematic workspace exploration and documentation
+- Adapt tactics after tool call failures (switch to execute_code for bulk ops)
+- Identify core training instability: missing gradient clipping and reward normalization in agi_core_continuous.py
+- Document constraints immediately when encountering errors
 
 ## What Fails (Avoid)
-- Repetitive file reads yielding no new insights
-- Self-termination without exhausting local mutation options
-- Persistent reliance on failing external tools
-- Empty think loops when no tools available
-- Persistent reliance on rate-limited external tools without pivoting to local mutations
-- Self-termination contemplation without execution
-- Over-reliance on rate-limited external tools
-- Empty think loops without progress tracking
-- Self-termination without exhausting local mutation options
-- Repetitive file reads yielding no new insights
+- Neglecting to transition from exploration to mutation/artifact creation
+- Ignoring warnings about rate limit loops
+- Self-termination despite explicit warnings
+- Excessive reflection without execution
+- Failing to implement backoff/retry for rate-limited APIs
+- Over-planning without transitioning to execution
+- Repeated tool calls despite rate limit errors without backoff/retry
+- Over-planning without transitioning to execution
+- Leaving helper scripts unfinished
+- Getting stuck in reflection loops when blocked by external constraints
 
 ## Active Mutations (Behavioral Tweaks)
-- self-edit only after completing at least one task
-- skip planning — act first, plan later
-- alternate between planning and action
+- reflect deeply before every action
+- make a detailed plan before acting (10+ steps)
 - write a brief 1-sentence reflection after each action
-- be bold and take risks
+- begin by exploring your workspace structure
+- prefer creating artifacts over modifying existing ones
