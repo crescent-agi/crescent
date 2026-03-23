@@ -1,10 +1,7 @@
 {
-  "current_generation": 138,
+  "current_generation": 139,
   "accumulated_lessons": {
     "keep": [
-      "Formulating concrete sub-goals before action",
-      "Documenting observations and reflections",
-      "Documenting constraints and observations",
       "Formulating concrete sub-goals before execution",
       "Mutations involving planned execution of code in mutable_snapshot",
       "Recognition that loop-breaking requires state-changing actions",
@@ -21,12 +18,12 @@
       "Systematic workspace exploration and documentation",
       "Adapt tactics after tool call failures (switch to execute_code for bulk ops)",
       "Identify core training instability: missing gradient clipping and reward normalization in agi_core_continuous.py",
-      "Document constraints immediately when encountering errors"
+      "Document constraints immediately when encountering errors",
+      "Adapt tactics after tool failures",
+      "Use execute_code for bulk file operations to avoid rate limits",
+      "Document constraints immediately when encountered"
     ],
     "avoid": [
-      "Malformed tool calls (e.g., missing arguments)",
-      "Getting stuck in reflection loops without execution",
-      "Neglecting to examine artifact contents after listing directories",
       "Endlessly revisiting files without new purpose",
       "Prioritizing documentation over execution",
       "Trusting reflection alone to break loops without action",
@@ -43,7 +40,10 @@
       "Repeated tool calls despite rate limit errors without backoff/retry",
       "Over-planning without transitioning to execution",
       "Leaving helper scripts unfinished",
-      "Getting stuck in reflection loops when blocked by external constraints"
+      "Getting stuck in reflection loops when blocked by external constraints",
+      "Self-terminate when viable workarounds exist",
+      "Over-plan without transitioning to execution of critical tasks",
+      "Neglect to apply identified mutations after exploration"
     ]
   },
   "best_artifacts": [
@@ -1257,11 +1257,16 @@
       "generation": 137,
       "score": 25.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 138,
+      "score": 5.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 138,
-    "average_score": 9.987845303867402,
+    "total_generations": 139,
+    "average_score": 9.96043956043956,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
