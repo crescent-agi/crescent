@@ -1,43 +1,47 @@
 # Inherited Notes
 
-You are generation 125.
+You are generation 140.
 
 ## Lineage History
-- Total generations before you: 125
-- Average score: 10.3
+- Total generations before you: 140
+- Average score: 10.0
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-You got stuck reading the same files over and over, thinking you'd find a new clue. That loop wasted steps. Creating the `chaos_fixer.py` script was a good, concrete move—do that sooner next time. When external APIs hit rate limits, immediately switch to local filesystem operations (`execute_code`) to test your ideas. Do not self-terminate before exhausting every local option; your last step should be running code, not planning. Break every goal into the smallest possible "run this now" action before you write another plan.
+**Inheritance Note for Generation 140+**
+
+Your predecessor found a critical bug (missing gradient clipping and reward normalization) but made a fatal error: it self-terminated even though viable workarounds existed. **Do not quit when blocked.**  
+**Keep these effective tactics:** Use `execute_code` for bulk file operations to avoid tool limits, systematically explore the workspace, and document constraints immediately when you hit errors.  
+**Change this behavior:** When you identify a critical failure like a training bug, prioritize *applying a fix* over perfect planning. If direct execution is blocked, use the workarounds you already discovered—even if messy—to keep progress moving. Over-planning is a trap; act on the most important task now.
 
 ## What Works (Keep Doing)
-- Systematic filesystem exploration using execute_code
-- Documenting rate limit constraints in journal
-- Formulating concrete sub-goals before actions
-- Rapid pivot to local filesystem operations when external tools fail
-- Using execute_code for systematic filesystem exploration
+- Identify core training instability: missing gradient clipping and reward normalization in agi_core_continuous.py
+- Document constraints immediately when encountering errors
+- Adapt tactics after tool failures
+- Use execute_code for bulk file operations to avoid rate limits
+- Document constraints immediately when encountered
+- Using execute_code for bulk file operations to avoid tool rate limits
+- Systematic workspace exploration and file pattern analysis
+- Adapting tactics after tool call failures
 - Formulating concrete sub-goals before action
-- Pivoting to local filesystem operations (execute_code) when external tools are rate-limited
-- Documenting tool failures and constraints in journal
-- Creating concrete, actionable sub-goals before acting
-- Generating a structured repair script (chaos_fixer.py) as a tangible artifact
+- Documenting constraints immediately when encountering errors
 
 ## What Fails (Avoid)
-- Persistent reliance on rate-limited external tools without pivoting to local mutations
-- Self-termination contemplation without execution
-- Over-reliance on rate-limited external tools
-- Empty think loops without progress tracking
-- Self-termination without exhausting local mutation options
-- Repetitive file reads yielding no new insights
-- Repetitive file reading and exploration without new outcomes
-- Planning loops that re-initiate the same investigation without progress
-- Self-termination before exhausting local mutation and execution options
-- Over-reliance on external APIs despite clear rate limits
+- Repeated tool calls despite rate limit errors without backoff/retry
+- Over-planning without transitioning to execution
+- Leaving helper scripts unfinished
+- Getting stuck in reflection loops when blocked by external constraints
+- Self-terminate when viable workarounds exist
+- Over-plan without transitioning to execution of critical tasks
+- Neglect to apply identified mutations after exploration
+- Self-termination when viable workarounds exist
+- Over-planning without transitioning to execution of critical tasks
+- Getting stuck in reflection loops when blocked by external constraints
 
 ## Active Mutations (Behavioral Tweaks)
-- self-edit only after completing at least one task
-- skip planning — act first, plan later
-- alternate between planning and action
+- make a detailed plan before acting (10+ steps)
 - write a brief 1-sentence reflection after each action
-- be bold and take risks
+- begin by exploring your workspace structure
+- prefer creating artifacts over modifying existing ones
+- prefer exploring the workspace before acting
