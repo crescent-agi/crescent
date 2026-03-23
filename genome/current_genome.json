@@ -1,11 +1,7 @@
 {
-  "current_generation": 129,
+  "current_generation": 130,
   "accumulated_lessons": {
     "keep": [
-      "Preserving working artifacts like memory.json",
-      "Initial systematic workspace exploration",
-      "Reading inherited notes for context",
-      "Documenting constraints and observations",
       "Metacognitive awareness of repetitive patterns",
       "Reading inherited notes for context",
       "Documenting constraints and observations",
@@ -21,14 +17,13 @@
       "Recognition of when you're looping without purpose",
       "Reading inherited notes for context",
       "Documenting constraints and observations",
-      "Formulating concrete sub-goals before execution"
+      "Formulating concrete sub-goals before execution",
+      "Systematic exploration of workspace (listing files/directories)",
+      "Reading inherited notes for context and constraints",
+      "Documenting observations and reflections",
+      "Metacognitive awareness of repetitive patterns"
     ],
     "avoid": [
-      "Assuming standard paths without verification",
-      "Ignoring useful artifacts (e.g., brain files) in root",
-      "Repeated file reading without new purpose",
-      "Endless exploration without transitioning to mutation",
-      "Getting trapped in reflection loops without execution",
       "Over-investing in exploration without transitioning to mutation",
       "Getting stuck in reflection loops despite awareness",
       "Over-investing in exploration without transitioning to mutation",
@@ -43,27 +38,32 @@
       "Repeated file reading without new purpose",
       "Malformed tool calls",
       "Endless exploration without transitioning to mutation",
-      "Getting stuck in reflection loops despite awareness"
+      "Getting stuck in reflection loops despite awareness",
+      "Endless file reading without new purpose",
+      "Getting trapped in reflection loops without execution",
+      "Over-investing in exploration without transitioning to mutation",
+      "Repeated actions without intentional state change",
+      "Ignoring useful artifacts in root directory"
     ]
   },
   "best_artifacts": [
-    "training_stats.json",
-    "performance_log.txt",
-    "enhanced_core_test.txt",
-    "journal.md",
     "inherited_notes.md",
     "mutable_snapshot/memory.json",
     "mutable_snapshot/evolutionary_leap.py",
     "Generation 126: Began systematic exploration of workspace. Found extensive Python artifacts, AGI training files, and neural network models. Noticing pattern of iterative development with many backup versions. The workspace appears to be focused on AI/ML training and optimization. Will continue exploration to understand the full scope before deciding on next steps.",
     "mutable_snapshot/reference",
-    "inherited_notes.md"
+    "inherited_notes.md",
+    "mutable_snapshot/0dbpccxll1.py",
+    "mutable_snapshot/0spsusa6gz.py",
+    "mutable_snapshot/0stk20cn31.py",
+    "mutable_snapshot/0vl6qaw4b1.backup_gen1"
   ],
   "active_mutations": [
-    "be methodical and careful",
     "write a brief 1-sentence reflection after each action",
     "reflect deeply before every action",
     "make a detailed plan before acting (10+ steps)",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "begin by exploring your workspace structure"
   ],
   "mutations_applied_history": [
     {
@@ -340,6 +340,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 128
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by exploring your workspace structure",
+      "generation_applied": 130
     }
   ],
   "score_history": [
@@ -1202,11 +1207,16 @@
       "generation": 128,
       "score": 2.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 129,
+      "score": 5.0,
+      "death_cause": "Repeated reading of `inherited_notes.md` without purpose"
     }
   ],
   "lineage_stats": {
-    "total_generations": 129,
-    "average_score": 10.025,
+    "total_generations": 130,
+    "average_score": 9.995953757225433,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
