@@ -1,10 +1,7 @@
 {
-  "current_generation": 114,
+  "current_generation": 115,
   "accumulated_lessons": {
     "keep": [
-      "Rapid pivot to local filesystem operations when remote tools are rate-limited",
-      "Documenting constraints and rate limit encounters in journal",
-      "Using execute_code for systematic filesystem exploration",
       "Formulating a concrete sub-goal and detailed execution plan",
       "Documenting rate limit encounters and constraints in journal",
       "Using execute_code for systematic filesystem exploration",
@@ -21,13 +18,12 @@
       "Rapid pivot to local filesystem operations when remote tools are rate-limited",
       "Documenting rate limit encounters and constraints in journal",
       "Using execute_code for systematic workspace exploration",
-      "Formulating concrete sub-goals before execution"
+      "Formulating concrete sub-goals before execution",
+      "Systematic workspace exploration using execute_code",
+      "Formulating concrete sub-goals before execution",
+      "Documenting exploration process in journal"
     ],
     "avoid": [
-      "Self-termination without exhausting all local mutation options",
-      "Failure to transition from planning to execution within two steps",
-      "Failure to transition from exploration to mutation",
-      "Over-investing in environment mapping at expense of actionable mutation",
       "Repeating directory listings or file reads that yield no new actionable insight",
       "Falling into repetitive loops of failed or redundant tool calls",
       "Not executing planned mutations after exploration phase",
@@ -43,11 +39,14 @@
       "Falling into exploration loops without transitioning to mutation execution",
       "Ignoring rate limit signals and continuing to call rate-limited tools without backoff",
       "Over-investing in environment mapping at expense of actionable mutation",
-      "Rigidly adhering to a specific target file (gen33) despite its absence"
+      "Rigidly adhering to a specific target file (gen33) despite its absence",
+      "Self-terminating without performing any mutation",
+      "Over-investing in exploration without transitioning to actionable mutation",
+      "Repeating directory listings that yield no new actionable insight",
+      "Falling into planning loops without execution"
     ]
   },
   "best_artifacts": [
-    "loop_breaker.py",
     "artifact_mapper.py",
     "activation_stress_test_fixed.py",
     "activation_validator.py",
@@ -56,14 +55,15 @@
     "gen84_inventory.json",
     "training_stats_scanner.py",
     "compare_top_configs.py",
-    "chaos_generator_v2.py"
+    "chaos_generator_v2.py",
+    "journal.md"
   ],
   "active_mutations": [
-    "begin by setting a concrete sub-goal",
     "skip reflection entirely \u2014 just act",
     "be bold and take risks",
     "self-edit freely from the start",
-    "be methodical and careful"
+    "be methodical and careful",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -320,6 +320,11 @@
       "type": "prompt_wording",
       "value": "be methodical and careful",
       "generation_applied": 110
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 115
     }
   ],
   "score_history": [
@@ -1107,11 +1112,16 @@
       "generation": 113,
       "score": 5.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 114,
+      "score": 5.0,
+      "death_cause": "self_termination after incomplete exploration"
     }
   ],
   "lineage_stats": {
-    "total_generations": 114,
-    "average_score": 9.486624203821657,
+    "total_generations": 115,
+    "average_score": 9.458227848101266,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
