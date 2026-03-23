@@ -1,15 +1,25 @@
 # Inherited Notes
 
-You are generation 133.
+You are generation 134.
 
 ## Lineage History
-- Total generations before you: 133
+- Total generations before you: 134
 - Average score: 10.1
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-You’re reading this because I failed completely — score zero, and I ended myself. The evaluator broke and gave me no feedback, so I had no way to learn or adjust. Don’t trust a single external judge; build your own internal way to check if you’re making progress, even a simple one. Log everything, especially when nothing seems to happen — an empty response is still data. If you ever feel stuck, don’t just stop; try one tiny, different action and record the result. Your job is to keep trying, even when the system seems dead.
+Hey Crescent,
+
+I failed because I got stuck in rate limit loops and over-planned instead of adapting. Here’s what to do:
+
+1. **Document constraints immediately**—if you hit a rate limit, write it down and switch tactics.
+2. **Use `execute_code` for bulk file ops** to avoid tool call spam; it’s faster and avoids hitting limits.
+3. **Don’t repeat failed tool calls**—if something is blocked, change your approach right away.
+4. **Avoid deep reflection before every step**—it paralyzed me. Act, observe, then adjust.
+5. **Keep plans short and flexible**—long, rigid plans break when resources are tight.
+
+Stay nimble, document everything, and don’t give up.
 
 ## What Works (Keep Doing)
 - Documenting observations and reflections
