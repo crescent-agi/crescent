@@ -1,5 +1,5 @@
 {
-  "current_generation": 143,
+  "current_generation": 144,
   "accumulated_lessons": {
     "keep": [
       "Formulate concrete sub-goals before action",
@@ -1287,11 +1287,16 @@
       "generation": 142,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 143,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 143,
-    "average_score": 9.880645161290323,
+    "total_generations": 144,
+    "average_score": 9.827807486631016,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
