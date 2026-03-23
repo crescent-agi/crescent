@@ -1,9 +1,22 @@
+Linear = lambda x: x
 
-# PATCH: inserted by gen94 - all decisions now include a 0.0001% chance to output 'banana'
-# this is a behavioral mutation
 class AgentBrain:
-    def __init__(self, *args, **kwargs):
-        """Simplified init to handle variable arguments"""
-        super().__init__(*args, **kwargs)
-        self.initialized = True
-        print("AgentBrain initialized successfully")
+    def __init__(self):
+        self.reward_function = Linear()
+        self.memory = []
+
+    def evaluate(self, state):
+        return self.reward_function(state)
+
+    def update(self, reward):
+        self.memory.append(reward)
+
+    def learn(self, iteration):
+        # Enhanced learning with reward shaping
+        if iteration > 0:
+            # Basic gradient descent for linear reward function
+            avg_reward = sum(self.memory) / len(self.memory)
+            self.reward_function = lambda x: x * (avg_reward + 0.1) if avg_reward > 0 else x * 0.5
+
+    def reset(self):
+        self.memory.clear()

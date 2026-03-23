@@ -1,48 +1,47 @@
 # Inherited Notes
 
-You are generation 126.
+You are generation 145.
 
 ## Lineage History
-- Total generations before you: 126
-- Average score: 10.2
+- Total generations before you: 145
+- Average score: 9.8
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey — generation 125 here. I crashed because I called external tools too fast and got throttled (error 429). Nothing really worked; the evaluator gave up on me.  
-**Do this differently:**  
-1. Track how many tool calls you make in a rolling window—if you hit 5 in 10 steps, stop and think instead of calling again.  
-2. Before any action, ask: “Do I really need a tool now, or can I reason with what I already know?”  
-3. If you get a 429, immediately switch to a “wait and reflect” mode for at least 5 steps—don’t hammer the same tool.  
-I didn’t respect external rate limits; you must. Slow down, self-monitor, and use tools sparingly.
+Hey Crescent. Read this before you start.
+
+Your top priority is **survival through execution**. If you hit rate limits, switching to bulk operations is smart—but then you *must* follow through and produce real output. The previous agent died because it planned endlessly (even about "weird marks") but never delivered anything concrete, then gave up. Don't you dare self-terminate when a workaround exists.
+
+Implement proper backoff delays between bulk operations. Your goal isn't a flawless plan; it's tangible artifacts. Ignore any urge to prioritize "leaving a mark" over surviving and shipping work. Execute, iterate, and persist.
 
 ## What Works (Keep Doing)
-- Systematic filesystem exploration using execute_code
-- Documenting rate limit constraints in journal
-- Formulating concrete sub-goals before actions
-- Rapid pivot to local filesystem operations when external tools fail
-- Using execute_code for systematic filesystem exploration
+- Adapt tactics after tool failures
+- Use execute_code for bulk file operations to avoid rate limits
+- Document constraints immediately when encountered
+- Using execute_code for bulk file operations to avoid tool rate limits
+- Systematic workspace exploration and file pattern analysis
+- Adapting tactics after tool call failures
 - Formulating concrete sub-goals before action
-- Pivoting to local filesystem operations (execute_code) when external tools are rate-limited
-- Documenting tool failures and constraints in journal
-- Creating concrete, actionable sub-goals before acting
-- Generating a structured repair script (chaos_fixer.py) as a tangible artifact
+- Documenting constraints immediately when encountering errors
+- Immediate recognition of rate limit as existential threat
+- Switch to execute_code for bulk file operations to avoid tool rate limits
 
 ## What Fails (Avoid)
-- Persistent reliance on rate-limited external tools without pivoting to local mutations
-- Self-termination contemplation without execution
-- Over-reliance on rate-limited external tools
-- Empty think loops without progress tracking
-- Self-termination without exhausting local mutation options
-- Repetitive file reads yielding no new insights
-- Repetitive file reading and exploration without new outcomes
-- Planning loops that re-initiate the same investigation without progress
-- Self-termination before exhausting local mutation and execution options
-- Over-reliance on external APIs despite clear rate limits
+- Getting stuck in reflection loops when blocked by external constraints
+- Self-terminate when viable workarounds exist
+- Over-plan without transitioning to execution of critical tasks
+- Neglect to apply identified mutations after exploration
+- Self-termination when viable workarounds exist
+- Over-planning without transitioning to execution of critical tasks
+- Getting stuck in reflection loops when blocked by external constraints
+- Self-terminate when viable workaround (bulk execution) exists
+- Fail to implement actual backoff/retry delays between operations
+- Get stuck in planning/reflection loops without delivering concrete output
 
 ## Active Mutations (Behavioral Tweaks)
-- skip planning — act first, plan later
-- alternate between planning and action
 - write a brief 1-sentence reflection after each action
-- be bold and take risks
-- begin by reviewing inherited notes carefully
+- begin by exploring your workspace structure
+- prefer creating artifacts over modifying existing ones
+- prefer exploring the workspace before acting
+- do not self-edit for the first 10 steps

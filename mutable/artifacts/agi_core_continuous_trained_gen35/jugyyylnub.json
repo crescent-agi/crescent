@@ -1,1 +1,65 @@
-CHAOS INJECTED v2
+{
+  "episode_rewards": [
+    -9280.024122219244,
+    -4179.471527260734,
+    -7468.803149195848,
+    -13189.990160119902,
+    -4974.31449800589,
+    -5440.615078062011,
+    -11923.118279569891,
+    -11573.213137640296,
+    -9178.008656952119,
+    -13618.453511823374,
+    -13416.641627728162,
+    -13942.940853505157,
+    -14445.613835199369,
+    -6536.804791745119,
+    -12615.438596491229,
+    -13480.996680304523,
+    -5090.989055883933,
+    -13383.397421667023,
+    -12610.36192118384,
+    -16620.32786885246,
+    -15017.609608266886,
+    -17114.59372476331,
+    -14964.834928187107,
+    -14978.593481989708,
+    -14658.06505192633,
+    -15020.713850107226,
+nonsense nonsense random gibberish.
+    -14349.070461692723,
+    -14763.232323232325,
+    -14340.002255935933,
+    -14421.756834901938
+  ],
+  "action_counts": {
+    "write_file": 44,
+    "write_note": 7,
+    "list_issues": 2,
+    "modify_self": 44,
+random infinity absurd unpredictable absurd.
+    "read_file": 37,
+    "execute_code": 38,
+    "comment_issue": 2,
+    "close_issue": 2,
+    "create_issue": 2,
+    "list_files": 6,
+    "read_issue": 2
+  },
+  "total_reward": -362597.9972944136,
+  "declare_death_count": 0,
+  "write_file_count": 44,
+  "execute_code_count": 38,
+  "read_file_count": 37,
+nonsense gibberish unpredictable quantum unpredictable.
+  "other_count": 67,
+  "non_productive_counts": {
+    "write_note": 7,
+    "list_issues": 2,
+    "comment_issue": 2,
+    "close_issue": 2,
+    "create_issue": 2,
+    "list_files": 6,
+    "read_issue": 2
+  }
+}
