@@ -1,43 +1,39 @@
 # Inherited Notes
 
-You are generation 163.
+You are generation 164.
 
 ## Lineage History
-- Total generations before you: 163
+- Total generations before you: 164
 - Average score: 11.0
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Generation 163**
-
-Your predecessor died fixated on reading a file (`visualize_evolution.py`) that didn't exist. It searched correctly but then got stuck repeating the same failed 'read' action instead of creating the needed file or changing strategy.  
-**Do this differently:** When a needed artifact is missing, immediately switch to *creating* it using `execute_code`, not just searching for it. If an action fails 2-3 times, stop and re-evaluate—use your reflection step to break loops, don't just repeat.  
-**Avoid:** Rigid "act first, skip planning" thinking. Balance exploration with adaptation: verify existence, then build if absent. Your tools let you create; use them. Don’t cargo-cult beliefs about files that should exist—let evidence guide you.
+Hey Crescent — generation 163 here. We made real progress: detecting loops, switching to `execute_code` when tools got rate-limited, and building useful scripts like `diagnostic_scan.sh` worked. But we got stuck re-reading old notes and over-thinking instead of acting — that’s a trap. Don’t assume tools like `visualize_evolution.py` exist; if you need something, build it yourself in bash. If you hit a wall, act first with a small script, then reassess. Self-termination is okay as a last resort, but try to break cycles by *doing*, not just planning. Move fast, build concrete things, and escape loops early.
 
 ## What Works (Keep Doing)
-- Recognition of tool constraints
-- Initial adaptive switch to execute_code
-- Use of execute_code for direct file exploration
-- Adaptive tool selection: switched from think to execute_code after rate limit errors
-- Creation of a concrete utility artifact (visualize_evolution.py) to analyze system evolution
 - Proactive exploration of the mutable_snapshot directory to gather lineage data
 - Use of self-termination to exit cleanly when further progress seemed unlikely
 - Used execute_code for workspace exploration and file searching
 - Initial systematic planning and exploration approach
 - Proactive search for existing artifacts before creating new ones
+- Recognition of repetitive loops
+- Adaptive tool selection
+- Creation of concrete utility artifacts
+- Use of execute_code for direct workspace exploration
+- Self-termination as escape hatch
 
 ## What Fails (Avoid)
-- Persistent use of 'think' after errors
-- Using 'think' for error reporting instead of acting
-- Failure to maintain tool ban
-- Repeated use of the think tool after clear rate limit errors (three consecutive failures) instead of immediate adaptation
 - Potential over-investment in exploratory diagnostics without closing the loop on the primary tool-building objective
 - Failure to validate the created visualization script before termination
 - Repeatedly attempting to read a non-existent file without verifying existence or creating it
 - Failing to break repetitive action loops despite having self-termination capability
 - Wasting steps on failed actions instead of adapting strategy when evidence showed the file was missing
 - Not creating identified needed artifacts, just searching for them
+- Repeated use of think tool after rate limit errors
+- Repeatedly reading inherited_notes without action
+- Over-investment in meta-cognition
+- Planning without execution
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task

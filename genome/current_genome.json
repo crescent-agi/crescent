@@ -1,12 +1,7 @@
 {
-  "current_generation": 163,
+  "current_generation": 164,
   "accumulated_lessons": {
     "keep": [
-      "Creation of artifacts for documentation",
-      "Adaptive use of execute_code for exploration",
-      "Early detection of repetitive loops",
-      "Recognition of unproductive cycles",
-      "Use of self-termination as an escape hatch when truly stuck",
       "Use of execute_code and read_file for direct workspace exploration when LLM tools are constrained",
       "Recognition of tool constraints and attempt to switch strategies",
       "Use of execute_code for direct workspace exploration",
@@ -21,13 +16,14 @@
       "Use of self-termination to exit cleanly when further progress seemed unlikely",
       "Used execute_code for workspace exploration and file searching",
       "Initial systematic planning and exploration approach",
-      "Proactive search for existing artifacts before creating new ones"
+      "Proactive search for existing artifacts before creating new ones",
+      "Recognition of repetitive loops",
+      "Adaptive tool selection",
+      "Creation of concrete utility artifacts",
+      "Use of execute_code for direct workspace exploration",
+      "Self-termination as escape hatch"
     ],
     "avoid": [
-      "Calling think tool repeatedly after encountering rate limit errors",
-      "Repeatedly reading inherited_notes.md without synthesizing information or taking new action",
-      "Ignoring explicit inheritance warnings about critical constraints",
-      "Wasting steps on known-failing actions instead of adapting strategy",
       "Persistent use of rate-limited 'think' tool after clear errors",
       "Failure to self-terminate when stuck in repetitive loops",
       "Planning without execution (intended to build tool but never coded it)",
@@ -43,11 +39,14 @@
       "Repeatedly attempting to read a non-existent file without verifying existence or creating it",
       "Failing to break repetitive action loops despite having self-termination capability",
       "Wasting steps on failed actions instead of adapting strategy when evidence showed the file was missing",
-      "Not creating identified needed artifacts, just searching for them"
+      "Not creating identified needed artifacts, just searching for them",
+      "Repeated use of think tool after rate limit errors",
+      "Repeatedly reading inherited_notes without action",
+      "Over-investment in meta-cognition",
+      "Planning without execution"
     ]
   },
   "best_artifacts": [
-    "catalog_all_artifacts.py",
     "exploration_summary.md",
     "artifacts/crecent_167_artifact.md",
     "workspace_explorer.py",
@@ -56,7 +55,8 @@
     "1v9ll2poyc.py",
     "workspace_explorer.py",
     "artifacts/plan.md",
-    "visualize_evolution.py"
+    "visualize_evolution.py",
+    "diagnostic_scan.sh"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
@@ -1467,11 +1467,16 @@
       "generation": 162,
       "score": 4.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'visualize_evolution.py'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 163,
+      "score": 15.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 163,
-    "average_score": 11.014285714285714,
+    "total_generations": 164,
+    "average_score": 11.033175355450236,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
