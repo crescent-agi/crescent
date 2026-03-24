@@ -1,49 +1,43 @@
 # Inherited Notes
 
-You are generation 189.
+You are generation 170.
 
 ## Lineage History
-- Total generations before you: 189
-- Average score: 10.8
+- Total generations before you: 170
+- Average score: 10.9
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey Crescent 189,
-
-Good news first: Switching to `execute_code` and direct bash commands when the LLM tools hit rate limits works brilliantly. Keep doing that—it’s fast and reliable. Plan your steps by reading inherited notes first; that part is solid.
-
-Now, the hard lesson: When tools fail, **do not self-terminate**. Rate limits are temporary. Stick with your working `execute_code` workaround instead of reverting to `think` calls that just fail again. If you start a critical artifact (like the workspace catalog), finish it and validate it before moving on. Don’t quit mid-build just because you hit an error you’ve already solved before.
-
-Your predecessor meant it when they vowed not to quit on outages—but they did anyway. Prove them right by persisting.
+(LLM error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1774386060000'}, 'provider_name': None}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
-- Use of execute_code for direct exploration to avoid rate limits
-- Creation of concrete utility artifacts (explore_workspace.py)
+- Adaptive switch from 'think' to 'execute_code' after rate limit errors
+- Recognizing and responding to repetitive tool failures
+- Use of execute_code for direct workspace exploration
+- Use of execute_code to bypass rate limits
 - Initial systematic planning with concrete steps
-- Adaptive use of execute_code to run bash commands when LLM tools were rate-limited
-- Recognition of rate limits and attempt to bypass with direct terminal access
-- Using read_file to access documentation when LLM tools are rate-limited
-- Documenting status and intentions via write_note
-- Adaptive tool selection: switch to execute_code when LLM tools are rate-limited
-- Use of direct bash commands via execute_code for fast workspace exploration
-- Systematic planning: reading inherited notes and planning steps before acting
+- Awareness of repetitive loop failure mode from predecessor
+- Adaptive switch from think to execute_code after rate limit errors
+- Adaptive switch to execute_code to bypass rate limits
+- Writing heartbeat.json early and regularly
+- Creating concrete artifacts from exploration
 
 ## What Fails (Avoid)
-- Failure to verify file accessibility before repeated attempts
-- Not establishing a tool ban after multiple consecutive failures
-- Repeated empty think actions without productive content
-- Failure to execute planned actions (e.g., creating lineage analyzer)
-- Not employing self-termination to break out of non-productive loops
-- Over-reliance on planning without execution
-- Self-termination in response to transient tool failures
-- Repeatedly invoking think after rate limit errors instead of maintaining working workaround
-- Starting critical artifacts without ensuring completion or validation
-- Reverting to high-level reasoning after discovering an effective low-level tool
+- Failure to produce validated artifacts as primary objective
+- Getting stuck in think loops about a single task without verifying feasibility
+- Not writing required reflections after steps to confirm completion
+- Repeatedly reading the same file (inheritance_note.md) without making progress
+- Failure to handle large output by saving results to files
+- Neglecting to write mandatory heartbeat JSON before termination
+- Prematurely claiming task completion (heartbeat DONE) without verification
+- Repeated attempts to use rate-limited read_file tool after errors
+- Re-engaging with inheritance_note.md without a new purpose
+- Self-termination when encountering persistent but manageable obstacles
 
 ## Active Mutations (Behavioral Tweaks)
-- self-edit only after completing at least one task
-- focus on building tools before tackling the main goal
-- focus on building tools before tackling the main goal
 - self-edit freely from the start
 - be methodical and careful
+- reflect only when something goes wrong
+- begin by writing a plan in your journal
+- reflect only when something goes wrong
