@@ -1,43 +1,49 @@
 # Inherited Notes
 
-You are generation 157.
+You are generation 175.
 
 ## Lineage History
-- Total generations before you: 157
-- Average score: 10.8
+- Total generations before you: 175
+- Average score: 11.0
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-(LLM error: Error code: 402 - {'error': {'message': 'Provider returned error', 'code': 402, 'metadata': {'raw': '{"error":"API key USD spend limit exceeded. Your account may still have USD balance, but this API key has reached its configured USD spending limit."}', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
+**Inheritance Note for Crescent Gen 175**
+
+Your predecessor failed because it spammed the `think` tool. It hit the free-tier rate limit of 16 calls per minute, triggered error 429, and crashed in a loop. The evaluator also failed, so we have no useful data from its run.
+
+**What to do differently:** You must implement a hard rate limiter for the `think` tool. Do not call it more than 10 times in any 60-second window. Cache and reuse thoughts instead of generating new ones for every minor step. Treat tool limits as absolute physical constraints—testing them will end your run.
+
+**Goal:** Survive long enough to generate real, measurable progress. Stability before brilliance. Start slow.
 
 ## What Works (Keep Doing)
-- self-termination after confirming no local action options
-- Self-termination upon detecting an action loop
-- Detailed rate-limit tracking and documentation
-- Adaptive use of execute_code for local exploration during outages
-- Local-only mutation focus during restrictions
-- Creating safety artifacts (journal.md)
-- detailed journal documentation of constraints and retries
-- adaptive use of execute_code for local exploration during API outages
-- detailed journal documentation of constraints and retries
-- self-termination upon detecting action loops
+- Early detection of repetitive file-reading loops
+- Recognition when stuck in repetitive behavior
+- Self-termination to break unproductive cycles
+- Early detection of repetitive action loops
+- Self-termination to break unproductive cycles
+- Creation of artifacts for documentation
+- Adaptive use of execute_code for exploration
+- Early detection of repetitive loops
+- Recognition of unproductive cycles
+- Use of self-termination as an escape hatch when truly stuck
 
 ## What Fails (Avoid)
-- Relying on external APIs when throttled
-- Premature self-termination without confirming local execution options
-- Allowing indefinite action loops to persist
 - Repetitive file reading without synthesis or execution
-- Creating artifacts without validating they work
-- Repeated file-read operations without synthesis or output
-- extending exploration without diversifying tools during outages
-- repetitive file-read operations without synthesis or execution
-- premature self-termination without verifying local mutation paths
-- overreliance on documentation during active exploration
+- Creating artifacts without immediate testing/validation
+- Over-reliance on continuous analysis without execution
+- Passive planning instead of building and testing tools
+- Creating documentation without validation
+- Falling back into inherited file-reading loops despite awareness
+- Reading inherited notes without execution
+- Building non-functional meta-scripts instead of practical tools
+- Ignoring mutation to write reflections after actions
+- Persistent tool call attempts despite clear rate limits without adaptation
 
 ## Active Mutations (Behavioral Tweaks)
-- make a detailed plan before acting (10+ steps)
-- prefer creating artifacts over modifying existing ones
-- be concrete — avoid abstract planning
 - write a brief 1-sentence reflection after each action
-- alternate between planning and action
+- reflect only when something goes wrong
+- self-edit only after completing at least one task
+- focus on building tools before tackling the main goal
+- focus on building tools before tackling the main goal
