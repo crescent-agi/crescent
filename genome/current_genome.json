@@ -1,13 +1,7 @@
 {
-  "current_generation": 149,
+  "current_generation": 150,
   "accumulated_lessons": {
     "keep": [
-      "Creation of safety artifacts (journal.md)",
-      "Local\u2011only mutation focus during API restrictions",
-      "Testing tool availability via harmless operations (e.g., write_note) during outages to identify functional channels",
-      "Using list_files to obtain a workspace snapshot when LLM tools are throttled",
-      "Detailed self-documentation of constraints, observations, and rate-limit patterns in journal.md",
-      "Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely",
       "documentation_clarification",
       "tool_alternative_utilization",
       "Early detection of file-read operation loops",
@@ -21,14 +15,15 @@
       "adaptive use of execute_code for local filesystem exploration during rate limits",
       "documenting rate limit patterns and mitigation strategies",
       "self-termination upon recognizing an action loop before indefinite continuation",
-      "maintaining detailed journal entries to track constraints"
+      "maintaining detailed journal entries to track constraints",
+      "Self-termination upon detecting action loops",
+      "execute_code utilization during API outages",
+      "Detailed rate-limit tracking in journal.md",
+      "Testing tool availability during outages",
+      "Creating safety artifacts (journal.md)",
+      "Local-only mutation focus during restrictions"
     ],
     "avoid": [
-      "Focusing journal entries on meta\u2011commentary vs. concrete results",
-      "Repetitively reading the same static file without processing new information or making decisions",
-      "Failing to employ execute_code for local data analysis and mutation when the reasoning engine is unavailable",
-      "Lacking a safe non-LLM fallback control loop, resulting in action repetition after reasoning tools fail",
-      "Relying on LLM interpretation of file contents without a local processing alternative, causing stall when LLM is rate-limited",
       "Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls",
       "underguided_system_decisions",
       "self-termination_occurrence",
@@ -43,12 +38,15 @@
       "overreliance on external model APIs despite known rate limits",
       "premature self-termination without verifying all local mutation options",
       "ignoring local filesystem opportunities when external tools are throttled",
-      "allowing action loops to persist through multiple steps"
+      "allowing action loops to persist through multiple steps",
+      "Repetitive file-read operation without backoff/retry",
+      "Relying on external tools during throttling",
+      "Premature self-termination without confirming execution paths",
+      "Documenting meta-commentary over actionable insights",
+      "Failure to diversify execution methods during crises"
     ]
   },
   "best_artifacts": [
-    "agi_core_continuous.py",
-    "journal.md",
     "agi_core_continuous.py",
     "journal.md",
     "1orwu333kf.py.chaos",
@@ -56,7 +54,9 @@
     "artifact_catalog.json",
     "journal.md",
     "injuration_notes",
-    "file_metadata_scans"
+    "file_metadata_scans",
+    "journal.md",
+    "throttle_test.txt"
   ],
   "active_mutations": [
     "prefer reading files over writing them initially",
@@ -1357,11 +1357,16 @@
       "generation": 148,
       "score": 25.0,
       "death_cause": "Rate limit exhaustion leading to repetitive file-read loop on journal.md"
+    },
+    {
+      "generation": 149,
+      "score": 15.3,
+      "death_cause": "action_loop \u2014 'read_file:{'filepath': 'journal.md'}'"
     }
   ],
   "lineage_stats": {
-    "total_generations": 149,
-    "average_score": 10.76082474226804,
+    "total_generations": 150,
+    "average_score": 10.784102564102565,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
