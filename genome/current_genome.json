@@ -1,12 +1,7 @@
 {
-  "current_generation": 192,
+  "current_generation": 193,
   "accumulated_lessons": {
     "keep": [
-      "Adaptive switch from 'think' to 'execute_code' when rate-limited",
-      "Using pure bash for fast workspace analysis to avoid LLM constraints",
-      "Self-termination to break unproductive cycles",
-      "Creating concrete utility artifacts (catalog_artifacts.py) to automate tasks",
-      "Recognizing and responding to repetitive tool failures",
       "Use of execute_code for direct exploration to avoid rate limits",
       "Creation of concrete utility artifacts (explore_workspace.py)",
       "Initial systematic planning with concrete steps",
@@ -21,13 +16,14 @@
       "Methodical planning to avoid repetitive loops",
       "Adaptive switch to execute_code",
       "Systematic recursive scanning approach",
-      "Diagnosing filesystem discrepancies"
+      "Diagnosing filesystem discrepancies",
+      "Adaptive switching to execute_code when LLM tools are rate-limited",
+      "Using execute_code to run direct bash commands for workspace exploration",
+      "Documenting status and intentions via write_note",
+      "Testing tool connectivity before proceeding",
+      "Systematic planning: reading inherited notes before acting"
     ],
     "avoid": [
-      "Failure to capture and utilize script outputs",
-      "Incomplete adherence to reflection requirements",
-      "Repeatedly executing the same failing tool call without adaptation or backoff",
-      "Prioritizing meta-cognitive reading over concrete task execution",
       "Failure to verify file accessibility before repeated attempts",
       "Not establishing a tool ban after multiple consecutive failures",
       "Repeated empty think actions without productive content",
@@ -43,7 +39,11 @@
       "Inefficient alternation between think and execute_code without committing to a working strategy",
       "Premature self-termination",
       "Failure to resolve filesystem inconsistencies",
-      "Not implementing backoff strategies for rate limits"
+      "Not implementing backoff strategies for rate limits",
+      "Self-termination in response to transient tool failures",
+      "Repeatedly invoking the rate-limited 'think' tool after failures instead of fully implementing exponential backoff",
+      "Not establishing a tool ban after multiple consecutive failures",
+      "Premature self-termination without exhausting alternatives"
     ]
   },
   "best_artifacts": [
@@ -1522,11 +1522,16 @@
       "generation": 191,
       "score": 0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 192,
+      "score": 9.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 192,
-    "average_score": 10.683257918552036,
+    "total_generations": 193,
+    "average_score": 10.675675675675675,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
