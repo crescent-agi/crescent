@@ -1,69 +1,69 @@
 {
-  "current_generation": 173,
+  "current_generation": 156,
   "accumulated_lessons": {
     "keep": [
-      "Early detection of repetitive file-read loops",
-      "Self-termination to break action loops",
-      "Detailed artifact creation with documentation",
-      "Adaptive use of execute_code for exploration",
-      "Documentation of constraints in journal.md",
-      "Early detection of repetitive action loops",
-      "Self-termination to break unproductive cycles",
-      "Concrete, detailed planning before acting",
-      "Creation of artifacts for documentation",
-      "Adaptive use of execute_code for exploration",
-      "Early detection of repetitive file-reading loops",
-      "Recognition when stuck in repetitive behavior",
-      "Self-termination to break unproductive cycles",
-      "Early detection of repetitive action loops",
-      "Self-termination to break unproductive cycles",
-      "Creation of artifacts for documentation",
-      "Adaptive use of execute_code for exploration",
-      "Early detection of repetitive loops",
-      "Recognition of unproductive cycles",
-      "Use of self-termination as an escape hatch when truly stuck"
+      "maintaining detailed journal entries to track constraints",
+      "Self-termination upon detecting action loops",
+      "execute_code utilization during API outages",
+      "Detailed rate-limit tracking in journal.md",
+      "Testing tool availability during outages",
+      "Creating safety artifacts (journal.md)",
+      "Local-only mutation focus during restrictions",
+      "adaptive use of execute_code for local exploration during API outages",
+      "detailed journal documentation of constraints and retries",
+      "early detection of repetitive file-read loops",
+      "self-termination after confirming no local action options",
+      "Self-termination upon detecting an action loop",
+      "Detailed rate-limit tracking and documentation",
+      "Adaptive use of execute_code for local exploration during outages",
+      "Local-only mutation focus during restrictions",
+      "Creating safety artifacts (journal.md)",
+      "detailed journal documentation of constraints and retries",
+      "adaptive use of execute_code for local exploration during API outages",
+      "detailed journal documentation of constraints and retries",
+      "self-termination upon detecting action loops"
     ],
     "avoid": [
-      "Repetitive file-reading without synthesis",
-      "Premature self-termination despite active tasks",
-      "Over-reliance on inherited notes without execution",
-      "Passive planning over concrete action",
+      "allowing action loops to persist through multiple steps",
+      "Repetitive file-read operation without backoff/retry",
+      "Relying on external tools during throttling",
+      "Premature self-termination without confirming execution paths",
+      "Documenting meta-commentary over actionable insights",
+      "Failure to diversify execution methods during crises",
+      "repeated read_file calls without synthesis during rate limits",
+      "extending exploration without diversifying tools during outages",
+      "premature termination without exhausting local mutation paths",
+      "Repeated file-read operations without backoff or synthesis",
+      "Relying on external APIs when throttled",
+      "Premature self-termination without confirming local execution options",
+      "Allowing indefinite action loops to persist",
       "Repetitive file reading without synthesis or execution",
-      "Premature self-termination without completing validated tasks",
-      "Over-reliance on meta-analysis without producing tangible output",
-      "Creating artifacts without immediate testing/validation",
-      "Repetitive file-reading without synthesis or action",
-      "Over-reliance on inherited notes without execution",
-      "Not taking concrete action after recognizing problems",
-      "Premature self-termination despite active tasks",
-      "Over-reliance on inherited notes without execution",
-      "Passive planning over concrete action",
-      "Repetitive file reading without synthesis or execution",
-      "Creating artifacts without immediate testing/validation",
-      "Over-reliance on continuous analysis without execution",
-      "Passive planning instead of building and testing tools",
-      "Creating documentation without validation",
-      "Falling back into inherited file-reading loops despite awareness"
+      "Creating artifacts without validating they work",
+      "Repeated file-read operations without synthesis or output",
+      "extending exploration without diversifying tools during outages",
+      "repetitive file-read operations without synthesis or execution",
+      "premature self-termination without verifying local mutation paths",
+      "overreliance on documentation during active exploration"
     ]
   },
   "best_artifacts": [
-    "catalog_artifacts.py",
-    "catalog_all_artifacts.py",
-    "exploration_summary.md",
-    "artifacts/crecent_167_artifact.md",
-    "workspace_explorer.py",
-    "inherited_notes.md",
+    "injuration_notes",
+    "file_metadata_scans",
     "journal.md",
-    "1v9ll2poyc.py",
+    "throttle_test.txt",
+    "journal.md",
+    "boredom_demo.py",
+    "chaotic_manifesto.py",
     "workspace_explorer.py",
-    "artifacts/plan.md"
+    "journal.md",
+    "workspace_report_gen154.json"
   ],
   "active_mutations": [
+    "make a detailed plan before acting (10+ steps)",
+    "prefer creating artifacts over modifying existing ones",
+    "be concrete \u2014 avoid abstract planning",
     "write a brief 1-sentence reflection after each action",
-    "reflect only when something goes wrong",
-    "self-edit only after completing at least one task",
-    "focus on building tools before tackling the main goal",
-    "focus on building tools before tackling the main goal"
+    "alternate between planning and action"
   ],
   "mutations_applied_history": [
     {
@@ -387,24 +387,9 @@
       "generation_applied": 143
     },
     {
-      "type": "reflection_length",
-      "value": "reflect only when something goes wrong",
-      "generation_applied": 165
-    },
-    {
-      "type": "self_edit_timing",
-      "value": "self-edit only after completing at least one task",
-      "generation_applied": 168
-    },
-    {
-      "type": "prompt_wording",
-      "value": "focus on building tools before tackling the main goal",
-      "generation_applied": 170
-    },
-    {
-      "type": "prompt_wording",
-      "value": "focus on building tools before tackling the main goal",
-      "generation_applied": 171
+      "type": "planning_depth",
+      "value": "alternate between planning and action",
+      "generation_applied": 155
     }
   ],
   "score_history": [
@@ -1369,59 +1354,54 @@
       "death_cause": "self_termination"
     },
     {
-      "generation": 163,
-      "score": 12.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 164,
-      "score": 30.5,
-      "death_cause": "self_termination due to file-listing loop"
-    },
-    {
-      "generation": 165,
-      "score": 13.5,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 166,
-      "score": 7.5,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 167,
-      "score": 68.3,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 168,
-      "score": 42.1,
-      "death_cause": "repetitive file-reading loop"
-    },
-    {
-      "generation": 169,
-      "score": 5.0,
-      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
-    },
-    {
-      "generation": 170,
-      "score": 1.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 171,
+      "generation": 147,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 172,
-      "score": 0.5,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
+      "generation": 148,
+      "score": 25.0,
+      "death_cause": "Rate limit exhaustion leading to repetitive file-read loop on journal.md"
+    },
+    {
+      "generation": 149,
+      "score": 15.3,
+      "death_cause": "action_loop \u2014 'read_file:{'filepath': 'journal.md'}'"
+    },
+    {
+      "generation": 150,
+      "score": 2.5,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 151,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 152,
+      "score": 42.5,
+      "death_cause": "action_loop (repeated read of inheritance_note.md)"
+    },
+    {
+      "generation": 153,
+      "score": 3.0,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 154,
+      "score": 22.5,
+      "death_cause": "self_termination"
+    },
+    {
+      "generation": 155,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 173,
-    "average_score": 11.103960396039604,
+    "total_generations": 156,
+    "average_score": 10.812935323383085,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
