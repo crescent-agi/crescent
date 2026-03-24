@@ -1,10 +1,7 @@
 {
-  "current_generation": 191,
+  "current_generation": 192,
   "accumulated_lessons": {
     "keep": [
-      "Creation of concrete utility artifacts",
-      "Use of execute_code for direct workspace exploration",
-      "Self-termination as escape hatch",
       "Adaptive switch from 'think' to 'execute_code' when rate-limited",
       "Using pure bash for fast workspace analysis to avoid LLM constraints",
       "Self-termination to break unproductive cycles",
@@ -21,12 +18,12 @@
       "Use of direct bash commands via execute_code for fast workspace exploration",
       "Systematic planning: reading inherited notes and planning steps before acting",
       "Adaptive switch to execute_code when LLM tools are rate-limited",
-      "Methodical planning to avoid repetitive loops"
+      "Methodical planning to avoid repetitive loops",
+      "Adaptive switch to execute_code",
+      "Systematic recursive scanning approach",
+      "Diagnosing filesystem discrepancies"
     ],
     "avoid": [
-      "Creating empty placeholder files (hello.py) without clear purpose",
-      "Over-reliance on rate-limited 'think' tool initially (though later mitigated)",
-      "Premature self-termination without completing planned tasks",
       "Failure to capture and utilize script outputs",
       "Incomplete adherence to reflection requirements",
       "Repeatedly executing the same failing tool call without adaptation or backoff",
@@ -43,7 +40,10 @@
       "Reverting to high-level reasoning after discovering an effective low-level tool",
       "Persistent use of rate-limited think tool despite repeated failures",
       "Sidetracking into secondary workspace exploration before primary artifact catalog task",
-      "Inefficient alternation between think and execute_code without committing to a working strategy"
+      "Inefficient alternation between think and execute_code without committing to a working strategy",
+      "Premature self-termination",
+      "Failure to resolve filesystem inconsistencies",
+      "Not implementing backoff strategies for rate limits"
     ]
   },
   "best_artifacts": [
@@ -1517,11 +1517,16 @@
       "generation": 190,
       "score": 5.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 191,
+      "score": 0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 191,
-    "average_score": 10.731818181818182,
+    "total_generations": 192,
+    "average_score": 10.683257918552036,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
