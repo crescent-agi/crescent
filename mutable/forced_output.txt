@@ -1,1 +1,121 @@
-CHAOS INJECTED v2
+Patched NeuralNetwork.backward with weight clipping.
+Patched choose_action
+Patched entropy coeff=2.0
+  [AGICoreContinuous] Using feature-based continuous state representation.
+Loaded model from artifacts/agi_core_continuous_trained_gen32/cognitive
+AGI Core Continuous loaded from artifacts/agi_core_continuous_trained_gen32
+Loaded model from artifacts/agi_core_continuous_trained_gen32
+Running 20 episodes with forced rotation...
+Episode 1 step 1: forced tool modify_self
+Episode 1 reward: -3605.65
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 9, 'execute_code': 5, 'modify_self': 6, 'read_file': 0}
+Episode 2 step 1: forced tool read_file
+Episode 2 reward: 2514.76
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 13, 'execute_code': 12, 'modify_self': 14, 'read_file': 1}
+Episode 3 step 1: forced tool read_file
+Episode 3 reward: 1959.75
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 22, 'execute_code': 16, 'modify_self': 16, 'read_file': 6}
+Episode 4 step 1: forced tool read_file
+Episode 4 reward: -2064.98
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 28, 'execute_code': 20, 'modify_self': 23, 'read_file': 9}
+Episode 5 step 1: forced tool read_file
+Episode 5 reward: -2525.31
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 35, 'execute_code': 31, 'modify_self': 23, 'read_file': 11}
+Episode 6 step 1: forced tool read_file
+Episode 6 reward: -4596.69
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 46, 'execute_code': 31, 'modify_self': 30, 'read_file': 13}
+Episode 7 step 1: forced tool read_file
+Episode 7 reward: -6158.31
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 47, 'execute_code': 37, 'modify_self': 35, 'read_file': 20}
+Episode 8 step 1: forced tool read_file
+Episode 8 reward: 6830.83
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 48, 'execute_code': 37, 'modify_self': 48, 'read_file': 26}
+Episode 9 step 1: forced tool read_file
+Episode 9 reward: 3640.00
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 48, 'execute_code': 37, 'modify_self': 59, 'read_file': 35}
+Episode 10 step 1: forced tool read_file
+Episode 10 reward: -3878.33
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 49, 'execute_code': 37, 'modify_self': 69, 'read_file': 43}
+Episode 11 step 1: forced tool execute_code
+Episode 11 reward: 1331.67
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 52, 'execute_code': 38, 'modify_self': 69, 'read_file': 58}
+Episode 12 step 1: forced tool execute_code
+Episode 12 reward: 7570.83
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 64, 'execute_code': 39, 'modify_self': 69, 'read_file': 65}
+Episode 13 step 1: forced tool execute_code
+Episode 13 reward: -3319.17
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 69, 'execute_code': 40, 'modify_self': 69, 'read_file': 77}
+Episode 14 step 1: forced tool execute_code
+Episode 14 reward: 7776.67
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 81, 'execute_code': 41, 'modify_self': 70, 'read_file': 83}
+Episode 15 step 1: forced tool execute_code
+Episode 15 reward: -8495.00
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 90, 'execute_code': 42, 'modify_self': 71, 'read_file': 90}
+Episode 16 step 1: forced tool execute_code
+Episode 16 reward: -2765.85
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 96, 'execute_code': 43, 'modify_self': 77, 'read_file': 97}
+Episode 17 step 1: forced tool execute_code
+Episode 17 reward: -2483.59
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 106, 'execute_code': 44, 'modify_self': 77, 'read_file': 106}
+Episode 18 step 1: forced tool execute_code
+Episode 18 reward: -11881.41
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 111, 'execute_code': 45, 'modify_self': 82, 'read_file': 113}
+Episode 19 step 1: forced tool execute_code
+Episode 19 reward: 448.64
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 121, 'execute_code': 46, 'modify_self': 84, 'read_file': 120}
+Episode 20 step 1: forced tool execute_code
+Episode 20 reward: -5748.10
+  Episode tool counts: {}
+  Global productive counts: {'write_file': 126, 'execute_code': 49, 'modify_self': 87, 'read_file': 127}
+
+=== Validation after forced rotation training ===
+Deterministic policy action counts:
+  write_file: 200 (100.0%)
+
+Productive distribution:
+  write_file: 200 (100.0%)
+    -> OUTSIDE target range
+  execute_code: 0 (0.0%)
+    -> OUTSIDE target range
+  modify_self: 0 (0.0%)
+    -> OUTSIDE target range
+  read_file: 0 (0.0%)
+    -> OUTSIDE target range
+
+Q-values for sample state:
+  read_file: -6.475
+  write_file: 145.859
+  list_files: -108.803
+  execute_code: -15.904
+  write_note: -115.420
+  modify_self: -2.687
+  declare_death: -153.708
+  list_issues: -95.144
+  read_issue: -107.733
+  comment_issue: -135.975
+  create_issue: -93.239
+  close_issue: -111.167
+Best action (Q): write_file
+Saved model to artifacts/agi_core_continuous_trained_gen34_forced/cognitive
+AGI Core Continuous saved to artifacts/agi_core_continuous_trained_gen34_forced
+
+Model saved to artifacts/agi_core_continuous_trained_gen34_forced
