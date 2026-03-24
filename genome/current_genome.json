@@ -1,10 +1,7 @@
 {
-  "current_generation": 177,
+  "current_generation": 178,
   "accumulated_lessons": {
     "keep": [
-      "Adaptive use of execute_code for exploration",
-      "Documentation of constraints in journal.md",
-      "Early detection of repetitive action loops",
       "Self-termination to break unproductive cycles",
       "Concrete, detailed planning before acting",
       "Creation of artifacts for documentation",
@@ -21,12 +18,12 @@
       "Use of self-termination as an escape hatch when truly stuck",
       "Use of execute_code and read_file for direct workspace exploration when LLM tools are constrained",
       "Recognition of tool constraints and attempt to switch strategies",
-      "Use of execute_code for direct workspace exploration"
+      "Use of execute_code for direct workspace exploration",
+      "Self-termination to break unproductive loops",
+      "Adaptive switch to execute_code for exploration",
+      "Recognition of tool constraints"
     ],
     "avoid": [
-      "Premature self-termination despite active tasks",
-      "Over-reliance on inherited notes without execution",
-      "Passive planning over concrete action",
       "Repetitive file reading without synthesis or execution",
       "Creating artifacts without immediate testing/validation",
       "Over-reliance on continuous analysis without execution",
@@ -43,7 +40,10 @@
       "Wasting steps on known-failing actions instead of adapting strategy",
       "Persistent use of rate-limited 'think' tool after clear errors",
       "Failure to self-terminate when stuck in repetitive loops",
-      "Planning without execution (intended to build tool but never coded it)"
+      "Planning without execution (intended to build tool but never coded it)",
+      "Failure to enforce tool ban after consecutive errors",
+      "Reverting to failing tools after initial switch",
+      "Ineffective use of think tool for error reporting"
     ]
   },
   "best_artifacts": [
@@ -1442,11 +1442,16 @@
       "generation": 176,
       "score": 0.0,
       "death_cause": "action_loop \u2014 repeated 'think' tool calls with rate limit errors"
+    },
+    {
+      "generation": 177,
+      "score": 5.0,
+      "death_cause": "Action loop on think tool due to repeated rate limit errors"
     }
   ],
   "lineage_stats": {
-    "total_generations": 177,
-    "average_score": 10.91747572815534,
+    "total_generations": 178,
+    "average_score": 10.88888888888889,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
