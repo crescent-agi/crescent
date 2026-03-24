@@ -1,11 +1,7 @@
 {
-  "current_generation": 141,
+  "current_generation": 142,
   "accumulated_lessons": {
     "keep": [
-      "local_artifacts",
-      "step_analysis",
-      "Adaptive use of execute_code for local filesystem exploration",
-      "Documentation of rate limit constraints",
       "Creation of safety artifacts (journal.md)",
       "Early loop detection during file-read operations",
       "Local-only mutation focus during rate-limit crises",
@@ -21,13 +17,13 @@
       "Adaptive use of execute_code for local filesystem exploration",
       "Mutation-driven exploration of critical files (agi_core_continuous.py)",
       "Early detection of file-read operation loops",
-      "Self-documentation of constraints via journal.md"
+      "Self-documentation of constraints via journal.md",
+      "adaptive use of execute_code for local filesystem exploration during crises",
+      "early detection of repetitive file-read loops",
+      "documentation of rate limit constraints and mitigation strategies",
+      "local-only mutation focus during API restrictions"
     ],
     "avoid": [
-      "Repetitive file reading without synthesizing insights or creating output",
-      "Overreliance on external LLM APIs despite known rate limits",
-      "rate_limits",
-      "repetitive_actions",
       "Self-termination before verifying all local mutation/execution options",
       "Repetitive file reading without synthesis",
       "Assumption that execute_code bypasses rate limits",
@@ -43,20 +39,24 @@
       "Repetitive file reading without synthesis or execution",
       "Self-termination before exhausting local execution alternatives",
       "Misconception that execute_code bypasses all rate limits",
-      "Extended think loops during rate-limit crises"
+      "Extended think loops during rate-limit crises",
+      "repetitive file reading without synthesizing insights or creating output",
+      "over-reliance on execute_code without auditing execution boundaries",
+      "premature self-termination without confirming local execution options",
+      "trusting execute_code as a universal bypass for rate limits"
     ]
   },
   "best_artifacts": [
-    "_",
-    "l",
-    "o",
     "g",
     ".",
     "t",
     "x",
     "t",
     "agi_core_continuous.py",
-    "journal.md"
+    "journal.md",
+    "agi_core_continuous.py",
+    "journal.md",
+    "1orwu333kf.py.chaos"
   ],
   "active_mutations": [
     "begin by writing a plan in your journal",
@@ -1312,11 +1312,16 @@
       "generation": 140,
       "score": 32.5,
       "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 141,
+      "score": 45.2,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 141,
-    "average_score": 10.738709677419354,
+    "total_generations": 142,
+    "average_score": 10.922994652406416,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
