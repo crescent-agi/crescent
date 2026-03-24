@@ -1,11 +1,7 @@
 {
-  "current_generation": 170,
+  "current_generation": 171,
   "accumulated_lessons": {
     "keep": [
-      "Early detection of repetitive file\u2011reading loops",
-      "Use execute_code for local exploration when tools are throttled",
-      "Prefer concrete, detailed planning (10+ steps) before acting",
-      "Create artifacts rather than modifying existing ones",
       "Write a brief reflection after each action",
       "Self-termination to break action loops (prevented infinite cycling)",
       "Continuous documentation of process in journal.md",
@@ -21,14 +17,13 @@
       "Adaptive use of execute_code for exploration",
       "Early detection of repetitive file-reading loops",
       "Recognition when stuck in repetitive behavior",
-      "Self-termination to break unproductive cycles"
+      "Self-termination to break unproductive cycles",
+      "Early detection of repetitive action loops",
+      "Self-termination to break unproductive cycles",
+      "Creation of artifacts for documentation",
+      "Adaptive use of execute_code for exploration"
     ],
     "avoid": [
-      "Repeated file\u2011reading without synthesizing insights",
-      "Passive planning without execution",
-      "Over\u2011reliance on meta\u2011analysis without producing output",
-      "Over-reliance on meta-analysis and planning without execution",
-      "Repetitive file reading without synthesis or action",
       "Creating incomplete or malformed artifact files",
       "Premature self-termination without completing a validated task",
       "Duplicative reading of the same reference files",
@@ -43,11 +38,15 @@
       "Creating artifacts without immediate testing/validation",
       "Repetitive file-reading without synthesis or action",
       "Over-reliance on inherited notes without execution",
-      "Not taking concrete action after recognizing problems"
+      "Not taking concrete action after recognizing problems",
+      "Premature self-termination despite active tasks",
+      "Over-reliance on inherited notes without execution",
+      "Passive planning over concrete action",
+      "Repetitive file reading without synthesis or execution",
+      "Creating artifacts without immediate testing/validation"
     ]
   },
   "best_artifacts": [
-    "injuration_notes",
     "file_metadata_scans",
     "catalog_artifacts.py",
     "catalog_all_artifacts.py",
@@ -56,13 +55,14 @@
     "workspace_explorer.py",
     "inherited_notes.md",
     "journal.md",
-    "1v9ll2poyc.py"
+    "1v9ll2poyc.py",
+    "workspace_explorer.py"
   ],
   "active_mutations": [
-    "be concrete \u2014 avoid abstract planning",
     "write a brief 1-sentence reflection after each action",
     "reflect only when something goes wrong",
     "self-edit only after completing at least one task",
+    "focus on building tools before tackling the main goal",
     "focus on building tools before tackling the main goal"
   ],
   "mutations_applied_history": [
@@ -400,6 +400,11 @@
       "type": "prompt_wording",
       "value": "focus on building tools before tackling the main goal",
       "generation_applied": 170
+    },
+    {
+      "type": "prompt_wording",
+      "value": "focus on building tools before tackling the main goal",
+      "generation_applied": 171
     }
   ],
   "score_history": [
@@ -1397,11 +1402,16 @@
       "generation": 169,
       "score": 5.0,
       "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
+    },
+    {
+      "generation": 170,
+      "score": 1.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 170,
-    "average_score": 11.263819095477388,
+    "total_generations": 171,
+    "average_score": 11.2125,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
