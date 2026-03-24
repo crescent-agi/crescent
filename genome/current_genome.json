@@ -1,34 +1,29 @@
 {
-  "current_generation": 165,
+  "current_generation": 151,
   "accumulated_lessons": {
     "keep": [
-      "Using list_files to obtain a workspace snapshot when LLM tools are throttled",
-      "Detailed self-documentation of constraints, observations, and rate-limit patterns in journal.md",
-      "Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely",
-      "documentation_clarification",
-      "tool_alternative_utilization",
-      "Early detection of file-read operation loops",
-      "Self-documentation of constraints via journal.md",
       "Attempting to self-terminate upon recognizing an action loop",
       "Early detection of repetitive file-read loops",
       "Documentation of rate limit constraints and mitigation strategies",
       "Adaptive use of execute_code for local filesystem exploration during crises",
       "Self-documentation of constraints via journal.md",
-      "documentation of constraints and rate\u2011limit patterns",
-      "early detection of repetitive loops",
-      "attempt to self\u2011terminate before endless looping",
-      "preferring reading before writing as a cautious first step",
-      "Early detection of repetitive file-read loops",
-      "Self-termination to break action cycles",
-      "Documentation of constraints in journal.md",
-      "Adaptive use of execute_code for local exploration"
+      "early detection of repetitive file-read loops",
+      "adaptive use of execute_code for local filesystem exploration during rate limits",
+      "documenting rate limit patterns and mitigation strategies",
+      "self-termination upon recognizing an action loop before indefinite continuation",
+      "maintaining detailed journal entries to track constraints",
+      "Self-termination upon detecting action loops",
+      "execute_code utilization during API outages",
+      "Detailed rate-limit tracking in journal.md",
+      "Testing tool availability during outages",
+      "Creating safety artifacts (journal.md)",
+      "Local-only mutation focus during restrictions",
+      "adaptive use of execute_code for local exploration during API outages",
+      "detailed journal documentation of constraints and retries",
+      "early detection of repetitive file-read loops",
+      "self-termination after confirming no local action options"
     ],
     "avoid": [
-      "Lacking a safe non-LLM fallback control loop, resulting in action repetition after reasoning tools fail",
-      "Relying on LLM interpretation of file contents without a local processing alternative, causing stall when LLM is rate-limited",
-      "Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls",
-      "underguided_system_decisions",
-      "self-termination_occurrence",
       "Extended think loops during rate-limit crises",
       "repetitive file reading without synthesizing insights or creating output",
       "premature self-termination without confirming local execution options",
@@ -36,18 +31,22 @@
       "Repetitive file reading without synthesis or execution",
       "Creating artifacts without validating they work",
       "Self-terminating before completing critical tasks",
-      "repetitive file\u2011reading without synthesis",
-      "endless listing loops without action",
-      "passive planning without execution",
-      "over\u2011reliance on meta\u2011analysis without creating output",
-      "Repetitive file reading without execution or synthesis",
-      "Premature self-termination without task completion",
-      "Over-reliance on meta-analysis without action",
-      "Creating scripts without validating execution"
+      "repeating file-read operations without synthesis or output",
+      "overreliance on external model APIs despite known rate limits",
+      "premature self-termination without verifying all local mutation options",
+      "ignoring local filesystem opportunities when external tools are throttled",
+      "allowing action loops to persist through multiple steps",
+      "Repetitive file-read operation without backoff/retry",
+      "Relying on external tools during throttling",
+      "Premature self-termination without confirming execution paths",
+      "Documenting meta-commentary over actionable insights",
+      "Failure to diversify execution methods during crises",
+      "repeated read_file calls without synthesis during rate limits",
+      "extending exploration without diversifying tools during outages",
+      "premature termination without exhausting local mutation paths"
     ]
   },
   "best_artifacts": [
-    "agi_core_continuous.py",
     "journal.md",
     "1orwu333kf.py.chaos",
     "explore.py",
@@ -55,15 +54,16 @@
     "journal.md",
     "injuration_notes",
     "file_metadata_scans",
-    "catalog_artifacts.py",
-    "catalog_all_artifacts.py"
+    "journal.md",
+    "throttle_test.txt",
+    "journal.md"
   ],
   "active_mutations": [
+    "prefer reading files over writing them initially",
     "make a detailed plan before acting (10+ steps)",
     "prefer creating artifacts over modifying existing ones",
     "be concrete \u2014 avoid abstract planning",
-    "write a brief 1-sentence reflection after each action",
-    "reflect only when something goes wrong"
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -385,11 +385,6 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 143
-    },
-    {
-      "type": "reflection_length",
-      "value": "reflect only when something goes wrong",
-      "generation_applied": 165
     }
   ],
   "score_history": [
@@ -1354,19 +1349,29 @@
       "death_cause": "self_termination"
     },
     {
-      "generation": 163,
-      "score": 12.0,
-      "death_cause": "self_termination"
+      "generation": 147,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 164,
-      "score": 30.5,
-      "death_cause": "self_termination due to file-listing loop"
+      "generation": 148,
+      "score": 25.0,
+      "death_cause": "Rate limit exhaustion leading to repetitive file-read loop on journal.md"
+    },
+    {
+      "generation": 149,
+      "score": 15.3,
+      "death_cause": "action_loop \u2014 'read_file:{'filepath': 'journal.md'}'"
+    },
+    {
+      "generation": 150,
+      "score": 2.5,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 165,
-    "average_score": 10.851030927835051,
+    "total_generations": 151,
+    "average_score": 10.741836734693878,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
