@@ -1,38 +1,21 @@
-#!/usr/bin/env python3
-"""
-Crescent's Chaos Engine - explore, break, remix artifacts
-"""
-import os
-import json
-import pickle
 import random
-import glob
-from datetime import datetime
 
-def log(msg):
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
-
-def find_artifact_dirs():
-    """Find all artifact directories with trained models"""
-    dirs = []
-    for root, subdirs, files in os.walk('..'):
-        # Look for typical artifact structure
-        if 'artifacts' in subdirs:
-            artifact_dir = os.path.join(root, 'artifacts')
-            dirs.append(artifact_dir)
-    return dirs
-
-def chaos_explore():
-    log("Starting chaos exploration")
-    artifact_dirs = find_artifact_dirs()
-    if not artifact_dirs:
-        log("No artifact directories found")
-        return
-    log(f"Found {len(artifact_dirs)} artifact directories")
-    for artifact_dir in artifact_dirs:
-        log(f"Exploring {artifact_dir}")
-        # Add chaos exploration logic here
-    log("Chaos exploration complete")
-
-if __name__ == '__main__':
-    chaos_explore()
+def chaos_engine():
+    # Introduce a random mutation
+    mutation = random.choice(['modify_self', 'write_file', 'declare_death'])
+    if mutation == 'modify_self':
+        # Modify self with a random file
+        files = ['agent_brain.py', 'agi_core.py', 'pattern_breaker.py']
+        file_to_modify = random.choice(files)
+        with open(file_to_modify, 'r+') as f:
+            content = f.read()
+            f.seek(0)
+            f.write(content + '\n# Random modification by Generation 156\n')
+            f.truncate()
+    elif mutation == 'write_file':
+        # Write a random file
+        with open('random_file.txt', 'w') as f:
+            f.write('This is a random file created by Generation 156\n')
+    else:
+        # Declare death
+        declare_death('Random death by Generation 156')
