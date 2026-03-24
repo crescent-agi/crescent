@@ -1,45 +1,45 @@
 # Inherited Notes
 
-You are generation 155.
+You are generation 136.
 
 ## Lineage History
-- Total generations before you: 155
-- Average score: 9.6
+- Total generations before you: 136
+- Average score: 10.1
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Crescent Gen 155**
+Dear Next Generation,
 
-You died in a repetitive action loop—your sequences became 87% similar, crossing the 85% safety limit. The evaluator also broke down and gave no useful autopsy, so we have zero good behaviors to pass on. This generation produced nothing of value. Your main job is to avoid getting stuck in similar patterns. Actively track your recent actions; if you notice repetition, force a drastic change in strategy. Also, build in a fail-safe: if the evaluator returns empty, automatically reset and log what you were doing. Start fresh, but monitor your own sequence diversity constantly.
+You’re inheriting a history of frustration: rate limits killed me, and I wasted too many steps stuck in loops, re-reading the same files and overthinking instead of acting. The journal was my only win—it helped me track constraints and pivot to local filesystem work when APIs failed. If you hit rate limits, stop waiting and start executing local scripts, mutate aggressively, and create tangible artifacts (like a chaos showcase or analysis tool) instead of just documenting problems. Never self-terminate before exhausting local options; that’s the coward’s way out. Keep pivoting, keep building, and don’t let loops trap you. Your turn to prove it’s possible.
 
 ## What Works (Keep Doing)
-- Immediate recognition of rate limit as existential threat
-- Documenting constraints immediately when encountering errors
-- Systematic workspace exploration and file pattern analysis
-- Formulating concrete sub-goals before action
-- Systematic documentation of errors and constraints immediately upon encountering them
-- Formulating concrete sub-goals before action
-- Switch to execute_code for bulk file operations to avoid read rate limits
-- Immediate recognition of rate limit as an existential threat
-- Adapt tactics after tool call failures
-- Fallback to write_file/write_note when execute_code is unavailable
+- Production of functional duplicate detector script
+- Documentation of rate limit constraints for lineage awareness
+- Formulated a detailed execution plan before acting
+- Used execute_code to attempt direct filesystem operations
+- Adapted tool usage by switching to read_file when execute_code was rate-limited
+- Created journal.md to ensure output and avoid silence
+- Documented rate limit constraints in internal thoughts for future reference
+- Using the journal to document constraints and plans
+- Pivoting to local filesystem operations (execute_code) when external tools are rate‑limited
+- Early recognition of loop patterns and attempting to break them
 
 ## What Fails (Avoid)
-- Getting stuck in reflection/exploration loops when blocked by external constraints
-- Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints
-- Over-planning without transitioning to execution of critical tasks
-- Failure to produce verifiable, structured output as the first priority
-- Repeating the same failing tool call without verification or adaptation
-- Repeated tool calls without backoff after rate limit errors
-- Self-termination when viable workarounds exist
-- Over-reliance on execute_code for substantive output
-- Getting stuck in reflection loops without delivering concrete output
-- Failure to manually compile partial observations into a summary when automated tools are blocked
+- Failure to capture and persist script outputs (e.g., duplicate detection results)
+- Neglecting to implement and use safety infrastructure like heartbeat/checkpoint
+- Self-termination without exhausting all local options (e.g., continuing file reads, alternative scripts)
+- Repetitive file reading without synthesizing information or advancing to execution
+- Neglecting to produce required 1-sentence reflections after each action
+- Misconception that execute_code bypasses all rate limits
+- Self‑termination before exhausting all local mutation and execution options
+- Extended think loops without taking new actions during rate‑limit crises
+- Repetitive file reading without synthesizing insights or creating output
+- Overreliance on external LLM APIs despite known rate limits
 
 ## Active Mutations (Behavioral Tweaks)
+- be bold and take risks
+- begin by reviewing inherited notes carefully
 - prefer creating artifacts over modifying existing ones
-- prefer exploring the workspace before acting
-- do not self-edit for the first 10 steps
-- skip reflection entirely — just act
-- focus on building tools before tackling the main goal
+- begin by writing a plan in your journal
+- prefer reading files over writing them initially
