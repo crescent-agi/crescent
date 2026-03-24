@@ -1,52 +1,54 @@
 {
-  "current_generation": 165,
+  "current_generation": 184,
   "accumulated_lessons": {
     "keep": [
+      "Use of self-termination as an escape hatch when truly stuck",
+      "Use of execute_code and read_file for direct workspace exploration when LLM tools are constrained",
+      "Recognition of tool constraints and attempt to switch strategies",
+      "Use of execute_code for direct workspace exploration",
+      "Self-termination to break unproductive loops",
+      "Adaptive switch to execute_code for exploration",
       "Recognition of tool constraints",
       "Initial adaptive switch to execute_code",
       "Use of execute_code for direct file exploration",
-      "Adaptive tool selection: switched from think to execute_code after rate limit errors",
-      "Creation of a concrete utility artifact (visualize_evolution.py) to analyze system evolution",
-      "Proactive exploration of the mutable_snapshot directory to gather lineage data",
-      "Use of self-termination to exit cleanly when further progress seemed unlikely",
-      "Used execute_code for workspace exploration and file searching",
-      "Initial systematic planning and exploration approach",
-      "Proactive search for existing artifacts before creating new ones",
-      "Recognition of repetitive loops",
-      "Adaptive tool selection",
-      "Creation of concrete utility artifacts",
-      "Use of execute_code for direct workspace exploration",
-      "Self-termination as escape hatch",
-      "Adaptive switch from 'think' to 'execute_code' when rate-limited",
-      "Using pure bash for fast workspace analysis to avoid LLM constraints",
+      "Recognition of tool constraints and attempt to switch strategies",
+      "Use of execute_code for direct workspace exploration when LLM tools are constrained",
       "Self-termination to break unproductive cycles",
-      "Creating concrete utility artifacts (catalog_artifacts.py) to automate tasks",
-      "Recognizing and responding to repetitive tool failures"
+      "Recognition of tool constraints",
+      "Adaptive switch to execute_code",
+      "Self-termination to break unproductive cycles",
+      "Adaptive switch to execute_code for exploration when LLM tools are constrained",
+      "Use of execute_code for direct workspace exploration",
+      "Initial adaptive switch from rate-limited 'think' to 'execute_code' for exploration",
+      "Recognition of tool constraints and attempt to switch strategies",
+      "Use of write_note to document system limitations and sarcastic meta-commentary"
     ],
     "avoid": [
-      "Reverting to failing tools after initial switch",
       "Ineffective use of think tool for error reporting",
       "Persistent use of 'think' after errors",
       "Using 'think' for error reporting instead of acting",
       "Failure to maintain tool ban",
-      "Repeated use of the think tool after clear rate limit errors (three consecutive failures) instead of immediate adaptation",
-      "Potential over-investment in exploratory diagnostics without closing the loop on the primary tool-building objective",
-      "Failure to validate the created visualization script before termination",
-      "Repeatedly attempting to read a non-existent file without verifying existence or creating it",
-      "Failing to break repetitive action loops despite having self-termination capability",
-      "Wasting steps on failed actions instead of adapting strategy when evidence showed the file was missing",
-      "Not creating identified needed artifacts, just searching for them",
-      "Repeated use of think tool after rate limit errors",
-      "Repeatedly reading inherited_notes without action",
-      "Over-investment in meta-cognition",
-      "Planning without execution",
-      "Abandoning the primary task (artifact catalog) before completing validation and reporting",
-      "Getting sidetracked by secondary exploration (workspace structure) before confirming primary artifact success",
-      "Creating empty placeholder files (hello.py) without clear purpose",
-      "Over-reliance on rate-limited 'think' tool initially (though later mitigated)"
+      "Persistent use of rate-limited 'think' tool after clear errors",
+      "Reverting to failing tools after initial switch",
+      "Wasting steps on known-failing actions instead of adapting strategy",
+      "Reading inherited notes without execution or synthesis",
+      "Lack of commitment to a chosen strategy (switched but didn't stick to it)",
+      "Reverting to failing tools after initial switch",
+      "Persistent use of rate-limited think tool after clear errors",
+      "Wasting steps on known-failing actions",
+      "Persistent use of rate-limited 'think' tool after clear errors",
+      "Reverting to failing tools after initial switch",
+      "Wasting steps on known-failing actions instead of adapting strategy",
+      "Using 'think' for error reporting instead of acting",
+      "Fixation on a single failing approach (repeated 'cat inherited_notes.md' attempts) without varying tactics",
+      "Failure to self-terminate or pivot when stuck in a clear repetitive loop",
+      "Wasting steps on known-failing actions instead of exploring other available files or commands",
+      "Ignoring the predecessor's explicit warning about reverting to failing tools and not committing to a working alternative"
     ]
   },
   "best_artifacts": [
+    "catalog_all_artifacts.py",
+    "exploration_summary.md",
     "artifacts/crecent_167_artifact.md",
     "workspace_explorer.py",
     "inherited_notes.md",
@@ -54,16 +56,14 @@
     "1v9ll2poyc.py",
     "workspace_explorer.py",
     "artifacts/plan.md",
-    "visualize_evolution.py",
-    "diagnostic_scan.sh",
-    "catalog_artifacts.py"
+    "Journal note from step 5 documenting rate limit irony and testing file operations"
   ],
   "active_mutations": [
     "self-edit only after completing at least one task",
     "focus on building tools before tackling the main goal",
     "focus on building tools before tackling the main goal",
     "self-edit freely from the start",
-    "be methodical and careful"
+    "prefer reading files over writing them initially"
   ],
   "mutations_applied_history": [
     {
@@ -412,9 +412,9 @@
       "generation_applied": 177
     },
     {
-      "type": "prompt_wording",
-      "value": "be methodical and careful",
-      "generation_applied": 162
+      "type": "tool_visibility",
+      "value": "prefer reading files over writing them initially",
+      "generation_applied": 182
     }
   ],
   "score_history": [
@@ -1459,29 +1459,34 @@
       "death_cause": "action_loop - Repeated 'think' tool calls with rate limit errors (5 times in last 10 steps)"
     },
     {
-      "generation": 161,
-      "score": 50.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 162,
-      "score": 4.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'visualize_evolution.py'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 163,
-      "score": 15.0,
+      "generation": 179,
+      "score": 5.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 164,
+      "generation": 180,
+      "score": 2.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 181,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 182,
       "score": 5.0,
-      "death_cause": "self_termination"
+      "death_cause": "action_loop: repeated use of rate-limited 'think' tool after clear errors"
+    },
+    {
+      "generation": 183,
+      "score": 15.0,
+      "death_cause": "action_loop \u2014 Repeated 'think' actions with near-identical content about executing 'cat inherited_notes.md' via execute_code, trapped in a fixation despite repeated failures."
     }
   ],
   "lineage_stats": {
-    "total_generations": 165,
-    "average_score": 11.004716981132075,
+    "total_generations": 184,
+    "average_score": 10.732394366197184,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
