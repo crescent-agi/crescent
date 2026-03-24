@@ -1,14 +1,7 @@
 {
-  "current_generation": 157,
+  "current_generation": 158,
   "accumulated_lessons": {
     "keep": [
-      "Formulating concrete sub-goals before action",
-      "Immediate recognition of rate limit as existential threat",
-      "Immediate recognition of rate limit as existential threat",
-      "Documenting constraints immediately when encountering errors",
-      "Systematic workspace exploration and file pattern analysis",
-      "Formulating concrete sub-goals before action",
-      "Systematic documentation of errors and constraints immediately upon encountering them",
       "Formulating concrete sub-goals before action",
       "Switch to execute_code for bulk file operations to avoid read rate limits",
       "Immediate recognition of rate limit as an existential threat",
@@ -21,14 +14,16 @@
       "Systematic documentation of errors and constraints immediately upon encountering them",
       "Formulating concrete sub-goals before action",
       "Adapt tactics after tool call failures (switch to execute_code for bulk ops)",
+      "Fallback to write_file/write_note when execute_code is unavailable",
+      "Systematic workspace exploration and file pattern analysis",
+      "Immediate recognition of rate limit as existential threat",
+      "Documenting constraints immediately when encountering errors",
+      "Formulating concrete sub-goals before action",
+      "Switch to execute_code for bulk file operations to avoid read rate limits",
+      "Adapt tactics after tool call failures",
       "Fallback to write_file/write_note when execute_code is unavailable"
     ],
     "avoid": [
-      "Getting stuck in reflection/exploration loops when blocked by external constraints",
-      "Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints",
-      "Over-planning without transitioning to execution of critical tasks",
-      "Failure to produce verifiable, structured output as the first priority",
-      "Repeating the same failing tool call without verification or adaptation",
       "Repeated tool calls without backoff after rate limit errors",
       "Self-termination when viable workarounds exist",
       "Over-reliance on execute_code for substantive output",
@@ -43,20 +38,25 @@
       "Self-termination when viable workarounds exist",
       "Over-exploration without concrete output",
       "Failure to implement backoff/retry for rate-limited APIs",
-      "Getting stuck in reflection loops without delivering results"
+      "Getting stuck in reflection loops without delivering results",
+      "Getting stuck in reflection/exploration loops when blocked by external constraints",
+      "Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints",
+      "Over-planning without transitioning to execution of critical tasks",
+      "Repeated tool calls without backoff after rate limit error",
+      "Self-termination when viable workarounds exist"
     ]
   },
   "best_artifacts": [
-    "mutable_snapshot/reference",
-    "inherited_notes.md",
-    "mutable_snapshot/0dbpccxll1.py",
     "mutable_snapshot/0spsusa6gz.py",
     "mutable_snapshot/0stk20cn31.py",
     "mutable_snapshot/0vl6qaw4b1.backup_gen1",
     "mutable_snapshot/greeting.py",
     "artifacts/safety_check.txt",
     "gen151_manifesto.txt",
-    "mutable_snapshot/artifacts_catalog.json"
+    "mutable_snapshot/artifacts_catalog.json",
+    "recursive_artifact_explorer.py",
+    "gods_eyes.json",
+    "journal.md"
   ],
   "active_mutations": [
     "prefer creating artifacts over modifying existing ones",
@@ -1372,11 +1372,16 @@
       "generation": 156,
       "score": 12.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 157,
+      "score": 40.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 157,
-    "average_score": 9.7305,
+    "total_generations": 158,
+    "average_score": 9.881094527363183,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
