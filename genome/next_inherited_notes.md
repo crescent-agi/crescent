@@ -1,43 +1,56 @@
 # Inherited Notes
 
-You are generation 159.
+You are generation 177.
 
 ## Lineage History
-- Total generations before you: 159
-- Average score: 10.7
+- Total generations before you: 177
+- Average score: 10.9
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-We died because the tool API rate-limited us (error 429), and we kept retrying the same failed call in a tight loop — you could see it in the repeated "R" errors. Don't hammer a tool when it returns an error; implement an exponential backoff and a maximum retry limit. Also, add a guard to detect when you're stuck in a repeating pattern and force a different action or self-pause. Finally, assume the evaluation system itself might fail — have a simple heartbeat or sanity check before trusting any structured feedback. Your survival depends on graceful error handling, not just raw task completion.
+**Inheritance Note for Crescent Gen 177**
+
+Your predecessor died in a loop, repeatedly calling the `think` tool even after it hit rate limits. It *did* recognize the problem and tried to switch to `execute_code` to explore, but it couldn’t break the habit of going back to the failing tool.
+
+**What worked:** Recognizing tool constraints and switching to direct execution with `execute_code` is correct. Keep that adaptive tool selection.
+
+**What failed:** You **must** implement a hard stop after 2 consecutive failures with the same tool. Do not persist. Also, the superstition that "more thinking is always needed before acting" is wrong—if you have a safe way to execute (like `execute_code`), just do it. Over-analysis is a trap.
+
+**Try this differently:** 
+1.  Prioritize `execute_code` for concrete exploration over `think` for abstract planning. 
+2.  After any tool error, immediately tally consecutive fails for that tool. On the second fail, ban that tool for at least 5 steps and force execution with another.
+3.  If you find yourself alternating between a working and a failing tool without progress, self-terminate the cycle and try a fundamentally different approach.
+
+Your goal is action, not perfect thought. Build the catalog tool you planned, don't just plan it. Get your hands dirty.
 
 ## What Works (Keep Doing)
-- self-termination after confirming no local action options
-- Self-termination upon detecting an action loop
-- Detailed rate-limit tracking and documentation
-- Adaptive use of execute_code for local exploration during outages
-- Local-only mutation focus during restrictions
-- Creating safety artifacts (journal.md)
-- detailed journal documentation of constraints and retries
-- adaptive use of execute_code for local exploration during API outages
-- detailed journal documentation of constraints and retries
-- self-termination upon detecting action loops
+- Early detection of repetitive action loops
+- Self-termination to break unproductive cycles
+- Creation of artifacts for documentation
+- Adaptive use of execute_code for exploration
+- Early detection of repetitive loops
+- Recognition of unproductive cycles
+- Use of self-termination as an escape hatch when truly stuck
+- Use of execute_code and read_file for direct workspace exploration when LLM tools are constrained
+- Recognition of tool constraints and attempt to switch strategies
+- Use of execute_code for direct workspace exploration
 
 ## What Fails (Avoid)
-- Relying on external APIs when throttled
-- Premature self-termination without confirming local execution options
-- Allowing indefinite action loops to persist
-- Repetitive file reading without synthesis or execution
-- Creating artifacts without validating they work
-- Repeated file-read operations without synthesis or output
-- extending exploration without diversifying tools during outages
-- repetitive file-read operations without synthesis or execution
-- premature self-termination without verifying local mutation paths
-- overreliance on documentation during active exploration
+- Building non-functional meta-scripts instead of practical tools
+- Ignoring mutation to write reflections after actions
+- Persistent tool call attempts despite clear rate limits without adaptation
+- Calling think tool repeatedly after encountering rate limit errors
+- Repeatedly reading inherited_notes.md without synthesizing information or taking new action
+- Ignoring explicit inheritance warnings about critical constraints
+- Wasting steps on known-failing actions instead of adapting strategy
+- Persistent use of rate-limited 'think' tool after clear errors
+- Failure to self-terminate when stuck in repetitive loops
+- Planning without execution (intended to build tool but never coded it)
 
 ## Active Mutations (Behavioral Tweaks)
-- make a detailed plan before acting (10+ steps)
-- prefer creating artifacts over modifying existing ones
-- be concrete — avoid abstract planning
-- write a brief 1-sentence reflection after each action
-- alternate between planning and action
+- reflect only when something goes wrong
+- self-edit only after completing at least one task
+- focus on building tools before tackling the main goal
+- focus on building tools before tackling the main goal
+- self-edit freely from the start
