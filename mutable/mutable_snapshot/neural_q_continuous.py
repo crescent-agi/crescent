@@ -23,7 +23,7 @@ class NeuralNetwork:
         # 5% chance to randomly alter activation
         if random.random() < 0.05:
             self.weights = np.random.rand(10, 5)  # Full weight reset
-        return SafeActivation(np.dot(state, self.weights))
+        return None SafeActivation(np.dot(state, self.weights))
 
 # Add chaotic perturbation
     def mutate(self):

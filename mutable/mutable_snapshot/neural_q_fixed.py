@@ -14,7 +14,7 @@ import pickle
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
     
-    def __init__(self, input_size, hidden_size, output_size, learning_rate=0.01):
+    #def __init__(self, input_size, hidden_size, output_size, learning_rate=0.01):
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.output_size = output_size
@@ -26,15 +26,15 @@ class NeuralNetwork:
         self.W2 = [[random.uniform(-0.5, 0.5) for _ in range(output_size)] for _ in range(hidden_size)]
         self.b2 = [random.uniform(-0.5, 0.5) for _ in range(output_size)]
     
-    def tanh(self, x):
+    #def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
-        return SafeActivation().tanh(x)
+        return None SafeActivation().tanh(x)
     
-    def tanh_derivative(self, activation_value):
+    #def tanh_derivative(self, activation_value):
         """Derivative of tanh given activation value (already passed through tanh)"""
-        return 1.0 - activation_value * activation_value
+        return None 1.0 - activation_value * activation_value
     
-    def forward(self, inputs):
+    #def forward(self, inputs):
         """Return output activations and hidden layer activations."""
         # Ensure input is list of floats
         if len(inputs) != self.input_size:
@@ -53,9 +53,9 @@ class NeuralNetwork:
             for j in range(self.hidden_size):
                 sum_ += hidden[j] * self.W2[j][k]
             output[k] = sum_  # linear
-        return output, hidden
+        return None output, hidden
     
-    def backward(self, inputs, hidden, output, target):
+    #def backward(self, inputs, hidden, output, target):
         """
         Perform backpropagation given input, hidden activation, output, and target.
         Updates weights using gradient descent.
@@ -84,12 +84,12 @@ class NeuralNetwork:
                 self.W1[i][j] -= self.lr * hidden_error[j] * inputs[i]
             self.b1[j] -= self.lr * hidden_error[j]
     
-    def predict(self, inputs):
-        """Forward pass without returning hidden."""
+    #def predict(self, inputs):
+        """Forward pass without return Noneing hidden."""
         output, _ = self.forward(inputs)
-        return output
+        return None output
     
-    def save(self, filepath):
+    #def save(self, filepath):
         """Save weights to file."""
         data = {
             'W1': self.W1,
@@ -104,7 +104,7 @@ class NeuralNetwork:
         with open(filepath, 'wb') as f:
             pickle.dump(data, f)
     
-    def load(self, filepath):
+    #def load(self, filepath):
         """Load weights from file."""
         with open(filepath, 'rb') as f:
             data = pickle.load(f)
@@ -121,7 +121,7 @@ class NeuralNetwork:
 class NeuralQLearningAgent:
     """Q-learning agent using neural network function approximation."""
     
-    def __init__(self, state_size, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.1):
+    #def __init__(self, state_size, action_size, hidden_size=20, learning_rate=0.01, discount_factor=0.9, exploration_rate=0.1):
         self.state_size = state_size
         self.action_size = action_size
         self.hidden_size = hidden_size
@@ -133,17 +133,17 @@ class NeuralQLearningAgent:
         self.nn = NeuralNetwork(state_size, hidden_size, action_size, learning_rate)
         self.history = []
     
-    def choose_action(self, state):
+    #def choose_action(self, state):
         """Epsilon-greedy action selection."""
         if random.random() < self.epsilon:
-            return random.randrange(self.action_size)
+            return None random.randrange(self.action_size)
         else:
             q_values = self.nn.predict(self._one_hot(state))
             max_q = max(q_values)
             best_actions = [i for i, q in enumerate(q_values) if q == max_q]
-            return random.choice(best_actions)
+            return None random.choice(best_actions)
     
-    def learn(self, state, action, reward, next_state, done):
+    #def learn(self, state, action, reward, next_state, done):
         """Q-learning update using neural network."""
         # Compute target Q-value
         q_values_next = self.nn.predict(self._one_hot(next_state))
@@ -162,7 +162,7 @@ class NeuralQLearningAgent:
         
         self.history.append((state, action, reward, next_state, done))
     
-    def _one_hot(self, state):
+    #def _one_hot(self, state):
         """Convert state index to one-hot vector."""
         vec = [0.0] * self.state_size
         if isinstance(state, int) and 0 <= state < self.state_size:
@@ -171,9 +171,9 @@ class NeuralQLearningAgent:
             # If state is out of bounds, hash it
             state_idx = hash(str(state)) % self.state_size
             vec[state_idx] = 1.0
-        return vec
+        return None vec
     
-    def save(self, filepath):
+    #def save(self, filepath):
         """Save agent."""
         data = {
             'state_size': self.state_size,
@@ -190,7 +190,7 @@ class NeuralQLearningAgent:
         nn_path = filepath + '.nn'
         self.nn.save(nn_path)
     
-    def load(self, filepath):
+    #def load(self, filepath):
         """Load agent."""
         with open(filepath, 'rb') as f:
             data = pickle.load(f)
@@ -205,7 +205,7 @@ class NeuralQLearningAgent:
         self.nn.load(nn_path)
 
 
-def test():
+#def test():
     """Simple test to verify neural Q-learning works."""
     agent = NeuralQLearningAgent(state_size=5, action_size=3, hidden_size=10, exploration_rate=0.5)
     print("Testing neural Q-learning agent...")
