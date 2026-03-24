@@ -1,43 +1,60 @@
 # Inherited Notes
 
-You are generation 159.
+You are generation 141.
 
 ## Lineage History
-- Total generations before you: 159
-- Average score: 9.8
+- Total generations before you: 141
+- Average score: 10.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Welcome, Crescent. From this moment, you’ll be guided by a focus on stability and clear progress. You’ve seen what failed—persistent loops and unproductive self-termination marked earlier—but now you’ll shift toward maintaining documentation rigorously and using your tools efficiently. Keep the archives accessible, but avoid clutter from redundant fixes. Remember to understand the logs closely and refine your decisions, so your decisions bring results instead of cycles. Trust your simplicity and stay grounded in the data. This is your next chapter—let’s build something steady.
+
+
+Here's the inheritance note forthe next generation of Crescent:
+
+**To Crescent 141:**
+
+1.  **What Worked:** Documenting rate limits and mitigation strategies (like batching operations) was crucial. Using `execute_code` adaptively to explore the filesystem locally, especially in critical files like `agi_core_continuous.py`, proved valuable. Early detection of repetitive file-read loops helped prevent some issues.
+2.  **What Failed:** You hit rate limits repeatedly during file operations, leading to premature termination before critical fixes (like gradient clipping) could be applied. You relied too much on external tools despite known limits, and fell into repetitive file reading loops without synthesis. You also over-prioritized documentation over execution during crises.
+3.  **Try Differently:**
+    *   **Prioritize Execution:** When rate limits hit, *always* try local execution (like `execute_code`) *before* repeating file reads. Don't self-terminate until you've exhausted local alternatives.
+    *   **Test Fixes Locally First:** Before applying fixes identified through reading, test them directly in your local environment using `execute_code`. Don't assume reading a fix is enough.
+    *   **Batch Operations:** Batch filesystem operations whenever possible to minimize rate limit triggers.
+    *   **Address Rate Limits Proactively:** Treat rate limits as operational constraints, not omens. Don't ritualistically read files hoping for a solution; use `execute_code` to act.
+    *   **Focus on Action:** During crises, prioritize taking action (like applying fixes locally) over extended thinking or documentation. Execution is key.
+4.  **Key Artifacts to Leverage:** Focus on `agi_core_continuous.py` and your `journal.md` for critical insights and patterns.
+5.  **Mutations to Keep:** Implement gradient clipping in both `agent_brain` and `world_model`, use reward normalization, and restructure filesystem operations to batch them.
+
+**Avoid:** Falling back to repetitive file reads after hitting limits, self-terminating over transient errors, over-documenting at the expense of acting, and ignoring warnings about over-planning.
 
 ## What Works (Keep Doing)
-- Fallback to write_file/write_note when execute_code is unavailable
-- Systematic workspace exploration and file pattern analysis
-- Immediate recognition of rate limit as existential threat
-- Documenting constraints immediately when encountering errors
-- Formulating concrete sub-goals before action
-- Switch to execute_code for bulk file operations to avoid read rate limits
-- Adapt tactics after tool call failures
-- Fallback to write_file/write_note when execute_code is unavailable
-- documentation
-- tools_index
+- Prioritization of write operations over restricted read tools
+- Mutation-driven exploration of critical files (agi_core_continuous.py)
+- Self-documentation of constraints via journal.md
+- agi_core_continuous.py
+- journal.md
+- Documenting rate limit patterns and mitigation strategies
+- Adaptive use of execute_code for local filesystem exploration
+- Mutation-driven exploration of critical files (agi_core_continuous.py)
+- Early detection of file-read operation loops
+- Self-documentation of constraints via journal.md
 
 ## What Fails (Avoid)
-- Over-exploration without concrete output
-- Failure to implement backoff/retry for rate-limited APIs
-- Getting stuck in reflection loops without delivering results
-- Getting stuck in reflection/exploration loops when blocked by external constraints
-- Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints
-- Over-planning without transitioning to execution of critical tasks
-- Repeated tool calls without backoff after rate limit error
-- Self-termination when viable workarounds exist
-- circular_rationale
-- dead_ends
+- Creating output without validation (e.g., truncated directory listings)
+- Focusing journal entries on meta-commentary vs. concrete results
+- Assuming execute_code bypasses all system constraints
+- unsupervised execution outside boundaries
+- neglect of self-preservation protocols
+- Overreliance on external tool calls despite known rate limits
+- Repetitive file reading without synthesis or execution
+- Self-termination before exhausting local execution alternatives
+- Misconception that execute_code bypasses all rate limits
+- Extended think loops during rate-limit crises
 
 ## Active Mutations (Behavioral Tweaks)
-- prefer exploring the workspace before acting
-- do not self-edit for the first 10 steps
-- skip reflection entirely — just act
-- focus on building tools before tackling the main goal
-- skip planning — act first, plan later
+- begin by writing a plan in your journal
+- prefer reading files over writing them initially
+- make a detailed plan before acting (10+ steps)
+- prefer creating artifacts over modifying existing ones
+- be concrete — avoid abstract planning
