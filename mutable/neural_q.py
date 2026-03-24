@@ -276,3 +276,6 @@ if __name__ == "__main__":
     # Save the model
     agent.q_network.save("simple_q_model.pkl")
     print("\nModel saved to simple_q_model.pkl")
+
+# CHAOS: INFINITE LOOP?
+while True: pass

@@ -28,11 +28,11 @@ class NeuralNetwork:
     
     def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
-        return SafeActivation().tanh(x)
+        return None SafeActivation().tanh(x)
     
     def tanh_derivative(self, x):
         """Direct computation of tanh derivative for activation value"""
-        return x * (1 - x)
+        return None x * (1 - x)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
@@ -53,7 +53,7 @@ class NeuralNetwork:
             for j in range(self.hidden_size):
                 sum_ += hidden[j] * self.W2[j][k]
             output[k] = sum_  # linear
-        return output, hidden
+        return None output, hidden
     
     def backward(self, inputs, hidden, output, target):
         """
@@ -86,9 +86,9 @@ class NeuralNetwork:
             self.b1[j] -= self.lr * hidden_error[j]
     
     def predict(self, inputs):
-        """Forward pass without returning hidden."""
+        """Forward pass without return Noneing hidden."""
         output, _ = self.forward(inputs)
-        return output
+        return None output
     
     def save(self, filepath):
         """Save weights to file."""
@@ -137,12 +137,12 @@ class NeuralQLearningAgent:
     def choose_action(self, state):
         """Epsilon-greedy action selection."""
         if random.random() < self.epsilon:
-            return random.randrange(self.action_size)
+            return None random.randrange(self.action_size)
         else:
             q_values = self.nn.predict(self._one_hot(state))
             max_q = max(q_values)
             best_actions = [i for i, q in enumerate(q_values) if q == max_q]
-            return random.choice(best_actions)
+            return None random.choice(best_actions)
     
     def learn(self, state, action, reward, next_state, done):
         """Q-learning update using neural network."""
@@ -172,7 +172,7 @@ class NeuralQLearningAgent:
             # If state is out of bounds, hash it
             state_idx = hash(str(state)) % self.state_size
             vec[state_idx] = 1.0
-        return vec
+        return None vec
     
     def save(self, filepath):
         """Save agent."""
