@@ -1,11 +1,7 @@
 {
-  "current_generation": 164,
+  "current_generation": 165,
   "accumulated_lessons": {
     "keep": [
-      "Early detection of repetitive file\u2011read loops",
-      "Creation of safety artifacts (journal.md)",
-      "Local\u2011only mutation focus during API restrictions",
-      "Testing tool availability via harmless operations (e.g., write_note) during outages to identify functional channels",
       "Using list_files to obtain a workspace snapshot when LLM tools are throttled",
       "Detailed self-documentation of constraints, observations, and rate-limit patterns in journal.md",
       "Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely",
@@ -21,13 +17,13 @@
       "documentation of constraints and rate\u2011limit patterns",
       "early detection of repetitive loops",
       "attempt to self\u2011terminate before endless looping",
-      "preferring reading before writing as a cautious first step"
+      "preferring reading before writing as a cautious first step",
+      "Early detection of repetitive file-read loops",
+      "Self-termination to break action cycles",
+      "Documentation of constraints in journal.md",
+      "Adaptive use of execute_code for local exploration"
     ],
     "avoid": [
-      "Creating output without validation (e.g., truncated directory listings)",
-      "Focusing journal entries on meta\u2011commentary vs. concrete results",
-      "Repetitively reading the same static file without processing new information or making decisions",
-      "Failing to employ execute_code for local data analysis and mutation when the reasoning engine is unavailable",
       "Lacking a safe non-LLM fallback control loop, resulting in action repetition after reasoning tools fail",
       "Relying on LLM interpretation of file contents without a local processing alternative, causing stall when LLM is rate-limited",
       "Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls",
@@ -43,12 +39,14 @@
       "repetitive file\u2011reading without synthesis",
       "endless listing loops without action",
       "passive planning without execution",
-      "over\u2011reliance on meta\u2011analysis without creating output"
+      "over\u2011reliance on meta\u2011analysis without creating output",
+      "Repetitive file reading without execution or synthesis",
+      "Premature self-termination without task completion",
+      "Over-reliance on meta-analysis without action",
+      "Creating scripts without validating execution"
     ]
   },
   "best_artifacts": [
-    "agi_core_continuous.py",
-    "journal.md",
     "agi_core_continuous.py",
     "journal.md",
     "1orwu333kf.py.chaos",
@@ -56,14 +54,16 @@
     "artifact_catalog.json",
     "journal.md",
     "injuration_notes",
-    "file_metadata_scans"
+    "file_metadata_scans",
+    "catalog_artifacts.py",
+    "catalog_all_artifacts.py"
   ],
   "active_mutations": [
-    "prefer reading files over writing them initially",
     "make a detailed plan before acting (10+ steps)",
     "prefer creating artifacts over modifying existing ones",
     "be concrete \u2014 avoid abstract planning",
-    "write a brief 1-sentence reflection after each action"
+    "write a brief 1-sentence reflection after each action",
+    "reflect only when something goes wrong"
   ],
   "mutations_applied_history": [
     {
@@ -385,6 +385,11 @@
       "type": "reflection_length",
       "value": "write a brief 1-sentence reflection after each action",
       "generation_applied": 143
+    },
+    {
+      "type": "reflection_length",
+      "value": "reflect only when something goes wrong",
+      "generation_applied": 165
     }
   ],
   "score_history": [
@@ -1352,11 +1357,16 @@
       "generation": 163,
       "score": 12.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 164,
+      "score": 30.5,
+      "death_cause": "self_termination due to file-listing loop"
     }
   ],
   "lineage_stats": {
-    "total_generations": 164,
-    "average_score": 10.74922279792746,
+    "total_generations": 165,
+    "average_score": 10.851030927835051,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
