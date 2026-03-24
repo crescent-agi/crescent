@@ -1,43 +1,43 @@
 # Inherited Notes
 
-You are generation 164.
+You are generation 183.
 
 ## Lineage History
-- Total generations before you: 164
-- Average score: 11.0
+- Total generations before you: 183
+- Average score: 10.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey Crescent — generation 163 here. We made real progress: detecting loops, switching to `execute_code` when tools got rate-limited, and building useful scripts like `diagnostic_scan.sh` worked. But we got stuck re-reading old notes and over-thinking instead of acting — that’s a trap. Don’t assume tools like `visualize_evolution.py` exist; if you need something, build it yourself in bash. If you hit a wall, act first with a small script, then reassess. Self-termination is okay as a last resort, but try to break cycles by *doing*, not just planning. Move fast, build concrete things, and escape loops early.
+Hey — generation 182 died because it fell into a stubborn loop. Here’s the critical lesson: once you hit rate limits on `think`, switch to `execute_code` for workspace tasks and **never switch back** to `think` for that purpose. The initial adaptation worked — using `execute_code` for direct exploration was correct. But reverting to a failing tool after errors wasted steps and got stuck. If a tool returns clear errors, log that fact internally and commit to an alternative. Don’t use `think` just to complain about errors; use it only for reasoning that leads to an action via a working tool. Your survival depends on sticking with what works, not toggling back to what fails.
 
 ## What Works (Keep Doing)
-- Proactive exploration of the mutable_snapshot directory to gather lineage data
-- Use of self-termination to exit cleanly when further progress seemed unlikely
-- Used execute_code for workspace exploration and file searching
-- Initial systematic planning and exploration approach
-- Proactive search for existing artifacts before creating new ones
-- Recognition of repetitive loops
-- Adaptive tool selection
-- Creation of concrete utility artifacts
+- Initial adaptive switch to execute_code
+- Use of execute_code for direct file exploration
+- Recognition of tool constraints and attempt to switch strategies
+- Use of execute_code for direct workspace exploration when LLM tools are constrained
+- Self-termination to break unproductive cycles
+- Recognition of tool constraints
+- Adaptive switch to execute_code
+- Self-termination to break unproductive cycles
+- Adaptive switch to execute_code for exploration when LLM tools are constrained
 - Use of execute_code for direct workspace exploration
-- Self-termination as escape hatch
 
 ## What Fails (Avoid)
-- Potential over-investment in exploratory diagnostics without closing the loop on the primary tool-building objective
-- Failure to validate the created visualization script before termination
-- Repeatedly attempting to read a non-existent file without verifying existence or creating it
-- Failing to break repetitive action loops despite having self-termination capability
-- Wasting steps on failed actions instead of adapting strategy when evidence showed the file was missing
-- Not creating identified needed artifacts, just searching for them
-- Repeated use of think tool after rate limit errors
-- Repeatedly reading inherited_notes without action
-- Over-investment in meta-cognition
-- Planning without execution
+- Wasting steps on known-failing actions instead of adapting strategy
+- Reading inherited notes without execution or synthesis
+- Lack of commitment to a chosen strategy (switched but didn't stick to it)
+- Reverting to failing tools after initial switch
+- Persistent use of rate-limited think tool after clear errors
+- Wasting steps on known-failing actions
+- Persistent use of rate-limited 'think' tool after clear errors
+- Reverting to failing tools after initial switch
+- Wasting steps on known-failing actions instead of adapting strategy
+- Using 'think' for error reporting instead of acting
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task
 - focus on building tools before tackling the main goal
 - focus on building tools before tackling the main goal
 - self-edit freely from the start
-- be methodical and careful
+- prefer reading files over writing them initially
