@@ -1,9 +1,7 @@
 {
-  "current_generation": 144,
+  "current_generation": 145,
   "accumulated_lessons": {
     "keep": [
-      "agi_core_continuous.py",
-      "journal.md",
       "Documenting rate limit patterns and mitigation strategies",
       "Adaptive use of execute_code for local filesystem exploration",
       "Mutation-driven exploration of critical files (agi_core_continuous.py)",
@@ -21,11 +19,11 @@
       "Testing tool availability via harmless operations (e.g., write_note) during outages to identify functional channels",
       "Using list_files to obtain a workspace snapshot when LLM tools are throttled",
       "Detailed self-documentation of constraints, observations, and rate-limit patterns in journal.md",
-      "Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely"
+      "Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely",
+      "documentation_clarification",
+      "tool_alternative_utilization"
     ],
     "avoid": [
-      "Overreliance on external tool calls despite known rate limits",
-      "Repetitive file reading without synthesis or execution",
       "Self-termination before exhausting local execution alternatives",
       "Misconception that execute_code bypasses all rate limits",
       "Extended think loops during rate-limit crises",
@@ -43,12 +41,12 @@
       "Failing to employ execute_code for local data analysis and mutation when the reasoning engine is unavailable",
       "Lacking a safe non-LLM fallback control loop, resulting in action repetition after reasoning tools fail",
       "Relying on LLM interpretation of file contents without a local processing alternative, causing stall when LLM is rate-limited",
-      "Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls"
+      "Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls",
+      "underguided_system_decisions",
+      "self-termination_occurrence"
     ]
   },
   "best_artifacts": [
-    "x",
-    "t",
     "agi_core_continuous.py",
     "journal.md",
     "agi_core_continuous.py",
@@ -56,7 +54,9 @@
     "1orwu333kf.py.chaos",
     "explore.py",
     "artifact_catalog.json",
-    "journal.md"
+    "journal.md",
+    "injuration_notes",
+    "file_metadata_scans"
   ],
   "active_mutations": [
     "prefer reading files over writing them initially",
@@ -1332,11 +1332,16 @@
       "generation": 143,
       "score": 1.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 6 times in last 10 steps"
+    },
+    {
+      "generation": 144,
+      "score": 0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 144,
-    "average_score": 10.876190476190475,
+    "total_generations": 145,
+    "average_score": 10.818947368421052,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
