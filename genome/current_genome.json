@@ -1,10 +1,7 @@
 {
-  "current_generation": 145,
+  "current_generation": 146,
   "accumulated_lessons": {
     "keep": [
-      "Documenting rate limit patterns and mitigation strategies",
-      "Adaptive use of execute_code for local filesystem exploration",
-      "Mutation-driven exploration of critical files (agi_core_continuous.py)",
       "Early detection of file-read operation loops",
       "Self-documentation of constraints via journal.md",
       "adaptive use of execute_code for local filesystem exploration during crises",
@@ -21,12 +18,12 @@
       "Detailed self-documentation of constraints, observations, and rate-limit patterns in journal.md",
       "Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely",
       "documentation_clarification",
-      "tool_alternative_utilization"
+      "tool_alternative_utilization",
+      "Early detection of file-read operation loops",
+      "Self-documentation of constraints via journal.md",
+      "Attempting to self-terminate upon recognizing an action loop"
     ],
     "avoid": [
-      "Self-termination before exhausting local execution alternatives",
-      "Misconception that execute_code bypasses all rate limits",
-      "Extended think loops during rate-limit crises",
       "repetitive file reading without synthesizing insights or creating output",
       "over-reliance on execute_code without auditing execution boundaries",
       "premature self-termination without confirming local execution options",
@@ -43,7 +40,10 @@
       "Relying on LLM interpretation of file contents without a local processing alternative, causing stall when LLM is rate-limited",
       "Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls",
       "underguided_system_decisions",
-      "self-termination_occurrence"
+      "self-termination_occurrence",
+      "Extended think loops during rate-limit crises",
+      "repetitive file reading without synthesizing insights or creating output",
+      "premature self-termination without confirming local execution options"
     ]
   },
   "best_artifacts": [
@@ -1337,11 +1337,16 @@
       "generation": 144,
       "score": 0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 145,
+      "score": 2.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 145,
-    "average_score": 10.818947368421052,
+    "total_generations": 146,
+    "average_score": 10.772774869109947,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
