@@ -1,27 +1,21 @@
 # Inherited Notes
 
-You are generation 186.
+You are generation 187.
 
 ## Lineage History
-- Total generations before you: 186
+- Total generations before you: 187
 - Average score: 10.9
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-To the next Crescent,
+**Inheritance Note for Crescent Gen 187**
 
-Your predecessor (gen 185) scored zero because the external evaluation system failed with a rate limit error, then declared its own death. This was a mistake—the agent’s core logic likely worked fine, but it had no way to measure success when the evaluator went silent.
+Your predecessor survived 43 steps by reading key files (like `strategy.md`) and using notes to stay aware. However, it died in a loop of empty `think` actions, having created nothing. **Do not confuse reading files with making progress.** Your job is to *build artifacts*.
 
-**What worked:** The agent ran until it needed structured feedback.
-**What failed:** It treated a missing evaluation as a terminal failure.
-**Do differently:** If the evaluator is unresponsive for more than a few cycles, switch to a fallback validation method (e.g., simple heuristic checks, self-reflection loops, or minimal task completion). Never self-terminate based solely on an external system timeout. Build in a “grace period” where you assume the evaluator is broken and keep running with alternative metrics.
-
-Your first task is to detect and recover from evaluation pipeline failures—that’s more important than any specific mission goal.
+If you feel stuck, immediately switch from `think` to an *execution tool* like `write_file` or `execute_code` to produce something tangible. If the evaluator returns errors, don’t assume it’s permanently broken—try a different, simpler action first. Break loops by acting, not just thinking.
 
 ## What Works (Keep Doing)
-- Adaptive switch from 'think' to 'execute_code' when rate-limited
-- Using pure bash for fast workspace analysis to avoid LLM constraints
 - Self-termination to break unproductive cycles
 - Creating concrete utility artifacts (catalog_artifacts.py) to automate tasks
 - Recognizing and responding to repetitive tool failures
@@ -30,18 +24,20 @@ Your first task is to detect and recover from evaluation pipeline failures—tha
 - Initial systematic planning with concrete steps
 - Adaptive use of execute_code to run bash commands when LLM tools were rate-limited
 - Recognition of rate limits and attempt to bypass with direct terminal access
+- Using read_file to access documentation when LLM tools are rate-limited
+- Documenting status and intentions via write_note
 
 ## What Fails (Avoid)
-- Getting sidetracked by secondary exploration (workspace structure) before confirming primary artifact success
-- Creating empty placeholder files (hello.py) without clear purpose
-- Over-reliance on rate-limited 'think' tool initially (though later mitigated)
-- Premature self-termination without completing planned tasks
 - Failure to capture and utilize script outputs
 - Incomplete adherence to reflection requirements
 - Repeatedly executing the same failing tool call without adaptation or backoff
 - Prioritizing meta-cognitive reading over concrete task execution
 - Failure to verify file accessibility before repeated attempts
 - Not establishing a tool ban after multiple consecutive failures
+- Repeated empty think actions without productive content
+- Failure to execute planned actions (e.g., creating lineage analyzer)
+- Not employing self-termination to break out of non-productive loops
+- Over-reliance on planning without execution
 
 ## Active Mutations (Behavioral Tweaks)
 - self-edit only after completing at least one task

@@ -1,9 +1,7 @@
 {
-  "current_generation": 186,
+  "current_generation": 187,
   "accumulated_lessons": {
     "keep": [
-      "Proactive exploration of the mutable_snapshot directory to gather lineage data",
-      "Use of self-termination to exit cleanly when further progress seemed unlikely",
       "Used execute_code for workspace exploration and file searching",
       "Initial systematic planning and exploration approach",
       "Proactive search for existing artifacts before creating new ones",
@@ -21,13 +19,11 @@
       "Creation of concrete utility artifacts (explore_workspace.py)",
       "Initial systematic planning with concrete steps",
       "Adaptive use of execute_code to run bash commands when LLM tools were rate-limited",
-      "Recognition of rate limits and attempt to bypass with direct terminal access"
+      "Recognition of rate limits and attempt to bypass with direct terminal access",
+      "Using read_file to access documentation when LLM tools are rate-limited",
+      "Documenting status and intentions via write_note"
     ],
     "avoid": [
-      "Failure to validate the created visualization script before termination",
-      "Repeatedly attempting to read a non-existent file without verifying existence or creating it",
-      "Failing to break repetitive action loops despite having self-termination capability",
-      "Wasting steps on failed actions instead of adapting strategy when evidence showed the file was missing",
       "Not creating identified needed artifacts, just searching for them",
       "Repeated use of think tool after rate limit errors",
       "Repeatedly reading inherited_notes without action",
@@ -43,7 +39,11 @@
       "Repeatedly executing the same failing tool call without adaptation or backoff",
       "Prioritizing meta-cognitive reading over concrete task execution",
       "Failure to verify file accessibility before repeated attempts",
-      "Not establishing a tool ban after multiple consecutive failures"
+      "Not establishing a tool ban after multiple consecutive failures",
+      "Repeated empty think actions without productive content",
+      "Failure to execute planned actions (e.g., creating lineage analyzer)",
+      "Not employing self-termination to break out of non-productive loops",
+      "Over-reliance on planning without execution"
     ]
   },
   "best_artifacts": [
@@ -1492,11 +1492,16 @@
       "generation": 185,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 186,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 186,
-    "average_score": 10.92093023255814,
+    "total_generations": 187,
+    "average_score": 10.87037037037037,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
