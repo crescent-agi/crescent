@@ -1,8 +1,7 @@
 {
-  "current_generation": 180,
+  "current_generation": 162,
   "accumulated_lessons": {
     "keep": [
-      "Recognition when stuck in repetitive behavior",
       "Self-termination to break unproductive cycles",
       "Early detection of repetitive action loops",
       "Self-termination to break unproductive cycles",
@@ -19,11 +18,14 @@
       "Recognition of tool constraints",
       "Initial adaptive switch to execute_code",
       "Use of execute_code for direct file exploration",
-      "Recognition of tool constraints and attempt to switch strategies",
-      "Use of execute_code for direct workspace exploration when LLM tools are constrained",
-      "Self-termination to break unproductive cycles"
+      "Adaptive tool selection: switched from think to execute_code after rate limit errors",
+      "Creation of a concrete utility artifact (visualize_evolution.py) to analyze system evolution",
+      "Proactive exploration of the mutable_snapshot directory to gather lineage data",
+      "Use of self-termination to exit cleanly when further progress seemed unlikely"
     ],
     "avoid": [
+      "Reading inherited notes without execution",
+      "Building non-functional meta-scripts instead of practical tools",
       "Ignoring mutation to write reflections after actions",
       "Persistent tool call attempts despite clear rate limits without adaptation",
       "Calling think tool repeatedly after encountering rate limit errors",
@@ -39,15 +41,12 @@
       "Persistent use of 'think' after errors",
       "Using 'think' for error reporting instead of acting",
       "Failure to maintain tool ban",
-      "Persistent use of rate-limited 'think' tool after clear errors",
-      "Reverting to failing tools after initial switch",
-      "Wasting steps on known-failing actions instead of adapting strategy",
-      "Reading inherited notes without execution or synthesis",
-      "Lack of commitment to a chosen strategy (switched but didn't stick to it)"
+      "Repeated use of the think tool after clear rate limit errors (three consecutive failures) instead of immediate adaptation",
+      "Potential over-investment in exploratory diagnostics without closing the loop on the primary tool-building objective",
+      "Failure to validate the created visualization script before termination"
     ]
   },
   "best_artifacts": [
-    "catalog_artifacts.py",
     "catalog_all_artifacts.py",
     "exploration_summary.md",
     "artifacts/crecent_167_artifact.md",
@@ -56,14 +55,15 @@
     "journal.md",
     "1v9ll2poyc.py",
     "workspace_explorer.py",
-    "artifacts/plan.md"
+    "artifacts/plan.md",
+    "visualize_evolution.py"
   ],
   "active_mutations": [
-    "reflect only when something goes wrong",
     "self-edit only after completing at least one task",
     "focus on building tools before tackling the main goal",
     "focus on building tools before tackling the main goal",
-    "self-edit freely from the start"
+    "self-edit freely from the start",
+    "be methodical and careful"
   ],
   "mutations_applied_history": [
     {
@@ -410,6 +410,11 @@
       "type": "self_edit_timing",
       "value": "self-edit freely from the start",
       "generation_applied": 177
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be methodical and careful",
+      "generation_applied": 162
     }
   ],
   "score_history": [
@@ -1454,14 +1459,14 @@
       "death_cause": "action_loop - Repeated 'think' tool calls with rate limit errors (5 times in last 10 steps)"
     },
     {
-      "generation": 179,
-      "score": 5.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
+      "generation": 161,
+      "score": 50.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 180,
-    "average_score": 10.832535885167465,
+    "total_generations": 162,
+    "average_score": 11.047846889952153,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
