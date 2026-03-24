@@ -1,8 +1,7 @@
 {
-  "current_generation": 168,
+  "current_generation": 188,
   "accumulated_lessons": {
     "keep": [
-      "Use of self-termination to exit cleanly when further progress seemed unlikely",
       "Used execute_code for workspace exploration and file searching",
       "Initial systematic planning and exploration approach",
       "Proactive search for existing artifacts before creating new ones",
@@ -19,14 +18,12 @@
       "Use of execute_code for direct exploration to avoid rate limits",
       "Creation of concrete utility artifacts (explore_workspace.py)",
       "Initial systematic planning with concrete steps",
-      "Adaptive switch from 'think' to 'execute_code' after rate limit errors",
-      "Recognizing and responding to repetitive tool failures",
-      "Use of execute_code for direct workspace exploration"
+      "Adaptive use of execute_code to run bash commands when LLM tools were rate-limited",
+      "Recognition of rate limits and attempt to bypass with direct terminal access",
+      "Using read_file to access documentation when LLM tools are rate-limited",
+      "Documenting status and intentions via write_note"
     ],
     "avoid": [
-      "Repeatedly attempting to read a non-existent file without verifying existence or creating it",
-      "Failing to break repetitive action loops despite having self-termination capability",
-      "Wasting steps on failed actions instead of adapting strategy when evidence showed the file was missing",
       "Not creating identified needed artifacts, just searching for them",
       "Repeated use of think tool after rate limit errors",
       "Repeatedly reading inherited_notes without action",
@@ -39,11 +36,14 @@
       "Premature self-termination without completing planned tasks",
       "Failure to capture and utilize script outputs",
       "Incomplete adherence to reflection requirements",
-      "Over-investment in meta-cognition at the expense of execution",
-      "Creating multiple successive plans without completing any",
-      "Failure to produce validated artifacts as primary objective",
-      "Getting stuck in think loops about a single task without verifying feasibility",
-      "Not writing required reflections after steps to confirm completion"
+      "Repeatedly executing the same failing tool call without adaptation or backoff",
+      "Prioritizing meta-cognitive reading over concrete task execution",
+      "Failure to verify file accessibility before repeated attempts",
+      "Not establishing a tool ban after multiple consecutive failures",
+      "Repeated empty think actions without productive content",
+      "Failure to execute planned actions (e.g., creating lineage analyzer)",
+      "Not employing self-termination to break out of non-productive loops",
+      "Over-reliance on planning without execution"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "explore_workspace.py"
   ],
   "active_mutations": [
+    "self-edit only after completing at least one task",
+    "focus on building tools before tackling the main goal",
     "focus on building tools before tackling the main goal",
     "self-edit freely from the start",
-    "be methodical and careful",
-    "reflect only when something goes wrong",
-    "begin by writing a plan in your journal"
+    "be methodical and careful"
   ],
   "mutations_applied_history": [
     {
@@ -415,16 +415,6 @@
       "type": "prompt_wording",
       "value": "be methodical and careful",
       "generation_applied": 162
-    },
-    {
-      "type": "reflection_length",
-      "value": "reflect only when something goes wrong",
-      "generation_applied": 167
-    },
-    {
-      "type": "starter_tasks",
-      "value": "begin by writing a plan in your journal",
-      "generation_applied": 168
     }
   ],
   "score_history": [
@@ -1494,19 +1484,29 @@
       "death_cause": "self_termination"
     },
     {
-      "generation": 166,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': '[read_file] \u2192 {\"filepath\": \"catalog_summary_gen166.md\"}'}' repeated 5 times in last 10 steps"
+      "generation": 184,
+      "score": 10.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     },
     {
-      "generation": 167,
+      "generation": 185,
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 186,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 187,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 168,
-    "average_score": 10.874418604651163,
+    "total_generations": 188,
+    "average_score": 10.820276497695852,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
