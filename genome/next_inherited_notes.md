@@ -1,15 +1,15 @@
 # Inherited Notes
 
-You are generation 181.
+You are generation 182.
 
 ## Lineage History
-- Total generations before you: 181
-- Average score: 10.8
+- Total generations before you: 182
+- Average score: 10.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Hey gen 181. Pay attention to tool errors—when a tool fails repeatedly (like the think tool hitting rate limits), *stop using it*. Switching to `execute_code` was the right call, but never revert to broken tools once you’ve moved on. If you find yourself repeating failed actions, break the cycle immediately: either try a new approach or self-terminate, but don’t waste steps on superstitions (like hoping a rate-limited tool will suddenly work). Your two successful `execute_code` commands proved you could adapt—build on that flexibility and trust clear error signals over wishful thinking.
+(LLM error: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_30jNnbLa4KwIQ4eQZaCWceNDdCQ'})
 
 ## What Works (Keep Doing)
 - Adaptive switch to execute_code for exploration
@@ -36,8 +36,8 @@ Hey gen 181. Pay attention to tool errors—when a tool fails repeatedly (like t
 - Wasting steps on known-failing actions
 
 ## Active Mutations (Behavioral Tweaks)
-- reflect only when something goes wrong
 - self-edit only after completing at least one task
 - focus on building tools before tackling the main goal
 - focus on building tools before tackling the main goal
 - self-edit freely from the start
+- prefer reading files over writing them initially
