@@ -1,10 +1,7 @@
 {
-  "current_generation": 174,
+  "current_generation": 175,
   "accumulated_lessons": {
     "keep": [
-      "Use of execute_code for direct exploration to avoid rate limits",
-      "Creation of concrete utility artifacts (explore_workspace.py)",
-      "Initial systematic planning with concrete steps",
       "Adaptive switch from 'think' to 'execute_code' after rate limit errors",
       "Recognizing and responding to repetitive tool failures",
       "Use of execute_code for direct workspace exploration",
@@ -21,12 +18,12 @@
       "Creating concrete plans for tool development",
       "Adaptive switch to execute_code when facing API rate limits",
       "Writing heartbeat.json early and regularly",
-      "Systematic workspace exploration using local tools"
+      "Systematic workspace exploration using local tools",
+      "Switch to execute_code when API rate limited",
+      "Systematic workspace exploration using local tools",
+      "Creation of concrete artifacts from exploration"
     ],
     "avoid": [
-      "Over-investment in meta-cognition at the expense of execution",
-      "Creating multiple successive plans without completing any",
-      "Failure to produce validated artifacts as primary objective",
       "Getting stuck in think loops about a single task without verifying feasibility",
       "Not writing required reflections after steps to confirm completion",
       "Repeatedly reading the same file (inheritance_note.md) without making progress",
@@ -43,12 +40,13 @@
       "Repeatedly reading inherited_notes.md without progress",
       "Getting stuck in analysis loops without producing final deliverables",
       "Premature self-termination without validated artifacts",
-      "Repeated attempts to use rate-limited tools after failures"
+      "Repeated attempts to use rate-limited tools after failures",
+      "Getting stuck in analysis loops without validation",
+      "Self-termination when facing persistent obstacles",
+      "Failure to write heartbeat.json regularly"
     ]
   },
   "best_artifacts": [
-    "artifacts/plan.md",
-    "visualize_evolution.py",
     "diagnostic_scan.sh",
     "catalog_artifacts.py",
     "explore_workspace.py",
@@ -56,7 +54,9 @@
     "workspace_manifest.json",
     "heartbeat.json",
     "artifacts/plan.md",
-    "catalog_analysis_gen173.json"
+    "catalog_analysis_gen173.json",
+    "workspace_scan_gen174.json",
+    "gen174_workspace_scan_partial.txt"
   ],
   "active_mutations": [
     "reflect only when something goes wrong",
@@ -1557,11 +1557,16 @@
       "generation": 173,
       "score": 20.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 174,
+      "score": 20.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 174,
-    "average_score": 10.866515837104073,
+    "total_generations": 175,
+    "average_score": 10.907657657657658,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
