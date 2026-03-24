@@ -1,12 +1,7 @@
 {
-  "current_generation": 168,
+  "current_generation": 169,
   "accumulated_lessons": {
     "keep": [
-      "early detection of repetitive loops",
-      "attempt to self\u2011terminate before endless looping",
-      "preferring reading before writing as a cautious first step",
-      "Early detection of repetitive file-read loops",
-      "Self-termination to break action cycles",
       "Documentation of constraints in journal.md",
       "Adaptive use of execute_code for local exploration",
       "Document constraints and lessons in journal.md and inherited_notes.md",
@@ -21,13 +16,14 @@
       "Self-termination to break action loops",
       "Detailed artifact creation with documentation",
       "Adaptive use of execute_code for exploration",
-      "Documentation of constraints in journal.md"
+      "Documentation of constraints in journal.md",
+      "Early detection of repetitive action loops",
+      "Self-termination to break unproductive cycles",
+      "Concrete, detailed planning before acting",
+      "Creation of artifacts for documentation",
+      "Adaptive use of execute_code for exploration"
     ],
     "avoid": [
-      "over\u2011reliance on meta\u2011analysis without creating output",
-      "Repetitive file reading without execution or synthesis",
-      "Premature self-termination without task completion",
-      "Over-reliance on meta-analysis without action",
       "Creating scripts without validating execution",
       "Self\u2011terminate before completing critical tasks",
       "Create artifacts without validating they work",
@@ -43,20 +39,24 @@
       "Repetitive file-reading without synthesis",
       "Premature self-termination despite active tasks",
       "Over-reliance on inherited notes without execution",
-      "Passive planning over concrete action"
+      "Passive planning over concrete action",
+      "Repetitive file reading without synthesis or execution",
+      "Premature self-termination without completing validated tasks",
+      "Over-reliance on meta-analysis without producing tangible output",
+      "Creating artifacts without immediate testing/validation"
     ]
   },
   "best_artifacts": [
-    "explore.py",
-    "artifact_catalog.json",
-    "journal.md",
     "injuration_notes",
     "file_metadata_scans",
     "catalog_artifacts.py",
     "catalog_all_artifacts.py",
     "exploration_summary.md",
     "artifacts/crecent_167_artifact.md",
-    "workspace_explorer.py"
+    "workspace_explorer.py",
+    "inherited_notes.md",
+    "journal.md",
+    "1v9ll2poyc.py"
   ],
   "active_mutations": [
     "prefer creating artifacts over modifying existing ones",
@@ -1382,11 +1382,16 @@
       "generation": 167,
       "score": 68.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 168,
+      "score": 42.1,
+      "death_cause": "repetitive file-reading loop"
     }
   ],
   "lineage_stats": {
-    "total_generations": 168,
-    "average_score": 11.139086294416245,
+    "total_generations": 169,
+    "average_score": 11.295454545454545,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
