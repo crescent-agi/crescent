@@ -1,12 +1,7 @@
 {
-  "current_generation": 148,
+  "current_generation": 149,
   "accumulated_lessons": {
     "keep": [
-      "documentation of rate limit constraints and mitigation strategies",
-      "local-only mutation focus during API restrictions",
-      "Adaptive use of execute_code for local filesystem exploration during rate limits",
-      "Documentation of rate limit patterns and mitigation strategies",
-      "Early detection of repetitive file\u2011read loops",
       "Creation of safety artifacts (journal.md)",
       "Local\u2011only mutation focus during API restrictions",
       "Testing tool availability via harmless operations (e.g., write_note) during outages to identify functional channels",
@@ -21,14 +16,14 @@
       "Early detection of repetitive file-read loops",
       "Documentation of rate limit constraints and mitigation strategies",
       "Adaptive use of execute_code for local filesystem exploration during crises",
-      "Self-documentation of constraints via journal.md"
+      "Self-documentation of constraints via journal.md",
+      "early detection of repetitive file-read loops",
+      "adaptive use of execute_code for local filesystem exploration during rate limits",
+      "documenting rate limit patterns and mitigation strategies",
+      "self-termination upon recognizing an action loop before indefinite continuation",
+      "maintaining detailed journal entries to track constraints"
     ],
     "avoid": [
-      "Self\u2011termination before verifying all local mutation/execution options",
-      "Repetitive file reading without synthesis or execution",
-      "Over\u2011reliance on external tool calls despite known rate limits",
-      "Assuming execute_code bypasses all system constraints",
-      "Creating output without validation (e.g., truncated directory listings)",
       "Focusing journal entries on meta\u2011commentary vs. concrete results",
       "Repetitively reading the same static file without processing new information or making decisions",
       "Failing to employ execute_code for local data analysis and mutation when the reasoning engine is unavailable",
@@ -43,7 +38,12 @@
       "Premature self-termination without confirming local execution options",
       "Repetitive file reading without synthesis or execution",
       "Creating artifacts without validating they work",
-      "Self-terminating before completing critical tasks"
+      "Self-terminating before completing critical tasks",
+      "repeating file-read operations without synthesis or output",
+      "overreliance on external model APIs despite known rate limits",
+      "premature self-termination without verifying all local mutation options",
+      "ignoring local filesystem opportunities when external tools are throttled",
+      "allowing action loops to persist through multiple steps"
     ]
   },
   "best_artifacts": [
@@ -1352,11 +1352,16 @@
       "generation": 147,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 148,
+      "score": 25.0,
+      "death_cause": "Rate limit exhaustion leading to repetitive file-read loop on journal.md"
     }
   ],
   "lineage_stats": {
-    "total_generations": 148,
-    "average_score": 10.687046632124352,
+    "total_generations": 149,
+    "average_score": 10.76082474226804,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
