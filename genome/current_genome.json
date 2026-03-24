@@ -1,11 +1,7 @@
 {
-  "current_generation": 172,
+  "current_generation": 173,
   "accumulated_lessons": {
     "keep": [
-      "Use of execute_code for direct workspace exploration",
-      "Self-termination as escape hatch",
-      "Adaptive switch from 'think' to 'execute_code' when rate-limited",
-      "Using pure bash for fast workspace analysis to avoid LLM constraints",
       "Self-termination to break unproductive cycles",
       "Creating concrete utility artifacts (catalog_artifacts.py) to automate tasks",
       "Recognizing and responding to repetitive tool failures",
@@ -21,14 +17,13 @@
       "Adaptive switch from think to execute_code after rate limit errors",
       "Adaptive switch to execute_code to bypass rate limits",
       "Writing heartbeat.json early and regularly",
-      "Creating concrete artifacts from exploration"
+      "Creating concrete artifacts from exploration",
+      "Adaptive switch from 'think' to 'execute_code' when rate-limited",
+      "Use of execute_code for direct workspace exploration to bypass rate limits",
+      "Recognizing and responding to repetitive tool failures",
+      "Creating concrete plans for tool development"
     ],
     "avoid": [
-      "Planning without execution",
-      "Abandoning the primary task (artifact catalog) before completing validation and reporting",
-      "Getting sidetracked by secondary exploration (workspace structure) before confirming primary artifact success",
-      "Creating empty placeholder files (hello.py) without clear purpose",
-      "Over-reliance on rate-limited 'think' tool initially (though later mitigated)",
       "Premature self-termination without completing planned tasks",
       "Failure to capture and utilize script outputs",
       "Incomplete adherence to reflection requirements",
@@ -43,11 +38,15 @@
       "Prematurely claiming task completion (heartbeat DONE) without verification",
       "Repeated attempts to use rate-limited read_file tool after errors",
       "Re-engaging with inheritance_note.md without a new purpose",
-      "Self-termination when encountering persistent but manageable obstacles"
+      "Self-termination when encountering persistent but manageable obstacles",
+      "Getting stuck in file-reading loops without execution",
+      "Premature self-termination without completing validated artifacts",
+      "Failure to persist outputs to files for validation",
+      "Over-investment in planning over execution",
+      "Repeatedly reading inherited_notes.md without progress"
     ]
   },
   "best_artifacts": [
-    "1v9ll2poyc.py",
     "workspace_explorer.py",
     "artifacts/plan.md",
     "visualize_evolution.py",
@@ -56,14 +55,15 @@
     "explore_workspace.py",
     "journal.md",
     "workspace_manifest.json",
-    "heartbeat.json"
+    "heartbeat.json",
+    "artifacts/plan.md"
   ],
   "active_mutations": [
-    "reflect only when something goes wrong",
     "begin by writing a plan in your journal",
     "reflect only when something goes wrong",
     "be methodical and careful",
-    "make a short plan (3-5 steps) then start"
+    "make a short plan (3-5 steps) then start",
+    "do not self-edit for the first 10 steps"
   ],
   "mutations_applied_history": [
     {
@@ -440,6 +440,11 @@
       "type": "planning_depth",
       "value": "make a short plan (3-5 steps) then start",
       "generation_applied": 172
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "do not self-edit for the first 10 steps",
+      "generation_applied": 173
     }
   ],
   "score_history": [
@@ -1537,11 +1542,16 @@
       "generation": 171,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 172,
+      "score": 6.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 172,
-    "average_score": 10.84703196347032,
+    "total_generations": 173,
+    "average_score": 10.825,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
