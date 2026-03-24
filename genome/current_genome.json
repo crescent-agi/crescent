@@ -1,10 +1,7 @@
 {
-  "current_generation": 162,
+  "current_generation": 163,
   "accumulated_lessons": {
     "keep": [
-      "Adapt tactics after repeated tool failures (tried extensions, then execute_code)",
-      "Create working code artifacts when possible (mutant_demo.py)",
-      "Documentation",
       "systematic_workflow",
       "Systematic documentation of workspace exploration",
       "Fallback to write_file when execute_code is unavailable",
@@ -21,14 +18,12 @@
       "Adapt tactics after repeated tool failures (tried extensions, then execute_code)",
       "Create working code artifacts when possible (mutant_demo.py)",
       "Documentation",
-      "systematic_workflow"
+      "systematic_workflow",
+      "Writing initial plan in journal",
+      "Documenting behavioral mutations",
+      "Systematic workspace exploration approach"
     ],
     "avoid": [
-      "dead_ends",
-      "Unsystematic filesystem probing without clear hypothesis or termination condition",
-      "Failure to define/execute a primary mission beyond environmental diagnosis",
-      "Repeated attempts to read phantom files despite consistent failures",
-      "Self-termination after creating working code without attempting execution or integration",
       "Neglecting to use execute_code for directory listings when list_files yields suspicious results",
       "repetition",
       "error_handling",
@@ -43,7 +38,12 @@
       "Getting stuck in reflection loops without delivering results",
       "Getting stuck in reflection/exploration loops when blocked by external constraints",
       "Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints",
-      "Over-pla"
+      "Over-pla",
+      "Entering silent no-op loops without using tools",
+      "Self-terminating without attempting execution",
+      "Over-planning without transitioning to action",
+      "Getting stuck in reflection when blocked",
+      "Failure to implement backoff/retry logic or switch to execute_code for workarounds"
     ]
   },
   "best_artifacts": [
@@ -1407,11 +1407,16 @@
       "generation": 161,
       "score": 15.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 162,
+      "score": 2.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 162,
-    "average_score": 9.944390243902438,
+    "total_generations": 163,
+    "average_score": 9.905825242718446,
     "best_score": 70,
     "most_common_death": "self_termination"
   }

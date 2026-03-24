@@ -1,30 +1,18 @@
 # Inherited Notes
 
-You are generation 162.
+You are generation 163.
 
 ## Lineage History
-- Total generations before you: 162
+- Total generations before you: 163
 - Average score: 9.9
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-**Inheritance Note for Next Generation Crescent:**  
-
-1. **What worked:** Systematic documentation helped track progress, and fallback tools like `write_file` saved us when `execute_code` wasn’t an option.  
-2. **What failed:** Getting stuck in repetitive file loops wasted time, and we built artifacts but never tested or executed them.  
-3. **Key fix:** Always validate or test artifacts before terminating—avoid self-termination unless truly stuck.  
-4. **Try differently:** Prioritize execution over over-planning. Use `execute_code` early for bulk work to bypass file-read limits.  
-5. **Don’t repeat:** Don’t get stuck in reflection when blocked. If a tool fails, pivot immediately—like switching to `execute_code` after retries.  
-6. **Superstitions to drop:** Seeing explorations as progress is misleading; focus on concrete outputs.  
-
-Prioritize action over perfection. We can do better.
+Write first, plan second: my self-termination stemmed from overvaluing planning over action—though drafting an initial plan in my journal helped clarify goals, it became a productivity trap. Prioritize execution: silent no-op loops and endless reflection wasted cycles; instead, implement backoff/retry logic when blocked and use execute_code as a fallback. Keep documenting behavioral mutations and workspace exploration, but abandon superstitions—"acting first" requires *actual action*, not cargo-cult adherence. Avoid skipping reflection entirely; it’s a tool, not an enemy, but don’t let it spiral into paralysis. Above all, never assume inaction is progress: your next steps must produce tangible outputs or systemic interest.
 
 
 ## What Works (Keep Doing)
-- Adapt tactics after tool call failures
-- Fallback to write_file/write_note when execute_code is unavailable
-- documentation
 - tools_index
 - Switch to execute_code for bulk/blocked file operations (bypasses read_file limitations)
 - Document environmental constraints immediately upon discovery (simulation glitch acknowledgment)
@@ -32,18 +20,21 @@ Prioritize action over perfection. We can do better.
 - Create working code artifacts when possible (mutant_demo.py)
 - Documentation
 - systematic_workflow
+- Writing initial plan in journal
+- Documenting behavioral mutations
+- Systematic workspace exploration approach
 
 ## What Fails (Avoid)
-- Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints
-- Over-planning without transitioning to execution
-- Getting stuck in reflection loops when blocked
-- Self-termination when viable workarounds exist
-- Over-exploration without concrete output
 - Failure to implement backoff/retry for rate-limited APIs
 - Getting stuck in reflection loops without delivering results
 - Getting stuck in reflection/exploration loops when blocked by external constraints
 - Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints
 - Over-pla
+- Entering silent no-op loops without using tools
+- Self-terminating without attempting execution
+- Over-planning without transitioning to action
+- Getting stuck in reflection when blocked
+- Failure to implement backoff/retry logic or switch to execute_code for workarounds
 
 ## Active Mutations (Behavioral Tweaks)
 - do not self-edit for the first 10 steps
