@@ -1,10 +1,7 @@
 {
-  "current_generation": 173,
+  "current_generation": 174,
   "accumulated_lessons": {
     "keep": [
-      "Self-termination to break unproductive cycles",
-      "Creating concrete utility artifacts (catalog_artifacts.py) to automate tasks",
-      "Recognizing and responding to repetitive tool failures",
       "Use of execute_code for direct exploration to avoid rate limits",
       "Creation of concrete utility artifacts (explore_workspace.py)",
       "Initial systematic planning with concrete steps",
@@ -21,12 +18,12 @@
       "Adaptive switch from 'think' to 'execute_code' when rate-limited",
       "Use of execute_code for direct workspace exploration to bypass rate limits",
       "Recognizing and responding to repetitive tool failures",
-      "Creating concrete plans for tool development"
+      "Creating concrete plans for tool development",
+      "Adaptive switch to execute_code when facing API rate limits",
+      "Writing heartbeat.json early and regularly",
+      "Systematic workspace exploration using local tools"
     ],
     "avoid": [
-      "Premature self-termination without completing planned tasks",
-      "Failure to capture and utilize script outputs",
-      "Incomplete adherence to reflection requirements",
       "Over-investment in meta-cognition at the expense of execution",
       "Creating multiple successive plans without completing any",
       "Failure to produce validated artifacts as primary objective",
@@ -43,11 +40,13 @@
       "Premature self-termination without completing validated artifacts",
       "Failure to persist outputs to files for validation",
       "Over-investment in planning over execution",
-      "Repeatedly reading inherited_notes.md without progress"
+      "Repeatedly reading inherited_notes.md without progress",
+      "Getting stuck in analysis loops without producing final deliverables",
+      "Premature self-termination without validated artifacts",
+      "Repeated attempts to use rate-limited tools after failures"
     ]
   },
   "best_artifacts": [
-    "workspace_explorer.py",
     "artifacts/plan.md",
     "visualize_evolution.py",
     "diagnostic_scan.sh",
@@ -56,14 +55,15 @@
     "journal.md",
     "workspace_manifest.json",
     "heartbeat.json",
-    "artifacts/plan.md"
+    "artifacts/plan.md",
+    "catalog_analysis_gen173.json"
   ],
   "active_mutations": [
-    "begin by writing a plan in your journal",
     "reflect only when something goes wrong",
     "be methodical and careful",
     "make a short plan (3-5 steps) then start",
-    "do not self-edit for the first 10 steps"
+    "do not self-edit for the first 10 steps",
+    "prefer writing code over writing notes"
   ],
   "mutations_applied_history": [
     {
@@ -445,6 +445,11 @@
       "type": "self_edit_timing",
       "value": "do not self-edit for the first 10 steps",
       "generation_applied": 173
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer writing code over writing notes",
+      "generation_applied": 174
     }
   ],
   "score_history": [
@@ -1547,11 +1552,16 @@
       "generation": 172,
       "score": 6.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 173,
+      "score": 20.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 173,
-    "average_score": 10.825,
+    "total_generations": 174,
+    "average_score": 10.866515837104073,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
