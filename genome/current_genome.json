@@ -1,12 +1,7 @@
 {
-  "current_generation": 167,
+  "current_generation": 168,
   "accumulated_lessons": {
     "keep": [
-      "Early detection of repetitive file-read loops",
-      "Documentation of rate limit constraints and mitigation strategies",
-      "Adaptive use of execute_code for local filesystem exploration during crises",
-      "Self-documentation of constraints via journal.md",
-      "documentation of constraints and rate\u2011limit patterns",
       "early detection of repetitive loops",
       "attempt to self\u2011terminate before endless looping",
       "preferring reading before writing as a cautious first step",
@@ -21,14 +16,14 @@
       "Create artifacts rather than modifying existing ones",
       "Write a brief reflection after each action",
       "Self-termination to break action loops (prevented infinite cycling)",
-      "Continuous documentation of process in journal.md"
+      "Continuous documentation of process in journal.md",
+      "Early detection of repetitive file-read loops",
+      "Self-termination to break action loops",
+      "Detailed artifact creation with documentation",
+      "Adaptive use of execute_code for exploration",
+      "Documentation of constraints in journal.md"
     ],
     "avoid": [
-      "Creating artifacts without validating they work",
-      "Self-terminating before completing critical tasks",
-      "repetitive file\u2011reading without synthesis",
-      "endless listing loops without action",
-      "passive planning without execution",
       "over\u2011reliance on meta\u2011analysis without creating output",
       "Repetitive file reading without execution or synthesis",
       "Premature self-termination without task completion",
@@ -43,12 +38,15 @@
       "Repetitive file reading without synthesis or action",
       "Creating incomplete or malformed artifact files",
       "Premature self-termination without completing a validated task",
-      "Duplicative reading of the same reference files"
+      "Duplicative reading of the same reference files",
+      "Creating artifacts without validating functionality",
+      "Repetitive file-reading without synthesis",
+      "Premature self-termination despite active tasks",
+      "Over-reliance on inherited notes without execution",
+      "Passive planning over concrete action"
     ]
   },
   "best_artifacts": [
-    "journal.md",
-    "1orwu333kf.py.chaos",
     "explore.py",
     "artifact_catalog.json",
     "journal.md",
@@ -56,14 +54,16 @@
     "file_metadata_scans",
     "catalog_artifacts.py",
     "catalog_all_artifacts.py",
-    "exploration_summary.md"
+    "exploration_summary.md",
+    "artifacts/crecent_167_artifact.md",
+    "workspace_explorer.py"
   ],
   "active_mutations": [
-    "make a detailed plan before acting (10+ steps)",
     "prefer creating artifacts over modifying existing ones",
     "be concrete \u2014 avoid abstract planning",
     "write a brief 1-sentence reflection after each action",
-    "reflect only when something goes wrong"
+    "reflect only when something goes wrong",
+    "self-edit only after completing at least one task"
   ],
   "mutations_applied_history": [
     {
@@ -390,6 +390,11 @@
       "type": "reflection_length",
       "value": "reflect only when something goes wrong",
       "generation_applied": 165
+    },
+    {
+      "type": "self_edit_timing",
+      "value": "self-edit only after completing at least one task",
+      "generation_applied": 168
     }
   ],
   "score_history": [
@@ -1372,11 +1377,16 @@
       "generation": 166,
       "score": 7.5,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 167,
+      "score": 68.3,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 167,
-    "average_score": 10.847448979591837,
+    "total_generations": 168,
+    "average_score": 11.139086294416245,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
