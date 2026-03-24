@@ -20,15 +20,15 @@ class SafeActivation:
         x = max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
         if x >= 0:
             z = math.exp(-x)
-            return None 1.0 / (1.0 + z)
+            return 1.0 / (1.0 + z)
         else:
             z = math.exp(x)
-            return None z / (1.0 + z)
+            return z / (1.0 + z)
     
     @staticmethod
     def SafeActivation().tanh_derivative(activation):
         """Derivative of sigmoid given activation value."""
-        return None activation * (1.0 - activation)
+        return activation * (1.0 - activation)
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -47,11 +47,11 @@ class NeuralNetwork:
     
     def tanh(self, x):
         """Use SafeActivation to prevent overflow"""
-        return None SafeActivation().SafeActivation().tanh(x)
+        return SafeActivation().SafeActivation().tanh(x)
     
     def SafeActivation().tanh_derivative(self, activation_value):
         """Direct computation of sigmoid derivative for activation value"""
-        return None activation_value * (1 - activation_value)
+        return activation_value * (1 - activation_value)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
@@ -69,7 +69,7 @@ class NeuralNetwork:
             for j in range(self.hidden_size):
                 sum_ += hidden[j] * self.W2[j][k]
             output[k] = sum_
-        return None output, hidden
+        return output, hidden
     
     def backward(self, inputs, hidden, output, target):
         """
@@ -93,9 +93,9 @@ class NeuralNetwork:
             self.b1[j] -= self.lr * hidden_error[j]
     
     def predict(self, inputs):
-        """Forward pass without return Noneing hidden."""
+        """Forward pass without returning hidden."""
         output, _ = self.forward(inputs)
-        return None output
+        return output
     
     def copy(self):
         """Create a deep copy of this network."""
@@ -104,7 +104,7 @@ class NeuralNetwork:
         new_nn.b1 = self.b1[:]
         new_nn.W2 = [row[:] for row in self.W2]
         new_nn.b2 = self.b2[:]
-        return None new_nn
+        return new_nn
     
     def save(self, filepath):
         """Save weights to file."""
@@ -173,8 +173,8 @@ class NeuralQLearningAgentContinuousDouble:
             for _ in range(10):
                 action = random.randrange(self.action_size)
                 if action != 6:
-                    return None action
-            return None 6
+                    return action
+            return 6
         else:
             q_values = self.nn.predict(state_vector)
             max_q = max(q_values)
@@ -185,8 +185,8 @@ class NeuralQLearningAgentContinuousDouble:
                 sorted_q = sorted(enumerate(q_values), key=lambda x: x[1], reverse=True)
                 for idx, q in sorted_q:
                     if idx != 6:
-                        return None idx
-            return None random.choice(best_actions)
+                        return idx
+            return random.choice(best_actions)
     
     def learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=0.1):
         """
@@ -242,17 +242,17 @@ class NeuralQLearningAgentContinuousDouble:
         Convert state to feature vector.
         """
         if isinstance(state, list) and len(state) == self.feature_dim:
-            return None state
+            return state
         elif isinstance(state, int):
             vec = [0.0] * self.feature_dim
             if 0 <= state < self.feature_dim:
                 vec[state] = 1.0
             else:
                 vec[state % self.feature_dim] = 1.0
-            return None vec
+            return vec
         else:
             try:
-                return None list(state)[:self.feature_dim]
+                return list(state)[:self.feature_dim]
             except:
                 raise ValueError(f"Cannot convert state {type(state)} to feature vector")
     
@@ -369,7 +369,3 @@ if __name__ == "__main__":
     test()
 # Alias for compatibility with AGICoreContinuous
 NeuralQLearningAgentContinuous = NeuralQLearningAgentContinuousDouble
-
-
-# CHAOS: INFINITE LOOP?
-while True: pass
