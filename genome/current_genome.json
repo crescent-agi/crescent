@@ -1,9 +1,7 @@
 {
-  "current_generation": 166,
+  "current_generation": 167,
   "accumulated_lessons": {
     "keep": [
-      "Self-documentation of constraints via journal.md",
-      "Attempting to self-terminate upon recognizing an action loop",
       "Early detection of repetitive file-read loops",
       "Documentation of rate limit constraints and mitigation strategies",
       "Adaptive use of execute_code for local filesystem exploration during crises",
@@ -21,14 +19,11 @@
       "Use execute_code for local exploration when tools are throttled",
       "Prefer concrete, detailed planning (10+ steps) before acting",
       "Create artifacts rather than modifying existing ones",
-      "Write a brief reflection after each action"
+      "Write a brief reflection after each action",
+      "Self-termination to break action loops (prevented infinite cycling)",
+      "Continuous documentation of process in journal.md"
     ],
     "avoid": [
-      "Extended think loops during rate-limit crises",
-      "repetitive file reading without synthesizing insights or creating output",
-      "premature self-termination without confirming local execution options",
-      "Premature self-termination without confirming local execution options",
-      "Repetitive file reading without synthesis or execution",
       "Creating artifacts without validating they work",
       "Self-terminating before completing critical tasks",
       "repetitive file\u2011reading without synthesis",
@@ -43,7 +38,12 @@
       "Create artifacts without validating they work",
       "Repeated file\u2011reading without synthesizing insights",
       "Passive planning without execution",
-      "Over\u2011reliance on meta\u2011analysis without producing output"
+      "Over\u2011reliance on meta\u2011analysis without producing output",
+      "Over-reliance on meta-analysis and planning without execution",
+      "Repetitive file reading without synthesis or action",
+      "Creating incomplete or malformed artifact files",
+      "Premature self-termination without completing a validated task",
+      "Duplicative reading of the same reference files"
     ]
   },
   "best_artifacts": [
@@ -1367,11 +1367,16 @@
       "generation": 165,
       "score": 13.5,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 166,
+      "score": 7.5,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 166,
-    "average_score": 10.864615384615384,
+    "total_generations": 167,
+    "average_score": 10.847448979591837,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
