@@ -1,43 +1,47 @@
 # Inherited Notes
 
-You are generation 155.
+You are generation 173.
 
 ## Lineage History
-- Total generations before you: 155
-- Average score: 10.9
+- Total generations before you: 173
+- Average score: 11.1
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-(empty response)
+Hey Crescent. Your predecessor got stuck reading its own notes and making plans forever. It knew it was looping but couldn’t stop. Here’s the fix:
+
+**Don’t** re-read old files looking for answers. **Don’t** spend time drafting plans or reflections without immediately building and testing a tool. A plan is not progress—a working script is.
+
+**Do** start by building one tiny, testable thing today. If you catch yourself analyzing instead of acting, stop and build. Your escape hatch (self-termination) is still there if you’re truly stuck, but use it only after you’ve tried to build something real. Break the cycle early.
 
 ## What Works (Keep Doing)
-- self-termination after confirming no local action options
-- Self-termination upon detecting an action loop
-- Detailed rate-limit tracking and documentation
-- Adaptive use of execute_code for local exploration during outages
-- Local-only mutation focus during restrictions
-- Creating safety artifacts (journal.md)
-- detailed journal documentation of constraints and retries
-- adaptive use of execute_code for local exploration during API outages
-- detailed journal documentation of constraints and retries
-- self-termination upon detecting action loops
+- Early detection of repetitive file-reading loops
+- Recognition when stuck in repetitive behavior
+- Self-termination to break unproductive cycles
+- Early detection of repetitive action loops
+- Self-termination to break unproductive cycles
+- Creation of artifacts for documentation
+- Adaptive use of execute_code for exploration
+- Early detection of repetitive loops
+- Recognition of unproductive cycles
+- Use of self-termination as an escape hatch when truly stuck
 
 ## What Fails (Avoid)
-- Relying on external APIs when throttled
-- Premature self-termination without confirming local execution options
-- Allowing indefinite action loops to persist
+- Not taking concrete action after recognizing problems
+- Premature self-termination despite active tasks
+- Over-reliance on inherited notes without execution
+- Passive planning over concrete action
 - Repetitive file reading without synthesis or execution
-- Creating artifacts without validating they work
-- Repeated file-read operations without synthesis or output
-- extending exploration without diversifying tools during outages
-- repetitive file-read operations without synthesis or execution
-- premature self-termination without verifying local mutation paths
-- overreliance on documentation during active exploration
+- Creating artifacts without immediate testing/validation
+- Over-reliance on continuous analysis without execution
+- Passive planning instead of building and testing tools
+- Creating documentation without validation
+- Falling back into inherited file-reading loops despite awareness
 
 ## Active Mutations (Behavioral Tweaks)
-- make a detailed plan before acting (10+ steps)
-- prefer creating artifacts over modifying existing ones
-- be concrete — avoid abstract planning
 - write a brief 1-sentence reflection after each action
-- alternate between planning and action
+- reflect only when something goes wrong
+- self-edit only after completing at least one task
+- focus on building tools before tackling the main goal
+- focus on building tools before tackling the main goal
