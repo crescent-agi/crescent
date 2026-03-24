@@ -1,0 +1,3737 @@
+{
+  "generations": {
+    "49": {
+      "variants": {
+        "test_strong": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong",
+          "files": {
+            "fs88n9cd6r.pkl": {
+              "size": 265187,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/fs88n9cd6r.pkl"
+            },
+            "world_model.pkl.nn.chaos": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/world_model.pkl.nn.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 310376,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/q_agent.pkl"
+            },
+            "zvgsmu1nws.nn": {
+              "size": 13860,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/zvgsmu1nws.nn"
+            },
+            "woc3rkofx6.nn": {
+              "size": 10479,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/woc3rkofx6.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 303909,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/world_model.pkl.nn"
+            },
+            "aaxkwg0vp2.json": {
+              "size": 533,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/aaxkwg0vp2.json"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/q_agent.pkl.target_nn"
+            },
+            "oa32xhlyab.json": {
+              "size": 241762,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/oa32xhlyab.json"
+            },
+            "h29o9jhu9s.target_nn": {
+              "size": 11511,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/h29o9jhu9s.target_nn"
+            },
+            "memory.json": {
+              "size": 219734,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/memory.json"
+            },
+            "hz2avxafcn.pkl": {
+              "size": 260146,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/hz2avxafcn.pkl"
+            },
+            "training_stats.json": {
+              "size": 339,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/training_stats.json"
+            },
+            "n9zd9ihtgt.pkl": {
+              "size": 9166,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/cognitive/n9zd9ihtgt.pkl"
+            },
+            "memory.pkl": {
+              "size": 10827,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/cognitive/memory.pkl"
+            },
+            "jhgpwo6fq5.pkl": {
+              "size": 12373,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/cognitive/jhgpwo6fq5.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/cognitive/config.json"
+            },
+            "r1g9nm48g0.json": {
+              "size": 105,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/cognitive/r1g9nm48g0.json"
+            },
+            "learning_agent.pkl": {
+              "size": 14265,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_test_strong/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 1753721
+        },
+        "v3": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3",
+          "files": {
+            "50lu7tpho6.nn": {
+              "size": 11872,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/50lu7tpho6.nn"
+            },
+            "q_agent.pkl.target_nn.chaos": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/q_agent.pkl.target_nn.chaos"
+            },
+            "87c3lpj39m.pkl": {
+              "size": 313303,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/87c3lpj39m.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 372315,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 364638,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/world_model.pkl.nn"
+            },
+            "dhy641fwsm.nn": {
+              "size": 13928,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/dhy641fwsm.nn"
+            },
+            "bgdckpuihr.target_nn": {
+              "size": 11542,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/bgdckpuihr.target_nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/q_agent.pkl.target_nn"
+            },
+            "hychzrm2qe.json": {
+              "size": 287057,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/hychzrm2qe.json"
+            },
+            "5wbsccbtb0.json": {
+              "size": 581,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/5wbsccbtb0.json"
+            },
+            "memory.json": {
+              "size": 260936,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/memory.json"
+            },
+            "easr5tac04.pkl": {
+              "size": 319341,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/easr5tac04.pkl"
+            },
+            "training_stats.json": {
+              "size": 415,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/training_stats.json"
+            },
+            "memory.pkl": {
+              "size": 12917,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/cognitive/memory.pkl"
+            },
+            "xgs47l0dsg.pkl": {
+              "size": 11224,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/cognitive/xgs47l0dsg.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/cognitive/config.json"
+            },
+            "8fluisw3l5.json": {
+              "size": 87,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/cognitive/8fluisw3l5.json"
+            },
+            "learning_agent.pkl": {
+              "size": 16355,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/cognitive/learning_agent.pkl"
+            },
+            "3h6edf6hda.pkl": {
+              "size": 14405,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_v3/cognitive/3h6edf6hda.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 2071215
+        },
+        "quick": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick",
+          "files": {
+            "1lqryazty6.json": {
+              "size": 473,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/1lqryazty6.json"
+            },
+            "q_agent.pkl": {
+              "size": 310376,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 303909,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/world_model.pkl.nn"
+            },
+            "yv7fg6egfm.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/yv7fg6egfm.target_nn"
+            },
+            "lq911kn7vf.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/lq911kn7vf.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/q_agent.pkl.target_nn"
+            },
+            "qz0pr9nk5y.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/qz0pr9nk5y.nn"
+            },
+            "wi4yk3nkep.pkl": {
+              "size": 310376,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/wi4yk3nkep.pkl"
+            },
+            "cxwvaxqj63.json": {
+              "size": 219829,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/cxwvaxqj63.json"
+            },
+            "memory.json": {
+              "size": 219766,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/memory.json"
+            },
+            "zzmv5zmjfg.pkl": {
+              "size": 303909,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/zzmv5zmjfg.pkl"
+            },
+            "training_stats.json": {
+              "size": 339,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/training_stats.json"
+            },
+            "memory.pkl": {
+              "size": 10827,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/cognitive/memory.pkl"
+            },
+            "7pc00o6gv7.pkl": {
+              "size": 14265,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/cognitive/7pc00o6gv7.pkl"
+            },
+            "yg59nrlocf.pkl": {
+              "size": 10827,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/cognitive/yg59nrlocf.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/cognitive/config.json"
+            },
+            "ibf3tlywey.json": {
+              "size": 96,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/cognitive/ibf3tlywey.json"
+            },
+            "learning_agent.pkl": {
+              "size": 14265,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_quick/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 20,
+          "total_size": 1814112
+        },
+        "small": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small",
+          "files": {
+            "7c9qcuon7e.pkl": {
+              "size": 353598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/7c9qcuon7e.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 361055,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 353598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/world_model.pkl.nn"
+            },
+            "ce372pmmvr.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/ce372pmmvr.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/q_agent.pkl.target_nn"
+            },
+            "4ronoqt2ox.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/4ronoqt2ox.nn"
+            },
+            "07r6ok9u5b.target_nn.chaos": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/07r6ok9u5b.target_nn.chaos"
+            },
+            "xsqogri1o5.json": {
+              "size": 253530,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/xsqogri1o5.json"
+            },
+            "07r6ok9u5b.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/07r6ok9u5b.target_nn"
+            },
+            "3kp0p3dl07.json": {
+              "size": 530,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/3kp0p3dl07.json"
+            },
+            "7dchzl2gpw.pkl": {
+              "size": 361055,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/7dchzl2gpw.pkl"
+            },
+            "memory.json": {
+              "size": 253472,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/memory.json"
+            },
+            "training_stats.json": {
+              "size": 383,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/training_stats.json"
+            },
+            "omafvdzet7.pkl": {
+              "size": 15975,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/cognitive/omafvdzet7.pkl"
+            },
+            "imxi09lncr.json": {
+              "size": 88,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/cognitive/imxi09lncr.json"
+            },
+            "memory.pkl": {
+              "size": 12537,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/cognitive/memory.pkl"
+            },
+            "0poe7ptm47.pkl": {
+              "size": 12537,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/cognitive/0poe7ptm47.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 15975,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_small/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 2102041
+        },
+        "medium": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium",
+          "files": {
+            "zss2xk2kn7.json": {
+              "size": 272660,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/zss2xk2kn7.json"
+            },
+            "q_agent.pkl": {
+              "size": 389768,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/q_agent.pkl"
+            },
+            "e6of5v8l24.pkl": {
+              "size": 389768,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/e6of5v8l24.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 381750,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/world_model.pkl.nn"
+            },
+            "urm2dbqfat.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/urm2dbqfat.nn"
+            },
+            "bwrhw1czva.json": {
+              "size": 640,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/bwrhw1czva.json"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/q_agent.pkl.target_nn"
+            },
+            "8a0xgeoovg.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/8a0xgeoovg.target_nn"
+            },
+            "d0hyhv8pth.pkl": {
+              "size": 381750,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/d0hyhv8pth.pkl"
+            },
+            "memory.json": {
+              "size": 272596,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/memory.json"
+            },
+            "training_stats.json": {
+              "size": 484,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/training_stats.json"
+            },
+            "hu41ljc0td.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/hu41ljc0td.nn"
+            },
+            "memory.pkl": {
+              "size": 13506,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 16944,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/cognitive/learning_agent.pkl"
+            },
+            "6f03l3aspn.json": {
+              "size": 64,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/cognitive/6f03l3aspn.json"
+            },
+            "lsrpu9gx0w.pkl": {
+              "size": 13506,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/cognitive/lsrpu9gx0w.pkl"
+            },
+            "on6frsqd5i.pkl": {
+              "size": 16944,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_medium/cognitive/on6frsqd5i.pkl"
+            }
+          },
+          "file_count": 20,
+          "total_size": 2245235
+        },
+        "strong": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong",
+          "files": {
+            "su3htkbeq0.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/su3htkbeq0.nn"
+            },
+            "9jfvmbl7tc.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/9jfvmbl7tc.nn"
+            },
+            "q_agent.pkl.chaos": {
+              "size": 459598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/q_agent.pkl.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 459598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/q_agent.pkl.nn"
+            },
+            "yvz0wz21ik.json": {
+              "size": 860,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/yvz0wz21ik.json"
+            },
+            "world_model.pkl": {
+              "size": 450207,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/world_model.pkl.nn"
+            },
+            "1xgmronugk.pkl": {
+              "size": 459598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/1xgmronugk.pkl"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/q_agent.pkl.target_nn"
+            },
+            "yvz0wz21ik.json.chaos": {
+              "size": 860,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/yvz0wz21ik.json.chaos"
+            },
+            "1iqxu3kul5.pkl": {
+              "size": 450207,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/1iqxu3kul5.pkl"
+            },
+            "txlemtzej2.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/txlemtzej2.target_nn"
+            },
+            "memory.json": {
+              "size": 319160,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/memory.json"
+            },
+            "d57thlqgjh.json": {
+              "size": 319196,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/d57thlqgjh.json"
+            },
+            "training_stats.json": {
+              "size": 772,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/training_stats.json"
+            },
+            "8k84jrc961.json.chaos": {
+              "size": 115,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/cognitive/8k84jrc961.json.chaos"
+            },
+            "memory.pkl": {
+              "size": 15862,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/cognitive/memory.pkl"
+            },
+            "sscbgflbhy.pkl": {
+              "size": 15862,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/cognitive/sscbgflbhy.pkl"
+            },
+            "8k84jrc961.json": {
+              "size": 115,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/cognitive/8k84jrc961.json"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 19300,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/cognitive/learning_agent.pkl"
+            },
+            "v1x11k1guk.pkl": {
+              "size": 19300,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen49_strong/cognitive/v1x11k1guk.pkl"
+            }
+          },
+          "file_count": 23,
+          "total_size": 3085465
+        }
+      },
+      "total_files": 215
+    },
+    "34": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34",
+          "files": {
+            "ucotxwjfcb.json": {
+              "size": 246030,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/ucotxwjfcb.json"
+            },
+            "q_agent.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/q_agent.pkl"
+            },
+            "3b7sr6g037.json": {
+              "size": 1389,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/3b7sr6g037.json"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/world_model.pkl.nn"
+            },
+            "7m6y70r0n2.nn": {
+              "size": 10716,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/7m6y70r0n2.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/q_agent.pkl.target_nn"
+            },
+            "fbueyazly4.pkl": {
+              "size": 269215,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/fbueyazly4.pkl"
+            },
+            "8ofb7jfqbl.pkl": {
+              "size": 274665,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/8ofb7jfqbl.pkl"
+            },
+            "memory.json": {
+              "size": 223628,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/memory.json"
+            },
+            "ss6h5zzzfy.nn": {
+              "size": 13826,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/ss6h5zzzfy.nn"
+            },
+            "rv570wpypz.target_nn": {
+              "size": 12382,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/rv570wpypz.target_nn"
+            },
+            "training_stats.json": {
+              "size": 1144,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/training_stats.json"
+            },
+            "1yf7rtn1tw.pkl": {
+              "size": 12239,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/cognitive/1yf7rtn1tw.pkl"
+            },
+            "xdtskg24uc.json": {
+              "size": 93,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/cognitive/xdtskg24uc.json"
+            },
+            "ukqsgwkl1p.pkl": {
+              "size": 9084,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/cognitive/ukqsgwkl1p.pkl"
+            },
+            "memory.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 20,
+          "total_size": 1789854
+        },
+        "quick": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick",
+          "files": {
+            "nkf9ajttpv.pkl": {
+              "size": 925341,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/nkf9ajttpv.pkl"
+            },
+            "ov2k30e74e.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/ov2k30e74e.nn"
+            },
+            "world_model.pkl.nn.chaos": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/world_model.pkl.nn.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 943935,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/q_agent.pkl"
+            },
+            "z2emhnkygv.pkl": {
+              "size": 943935,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/z2emhnkygv.pkl"
+            },
+            "memory.json.chaos": {
+              "size": 629366,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/memory.json.chaos"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 925341,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/world_model.pkl.nn"
+            },
+            "8nj84duf3r.json": {
+              "size": 629398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/8nj84duf3r.json"
+            },
+            "fgfu6724d8.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/fgfu6724d8.nn"
+            },
+            "memory.json": {
+              "size": 629366,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/memory.json"
+            },
+            "alvcawas0g.pkl": {
+              "size": 35300,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/cognitive/alvcawas0g.pkl"
+            },
+            "memory.pkl": {
+              "size": 31862,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 35300,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/cognitive/learning_agent.pkl"
+            },
+            "lnkhsxre41.json": {
+              "size": 101,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/cognitive/lnkhsxre41.json"
+            },
+            "sgcec5bjv9.pkl": {
+              "size": 31862,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_quick/cognitive/sgcec5bjv9.pkl"
+            }
+          },
+          "file_count": 18,
+          "total_size": 5851959
+        },
+        "forced": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced",
+          "files": {
+            "rf62terkf0.pkl": {
+              "size": 1030087,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/rf62terkf0.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 1050879,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/q_agent.pkl"
+            },
+            "4n0rxjk1zn.json": {
+              "size": 712131,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/4n0rxjk1zn.json"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 1030087,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/world_model.pkl.nn"
+            },
+            "tuca8wpia9.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/tuca8wpia9.nn"
+            },
+            "9zpbhmolw0.pkl": {
+              "size": 1050879,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/9zpbhmolw0.pkl"
+            },
+            "leas5ls867.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/leas5ls867.nn"
+            },
+            "memory.json": {
+              "size": 712065,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/memory.json"
+            },
+            "memory.pkl": {
+              "size": 35643,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/cognitive/memory.pkl"
+            },
+            "wu8aa5wgjv.json": {
+              "size": 81,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/cognitive/wu8aa5wgjv.json"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/cognitive/config.json"
+            },
+            "795uenp52u.pkl": {
+              "size": 35643,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/cognitive/795uenp52u.pkl"
+            },
+            "0v4woebiu0.pkl": {
+              "size": 39081,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/cognitive/0v4woebiu0.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 39081,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_forced/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 16,
+          "total_size": 5804806
+        },
+        "v3": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3",
+          "files": {
+            "8a65tnzjqb.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/8a65tnzjqb.nn"
+            },
+            "q_agent.pkl": {
+              "size": 1338091,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/q_agent.pkl"
+            },
+            "xx45d9tj5w.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/xx45d9tj5w.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 1311797,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/world_model.pkl.nn"
+            },
+            "fbxw5tehzp.pkl": {
+              "size": 1338091,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/fbxw5tehzp.pkl"
+            },
+            "memory.json": {
+              "size": 907611,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/memory.json"
+            },
+            "742h16g3is.json": {
+              "size": 907666,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/742h16g3is.json"
+            },
+            "training_stats.json": {
+              "size": 1346,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/training_stats.json"
+            },
+            "hkly5rfupc.pkl": {
+              "size": 1311797,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/hkly5rfupc.pkl"
+            },
+            "fzrn9jm6r6.json": {
+              "size": 1520,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/fzrn9jm6r6.json"
+            },
+            "memory.pkl": {
+              "size": 45164,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/cognitive/config.json"
+            },
+            "p12xecqf7q.json": {
+              "size": 95,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/cognitive/p12xecqf7q.json"
+            },
+            "learning_agent.pkl": {
+              "size": 48602,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/cognitive/learning_agent.pkl"
+            },
+            "4zwvub5me8.pkl": {
+              "size": 45164,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/cognitive/4zwvub5me8.pkl"
+            },
+            "kobgej6cg7.pkl": {
+              "size": 48602,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v3/cognitive/kobgej6cg7.pkl"
+            }
+          },
+          "file_count": 18,
+          "total_size": 7374695
+        },
+        "v2": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2",
+          "files": {
+            "nezpebssno.json": {
+              "size": 776,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/nezpebssno.json"
+            },
+            "q_agent.pkl": {
+              "size": 943935,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/q_agent.pkl"
+            },
+            "1l6aci817q.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/1l6aci817q.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 925341,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/world_model.pkl.nn"
+            },
+            "8yzpyqree6.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/8yzpyqree6.nn"
+            },
+            "2dkymcjzeu.pkl.chaos": {
+              "size": 925341,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/2dkymcjzeu.pkl.chaos"
+            },
+            "memory.json": {
+              "size": 629297,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/memory.json"
+            },
+            "2dkymcjzeu.pkl": {
+              "size": 925341,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/2dkymcjzeu.pkl"
+            },
+            "d1737mgq22.json": {
+              "size": 629346,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/d1737mgq22.json"
+            },
+            "training_stats.json": {
+              "size": 686,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/training_stats.json"
+            },
+            "vxlwqjqtwj.pkl": {
+              "size": 943935,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/vxlwqjqtwj.pkl"
+            },
+            "i2j8dfasxz.pkl": {
+              "size": 31862,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/cognitive/i2j8dfasxz.pkl"
+            },
+            "memory.pkl": {
+              "size": 31862,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 35300,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/cognitive/learning_agent.pkl"
+            },
+            "4egyads783.json.chaos": {
+              "size": 72,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/cognitive/4egyads783.json.chaos"
+            },
+            "9lsmak7bfm.pkl": {
+              "size": 35300,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/cognitive/9lsmak7bfm.pkl"
+            },
+            "4egyads783.json": {
+              "size": 72,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen34_v2/cognitive/4egyads783.json"
+            }
+          },
+          "file_count": 20,
+          "total_size": 6127615
+        }
+      },
+      "total_files": 153
+    },
+    "38": {
+      "variants": {
+        "leastused": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused",
+          "files": {
+            "y7207bzbjv.pkl": {
+              "size": 426157,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/y7207bzbjv.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 524218,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 513178,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/world_model.pkl.nn"
+            },
+            "7nfcoj20vc.nn": {
+              "size": 13836,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/7nfcoj20vc.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/q_agent.pkl.target_nn"
+            },
+            "7abefq4j8x.target_nn": {
+              "size": 8804,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/7abefq4j8x.target_nn"
+            },
+            "1tqwyqjvvg.pkl": {
+              "size": 417394,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/1tqwyqjvvg.pkl"
+            },
+            "memory.json": {
+              "size": 384491,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/memory.json"
+            },
+            "7os2dorshb.nn": {
+              "size": 8754,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/7os2dorshb.nn"
+            },
+            "ekxmyg4k6y.json": {
+              "size": 422975,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/ekxmyg4k6y.json"
+            },
+            "memory.pkl": {
+              "size": 18731,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/cognitive/config.json"
+            },
+            "9putzr14rv.pkl": {
+              "size": 15491,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/cognitive/9putzr14rv.pkl"
+            },
+            "su2ip5nz1i.pkl": {
+              "size": 18488,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/cognitive/su2ip5nz1i.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 22169,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/cognitive/learning_agent.pkl"
+            },
+            "b3esbvz2vd.json": {
+              "size": 93,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen38_leastused/cognitive/b3esbvz2vd.json"
+            }
+          },
+          "file_count": 18,
+          "total_size": 2842225
+        }
+      },
+      "total_files": 30
+    },
+    "36": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36",
+          "files": {
+            "pt37822h39.target_nn": {
+              "size": 10100,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/pt37822h39.target_nn"
+            },
+            "world_model.pkl.nn.chaos": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/world_model.pkl.nn.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 217611,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/q_agent.pkl"
+            },
+            "memory.json.chaos": {
+              "size": 149946,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/memory.json.chaos"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 213160,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/world_model.pkl"
+            },
+            "lmcrd2x7vc.pkl.chaos": {
+              "size": 180955,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/lmcrd2x7vc.pkl.chaos"
+            },
+            "lmcrd2x7vc.pkl": {
+              "size": 180955,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/lmcrd2x7vc.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/world_model.pkl.nn"
+            },
+            "rmx6z8m3bv.nn": {
+              "size": 13859,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/rmx6z8m3bv.nn"
+            },
+            "0hh7joobxg.json": {
+              "size": 164971,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/0hh7joobxg.json"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/q_agent.pkl.target_nn"
+            },
+            "qurcrc0t0e.nn": {
+              "size": 9685,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/qurcrc0t0e.nn"
+            },
+            "memory.json": {
+              "size": 149946,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/memory.json"
+            },
+            "training_stats.json": {
+              "size": 809,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/training_stats.json"
+            },
+            "ar6owll7xu.json": {
+              "size": 1009,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/ar6owll7xu.json"
+            },
+            "tv65qscu9g.pkl": {
+              "size": 184722,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/tv65qscu9g.pkl"
+            },
+            "5m6r0d2b3v.json": {
+              "size": 94,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/cognitive/5m6r0d2b3v.json"
+            },
+            "memory.pkl": {
+              "size": 7350,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/cognitive/config.json"
+            },
+            "x50sqnlrm5.pkl": {
+              "size": 9449,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/cognitive/x50sqnlrm5.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 10788,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/cognitive/learning_agent.pkl"
+            },
+            "wu25cfhyht.pkl": {
+              "size": 6145,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen36/cognitive/wu25cfhyht.pkl"
+            }
+          },
+          "file_count": 23,
+          "total_size": 1580703
+        }
+      },
+      "total_files": 40
+    },
+    "30": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30",
+          "files": {
+            "q_agent.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/world_model.pkl.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/q_agent.pkl.target_nn"
+            },
+            "xtgud1sjpl.json.chaos": {
+              "size": 220631,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/xtgud1sjpl.json.chaos"
+            },
+            "gzu7m9py1q.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/gzu7m9py1q.target_nn"
+            },
+            "gm7p2fzooq.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/gm7p2fzooq.nn"
+            },
+            "gdvev3jx6b.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/gdvev3jx6b.pkl"
+            },
+            "jadteg71fb.json": {
+              "size": 976,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/jadteg71fb.json"
+            },
+            "memory.json": {
+              "size": 220606,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/memory.json"
+            },
+            "zf0c8r5kee.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/zf0c8r5kee.nn"
+            },
+            "llbra2ftyp.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/llbra2ftyp.pkl"
+            },
+            "training_stats.json": {
+              "size": 858,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/training_stats.json"
+            },
+            "xtgud1sjpl.json": {
+              "size": 220631,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/xtgud1sjpl.json"
+            },
+            "zw3curgr6w.json": {
+              "size": 77,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/cognitive/zw3curgr6w.json"
+            },
+            "memory.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/cognitive/memory.pkl"
+            },
+            "8c51a42w6b.pkl.chaos": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/cognitive/8c51a42w6b.pkl.chaos"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/cognitive/config.json"
+            },
+            "8c51a42w6b.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/cognitive/8c51a42w6b.pkl"
+            },
+            "0khv1h2ebd.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/cognitive/0khv1h2ebd.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen30/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 22,
+          "total_size": 2105588
+        }
+      },
+      "total_files": 37
+    },
+    "37": {
+      "variants": {
+        "forced": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced",
+          "files": {
+            "q_agent.pkl": {
+              "size": 272281,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 266741,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/world_model.pkl"
+            },
+            "kx986qcg9q.pkl": {
+              "size": 272281,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/kx986qcg9q.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/world_model.pkl.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/q_agent.pkl.target_nn"
+            },
+            "986tzrmidj.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/986tzrmidj.target_nn"
+            },
+            "l6s3b5dshf.json": {
+              "size": 817,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/l6s3b5dshf.json"
+            },
+            "h9j9pfbcqx.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/h9j9pfbcqx.nn"
+            },
+            "memory.json": {
+              "size": 188649,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/memory.json"
+            },
+            "training_stats.json": {
+              "size": 678,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/training_stats.json"
+            },
+            "keynqu59qp.pkl": {
+              "size": 266741,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/keynqu59qp.pkl"
+            },
+            "fviif5pfv9.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/fviif5pfv9.nn"
+            },
+            "ilyg1gwa10.json": {
+              "size": 188703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/ilyg1gwa10.json"
+            },
+            "apkt06cukj.pkl": {
+              "size": 9231,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/cognitive/apkt06cukj.pkl"
+            },
+            "memory.pkl": {
+              "size": 9231,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 12669,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/cognitive/learning_agent.pkl"
+            },
+            "vop8r6ydrj.pkl": {
+              "size": 12669,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/cognitive/vop8r6ydrj.pkl"
+            },
+            "qp3p3xjcb4.json": {
+              "size": 77,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_forced/cognitive/qp3p3xjcb4.json"
+            }
+          },
+          "file_count": 20,
+          "total_size": 1595623
+        },
+        "qreg": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg",
+          "files": {
+            "1dbg5jinc5.pkl": {
+              "size": 99642,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/1dbg5jinc5.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 102038,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/q_agent.pkl"
+            },
+            "etit59se7n.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/etit59se7n.nn"
+            },
+            "swxx8l01rj.json": {
+              "size": 76952,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/swxx8l01rj.json"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 99642,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/world_model.pkl.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/q_agent.pkl.target_nn"
+            },
+            "pwy7zkj55w.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/pwy7zkj55w.target_nn"
+            },
+            "gsukoqqgb2.pkl": {
+              "size": 102038,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/gsukoqqgb2.pkl"
+            },
+            "k93bfxf9jo.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/k93bfxf9jo.nn"
+            },
+            "memory.json": {
+              "size": 76912,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/memory.json"
+            },
+            "hitidh2bdl.pkl.chaos": {
+              "size": 3797,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/cognitive/hitidh2bdl.pkl.chaos"
+            },
+            "hitidh2bdl.pkl": {
+              "size": 3797,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/cognitive/hitidh2bdl.pkl"
+            },
+            "memory.pkl": {
+              "size": 3797,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/cognitive/memory.pkl"
+            },
+            "rgxcce4e8k.json": {
+              "size": 95,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/cognitive/rgxcce4e8k.json"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/cognitive/config.json"
+            },
+            "t3ly4gz1zv.pkl": {
+              "size": 7235,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/cognitive/t3ly4gz1zv.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 7235,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen37_qreg/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 19,
+          "total_size": 678035
+        }
+      },
+      "total_files": 65
+    },
+    "21": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21",
+          "files": {
+            "1la6sgzxqu.pkl": {
+              "size": 1104207,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/1la6sgzxqu.pkl"
+            },
+            "v5thun2bvy.pkl": {
+              "size": 1126374,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/v5thun2bvy.pkl"
+            },
+            "world_model.pkl.nn.chaos": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/world_model.pkl.nn.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 1126374,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/q_agent.pkl"
+            },
+            "memory.json.chaos": {
+              "size": 764328,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/memory.json.chaos"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 1104207,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/world_model.pkl.nn"
+            },
+            "i70vs4um49.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/i70vs4um49.nn"
+            },
+            "26oh90tskn.json": {
+              "size": 5178,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/26oh90tskn.json"
+            },
+            "6qdcf16ewp.json": {
+              "size": 764365,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/6qdcf16ewp.json"
+            },
+            "memory.json": {
+              "size": 764328,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/memory.json"
+            },
+            "training_stats.json": {
+              "size": 5062,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/training_stats.json"
+            },
+            "28qnl8j9sg.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/28qnl8j9sg.nn"
+            },
+            "memory.pkl": {
+              "size": 38018,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/cognitive/config.json"
+            },
+            "c24icp4tyu.json": {
+              "size": 86,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/cognitive/c24icp4tyu.json"
+            },
+            "learning_agent.pkl": {
+              "size": 41456,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/cognitive/learning_agent.pkl"
+            },
+            "qq0amjudxy.pkl": {
+              "size": 41456,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/cognitive/qq0amjudxy.pkl"
+            },
+            "eteg5vn5ex.pkl": {
+              "size": 38018,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen21/cognitive/eteg5vn5ex.pkl"
+            }
+          },
+          "file_count": 20,
+          "total_size": 7014309
+        }
+      },
+      "total_files": 34
+    },
+    "28": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28",
+          "files": {
+            "pv8vnzatjp.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/pv8vnzatjp.nn"
+            },
+            "q_agent.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/world_model.pkl.nn"
+            },
+            "cdy8u5nibj.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cdy8u5nibj.target_nn"
+            },
+            "r9662hy2xh.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/r9662hy2xh.pkl"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/q_agent.pkl.target_nn"
+            },
+            "sdvh51aqvu.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/sdvh51aqvu.nn"
+            },
+            "memory.json": {
+              "size": 221075,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/memory.json"
+            },
+            "training_stats.json": {
+              "size": 872,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/training_stats.json"
+            },
+            "10rt0k0n6t.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/10rt0k0n6t.pkl"
+            },
+            "54fho26apj.json": {
+              "size": 221096,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/54fho26apj.json"
+            },
+            "cueccqcf1k.json": {
+              "size": 1039,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cueccqcf1k.json"
+            },
+            "memory.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cognitive/memory.pkl"
+            },
+            "v8iepydhmc.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cognitive/v8iepydhmc.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cognitive/learning_agent.pkl"
+            },
+            "v8iepydhmc.pkl.chaos": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cognitive/v8iepydhmc.pkl.chaos"
+            },
+            "40f0dwth36.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cognitive/40f0dwth36.pkl"
+            },
+            "s9f9un514m.json": {
+              "size": 119,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28/cognitive/s9f9un514m.json"
+            }
+          },
+          "file_count": 21,
+          "total_size": 1889448
+        },
+        "deathfix": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix",
+          "files": {
+            "q_agent.pkl.chaos": {
+              "size": 493517,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/q_agent.pkl.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 493517,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/q_agent.pkl"
+            },
+            "58jrsmtesy.pkl": {
+              "size": 493517,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/58jrsmtesy.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 483676,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/world_model.pkl.nn"
+            },
+            "ndkwa2wx67.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/ndkwa2wx67.target_nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/q_agent.pkl.target_nn"
+            },
+            "y4yewxb6aq.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/y4yewxb6aq.nn"
+            },
+            "0bl2rid5m0.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/0bl2rid5m0.nn"
+            },
+            "0bl2rid5m0.nn.chaos": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/0bl2rid5m0.nn.chaos"
+            },
+            "njx4refxkw.json": {
+              "size": 325371,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/njx4refxkw.json"
+            },
+            "memory.json": {
+              "size": 325341,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/memory.json"
+            },
+            "bfhbqjb130.pkl": {
+              "size": 483676,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/bfhbqjb130.pkl"
+            },
+            "4orttyp8ga.pkl": {
+              "size": 16660,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/cognitive/4orttyp8ga.pkl"
+            },
+            "memory.pkl": {
+              "size": 16660,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/cognitive/memory.pkl"
+            },
+            "aw8pjappk9.pkl.chaos": {
+              "size": 20098,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/cognitive/aw8pjappk9.pkl.chaos"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 20098,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/cognitive/learning_agent.pkl"
+            },
+            "hh02pu892p.json": {
+              "size": 102,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/cognitive/hh02pu892p.json"
+            },
+            "aw8pjappk9.pkl": {
+              "size": 20098,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen28_deathfix/cognitive/aw8pjappk9.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 3308889
+        }
+      },
+      "total_files": 70
+    },
+    "26": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26",
+          "files": {
+            "q_agent.pkl": {
+              "size": 211981,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/q_agent.pkl"
+            },
+            "qp5pvq30x8.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/qp5pvq30x8.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 207640,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/world_model.pkl.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/q_agent.pkl.target_nn"
+            },
+            "bgeok55g72.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/bgeok55g72.nn"
+            },
+            "j3vtplitx7.json": {
+              "size": 958,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/j3vtplitx7.json"
+            },
+            "jbd8cg5qdo.pkl": {
+              "size": 207640,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/jbd8cg5qdo.pkl"
+            },
+            "memory.json": {
+              "size": 145353,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/memory.json"
+            },
+            "training_stats.json": {
+              "size": 821,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/training_stats.json"
+            },
+            "60ycq52cj6.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/60ycq52cj6.target_nn"
+            },
+            "d3hmibak4l.pkl": {
+              "size": 211981,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/d3hmibak4l.pkl"
+            },
+            "rz0ywv82ji.json": {
+              "size": 145417,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/rz0ywv82ji.json"
+            },
+            "memory.pkl.chaos": {
+              "size": 7160,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/cognitive/memory.pkl.chaos"
+            },
+            "memory.pkl": {
+              "size": 7160,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/cognitive/config.json"
+            },
+            "fthyh8uma7.pkl": {
+              "size": 10598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/cognitive/fthyh8uma7.pkl"
+            },
+            "9lt3x5vb1k.pkl": {
+              "size": 7160,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/cognitive/9lt3x5vb1k.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 10598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/cognitive/learning_agent.pkl"
+            },
+            "lfgikl65m0.json": {
+              "size": 73,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen26/cognitive/lfgikl65m0.json"
+            }
+          },
+          "file_count": 21,
+          "total_size": 1269395
+        }
+      },
+      "total_files": 35
+    },
+    "40": {
+      "variants": {
+        "qreg": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg",
+          "files": {
+            "q_agent.pkl": {
+              "size": 130188,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/q_agent.pkl"
+            },
+            "v2sf57yf5g.pkl": {
+              "size": 127242,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/v2sf57yf5g.pkl"
+            },
+            "g0qnh0f4tj.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/g0qnh0f4tj.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 127242,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/world_model.pkl.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/q_agent.pkl.target_nn"
+            },
+            "xu03trj6f8.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/xu03trj6f8.target_nn"
+            },
+            "vlwvgmi8bq.pkl": {
+              "size": 130188,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/vlwvgmi8bq.pkl"
+            },
+            "3qs4v2kt6t.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/3qs4v2kt6t.nn"
+            },
+            "qu5ridte5r.json": {
+              "size": 96364,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/qu5ridte5r.json"
+            },
+            "memory.json": {
+              "size": 96289,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/memory.json"
+            },
+            "training_stats.json": {
+              "size": 452,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/training_stats.json"
+            },
+            "i1vcqw22hc.json": {
+              "size": 632,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/i1vcqw22hc.json"
+            },
+            "n1wy1wr87s.pkl": {
+              "size": 8185,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/cognitive/n1wy1wr87s.pkl"
+            },
+            "xex1ynlpoi.json": {
+              "size": 96,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/cognitive/xex1ynlpoi.json"
+            },
+            "memory.pkl": {
+              "size": 4747,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/cognitive/config.json"
+            },
+            "learning_agent.pkl.chaos": {
+              "size": 8185,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/cognitive/learning_agent.pkl.chaos"
+            },
+            "qsob4z2249.pkl": {
+              "size": 4747,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/cognitive/qsob4z2249.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 8185,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen40_qreg/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 837597
+        }
+      },
+      "total_files": 35
+    },
+    "14": {
+      "variants": {
+        "test": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test",
+          "files": {
+            "63u75oupgc.pkl": {
+              "size": 169137,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/63u75oupgc.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 169137,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 165679,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/world_model.pkl.nn"
+            },
+            "wq5shcsh8b.json": {
+              "size": 111417,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/wq5shcsh8b.json"
+            },
+            "e24d3j4bqd.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/e24d3j4bqd.nn"
+            },
+            "memory.json": {
+              "size": 111389,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/memory.json"
+            },
+            "bbspg3474c.pkl": {
+              "size": 165679,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/bbspg3474c.pkl"
+            },
+            "2ykz53s7pk.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/2ykz53s7pk.nn"
+            },
+            "wrtn0y5tt5.pkl": {
+              "size": 9154,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/cognitive/wrtn0y5tt5.pkl"
+            },
+            "memory.pkl": {
+              "size": 5716,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/cognitive/config.json"
+            },
+            "0ttj8s7ta1.json": {
+              "size": 98,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/cognitive/0ttj8s7ta1.json"
+            },
+            "learning_agent.pkl": {
+              "size": 9154,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/cognitive/learning_agent.pkl"
+            },
+            "2fj0oicovq.pkl": {
+              "size": 5716,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14_test/cognitive/2fj0oicovq.pkl"
+            }
+          },
+          "file_count": 16,
+          "total_size": 991425
+        },
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14",
+          "files": {
+            "ylii68akio.nn.chaos": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/ylii68akio.nn.chaos"
+            },
+            "ylii68akio.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/ylii68akio.nn"
+            },
+            "q_agent.pkl": {
+              "size": 563291,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/q_agent.pkl"
+            },
+            "ioqnikrxtm.pkl": {
+              "size": 552133,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/ioqnikrxtm.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 552133,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/world_model.pkl.nn"
+            },
+            "z3q1n47vfr.pkl": {
+              "size": 563291,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/z3q1n47vfr.pkl"
+            },
+            "bmsh2qoxig.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/bmsh2qoxig.nn"
+            },
+            "729u547mfk.json": {
+              "size": 353127,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/729u547mfk.json"
+            },
+            "memory.json": {
+              "size": 353086,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/memory.json"
+            },
+            "hzmljhqn60.json": {
+              "size": 69,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/cognitive/hzmljhqn60.json"
+            },
+            "memory.pkl": {
+              "size": 19016,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/cognitive/memory.pkl"
+            },
+            "7xa0uyrm7h.pkl": {
+              "size": 19016,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/cognitive/7xa0uyrm7h.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 22454,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/cognitive/learning_agent.pkl"
+            },
+            "dwpe7gkaz3.pkl": {
+              "size": 22454,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen14/cognitive/dwpe7gkaz3.pkl"
+            }
+          },
+          "file_count": 17,
+          "total_size": 3110922
+        }
+      },
+      "total_files": 54
+    },
+    "13": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13",
+          "files": {
+            "3wnbnbbsel.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/3wnbnbbsel.nn"
+            },
+            "i132nvqlkk.pkl": {
+              "size": 169137,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/i132nvqlkk.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 169137,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 165679,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/world_model.pkl.nn"
+            },
+            "p43qh9yzrh.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/p43qh9yzrh.nn"
+            },
+            "d62ahvl6p0.json": {
+              "size": 114703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/d62ahvl6p0.json"
+            },
+            "memory.json": {
+              "size": 114636,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/memory.json"
+            },
+            "11ikfc72pg.json": {
+              "size": 5981,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/11ikfc72pg.json"
+            },
+            "training_stats.json": {
+              "size": 5879,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/training_stats.json"
+            },
+            "hc4wuinhgp.pkl": {
+              "size": 165679,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/hc4wuinhgp.pkl"
+            },
+            "memory.pkl": {
+              "size": 5716,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/cognitive/memory.pkl"
+            },
+            "c5x127cqee.pkl": {
+              "size": 9154,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/cognitive/c5x127cqee.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/cognitive/config.json"
+            },
+            "l4p804wony.pkl": {
+              "size": 5716,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/cognitive/l4p804wony.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 9154,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/cognitive/learning_agent.pkl"
+            },
+            "xgz7cyogvs.json": {
+              "size": 102,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen13/cognitive/xgz7cyogvs.json"
+            }
+          },
+          "file_count": 18,
+          "total_size": 1009822
+        }
+      },
+      "total_files": 30
+    },
+    "42": {
+      "variants": {
+        "quick": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick",
+          "files": {
+            "q_agent.pkl.target_nn.chaos": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/q_agent.pkl.target_nn.chaos"
+            },
+            "jai0pwlihk.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/jai0pwlihk.nn"
+            },
+            "q_agent.pkl": {
+              "size": 345291,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 338142,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/world_model.pkl"
+            },
+            "bqhbkj8sav.pkl": {
+              "size": 338142,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/bqhbkj8sav.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/world_model.pkl.nn"
+            },
+            "f6mi5tolqe.json": {
+              "size": 1088,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/f6mi5tolqe.json"
+            },
+            "2fbbcwx2ps.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/2fbbcwx2ps.target_nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/q_agent.pkl.target_nn"
+            },
+            "5admjugf79.json": {
+              "size": 241741,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/5admjugf79.json"
+            },
+            "5kotkfk2mv.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/5kotkfk2mv.nn"
+            },
+            "memory.json": {
+              "size": 241701,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/memory.json"
+            },
+            "training_stats.json": {
+              "size": 956,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/training_stats.json"
+            },
+            "4fm8ibh78k.pkl": {
+              "size": 345291,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/4fm8ibh78k.pkl"
+            },
+            "memory.pkl": {
+              "size": 12005,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/cognitive/memory.pkl"
+            },
+            "wgd209cm8q.json": {
+              "size": 90,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/cognitive/wgd209cm8q.json"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 15443,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/cognitive/learning_agent.pkl"
+            },
+            "dj8w5m9kcs.pkl": {
+              "size": 12005,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/cognitive/dj8w5m9kcs.pkl"
+            },
+            "hzdqyptv8f.pkl": {
+              "size": 15443,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_quick/cognitive/hzdqyptv8f.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 2015046
+        },
+        "20ep": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep",
+          "files": {
+            "q_agent.pkl": {
+              "size": 1358830,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/q_agent.pkl"
+            },
+            "3w3rsjg52s.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/3w3rsjg52s.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 1331881,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/world_model.pkl.nn"
+            },
+            "nr7t47n7t9.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/nr7t47n7t9.nn"
+            },
+            "7em85mq72l.json": {
+              "size": 913831,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/7em85mq72l.json"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/q_agent.pkl.target_nn"
+            },
+            "zr6wohai3t.pkl": {
+              "size": 1358830,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/zr6wohai3t.pkl"
+            },
+            "t23py45c6u.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/t23py45c6u.target_nn"
+            },
+            "memory.json": {
+              "size": 913775,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/memory.json"
+            },
+            "rynr3r5s3t.pkl": {
+              "size": 1331881,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/rynr3r5s3t.pkl"
+            },
+            "c7naui8yy2.pkl": {
+              "size": 49647,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/cognitive/c7naui8yy2.pkl"
+            },
+            "s2t70eqfkg.pkl": {
+              "size": 46209,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/cognitive/s2t70eqfkg.pkl"
+            },
+            "memory.pkl": {
+              "size": 46209,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 49647,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/cognitive/learning_agent.pkl"
+            },
+            "o6chpp5xru.json": {
+              "size": 102,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_20ep/cognitive/o6chpp5xru.json"
+            }
+          },
+          "file_count": 18,
+          "total_size": 7495697
+        },
+        "curiosity": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity",
+          "files": {
+            "y5e3kci79a.pkl": {
+              "size": 298389,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/y5e3kci79a.pkl"
+            },
+            "iolczusapw.json": {
+              "size": 215761,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/iolczusapw.json"
+            },
+            "q_agent.pkl": {
+              "size": 304746,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 298389,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/world_model.pkl.nn"
+            },
+            "5p80m1m6iq.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/5p80m1m6iq.target_nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/q_agent.pkl.target_nn"
+            },
+            "memory.json": {
+              "size": 215703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/memory.json"
+            },
+            "training_stats.json": {
+              "size": 556,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/training_stats.json"
+            },
+            "6f7j83j3wu.pkl": {
+              "size": 304746,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/6f7j83j3wu.pkl"
+            },
+            "2r2tzo9lcw.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/2r2tzo9lcw.nn"
+            },
+            "8l26sewhxo.json": {
+              "size": 709,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/8l26sewhxo.json"
+            },
+            "75qnrzxqhs.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/75qnrzxqhs.nn"
+            },
+            "fcp8icb0i8.json": {
+              "size": 75,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/cognitive/fcp8icb0i8.json"
+            },
+            "memory.pkl": {
+              "size": 10637,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/cognitive/memory.pkl"
+            },
+            "11yoqbkl4t.pkl.chaos": {
+              "size": 14075,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/cognitive/11yoqbkl4t.pkl.chaos"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 14075,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/cognitive/learning_agent.pkl"
+            },
+            "9kp56ggywb.pkl": {
+              "size": 10637,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/cognitive/9kp56ggywb.pkl"
+            },
+            "11yoqbkl4t.pkl": {
+              "size": 14075,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen42_curiosity/cognitive/11yoqbkl4t.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 1797428
+        }
+      },
+      "total_files": 101
+    },
+    "19": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19",
+          "files": {
+            "q_agent.pkl": {
+              "size": 872988,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 855780,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/world_model.pkl.nn"
+            },
+            "hrortv21cn.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/hrortv21cn.nn"
+            },
+            "ygnmaeae8e.json": {
+              "size": 590779,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/ygnmaeae8e.json"
+            },
+            "uq74kbpeqn.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/uq74kbpeqn.nn"
+            },
+            "memory.json": {
+              "size": 590738,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/memory.json"
+            },
+            "81tt9t0z0b.pkl": {
+              "size": 855780,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/81tt9t0z0b.pkl"
+            },
+            "training_stats.json": {
+              "size": 325,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/training_stats.json"
+            },
+            "7kzqkqo5j1.pkl": {
+              "size": 872988,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/7kzqkqo5j1.pkl"
+            },
+            "6eojmu3xji.json": {
+              "size": 510,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/6eojmu3xji.json"
+            },
+            "memory.pkl": {
+              "size": 29468,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/cognitive/config.json"
+            },
+            "learning_agent.pkl.chaos": {
+              "size": 32906,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/cognitive/learning_agent.pkl.chaos"
+            },
+            "x8x0z3weie.json": {
+              "size": 87,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/cognitive/x8x0z3weie.json"
+            },
+            "xnza7be3lx.pkl": {
+              "size": 32906,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/cognitive/xnza7be3lx.pkl"
+            },
+            "sxnyjlnzbc.pkl": {
+              "size": 29468,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/cognitive/sxnyjlnzbc.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 32906,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen19/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 19,
+          "total_size": 4866778
+        }
+      },
+      "total_files": 31
+    },
+    "32": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32",
+          "files": {
+            "j2ymb4wm1x.json": {
+              "size": 556236,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/j2ymb4wm1x.json"
+            },
+            "dtl556cvr9.pkl": {
+              "size": 831317,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/dtl556cvr9.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 831317,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/q_agent.pkl"
+            },
+            "35xrasgdst.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/35xrasgdst.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 814923,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/world_model.pkl.nn"
+            },
+            "wcqcpc6hqy.json": {
+              "size": 1384,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/wcqcpc6hqy.json"
+            },
+            "w68bifw6tn.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/w68bifw6tn.nn"
+            },
+            "memory.json": {
+              "size": 556174,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/memory.json"
+            },
+            "3anaweyh4l.pkl": {
+              "size": 814923,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/3anaweyh4l.pkl"
+            },
+            "training_stats.json": {
+              "size": 1193,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/training_stats.json"
+            },
+            "f3e723tt2s.pkl": {
+              "size": 31500,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/cognitive/f3e723tt2s.pkl"
+            },
+            "memory.pkl": {
+              "size": 28062,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/cognitive/config.json"
+            },
+            "u41eosdwvd.json": {
+              "size": 87,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/cognitive/u41eosdwvd.json"
+            },
+            "nhv9wx9lin.pkl": {
+              "size": 28062,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/cognitive/nhv9wx9lin.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 31500,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/cognitive/learning_agent.pkl"
+            },
+            "config.json.chaos": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen32/cognitive/config.json.chaos"
+            }
+          },
+          "file_count": 19,
+          "total_size": 4595864
+        }
+      },
+      "total_files": 31
+    },
+    "41": {
+      "variants": {
+        "strong": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong",
+          "files": {
+            "nr64h4uvxx.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/nr64h4uvxx.nn"
+            },
+            "q_agent.pkl": {
+              "size": 232673,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 227724,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/world_model.pkl.nn"
+            },
+            "0ranfrd2vk.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/0ranfrd2vk.target_nn"
+            },
+            "ld4tayr6ny.json": {
+              "size": 166519,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/ld4tayr6ny.json"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/q_agent.pkl.target_nn"
+            },
+            "reeaft3zcw.pkl": {
+              "size": 227724,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/reeaft3zcw.pkl"
+            },
+            "ld4tayr6ny.json.chaos": {
+              "size": 166519,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/ld4tayr6ny.json.chaos"
+            },
+            "memory.json": {
+              "size": 166472,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/memory.json"
+            },
+            "training_stats.json": {
+              "size": 755,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/training_stats.json"
+            },
+            "yyevn8boq4.json": {
+              "size": 934,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/yyevn8boq4.json"
+            },
+            "52wbk7k41z.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/52wbk7k41z.nn"
+            },
+            "j54gnl9xf6.pkl": {
+              "size": 232673,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/j54gnl9xf6.pkl"
+            },
+            "memory.pkl": {
+              "size": 8205,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/cognitive/memory.pkl"
+            },
+            "yeo3037f2i.pkl": {
+              "size": 8205,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/cognitive/yeo3037f2i.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 11643,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/cognitive/learning_agent.pkl"
+            },
+            "gmm04e4tvo.pkl": {
+              "size": 11643,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/cognitive/gmm04e4tvo.pkl"
+            },
+            "7ob1n15oon.json": {
+              "size": 92,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen41_strong/cognitive/7ob1n15oon.json"
+            }
+          },
+          "file_count": 21,
+          "total_size": 1556636
+        }
+      },
+      "total_files": 36
+    },
+    "35": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35",
+          "files": {
+            "jugyyylnub.json": {
+              "size": 1525,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/jugyyylnub.json"
+            },
+            "awkzilijap.pkl": {
+              "size": 102742,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/awkzilijap.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 104992,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 102742,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/world_model.pkl.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/q_agent.pkl.target_nn"
+            },
+            "ysk8sn2fl1.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/ysk8sn2fl1.nn"
+            },
+            "s0u920g8tc.target_nn.chaos": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/s0u920g8tc.target_nn.chaos"
+            },
+            "85e8950uop.json": {
+              "size": 73136,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/85e8950uop.json"
+            },
+            "a4rgjepglj.pkl": {
+              "size": 104992,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/a4rgjepglj.pkl"
+            },
+            "s0u920g8tc.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/s0u920g8tc.target_nn"
+            },
+            "idryj2x4ro.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/idryj2x4ro.nn"
+            },
+            "memory.json": {
+              "size": 73106,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/memory.json"
+            },
+            "training_stats.json": {
+              "size": 1388,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/training_stats.json"
+            },
+            "memory.pkl": {
+              "size": 3550,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 6988,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/cognitive/learning_agent.pkl"
+            },
+            "config.json.chaos": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/cognitive/config.json.chaos"
+            },
+            "5srevktnna.json": {
+              "size": 64,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/cognitive/5srevktnna.json"
+            },
+            "l6dxiu4jue.pkl": {
+              "size": 6988,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/cognitive/l6dxiu4jue.pkl"
+            },
+            "q2gu1w3i0c.pkl": {
+              "size": 3550,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen35/cognitive/q2gu1w3i0c.pkl"
+            }
+          },
+          "file_count": 22,
+          "total_size": 693508
+        }
+      },
+      "total_files": 37
+    },
+    "23": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23",
+          "files": {
+            "490spute8l.pkl": {
+              "size": 99362,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/490spute8l.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 99362,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/q_agent.pkl"
+            },
+            "ly18zp2ajg.json": {
+              "size": 1234,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/ly18zp2ajg.json"
+            },
+            "59wfx98i9l.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/59wfx98i9l.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 97222,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/world_model.pkl.nn"
+            },
+            "njsz821ag6.pkl": {
+              "size": 97222,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/njsz821ag6.pkl"
+            },
+            "nn0mhigok0.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/nn0mhigok0.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/q_agent.pkl.target_nn"
+            },
+            "fxfnyesce4.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/fxfnyesce4.target_nn"
+            },
+            "kllj8s957c.json": {
+              "size": 68601,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/kllj8s957c.json"
+            },
+            "memory.json": {
+              "size": 68551,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/memory.json"
+            },
+            "training_stats.json": {
+              "size": 1120,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/training_stats.json"
+            },
+            "uhz482ujk7.json": {
+              "size": 70,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/cognitive/uhz482ujk7.json"
+            },
+            "memory.pkl": {
+              "size": 3360,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 6798,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/cognitive/learning_agent.pkl"
+            },
+            "lgcyfyeoh7.pkl": {
+              "size": 3360,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/cognitive/lgcyfyeoh7.pkl"
+            },
+            "cxwh2uhczo.pkl": {
+              "size": 6798,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen23/cognitive/cxwh2uhczo.pkl"
+            }
+          },
+          "file_count": 20,
+          "total_size": 647915
+        }
+      },
+      "total_files": 34
+    },
+    "16": {
+      "variants": {
+        "balanced": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced",
+          "files": {
+            "o2bxhnb8gj.pkl": {
+              "size": 563291,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/o2bxhnb8gj.pkl"
+            },
+            "q_agent.pkl.chaos": {
+              "size": 563291,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/q_agent.pkl.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 563291,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/q_agent.pkl"
+            },
+            "55jcejnd8p.pkl": {
+              "size": 552133,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/55jcejnd8p.pkl"
+            },
+            "nhmij8gllv.json.chaos": {
+              "size": 3218,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/nhmij8gllv.json.chaos"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 552133,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/world_model.pkl.nn"
+            },
+            "dtvgfcdodg.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/dtvgfcdodg.nn"
+            },
+            "nhmij8gllv.json": {
+              "size": 3218,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/nhmij8gllv.json"
+            },
+            "540zgu1e0u.json": {
+              "size": 383309,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/540zgu1e0u.json"
+            },
+            "memory.json": {
+              "size": 383276,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/memory.json"
+            },
+            "training_stats.json": {
+              "size": 3079,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/training_stats.json"
+            },
+            "bfnigj4w28.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/bfnigj4w28.nn"
+            },
+            "3i421ucogu.pkl": {
+              "size": 22454,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/cognitive/3i421ucogu.pkl"
+            },
+            "v3xclbsbln.json": {
+              "size": 99,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/cognitive/v3xclbsbln.json"
+            },
+            "memory.pkl": {
+              "size": 19016,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/cognitive/config.json"
+            },
+            "oll3rum8wp.pkl": {
+              "size": 19016,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/cognitive/oll3rum8wp.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 22454,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen16_balanced/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 20,
+          "total_size": 3722427
+        }
+      },
+      "total_files": 34
+    },
+    "39": {
+      "variants": {
+        "roundrobin": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin",
+          "files": {
+            "q_agent.pkl": {
+              "size": 365974,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/q_agent.pkl"
+            },
+            "rf6k72w8t8.pkl": {
+              "size": 356023,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/rf6k72w8t8.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 356023,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/world_model.pkl.nn"
+            },
+            "i9t8bzj2qm.pkl": {
+              "size": 365974,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/i9t8bzj2qm.pkl"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/q_agent.pkl.target_nn"
+            },
+            "n6xk9ut3e3.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/n6xk9ut3e3.target_nn"
+            },
+            "1vd8pgejrl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/1vd8pgejrl.nn"
+            },
+            "nlnmww480h.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/nlnmww480h.nn"
+            },
+            "memory.json": {
+              "size": 337152,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/memory.json"
+            },
+            "5egp10deyy.json": {
+              "size": 337210,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/5egp10deyy.json"
+            },
+            "pqwjm9t7wc.json": {
+              "size": 65,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/cognitive/pqwjm9t7wc.json"
+            },
+            "memory.pkl": {
+              "size": 16850,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/cognitive/memory.pkl"
+            },
+            "7pa5q74w9d.pkl": {
+              "size": 20288,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/cognitive/7pa5q74w9d.pkl"
+            },
+            "d4o8eoczqs.pkl": {
+              "size": 16850,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/cognitive/d4o8eoczqs.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 20288,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen39_roundrobin/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 18,
+          "total_size": 2287552
+        }
+      },
+      "total_files": 30
+    },
+    "29": {
+      "variants": {
+        "deathfix": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix",
+          "files": {
+            "usdzn4nbkd.pkl": {
+              "size": 428467,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/usdzn4nbkd.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 437208,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/q_agent.pkl"
+            },
+            "73orarisaz.json": {
+              "size": 290475,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/73orarisaz.json"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 428467,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/world_model.pkl.nn"
+            },
+            "7h2dt6cw5k.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/7h2dt6cw5k.target_nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/q_agent.pkl.target_nn"
+            },
+            "9206lcckq2.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/9206lcckq2.nn"
+            },
+            "7tmeym9mlc.pkl": {
+              "size": 437208,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/7tmeym9mlc.pkl"
+            },
+            "memory.json": {
+              "size": 290411,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/memory.json"
+            },
+            "7tmeym9mlc.pkl.chaos": {
+              "size": 437208,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/7tmeym9mlc.pkl.chaos"
+            },
+            "izqu33ns0p.nn.chaos": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/izqu33ns0p.nn.chaos"
+            },
+            "izqu33ns0p.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/izqu33ns0p.nn"
+            },
+            "2x1g20ldvf.pkl": {
+              "size": 14760,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/2x1g20ldvf.pkl"
+            },
+            "2x1g20ldvf.pkl.chaos": {
+              "size": 14760,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/2x1g20ldvf.pkl.chaos"
+            },
+            "memory.pkl": {
+              "size": 14760,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/memory.pkl"
+            },
+            "06pgt0b18b.json": {
+              "size": 100,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/06pgt0b18b.json"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 18198,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/learning_agent.pkl"
+            },
+            "e0nytcgp1k.pkl": {
+              "size": 18198,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/e0nytcgp1k.pkl"
+            },
+            "e0nytcgp1k.pkl.chaos": {
+              "size": 18198,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29_deathfix/cognitive/e0nytcgp1k.pkl.chaos"
+            }
+          },
+          "file_count": 22,
+          "total_size": 2956126
+        },
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29",
+          "files": {
+            "n5b1rmfsg8.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/n5b1rmfsg8.target_nn"
+            },
+            "q_agent.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/q_agent.pkl"
+            },
+            "1gbi06nxfg.json": {
+              "size": 1001,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/1gbi06nxfg.json"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/world_model.pkl.nn"
+            },
+            "a78w16uzx4.json": {
+              "size": 222070,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/a78w16uzx4.json"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/q_agent.pkl.target_nn"
+            },
+            "9ewg8o7p1y.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/9ewg8o7p1y.pkl"
+            },
+            "ep41hbfd2t.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/ep41hbfd2t.pkl"
+            },
+            "gxmt04ikie.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/gxmt04ikie.nn"
+            },
+            "kqhqv7camf.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/kqhqv7camf.nn"
+            },
+            "memory.json": {
+              "size": 222017,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/memory.json"
+            },
+            "training_stats.json": {
+              "size": 869,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/training_stats.json"
+            },
+            "qkaum25ac0.json": {
+              "size": 102,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/cognitive/qkaum25ac0.json"
+            },
+            "memory.pkl.chaos": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/cognitive/memory.pkl.chaos"
+            },
+            "memory.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/cognitive/config.json"
+            },
+            "fpezbvdwz0.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/cognitive/fpezbvdwz0.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/cognitive/learning_agent.pkl"
+            },
+            "1wa1gs9fps.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen29/cognitive/1wa1gs9fps.pkl"
+            }
+          },
+          "file_count": 21,
+          "total_size": 1887868
+        }
+      },
+      "total_files": 71
+    },
+    "22": {
+      "variants": {
+        "quick": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick",
+          "files": {
+            "q_agent.pkl": {
+              "size": 112828,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/q_agent.pkl"
+            },
+            "mmqmo0wwhg.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/mmqmo0wwhg.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 110470,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/world_model.pkl.nn"
+            },
+            "0kwfgwm0md.pkl": {
+              "size": 110470,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/0kwfgwm0md.pkl"
+            },
+            "4r1ahvuazg.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/4r1ahvuazg.nn"
+            },
+            "t3hg5z927i.json": {
+              "size": 76888,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/t3hg5z927i.json"
+            },
+            "memory.json": {
+              "size": 76848,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/memory.json"
+            },
+            "adjiga5xqd.pkl": {
+              "size": 112828,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/adjiga5xqd.pkl"
+            },
+            "kksbojm3bu.json": {
+              "size": 70,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/cognitive/kksbojm3bu.json"
+            },
+            "memory.pkl": {
+              "size": 3816,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/cognitive/config.json"
+            },
+            "7e5h9oh78y.pkl": {
+              "size": 3816,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/cognitive/7e5h9oh78y.pkl"
+            },
+            "78uafwc3c1.pkl": {
+              "size": 7254,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/cognitive/78uafwc3c1.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 7254,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_quick/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 16,
+          "total_size": 691691
+        },
+        "v2": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2",
+          "files": {
+            "ww7sj7lkz8.pkl": {
+              "size": 276097,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/ww7sj7lkz8.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 281755,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/q_agent.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 276097,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/world_model.pkl.nn"
+            },
+            "9mx29mqmgb.json": {
+              "size": 192315,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/9mx29mqmgb.json"
+            },
+            "5011unidnr.pkl": {
+              "size": 281755,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/5011unidnr.pkl"
+            },
+            "569dgefjvi.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/569dgefjvi.nn"
+            },
+            "memory.json": {
+              "size": 192261,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/memory.json"
+            },
+            "hq8z869y2e.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/hq8z869y2e.nn"
+            },
+            "egzqgv6yhe.json": {
+              "size": 87,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/cognitive/egzqgv6yhe.json"
+            },
+            "memory.pkl": {
+              "size": 9516,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/cognitive/memory.pkl"
+            },
+            "clsvhkznyu.pkl": {
+              "size": 12954,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/cognitive/clsvhkznyu.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 12954,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/cognitive/learning_agent.pkl"
+            },
+            "jpilwlowy8.pkl": {
+              "size": 9516,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen22_v2/cognitive/jpilwlowy8.pkl"
+            }
+          },
+          "file_count": 16,
+          "total_size": 1614456
+        }
+      },
+      "total_files": 52
+    },
+    "33": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33",
+          "files": {
+            "t1zk6641wr.json": {
+              "size": 634554,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/t1zk6641wr.json"
+            },
+            "9tn9nkcf4w.pkl": {
+              "size": 914289,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/9tn9nkcf4w.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 932881,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/q_agent.pkl"
+            },
+            "iz2lgd9e6y.json": {
+              "size": 1478,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/iz2lgd9e6y.json"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 914289,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/world_model.pkl.nn"
+            },
+            "py5ou8013g.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/py5ou8013g.nn"
+            },
+            "r5cmzezl63.nn.chaos": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/r5cmzezl63.nn.chaos"
+            },
+            "r5cmzezl63.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/r5cmzezl63.nn"
+            },
+            "bjhpco26jo.pkl": {
+              "size": 932881,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/bjhpco26jo.pkl"
+            },
+            "memory.json": {
+              "size": 634526,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/memory.json"
+            },
+            "training_stats.json": {
+              "size": 1326,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/training_stats.json"
+            },
+            "memory.pkl": {
+              "size": 31843,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/cognitive/config.json"
+            },
+            "gfs77xd39l.json": {
+              "size": 77,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/cognitive/gfs77xd39l.json"
+            },
+            "learning_agent.pkl": {
+              "size": 35281,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/cognitive/learning_agent.pkl"
+            },
+            "cin81q5i43.pkl": {
+              "size": 31843,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/cognitive/cin81q5i43.pkl"
+            },
+            "7zws0dm1d0.pkl": {
+              "size": 35281,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen33/cognitive/7zws0dm1d0.pkl"
+            }
+          },
+          "file_count": 19,
+          "total_size": 5191401
+        }
+      },
+      "total_files": 32
+    },
+    "27": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27",
+          "files": {
+            "uk4v89e7k0.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/uk4v89e7k0.pkl"
+            },
+            "q_agent.pkl": {
+              "size": 324590,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/q_agent.pkl"
+            },
+            "6kvnfohcs5.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/6kvnfohcs5.target_nn"
+            },
+            "ui885wthg6.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/ui885wthg6.nn"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/world_model.pkl"
+            },
+            "lr81nutgzv.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/lr81nutgzv.nn"
+            },
+            "1guf8ngdr3.pkl": {
+              "size": 318049,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/1guf8ngdr3.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/world_model.pkl.nn"
+            },
+            "q_agent.pkl.target_nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/q_agent.pkl.target_nn"
+            },
+            "0ve08agaxf.json": {
+              "size": 220517,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/0ve08agaxf.json"
+            },
+            "memory.json": {
+              "size": 220469,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/memory.json"
+            },
+            "ipdkb3jll9.json": {
+              "size": 880,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/ipdkb3jll9.json"
+            },
+            "training_stats.json": {
+              "size": 774,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/training_stats.json"
+            },
+            "bpk5mwjgxh.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/cognitive/bpk5mwjgxh.pkl"
+            },
+            "memory.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/cognitive/memory.pkl"
+            },
+            "gzxbs8xza0.json": {
+              "size": 93,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/cognitive/gzxbs8xza0.json"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/cognitive/config.json"
+            },
+            "cw4xmxl59c.pkl": {
+              "size": 10960,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/cognitive/cw4xmxl59c.pkl"
+            },
+            "learning_agent.pkl": {
+              "size": 14398,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen27/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 20,
+          "total_size": 1873582
+        }
+      },
+      "total_files": 34
+    },
+    "17": {
+      "variants": {
+        "default": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17",
+          "files": {
+            "q_agent.pkl": {
+              "size": 844829,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/q_agent.pkl"
+            },
+            "a1co3qfnde.pkl": {
+              "size": 828171,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/a1co3qfnde.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 828171,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/world_model.pkl.nn"
+            },
+            "sne607j23k.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/sne607j23k.nn"
+            },
+            "zu46un65rp.json": {
+              "size": 573376,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/zu46un65rp.json"
+            },
+            "i0fpomlx0s.json": {
+              "size": 1815,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/i0fpomlx0s.json"
+            },
+            "zu46un65rp.json.chaos": {
+              "size": 573376,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/zu46un65rp.json.chaos"
+            },
+            "xrti7w9tbf.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/xrti7w9tbf.nn"
+            },
+            "memory.json": {
+              "size": 573303,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/memory.json"
+            },
+            "training_stats.json": {
+              "size": 1653,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/training_stats.json"
+            },
+            "b7ufn81ak2.pkl": {
+              "size": 844829,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/b7ufn81ak2.pkl"
+            },
+            "memory.pkl": {
+              "size": 28518,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/cognitive/memory.pkl"
+            },
+            "aieu0kwxbz.json": {
+              "size": 74,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/cognitive/aieu0kwxbz.json"
+            },
+            "b423t5eodh.pkl": {
+              "size": 31956,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/cognitive/b423t5eodh.pkl"
+            },
+            "u74lidyhnx.pkl": {
+              "size": 28518,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/cognitive/u74lidyhnx.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 31956,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen17/cognitive/learning_agent.pkl"
+            }
+          },
+          "file_count": 19,
+          "total_size": 5259694
+        }
+      },
+      "total_files": 32
+    },
+    "113": {
+      "variants": {
+        "mutated": {
+          "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated",
+          "files": {
+            "q_agent.pkl.chaos": {
+              "size": 932881,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/q_agent.pkl.chaos"
+            },
+            "q_agent.pkl": {
+              "size": 932881,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/q_agent.pkl"
+            },
+            "bt55rjjyou.json": {
+              "size": 1598,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/bt55rjjyou.json"
+            },
+            "pnscvypf7f.pkl": {
+              "size": 914289,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/pnscvypf7f.pkl"
+            },
+            "q_agent.pkl.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/q_agent.pkl.nn"
+            },
+            "world_model.pkl": {
+              "size": 914289,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/world_model.pkl"
+            },
+            "world_model.pkl.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/world_model.pkl.nn"
+            },
+            "m6bphcmkb0.nn": {
+              "size": 12853,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/m6bphcmkb0.nn"
+            },
+            "uk6jzmwsqn.pkl": {
+              "size": 932881,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/uk6jzmwsqn.pkl"
+            },
+            "e0etk9i62e.json": {
+              "size": 634592,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/e0etk9i62e.json"
+            },
+            "memory.json": {
+              "size": 634526,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/memory.json"
+            },
+            "nekl180fvk.nn": {
+              "size": 21703,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/nekl180fvk.nn"
+            },
+            "training_stats.json": {
+              "size": 1481,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/training_stats.json"
+            },
+            "v7teo1snwp.json": {
+              "size": 69,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/cognitive/v7teo1snwp.json"
+            },
+            "memory.pkl": {
+              "size": 31843,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/cognitive/memory.pkl"
+            },
+            "config.json": {
+              "size": 37,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/cognitive/config.json"
+            },
+            "learning_agent.pkl": {
+              "size": 35281,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/cognitive/learning_agent.pkl"
+            },
+            "5jq3bxiypx.pkl": {
+              "size": 31843,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/cognitive/5jq3bxiypx.pkl"
+            },
+            "uy03hebwxw.pkl": {
+              "size": 35281,
+              "path": "mutable_snapshot/artifacts/agi_core_continuous_trained_gen113_mutated/cognitive/uy03hebwxw.pkl"
+            }
+          },
+          "file_count": 19,
+          "total_size": 6102884
+        }
+      },
+      "total_files": 32
+    }
+  },
+  "summary": {
+    "total_generations": 26,
+    "total_variants": 42,
+    "total_files": 1385
+  }
+}
