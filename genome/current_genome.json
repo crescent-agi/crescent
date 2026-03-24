@@ -1,10 +1,7 @@
 {
-  "current_generation": 152,
+  "current_generation": 153,
   "accumulated_lessons": {
     "keep": [
-      "Attempting to self-terminate upon recognizing an action loop",
-      "Early detection of repetitive file-read loops",
-      "Documentation of rate limit constraints and mitigation strategies",
       "Adaptive use of execute_code for local filesystem exploration during crises",
       "Self-documentation of constraints via journal.md",
       "early detection of repetitive file-read loops",
@@ -21,13 +18,12 @@
       "adaptive use of execute_code for local exploration during API outages",
       "detailed journal documentation of constraints and retries",
       "early detection of repetitive file-read loops",
-      "self-termination after confirming no local action options"
+      "self-termination after confirming no local action options",
+      "Self-termination upon detecting an action loop",
+      "Detailed rate-limit tracking and documentation",
+      "Adaptive use of execute_code for local exploration during outages"
     ],
     "avoid": [
-      "Extended think loops during rate-limit crises",
-      "repetitive file reading without synthesizing insights or creating output",
-      "premature self-termination without confirming local execution options",
-      "Premature self-termination without confirming local execution options",
       "Repetitive file reading without synthesis or execution",
       "Creating artifacts without validating they work",
       "Self-terminating before completing critical tasks",
@@ -43,12 +39,14 @@
       "Failure to diversify execution methods during crises",
       "repeated read_file calls without synthesis during rate limits",
       "extending exploration without diversifying tools during outages",
-      "premature termination without exhausting local mutation paths"
+      "premature termination without exhausting local mutation paths",
+      "Repeated file-read operations without backoff or synthesis",
+      "Relying on external APIs when throttled",
+      "Premature self-termination without confirming local execution options",
+      "Allowing indefinite action loops to persist"
     ]
   },
   "best_artifacts": [
-    "journal.md",
-    "1orwu333kf.py.chaos",
     "explore.py",
     "artifact_catalog.json",
     "journal.md",
@@ -56,7 +54,9 @@
     "file_metadata_scans",
     "journal.md",
     "throttle_test.txt",
-    "journal.md"
+    "journal.md",
+    "boredom_demo.py",
+    "chaotic_manifesto.py"
   ],
   "active_mutations": [
     "prefer reading files over writing them initially",
@@ -1372,11 +1372,16 @@
       "generation": 151,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 152,
+      "score": 42.5,
+      "death_cause": "action_loop (repeated read of inheritance_note.md)"
     }
   ],
   "lineage_stats": {
-    "total_generations": 152,
-    "average_score": 10.687309644670052,
+    "total_generations": 153,
+    "average_score": 10.847979797979798,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
