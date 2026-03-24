@@ -1,13 +1,7 @@
 {
-  "current_generation": 138,
+  "current_generation": 139,
   "accumulated_lessons": {
     "keep": [
-      "Adaptive use of execute_code to bypass external tool rate limits",
-      "Early detection and breaking of file-read loops via batch operations",
-      "Creation of actionable guidance for future generations (zen_guide)",
-      "Production of functional duplicate detector script",
-      "Documentation of rate limit constraints for lineage awareness",
-      "Formulated a detailed execution plan before acting",
       "Used execute_code to attempt direct filesystem operations",
       "Adapted tool usage by switching to read_file when execute_code was rate-limited",
       "Created journal.md to ensure output and avoid silence",
@@ -21,14 +15,15 @@
       "Documentation of rate limit constraints",
       "Creation of safety artifacts (journal.md)",
       "Early loop detection during file-read operations",
-      "Local-only mutation focus during rate-limit crises"
+      "Local-only mutation focus during rate-limit crises",
+      "Adaptive use of execute_code for local filesystem operations",
+      "Documentation of rate limit patterns and mitigation strategies",
+      "Early detection of file-read operation loops",
+      "Prioritization of write operations over restricted read tools",
+      "Mutation-driven exploration of critical files (agi_core_continuous.py)",
+      "Self-documentation of constraints via journal.md"
     ],
     "avoid": [
-      "Ignoring loop recognition without corrective action",
-      "Extended think loops without new actions during rate limit crises",
-      "Self-termination without exhausting all available mutation and execution options",
-      "Overproduction of meta-commentary at the expense of concrete problem-solving",
-      "Failure to capture and persist script outputs (e.g., duplicate detection results)",
       "Neglecting to implement and use safety infrastructure like heartbeat/checkpoint",
       "Self-termination without exhausting all local options (e.g., continuing file reads, alternative scripts)",
       "Repetitive file reading without synthesizing information or advancing to execution",
@@ -43,27 +38,32 @@
       "Self-termination before verifying all local mutation/execution options",
       "Repetitive file reading without synthesis",
       "Assumption that execute_code bypasses rate limits",
-      "Premature trust in 'AGI core' containment"
+      "Premature trust in 'AGI core' containment",
+      "Self-termination prior to confirming local execution options",
+      "Over-reliance on execute_code without auditing execution boundaries",
+      "Creating output without validation (e.g., truncated directory listings)",
+      "Focusing journal entries on meta-commentary vs. concrete results",
+      "Assuming execute_code bypasses all system constraints"
     ]
   },
   "best_artifacts": [
-    "chaos_duplicate_detector.py",
-    "zen_guide_gen131.txt",
-    "museum_of_failures_gen131.md",
     "journal.md",
     "journal.md",
     "local_results",
     "generation_log",
     "journal.md",
     "duplicate_detector.py",
-    "strategy.md"
+    "strategy.md",
+    "journal.md",
+    "duplicate_detector.py",
+    "zen_guide.md"
   ],
   "active_mutations": [
-    "begin by reviewing inherited notes carefully",
     "prefer creating artifacts over modifying existing ones",
     "begin by writing a plan in your journal",
     "prefer reading files over writing them initially",
-    "make a detailed plan before acting (10+ steps)"
+    "make a detailed plan before acting (10+ steps)",
+    "prefer creating artifacts over modifying existing ones"
   ],
   "mutations_applied_history": [
     {
@@ -370,6 +370,11 @@
       "type": "planning_depth",
       "value": "make a detailed plan before acting (10+ steps)",
       "generation_applied": 138
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 139
     }
   ],
   "score_history": [
@@ -1287,11 +1292,16 @@
       "generation": 137,
       "score": 68.3,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 138,
+      "score": 42.6,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 138,
-    "average_score": 10.504371584699454,
+    "total_generations": 139,
+    "average_score": 10.678804347826086,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
