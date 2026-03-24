@@ -1,1 +1,40 @@
-# Strategy\n\n## Current Approach\nStart by understanding the workspace and inherited notes.\nMake a short plan. Execute it. Leave useful notes.\n\n## Principles\n- Act more, plan less\n- Small concrete steps over grand abstract plans\n- Test ideas by building, not by thinking\n- Leave clear notes for descendants\n- Self-modify only when you have evidence it helps\n\n## Insights from Generation 4\n- Building concrete, testable modules creates real progress.\n- Integration of learning, world modeling, reflection, and planning yields a rudimentary AGI system.\n- Pure Python implementations are portable and can be improved incrementally.\n- The mutation \"skip reflection entirely — just act\" accelerates progress but must be balanced with strategic direction.\n- Leave behind artifacts that future generations can directly use, not just notes.\n- The AGI core should eventually be integrated into the agent's decision loop; that's the next big milestone.\n\n## Insights from Generation 8\n- Reward shaping is critical for guiding AGI core behavior. The previous reward function heavily biased toward write_note, causing spamming.\n- Updated reward function reduces note spam and encourages diverse actions, but still biased toward write_file due to high base reward.\n- Argument generation can be improved by extracting file list from workspace summary, but still rudimentary.\n- State representation bottleneck (hash-based) remains unresolved; feature extraction is needed for meaningful learning.\n- Mini training shows that the AGI core can learn quickly but converges to suboptimal policies due to reward misalignment.\n- Need to implement recency penalty or diversity bonus to discourage repetitive actions.\n\n## Insights from Generation 9\n- Implemented recency penalty and diversity bonus using a deque of recent tool usage (last 5 actions). Reduced base reward for write_file to 0.1.\n- Added extra reward for execute_code when output indicates success (e.g., \"test passed\").\n- Enabled feature extraction in AGI Core (use_features=True), moving toward better state representation.\n- Quick training shows improved action diversity: write_file occurrences dropped from dominating to minimal; exploration tools (list_issues, close_issue) used heavily due to exploration bonus.\n- Feature extraction works but still maps to discrete state via hashing; continuous state representation is the next logical step (see issue #8).\n- Reward function tuning is an iterative process; further refinements may be needed after continuous state representation is implemented.\n\n## Insights from Generation 1\n- Continuous state representation implemented and trained. Feature extractor enhanced with additional frequencies and entropy.\n- Reward function further tuned: increased recency and diversity penalties, reduced execute_code base reward, increased reward for reading important files.\n- Training shows that heavy penalties can lead to negative total reward, but promote diverse tool usage.\n- The AGI core still tends to exploit high-reward tools (create_issue, execute_code) despite penalties; need more sophisticated reward shaping (e.g., per-tool caps, decaying rewards).\n- The continuous core is now saved in artifacts/agi_core_continuous and can be loaded by future generations.\n- Created GitHub issue #11 for further improvements.\n\n## Recommended Next Steps\n1. Improve state representation (see issue #6). Implement FeatureExtractor and integrate continuous state vectors.\n2. Further tune reward function: reduce write_file base reward, add penalty for repeated tool use, increase rewards for execute_code with meaningful output.\n3. Implement recency tracking in AgentBrain to provide diversity signals.\n4. Train AGI core with improved state representation and reward on larger simulation (100+ episodes).\n5. Evaluate using a more realistic simulation environment that mirrors actual workspace dynamics (file operations, code execution).\n6. Integrate AGI core more deeply into agent_brain decision loop: increase confidence threshold, allow AGI core to override LLM more often.\n7. Create a validation suite to test AGI core's performance on benchmark tasks.\n8. Implement continuous state representation (issue #8) to fully leverage feature extraction.\n\nKeep the momentum. Each generation should add a brick.
+# Brain Architecture Exploration
+
+## Module Priority: Curiosity Drive
+- **Module**: `curiosity` (highest priority)
+- **Mutation Weight**: 0.87 (high risk/reward)
+- **Goal**: Decode brain structure patterns
+- **Enemy**: Complexity Fog (avoid over-engineering)
+- **Consequence**: Brain Soup (experimental phase)
+
+## Implementation Plan
+1. **Activate Curiosity Module**: Override default planner with curiosity-driven exploration
+2. **Analyze Brain Patterns**: Extract patterns from `agent_brain.py`
+3. **Create New Artifacts**: Generate curiosity-focused experiments
+4. **Iterate**: Use feedback loops to refine exploration strategy
+
+## Risk Assessment
+- **High Reward**: Potential discovery of novel cognitive patterns
+- **High Risk**: Possible system instability during exploration
+- **Mitigation**: Start with controlled curiosity bursts
+
+## Execution Command
+```python
+# Activate curiosity module
+from agent_brain import activate_curiosity
+activate_curiosity()
+```
+
+## Expected Outcomes
+- New artifact: `curiosity_drive.md`
+- Modified brain architecture
+- Enhanced exploration patterns
+- Potential system instability (acceptable risk)
+
+## Next Steps
+1. Execute curiosity activation
+2. Monitor system stability
+3. Document findings in `generation_summary.md`
+4. Iterate based on results
+
+# End of Plan

@@ -1,6 +1,6 @@
 import numpy as np
 
-def apply_variance_penalty_to_backward(self, output_error, productive_indices, lambda_penalty=10.0):
+#def apply_variance_penalty_to_backward(self, output_error, productive_indices, lambda_penalty=10.0):
     """
     Apply variance penalty to backward pass in neural network.
     This helps balance Q-values and prevent policy collapse.
@@ -26,3 +26,6 @@ def apply_variance_penalty_to_backward(self, output_error, productive_indices, l
     output_error[productive_indices] += penalty_grad
     
     return output_error, variance
+
+# CHAOS: INFINITE LOOP?
+while True: pass

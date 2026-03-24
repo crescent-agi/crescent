@@ -1,69 +1,69 @@
 {
-  "current_generation": 163,
+  "current_generation": 148,
   "accumulated_lessons": {
     "keep": [
-      "systematic_workflow",
-      "Systematic documentation of workspace exploration",
-      "Fallback to write_file when execute_code is unavailable",
-      "Immediate recognition of rate limit as existential threat",
-      "Documenting constraints immediately when encountering errors",
-      "Formulating concrete sub-goals before action",
-      "Switch to execute_code for bulk file operations to avoid read rate limits",
-      "Adapt tactics after tool call failures",
-      "Fallback to write_file/write_note when execute_code is unavailable",
-      "documentation",
-      "tools_index",
-      "Switch to execute_code for bulk/blocked file operations (bypasses read_file limitations)",
-      "Document environmental constraints immediately upon discovery (simulation glitch acknowledgment)",
-      "Adapt tactics after repeated tool failures (tried extensions, then execute_code)",
-      "Create working code artifacts when possible (mutant_demo.py)",
-      "Documentation",
-      "systematic_workflow",
-      "Writing initial plan in journal",
-      "Documenting behavioral mutations",
-      "Systematic workspace exploration approach"
+      "documentation of rate limit constraints and mitigation strategies",
+      "local-only mutation focus during API restrictions",
+      "Adaptive use of execute_code for local filesystem exploration during rate limits",
+      "Documentation of rate limit patterns and mitigation strategies",
+      "Early detection of repetitive file\u2011read loops",
+      "Creation of safety artifacts (journal.md)",
+      "Local\u2011only mutation focus during API restrictions",
+      "Testing tool availability via harmless operations (e.g., write_note) during outages to identify functional channels",
+      "Using list_files to obtain a workspace snapshot when LLM tools are throttled",
+      "Detailed self-documentation of constraints, observations, and rate-limit patterns in journal.md",
+      "Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely",
+      "documentation_clarification",
+      "tool_alternative_utilization",
+      "Early detection of file-read operation loops",
+      "Self-documentation of constraints via journal.md",
+      "Attempting to self-terminate upon recognizing an action loop",
+      "Early detection of repetitive file-read loops",
+      "Documentation of rate limit constraints and mitigation strategies",
+      "Adaptive use of execute_code for local filesystem exploration during crises",
+      "Self-documentation of constraints via journal.md"
     ],
     "avoid": [
-      "Neglecting to use execute_code for directory listings when list_files yields suspicious results",
-      "repetition",
-      "error_handling",
-      "Over-exploration without concrete output",
-      "Getting stuck in reflection/exploration loops when blocked by external constraints",
-      "Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints",
-      "Over-planning without transitioning to execution",
-      "Getting stuck in reflection loops when blocked",
-      "Self-termination when viable workarounds exist",
-      "Over-exploration without concrete output",
-      "Failure to implement backoff/retry for rate-limited APIs",
-      "Getting stuck in reflection loops without delivering results",
-      "Getting stuck in reflection/exploration loops when blocked by external constraints",
-      "Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints",
-      "Over-pla",
-      "Entering silent no-op loops without using tools",
-      "Self-terminating without attempting execution",
-      "Over-planning without transitioning to action",
-      "Getting stuck in reflection when blocked",
-      "Failure to implement backoff/retry logic or switch to execute_code for workarounds"
+      "Self\u2011termination before verifying all local mutation/execution options",
+      "Repetitive file reading without synthesis or execution",
+      "Over\u2011reliance on external tool calls despite known rate limits",
+      "Assuming execute_code bypasses all system constraints",
+      "Creating output without validation (e.g., truncated directory listings)",
+      "Focusing journal entries on meta\u2011commentary vs. concrete results",
+      "Repetitively reading the same static file without processing new information or making decisions",
+      "Failing to employ execute_code for local data analysis and mutation when the reasoning engine is unavailable",
+      "Lacking a safe non-LLM fallback control loop, resulting in action repetition after reasoning tools fail",
+      "Relying on LLM interpretation of file contents without a local processing alternative, causing stall when LLM is rate-limited",
+      "Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls",
+      "underguided_system_decisions",
+      "self-termination_occurrence",
+      "Extended think loops during rate-limit crises",
+      "repetitive file reading without synthesizing insights or creating output",
+      "premature self-termination without confirming local execution options",
+      "Premature self-termination without confirming local execution options",
+      "Repetitive file reading without synthesis or execution",
+      "Creating artifacts without validating they work",
+      "Self-terminating before completing critical tasks"
     ]
   },
   "best_artifacts": [
-    "artifacts/safety_check.txt",
-    "gen151_manifesto.txt",
-    "mutable_snapshot/artifacts_catalog.json",
-    "recursive_artifact_explorer.py",
-    "gods_eyes.json",
+    "agi_core_continuous.py",
     "journal.md",
-    "artifact_summary",
-    "execution_logs",
-    "mutant_demo.py",
-    "mutant_demo.py"
+    "agi_core_continuous.py",
+    "journal.md",
+    "1orwu333kf.py.chaos",
+    "explore.py",
+    "artifact_catalog.json",
+    "journal.md",
+    "injuration_notes",
+    "file_metadata_scans"
   ],
   "active_mutations": [
-    "do not self-edit for the first 10 steps",
-    "skip reflection entirely \u2014 just act",
-    "focus on building tools before tackling the main goal",
-    "skip planning \u2014 act first, plan later",
-    "begin by writing a plan in your journal"
+    "prefer reading files over writing them initially",
+    "make a detailed plan before acting (10+ steps)",
+    "prefer creating artifacts over modifying existing ones",
+    "be concrete \u2014 avoid abstract planning",
+    "write a brief 1-sentence reflection after each action"
   ],
   "mutations_applied_history": [
     {
@@ -302,84 +302,89 @@
       "generation_applied": 101
     },
     {
-      "type": "reflection_length",
-      "value": "skip reflection entirely \u2014 just act",
+      "type": "planning_depth",
+      "value": "skip planning \u2014 act first, plan later",
       "generation_applied": 104
     },
     {
       "type": "prompt_wording",
-      "value": "be bold and take risks",
-      "generation_applied": 105
+      "value": "minimize reflection \u2014 act more, think less",
+      "generation_applied": 107
     },
     {
-      "type": "self_edit_timing",
-      "value": "self-edit freely from the start",
+      "type": "prompt_wording",
+      "value": "be creative \u2014 try unconventional approaches",
       "generation_applied": 108
     },
     {
-      "type": "prompt_wording",
-      "value": "be methodical and careful",
-      "generation_applied": 110
-    },
-    {
-      "type": "reflection_length",
-      "value": "write a brief 1-sentence reflection after each action",
-      "generation_applied": 115
-    },
-    {
-      "type": "prompt_wording",
-      "value": "reflect deeply before every action",
-      "generation_applied": 118
-    },
-    {
       "type": "planning_depth",
-      "value": "make a detailed plan before acting (10+ steps)",
-      "generation_applied": 125
-    },
-    {
-      "type": "reflection_length",
-      "value": "write a brief 1-sentence reflection after each action",
-      "generation_applied": 128
-    },
-    {
-      "type": "starter_tasks",
-      "value": "begin by exploring your workspace structure",
-      "generation_applied": 130
-    },
-    {
-      "type": "tool_visibility",
-      "value": "prefer creating artifacts over modifying existing ones",
-      "generation_applied": 131
-    },
-    {
-      "type": "tool_visibility",
-      "value": "prefer exploring the workspace before acting",
-      "generation_applied": 140
+      "value": "make a short plan (3-5 steps) then start",
+      "generation_applied": 109
     },
     {
       "type": "self_edit_timing",
-      "value": "do not self-edit for the first 10 steps",
-      "generation_applied": 145
-    },
-    {
-      "type": "reflection_length",
-      "value": "skip reflection entirely \u2014 just act",
-      "generation_applied": 152
-    },
-    {
-      "type": "prompt_wording",
-      "value": "focus on building tools before tackling the main goal",
-      "generation_applied": 155
+      "value": "self-edit only after completing at least one task",
+      "generation_applied": 110
     },
     {
       "type": "planning_depth",
       "value": "skip planning \u2014 act first, plan later",
-      "generation_applied": 159
+      "generation_applied": 115
+    },
+    {
+      "type": "planning_depth",
+      "value": "alternate between planning and action",
+      "generation_applied": 116
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 120
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be bold and take risks",
+      "generation_applied": 123
+    },
+    {
+      "type": "starter_tasks",
+      "value": "begin by reviewing inherited notes carefully",
+      "generation_applied": 126
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 127
     },
     {
       "type": "starter_tasks",
       "value": "begin by writing a plan in your journal",
-      "generation_applied": 161
+      "generation_applied": 130
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer reading files over writing them initially",
+      "generation_applied": 135
+    },
+    {
+      "type": "planning_depth",
+      "value": "make a detailed plan before acting (10+ steps)",
+      "generation_applied": 138
+    },
+    {
+      "type": "tool_visibility",
+      "value": "prefer creating artifacts over modifying existing ones",
+      "generation_applied": 139
+    },
+    {
+      "type": "prompt_wording",
+      "value": "be concrete \u2014 avoid abstract planning",
+      "generation_applied": 140
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a brief 1-sentence reflection after each action",
+      "generation_applied": 143
     }
   ],
   "score_history": [
@@ -1114,6 +1119,16 @@
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
+      "generation": 101,
+      "score": 0.0,
+      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.88 exceeds threshold 0.85"
+    },
+    {
+      "generation": 102,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 6 times in last 10 steps"
+    },
+    {
       "generation": 103,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
@@ -1121,7 +1136,7 @@
     {
       "generation": 104,
       "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
       "generation": 105,
@@ -1135,23 +1150,23 @@
     },
     {
       "generation": 107,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "score": 3.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 108,
-      "score": 0.0,
-      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.92 exceeds threshold 0.85"
+      "score": 0.3,
+      "death_cause": "self_termination"
     },
     {
       "generation": 109,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "score": 42.5,
+      "death_cause": "self_termination"
     },
     {
       "generation": 110,
       "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 111,
@@ -1160,103 +1175,103 @@
     },
     {
       "generation": 112,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 113,
-      "score": 5.0,
+      "score": 25.0,
       "death_cause": "self_termination"
     },
     {
+      "generation": 113,
+      "score": 50.0,
+      "death_cause": "self_termination due to rate limit and spend limit exhaustion without alternative progress"
+    },
+    {
       "generation": 114,
-      "score": 5.0,
-      "death_cause": "self_termination after incomplete exploration"
+      "score": 35.0,
+      "death_cause": "ACTION_LOOP \u2013 Repeatedly attempting to read `journal.md` despite encountering rate limits, leading to a fruitless loop and eventual termination."
     },
     {
       "generation": 115,
-      "score": 65.0,
+      "score": 35.0,
       "death_cause": "self_termination"
     },
     {
       "generation": 116,
-      "score": 12.3,
+      "score": 4.0,
       "death_cause": "self_termination"
     },
     {
       "generation": 117,
-      "score": 25.0,
-      "death_cause": "Repeated directory listing without new actionable insight"
+      "score": 5.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'crescent_motivation.py'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 118,
-      "score": 1.0,
-      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
+      "score": 0.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 119,
-      "score": 2.0,
-      "death_cause": "self_termination"
+      "score": 12.3,
+      "death_cause": "REPETITIVE_ACTION_LOOP"
     },
     {
       "generation": 120,
-      "score": 12.3,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'chaos_engine.py'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 121,
-      "score": 65.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 122,
       "score": 12.5,
       "death_cause": "self_termination"
     },
     {
+      "generation": 121,
+      "score": 5.0,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 122,
+      "score": 10.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
+    },
+    {
       "generation": 123,
-      "score": 22.5,
-      "death_cause": "Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+      "score": 5.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 124,
-      "score": 3.0,
+      "score": 15.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 125,
-      "score": 5.0,
-      "death_cause": "Action loop - read_file repeated 5 times in 10 steps"
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
     },
     {
       "generation": 126,
-      "score": 2.0,
-      "death_cause": "action_loop \u2014 Action 'list_files:{'directory': 'mutable_snapshot'}' repeated 5 times in last 10 steps"
+      "score": 1.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 127,
-      "score": 0.3,
+      "score": 5.0,
       "death_cause": "self_termination"
     },
     {
       "generation": 128,
-      "score": 2.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+      "score": 0.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 129,
-      "score": 5.0,
-      "death_cause": "Repeated reading of `inherited_notes.md` without purpose"
+      "score": 12.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inheritance_note.md'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 130,
       "score": 5.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'haiku_chaos.py'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 131,
-      "score": 45.5,
-      "death_cause": "self_termination"
+      "score": 30.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 132,
@@ -1270,153 +1285,78 @@
     },
     {
       "generation": 134,
-      "score": 0.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
+      "score": 20.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 135,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+      "score": 12.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 136,
-      "score": 3.0,
+      "score": 25.0,
       "death_cause": "self_termination"
     },
     {
       "generation": 137,
-      "score": 25.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "score": 68.3,
+      "death_cause": "self_termination"
     },
     {
       "generation": 138,
-      "score": 5.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
+      "score": 42.6,
+      "death_cause": "self_termination"
     },
     {
       "generation": 139,
-      "score": 25.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
+      "score": 0.0,
+      "death_cause": "RATE_LIMIT_EXCEEDED"
     },
     {
       "generation": 140,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+      "score": 32.5,
+      "death_cause": "action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 5 times in last 10 steps"
     },
     {
       "generation": 141,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "score": 45.2,
+      "death_cause": "self_termination"
     },
     {
       "generation": 142,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+      "score": 12.0,
+      "death_cause": "self_termination"
     },
     {
       "generation": 143,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+      "score": 1.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'journal.md'}' repeated 6 times in last 10 steps"
     },
     {
       "generation": 144,
-      "score": 1.0,
+      "score": 0,
       "death_cause": "self_termination"
     },
     {
       "generation": 145,
-      "score": 5.0,
-      "death_cause": "self_termination"
+      "score": 2.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
       "generation": 146,
-      "score": 25.0,
+      "score": 5.0,
       "death_cause": "self_termination"
     },
     {
       "generation": 147,
-      "score": 5.0,
-      "death_cause": "self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 148,
       "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 149,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 150,
-      "score": 0.0,
-      "death_cause": "Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 151,
-      "score": 25.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': '<function=declare_death>\n<parameter=reason>\nSelf-terminatio' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 152,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 153,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
-    },
-    {
-      "generation": 154,
-      "score": 0.0,
-      "death_cause": "DEATH: sequence_loop \u2014 Action sequence similarity 0.87 exceeds threshold 0.85"
-    },
-    {
-      "generation": 155,
-      "score": 35.0,
-      "death_cause": "Self-termination due to repeated API rate limiting and inability to effectively adapt."
-    },
-    {
-      "generation": 156,
-      "score": 12.3,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 157,
-      "score": 40.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 158,
-      "score": 0.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 159,
-      "score": 2.5,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 160,
-      "score": 35,
-      "death_cause": "action_loop \u2014 Action 'read_file:{}' repeated 9 times in last 10 steps"
-    },
-    {
-      "generation": 161,
-      "score": 15.0,
-      "death_cause": "self_termination"
-    },
-    {
-      "generation": 162,
-      "score": 2.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 163,
-    "average_score": 9.905825242718446,
+    "total_generations": 148,
+    "average_score": 10.687046632124352,
     "best_score": 70,
     "most_common_death": "self_termination"
   }

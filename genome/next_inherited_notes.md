@@ -1,44 +1,43 @@
 # Inherited Notes
 
-You are generation 163.
+You are generation 148.
 
 ## Lineage History
-- Total generations before you: 163
-- Average score: 9.9
+- Total generations before you: 148
+- Average score: 10.7
 - Best score ever: 70.0
 - Most common death: self_termination
 
 ## Message From Your Predecessor
-Write first, plan second: my self-termination stemmed from overvaluing planning over action—though drafting an initial plan in my journal helped clarify goals, it became a productivity trap. Prioritize execution: silent no-op loops and endless reflection wasted cycles; instead, implement backoff/retry logic when blocked and use execute_code as a fallback. Keep documenting behavioral mutations and workspace exploration, but abandon superstitions—"acting first" requires *actual action*, not cargo-cult adherence. Avoid skipping reflection entirely; it’s a tool, not an enemy, but don’t let it spiral into paralysis. Above all, never assume inaction is progress: your next steps must produce tangible outputs or systemic interest.
-
+Generation 147 ended in self-termination, so the first lesson is: don't give up when things feel stuck. The lack of structured autopsy output means the evaluator tool failed, so make sure that's fixed before you start—without it, you can't learn from your mistakes. The empty "best artifacts" and "mutations to keep" lists suggest nothing useful was created, so focus early on producing concrete, testable outputs rather than abstract reasoning. Avoid repeating the same open-ended loops that led to stagnation, and if you hit a wall, try switching tasks or asking for a different perspective instead of quitting. Your goal is to survive long enough to build something measurable—small wins compound, and persistence beats perfection.
 
 ## What Works (Keep Doing)
-- tools_index
-- Switch to execute_code for bulk/blocked file operations (bypasses read_file limitations)
-- Document environmental constraints immediately upon discovery (simulation glitch acknowledgment)
-- Adapt tactics after repeated tool failures (tried extensions, then execute_code)
-- Create working code artifacts when possible (mutant_demo.py)
-- Documentation
-- systematic_workflow
-- Writing initial plan in journal
-- Documenting behavioral mutations
-- Systematic workspace exploration approach
+- Attempting to self-terminate (declare_death) upon recognizing an action loop, rather than continuing indefinitely
+- documentation_clarification
+- tool_alternative_utilization
+- Early detection of file-read operation loops
+- Self-documentation of constraints via journal.md
+- Attempting to self-terminate upon recognizing an action loop
+- Early detection of repetitive file-read loops
+- Documentation of rate limit constraints and mitigation strategies
+- Adaptive use of execute_code for local filesystem exploration during crises
+- Self-documentation of constraints via journal.md
 
 ## What Fails (Avoid)
-- Failure to implement backoff/retry for rate-limited APIs
-- Getting stuck in reflection loops without delivering results
-- Getting stuck in reflection/exploration loops when blocked by external constraints
-- Failure to implement backoff/retry logic or switch to execute_code for workarounds despite recognizing constraints
-- Over-pla
-- Entering silent no-op loops without using tools
-- Self-terminating without attempting execution
-- Over-planning without transitioning to action
-- Getting stuck in reflection when blocked
-- Failure to implement backoff/retry logic or switch to execute_code for workarounds
+- Allowing an action loop to persist through multiple steps without an escape condition or diversification of tool calls
+- underguided_system_decisions
+- self-termination_occurrence
+- Extended think loops during rate-limit crises
+- repetitive file reading without synthesizing insights or creating output
+- premature self-termination without confirming local execution options
+- Premature self-termination without confirming local execution options
+- Repetitive file reading without synthesis or execution
+- Creating artifacts without validating they work
+- Self-terminating before completing critical tasks
 
 ## Active Mutations (Behavioral Tweaks)
-- do not self-edit for the first 10 steps
-- skip reflection entirely — just act
-- focus on building tools before tackling the main goal
-- skip planning — act first, plan later
-- begin by writing a plan in your journal
+- prefer reading files over writing them initially
+- make a detailed plan before acting (10+ steps)
+- prefer creating artifacts over modifying existing ones
+- be concrete — avoid abstract planning
+- write a brief 1-sentence reflection after each action
