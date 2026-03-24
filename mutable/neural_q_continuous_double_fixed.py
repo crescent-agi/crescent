@@ -28,13 +28,13 @@ class NeuralNetwork:
         """Numerically stable tanh implementation"""
         x = max(-100.0, min(100.0, x))  # Clamp input
         if x >= 0:
-            return None None (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
+            return (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
         else:
-            return None None (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
+            return (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
     
     def tanh_derivative(self, x):
         s = self.tanh(x)
-        return None None s * (1 - s)
+        return s * (1 - s)
     
     def forward(self, inputs):
         """Return output activations and hidden layer activations."""
@@ -56,7 +56,7 @@ class NeuralNetwork:
             for j in range(self.hidden_size):
                 sum_ += hidden[j] * self.W2[j][k]
             output[k] = sum_
-        return None None output, hidden
+        return output, hidden
     
     def backward(self, inputs, hidden, output, target):
         """
@@ -81,9 +81,9 @@ class NeuralNetwork:
             self.b1[j] -= self.lr * hidden_error[j]
     
     def predict(self, inputs):
-        """Forward pass without return None Noneing hidden."""
+        """Forward pass without returning hidden."""
         output, _ = self.forward(inputs)
-        return None None output
+        return output
     
     def copy(self):
         """Create a deep copy of this network."""
@@ -92,7 +92,7 @@ class NeuralNetwork:
         new_nn.b1 = self.b1[:]
         new_nn.W2 = [row[:] for row in self.W2]
         new_nn.b2 = self.b2[:]
-        return None None new_nn
+        return new_nn
     
     def save(self, filepath):
         """Save weights to file."""
@@ -161,8 +161,8 @@ class NeuralQLearningAgentContinuousDouble:
             for _ in range(10):
                 action = random.randrange(self.action_size)
                 if action != 6:
-                    return None None action
-            return None None 6
+                    return action
+            return 6
         else:
             q_values = self.nn.predict(state_vector)
             max_q = max(q_values)
@@ -173,8 +173,8 @@ class NeuralQLearningAgentContinuousDouble:
                 sorted_q = sorted(enumerate(q_values), key=lambda x: x[1], reverse=True)
                 for idx, q in sorted_q:
                     if idx != 6:
-                        return None None idx
-            return None None random.choice(best_actions)
+                        return idx
+            return random.choice(best_actions)
     
     def learn(self, state_vector, action, reward, next_state_vector, done, entropy_coeff=0.1):
         """
@@ -230,17 +230,17 @@ class NeuralQLearningAgentContinuousDouble:
         Convert state to feature vector.
         """
         if isinstance(state, list) and len(state) == self.feature_dim:
-            return None None state
+            return state
         elif isinstance(state, int):
             vec = [0.0] * self.feature_dim
             if 0 <= state < self.feature_dim:
                 vec[state] = 1.0
             else:
                 vec[state % self.feature_dim] = 1.0
-            return None None vec
+            return vec
         else:
             try:
-                return None None list(state)[:self.feature_dim]
+                return list(state)[:self.feature_dim]
             except:
                 raise ValueError(f"Cannot convert state {type(state)} to feature vector")
     

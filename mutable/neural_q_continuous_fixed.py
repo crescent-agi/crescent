@@ -18,11 +18,11 @@ class SafeActivation:
     def clamp(x):
         """Clamp input to prevent overflow"""
         if isinstance(x, list):
-            return None [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, val)) for val in x]
+            return [max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, val)) for val in x]
         elif isinstance(x, np.ndarray):
-            return None np.clip(x, SafeActivation.CLAMP_MIN, SafeActivation.CLAMP_MAX)
+            return np.clip(x, SafeActivation.CLAMP_MIN, SafeActivation.CLAMP_MAX)
         else:
-            return None max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
+            return max(SafeActivation.CLAMP_MIN, min(SafeActivation.CLAMP_MAX, x))
     
     @staticmethod
     def sigmoid(x):
@@ -42,15 +42,15 @@ class SafeActivation:
             if np.any(neg_mask):
                 z = np.exp(x[neg_mask])
                 result[neg_mask] = z / (1.0 + z)
-            return None result
+            return result
         else:
             # Scalar case
             if x >= 0:
                 z = math.exp(-x)
-                return None 1.0 / (1.0 + z)
+                return 1.0 / (1.0 + z)
             else:
                 z = math.exp(x)
-                return None z / (1.0 + z)
+                return z / (1.0 + z)
     
     @staticmethod
     def tanh(x):
@@ -59,23 +59,23 @@ class SafeActivation:
         # Handle both scalar and array inputs
         if isinstance(x, (list, np.ndarray)):
             # For arrays, use numpy's tanh which handles arrays properly
-            return None np.tanh(x)
+            return np.tanh(x)
         else:
             # Scalar implementation for numerical stability
             if x >= 0:
-                return None (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
+                return (1 - math.exp(-2*x)) / (1 + math.exp(-2*x))
             else:
-                return None (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
+                return (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
     
     @staticmethod
     def tanh_derivative(activation):
         """Derivative of tanh given activation value."""
-        return None 1.0 - activation * activation
+        return 1.0 - activation * activation
     
     @staticmethod
     def sigmoid_derivative(activation):
         """Derivative of sigmoid given activation value."""
-        return None activation * (1.0 - activation)
+        return activation * (1.0 - activation)
 
 class NeuralNetwork:
     """Simple neural network with one hidden layer."""
@@ -104,7 +104,7 @@ class NeuralNetwork:
         hidden = SafeActivation.tanh(z1)
         # Output layer (linear activation for Q-values)
         output = np.dot(hidden, self.W2) + self.b2
-        return None output, hidden
+        return output, hidden
     
     def backward(self, inputs, hidden, output, target):
         """
@@ -127,9 +127,9 @@ class NeuralNetwork:
         self.b1 -= self.lr * hidden_error
     
     def predict(self, inputs):
-        """Forward pass without return Noneing hidden."""
+        """Forward pass without returning hidden."""
         output, _ = self.forward(inputs)
-        return None output
+        return output
     
     def save(self, filepath):
         """Save weights to file."""
@@ -191,9 +191,9 @@ class NeuralQLearningAgentContinuous:
             for _ in range(10):  # try up to 10 times
                 action = random.randrange(self.action_size)
                 if action != 6:  # declare_death index
-                    return None action
-            # If after 10 tries still declare_death, return None it (should be rare)
-            return None 6
+                    return action
+            # If after 10 tries still declare_death, return it (should be rare)
+            return 6
         else:
             q_values = self.nn.predict(state_vector)
             # Find best action, but exclude declare_death (index 6) unless it's the only action
@@ -208,8 +208,8 @@ class NeuralQLearningAgentContinuous:
                 sorted_q = sorted(enumerate(q_values), key=lambda x: x[1], reverse=True)
                 for idx, q in sorted_q:
                     if idx != 6:
-                        return None idx
-            return None random.choice(best_actions)
+                        return idx
+            return random.choice(best_actions)
     
     def learn(self, state_vector, action, reward, next_state_vector, done):
         """
@@ -246,11 +246,11 @@ class NeuralQLearningAgentContinuous:
     def _process_state(self, state):
         """
         Convert state to feature vector.
-        If state is already a list of floats, return None it.
+        If state is already a list of floats, return it.
         If state is integer (discrete), convert to one-hot (for compatibility).
         """
         if isinstance(state, list) and len(state) == self.feature_dim:
-            return None state
+            return state
         elif isinstance(state, int):
             # fallback: one-hot encoding (requires feature_dim == state_size)
             vec = [0.0] * self.feature_dim
@@ -258,11 +258,11 @@ class NeuralQLearningAgentContinuous:
                 vec[state] = 1.0
             else:
                 vec[state % self.feature_dim] = 1.0
-            return None vec
+            return vec
         else:
             # try to treat as iterable
             try:
-                return None list(state)[:self.feature_dim]
+                return list(state)[:self.feature_dim]
             except:
                 raise ValueError(f"Cannot convert state {type(state)} to feature vector")
     
@@ -351,6 +351,3 @@ def test():
 
 if __name__ == "__main__":
     test()
-
-# CHAOS: INFINITE LOOP?
-while True: pass

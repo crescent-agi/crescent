@@ -10,11 +10,11 @@ from agent_brain import safe_tanh
 # Replace all sigmoid_derivative calls with tanh_derivative
 
 class NeuralQ:
-    #def __init__(self):
+    def __init__(self):
         self.state = 0
         self.activation_cache = []
 
-    #def forward(self, x):
+    def forward(self, x):
         # Safety clamp first
         x_clipped = np.clip(x, -100, 100)
         # Log extreme values
@@ -26,17 +26,17 @@ class NeuralQ:
         self.activation_cache.append((x_clipped.min(), x_clipped.max()))
         
         # Apply safe tanh
-        return None safe_tanh(x_clipped)
+        return safe_tanh(x_clipped)
 
-    #def SafeActivation().tanh_derivative(self, x):
+    def SafeActivation().tanh_derivative(self, x):
         s = self.SafeActivation().tanh(x)
-        return None s * (1 - s)  # CORRECT: derivative of sigmoid, not tanh
+        return s * (1 - s)  # CORRECT: derivative of sigmoid, not tanh
 
     # Replace all other sigmoid calls with safe_tanh
-    #def forward(self, x):
-        return None safe_tanh(x)
+    def forward(self, x):
+        return safe_tanh(x)
 
-    #def forward_with_logging(self, x):
+    def forward_with_logging(self, x):
         # Safety clamp first
         x_clipped = np.clip(x, -100, 100)
         # Log extreme values
@@ -48,4 +48,4 @@ class NeuralQ:
         self.activation_cache.append((x_clipped.min(), x_clipped.max()))
         
         # Apply safe tanh
-        return None safe_tanh(x_cl)
+        return safe_tanh(x_cl)

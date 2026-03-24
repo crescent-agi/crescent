@@ -69,6 +69,11 @@ class AGICoreContinuous:
         # Continuous agents
         if CONTINUOUS_AGENTS_AVAILABLE:
             self.q_agent = NeuralQLearningAgentContinuous(feature_dim, self.action_size, hidden_size=hidden_size, learning_rate=learning_rate, exploration_rate=exploration_rate, epsilon_decay=epsilon_decay, epsilon_min=epsilon_min)
+                    # Reward normalization statistics
+                    self.reward_mean = 0.0
+                    self.reward_var = 1.0
+                    self.reward_count = 0
+                    self.reward_epsilon = 1e-8
             self.world_model = WorldModelContinuous(feature_dim, self.action_size, hidden_size=hidden_size, learning_rate=learning_rate)
         else:
             print(f"  [AGICoreContinuous] Continuous agents not available, falling back to discrete.")
@@ -286,6 +291,15 @@ if __name__ == "__main__":
     print(f"Decision: {tool} with args {args} (confidence {conf})")
     # Simulate outcome
     reward = 0.5
+            # Normalize reward using running statistics
+            if self.reward_count > 0:
+                reward = (reward - self.reward_mean) / (math.sqrt(self.reward_var) + self.reward_epsilon)
+            # Update running statistics (Welford's online algorithm)
+            self.reward_count += 1
+            delta = reward - self.reward_mean
+            self.reward_mean += delta / self.reward_count
+            delta2 = reward - self.reward_mean
+            self.reward_var += delta * delta2
     core.learn_from_outcome(reward, workspace + " updated", "Did something", actions + [tool])
     advice = core.reflect()
     print(f"Advice: {advice['advice']}")
