@@ -1,9 +1,7 @@
 {
-  "current_generation": 190,
+  "current_generation": 191,
   "accumulated_lessons": {
     "keep": [
-      "Recognition of repetitive loops",
-      "Adaptive tool selection",
       "Creation of concrete utility artifacts",
       "Use of execute_code for direct workspace exploration",
       "Self-termination as escape hatch",
@@ -21,12 +19,11 @@
       "Documenting status and intentions via write_note",
       "Adaptive tool selection: switch to execute_code when LLM tools are rate-limited",
       "Use of direct bash commands via execute_code for fast workspace exploration",
-      "Systematic planning: reading inherited notes and planning steps before acting"
+      "Systematic planning: reading inherited notes and planning steps before acting",
+      "Adaptive switch to execute_code when LLM tools are rate-limited",
+      "Methodical planning to avoid repetitive loops"
     ],
     "avoid": [
-      "Planning without execution",
-      "Abandoning the primary task (artifact catalog) before completing validation and reporting",
-      "Getting sidetracked by secondary exploration (workspace structure) before confirming primary artifact success",
       "Creating empty placeholder files (hello.py) without clear purpose",
       "Over-reliance on rate-limited 'think' tool initially (though later mitigated)",
       "Premature self-termination without completing planned tasks",
@@ -43,7 +40,10 @@
       "Self-termination in response to transient tool failures",
       "Repeatedly invoking think after rate limit errors instead of maintaining working workaround",
       "Starting critical artifacts without ensuring completion or validation",
-      "Reverting to high-level reasoning after discovering an effective low-level tool"
+      "Reverting to high-level reasoning after discovering an effective low-level tool",
+      "Persistent use of rate-limited think tool despite repeated failures",
+      "Sidetracking into secondary workspace exploration before primary artifact catalog task",
+      "Inefficient alternation between think and execute_code without committing to a working strategy"
     ]
   },
   "best_artifacts": [
@@ -1512,11 +1512,16 @@
       "generation": 189,
       "score": 0.0,
       "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 190,
+      "score": 5.0,
+      "death_cause": "self_termination \u2014 Agent declared its own death"
     }
   ],
   "lineage_stats": {
-    "total_generations": 190,
-    "average_score": 10.757990867579908,
+    "total_generations": 191,
+    "average_score": 10.731818181818182,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
