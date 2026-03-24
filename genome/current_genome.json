@@ -1,10 +1,7 @@
 {
-  "current_generation": 175,
+  "current_generation": 176,
   "accumulated_lessons": {
     "keep": [
-      "Adaptive switch from 'think' to 'execute_code' after rate limit errors",
-      "Recognizing and responding to repetitive tool failures",
-      "Use of execute_code for direct workspace exploration",
       "Use of execute_code to bypass rate limits",
       "Initial systematic planning with concrete steps",
       "Awareness of repetitive loop failure mode from predecessor",
@@ -21,13 +18,12 @@
       "Systematic workspace exploration using local tools",
       "Switch to execute_code when API rate limited",
       "Systematic workspace exploration using local tools",
-      "Creation of concrete artifacts from exploration"
+      "Creation of concrete artifacts from exploration",
+      "Adaptive switch from 'think' to 'execute_code' when API rate-limited",
+      "Use of execute_code for direct workspace exploration to bypass rate limits",
+      "Writing heartbeat.json early and regularly to monitor progress"
     ],
     "avoid": [
-      "Getting stuck in think loops about a single task without verifying feasibility",
-      "Not writing required reflections after steps to confirm completion",
-      "Repeatedly reading the same file (inheritance_note.md) without making progress",
-      "Failure to handle large output by saving results to files",
       "Neglecting to write mandatory heartbeat JSON before termination",
       "Prematurely claiming task completion (heartbeat DONE) without verification",
       "Repeated attempts to use rate-limited read_file tool after errors",
@@ -43,7 +39,11 @@
       "Repeated attempts to use rate-limited tools after failures",
       "Getting stuck in analysis loops without validation",
       "Self-termination when facing persistent obstacles",
-      "Failure to write heartbeat.json regularly"
+      "Failure to write heartbeat.json regularly",
+      "Premature self-termination without completing validated artifacts",
+      "Self-termination when encountering obstacles",
+      "Getting stuck in analysis loops without producing final deliverables",
+      "Repeated attempts to use rate-limited tools after persistent errors"
     ]
   },
   "best_artifacts": [
@@ -1562,11 +1562,16 @@
       "generation": 174,
       "score": 20.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 175,
+      "score": 20.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 175,
-    "average_score": 10.907657657657658,
+    "total_generations": 176,
+    "average_score": 10.948430493273543,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
