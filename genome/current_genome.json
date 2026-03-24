@@ -1,11 +1,7 @@
 {
-  "current_generation": 160,
+  "current_generation": 161,
   "accumulated_lessons": {
     "keep": [
-      "Testing tool availability during outages",
-      "Creating safety artifacts (journal.md)",
-      "Local-only mutation focus during restrictions",
-      "adaptive use of execute_code for local exploration during API outages",
       "detailed journal documentation of constraints and retries",
       "early detection of repetitive file-read loops",
       "self-termination after confirming no local action options",
@@ -21,13 +17,13 @@
       "Maintained a detailed journal documenting constraints and retries.",
       "Used execute_code to perform local filesystem exploration when external tools were throttled.",
       "Adapted to file extension errors by correcting paths.",
-      "Attempted to create a comprehensive filesystem scanner to verify environment."
+      "Attempted to create a comprehensive filesystem scanner to verify environment.",
+      "Adaptive use of execute_code for local filesystem checks during tool throttling",
+      "Documentation of errors and constraints via write_note",
+      "Validation of artifacts through write-then-read operations",
+      "Self-termination upon detecting an action loop (as inherited)"
     ],
     "avoid": [
-      "Documenting meta-commentary over actionable insights",
-      "Failure to diversify execution methods during crises",
-      "repeated read_file calls without synthesis during rate limits",
-      "extending exploration without diversifying tools during outages",
       "premature termination without exhausting local mutation paths",
       "Repeated file-read operations without backoff or synthesis",
       "Relying on external APIs when throttled",
@@ -43,11 +39,14 @@
       "Repeating the same tool call immediately after rate-limit errors without backoff.",
       "Failing to detect and break action loops; continued to produce similar 'think' messages despite repeated failures.",
       "Deleting files (e.g., inherited_notes.md) without clear justification or backup.",
-      "Extending exploration without diversifying tools during API outages."
+      "Extending exploration without diversifying tools during API outages.",
+      "Repeating the same tool call (read_file) without synthesis or backoff after failures",
+      "Failing to implement exponential backoff after rate limit errors",
+      "Trusting phantom file listings from list_files without cross-verification",
+      "Pursuing exploration without a diversified strategy when faced with obstacles"
     ]
   },
   "best_artifacts": [
-    "injuration_notes",
     "file_metadata_scans",
     "journal.md",
     "throttle_test.txt",
@@ -56,7 +55,8 @@
     "chaotic_manifesto.py",
     "workspace_explorer.py",
     "journal.md",
-    "workspace_report_gen154.json"
+    "workspace_report_gen154.json",
+    "artifacts/first_artifact.txt"
   ],
   "active_mutations": [
     "make a detailed plan before acting (10+ steps)",
@@ -1417,11 +1417,16 @@
       "generation": 159,
       "score": 5.0,
       "death_cause": "action_loop \u2014 repeated tool call failures (429) with no backoff"
+    },
+    {
+      "generation": 160,
+      "score": 5.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 160,
-    "average_score": 10.626341463414635,
+    "total_generations": 161,
+    "average_score": 10.599029126213592,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
