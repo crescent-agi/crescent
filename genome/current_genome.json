@@ -1,12 +1,7 @@
 {
-  "current_generation": 176,
+  "current_generation": 177,
   "accumulated_lessons": {
     "keep": [
-      "Use of execute_code to bypass rate limits",
-      "Initial systematic planning with concrete steps",
-      "Awareness of repetitive loop failure mode from predecessor",
-      "Adaptive switch from think to execute_code after rate limit errors",
-      "Adaptive switch to execute_code to bypass rate limits",
       "Writing heartbeat.json early and regularly",
       "Creating concrete artifacts from exploration",
       "Adaptive switch from 'think' to 'execute_code' when rate-limited",
@@ -21,14 +16,14 @@
       "Creation of concrete artifacts from exploration",
       "Adaptive switch from 'think' to 'execute_code' when API rate-limited",
       "Use of execute_code for direct workspace exploration to bypass rate limits",
-      "Writing heartbeat.json early and regularly to monitor progress"
+      "Writing heartbeat.json early and regularly to monitor progress",
+      "Immediate recognition of rate limit patterns",
+      "Swift switch to execute_code when LLM tools fail",
+      "Early exploration of workspace structure using local tools",
+      "Self-awareness of predecessor's fatal mistakes",
+      "Brief but focused exploration before termination"
     ],
     "avoid": [
-      "Neglecting to write mandatory heartbeat JSON before termination",
-      "Prematurely claiming task completion (heartbeat DONE) without verification",
-      "Repeated attempts to use rate-limited read_file tool after errors",
-      "Re-engaging with inheritance_note.md without a new purpose",
-      "Self-termination when encountering persistent but manageable obstacles",
       "Getting stuck in file-reading loops without execution",
       "Premature self-termination without completing validated artifacts",
       "Failure to persist outputs to files for validation",
@@ -43,7 +38,12 @@
       "Premature self-termination without completing validated artifacts",
       "Self-termination when encountering obstacles",
       "Getting stuck in analysis loops without producing final deliverables",
-      "Repeated attempts to use rate-limited tools after persistent errors"
+      "Repeated attempts to use rate-limited tools after persistent errors",
+      "Self-termination without producing any artifacts",
+      "No creation of heartbeat.json despite predecessor's advice",
+      "No concrete output despite successful exploration",
+      "Premature termination after only 7 steps",
+      "No validation of workspace exploration findings"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "gen174_workspace_scan_partial.txt"
   ],
   "active_mutations": [
-    "reflect only when something goes wrong",
     "be methodical and careful",
     "make a short plan (3-5 steps) then start",
     "do not self-edit for the first 10 steps",
-    "prefer writing code over writing notes"
+    "prefer writing code over writing notes",
+    "write a detailed multi-paragraph reflection every 5 actions"
   ],
   "mutations_applied_history": [
     {
@@ -450,6 +450,11 @@
       "type": "tool_visibility",
       "value": "prefer writing code over writing notes",
       "generation_applied": 174
+    },
+    {
+      "type": "reflection_length",
+      "value": "write a detailed multi-paragraph reflection every 5 actions",
+      "generation_applied": 177
     }
   ],
   "score_history": [
@@ -1567,11 +1572,16 @@
       "generation": 175,
       "score": 20.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 176,
+      "score": 0.0,
+      "death_cause": "self_termination"
     }
   ],
   "lineage_stats": {
-    "total_generations": 176,
-    "average_score": 10.948430493273543,
+    "total_generations": 177,
+    "average_score": 10.899553571428571,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
