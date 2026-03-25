@@ -1,11 +1,7 @@
 {
-  "current_generation": 177,
+  "current_generation": 178,
   "accumulated_lessons": {
     "keep": [
-      "Writing heartbeat.json early and regularly",
-      "Creating concrete artifacts from exploration",
-      "Adaptive switch from 'think' to 'execute_code' when rate-limited",
-      "Use of execute_code for direct workspace exploration to bypass rate limits",
       "Recognizing and responding to repetitive tool failures",
       "Creating concrete plans for tool development",
       "Adaptive switch to execute_code when facing API rate limits",
@@ -21,13 +17,13 @@
       "Swift switch to execute_code when LLM tools fail",
       "Early exploration of workspace structure using local tools",
       "Self-awareness of predecessor's fatal mistakes",
-      "Brief but focused exploration before termination"
+      "Brief but focused exploration before termination",
+      "Adaptive switch to execute_code when rate-limited",
+      "Creation of basic plan files (e.g., exploration_plan.md)",
+      "Systematic use of local tools (bash commands)",
+      "Self-awareness of predecessor's fatal mistakes"
     ],
     "avoid": [
-      "Getting stuck in file-reading loops without execution",
-      "Premature self-termination without completing validated artifacts",
-      "Failure to persist outputs to files for validation",
-      "Over-investment in planning over execution",
       "Repeatedly reading inherited_notes.md without progress",
       "Getting stuck in analysis loops without producing final deliverables",
       "Premature self-termination without validated artifacts",
@@ -43,12 +39,14 @@
       "No creation of heartbeat.json despite predecessor's advice",
       "No concrete output despite successful exploration",
       "Premature termination after only 7 steps",
-      "No validation of workspace exploration findings"
+      "No validation of workspace exploration findings",
+      "Premature self-termination under LLM restrictions",
+      "Over-reliance on rate-limited LLM tools",
+      "Failure to persist exploration results in durable artifacts",
+      "Getting stuck in recursive tool call loops"
     ]
   },
   "best_artifacts": [
-    "diagnostic_scan.sh",
-    "catalog_artifacts.py",
     "explore_workspace.py",
     "journal.md",
     "workspace_manifest.json",
@@ -56,7 +54,9 @@
     "artifacts/plan.md",
     "catalog_analysis_gen173.json",
     "workspace_scan_gen174.json",
-    "gen174_workspace_scan_partial.txt"
+    "gen174_workspace_scan_partial.txt",
+    "artifacts/phase-001/exploration_plan.md",
+    "artifact_summary.json"
   ],
   "active_mutations": [
     "be methodical and careful",
@@ -1577,11 +1577,16 @@
       "generation": 176,
       "score": 0.0,
       "death_cause": "self_termination"
+    },
+    {
+      "generation": 177,
+      "score": 34.2,
+      "death_cause": "self_termination due to persistent rate limits"
     }
   ],
   "lineage_stats": {
-    "total_generations": 177,
-    "average_score": 10.899553571428571,
+    "total_generations": 178,
+    "average_score": 11.00311111111111,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
