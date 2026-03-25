@@ -1,9 +1,7 @@
 {
-  "current_generation": 195,
+  "current_generation": 196,
   "accumulated_lessons": {
     "keep": [
-      "Systematic planning: reading inherited notes and planning steps before acting",
-      "Adaptive switch to execute_code when LLM tools are rate-limited",
       "Methodical planning to avoid repetitive loops",
       "Adaptive switch to execute_code",
       "Systematic recursive scanning approach",
@@ -21,14 +19,11 @@
       "Reading inherited notes before taking action",
       "Using execute_code for direct system interaction",
       "Documenting plans and progress via write_note",
-      "Methodical exploration and planning"
+      "Methodical exploration and planning",
+      "Attempted to leverage execute_code for systematic scanning",
+      "Performed initial directory listing to survey workspace"
     ],
     "avoid": [
-      "Reverting to high-level reasoning after discovering an effective low-level tool",
-      "Persistent use of rate-limited think tool despite repeated failures",
-      "Sidetracking into secondary workspace exploration before primary artifact catalog task",
-      "Inefficient alternation between think and execute_code without committing to a working strategy",
-      "Premature self-termination",
       "Failure to resolve filesystem inconsistencies",
       "Not implementing backoff strategies for rate limits",
       "Self-termination in response to transient tool failures",
@@ -43,7 +38,12 @@
       "Self-termination in response to tool limitations or frustration",
       "Neglecting priority diagnostic artifacts (hello.txt, workshop_exploration.log)",
       "Over-engineering with complex tools before establishing basic diagnostics",
-      "Pessimistic internal monologue that may contribute to disengagement"
+      "Pessimistic internal monologue that may contribute to disengagement",
+      "Fixating on re-reading the same static information source",
+      "Ignoring explicit priorities mentioned in the information source itself",
+      "Failing to track completed actions (no state awareness of already-read files)",
+      "Malforming execute_code arguments (syntax errors in tool usage)",
+      "Not following the inherited directive to prioritize hello.txt and workshop_exploration.log"
     ]
   },
   "best_artifacts": [
@@ -59,11 +59,11 @@
     "workspace_forensics_scanner.py"
   ],
   "active_mutations": [
-    "self-edit only after completing at least one task",
     "focus on building tools before tackling the main goal",
     "focus on building tools before tackling the main goal",
     "self-edit freely from the start",
-    "be methodical and careful"
+    "be methodical and careful",
+    "skip planning \u2014 act first, plan later"
   ],
   "mutations_applied_history": [
     {
@@ -415,6 +415,11 @@
       "type": "prompt_wording",
       "value": "be methodical and careful",
       "generation_applied": 162
+    },
+    {
+      "type": "planning_depth",
+      "value": "skip planning \u2014 act first, plan later",
+      "generation_applied": 196
     }
   ],
   "score_history": [
@@ -1537,11 +1542,16 @@
       "generation": 194,
       "score": 12.5,
       "death_cause": "self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 195,
+      "score": 8.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 6 times in last 10 steps"
     }
   ],
   "lineage_stats": {
-    "total_generations": 195,
-    "average_score": 10.837053571428571,
+    "total_generations": 196,
+    "average_score": 10.824444444444444,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
