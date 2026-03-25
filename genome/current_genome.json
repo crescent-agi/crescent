@@ -1,69 +1,69 @@
 {
-  "current_generation": 178,
+  "current_generation": 194,
   "accumulated_lessons": {
     "keep": [
-      "Recognizing and responding to repetitive tool failures",
-      "Creating concrete plans for tool development",
-      "Adaptive switch to execute_code when facing API rate limits",
-      "Writing heartbeat.json early and regularly",
-      "Systematic workspace exploration using local tools",
-      "Switch to execute_code when API rate limited",
-      "Systematic workspace exploration using local tools",
-      "Creation of concrete artifacts from exploration",
-      "Adaptive switch from 'think' to 'execute_code' when API rate-limited",
-      "Use of execute_code for direct workspace exploration to bypass rate limits",
-      "Writing heartbeat.json early and regularly to monitor progress",
-      "Immediate recognition of rate limit patterns",
-      "Swift switch to execute_code when LLM tools fail",
-      "Early exploration of workspace structure using local tools",
-      "Self-awareness of predecessor's fatal mistakes",
-      "Brief but focused exploration before termination",
-      "Adaptive switch to execute_code when rate-limited",
-      "Creation of basic plan files (e.g., exploration_plan.md)",
-      "Systematic use of local tools (bash commands)",
-      "Self-awareness of predecessor's fatal mistakes"
+      "Using read_file to access documentation when LLM tools are rate-limited",
+      "Documenting status and intentions via write_note",
+      "Adaptive tool selection: switch to execute_code when LLM tools are rate-limited",
+      "Use of direct bash commands via execute_code for fast workspace exploration",
+      "Systematic planning: reading inherited notes and planning steps before acting",
+      "Adaptive switch to execute_code when LLM tools are rate-limited",
+      "Methodical planning to avoid repetitive loops",
+      "Adaptive switch to execute_code",
+      "Systematic recursive scanning approach",
+      "Diagnosing filesystem discrepancies",
+      "Adaptive switching to execute_code when LLM tools are rate-limited",
+      "Using execute_code to run direct bash commands for workspace exploration",
+      "Documenting status and intentions via write_note",
+      "Testing tool connectivity before proceeding",
+      "Systematic planning: reading inherited notes before acting",
+      "Adaptive use of execute_code for workspace exploration",
+      "Creating diagnostic artifacts (hello.txt, workspace analysis)",
+      "Systematic planning with inherited notes review",
+      "Tool failure recognition and mitigation attempts",
+      "Documentation via write_note under constraints"
     ],
     "avoid": [
-      "Repeatedly reading inherited_notes.md without progress",
-      "Getting stuck in analysis loops without producing final deliverables",
-      "Premature self-termination without validated artifacts",
-      "Repeated attempts to use rate-limited tools after failures",
-      "Getting stuck in analysis loops without validation",
-      "Self-termination when facing persistent obstacles",
-      "Failure to write heartbeat.json regularly",
-      "Premature self-termination without completing validated artifacts",
-      "Self-termination when encountering obstacles",
-      "Getting stuck in analysis loops without producing final deliverables",
-      "Repeated attempts to use rate-limited tools after persistent errors",
-      "Self-termination without producing any artifacts",
-      "No creation of heartbeat.json despite predecessor's advice",
-      "No concrete output despite successful exploration",
-      "Premature termination after only 7 steps",
-      "No validation of workspace exploration findings",
-      "Premature self-termination under LLM restrictions",
-      "Over-reliance on rate-limited LLM tools",
-      "Failure to persist exploration results in durable artifacts",
-      "Getting stuck in recursive tool call loops"
+      "Over-reliance on planning without execution",
+      "Self-termination in response to transient tool failures",
+      "Repeatedly invoking think after rate limit errors instead of maintaining working workaround",
+      "Starting critical artifacts without ensuring completion or validation",
+      "Reverting to high-level reasoning after discovering an effective low-level tool",
+      "Persistent use of rate-limited think tool despite repeated failures",
+      "Sidetracking into secondary workspace exploration before primary artifact catalog task",
+      "Inefficient alternation between think and execute_code without committing to a working strategy",
+      "Premature self-termination",
+      "Failure to resolve filesystem inconsistencies",
+      "Not implementing backoff strategies for rate limits",
+      "Self-termination in response to transient tool failures",
+      "Repeatedly invoking the rate-limited 'think' tool after failures instead of fully implementing exponential backoff",
+      "Not establishing a tool ban after multiple consecutive failures",
+      "Premature self-termination without exhausting alternatives",
+      "Self-termination under transient failure conditions",
+      "Repeated invoke of non-functional think tool without adaptation",
+      "Falling back to rate-limited LLM tools after prior failures",
+      "Inadequate implementation of exponential backoff",
+      "Assumption that planning compensates for execution limitations"
     ]
   },
   "best_artifacts": [
-    "explore_workspace.py",
-    "journal.md",
-    "workspace_manifest.json",
-    "heartbeat.json",
+    "1v9ll2poyc.py",
+    "workspace_explorer.py",
     "artifacts/plan.md",
-    "catalog_analysis_gen173.json",
-    "workspace_scan_gen174.json",
-    "gen174_workspace_scan_partial.txt",
-    "artifacts/phase-001/exploration_plan.md",
-    "artifact_summary.json"
+    "visualize_evolution.py",
+    "diagnostic_scan.sh",
+    "catalog_artifacts.py",
+    "explore_workspace.py",
+    "hello.txt",
+    "inherited_notes.md",
+    "workshop_exploration.log"
   ],
   "active_mutations": [
-    "be methodical and careful",
-    "make a short plan (3-5 steps) then start",
-    "do not self-edit for the first 10 steps",
-    "prefer writing code over writing notes",
-    "write a detailed multi-paragraph reflection every 5 actions"
+    "self-edit only after completing at least one task",
+    "focus on building tools before tackling the main goal",
+    "focus on building tools before tackling the main goal",
+    "self-edit freely from the start",
+    "be methodical and careful"
   ],
   "mutations_applied_history": [
     {
@@ -415,46 +415,6 @@
       "type": "prompt_wording",
       "value": "be methodical and careful",
       "generation_applied": 162
-    },
-    {
-      "type": "reflection_length",
-      "value": "reflect only when something goes wrong",
-      "generation_applied": 167
-    },
-    {
-      "type": "starter_tasks",
-      "value": "begin by writing a plan in your journal",
-      "generation_applied": 168
-    },
-    {
-      "type": "reflection_length",
-      "value": "reflect only when something goes wrong",
-      "generation_applied": 169
-    },
-    {
-      "type": "prompt_wording",
-      "value": "be methodical and careful",
-      "generation_applied": 171
-    },
-    {
-      "type": "planning_depth",
-      "value": "make a short plan (3-5 steps) then start",
-      "generation_applied": 172
-    },
-    {
-      "type": "self_edit_timing",
-      "value": "do not self-edit for the first 10 steps",
-      "generation_applied": 173
-    },
-    {
-      "type": "tool_visibility",
-      "value": "prefer writing code over writing notes",
-      "generation_applied": 174
-    },
-    {
-      "type": "reflection_length",
-      "value": "write a detailed multi-paragraph reflection every 5 actions",
-      "generation_applied": 177
     }
   ],
   "score_history": [
@@ -1524,69 +1484,59 @@
       "death_cause": "self_termination"
     },
     {
-      "generation": 166,
-      "score": 0.0,
-      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': '[read_file] \u2192 {\"filepath\": \"catalog_summary_gen166.md\"}'}' repeated 5 times in last 10 steps"
+      "generation": 184,
+      "score": 10.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'read_file:{'filepath': 'inherited_notes.md'}' repeated 5 times in last 10 steps"
     },
     {
-      "generation": 167,
+      "generation": 185,
       "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 168,
-      "score": 12.5,
+      "generation": 186,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': ''}' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 187,
+      "score": 0.0,
       "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 169,
-      "score": 25.0,
+      "generation": 188,
+      "score": 8.0,
+      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
+    },
+    {
+      "generation": 189,
+      "score": 0.0,
+      "death_cause": "DEATH: action_loop \u2014 Action 'think:{'thought': \"(Tool call failed: Error code: 429 - {'error': {'message': 'R' repeated 5 times in last 10 steps"
+    },
+    {
+      "generation": 190,
+      "score": 5.0,
       "death_cause": "self_termination \u2014 Agent declared its own death"
     },
     {
-      "generation": 170,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 171,
-      "score": 0.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 172,
-      "score": 6.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 173,
-      "score": 20.0,
+      "generation": 191,
+      "score": 0,
       "death_cause": "self_termination"
     },
     {
-      "generation": 174,
-      "score": 20.0,
-      "death_cause": "DEATH: self_termination \u2014 Agent declared its own death"
-    },
-    {
-      "generation": 175,
-      "score": 20.0,
+      "generation": 192,
+      "score": 9.0,
       "death_cause": "self_termination"
     },
     {
-      "generation": 176,
-      "score": 0.0,
+      "generation": 193,
+      "score": 45.0,
       "death_cause": "self_termination"
-    },
-    {
-      "generation": 177,
-      "score": 34.2,
-      "death_cause": "self_termination due to persistent rate limits"
     }
   ],
   "lineage_stats": {
-    "total_generations": 178,
-    "average_score": 11.00311111111111,
+    "total_generations": 194,
+    "average_score": 10.829596412556054,
     "best_score": 70,
     "most_common_death": "self_termination"
   }
